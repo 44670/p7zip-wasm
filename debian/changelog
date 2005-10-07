@@ -1,0 +1,118 @@
+p7zip (4.29.dfsg-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sat,  8 Oct 2005 00:18:00 +0200
+
+p7zip (4.27.dfsg-1) unstable; urgency=low
+
+  * New upstream release (Closes: #330828)
+     - "echo foo | 7z a dummy -si -so" no more segfaults 
+       but causes an error (Closes: #324449)
+  * In -w[path], path is optionnal.
+     - corrected manual pages (Closes: #325736)
+     - corrected --help output
+  * Add a link in manual pages to a list of methods (Closes: #325737)
+  * Correct FSF address
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Fri, 30 Sep 2005 10:29:42 +0000
+
+p7zip (4.20-2) unstable; urgency=low
+
+  * Bump Standards-Version to 3.6.2
+  * Recompile against new gcc and g++ versions
+  * Included patch for GNU/kFreeBSD provided by 
+      Robert Millan <rmh@aybabtu.com> [applied by asac@debian.org] 
+      (Closes: 322195)
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Thu, 11 Aug 2005 01:45:00 +0200
+
+p7zip (4.20-1) unstable; urgency=low
+
+  * New upstream release
+      - compile with -fPIC flag
+  * Update to manpages and -h output (Closes: #311993)
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Tue,  7 Jun 2005 23:01:29 +0200
+
+p7zip (4.18-2) unstable; urgency=low
+
+  * debian/rules: compile p7zip with -fPIC. Closes: #309734
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Wed, 18 May 2005 12:08:00 +0200
+
+p7zip (4.18-1) unstable; urgency=low
+
+  * First upload to unstable:
+      - many thanks to my sponsor Alexander Sack (asac@debian.org)
+  * New upstream release. Closes: #306912
+      - fixes some symlinks issues (Closes: #295643)
+      - preserve unix file attributes (Closes: #297329)
+      - libs are no more called dll but so
+  * debian/7z*.1: removed to use upstream manpages
+  * debian/rules: Call 7z with exec
+  * debian/README.Debian: update due to upstream changes
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Fri, 12 May 2005 23:46:00 +0200
+
+p7zip (4.14.01-1) experimental; urgency=low
+
+  * New upstream release. Closes: #293788
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sat,  5 Feb 2005 22:22:22 +0200
+
+p7zip (4.14-2) experimental; urgency=low
+
+  * Corrected copyright
+  * debian/rules : corrected shell script in /usr/bin. Closes: #292321
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sun, 23 Jan 2005 21:44:35 +0200
+
+p7zip (4.14-1) experimental; urgency=low
+
+  * New upstream release
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Fri,  1 Jan 2005 21:23:35 +0200
+
+
+p7zip (4.13-2) experimental; urgency=low
+
+  * Codecs are back to their initial dll name. Closes: #286673, Closes: #290613
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Tue, 21 Dec 2004 21:18:45 +0200
+
+p7zip (4.13-1) experimental; urgency=low
+
+  * New upstream release
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Thu, 16 Dec 2004 21:18:45 +0200
+
+p7zip (4.12-2) experimental; urgency=low
+
+  * Now, 7z and its codecs are also compiled (7za 7z, zip, gzip, bzip2 and tar
+    formats)
+  * Added some docs (Manual in html)
+  * Added a mention to LZMA compression algorithm. Closes: #284703
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Thu, 12 Dec 2004 14:22:54 +0200
+
+p7zip (4.12-1) experimental; urgency=low
+
+  * New upstream release
+  * At last, p7zip is in Debian. Closes: #265329
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Thu, 18 Nov 2004 23:29:54 +0200
+
+p7zip (4.10-1) experimental; urgency=low
+
+  * New upstream release
+  * Now both big and little endian computers are supported
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sat, 30 Oct 2004 21:14:50 +0200
+
+p7zip (0.90-1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sun, 15 Aug 2004 20:49:27 +0200
+

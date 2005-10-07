@@ -89,7 +89,7 @@ static const char *kHelpString =
     "  CAUTION : the scanning stage can never end because of symlinks like '..'\n"
     "            (ex:  ln -s .. ldir)\n"
 #endif
-    "  -m{Parameters}: set compression Method\n"
+    "  -m{Parameters}: set compression Method (see the manual)\n"
     "  -o{Directory}: set Output directory\n"
     "  -p{Password}: set Password\n"
     "  -r[-|0]: Recurse subdirectories\n"
@@ -100,7 +100,7 @@ static const char *kHelpString =
     "  -t{Type}: Set type of archive\n"
     "  -v{Size}[b|k|m|g]: Create volumes\n"
     "  -u[-][p#][q#][r#][x#][y#][z#][!newArchiveName]: Update options\n"
-    "  -w[{path}]: assign Work directory. Empty path means a temporary directory\n"
+    "  -w[path]: assign Work directory. Empty path means a temporary directory\n"
     "  -x[r[-|0]]]{@listfile|!wildcard}: eXclude filenames\n"
     "  -y: assume Yes on all queries\n";
 

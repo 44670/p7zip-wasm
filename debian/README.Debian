@@ -1,0 +1,11 @@
+Notes for anyone wanting to build Debian packages of p7zip.
+
+ - 7z is the full featured command line version of 7-Zip. 7z uses other
+   modules from 7-Zip package. 7za is a standalone command line version
+   of 7-Zip. 7za supports only 7z, zip, gzip, bzip2 and tar formats. 7za
+   doesn't use other modules. Modules are in /usr/lib/p7zip.
+
+ - These packages of p7zip (source and binary) do not contain the RAR
+   decoder which is released under the terms of the UnRAR license (which
+   is non-free). A non-free so file is provided in the non-free package
+   p7zip-rar.

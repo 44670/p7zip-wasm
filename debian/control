@@ -1,0 +1,20 @@
+Source: p7zip
+Section: utils
+Priority: optional
+Maintainer: Mohammed Adnène Trojette <adn+deb@diwi.org>
+Build-Depends: debhelper (>= 4.0.0)
+Standards-Version: 3.6.2
+
+Package: p7zip
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Suggests: p7zip-rar
+Description: 7-Zip is a file archiver with high compression ratio
+ 7-Zip is the file archiver that archives with the highest compression
+ ratios. The program supports 7z (that implements LZMA compression
+ algorithm), ZIP, Zip64, CAB, RAR, ARJ, GZIP, BZIP2, TAR, CPIO, RPM and
+ DEB formats. Compression ratios with the new 7z format are 30 to 50%
+ better than ratios with the ZIP format.
+ .
+ Currently, p7zip (like 7-zip) supports both little and big endian
+ machines.

@@ -1,0 +1,19 @@
+This package was debianized by Mohammed Adnène Trojette
+<adn+deb@diwi.org> on Sun, 12 Dec 2004 14:28:27 +0200.
+
+It was downloaded from http://p7zip.sourceforge.net/.
+
+7zip is Copyright (C) 1999-2005 Igor Pavlov.
+p7zip is ported from 7zip by my space <myspace@users.sourceforge.net>
+
+
+      GNU LESSER GENERAL PUBLIC LICENSE
+           Version 2.1, February 1999
+
+ Copyright (C) 1991, 1999 Free Software Foundation, Inc.
+     51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
+ Everyone is permitted to copy and distribute verbatim copies
+ of this license document, but changing it is not allowed.
+
+On Debian GNU/Linux systems, the complete text of the GNU Lesser General
+Public License can be found in `/usr/share/common-licenses/LGPL-2.1'.

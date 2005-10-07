@@ -1,0 +1,16 @@
+#
+# makefile for DJGPP
+# (target not operational ...)
+#
+ALLFLAGS=-O -s \
+    	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
+	-DNDEBUG -D_REENTRANT -DENV_UNIX \
+	$(LOCAL_FLAGS)
+
+CXX=gpp $(ALLFLAGS)
+CC=gcc $(ALLFLAGS)
+LINK_SHARED=-shared
+
+LOCAL_LIBS=
+LOCAL_LIBS_DLL=$(LOCAL_LIBS)
+

@@ -1,0 +1,116 @@
+SRCS=\
+ ../Common/ArchiveCommandLine.cpp \
+ ../Common/ArchiveExtractCallback.cpp \
+ ../Common/ArchiveOpenCallback.cpp \
+ ../Common/ArchiverInfo.cpp \
+ ../Common/DefaultName.cpp \
+ ../Common/EnumDirItems.cpp \
+ ../Common/Extract.cpp \
+ ../Common/ExtractingFilePath.cpp \
+ ../../Common/FilePathAutoRename.cpp \
+ ../../Common/FileStreams.cpp \
+ ../../Common/StreamUtils.cpp \
+ ../Common/OpenArchive.cpp \
+ ../Common/PropIDUtils.cpp \
+ ../Common/SortUtils.cpp \
+ ../Common/TempFiles.cpp \
+ ../Common/UpdateAction.cpp \
+ ../Common/UpdateCallback.cpp \
+ ../Common/Update.cpp \
+ ../Common/UpdatePair.cpp \
+ ../Common/UpdateProduce.cpp \
+ ../../Compress/Copy/CopyCoder.cpp \
+ ./ConsoleClose.cpp \
+ ./ExtractCallbackConsole.cpp \
+ ./List.cpp \
+ ./MainAr.cpp \
+ ./Main.cpp \
+ ./OpenCallbackConsole.cpp \
+ ./PercentPrinter.cpp \
+ ./UpdateCallbackConsole.cpp \
+ ./UserInputUtils.cpp \
+ ../../../Windows/DLL.cpp \
+ ../../../Windows/Error.cpp \
+ ../../../Windows/FileDir.cpp \
+ ../../../Windows/FileFind.cpp \
+ ../../../Windows/FileIO.cpp \
+ ../../../Windows/FileName.cpp \
+ ../../../Windows/PropVariantConversions.cpp \
+ ../../../Windows/PropVariant.cpp
+
+ConsoleClose.o : ./ConsoleClose.cpp
+	$(CXX) $(CFLAGS) ./ConsoleClose.cpp
+ExtractCallbackConsole.o : ./ExtractCallbackConsole.cpp
+	$(CXX) $(CFLAGS) ./ExtractCallbackConsole.cpp
+List.o : ./List.cpp
+	$(CXX) $(CFLAGS) ./List.cpp
+Main.o : ./Main.cpp
+	$(CXX) $(CFLAGS) ./Main.cpp
+MainAr.o : ./MainAr.cpp
+	$(CXX) $(CFLAGS) ./MainAr.cpp
+OpenCallbackConsole.o : ./OpenCallbackConsole.cpp
+	$(CXX) $(CFLAGS) ./OpenCallbackConsole.cpp
+PercentPrinter.o : ./PercentPrinter.cpp
+	$(CXX) $(CFLAGS) ./PercentPrinter.cpp
+UpdateCallbackConsole.o : ./UpdateCallbackConsole.cpp
+	$(CXX) $(CFLAGS) ./UpdateCallbackConsole.cpp
+UserInputUtils.o : ./UserInputUtils.cpp
+	$(CXX) $(CFLAGS) ./UserInputUtils.cpp
+DLL.o : ../../../Windows/DLL.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/DLL.cpp
+Error.o : ../../../Windows/Error.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/Error.cpp
+FileDir.o : ../../../Windows/FileDir.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileDir.cpp
+FileFind.o : ../../../Windows/FileFind.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileFind.cpp
+FileIO.o : ../../../Windows/FileIO.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileIO.cpp
+FileName.o : ../../../Windows/FileName.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileName.cpp
+PropVariant.o : ../../../Windows/PropVariant.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
+PropVariantConversions.o : ../../../Windows/PropVariantConversions.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/PropVariantConversions.cpp
+ArchiveCommandLine.o : ../Common/ArchiveCommandLine.cpp
+	$(CXX) $(CFLAGS) ../Common/ArchiveCommandLine.cpp
+ArchiveExtractCallback.o : ../Common/ArchiveExtractCallback.cpp
+	$(CXX) $(CFLAGS) ../Common/ArchiveExtractCallback.cpp
+ArchiveOpenCallback.o : ../Common/ArchiveOpenCallback.cpp
+	$(CXX) $(CFLAGS) ../Common/ArchiveOpenCallback.cpp
+ArchiverInfo.o : ../Common/ArchiverInfo.cpp
+	$(CXX) $(CFLAGS) ../Common/ArchiverInfo.cpp
+DefaultName.o : ../Common/DefaultName.cpp
+	$(CXX) $(CFLAGS) ../Common/DefaultName.cpp
+EnumDirItems.o : ../Common/EnumDirItems.cpp
+	$(CXX) $(CFLAGS) ../Common/EnumDirItems.cpp
+Extract.o : ../Common/Extract.cpp
+	$(CXX) $(CFLAGS) ../Common/Extract.cpp
+ExtractingFilePath.o : ../Common/ExtractingFilePath.cpp
+	$(CXX) $(CFLAGS) ../Common/ExtractingFilePath.cpp
+OpenArchive.o : ../Common/OpenArchive.cpp
+	$(CXX) $(CFLAGS) ../Common/OpenArchive.cpp
+PropIDUtils.o : ../Common/PropIDUtils.cpp
+	$(CXX) $(CFLAGS) ../Common/PropIDUtils.cpp
+SortUtils.o : ../Common/SortUtils.cpp
+	$(CXX) $(CFLAGS) ../Common/SortUtils.cpp
+TempFiles.o : ../Common/TempFiles.cpp
+	$(CXX) $(CFLAGS) ../Common/TempFiles.cpp
+Update.o : ../Common/Update.cpp
+	$(CXX) $(CFLAGS) ../Common/Update.cpp
+UpdateAction.o : ../Common/UpdateAction.cpp
+	$(CXX) $(CFLAGS) ../Common/UpdateAction.cpp
+UpdateCallback.o : ../Common/UpdateCallback.cpp
+	$(CXX) $(CFLAGS) ../Common/UpdateCallback.cpp
+UpdatePair.o : ../Common/UpdatePair.cpp
+	$(CXX) $(CFLAGS) ../Common/UpdatePair.cpp
+UpdateProduce.o : ../Common/UpdateProduce.cpp
+	$(CXX) $(CFLAGS) ../Common/UpdateProduce.cpp
+FilePathAutoRename.o : ../../Common/FilePathAutoRename.cpp
+	$(CXX) $(CFLAGS) ../../Common/FilePathAutoRename.cpp
+FileStreams.o : ../../Common/FileStreams.cpp
+	$(CXX) $(CFLAGS) ../../Common/FileStreams.cpp
+StreamUtils.o : ../../Common/StreamUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
+CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp

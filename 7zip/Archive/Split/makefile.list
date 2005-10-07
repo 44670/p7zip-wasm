@@ -1,0 +1,26 @@
+SRCS=\
+ ../Common/MultiStream.cpp \
+ ../../Common/ProgressUtils.cpp \
+ ../../Common/StreamUtils.cpp \
+ ../../Compress/Copy/CopyCoder.cpp \
+ ./DllExports.cpp \
+ ./SplitHandler.cpp \
+ ./SplitHandlerOut.cpp \
+ ../../../Windows/PropVariant.cpp
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) $<
+PropVariant.o : ../../../Windows/PropVariant.cpp
+	$(CXX) $(CFLAGS) $<
+CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
+	$(CXX) $(CFLAGS) $<
+ProgressUtils.o : ../../Common/ProgressUtils.cpp
+	$(CXX) $(CFLAGS) $<
+SplitHandler.o : ./SplitHandler.cpp
+	$(CXX) $(CFLAGS) $<
+SplitHandlerOut.o : ./SplitHandlerOut.cpp
+	$(CXX) $(CFLAGS) $<
+MultiStream.o : ../Common/MultiStream.cpp
+	$(CXX) $(CFLAGS) ../Common/MultiStream.cpp
+StreamUtils.o : ../../Common/StreamUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp

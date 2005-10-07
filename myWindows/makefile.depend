@@ -1,0 +1,31 @@
+myGetTickCount.o: myGetTickCount.cpp StdAfx.h config.h \
+  ../Common/MyWindows.h ../Common/Types.h ../Common/MyGuidDef.h \
+  ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h
+myModuleFileName.o: myModuleFileName.cpp StdAfx.h config.h \
+  ../Common/MyWindows.h ../Common/Types.h ../Common/MyGuidDef.h \
+  ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h \
+  ../Common/StringConvert.h ../Common/MyWindows.h ../Common/String.h \
+  ../Common/Vector.h ../Common/Defs.h myPrivate.h
+mySplitCommandLine.o: mySplitCommandLine.cpp StdAfx.h config.h \
+  ../Common/MyWindows.h ../Common/Types.h ../Common/MyGuidDef.h \
+  ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h \
+  ../Common/StringConvert.h ../Common/MyWindows.h ../Common/String.h \
+  ../Common/Vector.h ../Common/Defs.h myPrivate.h
+test_emul.o: test_emul.cpp StdAfx.h config.h ../Common/MyWindows.h \
+  ../Common/Types.h ../Common/MyGuidDef.h ../Common/Types.h \
+  ../include_windows/windows.h ../include_windows/windef.h \
+  ../include_windows/winnt.h ../include_windows/basetyps.h \
+  ../include_windows/tchar.h myPrivate.h ../Common/StringConvert.h \
+  ../Common/MyWindows.h ../Common/String.h ../Common/Vector.h \
+  ../Common/Defs.h ../Common/StringConvert.cpp StdAfx.h \
+  ../Common/StringConvert.h
+wine_date_and_time.o: wine_date_and_time.cpp config.h \
+  ../include_windows/windows.h ../include_windows/windef.h \
+  ../Common/MyWindows.h ../Common/Types.h ../Common/MyGuidDef.h \
+  ../include_windows/winnt.h ../include_windows/basetyps.h

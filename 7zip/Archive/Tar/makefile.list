@@ -1,0 +1,41 @@
+SRCS=\
+ ../Common/ItemNameUtils.cpp \
+ ../../Common/LimitedStreams.cpp \
+ ../../Common/ProgressUtils.cpp \
+ ../../Common/StreamUtils.cpp \
+ ../../Compress/Copy/CopyCoder.cpp \
+ ./DllExports.cpp \
+ ./TarHandler.cpp \
+ ./TarHandlerOut.cpp \
+ ./TarHeader.cpp \
+ ./TarIn.cpp \
+ ./TarOut.cpp \
+ ./TarUpdate.cpp \
+ ../../../Windows/PropVariant.cpp
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) ./DllExports.cpp
+PropVariant.o : ../../../Windows/PropVariant.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
+CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp
+TarHandler.o : ./TarHandler.cpp
+	$(CXX) $(CFLAGS) ./TarHandler.cpp
+TarHandlerOut.o : ./TarHandlerOut.cpp
+	$(CXX) $(CFLAGS) ./TarHandlerOut.cpp
+TarHeader.o : ./TarHeader.cpp
+	$(CXX) $(CFLAGS) ./TarHeader.cpp
+TarIn.o : ./TarIn.cpp
+	$(CXX) $(CFLAGS) ./TarIn.cpp
+TarOut.o : ./TarOut.cpp
+	$(CXX) $(CFLAGS) ./TarOut.cpp
+TarUpdate.o : ./TarUpdate.cpp
+	$(CXX) $(CFLAGS) ./TarUpdate.cpp
+ItemNameUtils.o : ../Common/ItemNameUtils.cpp
+	$(CXX) $(CFLAGS) ../Common/ItemNameUtils.cpp
+LimitedStreams.o : ../../Common/LimitedStreams.cpp
+	$(CXX) $(CFLAGS) ../../Common/LimitedStreams.cpp
+ProgressUtils.o : ../../Common/ProgressUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/ProgressUtils.cpp
+StreamUtils.o : ../../Common/StreamUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp

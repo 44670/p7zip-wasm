@@ -1,0 +1,47 @@
+SRCS=\
+DllExports.cpp \
+ChmHandler.cpp \
+ChmHeader.cpp \
+ChmIn.cpp \
+ ../../../Windows/PropVariant.cpp \
+ ../../Common/InBuffer.cpp \
+ ../../Common/LimitedStreams.cpp \
+ ../../Common/OutBuffer.cpp \
+ ../../Common/ProgressUtils.cpp \
+ ../../Common/StreamUtils.cpp \
+ ../../Compress/LZ/LZOutWindow.cpp \
+../../Compress/Lzx/LzxDecoder.cpp \
+../../Compress/Lzx/Lzx86Converter.cpp \
+../../Compress/Copy/CopyCoder.cpp \
+../Common/ItemNameUtils.cpp
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) ./DllExports.cpp
+ChmHandler.o : ./ChmHandler.cpp
+	$(CXX) $(CFLAGS) ./ChmHandler.cpp
+ChmHeader.o : ./ChmHeader.cpp
+	$(CXX) $(CFLAGS) ./ChmHeader.cpp
+ChmIn.o : ./ChmIn.cpp
+	$(CXX) $(CFLAGS) ./ChmIn.cpp
+PropVariant.o : ../../../Windows/PropVariant.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
+InBuffer.o : ../../Common/InBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
+LimitedStreams.o : ../../Common/LimitedStreams.cpp
+	$(CXX) $(CFLAGS) ../../Common/LimitedStreams.cpp
+OutBuffer.o : ../../Common/OutBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp
+ProgressUtils.o : ../../Common/ProgressUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/ProgressUtils.cpp
+LzxDecoder.o : ../../Compress/Lzx/LzxDecoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Lzx/LzxDecoder.cpp
+Lzx86Converter.o : ../../Compress/Lzx/Lzx86Converter.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Lzx/Lzx86Converter.cpp
+StreamUtils.o : ../../Common/StreamUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
+ItemNameUtils.o : ../Common/ItemNameUtils.cpp
+	$(CXX) $(CFLAGS) ../Common/ItemNameUtils.cpp
+LZOutWindow.o : ../../Compress/LZ/LZOutWindow.cpp
+	$(CXX) $(CFLAGS) ../../Compress/LZ/LZOutWindow.cpp
+CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp

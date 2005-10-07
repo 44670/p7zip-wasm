@@ -1,0 +1,30 @@
+CopyCoder.o: CopyCoder.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  CopyCoder.h ../../ICoder.h ../../IStream.h ../../../Common/MyUnknown.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyCom.h ../../../Common/Alloc.h \
+  ../../Common/StreamUtils.h ../../Common/../IStream.h
+DllExports.o: DllExports.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Common/MyInitGuid.h ../../../Common/MyGuidDef.h \
+  ../../../Common/ComTry.h ../../../Common/Exception.h CopyCoder.h \
+  ../../ICoder.h ../../IStream.h ../../../Common/MyUnknown.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyCom.h
+StreamUtils.o: ../../Common/StreamUtils.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/MyWindows.h \
+  ../../Common/StreamUtils.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h ../../Common/../../Common/Types.h

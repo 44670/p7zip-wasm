@@ -1,0 +1,126 @@
+InBuffer.o: ../../Common/InBuffer.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Common/InBuffer.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/Alloc.h
+LSBFDecoder.o: ../../Common/LSBFDecoder.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Common/LSBFDecoder.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h
+LSBFEncoder.o: ../../Common/LSBFEncoder.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Common/LSBFEncoder.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
+  ../../Common/OutBuffer.h ../../Common/../../Common/MyCom.h \
+  ../../../Common/Defs.h
+OutBuffer.o: ../../Common/OutBuffer.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Common/OutBuffer.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/Alloc.h
+DeflateDecoder.o: DeflateDecoder.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  DeflateDecoder.h ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../ICoder.h ../../IStream.h ../../../Common/MyUnknown.h \
+  ../../../Common/Types.h ../../Common/LSBFDecoder.h \
+  ../../Common/../IStream.h ../../Common/InBuffer.h \
+  ../../Common/../../Common/MyCom.h ../LZ/LZOutWindow.h \
+  ../LZ/../../IStream.h ../LZ/../../Common/OutBuffer.h \
+  ../LZ/../../Common/../IStream.h ../LZ/../../Common/../../Common/MyCom.h \
+  ../Huffman/HuffmanDecoder.h ../Huffman/../../../Common/Types.h \
+  DeflateExtConst.h DeflateConst.h DeflateExtConst.h
+DeflateEncoder.o: DeflateEncoder.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  DeflateEncoder.h ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../ICoder.h ../../IStream.h ../../../Common/MyUnknown.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../Common/LSBFEncoder.h ../../Common/../IStream.h \
+  ../../Common/OutBuffer.h ../../Common/../../Common/MyCom.h \
+  ../LZ/IMatchFinder.h ../Huffman/HuffmanEncoder.h \
+  ../Huffman/../../../Common/Types.h DeflateConst.h DeflateExtConst.h \
+  DeflateConst.h ../../../Windows/Defs.h ../../../Common/ComTry.h \
+  ../../../Common/Exception.h ../../../Common/Alloc.h \
+  ../LZ/BinTree/BinTree3Z.h ../LZ/BinTree/BinTree.h \
+  ../LZ/BinTree/../LZInWindow.h ../LZ/BinTree/../../../IStream.h \
+  ../LZ/BinTree/../IMatchFinder.h ../LZ/BinTree/BinTreeMain.h \
+  ../LZ/BinTree/../../../../Common/Defs.h \
+  ../LZ/BinTree/../../../../Common/CRC.h \
+  ../LZ/BinTree/../../../../Common/Types.h \
+  ../LZ/BinTree/../../../../Common/Alloc.h
+DllExports.o: DllExports.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Common/MyInitGuid.h ../../../Common/ComTry.h \
+  ../../../Common/Exception.h DeflateEncoder.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../ICoder.h ../../IStream.h \
+  ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../Common/LSBFEncoder.h \
+  ../../Common/../IStream.h ../../Common/OutBuffer.h \
+  ../../Common/../../Common/MyCom.h ../LZ/IMatchFinder.h \
+  ../Huffman/HuffmanEncoder.h ../Huffman/../../../Common/Types.h \
+  DeflateConst.h DeflateExtConst.h DeflateDecoder.h \
+  ../../../Common/MyCom.h ../../ICoder.h ../../Common/LSBFDecoder.h \
+  ../../Common/InBuffer.h ../LZ/LZOutWindow.h ../LZ/../../IStream.h \
+  ../LZ/../../Common/OutBuffer.h ../Huffman/HuffmanDecoder.h \
+  DeflateExtConst.h DeflateConst.h
+HuffmanEncoder.o: ../Huffman/HuffmanEncoder.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../Huffman/HuffmanEncoder.h \
+  ../Huffman/../../../Common/Types.h ../../../Common/Defs.h \
+  ../../../Common/Alloc.h
+LZInWindow.o: ../LZ/LZInWindow.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../LZ/LZInWindow.h ../LZ/../../IStream.h \
+  ../LZ/../../../Common/MyUnknown.h ../LZ/../../../Common/MyWindows.h \
+  ../LZ/../../../Common/Types.h ../LZ/../../../Common/MyCom.h \
+  ../LZ/../../../Common/Alloc.h
+LZOutWindow.o: ../LZ/LZOutWindow.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../LZ/../../../Common/Alloc.h ../LZ/LZOutWindow.h ../LZ/../../IStream.h \
+  ../LZ/../../../Common/MyUnknown.h ../LZ/../../../Common/MyWindows.h \
+  ../LZ/../../../Common/Types.h ../LZ/../../Common/OutBuffer.h \
+  ../LZ/../../Common/../IStream.h ../LZ/../../Common/../../Common/MyCom.h \
+  ../LZ/../../Common/../../Common/MyWindows.h

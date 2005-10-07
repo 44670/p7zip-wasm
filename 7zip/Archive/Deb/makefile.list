@@ -1,0 +1,32 @@
+SRCS=\
+ ../Common/ItemNameUtils.cpp \
+ ../../Common/LimitedStreams.cpp \
+ ../../Common/ProgressUtils.cpp \
+ ../../Common/StreamUtils.cpp \
+ ../../Compress/Copy/CopyCoder.cpp \
+ ./DebHandler.cpp \
+ ./DebHeader.cpp \
+ ./DebIn.cpp \
+ ./DllExports.cpp \
+ ../../../Windows/PropVariant.cpp
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) ./DllExports.cpp
+PropVariant.o : ../../../Windows/PropVariant.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
+CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp
+DebHandler.o : ./DebHandler.cpp
+	$(CXX) $(CFLAGS) ./DebHandler.cpp
+DebHeader.o : ./DebHeader.cpp
+	$(CXX) $(CFLAGS) ./DebHeader.cpp
+DebIn.o : ./DebIn.cpp
+	$(CXX) $(CFLAGS) ./DebIn.cpp
+ItemNameUtils.o : ../Common/ItemNameUtils.cpp
+	$(CXX) $(CFLAGS) ../Common/ItemNameUtils.cpp
+LimitedStreams.o : ../../Common/LimitedStreams.cpp
+	$(CXX) $(CFLAGS) ../../Common/LimitedStreams.cpp
+ProgressUtils.o : ../../Common/ProgressUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/ProgressUtils.cpp
+StreamUtils.o : ../../Common/StreamUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp

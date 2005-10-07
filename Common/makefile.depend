@@ -1,0 +1,101 @@
+AlignedBuffer.o: AlignedBuffer.cpp ../myWindows/StdAfx.h \
+  ../myWindows/config.h ../Common/MyWindows.h ../Common/Types.h \
+  ../Common/MyGuidDef.h ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h \
+  AlignedBuffer.h
+Alloc.o: Alloc.cpp ../myWindows/StdAfx.h ../myWindows/config.h \
+  ../Common/MyWindows.h ../Common/Types.h ../Common/MyGuidDef.h \
+  ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h Alloc.h
+CommandLineParser.o: CommandLineParser.cpp ../myWindows/StdAfx.h \
+  ../myWindows/config.h ../Common/MyWindows.h ../Common/Types.h \
+  ../Common/MyGuidDef.h ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h \
+  CommandLineParser.h ../Common/String.h ../Common/Vector.h \
+  ../Common/Defs.h
+CRC.o: CRC.cpp ../myWindows/StdAfx.h ../myWindows/config.h \
+  ../Common/MyWindows.h ../Common/Types.h ../Common/MyGuidDef.h \
+  ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h CRC.h Types.h
+IntToString.o: IntToString.cpp ../myWindows/StdAfx.h \
+  ../myWindows/config.h ../Common/MyWindows.h ../Common/Types.h \
+  ../Common/MyGuidDef.h ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h IntToString.h \
+  Types.h
+ListFileUtils.o: ListFileUtils.cpp ../myWindows/StdAfx.h \
+  ../myWindows/config.h ../Common/MyWindows.h ../Common/Types.h \
+  ../Common/MyGuidDef.h ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h \
+  ListFileUtils.h ../Common/String.h ../Common/Vector.h ../Common/Defs.h \
+  StdInStream.h Types.h StringConvert.h MyWindows.h UTFConvert.h
+main.o: main.c
+MyWindows.o: MyWindows.cpp ../myWindows/StdAfx.h ../myWindows/config.h \
+  ../Common/MyWindows.h ../Common/Types.h ../Common/MyGuidDef.h \
+  ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h MyWindows.h \
+  Types.h
+Random.o: Random.cpp ../myWindows/StdAfx.h ../myWindows/config.h \
+  ../Common/MyWindows.h ../Common/Types.h ../Common/MyGuidDef.h \
+  ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h \
+  ../Common/Random.h
+StdInStream.o: StdInStream.cpp ../myWindows/StdAfx.h \
+  ../myWindows/config.h ../Common/MyWindows.h ../Common/Types.h \
+  ../Common/MyGuidDef.h ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h StdInStream.h \
+  ../Common/String.h ../Common/Vector.h ../Common/Defs.h Types.h
+StdOutStream.o: StdOutStream.cpp ../myWindows/StdAfx.h \
+  ../myWindows/config.h ../Common/MyWindows.h ../Common/Types.h \
+  ../Common/MyGuidDef.h ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h StdOutStream.h \
+  Types.h ../Common/IntToString.h ../Common/StringConvert.h \
+  ../Common/MyWindows.h ../Common/String.h ../Common/Vector.h \
+  ../Common/Defs.h
+StringConvert.o: StringConvert.cpp ../myWindows/StdAfx.h \
+  ../myWindows/config.h ../Common/MyWindows.h ../Common/Types.h \
+  ../Common/MyGuidDef.h ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h \
+  StringConvert.h MyWindows.h ../Common/String.h ../Common/Vector.h \
+  ../Common/Defs.h Types.h
+String.o: String.cpp ../myWindows/StdAfx.h ../myWindows/config.h \
+  ../Common/MyWindows.h ../Common/Types.h ../Common/MyGuidDef.h \
+  ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h \
+  StringConvert.h MyWindows.h ../Common/String.h ../Common/Vector.h \
+  ../Common/Defs.h Types.h
+StringToInt.o: StringToInt.cpp ../myWindows/StdAfx.h \
+  ../myWindows/config.h ../Common/MyWindows.h ../Common/Types.h \
+  ../Common/MyGuidDef.h ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h StringToInt.h \
+  Types.h
+UTFConvert.o: UTFConvert.cpp ../myWindows/StdAfx.h ../myWindows/config.h \
+  ../Common/MyWindows.h ../Common/Types.h ../Common/MyGuidDef.h \
+  ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h UTFConvert.h \
+  ../Common/String.h ../Common/Vector.h ../Common/Defs.h Types.h
+Vector.o: Vector.cpp ../myWindows/StdAfx.h ../myWindows/config.h \
+  ../Common/MyWindows.h ../Common/Types.h ../Common/MyGuidDef.h \
+  ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h Vector.h \
+  Defs.h
+Wildcard.o: Wildcard.cpp ../myWindows/StdAfx.h ../myWindows/config.h \
+  ../Common/MyWindows.h ../Common/Types.h ../Common/MyGuidDef.h \
+  ../Common/Types.h ../include_windows/windows.h \
+  ../include_windows/windef.h ../include_windows/winnt.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h Wildcard.h \
+  ../Common/String.h ../Common/Vector.h ../Common/Defs.h

@@ -1,0 +1,29 @@
+SRCS=\
+ ./7zAES.cpp \
+ ../../Common/StreamObjects.cpp \
+ ../../Common/StreamUtils.cpp \
+ ./DllExports.cpp \
+ ./SHA256.cpp \
+ ../../../Windows/DLL.cpp \
+ ../../../Windows/FileDir.cpp \
+ ../../../Windows/FileFind.cpp \
+ ../../../Windows/Synchronization.cpp
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) ./DllExports.cpp
+StreamObjects.o : ../../Common/StreamObjects.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamObjects.cpp
+DLL.o : ../../../Windows/DLL.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/DLL.cpp
+Synchronization.o : ../../../Windows/Synchronization.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/Synchronization.cpp
+7zAES.o : ./7zAES.cpp
+	$(CXX) $(CFLAGS) ./7zAES.cpp
+SHA256.o : ./SHA256.cpp
+	$(CXX) $(CFLAGS) ./SHA256.cpp
+FileDir.o : ../../../Windows/FileDir.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileDir.cpp
+FileFind.o : ../../../Windows/FileFind.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileFind.cpp
+StreamUtils.o : ../../Common/StreamUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp

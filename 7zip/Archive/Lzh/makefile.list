@@ -1,0 +1,47 @@
+SRCS=\
+ ../../Common/InBuffer.cpp \
+ ../Common/ItemNameUtils.cpp \
+ ../../Common/LimitedStreams.cpp \
+ ../../Common/StreamUtils.cpp \
+ ../../Common/ProgressUtils.cpp \
+ ../../Common/OutBuffer.cpp \
+ ../../Compress/Copy/CopyCoder.cpp \
+ ../../Compress/Lzh/LzhDecoder.cpp \
+ ../../Compress/LZ/LZOutWindow.cpp \
+ ./DllExports.cpp \
+ ./LzhCRC.cpp \
+ ./LzhHandler.cpp \
+ ./LzhIn.cpp \
+ ./LzhOutStreamWithCRC.cpp \
+ ../../../Windows/PropVariant.cpp
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) ./DllExports.cpp
+PropVariant.o : ../../../Windows/PropVariant.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
+LzhCRC.o : ./LzhCRC.cpp
+	$(CXX) $(CFLAGS) ./LzhCRC.cpp
+LzhHandler.o : ./LzhHandler.cpp
+	$(CXX) $(CFLAGS) ./LzhHandler.cpp
+LzhIn.o : ./LzhIn.cpp
+	$(CXX) $(CFLAGS) ./LzhIn.cpp
+LzhOutStreamWithCRC.o : ./LzhOutStreamWithCRC.cpp
+	$(CXX) $(CFLAGS) ./LzhOutStreamWithCRC.cpp
+LzhDecoder.o : ../../Compress/Lzh/LzhDecoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Lzh/LzhDecoder.cpp
+LZOutWindow.o : ../../Compress/LZ/LZOutWindow.cpp
+	$(CXX) $(CFLAGS) ../../Compress/LZ/LZOutWindow.cpp
+CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp
+InBuffer.o : ../../Common/InBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
+LimitedStreams.o : ../../Common/LimitedStreams.cpp
+	$(CXX) $(CFLAGS) ../../Common/LimitedStreams.cpp
+ProgressUtils.o : ../../Common/ProgressUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/ProgressUtils.cpp
+ItemNameUtils.o : ../Common/ItemNameUtils.cpp
+	$(CXX) $(CFLAGS) ../Common/ItemNameUtils.cpp
+StreamUtils.o : ../../Common/StreamUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
+OutBuffer.o : ../../Common/OutBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp

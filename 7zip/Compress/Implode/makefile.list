@@ -1,0 +1,27 @@
+SRCS=\
+ ../../../Common/Alloc.cpp \
+ ../../Common/StreamUtils.cpp \
+ ../../Common/OutBuffer.cpp \
+ ../../Common/InBuffer.cpp \
+ ../../Common/LSBFDecoder.cpp \
+ ./DllExports.cpp \
+ ./ImplodeDecoder.cpp \
+ ./ImplodeHuffmanDecoder.cpp \
+ ../LZ/LZOutWindow.cpp
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) ./DllExports.cpp
+InBuffer.o : ../../Common/InBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
+LSBFDecoder.o : ../../Common/LSBFDecoder.cpp
+	$(CXX) $(CFLAGS) ../../Common/LSBFDecoder.cpp
+LZOutWindow.o : ../LZ/LZOutWindow.cpp
+	$(CXX) $(CFLAGS) ../LZ/LZOutWindow.cpp
+ImplodeDecoder.o : ./ImplodeDecoder.cpp
+	$(CXX) $(CFLAGS) ./ImplodeDecoder.cpp
+ImplodeHuffmanDecoder.o : ./ImplodeHuffmanDecoder.cpp
+	$(CXX) $(CFLAGS) ./ImplodeHuffmanDecoder.cpp
+StreamUtils.o : ../../Common/StreamUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
+OutBuffer.o : ../../Common/OutBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp

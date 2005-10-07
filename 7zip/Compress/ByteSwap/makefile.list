@@ -1,0 +1,6 @@
+SRCS=./ByteSwap.cpp ./DllExports.cpp
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) ./DllExports.cpp
+ByteSwap.o : ./ByteSwap.cpp
+	$(CXX) $(CFLAGS) ./ByteSwap.cpp

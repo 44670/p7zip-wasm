@@ -1,0 +1,372 @@
+7zMethodID.o: ../7z/7zMethodID.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../7z/7zMethodID.h ../7z/../../../Common/String.h \
+  ../7z/../../../Common/Vector.h ../7z/../../../Common/Defs.h \
+  ../7z/../../../Common/Types.h
+7zMethods.o: ../7z/7zMethods.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../7z/7zMethods.h ../7z/7zMethodID.h ../7z/../../../Common/String.h \
+  ../7z/../../../Common/Vector.h ../7z/../../../Common/Defs.h \
+  ../7z/../../../Common/Types.h ../7z/../../../Windows/FileFind.h \
+  ../7z/../../../Windows/../Common/String.h \
+  ../7z/../../../Windows/FileName.h ../7z/../../../Windows/Defs.h \
+  ../7z/../../../Windows/DLL.h ../7z/../../../Windows/PropVariant.h \
+  ../7z/../../../Windows/../Common/MyWindows.h \
+  ../7z/../../../Windows/../Common/Types.h \
+  ../7z/../../../Windows/Synchronization.h ../7z/../../ICoder.h \
+  ../7z/../../IStream.h ../7z/../../../Common/MyUnknown.h \
+  ../7z/../../../Common/MyWindows.h ../7z/../../../Common/Types.h \
+  ../7z/../Common/CodecsPath.h ../7z/../Common/../../../Common/String.h
+CodecsPath.o: ../Common/CodecsPath.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../Common/../../../Common/String.h ../Common/../../../Common/Vector.h \
+  ../Common/../../../Common/Defs.h
+FilterCoder.o: ../Common/FilterCoder.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../Common/FilterCoder.h ../Common/../../../Common/MyCom.h \
+  ../Common/../../../Common/MyWindows.h ../Common/../../ICoder.h \
+  ../Common/../../IStream.h ../Common/../../../Common/MyUnknown.h \
+  ../Common/../../../Common/Types.h ../Common/../../IPassword.h \
+  ../Common/../../../Common/Alloc.h ../Common/../../../Common/Defs.h \
+  ../Common/../../Common/StreamUtils.h \
+  ../Common/../../Common/../IStream.h
+InStreamWithCRC.o: ../Common/InStreamWithCRC.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../Common/InStreamWithCRC.h \
+  ../Common/../../../Common/CRC.h ../Common/../../../Common/Types.h \
+  ../Common/../../../Common/MyCom.h ../Common/../../../Common/MyWindows.h \
+  ../Common/../../IStream.h ../Common/../../../Common/MyUnknown.h \
+  ../Common/../../../Common/Types.h
+LimitedStreams.o: ../../Common/LimitedStreams.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/LimitedStreams.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/MyWindows.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/Types.h ../../Common/../../Common/Defs.h
+OutStreamWithCRC.o: ../Common/OutStreamWithCRC.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../Common/OutStreamWithCRC.h \
+  ../Common/../../../Common/CRC.h ../Common/../../../Common/Types.h \
+  ../Common/../../../Common/MyCom.h ../Common/../../../Common/MyWindows.h \
+  ../Common/../../IStream.h ../Common/../../../Common/MyUnknown.h \
+  ../Common/../../../Common/Types.h
+ProgressUtils.o: ../../Common/ProgressUtils.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/ProgressUtils.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/MyWindows.h \
+  ../../Common/../ICoder.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h ../../Common/../../Common/Types.h \
+  ../../Common/../IProgress.h
+StreamObjects.o: ../../Common/StreamObjects.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/StreamObjects.h \
+  ../../Common/../../Common/DynamicBuffer.h \
+  ../../Common/../../Common/Buffer.h ../../Common/../../Common/Defs.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/MyWindows.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/Types.h ../../Common/../../Common/Defs.h
+StreamUtils.o: ../../Common/StreamUtils.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/MyWindows.h \
+  ../../Common/StreamUtils.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h ../../Common/../../Common/Types.h
+CopyCoder.o: ../../Compress/Copy/CopyCoder.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Compress/Copy/CopyCoder.h \
+  ../../Compress/Copy/../../ICoder.h ../../Compress/Copy/../../IStream.h \
+  ../../Compress/Copy/../../../Common/MyUnknown.h \
+  ../../Compress/Copy/../../../Common/MyWindows.h \
+  ../../Compress/Copy/../../../Common/Types.h \
+  ../../Compress/Copy/../../../Common/MyCom.h \
+  ../../Compress/Copy/../../../Common/Alloc.h \
+  ../../Compress/Copy/../../Common/StreamUtils.h \
+  ../../Compress/Copy/../../Common/../IStream.h
+Rar20Cipher.o: ../../Crypto/Rar20/Rar20Cipher.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Crypto/Rar20/Rar20Cipher.h \
+  ../../Crypto/Rar20/../../ICoder.h ../../Crypto/Rar20/../../IStream.h \
+  ../../Crypto/Rar20/../../../Common/MyUnknown.h \
+  ../../Crypto/Rar20/../../../Common/MyWindows.h \
+  ../../Crypto/Rar20/../../../Common/Types.h \
+  ../../Crypto/Rar20/../../IPassword.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../Crypto/Rar20/Rar20Crypto.h \
+  ../../Crypto/Rar20/../../../Common/Types.h ../../../Windows/Defs.h
+Rar20Crypto.o: ../../Crypto/Rar20/Rar20Crypto.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Crypto/Rar20/Rar20Crypto.h \
+  ../../Crypto/Rar20/../../../Common/Types.h \
+  ../../Crypto/Rar20/../../../Common/CRC.h \
+  ../../Crypto/Rar20/../../../Common/Types.h
+RarAES.o: ../../Crypto/RarAES/RarAES.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Crypto/RarAES/RarAES.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../Crypto/RarAES/../../ICoder.h \
+  ../../Crypto/RarAES/../../IStream.h \
+  ../../Crypto/RarAES/../../../Common/MyUnknown.h \
+  ../../Crypto/RarAES/../../../Common/MyWindows.h \
+  ../../Crypto/RarAES/../../../Common/Types.h \
+  ../../Crypto/RarAES/../../IPassword.h \
+  ../../Crypto/RarAES/../../Archive/Common/CoderLoader.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Common/String.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Common/Vector.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Common/Defs.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Common/MyCom.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Windows/DLL.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Windows/../Common/String.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../ICoder.h \
+  ../../../Common/Buffer.h ../../../Common/Defs.h \
+  ../../Crypto/RarAES/sha1.h ../../Crypto/RarAES/../../../Common/Types.h
+sha1.o: ../../Crypto/RarAES/sha1.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Crypto/RarAES/sha1.h ../../Crypto/RarAES/../../../Common/Types.h
+DllExports.o: DllExports.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Common/MyInitGuid.h ../../../Common/ComTry.h \
+  ../../../Common/Exception.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/Types.h ../../ICoder.h ../../IStream.h \
+  ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../IPassword.h ../Common/CodecsPath.h \
+  ../Common/../../../Common/String.h ../Common/../../../Common/Vector.h \
+  ../Common/../../../Common/Defs.h RarHandler.h ../IArchive.h \
+  ../../IStream.h ../../IProgress.h ../../PropID.h RarIn.h \
+  ../../../Common/DynamicBuffer.h ../../../Common/Buffer.h \
+  ../../../Common/Defs.h ../../../Common/Exception.h \
+  ../../../Common/MyCom.h ../../../Common/MyWindows.h ../../IStream.h \
+  ../../ICoder.h ../../Common/StreamObjects.h \
+  ../../Common/../../Common/DynamicBuffer.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../IStream.h \
+  ../../Crypto/RarAES/RarAES.h ../../Crypto/RarAES/../../ICoder.h \
+  ../../Crypto/RarAES/../../IPassword.h \
+  ../../Crypto/RarAES/../../Archive/Common/CoderLoader.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Common/String.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Common/MyCom.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Windows/DLL.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Windows/../Common/String.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../ICoder.h \
+  ../../../Common/Buffer.h RarHeader.h RarItem.h ../../../Common/String.h \
+  RarVolumeInStream.h ../../IStream.h ../../../Common/CRC.h RarIn.h
+RarHandler.o: RarHandler.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  RarHandler.h ../IArchive.h ../../IStream.h ../../../Common/MyUnknown.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h ../../IProgress.h \
+  ../../PropID.h RarIn.h ../../../Common/DynamicBuffer.h \
+  ../../../Common/Buffer.h ../../../Common/Defs.h \
+  ../../../Common/Exception.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../IStream.h ../../ICoder.h \
+  ../../IStream.h ../../Common/StreamObjects.h \
+  ../../Common/../../Common/DynamicBuffer.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../IStream.h \
+  ../../Crypto/RarAES/RarAES.h ../../Crypto/RarAES/../../ICoder.h \
+  ../../Crypto/RarAES/../../IPassword.h \
+  ../../Crypto/RarAES/../../../Common/MyUnknown.h \
+  ../../Crypto/RarAES/../../../Common/Types.h \
+  ../../Crypto/RarAES/../../Archive/Common/CoderLoader.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Common/String.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Common/Vector.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Common/Defs.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Common/MyCom.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Windows/DLL.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Windows/../Common/String.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../ICoder.h \
+  ../../../Common/Buffer.h RarHeader.h RarItem.h ../../../Common/String.h \
+  RarVolumeInStream.h ../../IStream.h ../../../Common/CRC.h RarIn.h \
+  ../../../Common/StringConvert.h ../../../Common/ComTry.h \
+  ../../../Common/Exception.h ../../../Common/IntToString.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/Types.h ../../../Windows/Time.h \
+  ../../../Windows/Defs.h ../../IPassword.h ../../Common//ProgressUtils.h \
+  ../../Common//../../Common/MyCom.h ../../Common//../ICoder.h \
+  ../../Common//../IProgress.h ../../Compress/Copy/CopyCoder.h \
+  ../../Compress/Copy/../../ICoder.h \
+  ../../Compress/Copy/../../../Common/MyCom.h \
+  ../../Crypto/Rar20/Rar20Cipher.h ../../Crypto/Rar20/../../ICoder.h \
+  ../../Crypto/Rar20/../../IPassword.h ../../Crypto/Rar20/Rar20Crypto.h \
+  ../../Crypto/Rar20/../../../Common/Types.h ../../Crypto/RarAES/RarAES.h \
+  ../Common/OutStreamWithCRC.h ../Common/../../../Common/CRC.h \
+  ../Common/../../../Common/MyCom.h ../Common/../../IStream.h \
+  ../Common/CoderLoader.h ../Common/CodecsPath.h \
+  ../Common/../../../Common/String.h ../Common/FilterCoder.h \
+  ../Common/../../ICoder.h ../Common/../../IPassword.h ../7z/7zMethods.h \
+  ../7z/7zMethodID.h ../7z/../../../Common/String.h \
+  ../7z/../../../Common/Types.h
+RarHeader.o: RarHeader.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  RarHeader.h
+RarIn.o: RarIn.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/CRC.h \
+  ../../../Common/UTFConvert.h RarIn.h ../../../Common/DynamicBuffer.h \
+  ../../../Common/Buffer.h ../../../Common/Exception.h \
+  ../../../Common/MyCom.h ../../IStream.h ../../../Common/MyUnknown.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h ../../ICoder.h \
+  ../../IStream.h ../../Common/StreamObjects.h \
+  ../../Common/../../Common/DynamicBuffer.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../IStream.h \
+  ../../Crypto/RarAES/RarAES.h ../../Crypto/RarAES/../../ICoder.h \
+  ../../Crypto/RarAES/../../IPassword.h \
+  ../../Crypto/RarAES/../../../Common/MyUnknown.h \
+  ../../Crypto/RarAES/../../../Common/Types.h \
+  ../../Crypto/RarAES/../../Archive/Common/CoderLoader.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Common/String.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Common/MyCom.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Windows/DLL.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Windows/../Common/String.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../ICoder.h \
+  ../../../Common/Buffer.h RarHeader.h RarItem.h \
+  ../../Common/LimitedStreams.h ../../Common/StreamUtils.h
+RarItem.o: RarItem.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  RarItem.h ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h RarHeader.h
+RarVolumeInStream.o: RarVolumeInStream.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  RarVolumeInStream.h ../../IStream.h ../../../Common/MyUnknown.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/CRC.h RarIn.h ../../../Common/DynamicBuffer.h \
+  ../../../Common/Buffer.h ../../../Common/Defs.h \
+  ../../../Common/Exception.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../IStream.h ../../ICoder.h \
+  ../../IStream.h ../../Common/StreamObjects.h \
+  ../../Common/../../Common/DynamicBuffer.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../IStream.h \
+  ../../Crypto/RarAES/RarAES.h ../../Crypto/RarAES/../../ICoder.h \
+  ../../Crypto/RarAES/../../IPassword.h \
+  ../../Crypto/RarAES/../../../Common/MyUnknown.h \
+  ../../Crypto/RarAES/../../../Common/Types.h \
+  ../../Crypto/RarAES/../../Archive/Common/CoderLoader.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Common/String.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Common/Vector.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Common/Defs.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Common/MyCom.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Windows/DLL.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../../Windows/../Common/String.h \
+  ../../Crypto/RarAES/../../Archive/Common/../../ICoder.h \
+  ../../../Common/Buffer.h RarHeader.h RarItem.h ../../../Common/String.h \
+  ../../../Windows/Defs.h ../../../Common/Defs.h
+DLL.o: ../../../Windows/DLL.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Windows/DLL.h ../../../Windows/../Common/String.h \
+  ../../../Windows/../Common/Vector.h ../../../Windows/../Common/Defs.h \
+  ../../../Windows/Defs.h ../../../Windows/../Common/StringConvert.h \
+  ../../../Windows/../Common/MyWindows.h ../../../Common/String.h \
+  ../../../Windows/../Common/Types.h ../../../myWindows/myPrivate.h
+FileFind.o: ../../../Windows/FileFind.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Windows/FileFind.h ../../../Windows/../Common/String.h \
+  ../../../Windows/../Common/Vector.h ../../../Windows/../Common/Defs.h \
+  ../../../Windows/FileName.h ../../../Windows/Defs.h \
+  ../../../Windows/../Common/StringConvert.h \
+  ../../../Windows/../Common/MyWindows.h ../../../Common/String.h \
+  ../../../Windows/../Common/Types.h ../../../myWindows/myPrivate.h
+PropVariant.o: ../../../Windows/PropVariant.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/Types.h ../../../Windows/../Common/Defs.h
+Synchronization.o: ../../../Windows/Synchronization.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Windows/Synchronization.h \
+  ../../../Windows/Defs.h

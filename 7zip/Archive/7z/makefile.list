@@ -1,0 +1,128 @@
+SRCS=\
+ ./7zCompressionMode.cpp \
+ ./7zDecode.cpp \
+ ./7zEncode.cpp \
+ ./7zExtract.cpp \
+ ./7zFolderInStream.cpp \
+ ./7zFolderOutStream.cpp \
+ ./7zHandler.cpp \
+ ./7zHandlerOut.cpp \
+ ./7zHeader.cpp \
+ ./7zIn.cpp \
+ ./7zMethodID.cpp \
+ ./7zMethods.cpp \
+ ./7zOut.cpp \
+ ./7zProperties.cpp \
+ ./7zSpecStream.cpp \
+ ./7zUpdate.cpp \
+ ../Common/CodecsPath.cpp \
+ ../Common/CoderLoader.cpp \
+ ../Common/CoderMixer2.cpp \
+ ../Common/CoderMixer2MT.cpp \
+ ../Common/CrossThreadProgress.cpp \
+ ../Common/FilterCoder.cpp \
+ ../../Common/InOutTempBuffer.cpp \
+ ../Common/InStreamWithCRC.cpp \
+ ../Common/ItemNameUtils.cpp \
+ ../../Common/LimitedStreams.cpp \
+ ../../Common/LockedStream.cpp \
+ ../Common/MultiStream.cpp \
+ ../../Common/OutBuffer.cpp \
+ ../Common/OutStreamWithCRC.cpp \
+ ../../Common/ProgressUtils.cpp \
+ ../../Common/StreamBinder.cpp \
+ ../../Common/StreamObjects.cpp \
+ ../../Common/StreamUtils.cpp \
+ ../../Compress/Copy/CopyCoder.cpp \
+ ./DllExports.cpp \
+ ../../../Windows/DLL.cpp \
+ ../../../Windows/FileDir.cpp \
+ ../../../Windows/FileFind.cpp \
+ ../../../Windows/FileIO.cpp \
+ ../../../Windows/PropVariant.cpp \
+ ../../../Windows/Synchronization.cpp
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) ./DllExports.cpp
+7zCompressionMode.o : ./7zCompressionMode.cpp
+	$(CXX) $(CFLAGS) ./7zCompressionMode.cpp
+7zDecode.o : ./7zDecode.cpp
+	$(CXX) $(CFLAGS) ./7zDecode.cpp
+7zEncode.o : ./7zEncode.cpp
+	$(CXX) $(CFLAGS) ./7zEncode.cpp
+7zExtract.o : ./7zExtract.cpp
+	$(CXX) $(CFLAGS) ./7zExtract.cpp
+7zFolderInStream.o : ./7zFolderInStream.cpp
+	$(CXX) $(CFLAGS) ./7zFolderInStream.cpp
+7zFolderOutStream.o : ./7zFolderOutStream.cpp
+	$(CXX) $(CFLAGS) ./7zFolderOutStream.cpp
+7zHandler.o : ./7zHandler.cpp
+	$(CXX) $(CFLAGS) ./7zHandler.cpp
+7zHandlerOut.o : ./7zHandlerOut.cpp
+	$(CXX) $(CFLAGS) ./7zHandlerOut.cpp
+7zHeader.o : ./7zHeader.cpp
+	$(CXX) $(CFLAGS) ./7zHeader.cpp
+7zIn.o : ./7zIn.cpp
+	$(CXX) $(CFLAGS) ./7zIn.cpp
+7zMethodID.o : ./7zMethodID.cpp
+	$(CXX) $(CFLAGS) ./7zMethodID.cpp
+7zMethods.o : ./7zMethods.cpp
+	$(CXX) $(CFLAGS) ./7zMethods.cpp
+7zOut.o : ./7zOut.cpp
+	$(CXX) $(CFLAGS) ./7zOut.cpp
+7zProperties.o : ./7zProperties.cpp
+	$(CXX) $(CFLAGS) ./7zProperties.cpp
+7zSpecStream.o : ./7zSpecStream.cpp
+	$(CXX) $(CFLAGS) ./7zSpecStream.cpp
+7zUpdate.o : ./7zUpdate.cpp
+	$(CXX) $(CFLAGS) ./7zUpdate.cpp
+CodecsPath.o : ../Common/CodecsPath.cpp
+	$(CXX) $(CFLAGS) ../Common/CodecsPath.cpp
+CoderLoader.o : ../Common/CoderLoader.cpp
+	$(CXX) $(CFLAGS) ../Common/CoderLoader.cpp
+CoderMixer2.o : ../Common/CoderMixer2.cpp
+	$(CXX) $(CFLAGS) ../Common/CoderMixer2.cpp
+CoderMixer2MT.o : ../Common/CoderMixer2MT.cpp
+	$(CXX) $(CFLAGS) ../Common/CoderMixer2MT.cpp
+CrossThreadProgress.o : ../Common/CrossThreadProgress.cpp
+	$(CXX) $(CFLAGS) ../Common/CrossThreadProgress.cpp
+FilterCoder.o : ../Common/FilterCoder.cpp
+	$(CXX) $(CFLAGS) ../Common/FilterCoder.cpp
+InStreamWithCRC.o : ../Common/InStreamWithCRC.cpp
+	$(CXX) $(CFLAGS) ../Common/InStreamWithCRC.cpp
+ItemNameUtils.o : ../Common/ItemNameUtils.cpp
+	$(CXX) $(CFLAGS) ../Common/ItemNameUtils.cpp
+MultiStream.o : ../Common/MultiStream.cpp
+	$(CXX) $(CFLAGS) ../Common/MultiStream.cpp
+OutStreamWithCRC.o : ../Common/OutStreamWithCRC.cpp
+	$(CXX) $(CFLAGS) ../Common/OutStreamWithCRC.cpp
+InOutTempBuffer.o : ../../Common/InOutTempBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/InOutTempBuffer.cpp
+LimitedStreams.o : ../../Common/LimitedStreams.cpp
+	$(CXX) $(CFLAGS) ../../Common/LimitedStreams.cpp
+LockedStream.o : ../../Common/LockedStream.cpp
+	$(CXX) $(CFLAGS) ../../Common/LockedStream.cpp
+OutBuffer.o : ../../Common/OutBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp
+ProgressUtils.o : ../../Common/ProgressUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/ProgressUtils.cpp
+StreamBinder.o : ../../Common/StreamBinder.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamBinder.cpp
+StreamObjects.o : ../../Common/StreamObjects.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamObjects.cpp
+StreamUtils.o : ../../Common/StreamUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
+DLL.o : ../../../Windows/DLL.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/DLL.cpp
+FileDir.o : ../../../Windows/FileDir.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileDir.cpp
+FileFind.o : ../../../Windows/FileFind.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileFind.cpp
+FileIO.o : ../../../Windows/FileIO.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileIO.cpp
+PropVariant.o : ../../../Windows/PropVariant.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
+Synchronization.o : ../../../Windows/Synchronization.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/Synchronization.cpp
+CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp

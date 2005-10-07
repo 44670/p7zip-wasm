@@ -1,0 +1,20 @@
+SRCS=\
+ ./DllExports.cpp \
+ ./MyAES.cpp
+
+SRCS_C=\
+ ./aescrypt.c \
+ ./aeskey.c \
+ ./aestab.c
+
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) ./DllExports.cpp
+MyAES.o : ./MyAES.cpp
+	$(CXX) $(CFLAGS) ./MyAES.cpp
+aescrypt.o : ./aescrypt.c
+	$(CC) $(CFLAGS) ./aescrypt.c
+aeskey.o : ./aeskey.c
+	$(CC) $(CFLAGS) ./aeskey.c
+aestab.o : ./aestab.c
+	$(CC) $(CFLAGS) ./aestab.c

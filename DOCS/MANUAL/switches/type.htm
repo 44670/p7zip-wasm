@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+  <META http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+  <TITLE>-o (set Output directory) switch</TITLE>
+  <LINK href="style.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1>-t (set Type of archive) switch</H1>
+
+<P>Specifies the type of archive.</P>
+
+<H4>Syntax</H4>
+
+<PRE class="syntax">
+-t{archive_type}
+</PRE>
+
+<DL>
+  <DT>{archive_type}</DT>
+  <DD>Specifies the type of archive. It can be: 7z, zip, gzip, bzip2 or tar.
+  7z format is default.
+</DD>
+</DL>
+
+<P>Note: gzip or bzip2 formats support only one file per archive.
+So if you need to compress more than one file to these formats,
+create tar archive before and then compress it with selected format.</P>
+
+<H4>Example</H4>
+
+<PRE class="example">
+7z a -tzip archive.zip *.txt
+</PRE>
+
+<P>adds all <SPAN class="filename">*.txt</SPAN> files from current directory 
+to zip archive <SPAN class="filename">archive.zip</SPAN>.</P>
+
+<H4>Commands that can be used with this switch</H4>
+
+<P>
+  <A href="../commands/add.htm">a (Add)</A>,
+  <A href="../commands/update.htm">u (Update)</A>
+</P>
+
+</BODY>
+</HTML>

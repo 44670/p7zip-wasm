@@ -1,0 +1,32 @@
+SRCS=\
+ ../../Common/InBuffer.cpp \
+ ../../Common/LSBFDecoder.cpp \
+ ../../Common/LSBFEncoder.cpp \
+ ../../Common/OutBuffer.cpp \
+ ./DeflateDecoder.cpp \
+ ./DeflateEncoder.cpp \
+ ./DllExports.cpp \
+ ../Huffman/HuffmanEncoder.cpp \
+ ../LZ/LZInWindow.cpp \
+ ../LZ/LZOutWindow.cpp
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) ./DllExports.cpp
+HuffmanEncoder.o : ../Huffman/HuffmanEncoder.cpp
+	$(CXX) $(CFLAGS) ../Huffman/HuffmanEncoder.cpp
+InBuffer.o : ../../Common/InBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
+LSBFDecoder.o : ../../Common/LSBFDecoder.cpp
+	$(CXX) $(CFLAGS) ../../Common/LSBFDecoder.cpp
+LSBFEncoder.o : ../../Common/LSBFEncoder.cpp
+	$(CXX) $(CFLAGS) ../../Common/LSBFEncoder.cpp
+OutBuffer.o : ../../Common/OutBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp
+LZInWindow.o : ../LZ/LZInWindow.cpp
+	$(CXX) $(CFLAGS) ../LZ/LZInWindow.cpp
+LZOutWindow.o : ../LZ/LZOutWindow.cpp
+	$(CXX) $(CFLAGS) ../LZ/LZOutWindow.cpp
+DeflateDecoder.o : ./DeflateDecoder.cpp
+	$(CXX) $(CFLAGS) ./DeflateDecoder.cpp
+DeflateEncoder.o : ./DeflateEncoder.cpp
+	$(CXX) $(CFLAGS) ./DeflateEncoder.cpp

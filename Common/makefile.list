@@ -1,0 +1,52 @@
+SRCS= AlignedBuffer.cpp \
+ Alloc.cpp \
+ CommandLineParser.cpp \
+ CRC.cpp \
+ IntToString.cpp \
+ ListFileUtils.cpp \
+ main.c \
+ MyWindows.cpp \
+ Random.cpp \
+ StdInStream.cpp \
+ StdOutStream.cpp \
+ StringConvert.cpp \
+ String.cpp \
+ StringToInt.cpp \
+ UTFConvert.cpp \
+ Vector.cpp \
+ Wildcard.cpp
+
+MyWindows.o : MyWindows.cpp
+	$(CXX) $(CFLAGS) MyWindows.cpp
+Alloc.o : Alloc.cpp
+	$(CXX) $(CFLAGS) Alloc.cpp
+CRC.o : CRC.cpp
+	$(CXX) $(CFLAGS) CRC.cpp
+IntToString.o : IntToString.cpp
+	$(CXX) $(CFLAGS) IntToString.cpp
+String.o : String.cpp
+	$(CXX) $(CFLAGS) String.cpp
+StringConvert.o : StringConvert.cpp
+	$(CXX) $(CFLAGS) StringConvert.cpp
+StringToInt.o : StringToInt.cpp
+	$(CXX) $(CFLAGS) StringToInt.cpp
+Vector.o : Vector.cpp
+	$(CXX) $(CFLAGS) Vector.cpp
+AlignedBuffer.o : AlignedBuffer.cpp
+	$(CXX) $(CFLAGS) AlignedBuffer.cpp
+CommandLineParser.o : CommandLineParser.cpp
+	$(CXX) $(CFLAGS) CommandLineParser.cpp
+ListFileUtils.o : ListFileUtils.cpp
+	$(CXX) $(CFLAGS) ListFileUtils.cpp
+Random.o : Random.cpp
+	$(CXX) $(CFLAGS) Random.cpp
+StdInStream.o : StdInStream.cpp
+	$(CXX) $(CFLAGS) StdInStream.cpp
+StdOutStream.o : StdOutStream.cpp
+	$(CXX) $(CFLAGS) StdOutStream.cpp
+UTFConvert.o : UTFConvert.cpp
+	$(CXX) $(CFLAGS) UTFConvert.cpp
+Wildcard.o : Wildcard.cpp
+	$(CXX) $(CFLAGS) Wildcard.cpp
+main.o : main.c
+	$(CC) $(CFLAGS) main.c

@@ -1,0 +1,22 @@
+
+ALLFLAGS=-fast -s -KPIC -mt \
+        -DHAVE_LONG_LONG \
+        -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
+        -DBIG_ENDIAN -DENV_UNIX \
+        -DNDEBUG -D_REENTRANT \
+        $(LOCAL_FLAGS)
+
+#CXX=/opt/sfw/bin/g++ $(ALLFLAGS)
+#CC=/opt/sfw/bin/gcc $(ALLFLAGS)
+
+#CXX=/opt/SUNWspro/bin/CC $(ALLFLAGS)
+#CC=/opt/SUNWspro/bin/cc $(ALLFLAGS)
+
+CXX=CC $(ALLFLAGS)
+CC=cc $(ALLFLAGS)
+LINK_SHARED=-G
+
+# -lCrun : standard C++ library (for new/delete)
+LOCAL_LIBS=-lpthread -lCrun
+LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
+

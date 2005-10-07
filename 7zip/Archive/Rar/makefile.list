@@ -1,0 +1,77 @@
+SRCS=\
+ ../7z/7zMethodID.cpp \
+ ../7z/7zMethods.cpp \
+ ../Common/CodecsPath.cpp \
+ ../Common/FilterCoder.cpp \
+ ../Common/InStreamWithCRC.cpp \
+ ../../Common/LimitedStreams.cpp \
+ ../Common/OutStreamWithCRC.cpp \
+ ../../Common/ProgressUtils.cpp \
+ ../../Common/StreamObjects.cpp \
+ ../../Common/StreamUtils.cpp \
+ ../../Compress/Copy/CopyCoder.cpp \
+ ../../Crypto/Rar20/Rar20Cipher.cpp \
+ ../../Crypto/Rar20/Rar20Crypto.cpp \
+ ../../Crypto/RarAES/RarAES.cpp \
+ ../../Crypto/RarAES/sha1.cpp \
+ ./DllExports.cpp \
+ ./RarHandler.cpp \
+ ./RarHeader.cpp \
+ ./RarIn.cpp \
+ ./RarItem.cpp \
+ ./RarVolumeInStream.cpp \
+ ../../../Windows/DLL.cpp \
+ ../../../Windows/FileFind.cpp \
+ ../../../Windows/PropVariant.cpp \
+ ../../../Windows/Synchronization.cpp
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) ./DllExports.cpp
+CodecsPath.o : ../Common/CodecsPath.cpp
+	$(CXX) $(CFLAGS) ../Common/CodecsPath.cpp
+FilterCoder.o : ../Common/FilterCoder.cpp
+	$(CXX) $(CFLAGS) ../Common/FilterCoder.cpp
+InStreamWithCRC.o : ../Common/InStreamWithCRC.cpp
+	$(CXX) $(CFLAGS) ../Common/InStreamWithCRC.cpp
+OutStreamWithCRC.o : ../Common/OutStreamWithCRC.cpp
+	$(CXX) $(CFLAGS) ../Common/OutStreamWithCRC.cpp
+DLL.o : ../../../Windows/DLL.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/DLL.cpp
+FileFind.o : ../../../Windows/FileFind.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileFind.cpp
+PropVariant.o : ../../../Windows/PropVariant.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
+Synchronization.o : ../../../Windows/Synchronization.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/Synchronization.cpp
+CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp
+RarHandler.o : ./RarHandler.cpp
+	$(CXX) $(CFLAGS) ./RarHandler.cpp
+RarHeader.o : ./RarHeader.cpp
+	$(CXX) $(CFLAGS) ./RarHeader.cpp
+RarIn.o : ./RarIn.cpp
+	$(CXX) $(CFLAGS) ./RarIn.cpp
+RarItem.o : ./RarItem.cpp
+	$(CXX) $(CFLAGS) ./RarItem.cpp
+RarVolumeInStream.o : ./RarVolumeInStream.cpp
+	$(CXX) $(CFLAGS) ./RarVolumeInStream.cpp
+RarAES.o : ../../Crypto/RarAES/RarAES.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/RarAES/RarAES.cpp
+sha1.o : ../../Crypto/RarAES/sha1.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/RarAES/sha1.cpp
+Rar20Cipher.o : ../../Crypto/Rar20/Rar20Cipher.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Rar20/Rar20Cipher.cpp
+Rar20Crypto.o : ../../Crypto/Rar20/Rar20Crypto.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Rar20/Rar20Crypto.cpp
+LimitedStreams.o : ../../Common/LimitedStreams.cpp
+	$(CXX) $(CFLAGS) ../../Common/LimitedStreams.cpp
+ProgressUtils.o : ../../Common/ProgressUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/ProgressUtils.cpp
+StreamObjects.o : ../../Common/StreamObjects.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamObjects.cpp
+7zMethodID.o : ../7z/7zMethodID.cpp
+	$(CXX) $(CFLAGS) ../7z/7zMethodID.cpp
+7zMethods.o : ../7z/7zMethods.cpp
+	$(CXX) $(CFLAGS) ../7z/7zMethods.cpp
+StreamUtils.o : ../../Common/StreamUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp

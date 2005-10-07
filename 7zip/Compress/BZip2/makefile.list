@@ -1,0 +1,26 @@
+SRCS=\
+ ../BWT/BlockSort.cpp \
+ ./BZip2CRC.cpp \
+ ./BZip2Decoder.cpp \
+ ./BZip2Encoder.cpp \
+ ../../Common/InBuffer.cpp \
+ ../../Common/OutBuffer.cpp \
+ ./DllExports.cpp \
+ ../Huffman/HuffmanEncoder.cpp
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) ./DllExports.cpp
+BZip2Decoder.o : ./BZip2Decoder.cpp
+	$(CXX) $(CFLAGS) ./BZip2Decoder.cpp
+BZip2Encoder.o : ./BZip2Encoder.cpp
+	$(CXX) $(CFLAGS) ./BZip2Encoder.cpp
+BZip2CRC.o : ./BZip2CRC.cpp
+	$(CXX) $(CFLAGS) ./BZip2CRC.cpp
+HuffmanEncoder.o : ../Huffman/HuffmanEncoder.cpp
+	$(CXX) $(CFLAGS) ../Huffman/HuffmanEncoder.cpp
+BlockSort.o : ../BWT/BlockSort.cpp
+	$(CXX) $(CFLAGS) ../BWT/BlockSort.cpp
+InBuffer.o : ../../Common/InBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
+OutBuffer.o : ../../Common/OutBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp

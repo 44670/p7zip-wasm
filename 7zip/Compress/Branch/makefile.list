@@ -1,0 +1,35 @@
+SRCS=\
+ ./ARM.cpp \
+ ./ARMThumb.cpp \
+ ./BranchCoder.cpp \
+ ../../Common/InBuffer.cpp \
+ ../../Common/OutBuffer.cpp \
+ ./DllExports.cpp \
+ ./IA64.cpp \
+ ./PPC.cpp \
+ ./SPARC.cpp \
+ ./x86_2.cpp \
+ ./x86.cpp
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) ./DllExports.cpp
+ARM.o : ./ARM.cpp
+	$(CXX) $(CFLAGS) ./ARM.cpp
+ARMThumb.o : ./ARMThumb.cpp
+	$(CXX) $(CFLAGS) ./ARMThumb.cpp
+BranchCoder.o : ./BranchCoder.cpp
+	$(CXX) $(CFLAGS) ./BranchCoder.cpp
+IA64.o : ./IA64.cpp
+	$(CXX) $(CFLAGS) ./IA64.cpp
+PPC.o : ./PPC.cpp
+	$(CXX) $(CFLAGS) ./PPC.cpp
+SPARC.o : ./SPARC.cpp
+	$(CXX) $(CFLAGS) ./SPARC.cpp
+x86.o : ./x86.cpp
+	$(CXX) $(CFLAGS) ./x86.cpp
+x86_2.o : ./x86_2.cpp
+	$(CXX) $(CFLAGS) ./x86_2.cpp
+InBuffer.o : ../../Common/InBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
+OutBuffer.o : ../../Common/OutBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp

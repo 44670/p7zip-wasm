@@ -1,0 +1,669 @@
+7zCompressionMode.o: 7zCompressionMode.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h
+7zDecode.o: 7zDecode.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  7zDecode.h ../../IStream.h ../../../Common/MyUnknown.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h ../../IPassword.h \
+  ../Common/CoderMixer2.h ../Common/../../../Common/Vector.h \
+  ../Common/../../../Common/Defs.h ../Common/../../../Common/Types.h \
+  ../Common/../../../Common/MyCom.h ../Common/../../../Common/MyWindows.h \
+  ../Common/../../ICoder.h ../Common/../../IStream.h \
+  ../Common/CoderMixer2MT.h ../Common/CoderMixer2.h \
+  ../Common/../../../Windows/Thread.h ../Common/../../../Windows/Defs.h \
+  ../Common/../../Common/StreamBinder.h \
+  ../Common/../../Common/../IStream.h \
+  ../Common/../../Common/../../Windows/Synchronization.h \
+  ../Common/../../Common/../../Windows/Defs.h ../Common/CoderLoader.h \
+  ../Common/../../../Common/String.h ../Common/../../../Common/Vector.h \
+  ../Common/../../../Windows/DLL.h \
+  ../Common/../../../Windows/../Common/String.h 7zItem.h \
+  ../../../Common/Buffer.h ../../../Common/Defs.h 7zMethodID.h \
+  ../../../Common/String.h ../../../Common/Types.h 7zHeader.h \
+  7zMethodID.h ../../IPassword.h ../../Common/LockedStream.h \
+  ../../Common/../../Windows/Synchronization.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../IStream.h \
+  ../../Common/StreamObjects.h ../../Common/../../Common/DynamicBuffer.h \
+  ../../Common/../../Common/Buffer.h ../../Common/ProgressUtils.h \
+  ../../Common/../ICoder.h ../../Common/../IProgress.h \
+  ../../Common/../../Common/MyUnknown.h ../../Common/../../Common/Types.h \
+  ../../Common/LimitedStreams.h ../Common/FilterCoder.h \
+  ../Common/../../IPassword.h 7zMethods.h 7zMethodID.h
+7zEncode.o: 7zEncode.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  7zEncode.h 7zCompressionMode.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/Types.h 7zMethodID.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/Types.h ../Common/CoderMixer2.h \
+  ../Common/../../../Common/Vector.h ../Common/../../../Common/Types.h \
+  ../Common/../../../Common/MyCom.h ../Common/../../../Common/MyWindows.h \
+  ../Common/../../ICoder.h ../Common/../../IStream.h \
+  ../Common/../../../Common/MyUnknown.h ../Common/../../../Common/Types.h \
+  ../Common/CoderMixer2MT.h ../Common/CoderMixer2.h \
+  ../Common/../../../Windows/Thread.h ../Common/../../../Windows/Defs.h \
+  ../Common/../../Common/StreamBinder.h \
+  ../Common/../../Common/../IStream.h \
+  ../Common/../../Common/../../Windows/Synchronization.h \
+  ../Common/../../Common/../../Windows/Defs.h ../Common/CoderMixer2ST.h \
+  ../Common/CoderLoader.h ../Common/../../../Common/String.h \
+  ../Common/../../../Windows/DLL.h \
+  ../Common/../../../Windows/../Common/String.h 7zMethods.h 7zMethodID.h \
+  7zItem.h ../../../Common/Buffer.h 7zMethodID.h 7zHeader.h 7zMethodID.h \
+  7zSpecStream.h ../../IStream.h ../../ICoder.h ../../../Common/MyCom.h \
+  7zMethods.h ../../IPassword.h ../../../Common/MyUnknown.h \
+  ../../../Common/Types.h ../../Common/ProgressUtils.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../ICoder.h \
+  ../../Common/../IProgress.h ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/Types.h ../../Common/LimitedStreams.h \
+  ../../Common/../IStream.h ../../Common/InOutTempBuffer.h \
+  ../../Common/../../Windows/FileIO.h ../../../Common/String.h \
+  ../../Common/../../Windows/FileDir.h \
+  ../../Common/../../Windows/../Common/String.h \
+  ../../Common/../../Windows/Defs.h ../../Common/StreamObjects.h \
+  ../../Common/../../Common/DynamicBuffer.h \
+  ../../Common/../../Common/Buffer.h ../Common/FilterCoder.h \
+  ../Common/../../IPassword.h
+7zExtract.o: 7zExtract.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  7zHandler.h ../IArchive.h ../../IStream.h ../../../Common/MyUnknown.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h ../../IProgress.h \
+  ../../PropID.h 7zIn.h ../../IStream.h ../../IPassword.h \
+  ../../../Common/MyCom.h ../../Common/InBuffer.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyCom.h 7zHeader.h \
+  7zMethodID.h ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/Types.h 7zItem.h \
+  ../../../Common/Buffer.h 7zMethodID.h 7zHeader.h 7zCompressionMode.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/Types.h 7zMethodID.h 7zMethods.h \
+  7zMethodID.h 7zFolderOutStream.h 7zIn.h ../../IStream.h ../IArchive.h \
+  ../Common/OutStreamWithCRC.h ../Common/../../../Common/CRC.h \
+  ../Common/../../../Common/Types.h ../Common/../../../Common/MyCom.h \
+  ../Common/../../IStream.h 7zMethods.h 7zDecode.h ../../IStream.h \
+  ../../IPassword.h ../Common/CoderMixer2.h \
+  ../Common/../../../Common/Vector.h ../Common/../../../Common/Types.h \
+  ../Common/../../ICoder.h ../Common/../../IStream.h \
+  ../Common/CoderMixer2MT.h ../Common/CoderMixer2.h \
+  ../Common/../../../Windows/Thread.h ../Common/../../../Windows/Defs.h \
+  ../Common/../../Common/StreamBinder.h \
+  ../Common/../../Common/../IStream.h \
+  ../Common/../../Common/../../Windows/Synchronization.h \
+  ../Common/../../Common/../../Windows/Defs.h ../Common/CoderLoader.h \
+  ../Common/../../../Common/String.h ../Common/../../../Windows/DLL.h \
+  ../Common/../../../Windows/../Common/String.h 7zItem.h \
+  ../../../Common/ComTry.h ../../../Common/Exception.h \
+  ../../Common/StreamObjects.h ../../Common/../../Common/DynamicBuffer.h \
+  ../../Common/../../Common/Buffer.h ../../Common/ProgressUtils.h \
+  ../../Common/../ICoder.h ../../Common/../IProgress.h \
+  ../../Common/LimitedStreams.h
+7zFolderInStream.o: 7zFolderInStream.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  7zFolderInStream.h 7zItem.h ../../../Common/Buffer.h \
+  ../../../Common/Defs.h 7zMethodID.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Types.h 7zHeader.h \
+  7zMethodID.h 7zHeader.h ../IArchive.h ../../IStream.h \
+  ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../IProgress.h ../../PropID.h \
+  ../Common/InStreamWithCRC.h ../Common/../../../Common/CRC.h \
+  ../Common/../../../Common/Types.h ../Common/../../../Common/MyCom.h \
+  ../Common/../../../Common/MyWindows.h ../Common/../../IStream.h \
+  ../../IStream.h ../../ICoder.h ../../IStream.h
+7zFolderOutStream.o: 7zFolderOutStream.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  7zFolderOutStream.h 7zIn.h ../../IStream.h ../../../Common/MyUnknown.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h ../../IPassword.h \
+  ../../../Common/MyCom.h ../../Common/InBuffer.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyCom.h 7zHeader.h \
+  7zMethodID.h ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/Types.h 7zItem.h \
+  ../../../Common/Buffer.h 7zMethodID.h 7zHeader.h ../../IStream.h \
+  ../IArchive.h ../../IStream.h ../../IProgress.h ../../PropID.h \
+  ../Common/OutStreamWithCRC.h ../Common/../../../Common/CRC.h \
+  ../Common/../../../Common/Types.h ../Common/../../../Common/MyCom.h \
+  ../Common/../../IStream.h
+7zHandler.o: 7zHandler.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  7zHandler.h ../IArchive.h ../../IStream.h ../../../Common/MyUnknown.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h ../../IProgress.h \
+  ../../PropID.h 7zIn.h ../../IStream.h ../../IPassword.h \
+  ../../../Common/MyCom.h ../../Common/InBuffer.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyCom.h 7zHeader.h \
+  7zMethodID.h ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/Types.h 7zItem.h \
+  ../../../Common/Buffer.h 7zMethodID.h 7zHeader.h 7zCompressionMode.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/Types.h 7zMethodID.h 7zMethods.h \
+  7zMethodID.h 7zProperties.h ../../PropID.h \
+  ../../../Common/IntToString.h ../../../Common/Types.h \
+  ../../../Common/ComTry.h ../../../Common/Exception.h \
+  ../../../Windows/Defs.h ../Common/ItemNameUtils.h \
+  ../Common/../../../Common/String.h
+7zHandlerOut.o: 7zHandlerOut.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  7zHandler.h ../IArchive.h ../../IStream.h ../../../Common/MyUnknown.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h ../../IProgress.h \
+  ../../PropID.h 7zIn.h ../../IStream.h ../../IPassword.h \
+  ../../../Common/MyCom.h ../../Common/InBuffer.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyCom.h 7zHeader.h \
+  7zMethodID.h ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/Types.h 7zItem.h \
+  ../../../Common/Buffer.h 7zMethodID.h 7zHeader.h 7zCompressionMode.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/Types.h 7zMethodID.h 7zMethods.h \
+  7zMethodID.h 7zOut.h 7zHeader.h 7zItem.h 7zCompressionMode.h 7zEncode.h \
+  7zCompressionMode.h ../Common/CoderMixer2.h \
+  ../Common/../../../Common/Vector.h ../Common/../../../Common/Types.h \
+  ../Common/../../../Common/MyCom.h ../Common/../../ICoder.h \
+  ../Common/../../IStream.h ../Common/CoderMixer2MT.h \
+  ../Common/CoderMixer2.h ../Common/../../../Windows/Thread.h \
+  ../Common/../../../Windows/Defs.h ../Common/../../Common/StreamBinder.h \
+  ../Common/../../Common/../IStream.h \
+  ../Common/../../Common/../../Windows/Synchronization.h \
+  ../Common/../../Common/../../Windows/Defs.h ../Common/CoderMixer2ST.h \
+  ../Common/CoderLoader.h ../Common/../../../Common/String.h \
+  ../Common/../../../Windows/DLL.h \
+  ../Common/../../../Windows/../Common/String.h 7zMethods.h 7zItem.h \
+  ../../Common/OutBuffer.h ../../../Common/DynamicBuffer.h \
+  ../../../Common/Buffer.h ../../../Common/CRC.h ../../../Common/Types.h \
+  7zUpdate.h 7zIn.h 7zCompressionMode.h ../IArchive.h 7zMethods.h \
+  ../../../Windows/PropVariant.h ../../../Common/ComTry.h \
+  ../../../Common/Exception.h ../../../Common/StringToInt.h \
+  ../../IPassword.h ../../ICoder.h ../Common/ItemNameUtils.h
+7zHeader.o: 7zHeader.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  7zHeader.h 7zMethodID.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Common/Types.h
+7zIn.o: 7zIn.cpp ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h 7zIn.h ../../IStream.h \
+  ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../IPassword.h ../../../Common/MyCom.h \
+  ../../Common/InBuffer.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyCom.h 7zHeader.h 7zMethodID.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/Types.h 7zItem.h \
+  ../../../Common/Buffer.h 7zMethodID.h 7zHeader.h 7zMethods.h \
+  7zMethodID.h 7zDecode.h ../../IStream.h ../../IPassword.h \
+  ../Common/CoderMixer2.h ../Common/../../../Common/Vector.h \
+  ../Common/../../../Common/Types.h ../Common/../../../Common/MyCom.h \
+  ../Common/../../ICoder.h ../Common/../../IStream.h \
+  ../Common/CoderMixer2MT.h ../Common/CoderMixer2.h \
+  ../Common/../../../Windows/Thread.h ../Common/../../../Windows/Defs.h \
+  ../Common/../../Common/StreamBinder.h \
+  ../Common/../../Common/../IStream.h \
+  ../Common/../../Common/../../Windows/Synchronization.h \
+  ../Common/../../Common/../../Windows/Defs.h ../Common/CoderLoader.h \
+  ../Common/../../../Common/String.h ../Common/../../../Windows/DLL.h \
+  ../Common/../../../Windows/../Common/String.h 7zItem.h \
+  ../../Common/StreamObjects.h ../../Common/../../Common/DynamicBuffer.h \
+  ../../Common/../../Common/Buffer.h ../../Common/StreamUtils.h \
+  ../../../Common/CRC.h ../../../Common/Types.h
+7zMethodID.o: 7zMethodID.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  7zMethodID.h ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/Types.h
+7zMethods.o: 7zMethods.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  7zMethods.h 7zMethodID.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Common/Types.h \
+  ../../../Windows/FileFind.h ../../../Windows/../Common/String.h \
+  ../../../Windows/FileName.h ../../../Windows/Defs.h \
+  ../../../Windows/DLL.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/Types.h ../../../Windows/Synchronization.h \
+  ../../ICoder.h ../../IStream.h ../../../Common/MyUnknown.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../Common/CodecsPath.h ../Common/../../../Common/String.h
+7zOut.o: 7zOut.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Common/AutoPtr.h ../../Common/StreamObjects.h \
+  ../../Common/../../Common/DynamicBuffer.h \
+  ../../Common/../../Common/Buffer.h ../../Common/../../Common/Defs.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/MyWindows.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/Types.h 7zOut.h 7zHeader.h 7zMethodID.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/Types.h 7zItem.h \
+  ../../../Common/Buffer.h 7zMethodID.h 7zHeader.h 7zCompressionMode.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/Types.h 7zMethodID.h 7zEncode.h \
+  7zCompressionMode.h ../Common/CoderMixer2.h \
+  ../Common/../../../Common/Vector.h ../Common/../../../Common/Types.h \
+  ../Common/../../../Common/MyCom.h ../Common/../../ICoder.h \
+  ../Common/../../IStream.h ../Common/CoderMixer2MT.h \
+  ../Common/CoderMixer2.h ../Common/../../../Windows/Thread.h \
+  ../Common/../../../Windows/Defs.h ../Common/../../Common/StreamBinder.h \
+  ../Common/../../Common/../IStream.h \
+  ../Common/../../Common/../../Windows/Synchronization.h \
+  ../Common/../../Common/../../Windows/Defs.h ../Common/CoderMixer2ST.h \
+  ../Common/CoderLoader.h ../Common/../../../Common/String.h \
+  ../Common/../../../Windows/DLL.h \
+  ../Common/../../../Windows/../Common/String.h 7zMethods.h 7zMethodID.h \
+  7zItem.h ../../Common/OutBuffer.h ../../../Common/DynamicBuffer.h \
+  ../../../Common/CRC.h ../../../Common/Types.h
+7zProperties.o: 7zProperties.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  7zProperties.h ../../PropID.h 7zHeader.h 7zMethodID.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/Types.h 7zHandler.h \
+  ../IArchive.h ../../IStream.h ../../../Common/MyUnknown.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h ../../IProgress.h \
+  ../../PropID.h 7zIn.h ../../IStream.h ../../IPassword.h \
+  ../../../Common/MyCom.h ../../Common/InBuffer.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyCom.h 7zHeader.h \
+  7zItem.h ../../../Common/Buffer.h 7zMethodID.h 7zHeader.h \
+  7zCompressionMode.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/Types.h 7zMethodID.h 7zMethods.h \
+  7zMethodID.h
+7zSpecStream.o: 7zSpecStream.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  7zSpecStream.h ../../IStream.h ../../../Common/MyUnknown.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h ../../ICoder.h \
+  ../../IStream.h ../../../Common/MyCom.h
+7zUpdate.o: 7zUpdate.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  7zUpdate.h 7zIn.h ../../IStream.h ../../../Common/MyUnknown.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h ../../IPassword.h \
+  ../../../Common/MyCom.h ../../Common/InBuffer.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyCom.h 7zHeader.h \
+  7zMethodID.h ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/Types.h 7zItem.h \
+  ../../../Common/Buffer.h 7zMethodID.h 7zHeader.h 7zCompressionMode.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/Types.h 7zMethodID.h ../IArchive.h \
+  ../../IStream.h ../../IProgress.h ../../PropID.h 7zFolderInStream.h \
+  7zItem.h 7zHeader.h ../IArchive.h ../Common/InStreamWithCRC.h \
+  ../Common/../../../Common/CRC.h ../Common/../../../Common/Types.h \
+  ../Common/../../../Common/MyCom.h ../Common/../../IStream.h \
+  ../../IStream.h ../../ICoder.h ../../IStream.h 7zEncode.h \
+  7zCompressionMode.h ../Common/CoderMixer2.h \
+  ../Common/../../../Common/Vector.h ../Common/../../../Common/Types.h \
+  ../Common/../../ICoder.h ../Common/CoderMixer2MT.h \
+  ../Common/CoderMixer2.h ../Common/../../../Windows/Thread.h \
+  ../Common/../../../Windows/Defs.h ../Common/../../Common/StreamBinder.h \
+  ../Common/../../Common/../IStream.h \
+  ../Common/../../Common/../../Windows/Synchronization.h \
+  ../Common/../../Common/../../Windows/Defs.h ../Common/CoderMixer2ST.h \
+  ../Common/CoderLoader.h ../Common/../../../Common/String.h \
+  ../Common/../../../Windows/DLL.h \
+  ../Common/../../../Windows/../Common/String.h 7zMethods.h 7zMethodID.h \
+  7zItem.h 7zHandler.h ../IArchive.h 7zIn.h 7zCompressionMode.h \
+  7zMethods.h 7zOut.h 7zHeader.h 7zItem.h 7zCompressionMode.h 7zEncode.h \
+  ../../Common/OutBuffer.h ../../../Common/DynamicBuffer.h \
+  ../../../Common/Buffer.h ../../../Common/CRC.h 7zMethods.h \
+  ../../Compress/Copy/CopyCoder.h ../../Compress/Copy/../../ICoder.h \
+  ../../Compress/Copy/../../../Common/MyCom.h \
+  ../../Common/ProgressUtils.h ../../Common/../ICoder.h \
+  ../../Common/../IProgress.h ../../Common/LimitedStreams.h \
+  ../../Common/LimitedStreams.h ../Common/ItemNameUtils.h
+CodecsPath.o: ../Common/CodecsPath.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../Common/../../../Common/String.h ../Common/../../../Common/Vector.h \
+  ../Common/../../../Common/Defs.h
+CoderLoader.o: ../Common/CoderLoader.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../Common/CoderLoader.h ../Common/../../../Common/String.h \
+  ../Common/../../../Common/Vector.h ../Common/../../../Common/Defs.h \
+  ../Common/../../../Common/MyCom.h ../Common/../../../Common/MyWindows.h \
+  ../Common/../../../Windows/DLL.h \
+  ../Common/../../../Windows/../Common/String.h ../Common/../../ICoder.h \
+  ../Common/../../IStream.h ../Common/../../../Common/MyUnknown.h \
+  ../Common/../../../Common/Types.h ../Common/FilterCoder.h \
+  ../Common/../../IPassword.h
+CoderMixer2.o: ../Common/CoderMixer2.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../Common/CoderMixer2.h ../Common/../../../Common/Vector.h \
+  ../Common/../../../Common/Defs.h ../Common/../../../Common/Types.h \
+  ../Common/../../../Common/MyCom.h ../Common/../../../Common/MyWindows.h \
+  ../Common/../../ICoder.h ../Common/../../IStream.h \
+  ../Common/../../../Common/MyUnknown.h ../Common/../../../Common/Types.h
+CoderMixer2MT.o: ../Common/CoderMixer2MT.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../Common/CoderMixer2MT.h ../Common/CoderMixer2.h \
+  ../Common/../../../Common/Vector.h ../Common/../../../Common/Defs.h \
+  ../Common/../../../Common/Types.h ../Common/../../../Common/MyCom.h \
+  ../Common/../../../Common/MyWindows.h ../Common/../../ICoder.h \
+  ../Common/../../IStream.h ../Common/../../../Common/MyUnknown.h \
+  ../Common/../../../Common/Types.h ../Common/../../../Windows/Thread.h \
+  ../Common/../../../Windows/Defs.h ../Common/../../Common/StreamBinder.h \
+  ../Common/../../Common/../IStream.h \
+  ../Common/../../Common/../../Windows/Synchronization.h \
+  ../Common/../../Common/../../Windows/Defs.h \
+  ../Common/CrossThreadProgress.h \
+  ../Common/../../../Windows/Synchronization.h
+CrossThreadProgress.o: ../Common/CrossThreadProgress.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../Common/CrossThreadProgress.h \
+  ../Common/../../ICoder.h ../Common/../../IStream.h \
+  ../Common/../../../Common/MyUnknown.h \
+  ../Common/../../../Common/MyWindows.h ../Common/../../../Common/Types.h \
+  ../Common/../../../Windows/Synchronization.h \
+  ../Common/../../../Windows/Defs.h ../Common/../../../Common/MyCom.h
+FilterCoder.o: ../Common/FilterCoder.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../Common/FilterCoder.h ../Common/../../../Common/MyCom.h \
+  ../Common/../../../Common/MyWindows.h ../Common/../../ICoder.h \
+  ../Common/../../IStream.h ../Common/../../../Common/MyUnknown.h \
+  ../Common/../../../Common/Types.h ../Common/../../IPassword.h \
+  ../Common/../../../Common/Alloc.h ../Common/../../../Common/Defs.h \
+  ../Common/../../Common/StreamUtils.h \
+  ../Common/../../Common/../IStream.h
+InOutTempBuffer.o: ../../Common/InOutTempBuffer.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/InOutTempBuffer.h \
+  ../../Common/../../Windows/FileIO.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../Common/../../Windows/FileDir.h \
+  ../../Common/../../Windows/../Common/String.h \
+  ../../Common/../../Windows/Defs.h ../../Common/../../Common/MyCom.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h ../../Common/../../Common/Types.h \
+  ../../Common/../../Common/Defs.h ../../Common/StreamUtils.h
+InStreamWithCRC.o: ../Common/InStreamWithCRC.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../Common/InStreamWithCRC.h \
+  ../Common/../../../Common/CRC.h ../Common/../../../Common/Types.h \
+  ../Common/../../../Common/MyCom.h ../Common/../../../Common/MyWindows.h \
+  ../Common/../../IStream.h ../Common/../../../Common/MyUnknown.h \
+  ../Common/../../../Common/Types.h
+ItemNameUtils.o: ../Common/ItemNameUtils.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../Common/ItemNameUtils.h ../Common/../../../Common/String.h \
+  ../Common/../../../Common/Vector.h ../Common/../../../Common/Defs.h
+LimitedStreams.o: ../../Common/LimitedStreams.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/LimitedStreams.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/MyWindows.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/Types.h ../../Common/../../Common/Defs.h
+LockedStream.o: ../../Common/LockedStream.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Common/LockedStream.h \
+  ../../Common/../../Windows/Synchronization.h \
+  ../../Common/../../Windows/Defs.h ../../Common/../../Common/MyCom.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h ../../Common/../../Common/Types.h
+MultiStream.o: ../Common/MultiStream.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../Common/MultiStream.h ../Common/../../../Common/MyCom.h \
+  ../Common/../../../Common/MyWindows.h \
+  ../Common/../../../Common/Vector.h ../Common/../../../Common/Defs.h \
+  ../Common/../../Archive/IArchive.h ../Common/../../Archive/../IStream.h \
+  ../Common/../../Archive/../../Common/MyUnknown.h \
+  ../Common/../../Archive/../../Common/MyWindows.h \
+  ../Common/../../Archive/../../Common/Types.h \
+  ../Common/../../Archive/../IProgress.h \
+  ../Common/../../Archive/../PropID.h
+OutBuffer.o: ../../Common/OutBuffer.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Common/OutBuffer.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/Alloc.h
+OutStreamWithCRC.o: ../Common/OutStreamWithCRC.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../Common/OutStreamWithCRC.h \
+  ../Common/../../../Common/CRC.h ../Common/../../../Common/Types.h \
+  ../Common/../../../Common/MyCom.h ../Common/../../../Common/MyWindows.h \
+  ../Common/../../IStream.h ../Common/../../../Common/MyUnknown.h \
+  ../Common/../../../Common/Types.h
+ProgressUtils.o: ../../Common/ProgressUtils.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/ProgressUtils.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/MyWindows.h \
+  ../../Common/../ICoder.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h ../../Common/../../Common/Types.h \
+  ../../Common/../IProgress.h
+StreamBinder.o: ../../Common/StreamBinder.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Common/StreamBinder.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
+  ../../Common/../../Windows/Synchronization.h \
+  ../../Common/../../Windows/Defs.h ../../Common/../../Common/Defs.h \
+  ../../Common/../../Common/MyCom.h
+StreamObjects.o: ../../Common/StreamObjects.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/StreamObjects.h \
+  ../../Common/../../Common/DynamicBuffer.h \
+  ../../Common/../../Common/Buffer.h ../../Common/../../Common/Defs.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/MyWindows.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/Types.h ../../Common/../../Common/Defs.h
+StreamUtils.o: ../../Common/StreamUtils.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/MyWindows.h \
+  ../../Common/StreamUtils.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h ../../Common/../../Common/Types.h
+CopyCoder.o: ../../Compress/Copy/CopyCoder.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Compress/Copy/CopyCoder.h \
+  ../../Compress/Copy/../../ICoder.h ../../Compress/Copy/../../IStream.h \
+  ../../Compress/Copy/../../../Common/MyUnknown.h \
+  ../../Compress/Copy/../../../Common/MyWindows.h \
+  ../../Compress/Copy/../../../Common/Types.h \
+  ../../Compress/Copy/../../../Common/MyCom.h \
+  ../../Compress/Copy/../../../Common/Alloc.h \
+  ../../Compress/Copy/../../Common/StreamUtils.h \
+  ../../Compress/Copy/../../Common/../IStream.h
+DllExports.o: DllExports.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Common/MyInitGuid.h ../../../Common/MyGuidDef.h \
+  ../../../Common/ComTry.h ../../../Common/Exception.h ../../ICoder.h \
+  ../../IStream.h ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h 7zHandler.h ../IArchive.h ../../IStream.h \
+  ../../IProgress.h ../../PropID.h 7zIn.h ../../IStream.h \
+  ../../IPassword.h ../../../Common/MyCom.h ../../Common/InBuffer.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyCom.h 7zHeader.h \
+  7zMethodID.h ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/Types.h 7zItem.h \
+  ../../../Common/Buffer.h 7zMethodID.h 7zHeader.h 7zCompressionMode.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/Types.h 7zMethodID.h 7zMethods.h \
+  7zMethodID.h
+DLL.o: ../../../Windows/DLL.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Windows/DLL.h ../../../Windows/../Common/String.h \
+  ../../../Windows/../Common/Vector.h ../../../Windows/../Common/Defs.h \
+  ../../../Windows/Defs.h ../../../Windows/../Common/StringConvert.h \
+  ../../../Windows/../Common/MyWindows.h ../../../Common/String.h \
+  ../../../Windows/../Common/Types.h ../../../myWindows/myPrivate.h
+FileDir.o: ../../../Windows/FileDir.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Windows/FileDir.h ../../../Windows/../Common/String.h \
+  ../../../Windows/../Common/Vector.h ../../../Windows/../Common/Defs.h \
+  ../../../Windows/Defs.h ../../../Windows/FileName.h \
+  ../../../Windows/FileFind.h ../../../Windows/../Common/StringConvert.h \
+  ../../../Windows/../Common/MyWindows.h ../../../Common/String.h \
+  ../../../Windows/../Common/Types.h ../../../myWindows/myPrivate.h
+FileFind.o: ../../../Windows/FileFind.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Windows/FileFind.h ../../../Windows/../Common/String.h \
+  ../../../Windows/../Common/Vector.h ../../../Windows/../Common/Defs.h \
+  ../../../Windows/FileName.h ../../../Windows/Defs.h \
+  ../../../Windows/../Common/StringConvert.h \
+  ../../../Windows/../Common/MyWindows.h ../../../Common/String.h \
+  ../../../Windows/../Common/Types.h ../../../myWindows/myPrivate.h
+FileIO.o: ../../../Windows/FileIO.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Windows/FileIO.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Windows/Defs.h \
+  ../../../Windows/../Common/StringConvert.h \
+  ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/Types.h ../../../myWindows/myPrivate.h
+PropVariant.o: ../../../Windows/PropVariant.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/Types.h ../../../Windows/../Common/Defs.h
+Synchronization.o: ../../../Windows/Synchronization.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Windows/Synchronization.h \
+  ../../../Windows/Defs.h

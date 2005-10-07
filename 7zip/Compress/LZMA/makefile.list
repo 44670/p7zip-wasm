@@ -1,0 +1,35 @@
+SRCS=\
+ ../../Common/InBuffer.cpp \
+ ../../Common/OutBuffer.cpp \
+ ../../Common/StreamUtils.cpp \
+ ./DllExports.cpp \
+ ../LZ/LZInWindow.cpp \
+ ../LZ/LZOutWindow.cpp \
+ ./LZMADecoder.cpp \
+ ./LZMAEncoder.cpp \
+ ../LZ/MT/MT.cpp \
+ ../RangeCoder/RangeCoderBit.cpp \
+ ../../../Windows/Synchronization.cpp
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) ./DllExports.cpp
+InBuffer.o : ../../Common/InBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
+OutBuffer.o : ../../Common/OutBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp
+RangeCoderBit.o : ../RangeCoder/RangeCoderBit.cpp
+	$(CXX) $(CFLAGS) ../RangeCoder/RangeCoderBit.cpp
+MT.o : ../LZ/MT/MT.cpp
+	$(CXX) $(CFLAGS) ../LZ/MT/MT.cpp
+LZInWindow.o : ../LZ/LZInWindow.cpp
+	$(CXX) $(CFLAGS) ../LZ/LZInWindow.cpp
+LZOutWindow.o : ../LZ/LZOutWindow.cpp
+	$(CXX) $(CFLAGS) ../LZ/LZOutWindow.cpp
+Synchronization.o : ../../../Windows/Synchronization.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/Synchronization.cpp
+LZMADecoder.o : ./LZMADecoder.cpp
+	$(CXX) $(CFLAGS) ./LZMADecoder.cpp
+LZMAEncoder.o : ./LZMAEncoder.cpp
+	$(CXX) $(CFLAGS) ./LZMAEncoder.cpp
+StreamUtils.o : ../../Common/StreamUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp

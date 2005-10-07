@@ -1,0 +1,277 @@
+
+Version 4.29
+============
+
+  - fix "Bugs item #1305781" : "7z a -sfx" sets the execute-flag
+    and does not add ".exe" extension.
+
+  - fix "Bugs item #1306783" : "7za a /tmp/t.7z /etc/passwd"
+
+  - fix "Bugs item #1304797" : @lists don't handle files starting with ./
+
+  - fix "Bugs item #1309287" : man 7za fails after install
+
+Version 4.27
+============
+  - From Windows version of 7-zip 4.27 :
+    - new plugin for 7z : 7-Zip can unpack CHM/HXS (MS HTML HELP) archives
+    - cab plugin for 7z : 7-Zip can unpack multivolume CAB archives
+    - Some bugs were fixed
+    - better support for 64bits (PPMD coder/decoder)
+
+Version 4.26
+============
+  - From Windows version of 7-zip 4.26 :
+    - new plugin for 7z : LZH format support (extracting only)
+
+  - fix (courtesy from Robert Millan) to make p7zip compile on GNU/kFreeBSD.
+
+  - fix "Bug item #1273057", now "7z -so -t7z a dummy.7z file >output.7z" does not
+    finish with a "Segmentation fault (core dumped)".
+
+  - fix "Bug item #1221056", now, makefile for p7zip use the flag "-O" to
+  support compilers that build invalid programs with the flag "-O2".
+
+Version 4.25
+============
+  - From Windows version of 7-zip 4.25 :
+    - Some bugs were fixed
+    - DOCS/MANUAL/exit_codes.htm added
+
+  - new plugin for 7z : RAR format support (extracting only)
+
+  - better dependencies in makefile
+
+Version 4.23
+============
+  - From Windows version of 7-zip 4.23 :
+    - Some bugs were fixed
+
+  - manpages for 7za and 7z updated by Mohammed Adnene Trojette.
+
+  - little fix for the help message of 7za or 7z.
+
+  - bug #1224304 : Files and directories with \ in name not handled properly.
+
+  - fix for tar archives that have pax header.
+
+Version 4.20
+============
+
+  - From Windows version of 7-zip 4.19 and 4.20 :
+    - BZip2 code was rewritten. Now it supports 3 modes: Normal, Maximum and 
+      Ultra. In Normal mode it compresses almost as original BZip2 compressor. 
+      Compression ratio in Maximum and Ultra modes is 1-3% better for some files, 
+      but Maximum Mode is about 3 times slower and Ultra Mode is about 8 times 
+      slower than Normal mode.
+    - Console version now prints all messages to stdout by default,
+      and if -so switch is specified, 7-Zip prints messages to stderr.
+    - Some bugs were fixed
+
+  - Updating "contrib/VirtualFileSystemForMidnightCommander/" with u7z-4.16beta.tar.bz2
+
+  - bug #1204993 (does not find broken filenames)
+
+  - bug #1201244 (Missing files in p7zip_4.18_x86_linux_bin.tar.bz2)
+
+  - makefile.linux_x86_ppc_alpha : flag "-fPIC" added
+
+  - flag "-l" added.
+    without   : p7zip stores symlinks (like p7zip 4.18)
+    with "-l" : p7zip stores the files/directories pointed by symlinks (like before p7zip 4.18)
+      CAUTION : the scanning stage can never end because of symlinks like ".."
+                 (ex:  ln -s .. ldir)
+
+Version 4.18
+============
+
+  - From Windows version of 7-zip 4.18 and 4.17 :
+    - minor fixes
+
+  - p7zip can now store and restore :
+    - symbolic links,
+    - file permission bits
+      Remark : for directory, restored_perm = stored_perm | 0700 .
+
+  - fix in install.sh
+
+  - On MacOSX, p7zip now restore times of a file.
+
+  - more detailed errors during scanning stage.
+
+
+Version 4.16
+============
+
+  - From Windows version of 7-zip 4.16 :
+    - Speed optimization (5%) for 7z / LZMA 
+    - 7za now supports .Z archives
+    - -r- switch in command line now is default for all commands 
+    - Some bugs were fixed
+    - bug #1119193 (list mode output confusing/wrong)
+
+  - From Windows version of 7-zip 4.15 :
+    - Z format supporting (extracting only)
+    - 7-Zip now can extract ZIP archives compressed with "Shrink" method
+    - 7-Zip now doesn't interrupt the compressing when it can not open file.
+      7-Zip just skips that file and shows warning.
+    - Some bugs were fixed
+
+  - man pages added (thanks to Mohammed Adnene Trojette)
+  - bug #1112167 fixed (Temporary directory must be on same partition as target)
+    p7zip failed moving the temporary file at the end of
+    compressing to target file if the directories don't reside
+    on the same partition (or network path).
+  - bug #1164659 fixed (Invalid file date for "big endian" machine)
+  - p7zip now uses ".so" instead of ".dll"
+  - p7zip now handles "ctrl-c" and "kill" to cleanup temporary files before exiting
+  - p7zip now runs on BeOS.
+  - better support of filenames with spaces.
+  - some code cleanup
+    - "myWindows/myFiles.cpp" is now in "Windows/FileIO.cpp"
+    - "myWindows/myFindFile.cpp" is now in "Windows/FileFind.cpp"
+    - "myWindows/myDirectoryAndPath.cpp" is now in "Windows/FileDir.cpp"
+    - "myWindows/myEvents.cpp" is now in "Windows/Synchronization.cpp"
+    - "myWindows/wine_strings.cpp" is now in "Windows/String.cpp"
+  
+
+Version 4.14.01
+===============
+  - huge speed up for multi CPUs machines (Thanks to loderunner - http://sourceforge.net/users/loderunner/).
+  - some code cleanup
+  - Fix problems with link files or directories.
+  - "7z a dummy -tgzip -so Doc.txt > archive.gz" now works.
+  - in the messages, the path separator is now '/' instead of '\'.
+
+Version 4.14
+============
+
+  - From Windows version of 7-zip 4.14 :
+    - STL using was reduced
+    - 7za now supports Split(001) archives
+    - "7za | more" now works
+    - Bugs item #1093095 : Usage banner now says "7za" (instead of "7z") when the binary is "7za"
+
+  - use of AString instead of std::string (no more need of #include <string>")
+  - makefile.linux_gcc_2.95_no_need_for_libstdc added to build 7za for the
+    p7zip*_bin.tar.bz2 package.
+    7za provided by p7zip*_bin.tar.bz2 is build on Debian 3.0 with gcc 2.95.4
+    and should now find the locale on all kinds of Linux (Debian, Fedora, Mandrake, ...).
+
+Version 4.13
+============
+  - new port of 7za from the source of 7za 4.13Beta for Windows
+
+  - From Windows version of 7-zip 4.13 :
+    - Switch "--" stops switches parsing
+    - Some bugs were fixed
+    - User's manual updated (DOCS/MANUAL/index.htm)
+
+  - makefile.netbsd_x86 added [Bug #1069055].
+
+  - new method to install 7z and its plugins (the "link" method do no work)
+
+  - installer added (install.sh).
+
+  - makefile.macosx_with_fink becomes makefile.macosx
+    and makefile.macosx uses c++ instead of CC
+    (on some MacOSX, CC is a link to gcc instead of g++)
+
+  - new flag "-utf16" to enable "utf16" conversion [Bug #1075229].
+
+  - new logic to automatically enable or disable "utf16" conversion :
+    no locale, locale=="C" or locale=="POSIX" implies utf16=off
+    else  utf16=on
+    uses "-utf16" or "-no-utf16" to change this behaviour.
+    [Bug #1075229]
+
+  - 7z (compiled with -O2) works now on Sparc Solaris. 
+
+Version 4.12
+============
+  - new port of 7za from the source of 7za 4.12Beta for Windows
+
+  - From Windows version of 7-zip 4.11 and 4.12 :
+    - 7-Zip now supports Zip64 extension of ZIP format. So now it's 
+      possible to compress files bigger than 4 GB to ZIP archives.
+    - Some bugs were fixed
+
+  - fix "7za a archive.7z file" that added all the files and directories
+    with filename "file", "FILE", "File" ...
+
+  - p7zip now displays the locale (ex : en_US.UTF-8) in the banner.
+
+  - new flag "-no-utf16" to avoid lossly conversion in filenames.
+    CAUTION : use this flag when you do not plan to export your archive.
+
+  - support creation of self extracting archive.
+
+  - better support of symbolic link (now, an invalid symbolic link
+    do not stop archiving but displays a warning).
+
+  - better support of files that the user cannot read.
+    (now this kind of file is not added to the archive, and p7zip displays a warning).
+
+  - return of 7z and its plugins.
+
+  - support of listing/testing/extracting files from a splitted archive (only with 7z).
+
+  - support of MacOX X 10.X.
+
+  - creation of Gzip/Tar archives didn't work on Linux Alpha.
+
+  - see "contrib/VirtualFileSystemForMidnightCommander/readme" to use 7za with "mc".
+
+Version 4.10
+============
+  - new port of 7za from the source of 7za 4.10Beta for Windows
+    => p7zip now work on big endian CPU.
+
+  - 7z for Unix is not maintain anymore (because as the source of unrar plugin for 7z
+    is not available, 7z is unless on Unix).
+
+Version 0.91
+============
+  - add support for FreeBSD 5.2.1
+    In Windows/Time.h add "#include <time.h>"
+    and prototype change for FileTimeToUnixTime()
+
+  - bug 990684 Corrected : support of filesystem
+    that support case sensitive filenames.
+    Example, since version 0.91 : 
+    "7z a glibc -r glibc-2.3.2"
+    does not terminate with error :
+      Duplicate filename:
+      glibc-2.3.2\sysdeps\m88k\m88100\add_n.S
+      glibc-2.3.2\sysdeps\m88k\m88100\add_n.s 
+
+Version 0.90
+============
+  - build of 7z.exe and its DLL.
+  7z.exe support more archive formats than 7za.exe
+  thanks to DLL in Formats and Codecs directories
+  - "#pragma once" is now in comments
+  - mainly For OpenBSD :
+    - add #include <wchar.h> in include_windows/winnt.h
+    - remove stuff for GUID_SECTION and GUID_SECT in include_windows/basetyps.h
+      and include_windows/initguid.h
+    - some changes in 7zip/Crypto/aesopt.h because of endian.h
+
+Version 0.81
+============
+  - add a copy of the help of 7-zip (see html directory)
+  - "7z a -r tmp.7z directory" works as expected.
+    no more need for commands like : 7z a -r tmp.7z "directory/*"
+  - 7z restores the date of each files (but not directories)
+  - 7z supports UNICODE filenames (version 0.80 supports only ASCII/Latin1 filenames)
+  - support of gcc 2.95
+  - support of gcc 3.4
+  - 7z needs no more libgen.h (dirname() and basename())
+  - less "Internal Error #7" during arguments parsing
+  - minor change in class CThread
+
+Version 0.80
+============
+  - First public release
+  - support of gcc 3.2 and 3.3
+

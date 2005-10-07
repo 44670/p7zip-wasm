@@ -1,0 +1,15 @@
+
+ALLFLAGS=-w -O -s \
+    	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
+	-DNDEBUG -D_REENTRANT \
+	-DLITTLE_ENDIAN -DENV_UNIX \
+	$(LOCAL_FLAGS)
+
+CXX=g++ $(ALLFLAGS)
+CC=gcc $(ALLFLAGS)
+LINK_SHARED=-shared
+
+# Cygwin does not need -ldl
+LOCAL_LIBS=-lpthread
+LOCAL_LIBS_DLL=$(LOCAL_LIBS)
+

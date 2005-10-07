@@ -1,0 +1,51 @@
+SRCS=\
+DllExports.cpp \
+CabBlockInStream.cpp \
+CabHandler.cpp \
+CabHeader.cpp \
+CabIn.cpp \
+ ../../Common/InBuffer.cpp \
+ ../../Common/LSBFDecoder.cpp \
+ ../../Common/OutBuffer.cpp \
+ ../../Common/StreamUtils.cpp \
+ ../../Common/ProgressUtils.cpp \
+ ../../Compress/LZ/LZOutWindow.cpp \
+ ../../../Windows/PropVariant.cpp \
+../../Compress/Lzx/LzxDecoder.cpp \
+../../Compress/Lzx/Lzx86Converter.cpp \
+../../Compress/Copy/CopyCoder.cpp
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) ./DllExports.cpp
+CabBlockInStream.o : ./CabBlockInStream.cpp
+	$(CXX) $(CFLAGS) ./CabBlockInStream.cpp
+CabHandler.o : ./CabHandler.cpp
+	$(CXX) $(CFLAGS) ./CabHandler.cpp
+CabHeader.o : ./CabHeader.cpp
+	$(CXX) $(CFLAGS) ./CabHeader.cpp
+CabIn.o : ./CabIn.cpp
+	$(CXX) $(CFLAGS) ./CabIn.cpp
+PropVariant.o : ../../../Windows/PropVariant.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
+InBuffer.o : ../../Common/InBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
+LSBFDecoder.o : ../../Common/LSBFDecoder.cpp
+	$(CXX) $(CFLAGS) ../../Common/LSBFDecoder.cpp
+OutBuffer.o : ../../Common/OutBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp
+ProgressUtils.o : ../../Common/ProgressUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/ProgressUtils.cpp
+LZOutWindow.o : ../../Compress/LZ/LZOutWindow.cpp
+	$(CXX) $(CFLAGS) ../../Compress/LZ/LZOutWindow.cpp
+LzxDecoder.o : ../../Compress/Lzx/LzxDecoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Lzx/LzxDecoder.cpp
+Lzx86Converter.o : ../../Compress/Lzx/Lzx86Converter.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Lzx/Lzx86Converter.cpp
+DeflateDecoder.o : ../../Compress/Deflate/DeflateDecoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Deflate/DeflateDecoder.cpp
+QuantumDecoder.o : ../../Compress/Quantum/QuantumDecoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Quantum/QuantumDecoder.cpp
+CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp
+StreamUtils.o : ../../Common/StreamUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp

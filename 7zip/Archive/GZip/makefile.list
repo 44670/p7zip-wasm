@@ -1,0 +1,47 @@
+SRCS=\
+ ../Common/CodecsPath.cpp \
+ ../Common/InStreamWithCRC.cpp \
+ ../Common/OutStreamWithCRC.cpp \
+ ../../Common/StreamUtils.cpp \
+ ../../Common/ProgressUtils.cpp \
+ ../../Compress/Copy/CopyCoder.cpp \
+ ./DllExports.cpp \
+ ./GZipHandler.cpp \
+ ./GZipHandlerOut.cpp \
+ ./GZipHeader.cpp \
+ ./GZipIn.cpp \
+ ./GZipOut.cpp \
+ ./GZipUpdate.cpp \
+ ../../../Windows/DLL.cpp \
+ ../../../Windows/PropVariant.cpp
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) ./DllExports.cpp
+DLL.o : ../../../Windows/DLL.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/DLL.cpp
+PropVariant.o : ../../../Windows/PropVariant.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
+CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp
+GZipHandler.o : ./GZipHandler.cpp
+	$(CXX) $(CFLAGS) ./GZipHandler.cpp
+GZipHandlerOut.o : ./GZipHandlerOut.cpp
+	$(CXX) $(CFLAGS) ./GZipHandlerOut.cpp
+GZipHeader.o : ./GZipHeader.cpp
+	$(CXX) $(CFLAGS) ./GZipHeader.cpp
+GZipIn.o : ./GZipIn.cpp
+	$(CXX) $(CFLAGS) ./GZipIn.cpp
+GZipOut.o : ./GZipOut.cpp
+	$(CXX) $(CFLAGS) ./GZipOut.cpp
+GZipUpdate.o : ./GZipUpdate.cpp
+	$(CXX) $(CFLAGS) ./GZipUpdate.cpp
+ProgressUtils.o : ../../Common/ProgressUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/ProgressUtils.cpp
+CodecsPath.o : ../Common/CodecsPath.cpp
+	$(CXX) $(CFLAGS) ../Common/CodecsPath.cpp
+InStreamWithCRC.o : ../Common/InStreamWithCRC.cpp
+	$(CXX) $(CFLAGS) ../Common/InStreamWithCRC.cpp
+OutStreamWithCRC.o : ../Common/OutStreamWithCRC.cpp
+	$(CXX) $(CFLAGS) ../Common/OutStreamWithCRC.cpp
+StreamUtils.o : ../../Common/StreamUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp

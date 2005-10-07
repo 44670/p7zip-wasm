@@ -1,0 +1,16 @@
+
+ALLFLAGS=-w -O -s -fPIC \
+    	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
+	-DBIG_ENDIAN -DENV_UNIX \
+	-DNDEBUG -D_REENTRANT \
+	$(LOCAL_FLAGS)
+
+#CXX=/opt/sfw/bin/g++ $(ALLFLAGS)
+#CC=/opt/sfw/bin/gcc $(ALLFLAGS)
+CXX=g++ $(ALLFLAGS)
+CC=gcc $(ALLFLAGS)
+LINK_SHARED=-shared
+
+LOCAL_LIBS=-lpthread -lrt
+LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
+

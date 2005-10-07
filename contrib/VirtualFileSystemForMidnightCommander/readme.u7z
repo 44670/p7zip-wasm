@@ -1,0 +1,16 @@
+For use u7z you must add following line to extfs.ini
+
+=-=-=-=-=-= Cut -=-=-=-=-=-
+u7z
+=-=-=-=-=-= Cut -=-=-=-=-=-
+
+And add somthing like this to extension file
+
+=-=-=-=-=-= Cut -=-=-=-=-=-
+regex/\.(7z|7Z)$
+	View=%view{ascii} 7za l %f 2>/dev/null
+	Open=%cd %p#u7z
+=-=-=-=-=-= Cut -=-=-=-=-=-
+
+This must be added before Manual pages Lines to prevent handle 7z archive
+like man page

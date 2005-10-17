@@ -96,7 +96,7 @@ static const char *kHelpString =
     "  (CAUTION: this flag does not do what you think, avoid using it)\n"
     "  -sfx[{name}]: Create SFX archive\n"
     "  -si: read data from stdin\n"
-    "  -so: write data to stdout\n"
+    "  -so: write data to stdout (eg: % 7z a dummy -tgzip Doc.txt > archive.gz) \n"
     "  -t{Type}: Set type of archive\n"
     "  -v{Size}[b|k|m|g]: Create volumes\n"
     "  -u[-][p#][q#][r#][x#][y#][z#][!newArchiveName]: Update options\n"

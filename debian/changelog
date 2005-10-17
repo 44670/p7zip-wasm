@@ -1,3 +1,12 @@
+p7zip (4.29.dfsg-2) unstable; urgency=low
+
+  * Precise the use of -so switch in manual pages
+    and -h output (Closes: #323932)
+  * Add a gzip-like CLI wrapper script to /usr/share/p7zip
+    thanks to Robert Millan <rmh@aybabtu.com> (Closes: #334106)
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Mon, 17 Oct 2005 13:06:26 +0000
+
 p7zip (4.29.dfsg-1) unstable; urgency=low
 
   * New upstream release

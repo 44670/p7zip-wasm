@@ -1,4 +1,4 @@
-	p7zip 4.27
+	p7zip 4.30
 	==========
 
 Homepage : http://p7zip.sourceforge.net/
@@ -146,8 +146,6 @@ LIMITATIONS from 7-zip :
 ------------------------
 
   - does not support uid/gid for the .tar format (so, use tar on Unix)
-
-  - SFX archive MUST end with ".exe"
 
 LIMITATIONS for Unix/MacOS X version only :
 ------------------------------------------

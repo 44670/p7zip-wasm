@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <tchar.h>
+#include <wchar.h>
 #include <stddef.h>
 #include <ctype.h>
 #include <unistd.h>

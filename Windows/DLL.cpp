@@ -38,7 +38,7 @@ TRACEN((printf("CLibrary::Free(%p)\n",(void *)_module)))
     return true;
 
 #ifdef __APPLE_CC__
-  int ret = NSUnLinkModule (_module, 0);
+  int ret = NSUnLinkModule ((NSModule)_module, 0);
 #elif ENV_BEOS
   int ret = unload_add_on((image_id)_module);
 #else
@@ -60,7 +60,7 @@ static FARPROC local_GetProcAddress(HMODULE module,LPCSTR lpProcName)
     sprintf(name,"_%s",lpProcName);
     TRACEN((printf("NSLookupSymbolInModule(%p,%s)\n",(void *)module,name)))
     NSSymbol sym;
-    sym = NSLookupSymbolInModule(module, name);
+    sym = NSLookupSymbolInModule((NSModule)module, name);
     if (sym) {
       ptr = NSAddressOfSymbol(sym);
     } else {

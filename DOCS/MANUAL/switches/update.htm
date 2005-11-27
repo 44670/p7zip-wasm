@@ -126,7 +126,7 @@ You can overload any &lt;state_action> pair.</P>
 <H4>Examples</H4>
 
 <PRE class="example">
-7z u c:\1\exist.7z -u- -up0q3x2z0!c:\1\update.7z * -r
+7z u c:\1\exist.7z -u- -up0q3x2z0!c:\1\update.7z *
 </PRE>
 
 <P>creates new archive <SPAN class="filename">update.7z</SPAN> and
@@ -134,7 +134,15 @@ writes to this archive all files from current directory that differs from
 files in <SPAN class="filename">exist.7z</SPAN> archive.
 <SPAN class="filename">exist.7z</SPAN> archive will not be changed.</P>
 
+<PRE class="example">
+7z u c:\1\exist.7z -up0q3x2z0!c:\1\update.7z * -ms=off
+</PRE>
 
+<P>creates new archive <SPAN class="filename">update.7z</SPAN> and
+writes to this archive all files from current directory that differs from 
+files in <SPAN class="filename">exist.7z</SPAN> archive.
+
+<P>NOTES: To update .7z archive you must disable solid mode (-ms=off switch).</P>
 
 <H4>Commands that can be used with this switch</H4>
 

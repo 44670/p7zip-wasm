@@ -1,4 +1,16 @@
 
+Version 4.30
+============
+  - From Windows version of 7-zip 4.30 :
+    - Speed optimizations in LZMA maximum/ultra compressing.
+    - LZMA now supports word size up to 273
+    - 7-Zip now reduces dictionary size for LZMA, if you compress files 
+      smaller than specified dictionary size.
+    - Some bugs were fixed
+
+  - fix minor build trouble with MacOS X
+  - fix "Bugs item #1349229" : 7-zip now displays "e: Extract files from archive (without using directory names)"
+
 Version 4.29
 ============
 

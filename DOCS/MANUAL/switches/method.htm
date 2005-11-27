@@ -60,7 +60,8 @@
 
   <DT><A name="Deflate_FastBytes"></A>fb={NumFastBytes}</DT>
   <DD>
-    <P>Sets number of fast bytes for Deflate encoder. It can be in range from 3 to 255.
+    <P>Sets number of fast bytes for Deflate/Deflate64 encoder. 
+       It can be in range from 3 to 258 (257 for Deflate64).
        Default value is 32 for normal mode and 64 for maximum mode. 
        Usually big number gives a little bit better 
        compression ratio and slower compression process.
@@ -69,7 +70,7 @@
   </DD>
   <DT><A name="Deflate_Pass"></A>pass={NumPasses}</DT>
   <DD>
-    <P>Sets number of passes for Deflate encoder. It can be in range from 1 to 4.
+    <P>Sets number of passes for Deflate encoder. It can be in range from 1 to 10.
        Default value is 1 for normal mode and 3 for maximum mode. 
        Usually big number gives a little bit better 
        compression ratio and slower compression process.
@@ -360,7 +361,7 @@ GZip uses the same parameters as Zip, but GZip compresses only with Defalte meth
   
   <DT><A name="FastBytes"></A>fb={N}</DT>
   <DD>
-    <P>Sets number of fast bytes for LZMA. It can be in range from 5 to 255.
+    <P>Sets number of fast bytes for LZMA. It can be in range from 5 to 273.
        Default value is 32 for normal mode and 64 for maximum mode.
        Usually big number gives a little bit better
        compression ratio and slower compression process.

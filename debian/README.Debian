@@ -8,4 +8,5 @@ Notes for anyone wanting to build Debian packages of p7zip.
  - These packages of p7zip (source and binary) do not contain the RAR
    decoder which is released under the terms of the UnRAR license (which
    is non-free). A non-free so file is provided in the non-free package
-   p7zip-rar.
+   p7zip-rar available at http://adn.diwi.org/debian/p7zip-rar (should be
+   up-to-date).

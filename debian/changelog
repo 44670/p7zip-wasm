@@ -1,3 +1,19 @@
+p7zip (4.30.dfsg-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sun, 27 Nov 2005 12:44:34 +0100
+
+p7zip (4.29.dfsg-3) unstable; urgency=low
+
+  * Drop p7zip-rar suggestion
+      - debian/control
+  * Add a link to a p7zip-rar package not in Debian
+      - debian/README.Debian
+      - 7z.1 manpage
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sun, 20 Nov 2005 10:53:52 +0100
+
 p7zip (4.29.dfsg-2) unstable; urgency=low
 
   * Precise the use of -so switch in manual pages

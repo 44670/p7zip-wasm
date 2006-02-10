@@ -1,4 +1,5 @@
 Notes for anyone wanting to build Debian packages of p7zip.
+-----------------------------------------------------------
 
  - 7z is the full featured command line version of 7-Zip. 7z uses other
    modules from 7-Zip package. 7za is a standalone command line version
@@ -10,3 +11,12 @@ Notes for anyone wanting to build Debian packages of p7zip.
    is non-free). A non-free so file is provided in the non-free package
    p7zip-rar available at http://adn.diwi.org/debian/p7zip-rar (should be
    up-to-date).
+
+Note concerning directory exclusion.
+------------------------------------
+
+ - Directory exclusion only works when an exclude list file is provided
+   and if directories to exclude are listed as relative paths of the
+   location 7z or 7za is run from.
+
+ - Using absolute directories *won't* work, as noted in #296665.

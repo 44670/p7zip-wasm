@@ -1,0 +1,43 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 01_add_help_switch.dpatch by Mohammed Adnène Trojette <adn+deb@diwi.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Add a --help switch
+
+@DPATCH@
+
+--- p7zip-4.33.dfsg.orig/7zip/UI/Common/ArchiveCommandLine.cpp       2006-02-10 20:31:16.000000000 +0100
++++ p7zip-4.33.dfsg/7zip/UI/Common/ArchiveCommandLine.cpp   2006-02-17 00:26:31.000000000 +0100
+@@ -31,13 +31,14 @@
+ using namespace NWindows;
+ using namespace NFile;
+
+-static const int kNumSwitches = 25;
++static const int kNumSwitches = 26;
+
+ namespace NKey {
+ enum Enum
+ {
+   kHelp1 = 0,
+   kHelp2,
++  kHelp3,
+   kDisableHeaders,
+   kDisablePercents,
+   kArchiveType,
+@@ -105,6 +106,7 @@
+   {
+     { L"?",  NSwitchType::kSimple, false },
+     { L"H",  NSwitchType::kSimple, false },
++    { L"-HELP",  NSwitchType::kSimple, false },
+     { L"BA", NSwitchType::kSimple, false },
+     { L"BD", NSwitchType::kSimple, false },
+     { L"T",  NSwitchType::kUnLimitedPostString, false, 1 },
+@@ -718,7 +720,7 @@
+   options.IsStdErrTerminal = (isatty(fileno(stderr)) != 0);
+   options.StdOutMode = parser[NKey::kStdOut].ThereIs;
+   options.EnableHeaders = !parser[NKey::kDisableHeaders].ThereIs;
+-  options.HelpMode = parser[NKey::kHelp1].ThereIs || parser[NKey::kHelp2].ThereIs;
++  options.HelpMode = parser[NKey::kHelp1].ThereIs || parser[NKey::kHelp2].ThereIs || parser[NKey::kHelp3].ThereIs;
+ }
+
+ void CArchiveCommandLineParser::Parse2(CArchiveCommandLineOptions &options)

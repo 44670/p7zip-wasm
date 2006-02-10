@@ -6,9 +6,12 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
+# Include dpatch stuff.
+include /usr/share/dpatch/dpatch.make
+
 build: build-stamp
 
-build-stamp:
+build-stamp: patch-stamp
 	dh_testdir
 
 	# Add here commands to compile the package.
@@ -16,7 +19,7 @@ build-stamp:
 
 	touch build-stamp
 
-clean:
+clean: unpatch
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp
@@ -52,13 +55,11 @@ binary-arch: build install
 	dh_install  bin/7za usr/bin
 	dh_install  bin/Codecs usr/lib/p7zip
 	dh_install  bin/Formats usr/lib/p7zip
-	dh_installman man1/7z.1
-	dh_installman man1/7za.1
+	dh_installman man1/7z.1 man1/7za.1 debian/p7zip.1
 	dh_strip
 	dh_compress
 	dh_link usr/share/doc/p7zip/ChangeLog.gz usr/share/doc/p7zip/changelog.gz
 	dh_fixperms
-	chmod +x debian/p7zip/usr/share/p7zip/p7zip
 	dh_installdeb
 	dh_shlibdeps
 	dh_gencontrol
@@ -66,4 +67,4 @@ binary-arch: build install
 	dh_builddeb
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install 
+.PHONY: build clean binary-indep binary-arch binary install patch unpatch

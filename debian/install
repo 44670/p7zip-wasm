@@ -1,1 +1,1 @@
-debian/scripts/p7zip usr/share/p7zip
+debian/scripts/p7zip usr/bin

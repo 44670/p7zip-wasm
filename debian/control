@@ -2,7 +2,7 @@ Source: p7zip
 Section: utils
 Priority: optional
 Maintainer: Mohammed Adnène Trojette <adn+deb@diwi.org>
-Build-Depends: debhelper (>= 4.0.0)
+Build-Depends: debhelper (>= 4.0.0), dpatch
 Standards-Version: 3.6.2
 
 Package: p7zip

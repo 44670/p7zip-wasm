@@ -28,11 +28,17 @@
 
 typedef char CHAR;
 typedef unsigned char UCHAR;
+
+#undef BYTE
 typedef unsigned char BYTE;
+
 
 typedef short SHORT;
 typedef unsigned short USHORT;
+
+#undef WORD
 typedef unsigned short WORD;
+
 typedef short VARIANT_BOOL;
 
 typedef int INT;
@@ -41,6 +47,7 @@ typedef unsigned int UINT;
 typedef UInt32 UINT32;
 typedef INT32 LONG;   // LONG, ULONG and DWORD must be 32-bit
 typedef UINT32 ULONG;
+#undef DWORD
 typedef UINT32 DWORD;
 
 typedef Int64 LONGLONG;

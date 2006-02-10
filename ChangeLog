@@ -1,4 +1,31 @@
 
+Version 4.33
+============
+  - From Windows version of 7-zip 4.33 :
+    - Compressing speed and Memory requirements were increased.
+      Default dictionary size was increased: Fastest: 64 KB, Fast: 1 MB, 
+      Normal: 4 MB, Max: 16 MB, Ultra: 64 MB.
+    - 64-bit version now supports 1 GB dictionary
+    - 7z/LZMA now can use only these match finders: HC4, BT2, BT3, BT4
+    - Compression ratio in Zip/GZip/Deflate in Ultra mode was increased
+    - Some bugs were fixed
+
+  - fix "Bugs item #1407358" : Passwords entered are not visible on command line
+    if the target has the system function "getpass".
+
+  - fix "BCJ2" : now p7zip uses the "BCJ2" filter when the file has execute permission
+    (7-zip uses the "BCJ2" filter when the filename ends with ".dll", ".exe", ".ocx", ".sfx" or ".sys")
+
+  - patch #1390722 : no new line at end of file 
+
+  - patch #1390716 : allow compiling with gcc-4.1
+
+  - patch #1425862 : allow other make programs than GNU make
+
+  - Testing framework added ("make test" and "make test_7z")
+
+  - fix 'lstat' : p7zip can compile if 'lstat' is not available
+
 Version 4.30
 ============
   - From Windows version of 7-zip 4.30 :

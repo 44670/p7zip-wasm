@@ -23,6 +23,7 @@ extern "C" {
 
 #define WINAPI 
 
+#undef BOOL
 typedef int WINBOOL;
 typedef WINBOOL BOOL;
 

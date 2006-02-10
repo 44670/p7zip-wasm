@@ -3,15 +3,16 @@
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h
 7zDecode.o: ../../Archive/7z/7zDecode.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/7z/7zDecode.h ../../Archive/7z/../../IStream.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/7z/7zDecode.h \
+  ../../Archive/7z/../../IStream.h \
   ../../Archive/7z/../../../Common/MyUnknown.h \
   ../../Archive/7z/../../../Common/MyWindows.h \
   ../../Archive/7z/../../../Common/Types.h \
@@ -84,7 +85,7 @@
   ../../Archive/7z/../../Compress/PPMD/../../../Common/Alloc.h \
   ../../Archive/7z/../../Compress/Branch/x86.h \
   ../../Archive/7z/../../Compress/Branch/BranchCoder.h \
-  ../../../Common/MyCom.h ../../../Common/Alloc.h \
+  ../../../Common/MyCom.h ../../../Common/Types.h ../../../Common/Alloc.h \
   ../../Archive/7z/../../Compress/Branch/../../ICoder.h \
   ../../Archive/7z/../../Compress/Branch/BranchX86.h \
   ../../Archive/7z/../../Compress/Branch/x86_2.h \
@@ -99,7 +100,6 @@
   ../../Archive/7z/../../Compress/Deflate/../LZ/LZOutWindow.h \
   ../../Archive/7z/../../Compress/Deflate/../Huffman/HuffmanDecoder.h \
   ../../Archive/7z/../../Compress/Deflate/../Huffman/../../../Common/Types.h \
-  ../../Archive/7z/../../Compress/Deflate/DeflateExtConst.h \
   ../../Archive/7z/../../Compress/Deflate/DeflateConst.h \
   ../../Archive/7z/../../Compress/BZip2/BZip2Decoder.h \
   ../../Archive/7z/../../Compress/BZip2/../../ICoder.h \
@@ -114,7 +114,8 @@
   ../../Archive/7z/../../Compress/Copy/CopyCoder.h \
   ../../Archive/7z/../../Compress/Copy/../../ICoder.h \
   ../../Archive/7z/../../Compress/Copy/../../../Common/MyCom.h \
-  ../../Archive/7z/../../Crypto/7zAES/7zAES.h ../../../Common/Buffer.h \
+  ../../Archive/7z/../../Crypto/7zAES/7zAES.h ../../../Common/MyCom.h \
+  ../../../Common/Types.h ../../../Common/Buffer.h \
   ../../../Common/Vector.h \
   ../../Archive/7z/../../Crypto/7zAES/../../ICoder.h \
   ../../Archive/7z/../../Crypto/7zAES/../../IPassword.h
@@ -122,9 +123,10 @@
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/7z/7zEncode.h ../../Archive/7z/7zCompressionMode.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/7z/7zEncode.h \
+  ../../Archive/7z/7zCompressionMode.h \
   ../../Archive/7z/../../../Windows/PropVariant.h \
   ../../Archive/7z/../../../Windows/../Common/MyWindows.h \
   ../../Archive/7z/../../../Windows/../Common/Types.h \
@@ -206,13 +208,14 @@
   ../../Archive/7z/../../Compress/PPMD/../../../Common/Alloc.h \
   ../../Archive/7z/../../Compress/Branch/x86.h \
   ../../Archive/7z/../../Compress/Branch/BranchCoder.h \
-  ../../../Common/MyCom.h ../../../Common/Alloc.h \
+  ../../../Common/MyCom.h ../../../Common/Types.h ../../../Common/Alloc.h \
   ../../Archive/7z/../../Compress/Branch/../../ICoder.h \
   ../../Archive/7z/../../Compress/Branch/BranchX86.h \
   ../../Archive/7z/../../Compress/Branch/x86_2.h \
   ../../Archive/7z/../../Compress/Branch/../../../Common/MyCom.h \
   ../../Archive/7z/../../Compress/Branch/../RangeCoder/RangeCoderBit.h \
   ../../Archive/7z/../../Compress/Deflate/DeflateEncoder.h \
+  ../../../Common/MyCom.h \
   ../../Archive/7z/../../Compress/Deflate/../../ICoder.h \
   ../../Archive/7z/../../Compress/Deflate/../../Common/LSBFEncoder.h \
   ../../Archive/7z/../../Compress/Deflate/../../Common/../IStream.h \
@@ -221,7 +224,6 @@
   ../../Archive/7z/../../Compress/Deflate/../Huffman/HuffmanEncoder.h \
   ../../Archive/7z/../../Compress/Deflate/../Huffman/../../../Common/Types.h \
   ../../Archive/7z/../../Compress/Deflate/DeflateConst.h \
-  ../../Archive/7z/../../Compress/Deflate/DeflateExtConst.h \
   ../../Archive/7z/../../Compress/BZip2/BZip2Encoder.h \
   ../../Archive/7z/../../Compress/BZip2/../../ICoder.h \
   ../../Archive/7z/../../Compress/BZip2/../../../Common/MyCom.h \
@@ -233,20 +235,22 @@
   ../../Archive/7z/../../Compress/BZip2/../../Common/OutBuffer.h \
   ../../Archive/7z/../../Compress/BZip2/../Huffman/HuffmanEncoder.h \
   ../../Archive/7z/../../Compress/BZip2/../BWT/BlockSort.h \
+  ../../../Common/Types.h \
   ../../Archive/7z/../../Compress/BZip2/BZip2Const.h \
   ../../Archive/7z/../../Compress/BZip2/BZip2CRC.h \
-  ../../Archive/7z/../../Crypto/7zAES/7zAES.h ../../../Common/Buffer.h \
-  ../../../Common/Vector.h \
+  ../../../Common/Types.h ../../Archive/7z/../../Crypto/7zAES/7zAES.h \
+  ../../../Common/MyCom.h ../../../Common/Types.h \
+  ../../../Common/Buffer.h ../../../Common/Vector.h \
   ../../Archive/7z/../../Crypto/7zAES/../../ICoder.h \
   ../../Archive/7z/../../Crypto/7zAES/../../IPassword.h
 7zExtract.o: ../../Archive/7z/7zExtract.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/7z/7zHandler.h ../../Archive/7z/../IArchive.h \
-  ../../Archive/7z/../../IStream.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/7z/7zHandler.h \
+  ../../Archive/7z/../IArchive.h ../../Archive/7z/../../IStream.h \
   ../../Archive/7z/../../../Common/MyUnknown.h \
   ../../Archive/7z/../../../Common/MyWindows.h \
   ../../Archive/7z/../../../Common/Types.h \
@@ -287,7 +291,6 @@
   ../../Archive/7z/../Common/../../Common/../../Windows/Synchronization.h \
   ../../Archive/7z/../Common/../../Common/../../Windows/Defs.h \
   ../../Archive/7z/../../../Common/ComTry.h \
-  ../../Archive/7z/../../../Common/Exception.h \
   ../../Archive/7z/../../Common/StreamObjects.h \
   ../../Archive/7z/../../Common/../../Common/DynamicBuffer.h \
   ../../Archive/7z/../../Common/../../Common/Buffer.h \
@@ -300,9 +303,10 @@
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/7z/7zFolderInStream.h \
-  ../../Archive/7z/7zItem.h ../../Archive/7z/../../../Common/Buffer.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/7z/7zFolderInStream.h ../../Archive/7z/7zItem.h \
+  ../../Archive/7z/../../../Common/Buffer.h \
   ../../Archive/7z/../../../Common/Defs.h ../../Archive/7z/7zMethodID.h \
   ../../Archive/7z/../../../Common/String.h \
   ../../Archive/7z/../../../Common/Vector.h \
@@ -325,9 +329,10 @@
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/7z/7zFolderOutStream.h \
-  ../../Archive/7z/7zIn.h ../../Archive/7z/../../IStream.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/7z/7zFolderOutStream.h ../../Archive/7z/7zIn.h \
+  ../../Archive/7z/../../IStream.h \
   ../../Archive/7z/../../../Common/MyUnknown.h \
   ../../Archive/7z/../../../Common/MyWindows.h \
   ../../Archive/7z/../../../Common/Types.h \
@@ -353,10 +358,10 @@
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/7z/7zHandler.h ../../Archive/7z/../IArchive.h \
-  ../../Archive/7z/../../IStream.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/7z/7zHandler.h \
+  ../../Archive/7z/../IArchive.h ../../Archive/7z/../../IStream.h \
   ../../Archive/7z/../../../Common/MyUnknown.h \
   ../../Archive/7z/../../../Common/MyWindows.h \
   ../../Archive/7z/../../../Common/Types.h \
@@ -382,7 +387,6 @@
   ../../Archive/7z/../../../Common/IntToString.h \
   ../../Archive/7z/../../../Common/Types.h \
   ../../Archive/7z/../../../Common/ComTry.h \
-  ../../Archive/7z/../../../Common/Exception.h \
   ../../Archive/7z/../../../Windows/Defs.h \
   ../../Archive/7z/../Common/ItemNameUtils.h \
   ../../Archive/7z/../Common/../../../Common/String.h
@@ -391,9 +395,10 @@
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/7z/7zHandler.h \
-  ../../Archive/7z/../IArchive.h ../../Archive/7z/../../IStream.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/7z/7zHandler.h ../../Archive/7z/../IArchive.h \
+  ../../Archive/7z/../../IStream.h \
   ../../Archive/7z/../../../Common/MyUnknown.h \
   ../../Archive/7z/../../../Common/MyWindows.h \
   ../../Archive/7z/../../../Common/Types.h \
@@ -436,7 +441,6 @@
   ../../Archive/7z/../../../Common/CRC.h \
   ../../Archive/7z/../../../Common/Types.h ../../Archive/7z/7zUpdate.h \
   ../../Archive/7z/../../../Common/ComTry.h \
-  ../../Archive/7z/../../../Common/Exception.h \
   ../../Archive/7z/../../../Common/StringToInt.h \
   ../../Archive/7z/../../ICoder.h \
   ../../Archive/7z/../Common/ItemNameUtils.h \
@@ -445,10 +449,10 @@
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/7z/7zHeader.h ../../Archive/7z/7zMethodID.h \
-  ../../Archive/7z/../../../Common/String.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/7z/7zHeader.h \
+  ../../Archive/7z/7zMethodID.h ../../Archive/7z/../../../Common/String.h \
   ../../Archive/7z/../../../Common/Vector.h \
   ../../Archive/7z/../../../Common/Defs.h \
   ../../Archive/7z/../../../Common/Types.h
@@ -456,9 +460,10 @@
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/7z/7zIn.h ../../Archive/7z/../../IStream.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/7z/7zIn.h \
+  ../../Archive/7z/../../IStream.h \
   ../../Archive/7z/../../../Common/MyUnknown.h \
   ../../Archive/7z/../../../Common/MyWindows.h \
   ../../Archive/7z/../../../Common/Types.h \
@@ -497,9 +502,10 @@
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/7z/7zMethodID.h ../../Archive/7z/../../../Common/String.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/7z/7zMethodID.h \
+  ../../Archive/7z/../../../Common/String.h \
   ../../Archive/7z/../../../Common/Vector.h \
   ../../Archive/7z/../../../Common/Defs.h \
   ../../Archive/7z/../../../Common/Types.h
@@ -507,8 +513,9 @@
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h \
   ../../Archive/7z/../../../Common/AutoPtr.h \
   ../../Archive/7z/../../Common/StreamObjects.h \
   ../../Archive/7z/../../Common/../../Common/DynamicBuffer.h \
@@ -553,10 +560,11 @@
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/7z/7zProperties.h \
-  ../../Archive/7z/../../PropID.h ../../Archive/7z/7zHeader.h \
-  ../../Archive/7z/7zMethodID.h ../../Archive/7z/../../../Common/String.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/7z/7zProperties.h ../../Archive/7z/../../PropID.h \
+  ../../Archive/7z/7zHeader.h ../../Archive/7z/7zMethodID.h \
+  ../../Archive/7z/../../../Common/String.h \
   ../../Archive/7z/../../../Common/Vector.h \
   ../../Archive/7z/../../../Common/Defs.h \
   ../../Archive/7z/../../../Common/Types.h ../../Archive/7z/7zHandler.h \
@@ -582,9 +590,9 @@
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/7z/7zSpecStream.h \
-  ../../Archive/7z/../../IStream.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/7z/7zSpecStream.h ../../Archive/7z/../../IStream.h \
   ../../Archive/7z/../../../Common/MyUnknown.h \
   ../../Archive/7z/../../../Common/MyWindows.h \
   ../../Archive/7z/../../../Common/Types.h \
@@ -594,10 +602,10 @@
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/7z/7zUpdate.h ../../Archive/7z/7zIn.h \
-  ../../Archive/7z/../../IStream.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/7z/7zUpdate.h \
+  ../../Archive/7z/7zIn.h ../../Archive/7z/../../IStream.h \
   ../../Archive/7z/../../../Common/MyUnknown.h \
   ../../Archive/7z/../../../Common/MyWindows.h \
   ../../Archive/7z/../../../Common/Types.h \
@@ -657,10 +665,11 @@ BZip2Handler.o: ../../Archive/BZip2/BZip2Handler.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/BZip2/BZip2Handler.h \
-  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
-  ../../Archive/BZip2/../IArchive.h ../../Archive/BZip2/../../IStream.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/BZip2/BZip2Handler.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../Archive/BZip2/../IArchive.h \
+  ../../Archive/BZip2/../../IStream.h \
   ../../Archive/BZip2/../../../Common/MyUnknown.h \
   ../../Archive/BZip2/../../../Common/MyWindows.h \
   ../../Archive/BZip2/../../../Common/Types.h \
@@ -675,9 +684,8 @@ BZip2Handler.o: ../../Archive/BZip2/BZip2Handler.cpp \
   ../../Archive/BZip2/../../Common/../IStream.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../../Windows/Defs.h \
-  ../../../Common/ComTry.h ../../../Common/Exception.h \
-  ../../Archive/BZip2/../Common/DummyOutStream.h \
-  ../../Archive/BZip2/../Common/../../IStream.h \
+  ../../../Common/ComTry.h ../../Archive/BZip2/../Common/DummyOutStream.h \
+  ../../Archive/BZip2/../Common/../../IStream.h ../../../Common/MyCom.h \
   ../../Archive/BZip2/../../Compress/BZip2/BZip2Decoder.h \
   ../../Archive/BZip2/../../Compress/BZip2/../../ICoder.h \
   ../../Archive/BZip2/../../Compress/BZip2/../../../Common/MyCom.h \
@@ -695,10 +703,11 @@ BZip2HandlerOut.o: ../../Archive/BZip2/BZip2HandlerOut.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/BZip2/BZip2Handler.h \
-  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
-  ../../Archive/BZip2/../IArchive.h ../../Archive/BZip2/../../IStream.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/BZip2/BZip2Handler.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../Archive/BZip2/../IArchive.h \
+  ../../Archive/BZip2/../../IStream.h \
   ../../Archive/BZip2/../../../Common/MyUnknown.h \
   ../../Archive/BZip2/../../../Common/MyWindows.h \
   ../../Archive/BZip2/../../../Common/Types.h \
@@ -718,8 +727,8 @@ BZip2Update.o: ../../Archive/BZip2/BZip2Update.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../Archive/BZip2/../../Common/ProgressUtils.h \
   ../../Archive/BZip2/../../Common/../../Common/MyCom.h \
   ../../Archive/BZip2/../../Common/../../Common/MyWindows.h \
@@ -746,15 +755,18 @@ BZip2Update.o: ../../Archive/BZip2/BZip2Update.cpp \
   ../../Archive/BZip2/../../Compress/BZip2/../Huffman/HuffmanEncoder.h \
   ../../Archive/BZip2/../../Compress/BZip2/../Huffman/../../../Common/Types.h \
   ../../Archive/BZip2/../../Compress/BZip2/../BWT/BlockSort.h \
+  ../../../Common/Types.h \
   ../../Archive/BZip2/../../Compress/BZip2/BZip2Const.h \
-  ../../Archive/BZip2/../../Compress/BZip2/BZip2CRC.h
+  ../../Archive/BZip2/../../Compress/BZip2/BZip2CRC.h \
+  ../../../Common/Types.h
 CoderMixer2.o: ../../Archive/Common/CoderMixer2.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/Common/CoderMixer2.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/Common/CoderMixer2.h \
   ../../Archive/Common/../../../Common/Vector.h \
   ../../Archive/Common/../../../Common/Defs.h \
   ../../Archive/Common/../../../Common/Types.h \
@@ -769,9 +781,9 @@ CoderMixer2MT.o: ../../Archive/Common/CoderMixer2MT.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/Common/CoderMixer2MT.h \
-  ../../Archive/Common/CoderMixer2.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/Common/CoderMixer2MT.h ../../Archive/Common/CoderMixer2.h \
   ../../Archive/Common/../../../Common/Vector.h \
   ../../Archive/Common/../../../Common/Defs.h \
   ../../Archive/Common/../../../Common/Types.h \
@@ -794,8 +806,8 @@ CrossThreadProgress.o: ../../Archive/Common/CrossThreadProgress.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../Archive/Common/CrossThreadProgress.h \
   ../../Archive/Common/../../ICoder.h \
   ../../Archive/Common/../../IStream.h \
@@ -810,8 +822,9 @@ DummyOutStream.o: ../../Archive/Common/DummyOutStream.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/Common/DummyOutStream.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/Common/DummyOutStream.h \
   ../../Archive/Common/../../IStream.h \
   ../../Archive/Common/../../../Common/MyUnknown.h \
   ../../Archive/Common/../../../Common/MyWindows.h \
@@ -822,8 +835,9 @@ FilterCoder.o: ../../Archive/Common/FilterCoder.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/Common/FilterCoder.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/Common/FilterCoder.h \
   ../../Archive/Common/../../../Common/MyCom.h \
   ../../Archive/Common/../../../Common/MyWindows.h \
   ../../Archive/Common/../../ICoder.h \
@@ -840,8 +854,9 @@ InStreamWithCRC.o: ../../Archive/Common/InStreamWithCRC.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/Common/InStreamWithCRC.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/Common/InStreamWithCRC.h \
   ../../Archive/Common/../../../Common/CRC.h \
   ../../Archive/Common/../../../Common/Types.h \
   ../../Archive/Common/../../../Common/MyCom.h \
@@ -854,8 +869,9 @@ ItemNameUtils.o: ../../Archive/Common/ItemNameUtils.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/Common/ItemNameUtils.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/Common/ItemNameUtils.h \
   ../../Archive/Common/../../../Common/String.h \
   ../../Archive/Common/../../../Common/Vector.h \
   ../../Archive/Common/../../../Common/Defs.h
@@ -864,8 +880,9 @@ MultiStream.o: ../../Archive/Common/MultiStream.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/Common/MultiStream.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/Common/MultiStream.h \
   ../../Archive/Common/../../../Common/MyCom.h \
   ../../Archive/Common/../../../Common/MyWindows.h \
   ../../Archive/Common/../../../Common/Vector.h \
@@ -882,8 +899,8 @@ OutStreamWithCRC.o: ../../Archive/Common/OutStreamWithCRC.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../Archive/Common/OutStreamWithCRC.h \
   ../../Archive/Common/../../../Common/CRC.h \
   ../../Archive/Common/../../../Common/Types.h \
@@ -897,26 +914,27 @@ GZipHandler.o: ../../Archive/GZip/GZipHandler.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/GZip/GZipHandler.h \
-  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
-  ../../Archive/GZip/../IArchive.h ../../Archive/GZip/../../IStream.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/GZip/GZipHandler.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../Archive/GZip/../IArchive.h \
+  ../../Archive/GZip/../../IStream.h \
   ../../Archive/GZip/../../../Common/MyUnknown.h \
   ../../Archive/GZip/../../../Common/MyWindows.h \
   ../../Archive/GZip/../../../Common/Types.h \
   ../../Archive/GZip/../../IProgress.h ../../Archive/GZip/../../PropID.h \
   ../../Archive/GZip/GZipIn.h ../../Archive/GZip/GZipHeader.h \
-  ../../Archive/GZip/GZipItem.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h \
-  ../../../Common/Buffer.h ../../../Common/CRC.h \
+  ../../../Common/Types.h ../../Archive/GZip/GZipItem.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/Buffer.h ../../../Common/CRC.h \
   ../../Archive/GZip/../../IStream.h ../../Archive/GZip/GZipUpdate.h \
   ../../Archive/GZip/GZipOut.h ../../../Common/Defs.h \
-  ../../../Common/StringConvert.h ../../../Common/ComTry.h \
-  ../../../Common/Exception.h ../../../Windows/PropVariant.h \
+  ../../../Common/StringConvert.h ../../../Common/String.h \
+  ../../../Common/ComTry.h ../../../Windows/PropVariant.h \
   ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../../Windows/Time.h \
-  ../../../Windows/Defs.h ../../Archive/GZip/../../ICoder.h \
-  ../../Archive/GZip/../../IStream.h \
+  ../../../Common/Types.h ../../../Windows/Defs.h \
+  ../../Archive/GZip/../../ICoder.h ../../Archive/GZip/../../IStream.h \
   ../../Archive/GZip/../../Common/ProgressUtils.h \
   ../../Archive/GZip/../../Common/../../Common/MyCom.h \
   ../../Archive/GZip/../../Common/../ICoder.h \
@@ -939,32 +957,32 @@ GZipHandler.o: ../../Archive/GZip/GZipHandler.cpp \
   ../../Archive/GZip/../../Compress/Deflate/../LZ/../../Common/../../Common/MyCom.h \
   ../../Archive/GZip/../../Compress/Deflate/../Huffman/HuffmanDecoder.h \
   ../../Archive/GZip/../../Compress/Deflate/../Huffman/../../../Common/Types.h \
-  ../../Archive/GZip/../../Compress/Deflate/DeflateExtConst.h \
   ../../Archive/GZip/../../Compress/Deflate/DeflateConst.h
 GZipHandlerOut.o: ../../Archive/GZip/GZipHandlerOut.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/GZip/GZipHandler.h \
-  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
-  ../../Archive/GZip/../IArchive.h ../../Archive/GZip/../../IStream.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/GZip/GZipHandler.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../Archive/GZip/../IArchive.h \
+  ../../Archive/GZip/../../IStream.h \
   ../../Archive/GZip/../../../Common/MyUnknown.h \
   ../../Archive/GZip/../../../Common/MyWindows.h \
   ../../Archive/GZip/../../../Common/Types.h \
   ../../Archive/GZip/../../IProgress.h ../../Archive/GZip/../../PropID.h \
   ../../Archive/GZip/GZipIn.h ../../Archive/GZip/GZipHeader.h \
-  ../../Archive/GZip/GZipItem.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h \
-  ../../../Common/Buffer.h ../../../Common/CRC.h \
+  ../../../Common/Types.h ../../Archive/GZip/GZipItem.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/Buffer.h ../../../Common/CRC.h \
   ../../Archive/GZip/../../IStream.h ../../Archive/GZip/GZipUpdate.h \
   ../../Archive/GZip/GZipOut.h ../../../Common/StringConvert.h \
-  ../../../Common/StringToInt.h ../../../Windows/Time.h \
-  ../../../Windows/Defs.h ../../../Windows/FileFind.h \
-  ../../../Windows/../Common/String.h ../../../Windows/FileName.h \
-  ../../../Windows/Defs.h ../../../Windows/PropVariant.h \
-  ../../../Windows/../Common/MyWindows.h \
+  ../../../Common/String.h ../../../Common/StringToInt.h \
+  ../../../Windows/Time.h ../../../Common/Types.h ../../../Windows/Defs.h \
+  ../../../Windows/FileFind.h ../../../Windows/../Common/String.h \
+  ../../../Windows/FileName.h ../../../Windows/Defs.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
   ../../Archive/GZip/../../Compress/Copy/CopyCoder.h \
   ../../Archive/GZip/../../Compress/Copy/../../ICoder.h \
@@ -975,15 +993,17 @@ GZipHeader.o: ../../Archive/GZip/GZipHeader.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/GZip/GZipHeader.h
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/GZip/GZipHeader.h ../../../Common/Types.h
 GZipIn.o: ../../Archive/GZip/GZipIn.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/GZip/GZipIn.h ../../Archive/GZip/GZipHeader.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/GZip/GZipIn.h \
+  ../../Archive/GZip/GZipHeader.h ../../../Common/Types.h \
   ../../Archive/GZip/GZipItem.h ../../../Common/String.h \
   ../../../Common/Vector.h ../../../Common/Defs.h \
   ../../../Common/Buffer.h ../../../Common/CRC.h \
@@ -998,10 +1018,11 @@ GZipOut.o: ../../Archive/GZip/GZipOut.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/GZip/GZipOut.h ../../../Common/MyCom.h \
-  ../../../Common/MyWindows.h ../../Archive/GZip/GZipHeader.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/GZip/GZipOut.h \
+  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../Archive/GZip/GZipHeader.h ../../../Common/Types.h \
   ../../Archive/GZip/GZipItem.h ../../../Common/String.h \
   ../../../Common/Vector.h ../../../Common/Defs.h \
   ../../../Common/Buffer.h ../../Archive/GZip/../../IStream.h \
@@ -1015,19 +1036,21 @@ GZipUpdate.o: ../../Archive/GZip/GZipUpdate.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/GZip/GZipUpdate.h \
-  ../../Archive/GZip/../IArchive.h ../../Archive/GZip/../../IStream.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/GZip/GZipUpdate.h ../../Archive/GZip/../IArchive.h \
+  ../../Archive/GZip/../../IStream.h \
   ../../Archive/GZip/../../../Common/MyUnknown.h \
   ../../Archive/GZip/../../../Common/MyWindows.h \
   ../../Archive/GZip/../../../Common/Types.h \
   ../../Archive/GZip/../../IProgress.h ../../Archive/GZip/../../PropID.h \
   ../../Archive/GZip/GZipOut.h ../../../Common/MyCom.h \
   ../../../Common/MyWindows.h ../../Archive/GZip/GZipHeader.h \
-  ../../Archive/GZip/GZipItem.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h \
-  ../../../Common/Buffer.h ../../Archive/GZip/../../IStream.h \
-  ../../../Common/Defs.h ../../../Common/StringConvert.h \
+  ../../../Common/Types.h ../../Archive/GZip/GZipItem.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/Buffer.h \
+  ../../Archive/GZip/../../IStream.h ../../../Common/Defs.h \
+  ../../../Common/StringConvert.h ../../../Common/String.h \
   ../../../Windows/Defs.h ../../../Windows/PropVariant.h \
   ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../Archive/GZip/../../ICoder.h \
@@ -1045,6 +1068,7 @@ GZipUpdate.o: ../../Archive/GZip/GZipUpdate.cpp \
   ../../Archive/GZip/../Common/../../../Common/MyCom.h \
   ../../Archive/GZip/../Common/../../IStream.h \
   ../../Archive/GZip/../../Compress/Deflate/DeflateEncoder.h \
+  ../../../Common/MyCom.h \
   ../../Archive/GZip/../../Compress/Deflate/../../ICoder.h \
   ../../Archive/GZip/../../Compress/Deflate/../../Common/LSBFEncoder.h \
   ../../Archive/GZip/../../Compress/Deflate/../../Common/../IStream.h \
@@ -1053,27 +1077,26 @@ GZipUpdate.o: ../../Archive/GZip/GZipUpdate.cpp \
   ../../Archive/GZip/../../Compress/Deflate/../LZ/IMatchFinder.h \
   ../../Archive/GZip/../../Compress/Deflate/../Huffman/HuffmanEncoder.h \
   ../../Archive/GZip/../../Compress/Deflate/../Huffman/../../../Common/Types.h \
-  ../../Archive/GZip/../../Compress/Deflate/DeflateConst.h \
-  ../../Archive/GZip/../../Compress/Deflate/DeflateExtConst.h
+  ../../Archive/GZip/../../Compress/Deflate/DeflateConst.h
 SplitHandler.o: ../../Archive/Split/SplitHandler.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/Split/SplitHandler.h \
-  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../Archive/Split/../IArchive.h \
-  ../../Archive/Split/../../IStream.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/Split/SplitHandler.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../Archive/Split/../IArchive.h ../../Archive/Split/../../IStream.h \
   ../../Archive/Split/../../../Common/MyUnknown.h \
   ../../Archive/Split/../../../Common/MyWindows.h \
   ../../Archive/Split/../../../Common/Types.h \
   ../../Archive/Split/../../IProgress.h \
   ../../Archive/Split/../../PropID.h ../../../Common/Defs.h \
-  ../../../Common/StringConvert.h ../../../Common/NewHandler.h \
-  ../../../Common/ComTry.h ../../../Common/Exception.h \
-  ../../../Windows/Time.h ../../../Windows/Defs.h \
+  ../../../Common/StringConvert.h ../../../Common/String.h \
+  ../../../Common/NewHandler.h ../../../Common/ComTry.h \
+  ../../../Windows/Time.h ../../../Common/Types.h ../../../Windows/Defs.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
   ../../Archive/Split/../../Common/ProgressUtils.h \
@@ -1095,23 +1118,24 @@ TarHandler.o: ../../Archive/Tar/TarHandler.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/Tar/TarHandler.h \
-  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
-  ../../Archive/Tar/../IArchive.h ../../Archive/Tar/../../IStream.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/Tar/TarHandler.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../Archive/Tar/../IArchive.h \
+  ../../Archive/Tar/../../IStream.h \
   ../../Archive/Tar/../../../Common/MyUnknown.h \
   ../../Archive/Tar/../../../Common/MyWindows.h \
   ../../Archive/Tar/../../../Common/Types.h \
   ../../Archive/Tar/../../IProgress.h ../../Archive/Tar/../../PropID.h \
-  ../../Archive/Tar/TarItem.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h \
-  ../../Archive/Tar/../Common/ItemNameUtils.h \
+  ../../Archive/Tar/TarItem.h ../../../Common/Types.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../Archive/Tar/../Common/ItemNameUtils.h \
   ../../Archive/Tar/../Common/../../../Common/String.h \
   ../../Archive/Tar/TarHeader.h ../../Archive/Tar/TarIn.h \
   ../../Archive/Tar/../../IStream.h ../../../Common/Defs.h \
-  ../../../Common/StringConvert.h ../../../Common/NewHandler.h \
-  ../../../Common/ComTry.h ../../../Common/Exception.h \
-  ../../../Windows/Time.h ../../../Windows/Defs.h \
+  ../../../Common/StringConvert.h ../../../Common/String.h \
+  ../../../Common/NewHandler.h ../../../Common/ComTry.h \
+  ../../../Windows/Time.h ../../../Common/Types.h ../../../Windows/Defs.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
   ../../Archive/Tar/../../Common/ProgressUtils.h \
@@ -1129,14 +1153,15 @@ TarHandlerOut.o: ../../Archive/Tar/TarHandlerOut.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../../Common/StringConvert.h \
-  ../../../Common/MyWindows.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h \
-  ../../../Common/ComTry.h ../../../Common/Exception.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/ComTry.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../../Windows/Time.h \
-  ../../../Windows/Defs.h ../../Archive/Tar/../Common/ItemNameUtils.h \
+  ../../../Common/Types.h ../../../Windows/Defs.h \
+  ../../Archive/Tar/../Common/ItemNameUtils.h \
   ../../Archive/Tar/../Common/../../../Common/String.h \
   ../../Archive/Tar/TarHandler.h ../../../Common/MyCom.h \
   ../../Archive/Tar/../IArchive.h ../../Archive/Tar/../../IStream.h \
@@ -1144,28 +1169,32 @@ TarHandlerOut.o: ../../Archive/Tar/TarHandlerOut.cpp \
   ../../Archive/Tar/../../../Common/MyWindows.h \
   ../../Archive/Tar/../../../Common/Types.h \
   ../../Archive/Tar/../../IProgress.h ../../Archive/Tar/../../PropID.h \
-  ../../Archive/Tar/TarItem.h ../../Archive/Tar/TarHeader.h \
+  ../../Archive/Tar/TarItem.h ../../../Common/Types.h \
+  ../../../Common/String.h ../../Archive/Tar/TarHeader.h \
   ../../Archive/Tar/TarUpdate.h ../../../Common/Vector.h
 TarHeader.o: ../../Archive/Tar/TarHeader.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/Tar/TarHeader.h
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/Tar/TarHeader.h \
+  ../../../Common/Types.h
 TarIn.o: ../../Archive/Tar/TarIn.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/Tar/TarIn.h ../../../Common/MyCom.h \
-  ../../../Common/MyWindows.h ../../Archive/Tar/../../IStream.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/Tar/TarIn.h \
+  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../Archive/Tar/../../IStream.h \
   ../../Archive/Tar/../../../Common/MyUnknown.h \
   ../../Archive/Tar/../../../Common/MyWindows.h \
   ../../Archive/Tar/../../../Common/Types.h ../../Archive/Tar/TarItem.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../Archive/Tar/../Common/ItemNameUtils.h \
+  ../../../Common/Types.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../Archive/Tar/../Common/ItemNameUtils.h \
   ../../Archive/Tar/../Common/../../../Common/String.h \
   ../../Archive/Tar/TarHeader.h ../../../Common/StringToInt.h \
   ../../../Windows/Defs.h ../../Archive/Tar/../../Common/StreamUtils.h \
@@ -1174,9 +1203,10 @@ TarOut.o: ../../Archive/Tar/TarOut.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/Tar/TarOut.h ../../Archive/Tar/TarItem.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/Tar/TarOut.h \
+  ../../Archive/Tar/TarItem.h ../../../Common/Types.h \
   ../../../Common/String.h ../../../Common/Vector.h \
   ../../../Common/Defs.h ../../Archive/Tar/../Common/ItemNameUtils.h \
   ../../Archive/Tar/../Common/../../../Common/String.h \
@@ -1191,11 +1221,12 @@ TarUpdate.o: ../../Archive/Tar/TarUpdate.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../../Common/Defs.h ../../../Common/StringConvert.h \
-  ../../../Common/MyWindows.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Windows/Defs.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Common/Defs.h \
+  ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Windows/Defs.h \
   ../../Archive/Tar/../../Common/ProgressUtils.h \
   ../../Archive/Tar/../../Common/../../Common/MyCom.h \
   ../../Archive/Tar/../../Common/../../Common/MyWindows.h \
@@ -1210,6 +1241,7 @@ TarUpdate.o: ../../Archive/Tar/TarUpdate.cpp ../../../myWindows/StdAfx.h \
   ../../Archive/Tar/../../Compress/Copy/../../ICoder.h \
   ../../Archive/Tar/../../Compress/Copy/../../../Common/MyCom.h \
   ../../Archive/Tar/TarOut.h ../../Archive/Tar/TarItem.h \
+  ../../../Common/Types.h ../../../Common/String.h \
   ../../Archive/Tar/../Common/ItemNameUtils.h \
   ../../Archive/Tar/../Common/../../../Common/String.h \
   ../../Archive/Tar/TarHeader.h ../../../Common/MyCom.h \
@@ -1222,9 +1254,10 @@ ZipAddCommon.o: ../../Archive/Zip/ZipAddCommon.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../../Common/CRC.h \
-  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Common/CRC.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../../Windows/Defs.h \
   ../../Archive/Zip/../../ICoder.h ../../Archive/Zip/../../IStream.h \
   ../../Archive/Zip/../../../Common/MyUnknown.h \
@@ -1248,11 +1281,13 @@ ZipAddCommon.o: ../../Archive/Zip/ZipAddCommon.cpp \
   ../../Archive/Zip/ZipCompressionMode.h ../../../Common/Vector.h \
   ../../../Common/String.h ../../Archive/Zip/../../Crypto/Zip/ZipCipher.h \
   ../../../Common/MyCom.h ../../../Common/Random.h \
+  ../../../Common/Types.h \
   ../../Archive/Zip/../../Crypto/Zip/../../ICoder.h \
   ../../Archive/Zip/../../Crypto/Zip/../../IPassword.h \
   ../../Archive/Zip/../../Crypto/Zip/ZipCrypto.h \
-  ../../Archive/Zip/ZipHeader.h \
+  ../../Archive/Zip/ZipHeader.h ../../../Common/Types.h \
   ../../Archive/Zip/../../Compress/Deflate/DeflateEncoder.h \
+  ../../../Common/MyCom.h \
   ../../Archive/Zip/../../Compress/Deflate/../../ICoder.h \
   ../../Archive/Zip/../../Compress/Deflate/../../Common/LSBFEncoder.h \
   ../../Archive/Zip/../../Compress/Deflate/../../Common/../IStream.h \
@@ -1262,7 +1297,6 @@ ZipAddCommon.o: ../../Archive/Zip/ZipAddCommon.cpp \
   ../../Archive/Zip/../../Compress/Deflate/../Huffman/HuffmanEncoder.h \
   ../../Archive/Zip/../../Compress/Deflate/../Huffman/../../../Common/Types.h \
   ../../Archive/Zip/../../Compress/Deflate/DeflateConst.h \
-  ../../Archive/Zip/../../Compress/Deflate/DeflateExtConst.h \
   ../../Archive/Zip/../../Compress/BZip2/BZip2Encoder.h \
   ../../Archive/Zip/../../Compress/BZip2/../../ICoder.h \
   ../../Archive/Zip/../../Compress/BZip2/../../../Common/MyCom.h \
@@ -1275,18 +1309,20 @@ ZipAddCommon.o: ../../Archive/Zip/ZipAddCommon.cpp \
   ../../Archive/Zip/../../Compress/BZip2/../../Common/OutBuffer.h \
   ../../Archive/Zip/../../Compress/BZip2/../Huffman/HuffmanEncoder.h \
   ../../Archive/Zip/../../Compress/BZip2/../BWT/BlockSort.h \
+  ../../../Common/Types.h \
   ../../Archive/Zip/../../Compress/BZip2/BZip2Const.h \
-  ../../Archive/Zip/../../Compress/BZip2/BZip2CRC.h
+  ../../Archive/Zip/../../Compress/BZip2/BZip2CRC.h \
+  ../../../Common/Types.h
 ZipHandler.o: ../../Archive/Zip/ZipHandler.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/Zip/ZipHandler.h \
-  ../../../Common/DynamicBuffer.h ../../../Common/Buffer.h \
-  ../../../Common/Defs.h ../../Archive/Zip/../../ICoder.h \
-  ../../Archive/Zip/../../IStream.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/Zip/ZipHandler.h ../../../Common/DynamicBuffer.h \
+  ../../../Common/Buffer.h ../../../Common/Defs.h \
+  ../../Archive/Zip/../../ICoder.h ../../Archive/Zip/../../IStream.h \
   ../../Archive/Zip/../../../Common/MyUnknown.h \
   ../../Archive/Zip/../../../Common/MyWindows.h \
   ../../Archive/Zip/../../../Common/Types.h \
@@ -1294,15 +1330,15 @@ ZipHandler.o: ../../Archive/Zip/ZipHandler.cpp \
   ../../Archive/Zip/../../IProgress.h ../../Archive/Zip/../../PropID.h \
   ../../Archive/Zip/ZipIn.h ../../../Common/MyCom.h \
   ../../../Common/MyWindows.h ../../Archive/Zip/../../IStream.h \
-  ../../Archive/Zip/ZipHeader.h ../../Archive/Zip/ZipItemEx.h \
-  ../../Archive/Zip/ZipItem.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Buffer.h \
-  ../../Archive/Zip/ZipCompressionMode.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../../Common/CRC.h \
-  ../../../Common/StringConvert.h ../../../Common/ComTry.h \
-  ../../../Common/Exception.h ../../../Windows/Time.h \
-  ../../../Windows/Defs.h ../../../Windows/PropVariant.h \
-  ../../../Windows/../Common/MyWindows.h \
+  ../../Archive/Zip/ZipHeader.h ../../../Common/Types.h \
+  ../../Archive/Zip/ZipItemEx.h ../../Archive/Zip/ZipItem.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Buffer.h ../../Archive/Zip/ZipCompressionMode.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Common/CRC.h \
+  ../../../Common/StringConvert.h ../../../Common/String.h \
+  ../../../Common/ComTry.h ../../../Windows/Time.h \
+  ../../../Common/Types.h ../../../Windows/Defs.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../Archive/Zip/../../IPassword.h \
   ../../Archive/Zip/../../Common/ProgressUtils.h \
   ../../Archive/Zip/../../Common/../../Common/MyCom.h \
@@ -1351,7 +1387,6 @@ ZipHandler.o: ../../Archive/Zip/ZipHandler.cpp \
   ../../Archive/Zip/../../Compress/Deflate/../LZ/LZOutWindow.h \
   ../../Archive/Zip/../../Compress/Deflate/../Huffman/HuffmanDecoder.h \
   ../../Archive/Zip/../../Compress/Deflate/../Huffman/../../../Common/Types.h \
-  ../../Archive/Zip/../../Compress/Deflate/DeflateExtConst.h \
   ../../Archive/Zip/../../Compress/Deflate/DeflateConst.h \
   ../../Archive/Zip/../../Compress/BZip2/BZip2Decoder.h \
   ../../Archive/Zip/../../Compress/BZip2/../../ICoder.h \
@@ -1363,7 +1398,8 @@ ZipHandler.o: ../../Archive/Zip/ZipHandler.cpp \
   ../../Archive/Zip/../../Compress/BZip2/../../Common/OutBuffer.h \
   ../../Archive/Zip/../../Compress/BZip2/../Huffman/HuffmanDecoder.h \
   ../../Archive/Zip/../../Compress/BZip2/BZip2Const.h \
-  ../../Archive/Zip/../../Crypto/Zip/ZipCipher.h ../../../Common/Random.h \
+  ../../Archive/Zip/../../Crypto/Zip/ZipCipher.h ../../../Common/MyCom.h \
+  ../../../Common/Random.h ../../../Common/Types.h \
   ../../Archive/Zip/../../Crypto/Zip/../../ICoder.h \
   ../../Archive/Zip/../../Crypto/Zip/../../IPassword.h \
   ../../Archive/Zip/../../Crypto/Zip/ZipCrypto.h
@@ -1372,11 +1408,11 @@ ZipHandlerOut.o: ../../Archive/Zip/ZipHandlerOut.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Archive/Zip/ZipHandler.h \
-  ../../../Common/DynamicBuffer.h ../../../Common/Buffer.h \
-  ../../../Common/Defs.h ../../Archive/Zip/../../ICoder.h \
-  ../../Archive/Zip/../../IStream.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/Zip/ZipHandler.h ../../../Common/DynamicBuffer.h \
+  ../../../Common/Buffer.h ../../../Common/Defs.h \
+  ../../Archive/Zip/../../ICoder.h ../../Archive/Zip/../../IStream.h \
   ../../Archive/Zip/../../../Common/MyUnknown.h \
   ../../Archive/Zip/../../../Common/MyWindows.h \
   ../../Archive/Zip/../../../Common/Types.h \
@@ -1384,41 +1420,45 @@ ZipHandlerOut.o: ../../Archive/Zip/ZipHandlerOut.cpp \
   ../../Archive/Zip/../../IProgress.h ../../Archive/Zip/../../PropID.h \
   ../../Archive/Zip/ZipIn.h ../../../Common/MyCom.h \
   ../../../Common/MyWindows.h ../../Archive/Zip/../../IStream.h \
-  ../../Archive/Zip/ZipHeader.h ../../Archive/Zip/ZipItemEx.h \
-  ../../Archive/Zip/ZipItem.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Buffer.h \
-  ../../Archive/Zip/ZipCompressionMode.h ../../../Common/Vector.h \
-  ../../Archive/Zip/ZipUpdate.h ../../../Common/StringConvert.h \
-  ../../../Common/ComTry.h ../../../Common/Exception.h \
-  ../../../Common/StringToInt.h ../../../Windows/PropVariant.h \
-  ../../../Windows/../Common/MyWindows.h \
+  ../../Archive/Zip/ZipHeader.h ../../../Common/Types.h \
+  ../../Archive/Zip/ZipItemEx.h ../../Archive/Zip/ZipItem.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Buffer.h ../../Archive/Zip/ZipCompressionMode.h \
+  ../../../Common/Vector.h ../../Archive/Zip/ZipUpdate.h \
+  ../../../Common/StringConvert.h ../../../Common/String.h \
+  ../../../Common/ComTry.h ../../../Common/StringToInt.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../../Windows/Time.h \
-  ../../../Windows/Defs.h ../../Archive/Zip/../../IPassword.h \
+  ../../../Common/Types.h ../../../Windows/Defs.h \
+  ../../Archive/Zip/../../IPassword.h \
   ../../Archive/Zip/../Common/ItemNameUtils.h \
   ../../Archive/Zip/../Common/../../../Common/String.h
 ZipHeader.o: ../../Archive/Zip/ZipHeader.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/Zip/ZipHeader.h
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/Zip/ZipHeader.h \
+  ../../../Common/Types.h
 ZipIn.o: ../../Archive/Zip/ZipIn.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/Zip/ZipIn.h ../../../Common/MyCom.h \
-  ../../../Common/MyWindows.h ../../Archive/Zip/../../IStream.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/Zip/ZipIn.h \
+  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../Archive/Zip/../../IStream.h \
   ../../Archive/Zip/../../../Common/MyUnknown.h \
   ../../Archive/Zip/../../../Common/MyWindows.h \
   ../../Archive/Zip/../../../Common/Types.h ../../Archive/Zip/ZipHeader.h \
-  ../../Archive/Zip/ZipItemEx.h ../../Archive/Zip/ZipItem.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../../Common/Buffer.h ../../../Windows/Defs.h \
-  ../../../Common/StringConvert.h ../../../Common/DynamicBuffer.h \
-  ../../../Common/Buffer.h \
+  ../../../Common/Types.h ../../Archive/Zip/ZipItemEx.h \
+  ../../Archive/Zip/ZipItem.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../../Common/Buffer.h ../../../Windows/Defs.h \
+  ../../../Common/StringConvert.h ../../../Common/String.h \
+  ../../../Common/DynamicBuffer.h ../../../Common/Buffer.h \
   ../../Archive/Zip/../../Common/LimitedStreams.h \
   ../../Archive/Zip/../../Common/../../Common/MyCom.h \
   ../../Archive/Zip/../../Common/../IStream.h \
@@ -1427,9 +1467,10 @@ ZipItem.o: ../../Archive/Zip/ZipItem.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/Zip/ZipHeader.h ../../Archive/Zip/ZipItem.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/Zip/ZipHeader.h \
+  ../../../Common/Types.h ../../Archive/Zip/ZipItem.h \
   ../../../Common/String.h ../../../Common/Vector.h \
   ../../../Common/Defs.h ../../../Common/Buffer.h \
   ../../Archive/Zip/../Common/ItemNameUtils.h \
@@ -1438,28 +1479,30 @@ ZipOut.o: ../../Archive/Zip/ZipOut.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/Zip/ZipOut.h ../../../Common/MyCom.h \
-  ../../../Common/MyWindows.h ../../Archive/Zip/../../IStream.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/Zip/ZipOut.h \
+  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../Archive/Zip/../../IStream.h \
   ../../Archive/Zip/../../../Common/MyUnknown.h \
   ../../Archive/Zip/../../../Common/MyWindows.h \
   ../../Archive/Zip/../../../Common/Types.h ../../Archive/Zip/ZipItem.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../../Common/Buffer.h \
-  ../../Archive/Zip/ZipHeader.h ../../../Common/StringConvert.h \
+  ../../../Common/Types.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../../Common/Buffer.h ../../Archive/Zip/ZipHeader.h \
+  ../../../Common/StringConvert.h ../../../Common/String.h \
   ../../../Common/CRC.h ../../Archive/Zip/../../Common/OffsetStream.h \
-  ../../Archive/Zip/../../Common/../IStream.h \
+  ../../../Common/MyCom.h ../../Archive/Zip/../../Common/../IStream.h \
   ../../Archive/Zip/../../Common/StreamUtils.h
 ZipUpdate.o: ../../Archive/Zip/ZipUpdate.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/Zip/ZipUpdate.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../Archive/Zip/../../ICoder.h \
-  ../../Archive/Zip/../../IStream.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/Zip/ZipUpdate.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Common/Types.h \
+  ../../Archive/Zip/../../ICoder.h ../../Archive/Zip/../../IStream.h \
   ../../Archive/Zip/../../../Common/MyUnknown.h \
   ../../Archive/Zip/../../../Common/MyWindows.h \
   ../../Archive/Zip/../../../Common/Types.h \
@@ -1481,13 +1524,15 @@ ZipUpdate.o: ../../Archive/Zip/ZipUpdate.cpp ../../../myWindows/StdAfx.h \
   ../../Archive/Zip/../Common/../../IPassword.h \
   ../../Archive/Zip/../Common/../../../Common/MyUnknown.h \
   ../../Archive/Zip/../Common/../../../Common/Types.h \
-  ../../Archive/Zip/../../Crypto/Zip/ZipCipher.h ../../../Common/Random.h \
+  ../../Archive/Zip/../../Crypto/Zip/ZipCipher.h ../../../Common/MyCom.h \
+  ../../../Common/Random.h ../../../Common/Types.h \
   ../../Archive/Zip/../../Crypto/Zip/../../ICoder.h \
   ../../Archive/Zip/../../Crypto/Zip/../../IPassword.h \
   ../../Archive/Zip/../../Crypto/Zip/ZipCrypto.h \
   ../../Archive/Zip/ZipOut.h ../../../Common/Defs.h \
   ../../../Common/AutoPtr.h ../../../Common/StringConvert.h \
-  ../../../Windows/Defs.h ../../Archive/Zip/../../Common/ProgressUtils.h \
+  ../../../Common/String.h ../../../Windows/Defs.h \
+  ../../Archive/Zip/../../Common/ProgressUtils.h \
   ../../Archive/Zip/../../Common/../../Common/MyCom.h \
   ../../Archive/Zip/../../Common/../ICoder.h \
   ../../Archive/Zip/../../Common/../IProgress.h \
@@ -1501,11 +1546,11 @@ ZHandler.o: ../../Archive/Z/ZHandler.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Archive/Z/ZHandler.h ../../../Common/MyCom.h \
-  ../../../Common/MyWindows.h ../../Archive/Z/../IArchive.h \
-  ../../Archive/Z/../../IStream.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Archive/Z/ZHandler.h \
+  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../Archive/Z/../IArchive.h ../../Archive/Z/../../IStream.h \
   ../../Archive/Z/../../../Common/MyUnknown.h \
   ../../Archive/Z/../../../Common/MyWindows.h \
   ../../Archive/Z/../../../Common/Types.h \
@@ -1522,18 +1567,17 @@ ZHandler.o: ../../Archive/Z/ZHandler.cpp ../../../myWindows/StdAfx.h \
   ../../Archive/Z/../../Common/../IStream.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../../Windows/Defs.h \
-  ../../../Common/ComTry.h ../../../Common/Exception.h \
-  ../../Archive/Z/../Common/DummyOutStream.h \
-  ../../Archive/Z/../Common/../../IStream.h
+  ../../../Common/ComTry.h ../../Archive/Z/../Common/DummyOutStream.h \
+  ../../Archive/Z/../Common/../../IStream.h ../../../Common/MyCom.h
 FilePathAutoRename.o: ../../Common/FilePathAutoRename.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Common/FilePathAutoRename.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../../Common/Defs.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Common/FilePathAutoRename.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Common/Defs.h \
   ../../../Common/IntToString.h ../../../Windows/FileName.h \
   ../../../Windows/../Common/String.h ../../../Windows/FileFind.h \
   ../../../Windows/FileName.h ../../../Windows/Defs.h
@@ -1541,22 +1585,22 @@ FileStreams.o: ../../Common/FileStreams.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Common/FileStreams.h ../../Common/../../Windows/FileIO.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../Common/../IStream.h \
-  ../../Common/../../Common/MyUnknown.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/FileStreams.h \
+  ../../Common/../../Windows/FileIO.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
   ../../Common/../../Common/MyCom.h
 InBuffer.o: ../../Common/InBuffer.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Common/InBuffer.h ../../Common/../IStream.h \
-  ../../Common/../../Common/MyUnknown.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/InBuffer.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
   ../../Common/../../Common/MyCom.h ../../Common/../../Common/Alloc.h
 InOutTempBuffer.o: ../../Common/InOutTempBuffer.cpp \
@@ -1564,11 +1608,11 @@ InOutTempBuffer.o: ../../Common/InOutTempBuffer.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Common/InOutTempBuffer.h \
-  ../../Common/../../Windows/FileIO.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h \
-  ../../Common/../../Windows/FileDir.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Common/InOutTempBuffer.h ../../Common/../../Windows/FileIO.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../Common/../../Windows/FileDir.h \
   ../../Common/../../Windows/../Common/String.h \
   ../../Common/../../Windows/Defs.h ../../Common/../../Common/MyCom.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../IStream.h \
@@ -1579,18 +1623,19 @@ LimitedStreams.o: ../../Common/LimitedStreams.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Common/LimitedStreams.h \
-  ../../Common/../../Common/MyCom.h ../../Common/../../Common/MyWindows.h \
-  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
-  ../../Common/../../Common/Types.h ../../Common/../../Common/Defs.h
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Common/LimitedStreams.h ../../Common/../../Common/MyCom.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h ../../Common/../../Common/Types.h \
+  ../../Common/../../Common/Defs.h
 LockedStream.o: ../../Common/LockedStream.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Common/LockedStream.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/LockedStream.h \
   ../../Common/../../Windows/Synchronization.h \
   ../../Common/../../Windows/Defs.h ../../Common/../../Common/MyCom.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../IStream.h \
@@ -1599,19 +1644,19 @@ LSBFDecoder.o: ../../Common/LSBFDecoder.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Common/LSBFDecoder.h ../../Common/../IStream.h \
-  ../../Common/../../Common/MyUnknown.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/LSBFDecoder.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h
 LSBFEncoder.o: ../../Common/LSBFEncoder.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Common/LSBFEncoder.h ../../Common/../IStream.h \
-  ../../Common/../../Common/MyUnknown.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/LSBFEncoder.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
   ../../Common/OutBuffer.h ../../Common/../../Common/MyCom.h \
   ../../../Common/Defs.h
@@ -1619,29 +1664,31 @@ OffsetStream.o: ../../Common/OffsetStream.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../../Common/Defs.h ../../Common/OffsetStream.h \
-  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
-  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Common/Defs.h \
+  ../../Common/OffsetStream.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h
 StreamUtils.o: ../../Common/StreamUtils.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Common/../../Common/MyCom.h ../../Common/../../Common/MyWindows.h \
-  ../../Common/StreamUtils.h ../../Common/../IStream.h \
-  ../../Common/../../Common/MyUnknown.h ../../Common/../../Common/Types.h
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/../../Common/MyCom.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/StreamUtils.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/Types.h
 OutBuffer.o: ../../Common/OutBuffer.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Common/OutBuffer.h ../../Common/../IStream.h \
-  ../../Common/../../Common/MyUnknown.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/OutBuffer.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
   ../../Common/../../Common/MyCom.h ../../Common/../../Common/Alloc.h
 ProgressUtils.o: ../../Common/ProgressUtils.cpp \
@@ -1649,20 +1696,20 @@ ProgressUtils.o: ../../Common/ProgressUtils.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Common/ProgressUtils.h \
-  ../../Common/../../Common/MyCom.h ../../Common/../../Common/MyWindows.h \
-  ../../Common/../ICoder.h ../../Common/../IStream.h \
-  ../../Common/../../Common/MyUnknown.h ../../Common/../../Common/Types.h \
-  ../../Common/../IProgress.h
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Common/ProgressUtils.h ../../Common/../../Common/MyCom.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../ICoder.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/Types.h ../../Common/../IProgress.h
 StreamBinder.o: ../../Common/StreamBinder.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Common/StreamBinder.h ../../Common/../IStream.h \
-  ../../Common/../../Common/MyUnknown.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/StreamBinder.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
   ../../Common/../../Windows/Synchronization.h \
   ../../Common/../../Windows/Defs.h ../../Common/../../Common/Defs.h \
@@ -1672,9 +1719,9 @@ StreamObjects.o: ../../Common/StreamObjects.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Common/StreamObjects.h \
-  ../../Common/../../Common/DynamicBuffer.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Common/StreamObjects.h ../../Common/../../Common/DynamicBuffer.h \
   ../../Common/../../Common/Buffer.h ../../Common/../../Common/Defs.h \
   ../../Common/../../Common/MyCom.h ../../Common/../../Common/MyWindows.h \
   ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
@@ -1684,9 +1731,10 @@ BranchCoder.o: ../../Compress/Branch/BranchCoder.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Compress/Branch/BranchCoder.h \
-  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Compress/Branch/BranchCoder.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/Alloc.h ../../Compress/Branch/../../ICoder.h \
   ../../Compress/Branch/../../IStream.h \
   ../../Compress/Branch/../../../Common/MyUnknown.h \
@@ -1696,9 +1744,9 @@ x86_2.o: ../../Compress/Branch/x86_2.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Compress/Branch/x86_2.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Compress/Branch/x86_2.h \
   ../../Compress/Branch/../../../Common/MyCom.h \
   ../../Compress/Branch/../../../Common/MyWindows.h \
   ../../Compress/Branch/../RangeCoder/RangeCoderBit.h \
@@ -1717,10 +1765,11 @@ x86.o: ../../Compress/Branch/x86.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Compress/Branch/x86.h ../../Compress/Branch/BranchCoder.h \
-  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Compress/Branch/x86.h \
+  ../../Compress/Branch/BranchCoder.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/Alloc.h ../../Compress/Branch/../../ICoder.h \
   ../../Compress/Branch/../../IStream.h \
   ../../Compress/Branch/../../../Common/MyUnknown.h \
@@ -1732,24 +1781,26 @@ BlockSort.o: ../../Compress/BWT/BlockSort.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Compress/BWT/BlockSort.h ../../../Common/Alloc.h
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Compress/BWT/BlockSort.h \
+  ../../../Common/Types.h ../../../Common/Alloc.h
 BZip2CRC.o: ../../Compress/BZip2/BZip2CRC.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Compress/BZip2/BZip2CRC.h
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Compress/BZip2/BZip2CRC.h \
+  ../../../Common/Types.h
 BZip2Decoder.o: ../../Compress/BZip2/BZip2Decoder.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Compress/BZip2/BZip2Decoder.h \
-  ../../Compress/BZip2/../../ICoder.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Compress/BZip2/BZip2Decoder.h ../../Compress/BZip2/../../ICoder.h \
   ../../Compress/BZip2/../../IStream.h \
   ../../Compress/BZip2/../../../Common/MyUnknown.h \
   ../../Compress/BZip2/../../../Common/MyWindows.h \
@@ -1766,15 +1817,16 @@ BZip2Decoder.o: ../../Compress/BZip2/BZip2Decoder.cpp \
   ../../Compress/BZip2/BZip2Const.h \
   ../../Compress/BZip2/../../../Common/Alloc.h \
   ../../Compress/BZip2/../../../Common/Defs.h \
-  ../../Compress/BZip2/../BWT/Mtf8.h ../../Compress/BZip2/BZip2CRC.h
+  ../../Compress/BZip2/../BWT/Mtf8.h ../../../Common/Types.h \
+  ../../Compress/BZip2/BZip2CRC.h ../../../Common/Types.h
 BZip2Encoder.o: ../../Compress/BZip2/BZip2Encoder.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Compress/BZip2/BZip2Encoder.h \
-  ../../Compress/BZip2/../../ICoder.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Compress/BZip2/BZip2Encoder.h ../../Compress/BZip2/../../ICoder.h \
   ../../Compress/BZip2/../../IStream.h \
   ../../Compress/BZip2/../../../Common/MyUnknown.h \
   ../../Compress/BZip2/../../../Common/MyWindows.h \
@@ -1788,18 +1840,19 @@ BZip2Encoder.o: ../../Compress/BZip2/BZip2Encoder.cpp \
   ../../Compress/BZip2/../../Common/OutBuffer.h \
   ../../Compress/BZip2/../Huffman/HuffmanEncoder.h \
   ../../Compress/BZip2/../Huffman/../../../Common/Types.h \
-  ../../Compress/BZip2/../BWT/BlockSort.h \
+  ../../Compress/BZip2/../BWT/BlockSort.h ../../../Common/Types.h \
   ../../Compress/BZip2/BZip2Const.h ../../Compress/BZip2/BZip2CRC.h \
-  ../../Compress/BZip2/../../../Common/Alloc.h \
+  ../../../Common/Types.h ../../Compress/BZip2/../../../Common/Alloc.h \
   ../../Compress/BZip2/../BWT/Mtf8.h
 CopyCoder.o: ../../Compress/Copy/CopyCoder.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Compress/Copy/CopyCoder.h \
-  ../../Compress/Copy/../../ICoder.h ../../Compress/Copy/../../IStream.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Compress/Copy/CopyCoder.h ../../Compress/Copy/../../ICoder.h \
+  ../../Compress/Copy/../../IStream.h \
   ../../Compress/Copy/../../../Common/MyUnknown.h \
   ../../Compress/Copy/../../../Common/MyWindows.h \
   ../../Compress/Copy/../../../Common/Types.h \
@@ -1812,8 +1865,8 @@ DeflateDecoder.o: ../../Compress/Deflate/DeflateDecoder.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../Compress/Deflate/DeflateDecoder.h \
   ../../Compress/Deflate/../../../Common/MyCom.h \
   ../../Compress/Deflate/../../../Common/MyWindows.h \
@@ -1832,15 +1885,14 @@ DeflateDecoder.o: ../../Compress/Deflate/DeflateDecoder.cpp \
   ../../Compress/Deflate/../LZ/../../Common/../../Common/MyCom.h \
   ../../Compress/Deflate/../Huffman/HuffmanDecoder.h \
   ../../Compress/Deflate/../Huffman/../../../Common/Types.h \
-  ../../Compress/Deflate/DeflateExtConst.h \
   ../../Compress/Deflate/DeflateConst.h
 DeflateEncoder.o: ../../Compress/Deflate/DeflateEncoder.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../Compress/Deflate/DeflateEncoder.h ../../../Common/MyCom.h \
   ../../../Common/MyWindows.h ../../Compress/Deflate/../../ICoder.h \
   ../../Compress/Deflate/../../IStream.h \
@@ -1854,27 +1906,25 @@ DeflateEncoder.o: ../../Compress/Deflate/DeflateEncoder.cpp \
   ../../Compress/Deflate/../LZ/IMatchFinder.h \
   ../../Compress/Deflate/../Huffman/HuffmanEncoder.h \
   ../../Compress/Deflate/../Huffman/../../../Common/Types.h \
-  ../../Compress/Deflate/DeflateConst.h \
-  ../../Compress/Deflate/DeflateExtConst.h ../../../Windows/Defs.h \
-  ../../../Common/ComTry.h ../../../Common/Exception.h \
-  ../../Compress/Deflate/../../../Common/Alloc.h \
+  ../../Compress/Deflate/DeflateConst.h ../../../Windows/Defs.h \
+  ../../../Common/ComTry.h ../../Compress/Deflate/../../../Common/Alloc.h \
   ../../Compress/Deflate/../LZ/BinTree/BinTree3Z.h \
-  ../../Compress/Deflate/../LZ/BinTree/BinTree.h \
-  ../../Compress/Deflate/../LZ/BinTree/../LZInWindow.h \
-  ../../Compress/Deflate/../LZ/BinTree/../../../IStream.h \
-  ../../Compress/Deflate/../LZ/BinTree/../IMatchFinder.h \
   ../../Compress/Deflate/../LZ/BinTree/BinTreeMain.h \
   ../../Compress/Deflate/../LZ/BinTree/../../../../Common/Defs.h \
   ../../Compress/Deflate/../LZ/BinTree/../../../../Common/CRC.h \
   ../../Compress/Deflate/../LZ/BinTree/../../../../Common/Types.h \
-  ../../Compress/Deflate/../LZ/BinTree/../../../../Common/Alloc.h
+  ../../Compress/Deflate/../LZ/BinTree/../../../../Common/Alloc.h \
+  ../../Compress/Deflate/../LZ/BinTree/BinTree.h \
+  ../../Compress/Deflate/../LZ/BinTree/../LZInWindow.h \
+  ../../Compress/Deflate/../LZ/BinTree/../../../IStream.h \
+  ../../Compress/Deflate/../LZ/BinTree/../IMatchFinder.h
 HuffmanEncoder.o: ../../Compress/Huffman/HuffmanEncoder.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../Compress/Huffman/HuffmanEncoder.h \
   ../../Compress/Huffman/../../../Common/Types.h ../../../Common/Defs.h \
   ../../../Common/Alloc.h
@@ -1883,8 +1933,8 @@ ImplodeDecoder.o: ../../Compress/Implode/ImplodeDecoder.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../Compress/Implode/ImplodeDecoder.h \
   ../../Compress/Implode/../../../Common/MyCom.h \
   ../../Compress/Implode/../../../Common/MyWindows.h \
@@ -1909,8 +1959,8 @@ ImplodeHuffmanDecoder.o:  \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../Compress/Implode/ImplodeHuffmanDecoder.h \
   ../../Compress/Implode/../../Common/LSBFDecoder.h \
   ../../Compress/Implode/../../Common/../IStream.h \
@@ -1924,9 +1974,9 @@ LZInWindow.o: ../../Compress/LZ/LZInWindow.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Compress/LZ/LZInWindow.h \
-  ../../Compress/LZ/../../IStream.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Compress/LZ/LZInWindow.h ../../Compress/LZ/../../IStream.h \
   ../../Compress/LZ/../../../Common/MyUnknown.h \
   ../../Compress/LZ/../../../Common/MyWindows.h \
   ../../Compress/LZ/../../../Common/Types.h \
@@ -1937,8 +1987,8 @@ LZOutWindow.o: ../../Compress/LZ/LZOutWindow.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../Compress/LZ/../../../Common/Alloc.h \
   ../../Compress/LZ/LZOutWindow.h ../../Compress/LZ/../../IStream.h \
   ../../Compress/LZ/../../../Common/MyUnknown.h \
@@ -1953,8 +2003,9 @@ LZMADecoder.o: ../../Compress/LZMA/LZMADecoder.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Compress/LZMA/LZMADecoder.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Compress/LZMA/LZMADecoder.h \
   ../../Compress/LZMA/../../../Common/MyCom.h \
   ../../Compress/LZMA/../../../Common/MyWindows.h \
   ../../Compress/LZMA/../../../Common/Alloc.h \
@@ -1980,8 +2031,8 @@ LZMAEncoder.o: ../../Compress/LZMA/LZMAEncoder.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../Compress/LZMA/../../../Common/Defs.h \
   ../../Compress/LZMA/../../Common/StreamUtils.h \
   ../../Compress/LZMA/../../Common/../IStream.h \
@@ -2003,39 +2054,26 @@ LZMAEncoder.o: ../../Compress/LZMA/LZMAEncoder.cpp \
   ../../Compress/LZMA/../RangeCoder/../../Common/OutBuffer.h \
   ../../Compress/LZMA/../RangeCoder/RangeCoderOpt.h \
   ../../Compress/LZMA/LZMA.h ../../Compress/LZMA/../LZ/BinTree/BinTree2.h \
-  ../../Compress/LZMA/../LZ/BinTree/BinTree.h \
-  ../../Compress/LZMA/../LZ/BinTree/../LZInWindow.h \
-  ../../Compress/LZMA/../LZ/BinTree/../../../IStream.h \
-  ../../Compress/LZMA/../LZ/BinTree/../IMatchFinder.h \
   ../../Compress/LZMA/../LZ/BinTree/BinTreeMain.h \
   ../../Compress/LZMA/../LZ/BinTree/../../../../Common/Defs.h \
   ../../Compress/LZMA/../LZ/BinTree/../../../../Common/CRC.h \
   ../../Compress/LZMA/../LZ/BinTree/../../../../Common/Types.h \
   ../../Compress/LZMA/../LZ/BinTree/../../../../Common/Alloc.h \
+  ../../Compress/LZMA/../LZ/BinTree/BinTree.h \
+  ../../Compress/LZMA/../LZ/BinTree/../LZInWindow.h \
+  ../../Compress/LZMA/../LZ/BinTree/../../../IStream.h \
+  ../../Compress/LZMA/../LZ/BinTree/../IMatchFinder.h \
   ../../Compress/LZMA/../LZ/BinTree/BinTree3.h \
   ../../Compress/LZMA/../LZ/BinTree/BinTree4.h \
-  ../../Compress/LZMA/../LZ/BinTree/BinTree4b.h \
-  ../../Compress/LZMA/../LZ/Patricia/Pat2.h \
-  ../../Compress/LZMA/../LZ/Patricia/Pat.h \
-  ../../Compress/LZMA/../LZ/Patricia/../../../../Common/MyCom.h \
-  ../../Compress/LZMA/../LZ/Patricia/../../../../Common/Types.h \
-  ../../Compress/LZMA/../LZ/Patricia/../LZInWindow.h \
-  ../../Compress/LZMA/../LZ/Patricia/PatMain.h \
-  ../../Compress/LZMA/../LZ/Patricia/../../../../Common/Defs.h \
-  ../../Compress/LZMA/../LZ/Patricia/../../../../Common/Alloc.h \
-  ../../Compress/LZMA/../LZ/Patricia/Pat2H.h \
-  ../../Compress/LZMA/../LZ/Patricia/Pat3H.h \
-  ../../Compress/LZMA/../LZ/Patricia/Pat4H.h \
-  ../../Compress/LZMA/../LZ/Patricia/Pat2R.h \
-  ../../Compress/LZMA/../LZ/HashChain/HC3.h \
-  ../../Compress/LZMA/../LZ/HashChain/HC.h \
-  ../../Compress/LZMA/../LZ/HashChain/../LZInWindow.h \
-  ../../Compress/LZMA/../LZ/HashChain/../IMatchFinder.h \
-  ../../Compress/LZMA/../LZ/HashChain/HCMain.h \
-  ../../Compress/LZMA/../LZ/HashChain/../../../../Common/Defs.h \
-  ../../Compress/LZMA/../LZ/HashChain/../../../../Common/CRC.h \
-  ../../Compress/LZMA/../LZ/HashChain/../../../../Common/Alloc.h \
   ../../Compress/LZMA/../LZ/HashChain/HC4.h \
+  ../../Compress/LZMA/../LZ/HashChain/HCMain.h \
+  ../../Compress/LZMA/../LZ/HashChain/../BinTree/BinTreeMain.h \
+  ../../Compress/LZMA/../LZ/HashChain/../BinTree/../../../../Common/Defs.h \
+  ../../Compress/LZMA/../LZ/HashChain/../BinTree/../../../../Common/CRC.h \
+  ../../Compress/LZMA/../LZ/HashChain/../BinTree/../../../../Common/Alloc.h \
+  ../../Compress/LZMA/../LZ/HashChain/../BinTree/BinTree.h \
+  ../../Compress/LZMA/../LZ/HashChain/../BinTree/../LZInWindow.h \
+  ../../Compress/LZMA/../LZ/HashChain/../BinTree/../IMatchFinder.h \
   ../../Compress/LZMA/../LZ/MT/MT.h \
   ../../Compress/LZMA/../LZ/MT/../../../../Common/MyCom.h \
   ../../Compress/LZMA/../LZ/MT/../../../../Windows/Thread.h \
@@ -2047,8 +2085,9 @@ MT.o: ../../Compress/LZ/MT/MT.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h \
   ../../Compress/LZ/MT/../../../../Common/Alloc.h \
   ../../Compress/LZ/MT/MT.h \
   ../../Compress/LZ/MT/../../../../Common/MyCom.h \
@@ -2066,9 +2105,10 @@ PPMDDecoder.o: ../../Compress/PPMD/PPMDDecoder.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../../Common/Defs.h \
-  ../../../Windows/Defs.h ../../Compress/PPMD/PPMDDecoder.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Common/Defs.h ../../../Windows/Defs.h \
+  ../../Compress/PPMD/PPMDDecoder.h \
   ../../Compress/PPMD/../../../Common/MyCom.h \
   ../../Compress/PPMD/../../../Common/MyWindows.h \
   ../../Compress/PPMD/../../ICoder.h ../../Compress/PPMD/../../IStream.h \
@@ -2091,9 +2131,10 @@ PPMDEncoder.o: ../../Compress/PPMD/PPMDEncoder.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../../Windows/Defs.h \
-  ../../../Common/Defs.h ../../Compress/PPMD/../../Common/StreamUtils.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Windows/Defs.h ../../../Common/Defs.h \
+  ../../Compress/PPMD/../../Common/StreamUtils.h \
   ../../Compress/PPMD/../../Common/../IStream.h \
   ../../Compress/PPMD/../../Common/../../Common/MyUnknown.h \
   ../../Compress/PPMD/../../Common/../../Common/MyWindows.h \
@@ -2118,8 +2159,8 @@ RangeCoderBit.o: ../../Compress/RangeCoder/RangeCoderBit.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../Compress/RangeCoder/RangeCoderBit.h \
   ../../Compress/RangeCoder/RangeCoder.h \
   ../../Compress/RangeCoder/../../Common/InBuffer.h \
@@ -2134,8 +2175,9 @@ ShrinkDecoder.o: ../../Compress/Shrink/ShrinkDecoder.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Compress/Shrink/ShrinkDecoder.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Compress/Shrink/ShrinkDecoder.h \
   ../../Compress/Shrink/../../../Common/MyCom.h \
   ../../Compress/Shrink/../../../Common/MyWindows.h \
   ../../Compress/Shrink/../../ICoder.h \
@@ -2152,9 +2194,10 @@ ZDecoder.o: ../../Compress/Z/ZDecoder.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Compress/Z/ZDecoder.h ../../Compress/Z/../../../Common/MyCom.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Compress/Z/ZDecoder.h \
+  ../../Compress/Z/../../../Common/MyCom.h \
   ../../Compress/Z/../../../Common/MyWindows.h \
   ../../Compress/Z/../../ICoder.h ../../Compress/Z/../../IStream.h \
   ../../Compress/Z/../../../Common/MyUnknown.h \
@@ -2169,12 +2212,12 @@ ZDecoder.o: ../../Compress/Z/ZDecoder.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../../Windows/Defs.h ../../../Windows/Synchronization.h \
-  ../../../Windows/Defs.h ../../../Windows/FileDir.h \
-  ../../../Windows/../Common/String.h ../../../Windows/../Common/Vector.h \
-  ../../../Windows/../Common/Defs.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Windows/Defs.h \
+  ../../../Windows/Synchronization.h ../../../Windows/Defs.h \
+  ../../../Windows/FileDir.h ../../../Windows/../Common/String.h \
+  ../../../Windows/../Common/Vector.h ../../../Windows/../Common/Defs.h \
   ../../Crypto/7zAES/../../Common/StreamObjects.h \
   ../../Crypto/7zAES/../../Common/../../Common/DynamicBuffer.h \
   ../../Crypto/7zAES/../../Common/../../Common/Buffer.h \
@@ -2186,29 +2229,31 @@ ZDecoder.o: ../../Compress/Z/ZDecoder.cpp ../../../myWindows/StdAfx.h \
   ../../Crypto/7zAES/../../Common/../../Common/Types.h \
   ../../Crypto/7zAES/../../Common/StreamUtils.h \
   ../../Crypto/7zAES/7zAES.h ../../../Common/MyCom.h \
-  ../../../Common/Buffer.h ../../../Common/Vector.h \
-  ../../Crypto/7zAES/../../ICoder.h ../../Crypto/7zAES/../../IStream.h \
-  ../../Crypto/7zAES/../../IPassword.h \
+  ../../../Common/Types.h ../../../Common/Buffer.h \
+  ../../../Common/Vector.h ../../Crypto/7zAES/../../ICoder.h \
+  ../../Crypto/7zAES/../../IStream.h ../../Crypto/7zAES/../../IPassword.h \
   ../../Crypto/7zAES/../../../Common/MyUnknown.h \
   ../../Crypto/7zAES/../../../Common/Types.h \
-  ../../Crypto/7zAES/../AES/MyAES.h \
-  ../../Crypto/7zAES/../AES/../../ICoder.h \
+  ../../Crypto/7zAES/../AES/MyAES.h ../../../Common/Types.h \
+  ../../../Common/MyCom.h ../../Crypto/7zAES/../AES/../../ICoder.h \
   ../../Crypto/7zAES/../AES/AES_CBC.h ../../Crypto/7zAES/../AES/aescpp.h \
   ../../Crypto/7zAES/../AES/aes.h ../../Crypto/7zAES/SHA256.h
 SHA256.o: ../../Crypto/7zAES/SHA256.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Crypto/7zAES/SHA256.h ../../../Windows/Defs.h
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Crypto/7zAES/SHA256.h \
+  ../../../Common/Types.h ../../../Windows/Defs.h
 MyAES.o: ../../Crypto/AES/MyAES.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Crypto/AES/MyAES.h ../../../Common/MyCom.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Crypto/AES/MyAES.h \
+  ../../../Common/Types.h ../../../Common/MyCom.h \
   ../../../Common/MyWindows.h ../../Crypto/AES/../../ICoder.h \
   ../../Crypto/AES/../../IStream.h \
   ../../Crypto/AES/../../../Common/MyUnknown.h \
@@ -2220,10 +2265,11 @@ ZipCipher.o: ../../Crypto/Zip/ZipCipher.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Crypto/Zip/ZipCipher.h ../../../Common/MyCom.h \
-  ../../../Common/MyWindows.h ../../../Common/Random.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Crypto/Zip/ZipCipher.h \
+  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../../Common/Random.h ../../../Common/Types.h \
   ../../Crypto/Zip/../../ICoder.h ../../Crypto/Zip/../../IStream.h \
   ../../Crypto/Zip/../../../Common/MyUnknown.h \
   ../../Crypto/Zip/../../../Common/MyWindows.h \
@@ -2235,10 +2281,11 @@ ZipCrypto.o: ../../Crypto/Zip/ZipCrypto.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../Crypto/Zip/ZipCipher.h ../../../Common/MyCom.h \
-  ../../../Common/MyWindows.h ../../../Common/Random.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Crypto/Zip/ZipCipher.h \
+  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../../Common/Random.h ../../../Common/Types.h \
   ../../Crypto/Zip/../../ICoder.h ../../Crypto/Zip/../../IStream.h \
   ../../Crypto/Zip/../../../Common/MyUnknown.h \
   ../../Crypto/Zip/../../../Common/MyWindows.h \
@@ -2251,10 +2298,11 @@ ArchiveCommandLine.o: ../../UI/Common/ArchiveCommandLine.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../../include_windows/io.h \
-  ../../../Common/ListFileUtils.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../include_windows/io.h ../../../Common/ListFileUtils.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/Types.h \
   ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
   ../../../Common/StringToInt.h ../../../Windows/FileName.h \
   ../../../Windows/../Common/String.h ../../../Windows/FileDir.h \
@@ -2269,10 +2317,10 @@ ArchiveCommandLine.o: ../../UI/Common/ArchiveCommandLine.cpp \
   ../../UI/Common/../../Archive/../IProgress.h \
   ../../UI/Common/../../Archive/../PropID.h \
   ../../UI/Common/ArchiveExtractCallback.h \
-  ../../UI/Common/IFileExtractCallback.h ../../../Common/MyCom.h \
-  ../../UI/Common/../../Common/FileStreams.h \
+  ../../UI/Common/IFileExtractCallback.h ../../../Common/String.h \
+  ../../../Common/MyCom.h ../../UI/Common/../../Common/FileStreams.h \
   ../../UI/Common/../../Common/../../Windows/FileIO.h \
-  ../../UI/Common/../../Common/../IStream.h \
+  ../../../Common/String.h ../../UI/Common/../../Common/../IStream.h \
   ../../UI/Common/../../Common/../../Common/MyCom.h \
   ../../UI/Common/../../IPassword.h \
   ../../UI/Common/../../../Common/MyUnknown.h \
@@ -2280,20 +2328,21 @@ ArchiveCommandLine.o: ../../UI/Common/ArchiveCommandLine.cpp \
   ../../UI/Common/ArchiveOpenCallback.h ../../UI/Common/Update.h \
   ../../UI/Common/UpdateAction.h ../../UI/Common/UpdateCallback.h \
   ../../UI/Common/../Common/UpdatePair.h \
-  ../../UI/Common/../Common/DirItem.h \
+  ../../UI/Common/../Common/DirItem.h ../../../Common/Types.h \
   ../../UI/Common/../Common/UpdateAction.h \
   ../../UI/Common/../Common/../../Archive/IArchive.h \
   ../../UI/Common/../Common/UpdateProduce.h \
   ../../UI/Common/../Common/UpdatePair.h ../../UI/Common/ArchiverInfo.h \
-  ../../../Common/Buffer.h ../../UI/Common/SortUtils.h \
-  ../../UI/Common/EnumDirItems.h ../../UI/Common/DirItem.h
+  ../../../Common/Types.h ../../../Common/Buffer.h \
+  ../../UI/Common/SortUtils.h ../../UI/Common/EnumDirItems.h \
+  ../../UI/Common/DirItem.h
 ArchiveExtractCallback.o: ../../UI/Common/ArchiveExtractCallback.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../UI/Common/ArchiveExtractCallback.h \
   ../../UI/Common/../../Archive/IArchive.h \
   ../../UI/Common/../../Archive/../IStream.h \
@@ -2306,7 +2355,7 @@ ArchiveExtractCallback.o: ../../UI/Common/ArchiveExtractCallback.cpp \
   ../../../Common/Vector.h ../../../Common/Defs.h ../../../Common/MyCom.h \
   ../../../Common/MyWindows.h ../../UI/Common/../../Common/FileStreams.h \
   ../../UI/Common/../../Common/../../Windows/FileIO.h \
-  ../../UI/Common/../../Common/../IStream.h \
+  ../../../Common/String.h ../../UI/Common/../../Common/../IStream.h \
   ../../UI/Common/../../Common/../../Common/MyCom.h \
   ../../UI/Common/../../IPassword.h \
   ../../UI/Common/../../../Common/MyUnknown.h \
@@ -2315,23 +2364,24 @@ ArchiveExtractCallback.o: ../../UI/Common/ArchiveExtractCallback.cpp \
   ../../../Windows/FileDir.h ../../../Windows/../Common/String.h \
   ../../../Windows/Defs.h ../../../Windows/FileFind.h \
   ../../../Windows/FileName.h ../../../Windows/Time.h \
-  ../../../Windows/Defs.h ../../../Windows/PropVariant.h \
-  ../../../Windows/../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Windows/Defs.h ../../../Windows/Defs.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
   ../../../Windows/PropVariantConversions.h \
   ../../UI/Common/../../Common/FilePathAutoRename.h \
   ../../UI/Common/../Common/ExtractingFilePath.h \
   ../../UI/Common/OpenArchive.h ../../UI/Common/ArchiverInfo.h \
-  ../../../Common/Buffer.h ../../UI/Common/ArchiveOpenCallback.h
+  ../../../Common/Types.h ../../../Common/Buffer.h \
+  ../../UI/Common/ArchiveOpenCallback.h
 ArchiveOpenCallback.o: ../../UI/Common/ArchiveOpenCallback.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../UI/Common/ArchiveOpenCallback.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../UI/Common/ArchiveOpenCallback.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Common/MyCom.h \
   ../../../Common/MyWindows.h ../../../Windows/FileFind.h \
   ../../../Windows/../Common/String.h ../../../Windows/FileName.h \
   ../../../Windows/Defs.h ../../UI/Common/../../IPassword.h \
@@ -2344,55 +2394,59 @@ ArchiveOpenCallback.o: ../../UI/Common/ArchiveOpenCallback.cpp \
   ../../UI/Common/../../Archive/../../Common/Types.h \
   ../../UI/Common/../../Archive/../IProgress.h \
   ../../UI/Common/../../Archive/../PropID.h \
-  ../../../Common/StringConvert.h ../../../Windows/PropVariant.h \
-  ../../../Windows/../Common/MyWindows.h \
+  ../../../Common/StringConvert.h ../../../Common/String.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
   ../../UI/Common/../../Common/FileStreams.h \
   ../../UI/Common/../../Common/../../Windows/FileIO.h \
-  ../../UI/Common/../../Common/../IStream.h \
+  ../../../Common/String.h ../../UI/Common/../../Common/../IStream.h \
   ../../UI/Common/../../Common/../../Common/MyCom.h
 ArchiverInfo.o: ../../UI/Common/ArchiverInfo.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../UI/Common/ArchiverInfo.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../../Common/Buffer.h
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../UI/Common/ArchiverInfo.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Common/Types.h \
+  ../../../Common/Buffer.h
 DefaultName.o: ../../UI/Common/DefaultName.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../UI/Common/DefaultName.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../UI/Common/DefaultName.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h
 EnumDirItems.o: ../../UI/Common/EnumDirItems.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../../Common/StringConvert.h \
-  ../../../Common/MyWindows.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h \
-  ../../../Common/Wildcard.h ../../../Common/MyCom.h \
-  ../../UI/Common/EnumDirItems.h ../../UI/Common/DirItem.h \
-  ../../../Windows/FileFind.h ../../../Windows/../Common/String.h \
-  ../../../Windows/FileName.h ../../../Windows/Defs.h
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/Wildcard.h \
+  ../../../Common/MyCom.h ../../UI/Common/EnumDirItems.h \
+  ../../UI/Common/DirItem.h ../../../Common/String.h \
+  ../../../Common/Types.h ../../../Windows/FileFind.h \
+  ../../../Windows/../Common/String.h ../../../Windows/FileName.h \
+  ../../../Windows/Defs.h
 Extract.o: ../../UI/Common/Extract.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../UI/Common/Extract.h ../../../Common/Wildcard.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../../Windows/FileFind.h \
-  ../../../Windows/../Common/String.h ../../../Windows/FileName.h \
-  ../../../Windows/Defs.h ../../UI/Common/../../Archive/IArchive.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../UI/Common/Extract.h \
+  ../../../Common/Wildcard.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../../Windows/FileFind.h ../../../Windows/../Common/String.h \
+  ../../../Windows/FileName.h ../../../Windows/Defs.h \
+  ../../UI/Common/../../Archive/IArchive.h \
   ../../UI/Common/../../Archive/../IStream.h \
   ../../UI/Common/../../Archive/../../Common/MyUnknown.h \
   ../../UI/Common/../../Archive/../../Common/MyWindows.h \
@@ -2400,10 +2454,11 @@ Extract.o: ../../UI/Common/Extract.cpp ../../../myWindows/StdAfx.h \
   ../../UI/Common/../../Archive/../IProgress.h \
   ../../UI/Common/../../Archive/../PropID.h \
   ../../UI/Common/ArchiveExtractCallback.h \
-  ../../UI/Common/IFileExtractCallback.h ../../../Common/MyCom.h \
-  ../../../Common/MyWindows.h ../../UI/Common/../../Common/FileStreams.h \
+  ../../UI/Common/IFileExtractCallback.h ../../../Common/String.h \
+  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../UI/Common/../../Common/FileStreams.h \
   ../../UI/Common/../../Common/../../Windows/FileIO.h \
-  ../../UI/Common/../../Common/../IStream.h \
+  ../../../Common/String.h ../../UI/Common/../../Common/../IStream.h \
   ../../UI/Common/../../Common/../../Common/MyCom.h \
   ../../UI/Common/../../IPassword.h \
   ../../UI/Common/../../../Common/MyUnknown.h \
@@ -2412,45 +2467,47 @@ Extract.o: ../../UI/Common/Extract.cpp ../../../myWindows/StdAfx.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../../Windows/FileDir.h \
   ../../UI/Common/OpenArchive.h ../../UI/Common/ArchiverInfo.h \
-  ../../../Common/Buffer.h
+  ../../../Common/Types.h ../../../Common/Buffer.h
 ExtractingFilePath.o: ../../UI/Common/ExtractingFilePath.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../UI/Common/ExtractingFilePath.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../UI/Common/ExtractingFilePath.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h
 OpenArchive.o: ../../UI/Common/OpenArchive.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../UI/Common/OpenArchive.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../../Windows/FileFind.h \
-  ../../../Windows/../Common/String.h ../../../Windows/FileName.h \
-  ../../../Windows/Defs.h ../../UI/Common/../../Archive/IArchive.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../UI/Common/OpenArchive.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../../Windows/FileFind.h ../../../Windows/../Common/String.h \
+  ../../../Windows/FileName.h ../../../Windows/Defs.h \
+  ../../UI/Common/../../Archive/IArchive.h \
   ../../UI/Common/../../Archive/../IStream.h \
   ../../UI/Common/../../Archive/../../Common/MyUnknown.h \
   ../../UI/Common/../../Archive/../../Common/MyWindows.h \
   ../../UI/Common/../../Archive/../../Common/Types.h \
   ../../UI/Common/../../Archive/../IProgress.h \
   ../../UI/Common/../../Archive/../PropID.h \
-  ../../UI/Common/ArchiverInfo.h ../../../Common/Buffer.h \
-  ../../UI/Common/ArchiveOpenCallback.h ../../../Common/MyCom.h \
-  ../../../Common/MyWindows.h ../../UI/Common/../../IPassword.h \
+  ../../UI/Common/ArchiverInfo.h ../../../Common/Types.h \
+  ../../../Common/Buffer.h ../../UI/Common/ArchiveOpenCallback.h \
+  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../UI/Common/../../IPassword.h \
   ../../UI/Common/../../../Common/MyUnknown.h \
   ../../UI/Common/../../../Common/Types.h ../../../Common/Wildcard.h \
-  ../../../Windows/FileName.h ../../../Windows/FileDir.h \
-  ../../../Windows/Defs.h ../../../Windows/PropVariant.h \
-  ../../../Windows/../Common/MyWindows.h \
+  ../../../Common/String.h ../../../Windows/FileName.h \
+  ../../../Windows/FileDir.h ../../../Windows/Defs.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
   ../../UI/Common/../../Common/FileStreams.h \
   ../../UI/Common/../../Common/../../Windows/FileIO.h \
-  ../../UI/Common/../../Common/../IStream.h \
+  ../../../Common/String.h ../../UI/Common/../../Common/../IStream.h \
   ../../UI/Common/../../Common/../../Common/MyCom.h \
   ../../UI/Common/../../Common/StreamUtils.h \
   ../../../Common/StringConvert.h \
@@ -2473,21 +2530,25 @@ OpenArchive.o: ../../UI/Common/OpenArchive.cpp \
   ../../UI/Common/../../Archive/7z/../../../Windows/PropVariant.h \
   ../../UI/Common/../../Archive/7z/7zMethods.h \
   ../../UI/Common/../../Archive/BZip2/BZip2Handler.h \
+  ../../../Common/MyCom.h \
   ../../UI/Common/../../Archive/BZip2/../IArchive.h \
   ../../UI/Common/../../Archive/BZip2/BZip2Item.h \
   ../../UI/Common/../../Archive/GZip/GZipHandler.h \
+  ../../../Common/MyCom.h \
   ../../UI/Common/../../Archive/GZip/../IArchive.h \
   ../../UI/Common/../../Archive/GZip/GZipIn.h \
-  ../../UI/Common/../../Archive/GZip/GZipHeader.h \
-  ../../UI/Common/../../Archive/GZip/GZipItem.h ../../../Common/CRC.h \
+  ../../UI/Common/../../Archive/GZip/GZipHeader.h ../../../Common/Types.h \
+  ../../UI/Common/../../Archive/GZip/GZipItem.h ../../../Common/Buffer.h \
+  ../../../Common/CRC.h \
   ../../UI/Common/../../Archive/GZip/../../IStream.h \
   ../../UI/Common/../../Archive/GZip/GZipUpdate.h \
   ../../UI/Common/../../Archive/GZip/GZipOut.h \
   ../../UI/Common/../../Archive/Split/SplitHandler.h \
+  ../../../Common/MyCom.h \
   ../../UI/Common/../../Archive/Split/../IArchive.h \
-  ../../UI/Common/../../Archive/Tar/TarHandler.h \
+  ../../UI/Common/../../Archive/Tar/TarHandler.h ../../../Common/MyCom.h \
   ../../UI/Common/../../Archive/Tar/../IArchive.h \
-  ../../UI/Common/../../Archive/Tar/TarItem.h \
+  ../../UI/Common/../../Archive/Tar/TarItem.h ../../../Common/Types.h \
   ../../UI/Common/../../Archive/Tar/../Common/ItemNameUtils.h \
   ../../UI/Common/../../Archive/Tar/../Common/../../../Common/String.h \
   ../../UI/Common/../../Archive/Tar/TarHeader.h \
@@ -2496,70 +2557,75 @@ OpenArchive.o: ../../UI/Common/OpenArchive.cpp \
   ../../UI/Common/../../Archive/Zip/../../ICoder.h \
   ../../UI/Common/../../Archive/Zip/../../IStream.h \
   ../../UI/Common/../../Archive/Zip/../IArchive.h \
-  ../../UI/Common/../../Archive/Zip/ZipIn.h \
+  ../../UI/Common/../../Archive/Zip/ZipIn.h ../../../Common/MyCom.h \
   ../../UI/Common/../../Archive/Zip/../../IStream.h \
-  ../../UI/Common/../../Archive/Zip/ZipHeader.h \
+  ../../UI/Common/../../Archive/Zip/ZipHeader.h ../../../Common/Types.h \
   ../../UI/Common/../../Archive/Zip/ZipItemEx.h \
-  ../../UI/Common/../../Archive/Zip/ZipItem.h \
+  ../../UI/Common/../../Archive/Zip/ZipItem.h ../../../Common/Buffer.h \
   ../../UI/Common/../../Archive/Zip/ZipCompressionMode.h \
   ../../../Common/Vector.h ../../UI/Common/../../Archive/Z/ZHandler.h \
-  ../../UI/Common/../../Archive/Z/../IArchive.h \
+  ../../../Common/MyCom.h ../../UI/Common/../../Archive/Z/../IArchive.h \
   ../../UI/Common/DefaultName.h
 PropIDUtils.o: ../../UI/Common/PropIDUtils.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../UI/Common/PropIDUtils.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../../Common/IntToString.h \
-  ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../UI/Common/PropIDUtils.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../../Common/IntToString.h ../../../Common/StringConvert.h \
+  ../../../Common/MyWindows.h ../../../Common/String.h \
   ../../../Windows/FileFind.h ../../../Windows/../Common/String.h \
   ../../../Windows/FileName.h ../../../Windows/Defs.h \
-  ../../../Windows/PropVariantConversions.h \
-  ../../UI/Common/../../PropID.h
+  ../../../Windows/PropVariantConversions.h ../../../Common/Types.h \
+  ../../../Common/String.h ../../UI/Common/../../PropID.h
 SortUtils.o: ../../UI/Common/SortUtils.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../UI/Common/SortUtils.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../UI/Common/SortUtils.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h
 TempFiles.o: ../../UI/Common/TempFiles.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../UI/Common/TempFiles.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h \
-  ../../../Windows/FileDir.h ../../../Windows/../Common/String.h \
-  ../../../Windows/Defs.h ../../../Windows/FileIO.h
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../UI/Common/TempFiles.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Windows/FileDir.h \
+  ../../../Windows/../Common/String.h ../../../Windows/Defs.h \
+  ../../../Windows/FileIO.h ../../../Common/String.h
 UpdateAction.o: ../../UI/Common/UpdateAction.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../UI/Common/UpdateAction.h
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../UI/Common/UpdateAction.h
 UpdateCallback.o: ../../UI/Common/UpdateCallback.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../UI/Common/UpdateCallback.h \
-  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../UI/Common/../../IPassword.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../UI/Common/UpdateCallback.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../UI/Common/../../IPassword.h \
   ../../UI/Common/../../../Common/MyUnknown.h \
   ../../UI/Common/../../../Common/MyWindows.h \
   ../../UI/Common/../../../Common/Types.h \
   ../../UI/Common/../Common/UpdatePair.h \
-  ../../UI/Common/../Common/DirItem.h \
-  ../../UI/Common/../Common/UpdateAction.h \
+  ../../UI/Common/../Common/DirItem.h ../../../Common/String.h \
+  ../../../Common/Types.h ../../UI/Common/../Common/UpdateAction.h \
   ../../UI/Common/../Common/../../Archive/IArchive.h \
   ../../UI/Common/../Common/../../Archive/../IStream.h \
   ../../UI/Common/../Common/../../Archive/../../Common/MyUnknown.h \
@@ -2568,24 +2634,26 @@ UpdateCallback.o: ../../UI/Common/UpdateCallback.cpp \
   ../../UI/Common/../Common/../../Archive/../PropID.h \
   ../../UI/Common/../Common/UpdateProduce.h \
   ../../UI/Common/../Common/UpdatePair.h ../../../Common/StringConvert.h \
-  ../../../Common/IntToString.h ../../../Common/Defs.h \
-  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Common/String.h ../../../Common/IntToString.h \
+  ../../../Common/Defs.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
   ../../UI/Common/../../Common/FileStreams.h \
   ../../UI/Common/../../Common/../../Windows/FileIO.h \
-  ../../UI/Common/../../Common/../IStream.h \
+  ../../../Common/String.h ../../UI/Common/../../Common/../IStream.h \
   ../../UI/Common/../../Common/../../Common/MyCom.h
 Update.o: ../../UI/Common/Update.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../UI/Common/Update.h ../../../Common/Wildcard.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../../Windows/FileFind.h \
-  ../../../Windows/../Common/String.h ../../../Windows/FileName.h \
-  ../../../Windows/Defs.h ../../UI/Common/../../Archive/IArchive.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../UI/Common/Update.h \
+  ../../../Common/Wildcard.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../../Windows/FileFind.h ../../../Windows/../Common/String.h \
+  ../../../Windows/FileName.h ../../../Windows/Defs.h \
+  ../../UI/Common/../../Archive/IArchive.h \
   ../../UI/Common/../../Archive/../IStream.h \
   ../../UI/Common/../../Archive/../../Common/MyUnknown.h \
   ../../UI/Common/../../Archive/../../Common/MyWindows.h \
@@ -2593,13 +2661,13 @@ Update.o: ../../UI/Common/Update.cpp ../../../myWindows/StdAfx.h \
   ../../UI/Common/../../Archive/../IProgress.h \
   ../../UI/Common/../../Archive/../PropID.h \
   ../../UI/Common/UpdateAction.h ../../UI/Common/ArchiveOpenCallback.h \
-  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
-  ../../UI/Common/../../IPassword.h \
+  ../../../Common/String.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../UI/Common/../../IPassword.h \
   ../../UI/Common/../../../Common/MyUnknown.h \
   ../../UI/Common/../../../Common/Types.h \
   ../../UI/Common/UpdateCallback.h ../../UI/Common/../Common/UpdatePair.h \
-  ../../UI/Common/../Common/DirItem.h \
-  ../../UI/Common/../Common/UpdateAction.h \
+  ../../UI/Common/../Common/DirItem.h ../../../Common/String.h \
+  ../../../Common/Types.h ../../UI/Common/../Common/UpdateAction.h \
   ../../UI/Common/../Common/../../Archive/IArchive.h \
   ../../UI/Common/../Common/UpdateProduce.h \
   ../../UI/Common/../Common/UpdatePair.h ../../../Common/IntToString.h \
@@ -2608,18 +2676,18 @@ Update.o: ../../UI/Common/Update.cpp ../../../myWindows/StdAfx.h \
   ../../../Windows/FileDir.h ../../../Windows/FileName.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
-  ../../../Windows/PropVariantConversions.h \
-  ../../UI/Common/../../Common/FileStreams.h \
+  ../../../Windows/PropVariantConversions.h ../../../Common/Types.h \
+  ../../../Common/String.h ../../UI/Common/../../Common/FileStreams.h \
   ../../UI/Common/../../Common/../../Windows/FileIO.h \
-  ../../UI/Common/../../Common/../IStream.h \
+  ../../../Common/String.h ../../UI/Common/../../Common/../IStream.h \
   ../../UI/Common/../../Common/../../Common/MyCom.h \
   ../../UI/Common/../../Compress/Copy/CopyCoder.h \
   ../../UI/Common/../../Compress/Copy/../../ICoder.h \
   ../../UI/Common/../../Compress/Copy/../../IStream.h \
   ../../UI/Common/../../Compress/Copy/../../../Common/MyCom.h \
   ../../UI/Common/../Common/DirItem.h \
-  ../../UI/Common/../Common/EnumDirItems.h \
-  ../../UI/Common/../Common/OpenArchive.h \
+  ../../UI/Common/../Common/EnumDirItems.h ../../../Common/Wildcard.h \
+  ../../../Windows/FileFind.h ../../UI/Common/../Common/OpenArchive.h \
   ../../UI/Common/../Common/ArchiverInfo.h ../../../Common/Buffer.h \
   ../../UI/Common/../Common/ArchiveOpenCallback.h \
   ../../UI/Common/TempFiles.h ../../UI/Common/EnumDirItems.h \
@@ -2642,19 +2710,22 @@ Update.o: ../../UI/Common/Update.cpp ../../../myWindows/StdAfx.h \
   ../../UI/Common/../../Archive/7z/../../../Windows/PropVariant.h \
   ../../UI/Common/../../Archive/7z/7zMethods.h \
   ../../UI/Common/../../Archive/BZip2/BZip2Handler.h \
+  ../../../Common/MyCom.h \
   ../../UI/Common/../../Archive/BZip2/../IArchive.h \
   ../../UI/Common/../../Archive/BZip2/BZip2Item.h \
   ../../UI/Common/../../Archive/GZip/GZipHandler.h \
+  ../../../Common/MyCom.h \
   ../../UI/Common/../../Archive/GZip/../IArchive.h \
   ../../UI/Common/../../Archive/GZip/GZipIn.h \
-  ../../UI/Common/../../Archive/GZip/GZipHeader.h \
-  ../../UI/Common/../../Archive/GZip/GZipItem.h ../../../Common/CRC.h \
+  ../../UI/Common/../../Archive/GZip/GZipHeader.h ../../../Common/Types.h \
+  ../../UI/Common/../../Archive/GZip/GZipItem.h ../../../Common/Buffer.h \
+  ../../../Common/CRC.h \
   ../../UI/Common/../../Archive/GZip/../../IStream.h \
   ../../UI/Common/../../Archive/GZip/GZipUpdate.h \
   ../../UI/Common/../../Archive/GZip/GZipOut.h \
-  ../../UI/Common/../../Archive/Tar/TarHandler.h \
+  ../../UI/Common/../../Archive/Tar/TarHandler.h ../../../Common/MyCom.h \
   ../../UI/Common/../../Archive/Tar/../IArchive.h \
-  ../../UI/Common/../../Archive/Tar/TarItem.h \
+  ../../UI/Common/../../Archive/Tar/TarItem.h ../../../Common/Types.h \
   ../../UI/Common/../../Archive/Tar/../Common/ItemNameUtils.h \
   ../../UI/Common/../../Archive/Tar/../Common/../../../Common/String.h \
   ../../UI/Common/../../Archive/Tar/TarHeader.h \
@@ -2662,24 +2733,25 @@ Update.o: ../../UI/Common/Update.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/DynamicBuffer.h ../../../Common/Buffer.h \
   ../../UI/Common/../../Archive/Zip/../../ICoder.h \
   ../../UI/Common/../../Archive/Zip/../IArchive.h \
-  ../../UI/Common/../../Archive/Zip/ZipIn.h \
+  ../../UI/Common/../../Archive/Zip/ZipIn.h ../../../Common/MyCom.h \
   ../../UI/Common/../../Archive/Zip/../../IStream.h \
-  ../../UI/Common/../../Archive/Zip/ZipHeader.h \
+  ../../UI/Common/../../Archive/Zip/ZipHeader.h ../../../Common/Types.h \
   ../../UI/Common/../../Archive/Zip/ZipItemEx.h \
-  ../../UI/Common/../../Archive/Zip/ZipItem.h \
+  ../../UI/Common/../../Archive/Zip/ZipItem.h ../../../Common/Buffer.h \
   ../../UI/Common/../../Archive/Zip/ZipCompressionMode.h \
   ../../../Common/Vector.h
 UpdatePair.o: ../../UI/Common/UpdatePair.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../../Common/Defs.h ../../../Windows/Time.h ../../../Windows/Defs.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Common/Defs.h \
+  ../../../Windows/Time.h ../../../Common/Types.h ../../../Windows/Defs.h \
   ../../UI/Common/UpdatePair.h ../../UI/Common/DirItem.h \
   ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../UI/Common/UpdateAction.h \
-  ../../UI/Common/../../Archive/IArchive.h \
+  ../../../Common/Defs.h ../../../Common/Types.h \
+  ../../UI/Common/UpdateAction.h ../../UI/Common/../../Archive/IArchive.h \
   ../../UI/Common/../../Archive/../IStream.h \
   ../../UI/Common/../../Archive/../../Common/MyUnknown.h \
   ../../UI/Common/../../Archive/../../Common/MyWindows.h \
@@ -2691,12 +2763,12 @@ UpdateProduce.o: ../../UI/Common/UpdateProduce.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../UI/Common/UpdateProduce.h \
-  ../../UI/Common/UpdatePair.h ../../UI/Common/DirItem.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../UI/Common/UpdateAction.h \
-  ../../UI/Common/../../Archive/IArchive.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../UI/Common/UpdateProduce.h ../../UI/Common/UpdatePair.h \
+  ../../UI/Common/DirItem.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Common/Types.h \
+  ../../UI/Common/UpdateAction.h ../../UI/Common/../../Archive/IArchive.h \
   ../../UI/Common/../../Archive/../IStream.h \
   ../../UI/Common/../../Archive/../../Common/MyUnknown.h \
   ../../UI/Common/../../Archive/../../Common/MyWindows.h \
@@ -2708,21 +2780,22 @@ ConsoleClose.o: ../../UI/Console/ConsoleClose.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../UI/Console/ConsoleClose.h
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../UI/Console/ConsoleClose.h
 ExtractCallbackConsole.o: ../../UI/Console/ExtractCallbackConsole.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../UI/Console/ExtractCallbackConsole.h ../../../Common/String.h \
   ../../../Common/Vector.h ../../../Common/Defs.h \
   ../../../Common/StdOutStream.h \
   ../../UI/Console/../../Common/FileStreams.h \
   ../../UI/Console/../../Common/../../Windows/FileIO.h \
-  ../../UI/Console/../../Common/../IStream.h \
+  ../../../Common/String.h ../../UI/Console/../../Common/../IStream.h \
   ../../UI/Console/../../Common/../../Common/MyUnknown.h \
   ../../UI/Console/../../Common/../../Common/MyWindows.h \
   ../../UI/Console/../../Common/../../Common/Types.h \
@@ -2747,8 +2820,9 @@ ExtractCallbackConsole.o: ../../UI/Console/ExtractCallbackConsole.cpp \
   ../../../Common/Wildcard.h ../../../Windows/FileDir.h \
   ../../../Windows/../Common/String.h ../../../Windows/Defs.h \
   ../../../Windows/FileFind.h ../../../Windows/FileName.h \
-  ../../../Windows/Time.h ../../../Windows/Defs.h \
-  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/Time.h ../../../Common/Types.h ../../../Windows/Defs.h \
+  ../../../Windows/Defs.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../../Windows/Error.h \
   ../../../Windows/PropVariantConversions.h \
   ../../UI/Console/../../Common/FilePathAutoRename.h \
@@ -2757,17 +2831,18 @@ List.o: ../../UI/Console/List.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../UI/Console/List.h ../../../Common/Wildcard.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../UI/Console/ConsoleClose.h \
-  ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
-  ../../../Common/StdOutStream.h ../../../Common/IntToString.h \
-  ../../../Common/MyCom.h ../../../Windows/PropVariant.h \
-  ../../../Windows/../Common/MyWindows.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../UI/Console/List.h \
+  ../../../Common/Wildcard.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../UI/Console/ConsoleClose.h ../../../Common/StringConvert.h \
+  ../../../Common/MyWindows.h ../../../Common/StdOutStream.h \
+  ../../../Common/IntToString.h ../../../Common/MyCom.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../../Windows/Defs.h \
-  ../../../Windows/PropVariantConversions.h ../../../Windows/FileDir.h \
+  ../../../Windows/PropVariantConversions.h ../../../Common/Types.h \
+  ../../../Common/String.h ../../../Windows/FileDir.h \
   ../../../Windows/../Common/String.h ../../../Windows/Defs.h \
   ../../UI/Console/../../Archive/IArchive.h \
   ../../UI/Console/../../Archive/../IStream.h \
@@ -2776,13 +2851,14 @@ List.o: ../../UI/Console/List.cpp ../../../myWindows/StdAfx.h \
   ../../UI/Console/../../Archive/../../Common/Types.h \
   ../../UI/Console/../../Archive/../IProgress.h \
   ../../UI/Console/../../Archive/../PropID.h \
-  ../../UI/Console/../Common/PropIDUtils.h \
+  ../../UI/Console/../Common/PropIDUtils.h ../../../Common/String.h \
   ../../UI/Console/../Common/OpenArchive.h ../../../Windows/FileFind.h \
   ../../../Windows/FileName.h \
   ../../UI/Console/../Common/../../Archive/IArchive.h \
-  ../../UI/Console/../Common/ArchiverInfo.h ../../../Common/Buffer.h \
+  ../../UI/Console/../Common/ArchiverInfo.h ../../../Common/Types.h \
+  ../../../Common/Buffer.h \
   ../../UI/Console/../Common/ArchiveOpenCallback.h \
-  ../../UI/Console/../Common/../../IPassword.h \
+  ../../../Common/MyCom.h ../../UI/Console/../Common/../../IPassword.h \
   ../../UI/Console/../Common/../../../Common/MyUnknown.h \
   ../../UI/Console/../Common/../../../Common/Types.h \
   ../../UI/Console/OpenCallbackConsole.h \
@@ -2791,40 +2867,43 @@ MainAr.o: ../../UI/Console/MainAr.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../../Windows/Error.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h \
-  ../../../Common/StdOutStream.h ../../../Common/NewHandler.h \
-  ../../../Common/Exception.h ../../../Common/StringConvert.h \
-  ../../../Common/MyWindows.h ../../UI/Console/../Common/ExitCode.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Windows/Error.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/StdOutStream.h \
+  ../../../Common/NewHandler.h ../../../Common/Exception.h \
+  ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
+  ../../../Common/String.h ../../UI/Console/../Common/ExitCode.h \
   ../../UI/Console/ConsoleClose.h
 Main.o: ../../UI/Console/Main.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../../include_windows/io.h ../../../Common/MyInitGuid.h \
-  ../../../Common/CommandLineParser.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h \
-  ../../../Common/StdOutStream.h ../../../Common/Wildcard.h \
-  ../../../Common/ListFileUtils.h ../../../Common/StringConvert.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../include_windows/io.h \
+  ../../../Common/MyInitGuid.h ../../../Common/CommandLineParser.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/StdOutStream.h \
+  ../../../Common/Wildcard.h ../../../Common/ListFileUtils.h \
+  ../../../Common/Types.h ../../../Common/StringConvert.h \
   ../../../Common/MyWindows.h ../../../Common/StdInStream.h \
   ../../../Common/StringToInt.h ../../../Common/Exception.h \
   ../../../Windows/FileDir.h ../../../Windows/../Common/String.h \
   ../../../Windows/Defs.h ../../../Windows/FileName.h \
   ../../../Windows/Defs.h ../../../Windows/Error.h \
-  ../../UI/Console/../../IPassword.h \
+  ../../../Common/String.h ../../UI/Console/../../IPassword.h \
   ../../UI/Console/../../../Common/MyUnknown.h \
   ../../UI/Console/../../../Common/MyWindows.h \
   ../../UI/Console/../../../Common/Types.h \
   ../../UI/Console/../../ICoder.h ../../UI/Console/../../IStream.h \
   ../../UI/Console/../../Compress/LZ/IMatchFinder.h \
-  ../../UI/Console/../Common/ArchiverInfo.h ../../../Common/Buffer.h \
+  ../../UI/Console/../Common/ArchiverInfo.h ../../../Common/String.h \
+  ../../../Common/Types.h ../../../Common/Buffer.h \
   ../../UI/Console/../Common/UpdateAction.h \
-  ../../UI/Console/../Common/Update.h ../../../Windows/FileFind.h \
-  ../../../Windows/FileName.h \
+  ../../UI/Console/../Common/Update.h ../../../Common/Wildcard.h \
+  ../../../Windows/FileFind.h ../../../Windows/FileName.h \
   ../../UI/Console/../Common/../../Archive/IArchive.h \
   ../../UI/Console/../Common/../../Archive/../IStream.h \
   ../../UI/Console/../Common/../../Archive/../IProgress.h \
@@ -2836,7 +2915,8 @@ Main.o: ../../UI/Console/Main.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/MyCom.h ../../UI/Console/../Common/../../IPassword.h \
   ../../UI/Console/../Common/UpdateCallback.h \
   ../../UI/Console/../Common/../Common/UpdatePair.h \
-  ../../UI/Console/../Common/../Common/DirItem.h \
+  ../../UI/Console/../Common/../Common/DirItem.h ../../../Common/String.h \
+  ../../../Common/Types.h \
   ../../UI/Console/../Common/../Common/UpdateAction.h \
   ../../UI/Console/../Common/../Common/../../Archive/IArchive.h \
   ../../UI/Console/../Common/../Common/UpdateProduce.h \
@@ -2846,10 +2926,12 @@ Main.o: ../../UI/Console/Main.cpp ../../../myWindows/StdAfx.h \
   ../../UI/Console/../Common/IFileExtractCallback.h \
   ../../UI/Console/../Common/../../Common/FileStreams.h \
   ../../UI/Console/../Common/../../Common/../../Windows/FileIO.h \
+  ../../../Common/String.h \
   ../../UI/Console/../Common/../../Common/../IStream.h \
   ../../UI/Console/../Common/../../Common/../../Common/MyCom.h \
   ../../UI/Console/../Common/ExtractMode.h \
   ../../UI/Console/../Common/ArchiveCommandLine.h \
+  ../../../Common/CommandLineParser.h \
   ../../UI/Console/../Common/Extract.h \
   ../../UI/Console/../Common/Update.h \
   ../../UI/Console/../Common/ExitCode.h ../../UI/Console/List.h \
@@ -2861,15 +2943,15 @@ Main.o: ../../UI/Console/Main.cpp ../../../myWindows/StdAfx.h \
   ../../UI/Console/../Common/ArchiveExtractCallback.h \
   ../../UI/Console/UpdateCallbackConsole.h \
   ../../UI/Console/PercentPrinter.h ../../../Common/Defs.h \
-  ../../UI/Console/../../MyVersion.h
+  ../../../Common/Types.h ../../UI/Console/../../MyVersion.h
 OpenCallbackConsole.o: ../../UI/Console/OpenCallbackConsole.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../UI/Console/OpenCallbackConsole.h \
-  ../../../Common/StdOutStream.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../UI/Console/OpenCallbackConsole.h ../../../Common/StdOutStream.h \
   ../../UI/Console/../Common/ArchiveOpenCallback.h \
   ../../../Common/String.h ../../../Common/Vector.h \
   ../../../Common/Defs.h ../../../Common/MyCom.h \
@@ -2891,23 +2973,25 @@ PercentPrinter.o: ../../UI/Console/PercentPrinter.cpp \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../../Common/IntToString.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../UI/Console/PercentPrinter.h \
-  ../../../Common/Defs.h ../../../Common/StdOutStream.h
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Common/IntToString.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../UI/Console/PercentPrinter.h ../../../Common/Defs.h \
+  ../../../Common/Types.h ../../../Common/StdOutStream.h
 UpdateCallbackConsole.o: ../../UI/Console/UpdateCallbackConsole.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../UI/Console/UpdateCallbackConsole.h ../../../Common/String.h \
   ../../../Common/Vector.h ../../../Common/Defs.h \
   ../../../Common/StdOutStream.h ../../UI/Console/PercentPrinter.h \
-  ../../../Common/Defs.h ../../UI/Console/../Common/Update.h \
-  ../../../Common/Wildcard.h ../../../Windows/FileFind.h \
+  ../../../Common/Defs.h ../../../Common/Types.h \
+  ../../UI/Console/../Common/Update.h ../../../Common/Wildcard.h \
+  ../../../Common/String.h ../../../Windows/FileFind.h \
   ../../../Windows/../Common/String.h ../../../Windows/FileName.h \
   ../../../Windows/Defs.h \
   ../../UI/Console/../Common/../../Archive/IArchive.h \
@@ -2919,71 +3003,76 @@ UpdateCallbackConsole.o: ../../UI/Console/UpdateCallbackConsole.cpp \
   ../../UI/Console/../Common/../../Archive/../PropID.h \
   ../../UI/Console/../Common/UpdateAction.h \
   ../../UI/Console/../Common/ArchiveOpenCallback.h \
-  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../../Common/String.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h \
   ../../UI/Console/../Common/../../IPassword.h \
   ../../UI/Console/../Common/../../../Common/MyUnknown.h \
   ../../UI/Console/../Common/../../../Common/Types.h \
   ../../UI/Console/../Common/UpdateCallback.h \
   ../../UI/Console/../Common/../Common/UpdatePair.h \
-  ../../UI/Console/../Common/../Common/DirItem.h \
+  ../../UI/Console/../Common/../Common/DirItem.h ../../../Common/String.h \
+  ../../../Common/Types.h \
   ../../UI/Console/../Common/../Common/UpdateAction.h \
   ../../UI/Console/../Common/../Common/../../Archive/IArchive.h \
   ../../UI/Console/../Common/../Common/UpdateProduce.h \
   ../../UI/Console/../Common/../Common/UpdatePair.h \
-  ../../../Windows/Error.h ../../UI/Console/ConsoleClose.h \
-  ../../UI/Console/UserInputUtils.h
+  ../../../Windows/Error.h ../../../Common/String.h \
+  ../../UI/Console/ConsoleClose.h ../../UI/Console/UserInputUtils.h
 UserInputUtils.o: ../../UI/Console/UserInputUtils.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../../Common/StdInStream.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h ../../../Common/StringConvert.h \
-  ../../../Common/MyWindows.h ../../UI/Console/UserInputUtils.h \
-  ../../../Common/StdOutStream.h
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Common/StdInStream.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
+  ../../UI/Console/UserInputUtils.h ../../../Common/StdOutStream.h
 Error.o: ../../../Windows/Error.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../../Windows/Error.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h \
-  ../../../Common/StringConvert.h ../../../Common/MyWindows.h
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Windows/Error.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Common/StringConvert.h \
+  ../../../Common/MyWindows.h ../../../Common/String.h
 FileDir.o: ../../../Windows/FileDir.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../../Windows/FileDir.h ../../../Windows/../Common/String.h \
-  ../../../Windows/../Common/Vector.h ../../../Windows/../Common/Defs.h \
-  ../../../Windows/Defs.h ../../../Windows/FileName.h \
-  ../../../Windows/FileFind.h ../../../Windows/../Common/StringConvert.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Windows/FileDir.h \
+  ../../../Windows/../Common/String.h ../../../Windows/../Common/Vector.h \
+  ../../../Windows/../Common/Defs.h ../../../Windows/Defs.h \
+  ../../../Windows/FileName.h ../../../Windows/FileFind.h \
+  ../../../Windows/../Common/StringConvert.h \
   ../../../Windows/../Common/MyWindows.h ../../../Common/String.h \
   ../../../Windows/../Common/Types.h ../../../myWindows/myPrivate.h
 FileFind.o: ../../../Windows/FileFind.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../../Windows/FileFind.h ../../../Windows/../Common/String.h \
-  ../../../Windows/../Common/Vector.h ../../../Windows/../Common/Defs.h \
-  ../../../Windows/FileName.h ../../../Windows/Defs.h \
-  ../../../Windows/../Common/StringConvert.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Windows/FileFind.h \
+  ../../../Windows/../Common/String.h ../../../Windows/../Common/Vector.h \
+  ../../../Windows/../Common/Defs.h ../../../Windows/FileName.h \
+  ../../../Windows/Defs.h ../../../Windows/../Common/StringConvert.h \
   ../../../Windows/../Common/MyWindows.h ../../../Common/String.h \
   ../../../Windows/../Common/Types.h ../../../myWindows/myPrivate.h
 FileIO.o: ../../../Windows/FileIO.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../../Windows/FileIO.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Windows/Defs.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Windows/FileIO.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Windows/Defs.h \
   ../../../Windows/../Common/StringConvert.h \
   ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../../myWindows/myPrivate.h
@@ -2991,36 +3080,38 @@ FileName.o: ../../../Windows/FileName.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../include_windows/winnt.h \
-  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../../Windows/FileName.h ../../../Windows/../Common/String.h \
-  ../../../Windows/../Common/Vector.h ../../../Windows/../Common/Defs.h \
-  ../../../Common/Wildcard.h ../../../Common/String.h
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Windows/FileName.h \
+  ../../../Windows/../Common/String.h ../../../Windows/../Common/Vector.h \
+  ../../../Windows/../Common/Defs.h ../../../Common/Wildcard.h \
+  ../../../Common/String.h
 PropVariantConversions.o: ../../../Windows/PropVariantConversions.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h \
-  ../../../Windows/PropVariantConversions.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Windows/Defs.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Windows/PropVariantConversions.h ../../../Common/Types.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Windows/Defs.h \
   ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
-  ../../../Common/IntToString.h
+  ../../../Common/String.h ../../../Common/IntToString.h
 PropVariant.o: ../../../Windows/PropVariant.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../../Windows/PropVariant.h \
-  ../../../Windows/../Common/MyWindows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../../Windows/../Common/Defs.h
 Synchronization.o: ../../../Windows/Synchronization.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../include_windows/windef.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../../Windows/Synchronization.h \
-  ../../../Windows/Defs.h
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Windows/Synchronization.h ../../../Windows/Defs.h

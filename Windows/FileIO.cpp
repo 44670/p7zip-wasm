@@ -152,10 +152,12 @@ bool CFileBase::Close()
   if(_fd == -1)
     return true;
 
+#ifdef HAVE_LSTAT
   if(_fd == FD_LINK) {
     _fd = -1;
     return true;
   }
+#endif
 
   int ret = ::close(_fd);
   if (ret == 0) {

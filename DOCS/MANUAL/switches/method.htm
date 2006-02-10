@@ -46,15 +46,15 @@
 </TABLE>
 
 <DL>
-  <DT><A name="ZipX"></A>x=[0 | 5 | 9 ]</DT>
+  <DT><A name="ZipX"></A>x=[0 | 5 | 7 | 9 ]</DT>
   <DD>
     <P>Sets level of compression</P>
     <TABLE>
-      <TR> <TH width="60">Level</TH> <TH>Description</TH> </TR>
-      <TR> <TD>0</TD> <TD>No compression.</TD> </TR>
-      <TR> <TD>5</TD> <TD>Default compression method.</TD> </TR>
-      <TR> <TD>9</TD> <TD>Maximum compression method. It can require additional
-        amount of RAM and compressing process can be slower.</TD> </TR>
+      <TR> <TH>Level</TH> <TH>NumFastBytes</TH> <TH>NumPasses</TH> <TH>Description</TH> </TR>
+      <TR> <TD align="center">0</TD> <TD></TD> <TD></TD> <TD>No compression.</TD> </TR>
+      <TR> <TD align="center">5</TD> <TD align="center">32</TD> <TD align="center">1</TD> <TD>Default compression method.</TD> </TR>
+      <TR> <TD align="center">7</TD> <TD align="center">64</TD> <TD align="center">3</TD> <TD>Maximum compression method.</TD> </TR>
+      <TR> <TD align="center">9</TD> <TD align="center">128</TD> <TD align="center">10</TD> <TD>Ultra compression method..</TD> </TR>
     </TABLE>
   </DD>
 
@@ -62,7 +62,7 @@
   <DD>
     <P>Sets number of fast bytes for Deflate/Deflate64 encoder. 
        It can be in range from 3 to 258 (257 for Deflate64).
-       Default value is 32 for normal mode and 64 for maximum mode. 
+       Default value is 32 for normal mode, 64 for maximum mode and 128 for ultra mode. 
        Usually big number gives a little bit better 
        compression ratio and slower compression process.
        Big number of fast bytes parameter can significantly increase compression ratio 
@@ -70,18 +70,16 @@
   </DD>
   <DT><A name="Deflate_Pass"></A>pass={NumPasses}</DT>
   <DD>
-    <P>Sets number of passes for Deflate encoder. It can be in range from 1 to 10.
-       Default value is 1 for normal mode and 3 for maximum mode. 
+    <P>Sets number of passes for Deflate encoder. It can be in range from 1 to 15.
+       Default value is 1 for normal mode, 3 for maximum mode and 10 for ultra mode. 
        Usually big number gives a little bit better 
        compression ratio and slower compression process.
-       If you use more than one pass, deflate encoder will use additional 
-       (128 * NumFastBytes) KB.
     </P>
   </DD>
 </DL>
 
 <H4>GZip</H4>
-GZip uses the same parameters as Zip, but GZip compresses only with Defalte method.
+GZip uses the same parameters as Zip, but GZip compresses only with Deflate method.
 
 <H4>BZip2</H4>
 <TABLE>
@@ -104,10 +102,10 @@ GZip uses the same parameters as Zip, but GZip compresses only with Defalte meth
   <DD>
     <P>Sets level of compression</P>
     <TABLE>
-      <TR> <TH width="60">Level</TH> <TH>Description</TH> </TR>
-      <TR> <TD>5</TD> <TD>Default compression method (1 pass).</TD> </TR>
-      <TR> <TD>7</TD> <TD>Maximum compression method (2 passes).</TD> </TR>
-      <TR> <TD>9</TD> <TD>Ultra  compression method (7 passes).</TD> </TR>
+      <TR> <TH>Level</TH> <TH>NumPasses</TH> <TH>Description</TH> </TR>
+      <TR> <TD>5</TD> <TD align="center">1</TD> <TD>Default compression method.</TD> </TR>
+      <TR> <TD>7</TD> <TD align="center">2</TD> <TD>Maximum compression method.</TD> </TR>
+      <TR> <TD>9</TD> <TD align="center">7</TD> <TD>Ultra  compression method.</TD> </TR>
     </TABLE>
   </DD>
 
@@ -123,7 +121,7 @@ GZip uses the same parameters as Zip, but GZip compresses only with Defalte meth
 <H4>7z</H4>
 <TABLE>
   <TR> <TH width="80">Parameter</TH> <TH align="center">Default</TH> <TH>Description</TH> </TR>
-  <TR> <TD><A class="parameter" href="#SevenZipX">x=[0 | 1 | 5 | 7 | 9 ]</A></TD> 
+  <TR> <TD><A class="parameter" href="#SevenZipX">x=[0 | 1 | 3 | 5 | 7 | 9 ]</A></TD> 
         <TD align="center">5</TD><TD>Sets level of compression.</TD> </TR>
   <TR> <TD><A class="parameter" href="#Solid">s=[off | on | [e] [{N}f] [{N}b | {N}k | {N}m | {N}g]</A></TD> 
        <TD align="center">on</TD>  <TD>Sets solid mode.</TD> </TR>
@@ -148,16 +146,13 @@ GZip uses the same parameters as Zip, but GZip compresses only with Defalte meth
   <DD>
     <P>Sets level of compression</P>
     <TABLE>
-      <TR> <TH width="60">Level</TH> <TH>Description</TH> </TR>
-      <TR> <TD>0</TD> <TD>No compression.</TD> </TR>
-      <TR> <TD>1</TD> <TD>Fast compressing: fast LZMA mode, 
-          32KB dictionary, HC3 Match finder, BCJ filter.</TD> </TR>
-      <TR> <TD>5</TD> <TD>Normal compressing: normal LZMA mode,
-          2 MB dictionary, BT4 Match finder, NumFastBytes is 32, BCJ filter.</TD> </TR>
-      <TR> <TD>7</TD> <TD>Maximum compressing: maximum LZMA mode,
-          8 MB dictionary size, BT4 Match finder, NumFastBytes is 64, BCJ filter.</TD> </TR>
-      <TR> <TD>9</TD> <TD>Ultra compressing: maximum LZMA mode,
-          32 MB dictionary size, BT4b Match finder, , NumFastBytes is 64, BCJ2 filter.</TD> </TR>
+      <TR> <TH>Level</TH> <TH>Method</TH> <TH>Dictionary</TH> <TH>FastBytes</TH> <TH>MatchFinder</TH> <TH>Filter</TH> <TH>Description</TH> </TR>
+      <TR> <TD align="center">0</TD> <TD align="center">Copy</TD> <TD align="center"></TD> <TD align="center"></TD> <TD align="center"></TD> <TD align="center"></TD> <TD>No compression.</TD> </TR>
+      <TR> <TD align="center">1</TD> <TD align="center">LZMA</TD> <TD align="center">64 KB</TD> <TD align="center">32</TD> <TD align="center">HC4</TD> <TD align="center">BCJ</TD> <TD>Fastest compressing</TD> </TR>
+      <TR> <TD align="center">3</TD> <TD align="center">LZMA</TD> <TD align="center">1 MB</TD>  <TD align="center">32</TD> <TD align="center">HC4</TD> <TD align="center">BCJ</TD> <TD>Fast compressing</TD> </TR>
+      <TR> <TD align="center">5</TD> <TD align="center">LZMA</TD> <TD align="center">4 MB</TD>  <TD align="center">32</TD> <TD align="center">BT4</TD> <TD align="center">BCJ</TD> <TD>Normal compressing</TD> </TR>
+      <TR> <TD align="center">7</TD> <TD align="center">LZMA</TD> <TD align="center">16 MB</TD> <TD align="center">64</TD> <TD align="center">BT4</TD> <TD align="center">BCJ</TD> <TD>Maximum compressing</TD> </TR>
+      <TR> <TD align="center">9</TD> <TD align="center">LZMA</TD> <TD align="center">64 MB</TD> <TD align="center">64</TD> <TD align="center">BT4</TD> <TD align="center">BCJ2</TD><TD>Ultra compressing</TD> </TR>
     </TABLE>
   </DD>
 
@@ -178,10 +173,11 @@ GZip uses the same parameters as Zip, but GZip compresses only with Defalte meth
     <TABLE>
       <TR> <TH width="150">Compression Level</TH> <TH>Solid block size</TH> </TR>
       <TR> <TD>Store</TD> <TD>0 B</TD> </TR>
-      <TR> <TD>Fast</TD> <TD>16 MB</TD> </TR>
-      <TR> <TD>Normal</TD> <TD>256 MB</TD> </TR>
-      <TR> <TD>Maximum</TD> <TD>1 GB</TD> </TR>
-      <TR> <TD>Ultra</TD> <TD>4 GB</TD> </TR>
+      <TR> <TD>Fastest</TD> <TD>16 MB</TD> </TR>
+      <TR> <TD>Fast</TD> <TD>128 MB</TD> </TR>
+      <TR> <TD>Normal</TD> <TD>512 MB</TD> </TR>
+      <TR> <TD>Maximum</TD> <TD>2 GB</TD> </TR>
+      <TR> <TD>Ultra</TD> <TD>8 GB</TD> </TR>
     </TABLE>
 
 
@@ -295,10 +291,10 @@ GZip uses the same parameters as Zip, but GZip compresses only with Defalte meth
  <TABLE>
    <TR> <TH width="80">Parameter</TH> <TH align="center">Default</TH> <TH>Description</TH> </TR>
 
-   <TR> <TD><A class="parameter" href="#LZMAMode">a=[0|1|2]</A></TD> 
+   <TR> <TD><A class="parameter" href="#LZMAMode">a=[0|1]</A></TD> 
         <TD align="center">1</TD>  <TD>Sets compressing mode</TD> </TR>
    <TR> <TD><A class="parameter" href="#DictionarySize">d={Size}[b|k|m]</A></TD> 
-        <TD align="center">20</TD>  <TD>Sets Dictionary size</TD> </TR>
+        <TD align="center">22</TD>  <TD>Sets Dictionary size</TD> </TR>
    <TR> <TD><A class="parameter" href="#MatchFinder">mf={MF_ID}</A></TD> 
         <TD align="center">bt4</TD>  <TD>Sets Match Finder</TD> </TR>
    <TR> <TD><A class="parameter" href="#FastBytes">fb={N}</A></TD> 
@@ -313,17 +309,17 @@ GZip uses the same parameters as Zip, but GZip compresses only with Defalte meth
 
  
  <DL>
-  <DT><A name="#LZMAMode"></A>a=[0|1|2]</DT>
+  <DT><A name="#LZMAMode"></A>a=[0|1]</DT>
   <DD>
-    <P> Sets compressing mode: 0 = fast, 1 = normal, 2 = max ratio.
+    <P> Sets compressing mode: 0 = fast, 1 = normal.
       Default value is 1.</P>
   </DD>
   <DT><A name="DictionarySize"></A>d={Size}[b|k|m]</DT>
   <DD>
     <P> Sets Dictionary size for LZMA. You must specify size in bytes, kilobytes, or megabytes.
-       The maximum value for dictionary size is 256MB = 2^28 bytes. Default value for LZMA
-       is 21 (2 MB) in normal mode, 23 (8 MB) in maiximum mode (-mx=7) 
-       and 25 (32 MB) in ultra mode (-mx=9). 
+       The maximum value for dictionary size is 1 GB = 2^30 bytes. Default value for LZMA
+       is 22 (4 MB) in normal mode, 24 (16 MB) in maiximum mode (-mx=7) 
+       and 26 (64 MB) in ultra mode (-mx=9). 
        If you do not specify any symbol from set [b|k|m], 
        dictionary size will be calculated as DictionarySize = 2^Size bytes.
        For decompressing file compressed by LZMA method with dictionary size N you need
@@ -333,27 +329,16 @@ GZip uses the same parameters as Zip, but GZip compresses only with Defalte meth
   <DT><A name="MatchFinder"></A>mf={MF_ID}</DT>
   <DD>
     <P> Sets Match Finder for LZMA. Default method is bt4. 
-       Methods from bt* group require less memory than methods from pat* group.
-       Usually bt4 works faster than any pat*, 
-       but for some types of files pat* can work faster. 
        Algorithms from hc* group doesn't provide good compression ratio,
        but they often works pretty fast in combination with fast mode (a=0).
-       Memory requirements depend
-       from dictionary size (parameter "d" in table below).
+       Memory requirements depend from dictionary size (parameter "d" in table below).
     </P>
     <TABLE>
       <TR> <TH width="60">MF_ID</TH> <TH width="120">Memory</TH> <TH>Description</TH> </TR>
-      <TR> <TD>bt2</TD> <TD>d*9.5 + 1MB</TD> <TD>Binary Tree with 2 bytes hashing.</TD> </TR>
-      <TR> <TD>bt3</TD> <TD>d*9.5 + 65MB</TD> <TD>Binary Tree with 2-3(full) bytes hashing.</TD> </TR>
-      <TR> <TD>bt4</TD> <TD>d*9.5 + 6MB</TD> <TD>Binary Tree with 2-3-4 bytes hashing.</TD> </TR>
-      <TR> <TD>bt4b</TD> <TD>d*9.5 + 34MB</TD> <TD>Binary Tree with 2-3-4(big) bytes hashing.</TD> </TR>
-      <TR> <TD>pat2r</TD> <TD>d*26 + 1MB</TD> <TD>Patricia Tree with 2-bits nodes, removing.</TD> </TR>
-      <TR> <TD>pat2</TD> <TD>d*38 + 1MB</TD> <TD>Patricia Tree with 2-bits nodes.</TD> </TR>
-      <TR> <TD>pat2h</TD> <TD>d*38 + 77MB</TD> <TD>Patricia Tree with 2-bits nodes, 2-3 bytes hashing.</TD> </TR>
-      <TR> <TD>pat3h</TD> <TD>d*62 + 85MB</TD> <TD>Patricia Tree with 3-bits nodes, 2-3 bytes hashing.</TD> </TR>
-      <TR> <TD>pat4h</TD> <TD>d*110 + 101MB</TD> <TD>Patricia Tree with 4-bits nodes, 2-3 bytes hashing.</TD> </TR>
-      <TR> <TD>hc3</TD> <TD>d*5.5 + 1MB</TD> <TD>Hash Chain with 2-3 bytes hashing.</TD> </TR>
-      <TR> <TD>hc4</TD> <TD>d*5.5 + 6MB</TD> <TD>Hash Chain with 2-3-4 bytes hashing.</TD> </TR>
+      <TR> <TD>bt2</TD> <TD>d*9.5 + 4 MB</TD> <TD>Binary Tree with 2 bytes hashing.</TD> </TR>
+      <TR> <TD>bt3</TD> <TD>d*11.5 + 4 MB</TD> <TD>Binary Tree with 3 bytes hashing.</TD> </TR>
+      <TR> <TD>bt4</TD> <TD>d*11.5 + 4 MB</TD> <TD>Binary Tree with 4 bytes hashing.</TD> </TR>
+      <TR> <TD>hc4</TD> <TD>d*7.5 + 4 MB</TD> <TD>Hash Chain with 4 bytes hashing.</TD> </TR>
     </TABLE>
     <P>Note: Operation system also needs some amount of physical memory for system's purposes. 
       So keep at least 32MB of physical memory unused.</P>
@@ -362,7 +347,7 @@ GZip uses the same parameters as Zip, but GZip compresses only with Defalte meth
   <DT><A name="FastBytes"></A>fb={N}</DT>
   <DD>
     <P>Sets number of fast bytes for LZMA. It can be in range from 5 to 273.
-       Default value is 32 for normal mode and 64 for maximum mode.
+       Default value is 32 for normal mode and 64 for maximum and ultra modes.
        Usually big number gives a little bit better
        compression ratio and slower compression process.
        </P>

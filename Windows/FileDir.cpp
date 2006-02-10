@@ -283,12 +283,15 @@ bool MySetFileAttributes(LPCTSTR fileName, DWORD fileAttributes)
 
   if (fileAttributes & FILE_ATTRIBUTE_UNIX_EXTENSION) {
      stat_info.st_mode = fileAttributes >> 16;
+#ifdef HAVE_LSTAT
      if (S_ISLNK(stat_info.st_mode)) {
         if ( convert_to_symlink(name) != 0) {
           TRACEN((printf("MySetFileAttributes(%s,%d) : false-3\n",name,fileAttributes)))
           return false;
         }
-     } else if (S_ISREG(stat_info.st_mode)) {
+     } else
+#endif
+     if (S_ISREG(stat_info.st_mode)) {
        chmod(name,stat_info.st_mode);
      } else if (S_ISDIR(stat_info.st_mode)) {
        // user/7za must be able to create files in this directory

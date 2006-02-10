@@ -9,17 +9,17 @@ SRCS=\
  ../../../Windows/PropVariant.cpp
 
 DllExports.o : ./DllExports.cpp
-	$(CXX) $(CFLAGS) $<
+	$(CXX) $(CFLAGS) ./DllExports.cpp
 PropVariant.o : ../../../Windows/PropVariant.cpp
-	$(CXX) $(CFLAGS) $<
+	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
 CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
-	$(CXX) $(CFLAGS) $<
+	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp
 ProgressUtils.o : ../../Common/ProgressUtils.cpp
-	$(CXX) $(CFLAGS) $<
+	$(CXX) $(CFLAGS) ../../Common/ProgressUtils.cpp
 SplitHandler.o : ./SplitHandler.cpp
-	$(CXX) $(CFLAGS) $<
+	$(CXX) $(CFLAGS) ./SplitHandler.cpp
 SplitHandlerOut.o : ./SplitHandlerOut.cpp
-	$(CXX) $(CFLAGS) $<
+	$(CXX) $(CFLAGS) ./SplitHandlerOut.cpp
 MultiStream.o : ../Common/MultiStream.cpp
 	$(CXX) $(CFLAGS) ../Common/MultiStream.cpp
 StreamUtils.o : ../../Common/StreamUtils.cpp

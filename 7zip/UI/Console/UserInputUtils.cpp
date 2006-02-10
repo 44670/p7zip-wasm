@@ -7,6 +7,11 @@
 
 #include "UserInputUtils.h"
 
+#ifdef HAVE_GETPASS
+#include <pwd.h>
+#include <unistd.h>
+#endif
+
 static const char kYes = 'Y';
 static const char kNo = 'N';
 static const char kYesAll = 'A';
@@ -52,7 +57,14 @@ NUserAnswerMode::EEnum ScanUserYesNoAllQuit(CStdOutStream *outStream)
 
 UString GetPassword(CStdOutStream *outStream)
 {
+#ifdef HAVE_GETPASS
+  (*outStream) << "\nEnter password (will not be echoed) :";
+  outStream->Flush();
+  AString oemPassword = getpass("");
+#else
   (*outStream) << "\nEnter password:";
+  outStream->Flush();
   AString oemPassword = g_StdIn.ScanStringUntilNewLine();
+#endif
   return MultiByteToUnicodeString(oemPassword, CP_OEMCP); 
 }

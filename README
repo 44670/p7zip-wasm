@@ -1,4 +1,4 @@
-	p7zip 4.30
+	p7zip 4.33
 	==========
 
 Homepage : http://p7zip.sourceforge.net/
@@ -47,12 +47,14 @@ BUILD :
 	makefile.freebsd, makefile.cygwin, ...
         over makefile.machine
 
-	make clean : to clean all directories
-	make       : to build bin/7za
-	make sfx   : to build bin/7zCon.sfx (7za can now create SFX archive)
-	make 7z    : to build bin/7z and its plugins
-	make all   : to build bin/7za and bin/7zCon.sfx
-	make all2  : to build bin/7za, bin/7z (with its plugins) and bin/7zCon.sfx
+	make clean  : to clean all directories
+	make        : to build bin/7za
+	make sfx    : to build bin/7zCon.sfx (7za can now create SFX archive)
+	make 7z     : to build bin/7z and its plugins
+	make all    : to build bin/7za and bin/7zCon.sfx
+	make all2   : to build bin/7za, bin/7z (with its plugins) and bin/7zCon.sfx
+	make test   : to test bin/7za (extracting, archiving, password ...)
+	make test_7 : to test bin/7z  (extracting, archiving, password ...)
 
   this procedure has been tested on :
    - x86 CPU :
@@ -79,6 +81,10 @@ BUILD :
 
    - powerpc CPU :
 	MacOS X 10.1/darwin 5.5 with gcc 932.1 (gcc 2.95.2)
+	MacOS X 10.3 with XCode 1.5
+
+   - openpower CPU :
+        Linux openpower-linux1 2.6.5-7.97-pseries64 (ppc64) with gcc 3.3.3 
 
 
 INSTALL :

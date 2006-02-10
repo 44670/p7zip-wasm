@@ -1,10 +1,10 @@
-LZMA SDK 4.27
+LZMA SDK 4.33
 -------------
 
-LZMA SDK 4.27  Copyright (C) 1999-2005 Igor Pavlov
+LZMA SDK 4.33  Copyright (C) 1999-2006 Igor Pavlov
 
-LZMA SDK provides developers with documentation, source code,
-and sample code necessary to write software that uses LZMA compression. 
+LZMA SDK provides the documentation, samples, header files, libraries, 
+and tools you need to develop applications that use LZMA compression.
 
 LZMA is default and general compression method of 7z format
 in 7-Zip compression program (www.7-zip.org). LZMA provides high 
@@ -20,22 +20,30 @@ decompressing.
 LICENSE
 -------
 
-LZMA SDK is licensed under two licenses:
+LZMA SDK is available under any of the following licenses:
 
 1) GNU Lesser General Public License (GNU LGPL)
 2) Common Public License (CPL)
+3) Simplified license for unmodified code (read SPECIAL EXCEPTION) 
+4) Proprietary license 
 
-It means that you can select one of these two licenses and 
-follow rules of that license.
+It means that you can select one of these four options and follow rules of that license.
 
-SPECIAL EXCEPTION
+
+1,2) GNU LGPL and CPL licenses are pretty similar and both these
+licenses are classified as 
+ - "Free software licenses" at http://www.gnu.org/ 
+ - "OSI-approved" at http://www.opensource.org/
+
+
+3) SPECIAL EXCEPTION
+
 Igor Pavlov, as the author of this code, expressly permits you 
 to statically or dynamically link your code (or bind by name) 
 to the files from LZMA SDK without subjecting your linked 
 code to the terms of the CPL or GNU LGPL. 
 Any modifications or additions to files from LZMA SDK, however, 
 are subject to the GNU LGPL or CPL terms.
-
 
 SPECIAL EXCEPTION allows you to use LZMA SDK in applications with closed code, 
 while you keep LZMA SDK code unmodified.
@@ -50,17 +58,11 @@ of LZMA SDK as update for previous versions.
 
 
 SPECIAL EXCEPTION #3: Igor Pavlov, as the author of this code, expressly permits 
-you to use code of examples (LzmaTest.c, LzmaStateTest.c, LzmaAlone.cpp) as 
-public domain code. 
+you to use code of examples (LzmaTest.c, LzmaStateTest.c, LzmaAlone.cpp, 
+LzmaAlone.cs, LzmaAlone.java) as public domain code. 
 
 
-GNU LGPL and CPL licenses are pretty similar and both these
-licenses are classified as 
-
-1) "Free software licenses" at http://www.gnu.org/ 
-2) "OSI-approved" at http://www.opensource.org/
-
-
+4) Proprietary license
 
 LZMA SDK also can be available under a proprietary license which 
 can include:
@@ -87,9 +89,10 @@ LZMA SDK Contents
 
 LZMA SDK includes:
 
-  - C++ source code of LZMA Encoder and Decoder
-  - C++ source code for file->file LZMA compressing and decompressing
+  - C++ source code of LZMA compressing and decompressing
   - ANSI-C compatible source code for LZMA decompressing
+  - C# source code for LZMA compressing and decompressing
+  - Java source code for LZMA compressing and decompressing
   - Compiled file->file LZMA compressing/decompressing program for Windows system
 
 ANSI-C LZMA decompression code was ported from original C++ sources to C.
@@ -100,7 +103,7 @@ But it is fully compatible with LZMA from 7-Zip.
 UNIX/Linux version 
 ------------------
 To compile C++ version of file->file LZMA, go to directory
-SRC/7zip/Compress/LZMA_Alone 
+C/7zip/Compress/LZMA_Alone 
 and type "make" or "make clean all" to recompile all.
 
 In some UNIX/Linux versions you must compile LZMA with static libraries.
@@ -112,7 +115,9 @@ LIB = -lm -static
 
 Files
 ---------------------
-SRC      - directory with source code
+C        - C / CPP source code
+CS       - C# source code
+Java     - Java source code
 lzma.txt - LZMA SDK description (this file)
 7zFormat.txt - 7z Format description
 7zC.txt  - 7z ANSI-C Decoder description (this file)
@@ -126,7 +131,7 @@ history.txt - history of the LZMA SDK
 Source code structure
 ---------------------
 
-SRC
+C  - C / CPP files
   Common  - common files for C++ projects
   Windows - common files for Windows related code
   7zip    - files related to 7-Zip Project
@@ -151,11 +156,26 @@ SRC
     Archive - files related to archiving
       7z_C     - 7z ANSI-C Decoder
 
-Source code of LZMA SDK is only part of big 7-Zip project. That is 
-why LZMA SDK uses such complex source code structure. 
+CS - C# files
+  7zip
+    Common   - some common files for 7-Zip
+    Compress - files related to compression/decompression
+      LZ     - files related to LZ (Lempel-Ziv) compression algorithm
+      LZMA         - LZMA compression/decompression
+      LzmaAlone    - file->file LZMA compression/decompression
+      RangeCoder   - Range Coder (special code of compression/decompression)
+
+Java  - Java files
+  SevenZip
+    Compression    - files related to compression/decompression
+      LZ           - files related to LZ (Lempel-Ziv) compression algorithm
+      LZMA         - LZMA compression/decompression
+      RangeCoder   - Range Coder (special code of compression/decompression)
+
+C/C++ source code of LZMA SDK is part of 7-Zip project.
 
 You can find ANSI-C LZMA decompressing code at folder 
-  SRC/7zip/Compress/LZMA_C
+  C/7zip/Compress/LZMA_C
 7-Zip doesn't use that ANSI-C LZMA code and that code was developed 
 specially for this SDK. And files from LZMA_C do not need files from 
 other directories of SDK for compiling.
@@ -165,10 +185,10 @@ other directories of SDK for compiling.
   http://sourceforge.net/projects/sevenzip/
 
 
-LZMA Decompression features
----------------------------
-  - Variable dictionary size (up to 256 MB)
-  - Estimated compressing speed: about 500 KB/s on 1 GHz CPU
+LZMA features
+-------------
+  - Variable dictionary size (up to 1 GB)
+  - Estimated compressing speed: about 1 MB/s on 1 GHz CPU
   - Estimated decompressing speed: 
       - 8-12 MB/s on 1 GHz Intel Pentium 3 or AMD Athlon
       - 500-1000 KB/s on 100 MHz ARM, MIPS, PowerPC or other simple RISC
@@ -204,7 +224,7 @@ Usage:  LZMA <e|d> inputFile outputFile [<switches>...]
   b: Benchmark. There are two tests: compressing and decompressing 
      with LZMA method. Benchmark shows rating in MIPS (million 
      instructions per second). Rating value is calculated from 
-     measured speed and it is normalized with AMD Athlon XP CPU
+     measured speed and it is normalized with AMD Athlon 64 X2 CPU
      results. Also Benchmark checks possible hardware errors (RAM 
      errors in most cases). Benchmark uses these settings:
      (-a1, -d21, -fb32, -mfbt4). You can change only -d. Also you 
@@ -215,16 +235,16 @@ Usage:  LZMA <e|d> inputFile outputFile [<switches>...]
 <Switches>
   
 
-  -a{N}:  set compression mode 0 = fast, 1 = normal, 2 = max
-          default: 2 (max)
+  -a{N}:  set compression mode 0 = fast, 1 = normal
+          default: 1 (normal)
 
-  d{N}:   Sets Dictionary size - [0, 28], default: 23 (8MB)
-          The maximum value for dictionary size is 256 MB = 2^28 bytes.
+  d{N}:   Sets Dictionary size - [0, 30], default: 23 (8MB)
+          The maximum value for dictionary size is 1 GB = 2^30 bytes.
           Dictionary size is calculated as DictionarySize = 2^N bytes. 
           For decompressing file compressed by LZMA method with dictionary 
           size D = 2^N you need about D bytes of memory (RAM).
 
-  -fb{N}: set number of fast bytes - [5, 255], default: 128
+  -fb{N}: set number of fast bytes - [5, 273], default: 128
           Usually big number gives a little bit better compression ratio 
           and slower compression process.
 
@@ -242,29 +262,19 @@ Usage:  LZMA <e|d> inputFile outputFile [<switches>...]
           when period is equal 2^N.
 
   -mf{MF_ID}: set Match Finder. Default: bt4. 
-              Compression ratio for all bt* and pat* almost the same.
               Algorithms from hc* group doesn't provide good compression 
               ratio, but they often works pretty fast in combination with 
-              fast mode (-a0). Methods from bt* group require less memory 
-              than methods from pat* group. Usually bt4 works faster than 
-              any pat*, but for some types of files pat* can work faster. 
+              fast mode (-a0).
 
               Memory requirements depend from dictionary size 
               (parameter "d" in table below). 
 
                MF_ID     Memory                   Description
 
-                bt2    d*9.5 +  1MB  Binary Tree with 2 bytes hashing.
-                bt3    d*9.5 + 65MB  Binary Tree with 2-3(full) bytes hashing.
-                bt4    d*9.5 +  6MB  Binary Tree with 2-3-4 bytes hashing.
-                bt4b   d*9.5 + 34MB  Binary Tree with 2-3-4(big) bytes hashing.
-                pat2r  d*26  +  1MB  Patricia Tree with 2-bits nodes, removing.
-                pat2   d*38  +  1MB  Patricia Tree with 2-bits nodes.
-                pat2h  d*38  + 77MB  Patricia Tree with 2-bits nodes, 2-3 bytes hashing.
-                pat3h  d*62  + 85MB  Patricia Tree with 3-bits nodes, 2-3 bytes hashing.
-                pat4h  d*110 +101MB  Patricia Tree with 4-bits nodes, 2-3 bytes hashing.
-                hc3    d*5.5 +  1MB  Hash Chain with 2-3 bytes hashing.
-                hc4    d*5.5 +  6MB  Hash Chain with 2-3-4 bytes hashing.
+                bt2    d *  9.5 + 4MB  Binary Tree with 2 bytes hashing.
+                bt3    d * 11.5 + 4MB  Binary Tree with 3 bytes hashing.
+                bt4    d * 11.5 + 4MB  Binary Tree with 4 bytes hashing.
+                hc4    d *  7.5 + 4MB  Hash Chain with 4 bytes hashing.
 
   -eos:   write End Of Stream marker. By default LZMA doesn't write 
           eos marker, since LZMA decoder knows uncompressed size 

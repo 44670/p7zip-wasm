@@ -3,7 +3,7 @@ DEST_BIN=/usr/local/bin
 DEST_SHARE=/usr/local/lib/p7zip
 DEST_MAN=/usr/local/man
 
-.PHONY: all all2 7za sfx 7z common clean tar_src tar_bin depend
+.PHONY: all all2 7za sfx 7z common clean tar_src tar_bin depend test test_7z
 
 all::7za
 
@@ -113,11 +113,18 @@ clean:
 	cd 7zip/Compress/PPMD     ; $(MAKE) clean
 	cd 7zip/Crypto/7zAES      ; $(MAKE) clean
 	cd 7zip/Crypto/AES        ; $(MAKE) clean
+	chmod +x install.sh contrib/VirtualFileSystemForMidnightCommander/u7z check/check.sh check/clean_all.sh
+	cd check                  ; ./clean_all.sh
 	find . -name "*~" -exec rm -f {} \;
 	find . -name "*.orig" -exec rm -f {} \;
 	find . -name ".*.swp" -exec rm -f {} \;
 	rm -fr bin
-	chmod +x install.sh contrib/VirtualFileSystemForMidnightCommander/u7z
+
+test: all
+	cd check ; ./check.sh ../bin/7za
+
+test_7z: all2
+	cd check ; ./check.sh ../bin/7z
 
 install:
 	./install.sh $(DEST_BIN) $(DEST_SHARE) $(DEST_MAN)
@@ -135,14 +142,6 @@ tar_all2 : clean
 	rm -f  ../$(ARCHIVE)_src_all_7z.tar.bz2
 	cd .. ; ( 7za a -ttar -so tt $(ARCHIVE) | 7za a -mx=9 -tbzip2 -si $(ARCHIVE)_src_all_7z.tar.bz2 )
 
-tar_src : clean
-	rm -f  ../$(ARCHIVE)_src.tar.gz
-	cd .. ; ( 7za a -ttar -so tt -x!$(ARCHIVE)/7zip/Compress/Rar20 -x!$(ARCHIVE)/7zip/Compress/Rar29 -x!$(ARCHIVE)/DOCS/unRarLicense.txt $(ARCHIVE) | 7za a -mx=9 -tgzip -si $(ARCHIVE)_src.tar.gz )
-
-tar_src_extra : clean
-	rm -f  ../$(ARCHIVE)_src_extra.tar.gz
-	cd .. ; ( 7za a -ttar -so tt $(ARCHIVE)/7zip/Compress/Rar20 $(ARCHIVE)/7zip/Compress/Rar29 $(ARCHIVE)/DOCS/unRarLicense.txt | 7za a -mx=9 -tgzip -si $(ARCHIVE)_src_extra.tar.gz )
-
 src_7z : clean
 	rm -f  ../$(ARCHIVE)_src.7z
 	cd .. ; 7za a -mx=9 -m0=ppmd:mem=128m:o=32 $(ARCHIVE)_src.7z $(ARCHIVE)
@@ -152,3 +151,6 @@ tar_bin:
 	chmod +x install.sh contrib/VirtualFileSystemForMidnightCommander/u7z
 	cd .. ; (tar cf - $(ARCHIVE)/bin $(ARCHIVE)/contrib $(ARCHIVE)/man1 $(ARCHIVE)/install.sh $(ARCHIVE)/ChangeLog $(ARCHIVE)/DOCS $(ARCHIVE)/README $(ARCHIVE)/TODO | bzip2 -9 > $(ARCHIVE)_x86_linux_bin.tar.bz2)
 
+tar_src : clean
+	rm -f  ../$(ARCHIVE)_src.tar.gz
+	cd .. ; ( 7za a -ttar -so tt -x!$(ARCHIVE)/7zip/Compress/Rar20 -x!$(ARCHIVE)/7zip/Compress/Rar29 -x!$(ARCHIVE)/DOCS/unRarLicense.txt $(ARCHIVE) | 7za a -mx=9 -tgzip -si $(ARCHIVE)_src.tar.gz )

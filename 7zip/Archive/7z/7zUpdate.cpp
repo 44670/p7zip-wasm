@@ -281,6 +281,7 @@ struct CSolidGroup
   CRecordVector<UInt32> Indices;
 };
 
+#ifdef _WIN32
 static wchar_t *g_ExeExts[] =
 {
   L"dll",
@@ -297,6 +298,7 @@ static bool IsExeFile(const UString &ext)
       return true;
   return false;
 }
+#endif
 
 static CMethodID k_BCJ_X86 = { { 0x3, 0x3, 0x1, 0x3 }, 4 };
 static CMethodID k_BCJ2 = { { 0x3, 0x3, 0x1, 0x1B }, 4 };
@@ -419,6 +421,7 @@ static void SplitFilesToGroups(
       continue;
     if (useFilters)
     {
+#ifdef _WIN32
       const UString name = updateItem.Name;
       int dotPos = name.ReverseFind(L'.');
       if (dotPos >= 0)
@@ -430,6 +433,17 @@ static void SplitFilesToGroups(
           continue;
         }
       }
+#else
+      if (updateItem.Attributes & FILE_ATTRIBUTE_UNIX_EXTENSION) {
+         unsigned short st_mode =  updateItem.Attributes >> 16;
+         if ((st_mode & 00111) && (updateItem.Size >= 2048))
+         {
+	     // the "big" file has execute permission (so is not a shell ?)
+             exeGroup.Indices.Add(i);
+             continue;
+         }
+      }
+#endif
     }
     generalGroup.Indices.Add(i);
   }

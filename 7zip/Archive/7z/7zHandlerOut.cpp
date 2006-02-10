@@ -63,19 +63,43 @@ static CMethodID k_BZip2 = { { 0x4, 0x2, 0x2 }, 3 };
 const wchar_t *kCopyMethod = L"Copy";
 const wchar_t *kLZMAMethodName = L"LZMA";
 const wchar_t *kBZip2MethodName = L"BZip2";
+const wchar_t *kPpmdMethodName = L"PPMd";
+const wchar_t *kDeflateMethodName = L"Deflate";
+const wchar_t *kDeflate64MethodName = L"Deflate64";
 
-const UInt32 kAlgorithmForX7 = 2;
-const UInt32 kDicSizeForX7 = 1 << 23;
-const UInt32 kFastBytesForX7 = 64;
+static const wchar_t *kMatchFinderX1 = L"HC4";
+static const wchar_t *kMatchFinderX3 = L"HC4";
 
-const UInt32 kAlgorithmForX9 = 2;
-const UInt32 kDicSizeForX9 = 1 << 25;
-const UInt32 kFastBytesForX9 = 64;
-static const wchar_t *kMatchFinderForX9 = L"BT4b";
+static const UInt32 kAlgorithmX1 = 0;
+static const UInt32 kAlgorithmX3 = 0;
+static const UInt32 kAlgorithmX7 = 1;
+static const UInt32 kAlgorithmX9 = 1;
 
-const UInt32 kAlgorithmForFast = 0;
-const UInt32 kDicSizeForFast = 1 << 15;
-static const wchar_t *kMatchFinderForFast = L"HC3";
+static const UInt32 kDicSizeX1 = 1 << 16;
+static const UInt32 kDicSizeX3 = 1 << 20;
+static const UInt32 kDicSizeX7 = 1 << 24;
+static const UInt32 kDicSizeX9 = 1 << 26;
+
+static const UInt32 kFastBytesX7 = 64;
+static const UInt32 kFastBytesX9 = 64;
+
+static const UInt32 kPpmdMemSizeX1 = (1 << 22);
+static const UInt32 kPpmdMemSizeX7 = (1 << 26);
+static const UInt32 kPpmdMemSizeX9 = (192 << 20);
+
+static const UInt32 kPpmdOrderX1 = 4;
+static const UInt32 kPpmdOrderX7 = 16;
+static const UInt32 kPpmdOrderX9 = 32;
+
+static const UInt32 kDeflateFastBytesX7 = 64;
+static const UInt32 kDeflatePassesX7 = 3;
+
+static const UInt32 kDeflateFastBytesX9 = 64;
+static const UInt32 kDeflatePassesX9 = 10;
+
+static const UInt32 kNumBZip2PassesX1 = 1;
+static const UInt32 kNumBZip2PassesX7 = 2;
+static const UInt32 kNumBZip2PassesX9 = 7;
 
 const wchar_t *kDefaultMethodName = kLZMAMethodName;
 
@@ -90,6 +114,13 @@ static bool IsLZMethod(const UString &methodName)
 
 static bool IsBZip2Method(const UString &methodName)
   { return (methodName.CompareNoCase(kBZip2MethodName) == 0); }
+
+static bool IsPpmdMethod(const UString &methodName)
+  { return (methodName.CompareNoCase(kPpmdMethodName) == 0); }
+
+static bool IsDeflateMethod(const UString &methodName)
+  { return (methodName.CompareNoCase(kDeflateMethodName) == 0) || 
+  (methodName.CompareNoCase(kDeflate64MethodName) == 0); }
 
 STDMETHODIMP CHandler::GetFileTimeType(UInt32 *type)
 {
@@ -199,7 +230,7 @@ HRESULT CHandler::SetCompressionMethod(
     {
       CProperty property;
       property.PropID = NCoderPropID::kAlgorithm;
-      property.Value = kAlgorithmForX9;
+      property.Value = kAlgorithmX9;
       oneMethodInfo.CoderProperties.Add(property);
     }
     {
@@ -262,27 +293,28 @@ HRESULT CHandler::SetCompressionMethod(
     if (oneMethodInfo.MethodName.IsEmpty())
       oneMethodInfo.MethodName = kDefaultMethodName;
 
-    if (IsLZMethod(oneMethodInfo.MethodName))
+    if (IsLZMAMethod(oneMethodInfo.MethodName))
     {
-      if (IsLZMAMethod(oneMethodInfo.MethodName))
-      {
-        SetOneMethodProp(oneMethodInfo, 
-            NCoderPropID::kDictionarySize, _defaultDicSize);
-        SetOneMethodProp(oneMethodInfo, 
-            NCoderPropID::kAlgorithm, _defaultAlgorithm);
-        SetOneMethodProp(oneMethodInfo, 
-            NCoderPropID::kNumFastBytes, _defaultFastBytes);
-        SetOneMethodProp(oneMethodInfo, 
-            NCoderPropID::kMatchFinder, (const wchar_t *)_defaultMatchFinder);
-        if (multiThread)
-          SetOneMethodProp(oneMethodInfo, 
-              NCoderPropID::kMultiThread, true);
-      }
+      SetOneMethodProp(oneMethodInfo, NCoderPropID::kDictionarySize, _defaultDicSize);
+      SetOneMethodProp(oneMethodInfo, NCoderPropID::kAlgorithm, _defaultAlgorithm);
+      SetOneMethodProp(oneMethodInfo, NCoderPropID::kNumFastBytes, _defaultFastBytes);
+      SetOneMethodProp(oneMethodInfo, NCoderPropID::kMatchFinder, (const wchar_t *)_defaultMatchFinder);
+      if (multiThread)
+        SetOneMethodProp(oneMethodInfo, NCoderPropID::kMultiThread, true);
+    }
+    else if (IsDeflateMethod(oneMethodInfo.MethodName))
+    {
+      SetOneMethodProp(oneMethodInfo, NCoderPropID::kNumFastBytes, _defaultDeflateFastBytes);
+      SetOneMethodProp(oneMethodInfo, NCoderPropID::kNumPasses, _defaultDeflatePasses);
     }
     else if (IsBZip2Method(oneMethodInfo.MethodName))
     {
-      SetOneMethodProp(oneMethodInfo, 
-        NCoderPropID::kNumPasses, _defaultBZip2Passes);
+      SetOneMethodProp(oneMethodInfo, NCoderPropID::kNumPasses, _defaultBZip2Passes);
+    }
+    else if (IsPpmdMethod(oneMethodInfo.MethodName))
+    {
+      SetOneMethodProp(oneMethodInfo, NCoderPropID::kUsedMemorySize, _defaultPpmdMemSize);
+      SetOneMethodProp(oneMethodInfo, NCoderPropID::kOrder, _defaultPpmdOrder);
     }
 
 
@@ -993,12 +1025,27 @@ STDMETHODIMP CHandler::SetProperties(const wchar_t **names, const PROPVARIANT *v
         _copyMode = true;
         _defaultBZip2Passes = 1;
       }
+      else if (_level < 3)
+      {
+        _defaultAlgorithm = kAlgorithmX1;
+        _defaultDicSize = kDicSizeX1;
+        _defaultMatchFinder = kMatchFinderX1;
+
+        _defaultBZip2Passes = 1;
+
+        _defaultPpmdMemSize = kPpmdMemSizeX1;
+        _defaultPpmdOrder = kPpmdOrderX1;
+      }
       else if (_level < 5)
       {
-        _defaultAlgorithm = kAlgorithmForFast;
-        _defaultDicSize = kDicSizeForFast;
-        _defaultMatchFinder = kMatchFinderForFast;
+        _defaultAlgorithm = kAlgorithmX3;
+        _defaultDicSize = kDicSizeX3;
+        _defaultMatchFinder = kMatchFinderX3;
+
         _defaultBZip2Passes = 1;
+
+        _defaultPpmdMemSize = kPpmdMemSizeX1;
+        _defaultPpmdOrder = kPpmdOrderX1;
       }
       else if (_level < 7)
       {
@@ -1007,18 +1054,29 @@ STDMETHODIMP CHandler::SetProperties(const wchar_t **names, const PROPVARIANT *v
       }
       else if(_level < 9)
       {
-        _defaultAlgorithm = kAlgorithmForX7;
-        _defaultDicSize = kDicSizeForX7;
-        _defaultFastBytes = kFastBytesForX7;
-        _defaultBZip2Passes = 2;
+        _defaultAlgorithm = kAlgorithmX7;
+        _defaultDicSize = kDicSizeX7;
+        _defaultFastBytes = kFastBytesX7;
+        _defaultBZip2Passes = kNumBZip2PassesX7;
+
+        _defaultPpmdMemSize = kPpmdMemSizeX7;
+        _defaultPpmdOrder = kPpmdOrderX7;
+
+        _defaultDeflateFastBytes = kDeflateFastBytesX7;
+        _defaultDeflatePasses = kDeflatePassesX7;
       }
       else
       {
-        _defaultAlgorithm = kAlgorithmForX9;
-        _defaultDicSize = kDicSizeForX9;
-        _defaultFastBytes = kFastBytesForX9;
-        _defaultMatchFinder = kMatchFinderForX9;
-        _defaultBZip2Passes = 7;
+        _defaultAlgorithm = kAlgorithmX9;
+        _defaultDicSize = kDicSizeX9;
+        _defaultFastBytes = kFastBytesX9;
+        _defaultBZip2Passes = kNumBZip2PassesX9;
+
+        _defaultPpmdMemSize = kPpmdMemSizeX9;
+        _defaultPpmdOrder = kPpmdOrderX9;
+
+        _defaultDeflateFastBytes = kDeflateFastBytesX9;
+        _defaultDeflatePasses = kDeflatePassesX9;
       }
       continue;
     }

@@ -17,7 +17,11 @@
 
   #endif /* !ENV_MACOSX && !ENV_BEOS */
 
-  /* lstat and readlink */
+  #if !defined(ENV_BEOS)
+  #define HAVE_GETPASS
+  #endif
+
+  /* lstat, readlink and S_ISLNK */
   #define HAVE_LSTAT
 
   /* <locale.h> */

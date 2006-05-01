@@ -3,6 +3,7 @@ SRCS=\
  ./BZip2HandlerOut.cpp \
  ./BZip2Update.cpp \
  ../Common/CodecsPath.cpp \
+ ../Common/ParseProperties.cpp \
  ../Common/DummyOutStream.cpp \
  ../../Common/ProgressUtils.cpp \
  ../../Compress/Copy/CopyCoder.cpp \
@@ -21,6 +22,8 @@ CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp
 CodecsPath.o : ../Common/CodecsPath.cpp
 	$(CXX) $(CFLAGS) ../Common/CodecsPath.cpp
+ParseProperties.o : ../Common/ParseProperties.cpp
+	$(CXX) $(CFLAGS) ../Common/ParseProperties.cpp
 DummyOutStream.o : ../Common/DummyOutStream.cpp
 	$(CXX) $(CFLAGS) ../Common/DummyOutStream.cpp
 BZip2Handler.o : ./BZip2Handler.cpp

@@ -61,10 +61,9 @@ sure ${PZIP7} a 7za433_7zip_lzma.7z 7za433_7zip_lzma
 
 sure ${PZIP7} a -pqwerty -mhc=on -mhe=on 7za433_7zip_lzma_crypto.7z 7za433_7zip_lzma_crypto
 
-sure ${PZIP7} a -mx=9 -m0=ppmd:mem=128m:o=32 7za433_7zip_ppmd.7z 7za433_7zip_ppmd
+sure ${PZIP7} a -mx=9 -m0=ppmd:mem=64m:o=32 7za433_7zip_ppmd.7z 7za433_7zip_ppmd
 
 sure ${PZIP7} a -m0=bzip2 7za433_7zip_bzip2.7z 7za433_7zip_bzip2
-
 
 echo ""
 echo "# EXTRACTING (PASS 2) ..."

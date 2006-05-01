@@ -1,10 +1,11 @@
 PROG=../../../bin/Formats/Zip.so
 
-LOCAL_FLAGS=-DCRYPTO_ZIP
+LOCAL_FLAGS=-DCRYPTO_ZIP -DCOMPRESS_MT
 
 MY_WINDOWS= \
 	$(MY_HOME)/wine_date_and_time.o \
 	$(MY_HOME)/myModuleFileName.o \
+	$(MY_HOME)/myGetNumberOfProcessors.o \
 	$(MY_HOME)/myGetTickCount.o
 
 include ../../../makefile.machine
@@ -33,6 +34,7 @@ FilterCoder.o\
 InStreamWithCRC.o\
 ItemNameUtils.o\
 OutStreamWithCRC.o\
+ParseProperties.o\
 LimitedStreams.o\
 OffsetStream.o\
 ProgressUtils.o\

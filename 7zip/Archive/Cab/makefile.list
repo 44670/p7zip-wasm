@@ -4,13 +4,14 @@ CabBlockInStream.cpp \
 CabHandler.cpp \
 CabHeader.cpp \
 CabIn.cpp \
- ../../Common/InBuffer.cpp \
- ../../Common/LSBFDecoder.cpp \
- ../../Common/OutBuffer.cpp \
- ../../Common/StreamUtils.cpp \
- ../../Common/ProgressUtils.cpp \
- ../../Compress/LZ/LZOutWindow.cpp \
- ../../../Windows/PropVariant.cpp \
+../Common/ItemNameUtils.cpp \
+../../Common/InBuffer.cpp \
+../../Common/LSBFDecoder.cpp \
+../../Common/OutBuffer.cpp \
+../../Common/StreamUtils.cpp \
+../../Common/ProgressUtils.cpp \
+../../Compress/LZ/LZOutWindow.cpp \
+../../../Windows/PropVariant.cpp \
 ../../Compress/Lzx/LzxDecoder.cpp \
 ../../Compress/Lzx/Lzx86Converter.cpp \
 ../../Compress/Copy/CopyCoder.cpp
@@ -27,6 +28,8 @@ CabIn.o : ./CabIn.cpp
 	$(CXX) $(CFLAGS) ./CabIn.cpp
 PropVariant.o : ../../../Windows/PropVariant.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
+ItemNameUtils.o : ../Common/ItemNameUtils.cpp
+	$(CXX) $(CFLAGS) ../Common/ItemNameUtils.cpp
 InBuffer.o : ../../Common/InBuffer.cpp
 	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
 LSBFDecoder.o : ../../Common/LSBFDecoder.cpp

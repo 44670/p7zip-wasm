@@ -187,6 +187,15 @@ sha1.o: ../../Crypto/RarAES/sha1.cpp ../../../myWindows/StdAfx.h \
   ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
   ../../../include_windows/tchar.h ../../Crypto/RarAES/sha1.h \
   ../../Crypto/RarAES/../../../Common/Types.h
+ItemNameUtils.o: ../Common/ItemNameUtils.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../Common/ItemNameUtils.h \
+  ../Common/../../../Common/String.h ../Common/../../../Common/Vector.h \
+  ../Common/../../../Common/Defs.h
 DllExports.o: DllExports.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -267,8 +276,9 @@ RarHandler.o: RarHandler.cpp ../../../myWindows/StdAfx.h \
   ../Common/../../IStream.h ../Common/CoderLoader.h \
   ../Common/CodecsPath.h ../Common/../../../Common/String.h \
   ../Common/FilterCoder.h ../Common/../../ICoder.h \
-  ../Common/../../IPassword.h ../7z/7zMethods.h ../7z/7zMethodID.h \
-  ../7z/../../../Common/String.h ../7z/../../../Common/Types.h
+  ../Common/../../IPassword.h ../Common/ItemNameUtils.h ../7z/7zMethods.h \
+  ../7z/7zMethodID.h ../7z/../../../Common/String.h \
+  ../7z/../../../Common/Types.h
 RarHeader.o: RarHeader.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \

@@ -12,6 +12,7 @@ SRCS=\
  ../../Common/StreamUtils.cpp \
  ../Common/OpenArchive.cpp \
  ../Common/PropIDUtils.cpp \
+ ../Common/SetProperties.cpp \
  ../Common/SortUtils.cpp \
  ../Common/TempFiles.cpp \
  ../Common/UpdateAction.cpp \
@@ -86,6 +87,8 @@ EnumDirItems.o : ../Common/EnumDirItems.cpp
 	$(CXX) $(CFLAGS) ../Common/EnumDirItems.cpp
 Extract.o : ../Common/Extract.cpp
 	$(CXX) $(CFLAGS) ../Common/Extract.cpp
+SetProperties.o : ../Common/SetProperties.cpp
+	$(CXX) $(CFLAGS) ../Common/SetProperties.cpp
 ExtractingFilePath.o : ../Common/ExtractingFilePath.cpp
 	$(CXX) $(CFLAGS) ../Common/ExtractingFilePath.cpp
 OpenArchive.o : ../Common/OpenArchive.cpp

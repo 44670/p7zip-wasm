@@ -1,6 +1,6 @@
 PROG=../../../bin/Codecs/Deflate.so
 
-LOCAL_FLAGS=
+LOCAL_FLAGS=-D_ST_MODE
 
 MY_WINDOWS=
 

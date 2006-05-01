@@ -24,6 +24,8 @@
 #include <errno.h>
 #include <math.h>
 
+#undef CS /* fix for Solaris 10 x86 */
+
 /***************************/
 typedef void * HINSTANCE; // FIXME
 typedef void * HMODULE; // FIXME

@@ -17,33 +17,20 @@
 #include <locale.h>
 #endif
 
-#ifdef __linux__
-#include <endian.h>
-#include <byteswap.h>
-#elif defined(__APPLE_CC__)
-#include <machine/endian.h>
-#elif defined(sparc)
-#define PLATFORM_BYTE_ORDER AES_BIG_ENDIAN
-#elif defined(BIG_ENDIAN)
-#define PLATFORM_BYTE_ORDER AES_BIG_ENDIAN
-#elif defined(LITTLE_ENDIAN)
-#define PLATFORM_BYTE_ORDER AES_LITTLE_ENDIAN
-// #else
-// #include <sys/endian.h>
-#endif
-
-
 #include <windows.h>
 
 #define NEED_NAME_WINDOWS_TO_UNIX
 #include "myPrivate.h"
 
 #include "Common/StringConvert.h"
+#include "Common/StdOutStream.h"
 
 #undef NDEBUG
 #include <assert.h>
 
 #include "Common/StringConvert.cpp"
+#include "Common/StdOutStream.cpp"
+#include "Common/IntToString.cpp"
 
 
 #if  defined(HAVE_WCHAR_H) && defined(HAVE_MBSTOWCS) && defined(HAVE_WCSTOMBS)
@@ -165,6 +152,64 @@ static void test_split_astring() {
   printf("test_split_astring : done\n");
 }
 
+ // Number of 100 nanosecond units from 1/1/1601 to 1/1/1970
+#define EPOCH_BIAS  116444736000000000LL
+static LARGE_INTEGER UnixTimeToUL(time_t tps_unx)
+{
+	LARGE_INTEGER ul;
+	ul.QuadPart = tps_unx * 10000000LL + EPOCH_BIAS;
+	return ul;
+}
+
+static LARGE_INTEGER FileTimeToUL(FILETIME fileTime)
+{
+	LARGE_INTEGER lFileTime;
+	lFileTime.QuadPart = fileTime.dwHighDateTime;
+	lFileTime.QuadPart = (lFileTime.QuadPart << 32) | fileTime.dwLowDateTime;
+	return lFileTime;
+}
+
+static void display(const char *txt,SYSTEMTIME systime)
+{
+	FILETIME fileTime;
+	BOOL ret = SystemTimeToFileTime(&systime,&fileTime);
+	assert(ret == TRUE);
+	LARGE_INTEGER ulFileTime = FileTimeToUL(fileTime);
+	
+	const char * day="";
+	switch (systime.wDayOfWeek)
+	{
+        	case 0:day = "Sunday";break;
+        	case 1:day = "Monday";break;
+        	case 2:day = "Tuesday";break;
+        	case 3:day = "Wednesday";break;
+        	case 4:day = "Thursday";break;
+        	case 5:day = "Friday";break;
+        	case 6:day = "Saturday";break;
+	}
+	g_StdOut<< txt << day << " " 
+		<< (int)systime.wYear << "/" <<  (int)systime.wMonth << "/" << (int)systime.wDay << " "
+		<< (int)systime.wHour << ":" << (int)systime.wMinute << ":" <<  (int)systime.wSecond << ":" 
+        	<<     (int)systime.wMilliseconds
+		<< " (" << (UInt64)ulFileTime.QuadPart << ")\n";
+}
+
+static void test_time()
+{
+	time_t tps_unx = time(0);
+
+	g_StdOut << "\nTEST TIME :\n";
+	SYSTEMTIME systimeGM;
+	GetSystemTime(&systimeGM);
+	
+	LARGE_INTEGER ul = UnixTimeToUL(tps_unx);
+	g_StdOut<<"  unix time = " << (UInt64)tps_unx << " (" << (UInt64)ul.QuadPart << ")\n";
+
+	g_StdOut<<"  gmtime    : " << asctime(gmtime(&tps_unx))<<"\n";
+	g_StdOut<<"  localtime : " << asctime(localtime(&tps_unx))<<"\n";
+
+	display("  GetSystemTime : ", systimeGM);
+}
 
 int main() {
 #if defined(BIG_ENDIAN)
@@ -194,6 +239,8 @@ int main() {
 
   test_astring(12345);
   test_split_astring();
+
+  test_time();
 
   return 0;
 }

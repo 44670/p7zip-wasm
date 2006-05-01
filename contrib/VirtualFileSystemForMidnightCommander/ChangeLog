@@ -1,3 +1,7 @@
+=-=-=-= 4.29
+* Code optimization for using less temporary files as possible (may not work with p7zip 
+  versions oldest than 4.29)
+
 =-=-=-= 4.16beta
 * Changed internal date representation, because old date format may not work with 
   some mc versions. (thanks to Valery Koval for patch)

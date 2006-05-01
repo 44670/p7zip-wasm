@@ -1,8 +1,8 @@
 PROG=../../../bin/Formats/bz2.so
 
-LOCAL_FLAGS=
+LOCAL_FLAGS=-DCOMPRESS_MT
 
-MY_WINDOWS=$(MY_HOME)/myModuleFileName.o
+MY_WINDOWS=$(MY_HOME)/myModuleFileName.o $(MY_HOME)/myGetNumberOfProcessors.o
 
 include ../../../makefile.machine
 
@@ -20,6 +20,7 @@ DLL.o\
 PropVariant.o\
 CopyCoder.o\
 CodecsPath.o\
+ParseProperties.o\
 DummyOutStream.o\
 BZip2Handler.o\
 BZip2HandlerOut.o\

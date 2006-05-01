@@ -30,7 +30,8 @@ ProgressUtils.o\
 StreamUtils.o \
 CodecsPath.o\
 InStreamWithCRC.o\
-OutStreamWithCRC.o
+OutStreamWithCRC.o \
+ParseProperties.o
 
 include ../../../makefile.glb
 

@@ -25,6 +25,7 @@ CabHeader.o \
 CabIn.o \
 PropVariant.o \
 InBuffer.o \
+ItemNameUtils.o \
 LSBFDecoder.o \
 OutBuffer.o \
 ProgressUtils.o \

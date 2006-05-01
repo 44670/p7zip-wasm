@@ -10,6 +10,7 @@
 #include "UpdateAction.h"
 #include "ArchiveOpenCallback.h"
 #include "UpdateCallback.h"
+#include "Property.h"
 
 struct CArchivePath
 {
@@ -30,7 +31,7 @@ struct CArchivePath
     if (Name.IsEmpty())
       return;
     int dotPos = Name.ReverseFind(L'.');
-    if (dotPos < 0)
+    if (dotPos <= 0)
       return;
     if (dotPos == Name.Length() - 1)
     {
@@ -75,12 +76,6 @@ struct CUpdateArchiveCommand
   NUpdateArchive::CActionSet ActionSet;
 };
 
-struct CProperty
-{
-  UString Name;
-  UString Value;
-};
-
 struct CCompressionMethodMode
 {
   #ifndef EXCLUDE_COM
@@ -111,7 +106,7 @@ struct CUpdateOptions
   bool EMailRemoveAfter;
   UString EMailAddress;
 
- UString WorkingDir;
+  UString WorkingDir;
 
   CUpdateOptions():
     UpdateArchiveItself(true),

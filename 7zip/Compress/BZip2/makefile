@@ -1,6 +1,6 @@
 PROG=../../../bin/Codecs/BZip2.so
 
-LOCAL_FLAGS=
+LOCAL_FLAGS=-DCOMPRESS_BZIP2_MT
 
 MY_WINDOWS=
 
@@ -14,6 +14,7 @@ OBJS = \
 ../../../Common/Alloc.o\
 InBuffer.o\
 OutBuffer.o\
+Synchronization.o\
 DllExports.o\
 BZip2Decoder.o\
 BZip2Encoder.o\

@@ -45,7 +45,7 @@ void my_windows_split_path(const AString &p_path, AString &dir , AString &base) 
 }
 
 static const char * myModuleFileName = 0;
-extern "C" void mySetModuleFileNameA(const char * moduleFileName) {
+extern "C" DLLEXPORT void mySetModuleFileNameA(const char * moduleFileName) {
   char *ptr =  new char[strlen(moduleFileName)+1];
   strcpy(ptr,moduleFileName);
   myModuleFileName = (const char *)ptr;

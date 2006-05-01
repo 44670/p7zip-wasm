@@ -56,9 +56,6 @@ static const Byte *ReadString(const Byte *p, size_t size, AString &s)
   for (size_t i = 0; i < size; i++)
   {
     char c = p[i];
-#ifndef _WIN32
-    if (c == '\\') c = '/';
-#endif
     if (c == 0)
       break;
     s += c;

@@ -1,10 +1,13 @@
-
-ALLFLAGS=-O1 -s \
+#
+# makefile for Linux (x86, PPC, alpha ...)
+# LITTLE_ENDIAN and BIG_ENDIAN are already defined by the system headers
+#
+ALLFLAGS=-O1 -s -fPIC \
     	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
 	-DNDEBUG -D_REENTRANT -DENV_UNIX \
 	$(LOCAL_FLAGS)
 
-CXX=gcc $(ALLFLAGS)
+CXX=g++ $(ALLFLAGS)
 CC=gcc $(ALLFLAGS)
 LINK_SHARED=-shared
 

@@ -91,6 +91,13 @@ static int fillin_CFileInfo(CFileInfo &fileInfo,const char *dir,const char *name
   size_t total = dir_len + 1 + name_len; // 1 = strlen("/");
   if (total >= MAX_PATHNAME_LEN) throw "fillin_CFileInfo - internal error - MAX_PATHNAME_LEN";
   memcpy(filename,dir,dir_len);
+  if (dir_len >= 1)
+  {
+	if (filename[dir_len-1] == CHAR_PATH_SEPARATOR)
+	{ // delete the '/'
+		dir_len--;
+	}
+  }
   filename[dir_len] = CHAR_PATH_SEPARATOR;
   memcpy(filename+(dir_len+1),name,name_len+1); // copy also final '\0'
 

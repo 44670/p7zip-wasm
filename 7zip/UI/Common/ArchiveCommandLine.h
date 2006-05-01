@@ -62,12 +62,14 @@ struct CArchiveCommandLineOptions
   bool PasswordEnabled;
   UString Password;
 
+  bool TechMode;
   // Extract
   bool AppendName;
   UString OutputDir;
   NExtract::NOverwriteMode::EEnum OverwriteMode;
   UStringVector ArchivePathsSorted;
   UStringVector ArchivePathsFullSorted;
+  CObjectVector<CProperty> ExtractProperties;
 
   CUpdateOptions UpdateOptions;
   bool EnablePercents;

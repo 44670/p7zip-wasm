@@ -20,6 +20,8 @@
 #include "../../Compress/Lzx/LzxDecoder.h"
 #include "../../Compress/Quantum/QuantumDecoder.h"
 
+#include "../Common/ItemNameUtils.h"
+
 using namespace NWindows;
 
 namespace NArchive {
@@ -123,10 +125,10 @@ STDMETHODIMP CHandler::GetProperty(UInt32 index, PROPID propID,  PROPVARIANT *va
         if (!ConvertUTF8ToUnicode(item.Name, unicodeName))
           propVariant = L"";
         else
-          propVariant = unicodeName;
+          propVariant = (const wchar_t *)NItemName::WinNameToOSName(unicodeName);
       }
       else
-        propVariant = MultiByteToUnicodeString(item.Name, CP_ACP);
+        propVariant = (const wchar_t *)NItemName::WinNameToOSName(MultiByteToUnicodeString(item.Name, CP_ACP)); /* FIXED */
       break;
     case kpidIsFolder:
       propVariant = item.IsDirectory();

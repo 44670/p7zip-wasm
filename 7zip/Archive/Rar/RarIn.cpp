@@ -266,9 +266,6 @@ void CInArchive::ReadName(CItemEx &item, int nameSize)
         break;
     buffer[mainLen] = '\0';
     item.Name = buffer;
-#ifndef _WIN32
-    item.Name.Replace('\\','/');
-#endif
 
     if(item.HasUnicodeName())
     {
@@ -282,9 +279,6 @@ void CInArchive::ReadName(CItemEx &item, int nameSize)
       }
       else if (!ConvertUTF8ToUnicode(item.Name, item.UnicodeName))
         item.UnicodeName.Empty();
-#ifndef _WIN32
-      item.UnicodeName.Replace(L'\\',L'/');
-#endif
     }
   }
   else

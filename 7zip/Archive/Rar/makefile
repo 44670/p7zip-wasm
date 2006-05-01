@@ -23,6 +23,7 @@ OBJS = \
 DllExports.o\
 CodecsPath.o\
 FilterCoder.o\
+ItemNameUtils.o \
 InStreamWithCRC.o\
 OutStreamWithCRC.o\
 DLL.o\

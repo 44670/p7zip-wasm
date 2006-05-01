@@ -70,10 +70,13 @@ Recurse subdirectories (CAUTION: this flag does not do what you think, avoid usi
 Create SFX archive
 .TP
 .B -si
-Read data from StdIn
+Read data from StdIn (eg: tar cf - directory | 7za a -si directory.tar.7z)
 .TP
 .B -so
-Write data to StdOut
+Write data to StdOut (eg: 7za x -so directory.tar.7z | tar xf -)
+.TP
+.B -slt
+Sets technical mode for l (list) command
 .TP
 .B -t{Type}
 Type of archive
@@ -84,7 +87,7 @@ Create volumes
 .B -u[-][p#][q#][r#][x#][y#][z#][!newArchiveName]
 Update options
 .TP
-.B -w[{path}]
+.B -w[path]
 Set Working directory
 .TP
 .B -x[r[-|0]]]{@listfile|!wildcard}
@@ -143,6 +146,7 @@ add all files from directory "dir1" to SFX archive archive.exe (Remark : SFX arc
 You will find more examples in /usr/share/doc/p7zip/DOCS/MANUAL.
 .SH "SEE ALSO"
 .BR 7z (1)
+.BR 7zr (1)
 .SH AUTHOR
 .TP
 Written for Debian by Mohammed Adnene Trojette.

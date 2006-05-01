@@ -62,35 +62,20 @@ static inline void NormalizeTimeFields(CSHORT *FieldToNormalize, CSHORT *CarryFi
   *CarryField = (CSHORT) (*CarryField + 1);
 }
 
-static int TIME_GetBias(time_t utc, int *pdaylight) {
-  struct tm *ptm;
-  static time_t last_utc=0; // FIXED
-  static int last_bias;
-  static int last_daylight;
-  int ret;
-
-  if(utc == last_utc) {
-    *pdaylight = last_daylight;
-    ret = last_bias;
-  } else {
-    ptm = localtime(&utc);
-    *pdaylight = last_daylight = ptm->tm_isdst; /* daylight for local timezone */
-    ptm = gmtime(&utc);
-    ptm->tm_isdst = *pdaylight; /* use local daylight, not that of Greenwich */
-    last_utc = utc;
-    ret = last_bias = (int)(utc-mktime(ptm));
-  }
-  return ret;
-  *pdaylight = 0;
-  return 0;
+static int TIME_GetBias() {
+  time_t utc = time(NULL);
+  struct tm *ptm = localtime(&utc);
+  int daylight = ptm->tm_isdst; /* daylight for local timezone */
+  ptm = gmtime(&utc);
+  ptm->tm_isdst = daylight; /* use local daylight, not that of Greenwich */
+  int bias = (int)(utc-mktime(ptm));
+  TRACEN((printf("TIME_GetBias %ld\n",bias)))
+  return bias;
 }
 
-
-static void RtlSystemTimeToLocalTime( const LARGE_INTEGER *SystemTime,
+static inline void RtlSystemTimeToLocalTime( const LARGE_INTEGER *SystemTime,
                                       LARGE_INTEGER *LocalTime ) {
-  int bias, daylight;
-  time_t gmt = time(NULL);
-  bias = TIME_GetBias(gmt, &daylight);
+  int bias = TIME_GetBias();
   LocalTime->QuadPart = SystemTime->QuadPart + bias * (LONGLONG)10000000;
 }
 
@@ -101,14 +86,9 @@ void WINAPI RtlSecondsSince1970ToFileTime( DWORD Seconds, LPFILETIME ft ) {
   TRACEN((printf("RtlSecondsSince1970ToFileTime %lx => %lx %lx\n",(long)Seconds,(long)ft->dwHighDateTime,(long)ft->dwLowDateTime)))
 }
 
-
 BOOL WINAPI DosDateTimeToFileTime( WORD fatdate, WORD fattime, LPFILETIME ft) {
   struct tm newtm;
-#ifndef HAVE_TIMEGM
-
-  struct tm *gtm;
-  time_t time1, time2;
-#endif
+  time_t time1;
 
   TRACEN((printf("DosDateTimeToFileTime\n")))
   newtm.tm_sec  = (fattime & 0x1f) * 2;
@@ -117,35 +97,21 @@ BOOL WINAPI DosDateTimeToFileTime( WORD fatdate, WORD fattime, LPFILETIME ft) {
   newtm.tm_mday = (fatdate & 0x1f);
   newtm.tm_mon  = ((fatdate >> 5) & 0x0f) - 1;
   newtm.tm_year = (fatdate >> 9) + 80;
-#ifdef HAVE_TIMEGM
-
-  TRACEN((printf("DosDateTimeToFileTime-1\n")))
-  RtlSecondsSince1970ToFileTime( timegm(&newtm), ft );
-#else
-
-  TRACEN((printf("DosDateTimeToFileTime-2\n")))
   time1 = mktime(&newtm);
-  gtm = gmtime(&time1);
-  time2 = mktime(gtm);
-  RtlSecondsSince1970ToFileTime( 2*time1-time2, ft );
-#endif
+  int bias = TIME_GetBias();
+  RtlSecondsSince1970ToFileTime( time1 + bias, ft );
+
+  TRACEN((printf("DosDateTimeToFileTime(%d,%d) t1=%ld => %lx %lx\n",
+	(long)fatdate,(long)fattime,(long)time1,
+	(long)ft->dwHighDateTime,(long)ft->dwLowDateTime)))
 
   return TRUE;
 }
 
-/* FIXME : Should it be signed division instead? */
-static ULONGLONG WINAPI RtlLargeIntegerDivide( ULONGLONG a, ULONGLONG b, ULONGLONG *rem ) {
-  ULONGLONG ret = a / b;
-  if (rem)
-    *rem = a - ret * b;
-  return ret;
-}
-
-
 BOOLEAN WINAPI RtlTimeToSecondsSince1970( const LARGE_INTEGER *Time, DWORD *Seconds ) {
   ULONGLONG tmp = Time->QuadPart;
   TRACEN((printf("RtlTimeToSecondsSince1970-1 %llx\n",tmp)))
-  tmp = RtlLargeIntegerDivide( tmp, 10000000, NULL );
+  tmp /= 10000000;
   tmp -= SECS_1601_TO_1970;
   TRACEN((printf("RtlTimeToSecondsSince1970-2 %llx\n",tmp)))
   if (tmp > 0xffffffff)
@@ -186,8 +152,6 @@ BOOL WINAPI FileTimeToLocalFileTime( const FILETIME *utcft, LPFILETIME localft )
   return TRUE;
 }
 
-
-typedef short CSHORT;
 typedef struct _TIME_FIELDS {
   CSHORT Year;
   CSHORT Month;
@@ -197,8 +161,7 @@ typedef struct _TIME_FIELDS {
   CSHORT Second;
   CSHORT Milliseconds;
   CSHORT Weekday;
-}
-TIME_FIELDS, *PTIME_FIELDS;
+} TIME_FIELDS;
 
 static const int MonthLengths[2][MONSPERYEAR] = {
       {
@@ -211,10 +174,9 @@ static inline int IsLeapYear(int Year) {
   return Year % 4 == 0 && (Year % 100 != 0 || Year % 400 == 0) ? 1 : 0;
 }
 
-
-static VOID WINAPI RtlTimeToTimeFields(
+static inline VOID WINAPI RtlTimeToTimeFields(
   const LARGE_INTEGER *liTime,
-  PTIME_FIELDS TimeFields) {
+  TIME_FIELDS * TimeFields) {
   const int *Months;
   int SecondsInDay, DeltaYear;
   int LeapYear, CurMonth;
@@ -289,15 +251,11 @@ BOOL WINAPI FileTimeToSystemTime( const FILETIME *ft, LPSYSTEMTIME syst ) {
 }
 
 
-static void WINAPI RtlLocalTimeToSystemTime( const LARGE_INTEGER *LocalTime,
+static inline void WINAPI RtlLocalTimeToSystemTime( const LARGE_INTEGER *LocalTime,
     LARGE_INTEGER *SystemTime) {
-  time_t gmt;
-  int bias, daylight;
 
   TRACEN((printf("RtlLocalTimeToSystemTime\n")))
-  gmt = time(NULL);
-  bias = TIME_GetBias(gmt, &daylight);
-
+  int bias = TIME_GetBias();
   SystemTime->QuadPart = LocalTime->QuadPart - bias * (LONGLONG)10000000;
 }
 
@@ -314,29 +272,6 @@ BOOL WINAPI LocalFileTimeToFileTime( const FILETIME *localft, LPFILETIME utcft )
   return TRUE;
 }
 
-/***********************************************************************
- *       NtQuerySystemTime [NTDLL.@]
- *       ZwQuerySystemTime [NTDLL.@]
- *
- * Get the current system time.
- *
- * PARAMS
- *   Time [O] Destination for the current system time.
- *
- * RETURNS
- *   Success: STATUS_SUCCESS.
- *   Failure: An NTSTATUS error code indicating the problem.
- */
-NTSTATUS WINAPI NtQuerySystemTime( LARGE_INTEGER *Time ) {
-  struct timeval now;
-
-  TRACEN((printf("NtQuerySystemTime\n")))
-  gettimeofday( &now, 0 );
-  Time->QuadPart = now.tv_sec * (ULONGLONG)TICKSPERSEC + TICKS_1601_TO_1970;
-  Time->QuadPart += now.tv_usec * 10;
-  return STATUS_SUCCESS;
-}
-
 /*********************************************************************
  *      GetSystemTime                                   (KERNEL32.@)
  *
@@ -351,8 +286,13 @@ VOID WINAPI GetSystemTime(LPSYSTEMTIME systime) /* [O] Destination for current t
   LARGE_INTEGER t;
 
   TRACEN((printf("GetSystemTime\n")))
-  NtQuerySystemTime(&t);
-  ft.dwLowDateTime = (DWORD)(t.QuadPart);
+
+  struct timeval now;
+  gettimeofday( &now, 0 );
+  t.QuadPart  = now.tv_sec * (ULONGLONG)TICKSPERSEC + TICKS_1601_TO_1970;
+  t.QuadPart += now.tv_usec * 10;
+
+  ft.dwLowDateTime  = (DWORD)(t.QuadPart);
   ft.dwHighDateTime = (DWORD)(t.QuadPart >> 32);
   FileTimeToSystemTime(&ft, systime);
 }
@@ -370,8 +310,8 @@ VOID WINAPI GetSystemTime(LPSYSTEMTIME systime) /* [O] Destination for current t
  *   Success: TRUE.
  *   Failure: FALSE.
  */
-BOOLEAN WINAPI RtlTimeFieldsToTime(
-  PTIME_FIELDS tfTimeFields,
+static BOOLEAN WINAPI RtlTimeFieldsToTime(
+  TIME_FIELDS * tfTimeFields,
   LARGE_INTEGER *Time) {
   int CurYear, CurMonth, DeltaYear;
   LONGLONG rcTime;

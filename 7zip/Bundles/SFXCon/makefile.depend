@@ -120,6 +120,7 @@
   ../../Archive/7z/../../../Windows/PropVariant.h \
   ../../Archive/7z/../../../Windows/../Common/MyWindows.h \
   ../../Archive/7z/../../../Windows/../Common/Types.h \
+  ../../Archive/7z/../../../Windows/System.h \
   ../../Archive/7z/7zFolderOutStream.h \
   ../../Archive/7z/../Common/OutStreamWithCRC.h \
   ../../Archive/7z/../Common/../../../Common/CRC.h \
@@ -205,13 +206,16 @@
   ../../Archive/7z/../../../Windows/PropVariant.h \
   ../../Archive/7z/../../../Windows/../Common/MyWindows.h \
   ../../Archive/7z/../../../Windows/../Common/Types.h \
+  ../../Archive/7z/../../../Windows/System.h \
   ../../Archive/7z/7zProperties.h ../../Archive/7z/../../PropID.h \
   ../../Archive/7z/../../../Common/IntToString.h \
   ../../Archive/7z/../../../Common/Types.h \
   ../../Archive/7z/../../../Common/ComTry.h \
   ../../Archive/7z/../../../Windows/Defs.h \
   ../../Archive/7z/../Common/ItemNameUtils.h \
-  ../../Archive/7z/../Common/../../../Common/String.h
+  ../../Archive/7z/../Common/../../../Common/String.h \
+  ../../Archive/7z/../Common/ParseProperties.h ../../../Common/String.h \
+  ../../../Common/Types.h
 7zHeader.o: ../../Archive/7z/7zHeader.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -396,6 +400,17 @@ OutStreamWithCRC.o: ../../Archive/Common/OutStreamWithCRC.cpp \
   ../../Archive/Common/../../IStream.h \
   ../../Archive/Common/../../../Common/MyUnknown.h \
   ../../Archive/Common/../../../Common/Types.h
+ParseProperties.o: ../../Archive/Common/ParseProperties.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Archive/Common/ParseProperties.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Common/Types.h \
+  ../../../Common/StringToInt.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h
 FilePathAutoRename.o: ../../Common/FilePathAutoRename.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
@@ -721,10 +736,10 @@ Main.o: Main.cpp ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/MyCom.h \
   ../../../Common/Exception.h ../../../Windows/FileDir.h \
   ../../../Windows/../Common/String.h ../../../Windows/Defs.h \
-  ../../../Windows/FileName.h ../../../Windows/Defs.h ../../IPassword.h \
-  ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
-  ../../../Common/Types.h ../../ICoder.h ../../IStream.h \
-  ../../UI/Common/OpenArchive.h ../../../Common/String.h \
+  ../../../Windows/FileName.h ../../../Windows/Defs.h \
+  ../../../Windows/System.h ../../IPassword.h ../../../Common/MyUnknown.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h ../../ICoder.h \
+  ../../IStream.h ../../UI/Common/OpenArchive.h ../../../Common/String.h \
   ../../../Windows/FileFind.h ../../../Windows/FileName.h \
   ../../UI/Common/../../Archive/IArchive.h \
   ../../UI/Common/../../Archive/../IStream.h \
@@ -743,9 +758,9 @@ Main.o: Main.cpp ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../UI/Common/../../Common/../../Windows/FileIO.h \
   ../../../Common/String.h ../../UI/Common/../../Common/../IStream.h \
   ../../UI/Common/../../Common/../../Common/MyCom.h \
-  ../../UI/Common/ExtractMode.h ../../UI/Console/List.h \
-  ../../../Common/Wildcard.h ../../UI/Console/OpenCallbackConsole.h \
-  ../../../Common/StdOutStream.h \
+  ../../UI/Common/ExtractMode.h ../../UI/Common/Property.h \
+  ../../UI/Console/List.h ../../../Common/Wildcard.h \
+  ../../UI/Console/OpenCallbackConsole.h ../../../Common/StdOutStream.h \
   ../../UI/Console/../Common/ArchiveOpenCallback.h \
   ../../UI/Console/ExtractCallbackConsole.h \
   ../../UI/Console/../../Common/FileStreams.h \
@@ -864,11 +879,11 @@ Extract.o: ../../UI/Common/Extract.cpp ../../../myWindows/StdAfx.h \
   ../../UI/Common/../../IPassword.h \
   ../../UI/Common/../../../Common/MyUnknown.h \
   ../../UI/Common/../../../Common/Types.h ../../UI/Common/ExtractMode.h \
-  ../../UI/Common/ArchiveOpenCallback.h ../../../Windows/Defs.h \
-  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
-  ../../../Windows/../Common/Types.h ../../../Windows/FileDir.h \
+  ../../UI/Common/ArchiveOpenCallback.h ../../UI/Common/Property.h \
+  ../../../Windows/Defs.h ../../../Windows/FileDir.h \
   ../../UI/Common/OpenArchive.h ../../UI/Common/ArchiverInfo.h \
-  ../../../Common/Types.h ../../../Common/Buffer.h
+  ../../../Common/Types.h ../../../Common/Buffer.h \
+  ../../UI/Common/SetProperties.h
 ExtractingFilePath.o: ../../UI/Common/ExtractingFilePath.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
@@ -929,6 +944,7 @@ OpenArchive.o: ../../UI/Common/OpenArchive.cpp \
   ../../UI/Common/../../Archive/7z/../../../Common/Buffer.h \
   ../../UI/Common/../../Archive/7z/7zCompressionMode.h \
   ../../UI/Common/../../Archive/7z/../../../Windows/PropVariant.h \
+  ../../UI/Common/../../Archive/7z/../../../Windows/System.h \
   ../../UI/Common/DefaultName.h
 PropIDUtils.o: ../../UI/Common/PropIDUtils.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
@@ -953,6 +969,26 @@ ConsoleClose.o: ../../UI/Console/ConsoleClose.cpp \
   ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
   ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../UI/Console/ConsoleClose.h
+SetProperties.o: ../../UI/Common/SetProperties.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../UI/Common/SetProperties.h ../../UI/Common/Property.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/Types.h ../../../Common/StringToInt.h \
+  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../UI/Common/../../Archive/IArchive.h \
+  ../../UI/Common/../../Archive/../IStream.h \
+  ../../UI/Common/../../Archive/../../Common/MyUnknown.h \
+  ../../UI/Common/../../Archive/../../Common/MyWindows.h \
+  ../../UI/Common/../../Archive/../../Common/Types.h \
+  ../../UI/Common/../../Archive/../IProgress.h \
+  ../../UI/Common/../../Archive/../PropID.h
 ExtractCallbackConsole.o: ../../UI/Console/ExtractCallbackConsole.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \

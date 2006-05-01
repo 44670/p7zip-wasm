@@ -3,6 +3,8 @@ PROG=../../../bin/7za
 PROGS=lib7za.a testlib testlib.exe
 
 LOCAL_FLAGS= \
+-DCOMPRESS_BZIP2_MT \
+-DCOMPRESS_MT \
 -DEXCLUDE_COM -DNO_REGISTRY -DFORMAT_7Z -DFORMAT_BZIP2 -DFORMAT_ZIP \
 -DFORMAT_TAR -DFORMAT_GZIP -DCOMPRESS_LZMA -DCOMPRESS_BCJ_X86 \
 -DFORMAT_SPLIT -DFORMAT_Z \
@@ -19,6 +21,7 @@ MY_WINDOWS= \
 	$(MY_HOME)/wine_date_and_time.o \
 	$(MY_HOME)/myModuleFileName.o \
 	$(MY_HOME)/myAddExeFlag.o \
+	$(MY_HOME)/myGetNumberOfProcessors.o \
 	$(MY_HOME)/mySplitCommandLine.o
 
 OBJS=\
@@ -105,6 +108,7 @@ StreamUtils.o \
 OpenCallbackConsole.o \
 OutBuffer.o \
 OutStreamWithCRC.o \
+ParseProperties.o \
 PPMDDecoder.o \
 PPMDEncoder.o \
 PercentPrinter.o \
@@ -152,6 +156,7 @@ CoderMixer2MT.o \
 CrossThreadProgress.o \
 EnumDirItems.o \
 Extract.o \
+SetProperties.o \
 InOutTempBuffer.o \
 OpenArchive.o \
 Error.o \
@@ -194,7 +199,6 @@ DllExports.o \
 7zProperties.o \
 7zSpecStream.o \
 7zUpdate.o \
-DllExports.o\
 HuffmanEncoder.o\
 InBuffer.o\
 LSBFDecoder.o\
@@ -214,6 +218,7 @@ FilterCoder.o \
 InStreamWithCRC.o \
 ItemNameUtils.o \
 OutStreamWithCRC.o \
+ParseProperties.o \
 InBuffer.o \
 InOutTempBuffer.o \
 LimitedStreams.o \

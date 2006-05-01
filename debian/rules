@@ -15,7 +15,8 @@ build-stamp: patch-stamp
 	dh_testdir
 
 	# Add here commands to compile the package.
-	$(MAKE) all2
+	cp makefile.linux_x86_ppc_alpha__gcc_4.X makefile.machine
+	$(MAKE) all3
 
 	touch build-stamp
 
@@ -25,6 +26,7 @@ clean: unpatch
 	rm -f build-stamp
 
 	# Add here commands to clean up after the build process.
+	dpatch apply 01_makefile.dpatch
 	-$(MAKE) clean
 
 	dh_clean 
@@ -35,9 +37,9 @@ install: build
 	dh_clean -k 
 	dh_installdirs
 
-	# Add here commands to install the package into debian/p7zip.
-	echo "#! /bin/sh" > debian/p7zip/usr/bin/7z
-	echo 'exec /usr/lib/p7zip/7z "$$@"' >> debian/p7zip/usr/bin/7z
+	# Add here commands to install the package into debian/p7zip-full.
+	echo "#! /bin/sh" > debian/p7zip-full/usr/bin/7z
+	echo 'exec /usr/lib/p7zip-full/7z "$$@"' >> debian/p7zip-full/usr/bin/7z
 
 # Build architecture-independent files here.
 binary-indep: build install
@@ -49,16 +51,17 @@ binary-arch: build install
 	dh_testroot
 	dh_installchangelogs
 	dh_installdocs
+	rm -f debian/p7zip-full/usr/share/doc/p7zip-full/DOCS/copying.txt
 	rm -f debian/p7zip/usr/share/doc/p7zip/DOCS/copying.txt
-	dh_installexamples
-	dh_install  bin/7z usr/lib/p7zip
-	dh_install  bin/7za usr/bin
-	dh_install  bin/Codecs usr/lib/p7zip
-	dh_install  bin/Formats usr/lib/p7zip
-	dh_installman man1/7z.1 man1/7za.1 debian/p7zip.1
+	dh_install
+	dh_installman -pp7zip-full man1/7z.1 man1/7za.1
+	dh_installman -pp7zip man1/7zr.1 debian/p7zip.1
 	dh_strip
 	dh_compress
-	dh_link usr/share/doc/p7zip/ChangeLog.gz usr/share/doc/p7zip/changelog.gz
+	dh_link -pp7zip-full usr/share/doc/p7zip-full/ChangeLog.gz \
+                             usr/share/doc/p7zip-full/changelog.gz
+	dh_link -pp7zip usr/share/doc/p7zip/ChangeLog.gz \
+                        usr/share/doc/p7zip/changelog.gz
 	dh_fixperms
 	dh_installdeb
 	dh_shlibdeps

@@ -108,9 +108,10 @@ STDMETHODIMP_(UInt32) CMatchFinderMT::GetMatchLen(Int32 index, UInt32 distance, 
   if ((Int32)(index + limit) > m_NumAvailableBytes)
     limit = m_NumAvailableBytes - (index);
   distance++;
-  const Byte *pby = m_DataCurrentPos + index;
+  const Byte *pby1 = m_DataCurrentPos + index;
+  const Byte *pby2 = pby1 - distance; // FIXED
   UInt32 i;
-  for(i = 0; i < limit && pby[i] == pby[i - distance]; i++);
+  for(i = 0; i < limit && pby1[i] == pby2[i]; i++); // FIXED
   return i;
 }
 

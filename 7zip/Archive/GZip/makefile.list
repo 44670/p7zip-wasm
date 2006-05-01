@@ -2,6 +2,7 @@ SRCS=\
  ../Common/CodecsPath.cpp \
  ../Common/InStreamWithCRC.cpp \
  ../Common/OutStreamWithCRC.cpp \
+ ../Common/ParseProperties.cpp \
  ../../Common/StreamUtils.cpp \
  ../../Common/ProgressUtils.cpp \
  ../../Compress/Copy/CopyCoder.cpp \
@@ -43,5 +44,7 @@ InStreamWithCRC.o : ../Common/InStreamWithCRC.cpp
 	$(CXX) $(CFLAGS) ../Common/InStreamWithCRC.cpp
 OutStreamWithCRC.o : ../Common/OutStreamWithCRC.cpp
 	$(CXX) $(CFLAGS) ../Common/OutStreamWithCRC.cpp
+ParseProperties.o : ../Common/ParseProperties.cpp
+	$(CXX) $(CFLAGS) ../Common/ParseProperties.cpp
 StreamUtils.o : ../../Common/StreamUtils.cpp
 	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp

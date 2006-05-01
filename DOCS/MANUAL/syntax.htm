@@ -89,17 +89,17 @@ the end of path it can refer to both file and directory.
 
 <P>You can supply one or more filenames or wildcards for special list files
 (files containing lists of files). The filenames in such list file must be
-separated by space, tab or new line symbol(s). Wildcards or filenames with
-spaces must be quoted.</P>
+separated new line symbol(s).</P>
 
-<P>For list files 7-Zip uses OEM (DOS) encoding.</P>
+<P>For list files 7-Zip uses UTF-8 encoding by default. You can change encoding 
+using <A href = "switches/charset.htm">-scs</A> switch.</P>
 
 <P>Multiple list files are supported.</P>
 
 <P>For example, if contents of file "listfile.txt" is the following:</P>
 
 <PRE>
-    "My programs\*.cpp"
+    My programs\*.cpp
     Src\*.cpp
 </PRE>
 <P>then command</P>

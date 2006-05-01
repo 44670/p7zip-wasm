@@ -1,3 +1,27 @@
+p7zip (4.39.dfsg.1-2) unstable; urgency=low
+
+  * Bump Standards-Version to 3.7.2 (no changes needed)
+  * Remove link to p7zip-rar from debian/p7zip.1
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Mon,  1 May 2006 02:34:52 +0200
+
+p7zip (4.39.dfsg.1-1) unstable; urgency=low
+
+  * New upstream release
+    - introduces 7zr, a light version of 7za
+  * debian/control:
+    - now p7zip only provides 7zr (Closes: #343513)
+    - p7zip recommends p7zip-full, much more similar to the old p7zip
+    - p7zip-full conflicts and replaces old p7zip versions
+  * debian/patches:
+    - 01_makefile.dpatch: removed from diff.gz; remove non-free targets like Rar2.9
+    - 02_man.dpatch: removed from diff.gz; adds 7zr.1 and other corrections
+  * debian/copyright: correct copyright according to d-d-a suggestions
+  * debian/rules:
+    - move all dh_installed stuff to debian/p7zip{,-full}.install
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Tue, 11 Apr 2006 14:50:16 +0200
+
 p7zip (4.33.dfsg-1) unstable; urgency=low
 
   * New upstream release

@@ -13,6 +13,7 @@ SRCS=\
  ../../Common/OffsetStream.cpp \
  ../../Common/OutBuffer.cpp \
  ../Common/OutStreamWithCRC.cpp \
+ ../Common/ParseProperties.cpp \
  ../../Common/ProgressUtils.cpp \
  ../../Common/StreamBinder.cpp \
  ../../Common/StreamObjects.cpp \
@@ -62,6 +63,8 @@ ItemNameUtils.o : ../Common/ItemNameUtils.cpp
 	$(CXX) $(CFLAGS) ../Common/ItemNameUtils.cpp
 OutStreamWithCRC.o : ../Common/OutStreamWithCRC.cpp
 	$(CXX) $(CFLAGS) ../Common/OutStreamWithCRC.cpp
+ParseProperties.o : ../Common/ParseProperties.cpp
+	$(CXX) $(CFLAGS) ../Common/ParseProperties.cpp
 LimitedStreams.o : ../../Common/LimitedStreams.cpp
 	$(CXX) $(CFLAGS) ../../Common/LimitedStreams.cpp
 OffsetStream.o : ../../Common/OffsetStream.cpp

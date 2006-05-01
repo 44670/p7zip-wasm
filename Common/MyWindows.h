@@ -6,9 +6,9 @@
 #ifdef _WIN32
 
 #include <windows.h>
+
 #define CHAR_PATH_SEPARATOR '\\'
 #define WCHAR_PATH_SEPARATOR L'\\'
-
 #define STRING_PATH_SEPARATOR "\\"
 #define WSTRING_PATH_SEPARATOR L"\\"
 
@@ -16,7 +16,6 @@
 
 #define CHAR_PATH_SEPARATOR '/'
 #define WCHAR_PATH_SEPARATOR L'/'
-
 #define STRING_PATH_SEPARATOR "/"
 #define WSTRING_PATH_SEPARATOR L"/"
 
@@ -32,13 +31,11 @@ typedef unsigned char UCHAR;
 #undef BYTE
 typedef unsigned char BYTE;
 
-
 typedef short SHORT;
 typedef unsigned short USHORT;
 
 #undef WORD
 typedef unsigned short WORD;
-
 typedef short VARIANT_BOOL;
 
 typedef int INT;

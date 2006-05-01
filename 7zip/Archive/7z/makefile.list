@@ -29,6 +29,7 @@ SRCS=\
  ../Common/MultiStream.cpp \
  ../../Common/OutBuffer.cpp \
  ../Common/OutStreamWithCRC.cpp \
+ ../Common/ParseProperties.cpp \
  ../../Common/ProgressUtils.cpp \
  ../../Common/StreamBinder.cpp \
  ../../Common/StreamObjects.cpp \
@@ -96,6 +97,8 @@ MultiStream.o : ../Common/MultiStream.cpp
 	$(CXX) $(CFLAGS) ../Common/MultiStream.cpp
 OutStreamWithCRC.o : ../Common/OutStreamWithCRC.cpp
 	$(CXX) $(CFLAGS) ../Common/OutStreamWithCRC.cpp
+ParseProperties.o : ../Common/ParseProperties.cpp
+	$(CXX) $(CFLAGS) ../Common/ParseProperties.cpp
 InOutTempBuffer.o : ../../Common/InOutTempBuffer.cpp
 	$(CXX) $(CFLAGS) ../../Common/InOutTempBuffer.cpp
 LimitedStreams.o : ../../Common/LimitedStreams.cpp

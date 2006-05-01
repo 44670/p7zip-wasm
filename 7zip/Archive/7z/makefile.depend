@@ -91,7 +91,8 @@
   ../../../Common/Defs.h ../../../Common/Types.h 7zItem.h \
   ../../../Common/Buffer.h 7zCompressionMode.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
-  ../../../Windows/../Common/Types.h 7zMethods.h 7zFolderOutStream.h \
+  ../../../Windows/../Common/Types.h 7zMethods.h \
+  ../../../Windows/System.h 7zFolderOutStream.h \
   ../Common/OutStreamWithCRC.h ../Common/../../../Common/CRC.h \
   ../Common/../../../Common/Types.h ../Common/../../../Common/MyCom.h \
   ../Common/../../IStream.h 7zDecode.h ../Common/CoderMixer2.h \
@@ -158,8 +159,9 @@
   ../../../Common/Defs.h ../../../Common/Types.h 7zItem.h \
   ../../../Common/Buffer.h 7zCompressionMode.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
-  ../../../Windows/../Common/Types.h 7zMethods.h 7zProperties.h \
-  ../../PropID.h ../../../Common/IntToString.h ../../../Common/Types.h \
+  ../../../Windows/../Common/Types.h 7zMethods.h \
+  ../../../Windows/System.h 7zProperties.h ../../PropID.h \
+  ../../../Common/IntToString.h ../../../Common/Types.h \
   ../../../Common/ComTry.h ../../../Windows/Defs.h \
   ../Common/ItemNameUtils.h ../Common/../../../Common/String.h
 7zHandlerOut.o: 7zHandlerOut.cpp ../../../myWindows/StdAfx.h \
@@ -178,13 +180,13 @@
   ../../../Common/Defs.h ../../../Common/Types.h 7zItem.h \
   ../../../Common/Buffer.h 7zCompressionMode.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
-  ../../../Windows/../Common/Types.h 7zMethods.h 7zOut.h 7zEncode.h \
-  ../Common/CoderMixer2.h ../Common/../../../Common/Vector.h \
-  ../Common/../../../Common/Types.h ../Common/../../../Common/MyCom.h \
-  ../Common/../../ICoder.h ../Common/../../IStream.h \
-  ../Common/CoderMixer2MT.h ../Common/CoderMixer2.h \
-  ../Common/../../../Windows/Thread.h ../Common/../../../Windows/Defs.h \
-  ../Common/../../Common/StreamBinder.h \
+  ../../../Windows/../Common/Types.h 7zMethods.h \
+  ../../../Windows/System.h 7zOut.h 7zEncode.h ../Common/CoderMixer2.h \
+  ../Common/../../../Common/Vector.h ../Common/../../../Common/Types.h \
+  ../Common/../../../Common/MyCom.h ../Common/../../ICoder.h \
+  ../Common/../../IStream.h ../Common/CoderMixer2MT.h \
+  ../Common/CoderMixer2.h ../Common/../../../Windows/Thread.h \
+  ../Common/../../../Windows/Defs.h ../Common/../../Common/StreamBinder.h \
   ../Common/../../Common/../IStream.h \
   ../Common/../../Common/../../Windows/Synchronization.h \
   ../Common/../../Common/../../Windows/Defs.h ../Common/CoderMixer2ST.h \
@@ -194,7 +196,8 @@
   ../../../Common/DynamicBuffer.h ../../../Common/Buffer.h \
   ../../../Common/CRC.h ../../../Common/Types.h 7zUpdate.h \
   ../../../Common/ComTry.h ../../../Common/StringToInt.h ../../ICoder.h \
-  ../Common/ItemNameUtils.h
+  ../Common/ItemNameUtils.h ../Common/ParseProperties.h \
+  ../../../Common/String.h ../../../Common/Types.h
 7zHeader.o: 7zHeader.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -301,7 +304,8 @@
   ../../Common/../IStream.h ../../Common/../../Common/MyCom.h 7zItem.h \
   ../../../Common/Buffer.h 7zCompressionMode.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
-  ../../../Windows/../Common/Types.h 7zMethods.h
+  ../../../Windows/../Common/Types.h 7zMethods.h \
+  ../../../Windows/System.h
 7zSpecStream.o: 7zSpecStream.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -343,9 +347,10 @@
   ../Common/CoderLoader.h ../Common/../../../Common/String.h \
   ../Common/../../../Windows/DLL.h \
   ../Common/../../../Windows/../Common/String.h 7zMethods.h 7zHandler.h \
-  7zOut.h ../../Common/OutBuffer.h ../../../Common/DynamicBuffer.h \
-  ../../../Common/Buffer.h ../../../Common/CRC.h \
-  ../../Compress/Copy/CopyCoder.h ../../Compress/Copy/../../ICoder.h \
+  ../../../Windows/System.h 7zOut.h ../../Common/OutBuffer.h \
+  ../../../Common/DynamicBuffer.h ../../../Common/Buffer.h \
+  ../../../Common/CRC.h ../../Compress/Copy/CopyCoder.h \
+  ../../Compress/Copy/../../ICoder.h \
   ../../Compress/Copy/../../../Common/MyCom.h \
   ../../Common/ProgressUtils.h ../../Common/../ICoder.h \
   ../../Common/../IProgress.h ../../Common/LimitedStreams.h \
@@ -521,6 +526,17 @@ OutStreamWithCRC.o: ../Common/OutStreamWithCRC.cpp \
   ../Common/../../../Common/Types.h ../Common/../../../Common/MyCom.h \
   ../Common/../../../Common/MyWindows.h ../Common/../../IStream.h \
   ../Common/../../../Common/MyUnknown.h ../Common/../../../Common/Types.h
+ParseProperties.o: ../Common/ParseProperties.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../Common/ParseProperties.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Common/Types.h \
+  ../../../Common/StringToInt.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h
 ProgressUtils.o: ../../Common/ProgressUtils.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
@@ -600,7 +616,8 @@ DllExports.o: DllExports.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/Defs.h ../../../Common/Types.h 7zItem.h \
   ../../../Common/Buffer.h 7zCompressionMode.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
-  ../../../Windows/../Common/Types.h 7zMethods.h
+  ../../../Windows/../Common/Types.h 7zMethods.h \
+  ../../../Windows/System.h
 DLL.o: ../../../Windows/DLL.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \

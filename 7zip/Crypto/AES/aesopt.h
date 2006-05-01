@@ -182,8 +182,12 @@
 #define PLATFORM_BYTE_ORDER AES_LITTLE_ENDIAN
 #elif defined(__DJGPP__)
 #define PLATFORM_BYTE_ORDER AES_LITTLE_ENDIAN
+/*
+#elif defined(__OpenBSD__)
+* nothing to do *
 #else
 #include <sys/endian.h>
+*/
 #endif
 
 #elif defined(__CRYPTLIB__)
@@ -263,7 +267,8 @@
 #endif
 
 #if !defined(PLATFORM_BYTE_ORDER)
-#  error Please set undetermined byte order (lines 233 or 235 of aesopt.h).
+/* #  error Please set undetermined byte order (lines 233 or 235 of aesopt.h). */
+#  error, please add '-DBIG_ENDIAN' or '-DLITTLE_ENDIAN' in makefile.machine
 #endif
 
 /*  3. ASSEMBLER SUPPORT

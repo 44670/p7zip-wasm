@@ -1,0 +1,34 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 01_makefile.dpatch by Mohammed Adnène Trojette <adn+deb@diwi.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: Remove non-free targets like Rar29
+
+@DPATCH@
+
+--- p7zip_4.37.orig/makefile	2006-03-31 23:32:43.000000000 +0200
++++ p7zip_4.37/makefile	2006-04-02 18:51:01.000000000 +0200
+@@ -51,7 +51,6 @@
+ 	cd 7zip/Compress/Implode  ; $(MAKE) depend
+ 	cd 7zip/Compress/LZMA     ; $(MAKE) depend
+ 	cd 7zip/Compress/PPMD     ; $(MAKE) depend
+-	cd 7zip/Compress/Rar29    ; $(MAKE) depend
+ 	cd 7zip/Crypto/7zAES      ; $(MAKE) depend
+ 	cd 7zip/Crypto/AES        ; $(MAKE) depend
+ 	cd 7zip/Bundles/Alone7z   ; $(MAKE) depend
+@@ -87,7 +86,6 @@
+ 	cd 7zip/Compress/Implode  ; $(MAKE) all
+ 	cd 7zip/Compress/LZMA     ; $(MAKE) all
+ 	cd 7zip/Compress/PPMD     ; $(MAKE) all
+-	cd 7zip/Compress/Rar29    ; $(MAKE) all
+ 	cd 7zip/Crypto/7zAES      ; $(MAKE) all
+ 	cd 7zip/Crypto/AES        ; $(MAKE) all
+ 
+@@ -121,7 +119,6 @@
+ 	cd 7zip/Compress/Implode  ; $(MAKE) clean
+ 	cd 7zip/Compress/LZMA     ; $(MAKE) clean
+ 	cd 7zip/Compress/PPMD     ; $(MAKE) clean
+-	cd 7zip/Compress/Rar29    ; $(MAKE) clean
+ 	cd 7zip/Crypto/7zAES      ; $(MAKE) clean
+ 	cd 7zip/Crypto/AES        ; $(MAKE) clean
+ 	cd 7zip/Bundles/Alone7z   ; $(MAKE) clean

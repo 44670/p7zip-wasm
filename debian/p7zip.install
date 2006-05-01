@@ -1,1 +1,2 @@
+bin/7zr usr/bin
 debian/scripts/p7zip usr/bin

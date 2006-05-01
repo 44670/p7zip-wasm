@@ -8,7 +8,7 @@
 #include "../../ICoder.h"
 
 extern "C"
-BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /*lpReserved*/)
+DLLEXPORT BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /*lpReserved*/)
 {
 	return TRUE;
 }

@@ -15,7 +15,7 @@ DEFINE_GUID(CLSID_CZHandler,
 HINSTANCE g_hInstance;
 
 extern "C"
-BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /*lpReserved*/)
+DLLEXPORT BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /*lpReserved*/)
 {
   if (dwReason == DLL_PROCESS_ATTACH)
     g_hInstance = hInstance;

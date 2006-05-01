@@ -72,7 +72,8 @@ CabHandler.o: CabHandler.cpp ../../../myWindows/StdAfx.h \
   ../../Compress/Quantum/../../../Common/MyCom.h \
   ../../Compress/Quantum/../../Common/InBuffer.h \
   ../../Compress/Quantum/../../ICoder.h \
-  ../../Compress/Quantum/../LZ/LZOutWindow.h
+  ../../Compress/Quantum/../LZ/LZOutWindow.h ../Common/ItemNameUtils.h \
+  ../Common/../../../Common/String.h
 CabHeader.o: CabHeader.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -94,6 +95,15 @@ CabIn.o: CabIn.cpp ../../../myWindows/StdAfx.h \
   ../../Common/../IStream.h ../../Common/../../Common/MyCom.h CabHeader.h \
   ../../../Common/Types.h CabItem.h ../../../Common/String.h \
   ../../../Windows/Defs.h ../../Common/StreamUtils.h
+ItemNameUtils.o: ../Common/ItemNameUtils.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../Common/ItemNameUtils.h \
+  ../Common/../../../Common/String.h ../Common/../../../Common/Vector.h \
+  ../Common/../../../Common/Defs.h
 InBuffer.o: ../../Common/InBuffer.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \

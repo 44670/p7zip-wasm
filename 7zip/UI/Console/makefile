@@ -1,6 +1,6 @@
 PROG=../../../bin/7z
 
-LOCAL_FLAGS=
+LOCAL_FLAGS=-DCOMPRESS_MT
 
 include ../../../makefile.machine
 
@@ -10,6 +10,7 @@ MY_WINDOWS=\
 	$(MY_HOME)/myModuleFileName.o \
 	$(MY_HOME)/mySplitCommandLine.o \
 	$(MY_HOME)/myAddExeFlag.o \
+	$(MY_HOME)/myGetNumberOfProcessors.o \
 	$(MY_HOME)/wine_date_and_time.o
 
 OBJS = \
@@ -49,6 +50,7 @@ ArchiveOpenCallback.o \
 DefaultName.o \
 EnumDirItems.o \
 Extract.o \
+SetProperties.o \
 ExtractingFilePath.o \
 ArchiverInfo.o \
 OpenArchive.o \

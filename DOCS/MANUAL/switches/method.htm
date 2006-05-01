@@ -28,7 +28,7 @@
     <TH align="center">Default</TH> 
     <TH>Description</TH> </TR>
   <TR> 
-    <TD><A class="parameter" href="#ZipX">x=[0 | 5 | 9 ]</A></TD> 
+    <TD><A class="parameter" href="#ZipX">x=[0 | 1 | 3 | 5 | 7 | 9 ]</A></TD> 
     <TD align="center">5</TD>
     <TD>Sets level of compression.</TD> </TR>
   <TR> 
@@ -40,21 +40,41 @@
     <TD align="center">32</TD>
     <TD>Sets number of Fast Bytes for Deflate encoder.</TD> </TR>
   <TR> 
-    <TD><A class="parameter" href="#Deflate_Pass">pass={NumPasses}</A></TD>
+    <TD><A class="parameter" href="#Zip_Pass">pass={NumPasses}</A></TD>
     <TD align="center">1</TD>
     <TD>Sets number of Passes for Deflate encoder.</TD></TR>
+  <TR> 
+    <TD><A class="parameter" href="#ZipDictionarySize">d={Size}[b|k|m]</A></TD> 
+    <TD align="center">900000</TD>  
+    <TD>Sets Dictionary size for BZip2</TD></TR>
+  <TR> 
+    <TD><A class="parameter" href="#ZipMultiThread">mt=[off | on | {N}]</A></TD> 
+    <TD align="center">on</TD>  
+    <TD>Sets multithreading mode.</TD></TR>
 </TABLE>
 
 <DL>
-  <DT><A name="ZipX"></A>x=[0 | 5 | 7 | 9 ]</DT>
+  <DT><A name="ZipX"></A>x=[0 | 1 | 3 | 5 | 7 | 9 ]</DT>
   <DD>
-    <P>Sets level of compression</P>
+    <P>Sets level of compression. x=0 means Copy mode (no compression).</P>
+    <P>Deflate / Deflate64 settings:</P>
     <TABLE>
       <TR> <TH>Level</TH> <TH>NumFastBytes</TH> <TH>NumPasses</TH> <TH>Description</TH> </TR>
-      <TR> <TD align="center">0</TD> <TD></TD> <TD></TD> <TD>No compression.</TD> </TR>
-      <TR> <TD align="center">5</TD> <TD align="center">32</TD> <TD align="center">1</TD> <TD>Default compression method.</TD> </TR>
-      <TR> <TD align="center">7</TD> <TD align="center">64</TD> <TD align="center">3</TD> <TD>Maximum compression method.</TD> </TR>
-      <TR> <TD align="center">9</TD> <TD align="center">128</TD> <TD align="center">10</TD> <TD>Ultra compression method..</TD> </TR>
+      <TR> <TD class="cc">1</TD> <TD class="cc" rowspan=3>32</TD> <TD class="cc" rowspan=3>1</TD> <TD>Fastest</TD> </TR>
+      <TR> <TD class="cc">3</TD> <TD>Fast</TR>
+      <TR> <TD class="cc">5</TD> <TD>Normal</TR>
+      <TR> <TD class="cc">7</TD> <TD class="cc">64</TD> <TD class="cc">3</TD> <TD>Maximum</TD> </TR>
+      <TR> <TD class="cc">9</TD> <TD class="cc">128</TD> <TD class="cc">10</TD> <TD>Ultra</TD> </TR>
+    </TABLE>
+
+    <P>BZip2 settings:</P>
+    <TABLE>
+      <TR> <TH>Level</TH> <TH>Dictionary</TH> <TH>NumPasses</TH> <TH>Description</TH> </TR>
+      <TR> <TD class="cc">1</TD> <TD class="cc">100000</TD> <TD class="cc" rowspan=3>1</TD> <TD>Fastest</TD> </TR>
+      <TR> <TD class="cc">3</TD> <TD class="cc">500000</TD>  <TD>Fast</TD> </TR>
+      <TR> <TD class="cc">5</TD> <TD class="cc" rowspan=3>900000</TD> <TD>Normal</TD> </TR>
+      <TR> <TD class="cc">7</TD> <TD align="center">2</TD> <TD>Maximum</TD> </TR>
+      <TR> <TD class="cc">9</TD> <TD align="center">7</TD> <TD>Ultra</TD> </TR>
     </TABLE>
   </DD>
 
@@ -62,19 +82,30 @@
   <DD>
     <P>Sets number of fast bytes for Deflate/Deflate64 encoder. 
        It can be in range from 3 to 258 (257 for Deflate64).
-       Default value is 32 for normal mode, 64 for maximum mode and 128 for ultra mode. 
        Usually big number gives a little bit better 
        compression ratio and slower compression process.
        Big number of fast bytes parameter can significantly increase compression ratio 
        in case when files contain long identical sequences of bytes.</P>
   </DD>
-  <DT><A name="Deflate_Pass"></A>pass={NumPasses}</DT>
+  <DT><A name="Zip_Pass"></A>pass={NumPasses}</DT>
   <DD>
-    <P>Sets number of passes for Deflate encoder. It can be in range from 1 to 15.
-       Default value is 1 for normal mode, 3 for maximum mode and 10 for ultra mode. 
-       Usually big number gives a little bit better 
+    <P>Sets number of passes for Deflate encoder. It can be in range from 1 to 15 for Deflate and 
+       from 1 to 10 for BZip2. Usually big number gives a little bit better 
        compression ratio and slower compression process.
     </P>
+  </DD>
+  <DT><A name="ZipDictionarySize"></A>d={Size}[b|k|m]</DT>
+  <DD>
+    <P> Sets Dictionary size for BZip2. You must specify size in bytes, kilobytes, or megabytes.
+       The maximum value for dictionary size is 900000b. If you do not specify any symbol 
+       from set [b|k|m], dictionary size will be calculated as DictionarySize = 2^Size bytes.</P>
+  </DD>
+  <DT><A name="ZipMultiThread"></A>mt=[off | on | {N}]</DT>
+  <DD>
+    <P>Sets multithread mode. If you have multiprocessor system or Pentium 
+       4 with hyperthreading, you can get speed increasing with 
+       this switch. This option affects only BZip2 compressing / decompressing. 
+       If you specify {N}, for example mt=4, 7-Zip tries to use 4 threads.</P>
   </DD>
 </DL>
 
@@ -88,17 +119,21 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
     <TH align="center">Default</TH> 
     <TH>Description</TH> </TR>
   <TR> 
-    <TD><A class="parameter" href="#ZipX">x=[5 | 7 | 9 ]</A></TD> 
+    <TD><A class="parameter" href="#BZip2X">x=[1 | 3 | 5 | 7 | 9 ]</A></TD> 
     <TD align="center">5</TD>
     <TD>Sets level of compression.</TD> </TR>
   <TR> 
-    <TD><A class="parameter" href="#Deflate_Pass">pass={NumPasses}</A></TD>
+    <TD><A class="parameter" href="#BZip2Pass">pass={NumPasses}</A></TD>
     <TD align="center">1</TD>
     <TD>Sets number of Passes for Bzip2 encoder.</TD></TR>
+  <TR> 
+    <TD><A class="parameter" href="#BZip2MultiThread">mt=[off | on | {N}]</A></TD> 
+    <TD align="center">on</TD>  
+    <TD>Sets multithreading mode.</TD></TR>
 </TABLE>
 
 <DL>
-  <DT><A name="ZipX"></A>x=[5 | 7 | 9 ]</DT>
+  <DT><A name="BZip2"></A>x=[1 | 3 | 5 | 7 | 9 ]</DT>
   <DD>
     <P>Sets level of compression</P>
     <TABLE>
@@ -109,12 +144,18 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
     </TABLE>
   </DD>
 
-  <DT><A name="Deflate_Pass"></A>pass={NumPasses}</DT>
+  <DT><A name="#BZip2Pass"></A>pass={NumPasses}</DT>
   <DD>
     <P>Sets number of passes. It can be in range from 1 to 10.
        Default value is 1 for normal mode, 2 for maximum mode and 7 for ultra mode.
        Bigger number can give a little bit better compression ratio and slower compression process.
     </P>
+  </DD>
+  <DT><A name="BZip2MultiThread"></A>mt=[off | on | {N}]</DT>
+  <DD>
+    <P>Sets multithread mode. If you have multiprocessor system or Pentium 
+       4 with hyperthreading, you can get speed increasing with 
+       this switch. If you specify {N}, for example mt=4, 7-Zip tries to use 4 threads.</P>
   </DD>
 </DL>
 
@@ -137,8 +178,8 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
        <TD align="center"> </TD>  <TD>Sets binding beetwen coders.</TD> </TR>
   <TR> <TD><A class="parameter" href="#MethodID">{N}={MethodID}[:param1][:param2][..]</A></TD> 
        <TD align="center">LZMA</TD>  <TD>Sets a method: LZMA, PPMd, BZip2, Deflate, BCJ, BCJ2, Copy.</TD> </TR>
-   <TR> <TD><A class="parameter" href="#MultiThread">mt=[off | on]</A></TD> 
-        <TD align="center">off</TD>  <TD>Sets multithreading mode.</TD> </TR>
+   <TR> <TD><A class="parameter" href="#MultiThread">mt=[off | on | {N}]</A></TD> 
+        <TD align="center">on</TD>  <TD>Sets multithreading mode.</TD> </TR>
 </TABLE>
 
 <DL>
@@ -192,7 +233,7 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
 
     <P>Example:</P>
       <PRE class="example">
-        -s=100f10m
+        s=100f10m
       </PRE>
     <P>set solid mode with 100 files & 10 MB limits per one solid block.</P>
 
@@ -237,12 +278,14 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
      input stream and four output streams.</P>
   </DD>
 
-  <DT><A name="MultiThread"></A>mt=[off | on]</DT>
+  <DT><A name="MultiThread"></A>mt=[off | on | {N}]</DT>
   <DD>
     <P>Sets multithread mode. If you have multiprocessor system or Pentium 
-       4 with hyperthreading, you can get compressing speed increasing with 
-       switching multithreading option on. This option affects only 
-       LZMA compressing.
+       4 with hyperthreading, you can get speed increasing with this switch.
+       7-Zip supports multithread mode only for LZMA compressing and 
+       BZip2 compressing / decompressing. If you specify {N}, for example mt=4, 
+       7-Zip tries to use 4 threads. LZMA compressing uses 
+       only 2 threads.
     </P>
   </DD>
   
@@ -299,6 +342,8 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
         <TD align="center">bt4</TD>  <TD>Sets Match Finder</TD> </TR>
    <TR> <TD><A class="parameter" href="#FastBytes">fb={N}</A></TD> 
         <TD align="center">32</TD>  <TD>Sets number of Fast Bytes</TD></TR>
+   <TR> <TD><A class="parameter" href="#MatchFinderCycles">mc={N}</A></TD> 
+        <TD align="center">32</TD><TD>Sets Number of Cycles for Match Finder</TD> </TR>
    <TR> <TD><A class="parameter" href="#LitContext">lc={N}</A></TD> 
         <TD align="center">3</TD>  <TD>Sets number of Literal Context bits - [0, 8]</TD></TR>
    <TR> <TD><A class="parameter" href="#LitPos">lp={N}</A></TD> 
@@ -351,6 +396,16 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
        Usually big number gives a little bit better
        compression ratio and slower compression process.
        </P>
+  </DD>
+  <DT><A name="MatchFinderCycles"></A>mc={N}</DT>
+  <DD>
+    <P>Sets number of cycles (passes) for match finder. It can be in range from 0 to 1000000000.
+       Default value is (16 + number_of_fast_bytes / 2) for BT* match finders and 
+       (8 + number_of_fast_bytes / 4) for HC4 match finder. 
+       If you specify mc=0, LZMA will use default value.
+       Usually big number gives a little bit better compression ratio and slower 
+       compression process. For example, mf=HC4 and mc=10000 can provide almost same 
+       compression ratio as mf=BT4.</P>
   </DD>
   <DT><A name="LitContext"></A>lc={N}</DT>
   <DD>

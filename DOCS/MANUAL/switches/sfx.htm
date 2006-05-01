@@ -70,34 +70,62 @@ File contains string pairs:
 <P>
     <TABLE>
       <TR> <TH width="60">ID_String</TH> <TH>Description</TH> </TR>
-      <TR> <TD>Title</TD> <TD>Title for messages.</TD> </TR>
-      <TR> <TD>BeginPrompt</TD> <TD>Begin Prompt message.</TD> </TR>
-      <TR> <TD>RunProgram</TD> <TD>Command for executing. substring <B>%%T</B> 
-      will be replaced with path to temporary folder, where files 
-      were extracted</TD> </TR>
+      <TR> <TD>Title</TD> <TD>Title for messages</TD> </TR>
+      <TR> <TD>BeginPrompt</TD> <TD>Begin Prompt message</TD> </TR>
+      <TR> <TD>Progress</TD> <TD>Value can be "yes" or "no". Default value is "yes".</TD> </TR>
+      <TR> <TD>RunProgram</TD> <TD>Command for executing. Default value is "setup.exe". Substring <B>%%T</B> 
+      will be replaced with path to temporary folder, where files were extracted</TD> </TR>
+      <TR> <TD>Directory</TD> <TD>Directory prefix for "RunProgram". Default value is ".\\"</TD> </TR>
+      <TR> <TD>ExecuteFile</TD> <TD>Name of file for executing</TD> </TR>
+      <TR> <TD>ExecuteParameters</TD> <TD>Parameters for "ExecuteFile"</TD> </TR>
     </TABLE>
 </P>
 <P>You can omit any values.</P>
 
+<P>There are two ways to run program: <B>RunProgram</B> and <B>ExecuteFile</B>. 
+Use <B>RunProgram</B>, if you want to run some program from .7z archive. 
+Use <B>ExecuteFile</B>, if you want to open some document from .7z archive or 
+if you want to execute some command from Windows.</P>
+
+<P>If you use <B>RunProgram</B> and if you specify empty directory prefix: <B>Directory</B>="", 
+the system searches for the executable file in the following sequence:</P>
+<OL>
+<LI>The directory from which the application (installer) loaded. 
+<LI>The temporary folder, where files were extracted.
+<LI>The Windows system directory. 
+</OL>
 
 <H4>Config file Examples</H4>
 
 <PRE class="example">
 ;!@Install@!UTF-8!
-Title="7-Zip 2.30"
-BeginPrompt="Do you want to install the 7-Zip 2.30?"
-RunProgram="Setup.exe /T:%%T"
+Title="7-Zip 4.00"
+BeginPrompt="Do you want to install the 7-Zip 4.00?"
+RunProgram="setup.exe"
 ;!@InstallEnd@!
 </PRE>
 
-<P>
-Program will Prompt with <SPAN class="filename">BeginPrompt</SPAN> message,
-and then run command <SPAN class="filename">RunProgram</SPAN>.
-That simple installer is based on .inf file. and it uses advpack.dll.
-
-</P>
+<BR>
 
 
+<PRE class="example">
+;!@Install@!UTF-8!
+Title="7-Zip 4.00"
+BeginPrompt="Do you want to install the 7-Zip 4.00?"
+ExecuteFile="7zip.msi"
+;!@InstallEnd@!
+</PRE>
+
+<BR>
+
+<PRE class="example">
+;!@Install@!UTF-8!
+Title="7-Zip 4.01 Update"
+BeginPrompt="Do you want to install the 7-Zip 4.01 Update?"
+ExecuteFile="msiexec.exe"
+ExecuteParameters="/i 7zip.msi REINSTALL=ALL REINSTALLMODE=vomus"
+;!@InstallEnd@!
+</PRE>
 
 <H4>Examples</H4>
 

@@ -25,11 +25,11 @@ static const UString kIllegalFileNameChars = kIllegalWildCardFileNameChars +
 
 static inline bool IsCharDirLimiter(wchar_t c)
 {
-#ifdef _WIN32
-  return (c == kDirDelimiter1 || c == kDirDelimiter2);
-#else
-  return (c == kDirDelimiter2);
-#endif
+  return (
+    #ifdef _WIN32
+    c == kDirDelimiter1 || 
+    #endif
+    c == kDirDelimiter2);
 }
 
 // -----------------------------------------
@@ -356,6 +356,19 @@ void CCensorNode::AddItem2(bool include, const UString &path, bool recursive)
   AddItem(include, path2, recursive, forFile, forFolder);
 }
 
+void CCensorNode::ExtendExclude(const CCensorNode &fromNodes)
+{
+  ExcludeItems += fromNodes.ExcludeItems;
+  for (int i = 0; i < fromNodes.SubNodes.Size(); i++)
+  {
+    const CCensorNode &node = fromNodes.SubNodes[i];
+    int subNodeIndex = FindSubNode(node.Name);
+    if (subNodeIndex < 0)
+      subNodeIndex = SubNodes.Add(CCensorNode(node.Name, this));
+    SubNodes[subNodeIndex].ExtendExclude(node);
+  }
+}
+
 int CCensor::FindPrefix(const UString &prefix) const
 {
   for (int i = 0; i < Pairs.Size(); i++)
@@ -438,6 +451,20 @@ bool CCensor::CheckPath(const UString &path, bool isFile) const
     }
   }
   return finded;
+}
+
+void CCensor::ExtendExclude()
+{
+  int i;
+  for (i = 0; i < Pairs.Size(); i++)
+    if (Pairs[i].Prefix.IsEmpty())
+      break;
+  if (i == Pairs.Size())
+    return;
+  int index = i;
+  for (i = 0; i < Pairs.Size(); i++)
+    if (index != i)
+      Pairs[i].Head.ExtendExclude(Pairs[index].Head);
 }
 
 }

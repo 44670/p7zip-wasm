@@ -1,10 +1,10 @@
 PROG=common
 
-LOCAL_FLAGS=-DENV_UNIX -I../myWindows -I../ -I../include_windows
+LOCAL_FLAGS=-I../myWindows -I../ -I../include_windows
 
 include ../makefile.machine
 
-LOCAL_SHARED=
+LIBS=$(LOCAL_LIBS)
 
 OBJS=\
 main.o \

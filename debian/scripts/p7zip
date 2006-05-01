@@ -32,7 +32,7 @@ while [ "$#" != "0" ] ; do
 done
 
 # make sure they're present, before we screw up
-for i in mktemp 7z rm cat tty ; do
+for i in mktemp 7zr rm cat tty ; do
   if ! which $i > /dev/null ; then
     echo "$0: $i: command not found"
     exit 1
@@ -41,12 +41,12 @@ done
 
 if [ "${file}" != "" ] ; then
   if ${compress} ; then
-    7z a ${file}.7z ${file}
+    7zr a ${file}.7z ${file}
     rm ${file}
   else
     case ${file} in
-      *.7z)
-        7z x ${file}
+      *.7zr)
+        7zr x ${file}
         rm ${file}
       ;;
       *)
@@ -67,11 +67,11 @@ if ${compress} ; then
     exit 1
   fi
   rm -f ${tmp}
-  7z a ${tmp} -si >/dev/null
+  7zr a ${tmp} -si >/dev/null
   cat ${tmp}
 else
   cat > ${tmp}
-  7z x ${tmp} -so 2>/dev/null | cat
+  7zr x ${tmp} -so 2>/dev/null | cat
 fi
 
 rm -f ${tmp}

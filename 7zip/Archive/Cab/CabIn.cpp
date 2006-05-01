@@ -76,9 +76,6 @@ AString CInArchive::SafeReadName()
     Byte b = ReadByte();
     if (b == 0)
       return name;
-#ifndef _WIN32
-    if (b == '\\') b = '/';
-#endif
     name += (char)b;
   }
 }

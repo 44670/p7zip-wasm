@@ -30,9 +30,5 @@ CSysString GetBaseFolderPrefix()
 
 CSysString GetCodecsFolderPrefix()
 {
-#ifdef _WIN32
-  return GetBaseFolderPrefix() + TEXT("Codecs\\");
-#else
-  return GetBaseFolderPrefix() + TEXT("Codecs/");
-#endif
+  return GetBaseFolderPrefix() + (CSysString)(TEXT("Codecs")) + (CSysString)(TEXT(STRING_PATH_SEPARATOR));
 }

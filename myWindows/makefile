@@ -1,6 +1,6 @@
 PROG=test_emul
 
-LOCAL_FLAGS=-DENV_UNIX -I. -I.. -I../include_windows
+LOCAL_FLAGS=-I. -I.. -I../include_windows
 
 include ../makefile.machine
 
@@ -11,6 +11,7 @@ OBJS=myGetTickCount.o \
 	wine_date_and_time.o \
 	mySplitCommandLine.o \
 	myAddExeFlag.o \
+	myGetNumberOfProcessors.o \
 	test_emul.o \
 	../Common/Vector.o \
 	../Common/String.o \

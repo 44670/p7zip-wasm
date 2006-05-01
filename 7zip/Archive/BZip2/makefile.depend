@@ -8,11 +8,12 @@ BZip2Handler.o: BZip2Handler.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/MyWindows.h ../IArchive.h ../../IStream.h \
   ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../IProgress.h ../../PropID.h BZip2Item.h \
-  ../../../Common/Defs.h ../../Common/ProgressUtils.h \
-  ../../Common/../../Common/MyCom.h ../../Common/../ICoder.h \
-  ../../Common/../IStream.h ../../Common/../IProgress.h \
-  ../../Common/StreamUtils.h ../../Common/../IStream.h \
-  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/System.h ../../../Common/Defs.h \
+  ../../Common/ProgressUtils.h ../../Common/../../Common/MyCom.h \
+  ../../Common/../ICoder.h ../../Common/../IStream.h \
+  ../../Common/../IProgress.h ../../Common/StreamUtils.h \
+  ../../Common/../IStream.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../../Windows/Defs.h \
   ../../../Common/ComTry.h ../Common/DummyOutStream.h \
   ../Common/../../IStream.h ../../../Common/MyCom.h \
@@ -30,13 +31,14 @@ BZip2HandlerOut.o: BZip2HandlerOut.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/MyWindows.h ../IArchive.h ../../IStream.h \
   ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../IProgress.h ../../PropID.h BZip2Item.h \
-  BZip2Update.h ../../../Common/Defs.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h \
-  ../../../Common/StringToInt.h ../../../Windows/PropVariant.h \
+  ../../../Windows/System.h BZip2Update.h ../../../Common/Defs.h \
+  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/Defs.h ../../../Windows/PropVariant.h \
   ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../Compress/Copy/CopyCoder.h \
   ../../Compress/Copy/../../ICoder.h ../../Compress/Copy/../../IStream.h \
-  ../../Compress/Copy/../../../Common/MyCom.h
+  ../../Compress/Copy/../../../Common/MyCom.h ../Common/ParseProperties.h \
+  ../../../Common/String.h ../../../Common/Types.h
 BZip2Update.o: BZip2Update.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -63,6 +65,17 @@ CodecsPath.o: ../Common/CodecsPath.cpp ../../../myWindows/StdAfx.h \
   ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
   ../../../include_windows/tchar.h ../Common/../../../Common/String.h \
   ../Common/../../../Common/Vector.h ../Common/../../../Common/Defs.h
+ParseProperties.o: ../Common/ParseProperties.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../Common/ParseProperties.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Common/Types.h \
+  ../../../Common/StringToInt.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h
 DummyOutStream.o: ../Common/DummyOutStream.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
@@ -124,9 +137,9 @@ DllExports.o: DllExports.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/MyCom.h ../IArchive.h ../../IStream.h \
   ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../IProgress.h ../../PropID.h BZip2Item.h \
-  ../../ICoder.h ../../IStream.h ../Common/CodecsPath.h \
-  ../Common/../../../Common/String.h ../Common/../../../Common/Vector.h \
-  ../Common/../../../Common/Defs.h
+  ../../../Windows/System.h ../../ICoder.h ../../IStream.h \
+  ../Common/CodecsPath.h ../Common/../../../Common/String.h \
+  ../Common/../../../Common/Vector.h ../Common/../../../Common/Defs.h
 DLL.o: ../../../Windows/DLL.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \

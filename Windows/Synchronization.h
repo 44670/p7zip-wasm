@@ -13,6 +13,8 @@
 #include <list>
 #endif
 
+#undef DEBUG_SYNCHRO
+
 namespace NWindows {
 namespace NSynchronization {
 
@@ -89,6 +91,52 @@ public:
   }
 };
 #else
+#ifdef DEBUG_SYNCHRO
+class CCriticalSection
+{
+  pthread_mutex_t _object;
+  pthread_cond_t _cond;
+  void dump_error(int ret,const char *text)
+  {
+    printf("\n##ERROR %s : ret = %d (%s)##\n",text,ret,strerror(ret));
+    // abort();
+  }
+public:
+  CCriticalSection() {
+    pthread_mutexattr_t mutexattr;
+    int ret = pthread_mutexattr_init(&mutexattr);
+    if (ret != 0) dump_error(ret,"pthread_mutexattr_init");
+    ret = pthread_mutexattr_settype(&mutexattr,PTHREAD_MUTEX_ERRORCHECK);
+    if (ret != 0) dump_error(ret,"pthread_mutexattr_settype");
+    ret = ::pthread_mutex_init(&_object,&mutexattr);
+    if (ret != 0) dump_error(ret,"pthread_mutex_init");
+    ret = ::pthread_cond_init(&_cond,0);
+    if (ret != 0) dump_error(ret,"pthread_cond_init");
+  }
+  ~CCriticalSection() {
+    int ret = ::pthread_mutex_destroy(&_object);
+    if (ret != 0) dump_error(ret,"pthread_mutex_destroy");
+    ret = ::pthread_cond_destroy(&_cond);
+    if (ret != 0) dump_error(ret,"pthread_cond_destroy");
+  }
+  void Enter() { 
+    int ret = ::pthread_mutex_lock(&_object);
+    if (ret != 0) dump_error(ret,"pthread_mutex_lock");
+  }
+  void Leave() {
+    int ret = ::pthread_mutex_unlock(&_object);
+    if (ret != 0) dump_error(ret,"pthread_mutex_unlock");
+  }
+  void WaitCond() {
+    int ret = ::pthread_cond_wait(&_cond, &_object);
+    if (ret != 0) dump_error(ret,"pthread_cond_wait");
+  }
+  void SignalCond() {
+    int ret = ::pthread_cond_broadcast(&_cond);
+    if (ret != 0) dump_error(ret,"pthread_cond_broadcast");
+  }
+};
+#else
 class CCriticalSection
 {
   pthread_mutex_t _object;
@@ -107,6 +155,7 @@ public:
   void WaitCond() { ::pthread_cond_wait(&_cond, &_object); }
   void SignalCond() { ::pthread_cond_broadcast(&_cond); }
 };
+#endif
 #endif
 
 class CCriticalSectionLock

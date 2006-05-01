@@ -8,7 +8,15 @@
 #define EXTERN_C extern
 #endif  /* __cplusplus */ 
 
-#define STDAPI      EXTERN_C HRESULT
+#ifdef HAVE_GCCVISIBILITYPATCH
+    #define DLLEXPORT __attribute__ ((visibility("default")))
+    #define DLLLOCAL __attribute__ ((visibility("hidden")))
+  #else
+    #define DLLEXPORT
+    #define DLLLOCAL
+  #endif
+
+#define STDAPI      EXTERN_C DLLEXPORT HRESULT
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
 #define THIS_

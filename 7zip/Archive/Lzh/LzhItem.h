@@ -150,16 +150,12 @@ public:
   AString GetName() const
   {
     AString dirName = GetDirName();
-    dirName.Replace((char)0xFF, CHAR_PATH_SEPARATOR );
+    dirName.Replace((char)0xFF, '\\');
     if (!dirName.IsEmpty())
     {
       char c = dirName[dirName.Length() - 1];
-#ifdef _WIN32
-      if (c != '\\' && c != '/')
-#else
-      if (c != CHAR_PATH_SEPARATOR)
-#endif
-        dirName += CHAR_PATH_SEPARATOR;
+      if (c != '\\')
+        dirName += '\\';
     }
     return dirName + GetFileName();
   }

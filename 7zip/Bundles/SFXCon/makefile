@@ -1,6 +1,7 @@
 PROG=../../../bin/7zCon.sfx
 
 LOCAL_FLAGS= \
+-DCOMPRESS_BZIP2_MT -DCOMPRESS_MT\
 -DCOMPRESS_BCJ2 -DEXTRACT_ONLY -DEXCLUDE_COM -DNO_REGISTRY -DFORMAT_7Z \
 -DCOMPRESS_LZMA -DCOMPRESS_BCJ_X86 -DCOMPRESS_COPY -DCOMPRESS_PPMD -D_SFX \
 -DCRYPTO_7ZAES -DCRYPTO_AES
@@ -10,9 +11,10 @@ include ../../../makefile.machine
 LIBS=$(LOCAL_LIBS)
 
 MY_WINDOWS= \
-	$(MY_HOME)/myGetTickCount.o \
-	$(MY_HOME)/wine_date_and_time.o \
-	$(MY_HOME)/mySplitCommandLine.o \
+	$(MY_HOME)/myGetTickCount.o\
+	$(MY_HOME)/wine_date_and_time.o\
+	$(MY_HOME)/mySplitCommandLine.o\
+	$(MY_HOME)/myGetNumberOfProcessors.o\
 	$(MY_HOME)/myModuleFileName.o
 
 OBJS=\
@@ -23,6 +25,7 @@ CrossThreadProgress.o\
 FilterCoder.o\
 ItemNameUtils.o\
 OutStreamWithCRC.o\
+ParseProperties.o \
 ConsoleClose.o\
 ExtractCallbackConsole.o\
 List.o\
@@ -65,6 +68,7 @@ Synchronization.o\
 ../../../Common/Vector.o\
 ../../../Common/Wildcard.o\
 ../../../Common/IntToString.o\
+../../../Common/StringToInt.o\
 FilePathAutoRename.o\
 FileStreams.o\
 InBuffer.o\
@@ -81,6 +85,7 @@ ArchiveOpenCallback.o\
 ArchiverInfo.o\
 DefaultName.o\
 Extract.o\
+SetProperties.o\
 ExtractingFilePath.o\
 OpenArchive.o\
 PropIDUtils.o\

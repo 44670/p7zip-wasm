@@ -155,6 +155,17 @@ OutStreamWithCRC.o: ../Common/OutStreamWithCRC.cpp \
   ../Common/../../../Common/Types.h ../Common/../../../Common/MyCom.h \
   ../Common/../../../Common/MyWindows.h ../Common/../../IStream.h \
   ../Common/../../../Common/MyUnknown.h ../Common/../../../Common/Types.h
+ParseProperties.o: ../Common/ParseProperties.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../Common/ParseProperties.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Common/Types.h \
+  ../../../Common/StringToInt.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h
 ProgressUtils.o: ../../Common/ProgressUtils.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
@@ -341,7 +352,8 @@ DllExports.o: DllExports.cpp ../../../myWindows/StdAfx.h \
   ZipHeader.h ../../../Common/Types.h ZipItemEx.h ZipItem.h \
   ../../../Common/String.h ../../../Common/Vector.h \
   ../../../Common/Buffer.h ZipCompressionMode.h ../../../Common/Vector.h \
-  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/System.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../IPassword.h
 DLL.o: ../../../Windows/DLL.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
@@ -425,7 +437,8 @@ ZipHandler.o: ZipHandler.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/MyWindows.h ../../IStream.h ZipHeader.h \
   ../../../Common/Types.h ZipItemEx.h ZipItem.h ../../../Common/String.h \
   ../../../Common/Vector.h ../../../Common/Buffer.h ZipCompressionMode.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Common/CRC.h \
+  ../../../Common/Vector.h ../../../Windows/System.h \
+  ../../../Common/Defs.h ../../../Common/CRC.h \
   ../../../Common/StringConvert.h ../../../Common/String.h \
   ../../../Common/ComTry.h ../../../Windows/Time.h \
   ../../../Common/Types.h ../../../Windows/Defs.h \
@@ -479,13 +492,15 @@ ZipHandlerOut.o: ZipHandlerOut.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/MyWindows.h ../../IStream.h ZipHeader.h \
   ../../../Common/Types.h ZipItemEx.h ZipItem.h ../../../Common/String.h \
   ../../../Common/Vector.h ../../../Common/Buffer.h ZipCompressionMode.h \
-  ../../../Common/Vector.h ZipUpdate.h ../../../Common/StringConvert.h \
-  ../../../Common/String.h ../../../Common/ComTry.h \
-  ../../../Common/StringToInt.h ../../../Windows/PropVariant.h \
-  ../../../Windows/../Common/MyWindows.h \
+  ../../../Common/Vector.h ../../../Windows/System.h ZipUpdate.h \
+  ../../../Common/StringConvert.h ../../../Common/String.h \
+  ../../../Common/ComTry.h ../../../Common/StringToInt.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../../Windows/Time.h \
   ../../../Common/Types.h ../../../Windows/Defs.h ../../IPassword.h \
-  ../Common/ItemNameUtils.h ../Common/../../../Common/String.h
+  ../Common/ItemNameUtils.h ../Common/../../../Common/String.h \
+  ../Common/ParseProperties.h ../../../Common/String.h \
+  ../../../Common/Types.h
 ZipHeader.o: ZipHeader.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \

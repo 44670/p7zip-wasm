@@ -26,25 +26,28 @@ BZip2Decoder.o: BZip2Decoder.cpp ../../../myWindows/StdAfx.h \
   ../../Common/../IStream.h ../../Common/InBuffer.h \
   ../../Common/../../Common/MyCom.h ../../Common/OutBuffer.h \
   ../Huffman/HuffmanDecoder.h ../Huffman/../../../Common/Types.h \
-  BZip2Const.h ../../../Common/Alloc.h ../../../Common/Defs.h \
-  ../BWT/Mtf8.h ../../../Common/Types.h BZip2CRC.h \
-  ../../../Common/Types.h
+  BZip2Const.h BZip2CRC.h ../../../Common/Types.h \
+  ../../../Windows/Thread.h ../../../Windows/Defs.h \
+  ../../../Windows/Synchronization.h ../../../Common/Alloc.h \
+  ../../../Common/Defs.h ../BWT/Mtf8.h ../../../Common/Types.h
 BZip2Encoder.o: BZip2Encoder.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
   ../../../include_windows/windef.h ../../../Common/MyWindows.h \
   ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h BZip2Encoder.h ../../ICoder.h \
-  ../../IStream.h ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
-  ../../../Common/Types.h ../../../Common/MyCom.h \
-  ../../Common/MSBFEncoder.h ../../../Common/Defs.h \
-  ../../Common/../IStream.h ../../Common/OutBuffer.h \
-  ../../Common/../../Common/MyCom.h ../../Common/InBuffer.h \
-  ../../Common/OutBuffer.h ../Huffman/HuffmanEncoder.h \
-  ../Huffman/../../../Common/Types.h ../BWT/BlockSort.h \
-  ../../../Common/Types.h BZip2Const.h BZip2CRC.h ../../../Common/Types.h \
-  ../../../Common/Alloc.h ../BWT/Mtf8.h
+  ../../../include_windows/tchar.h ../../../Common/Alloc.h BZip2Encoder.h \
+  ../../ICoder.h ../../IStream.h ../../../Common/MyUnknown.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyCom.h ../../Common/MSBFEncoder.h \
+  ../../../Common/Defs.h ../../Common/../IStream.h \
+  ../../Common/OutBuffer.h ../../Common/../../Common/MyCom.h \
+  ../../Common/InBuffer.h ../../Common/OutBuffer.h \
+  ../Huffman/HuffmanEncoder.h ../Huffman/../../../Common/Types.h \
+  ../BWT/BlockSort.h ../../../Common/Types.h BZip2Const.h BZip2CRC.h \
+  ../../../Common/Types.h ../../../Windows/Thread.h \
+  ../../../Windows/Defs.h ../../../Windows/Synchronization.h \
+  ../BWT/Mtf8.h
 InBuffer.o: ../../Common/InBuffer.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -81,7 +84,9 @@ DllExports.o: DllExports.cpp ../../../myWindows/StdAfx.h \
   ../../Common/InBuffer.h ../../Common/OutBuffer.h \
   ../Huffman/HuffmanEncoder.h ../Huffman/../../../Common/Types.h \
   ../BWT/BlockSort.h ../../../Common/Types.h BZip2Const.h BZip2CRC.h \
-  ../../../Common/Types.h BZip2Decoder.h ../../Common/MSBFDecoder.h \
+  ../../../Common/Types.h ../../../Windows/Thread.h \
+  ../../../Windows/Defs.h ../../../Windows/Synchronization.h \
+  BZip2Decoder.h ../../Common/MSBFDecoder.h \
   ../../Common/../../Common/Types.h ../Huffman/HuffmanDecoder.h
 HuffmanEncoder.o: ../Huffman/HuffmanEncoder.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
@@ -92,3 +97,11 @@ HuffmanEncoder.o: ../Huffman/HuffmanEncoder.cpp \
   ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../Huffman/HuffmanEncoder.h ../Huffman/../../../Common/Types.h \
   ../../../Common/Defs.h ../../../Common/Alloc.h
+Synchronization.o: ../../../Windows/Synchronization.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Windows/Synchronization.h ../../../Windows/Defs.h

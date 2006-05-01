@@ -6,17 +6,9 @@
 #include "../../IStream.h"
 #include "../../Common/OutBuffer.h"
 
-/*
 #ifndef _NO_EXCEPTIONS
-class CLZOutWindowException
-{
-public:
-  HRESULT ErrorCode;
-  CLZOutWindowException(HRESULT errorCode): ErrorCode(errorCode) {}
-};
-#endif
-*/
 typedef COutBufferException CLZOutWindowException;
+#endif
 
 class CLZOutWindow: public COutBuffer
 {
@@ -27,9 +19,9 @@ public:
   bool CopyBlock(UInt32 distance, UInt32 len)
   {
     UInt32 pos = _pos - distance - 1;
-    if (pos >= _bufferSize)
+    if (distance >= _pos)
     {
-      if (!_overDict)
+      if (!_overDict || distance >= _bufferSize)
         return false;
       pos += _bufferSize;
     }

@@ -1,6 +1,6 @@
 PROG=../../../bin/Formats/7z.so
 
-LOCAL_FLAGS=
+LOCAL_FLAGS=-DCOMPRESS_MT
 
 include ../../../makefile.machine
 
@@ -9,7 +9,8 @@ LIBS=$(LOCAL_LIBS_DLL)
 
 MY_WINDOWS= \
 	$(MY_HOME)/wine_date_and_time.o \
-	$(MY_HOME)/myModuleFileName.o
+	$(MY_HOME)/myModuleFileName.o \
+	$(MY_HOME)/myGetNumberOfProcessors.o
 
 include ../../../makefile.machine
 
@@ -49,6 +50,7 @@ ItemNameUtils.o \
 MultiStream.o \
 StreamUtils.o \
 OutStreamWithCRC.o \
+ParseProperties.o \
 InOutTempBuffer.o \
 LimitedStreams.o \
 LockedStream.o \

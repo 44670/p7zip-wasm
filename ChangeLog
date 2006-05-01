@@ -1,3 +1,62 @@
+Version 4.39
+============
+
+  - From Windows version of 7-zip 4.39 :
+    - Bug in versions 4.33:4.38 was fixed:
+      7-Zip could not correctly compress files larger than 2 GB 
+      to 7z archive in fast/fastest modes (HC4 match finder).
+
+Version 4.38
+============
+
+  - From Windows version of 7-zip 4.38 :
+    - Some bugs were fixed.
+
+  - new manpage : 7zr.1
+  - update manpages : 7z.1 and 7za.1
+  - new switch : --help
+
+  - patch #1465026 - Patch for install.sh for packagers
+
+  - DosDateTimeToFileTime fixed (rar format)
+
+  - contrib/VirtualFileSystemForMidnightCommander/u7z updated
+    (thanks sgh_punk)
+
+
+Version 4.37
+============
+  - From Windows version of 7-zip 4.37 :
+    - Some bugs were fixed.
+
+  - fix build for Solaris sparc with CC instead of g++.
+
+  - fix build for Solaris  9 x86
+  - fix build for Solaris 10 x86
+  - fix build for OpenBSD
+  - p7zip can now be build with djgpp.
+  - new target  : 7zr (lite version of 7za)
+  - new machine : IBM AIX 
+
+Version 4.36
+============
+  - From Windows version of 7-zip 4.36 :
+    - 7-zip now can unpack ISO archives
+
+  - GCC 4.X : add C++ visibility support to reduce the size of the *.so
+   (see makefile.linux_x86_ppc_alpha__gcc_4.X)
+
+  - cygwin now supports '-o/tmp'
+
+Version 4.35
+============
+  - From Windows version of 7-zip 4.35 :
+    - New switch : -slt ("l" (list) command with -slt shows technical information for archive).
+    - Some bugs were fixed.
+
+  - From Windows version of 7-zip 4.34 :
+    - BZip2 compressing / decompressing now can work in multi-threading mode
+    - Multi-threading mode now is default for multi-processor systems
 
 Version 4.33
 ============

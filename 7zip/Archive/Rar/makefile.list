@@ -14,6 +14,7 @@ SRCS=\
  ../../Crypto/Rar20/Rar20Crypto.cpp \
  ../../Crypto/RarAES/RarAES.cpp \
  ../../Crypto/RarAES/sha1.cpp \
+../Common/ItemNameUtils.cpp \
  ./DllExports.cpp \
  ./RarHandler.cpp \
  ./RarHeader.cpp \
@@ -33,6 +34,8 @@ FilterCoder.o : ../Common/FilterCoder.cpp
 	$(CXX) $(CFLAGS) ../Common/FilterCoder.cpp
 InStreamWithCRC.o : ../Common/InStreamWithCRC.cpp
 	$(CXX) $(CFLAGS) ../Common/InStreamWithCRC.cpp
+ItemNameUtils.o : ../Common/ItemNameUtils.cpp
+	$(CXX) $(CFLAGS) ../Common/ItemNameUtils.cpp
 OutStreamWithCRC.o : ../Common/OutStreamWithCRC.cpp
 	$(CXX) $(CFLAGS) ../Common/OutStreamWithCRC.cpp
 DLL.o : ../../../Windows/DLL.cpp

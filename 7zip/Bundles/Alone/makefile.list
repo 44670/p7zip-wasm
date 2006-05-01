@@ -26,6 +26,7 @@ SRCS=\
  ../../Archive/Common/ItemNameUtils.cpp \
  ../../Archive/Common/MultiStream.cpp \
  ../../Archive/Common/OutStreamWithCRC.cpp \
+ ../../Archive/Common/ParseProperties.cpp \
  ../../Archive/GZip/GZipHandler.cpp \
  ../../Archive/GZip/GZipHandlerOut.cpp \
  ../../Archive/GZip/GZipHeader.cpp \
@@ -100,6 +101,7 @@ SRCS=\
  ../../UI/Common/ExtractingFilePath.cpp \
  ../../UI/Common/OpenArchive.cpp \
  ../../UI/Common/PropIDUtils.cpp \
+ ../../UI/Common/SetProperties.cpp \
  ../../UI/Common/SortUtils.cpp \
  ../../UI/Common/TempFiles.cpp \
  ../../UI/Common/UpdateAction.cpp \
@@ -325,6 +327,8 @@ ItemNameUtils.o : ../../Archive/Common/ItemNameUtils.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/ItemNameUtils.cpp
 OutStreamWithCRC.o : ../../Archive/Common/OutStreamWithCRC.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/OutStreamWithCRC.cpp
+ParseProperties.o : ../../Archive/Common/ParseProperties.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Common/ParseProperties.cpp
 MultiStream.o : ../../Archive/Common/MultiStream.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/MultiStream.cpp
 ArchiveCommandLine.o : ../../UI/Common/ArchiveCommandLine.cpp
@@ -341,6 +345,8 @@ EnumDirItems.o : ../../UI/Common/EnumDirItems.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/EnumDirItems.cpp
 Extract.o : ../../UI/Common/Extract.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/Extract.cpp
+SetProperties.o : ../../UI/Common/SetProperties.cpp
+	$(CXX) $(CFLAGS) ../../UI/Common/SetProperties.cpp
 ExtractingFilePath.o : ../../UI/Common/ExtractingFilePath.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/ExtractingFilePath.cpp
 OpenArchive.o : ../../UI/Common/OpenArchive.cpp

@@ -28,6 +28,17 @@ OutStreamWithCRC.o: ../Common/OutStreamWithCRC.cpp \
   ../Common/../../../Common/Types.h ../Common/../../../Common/MyCom.h \
   ../Common/../../../Common/MyWindows.h ../Common/../../IStream.h \
   ../Common/../../../Common/MyUnknown.h ../Common/../../../Common/Types.h
+ParseProperties.o: ../Common/ParseProperties.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../Common/ParseProperties.h ../../../Common/String.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h ../../../Common/Types.h \
+  ../../../Common/StringToInt.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h
 StreamUtils.o: ../../Common/StreamUtils.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -130,7 +141,8 @@ GZipHandlerOut.o: GZipHandlerOut.cpp ../../../myWindows/StdAfx.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../Compress/Copy/CopyCoder.h \
   ../../Compress/Copy/../../ICoder.h ../../Compress/Copy/../../IStream.h \
-  ../../Compress/Copy/../../../Common/MyCom.h
+  ../../Compress/Copy/../../../Common/MyCom.h ../Common/ParseProperties.h \
+  ../../../Common/String.h ../../../Common/Types.h
 GZipHeader.o: GZipHeader.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \

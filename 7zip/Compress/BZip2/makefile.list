@@ -6,7 +6,8 @@ SRCS=\
  ../../Common/InBuffer.cpp \
  ../../Common/OutBuffer.cpp \
  ./DllExports.cpp \
- ../Huffman/HuffmanEncoder.cpp
+ ../Huffman/HuffmanEncoder.cpp \
+ ../../../Windows/Synchronization.cpp
 
 DllExports.o : ./DllExports.cpp
 	$(CXX) $(CFLAGS) ./DllExports.cpp
@@ -24,3 +25,5 @@ InBuffer.o : ../../Common/InBuffer.cpp
 	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
 OutBuffer.o : ../../Common/OutBuffer.cpp
 	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp
+Synchronization.o : ../../../Windows/Synchronization.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/Synchronization.cpp

@@ -12,7 +12,7 @@ DEFINE_GUID(CLSID_CCompressCopyCoder,
 0x23170F69, 0x40C1, 0x278B, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00);
 
 extern "C"
-BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /*lpReserved*/)
+DLLEXPORT BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /*lpReserved*/)
 {
 	return TRUE;
 }

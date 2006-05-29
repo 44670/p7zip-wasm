@@ -39,7 +39,7 @@ install: build
 
 	# Add here commands to install the package into debian/p7zip-full.
 	echo "#! /bin/sh" > debian/p7zip-full/usr/bin/7z
-	echo 'exec /usr/lib/p7zip-full/7z "$$@"' >> debian/p7zip-full/usr/bin/7z
+	echo 'exec /usr/lib/p7zip/7z "$$@"' >> debian/p7zip-full/usr/bin/7z
 
 # Build architecture-independent files here.
 binary-indep: build install

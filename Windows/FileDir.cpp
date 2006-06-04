@@ -553,6 +553,7 @@ bool MyGetFullPathName(LPCWSTR fileName, UString &path)
 }
 #endif
 
+#if 0 // FIXED - USELESS
 bool GetOnlyName(LPCTSTR fileName, CSysString &resultName)
 {
   int index;
@@ -573,6 +574,7 @@ bool GetOnlyName(LPCWSTR fileName, UString &resultName)
 }
 #endif
 
+
 bool GetOnlyDirPrefix(LPCTSTR fileName, CSysString &resultName)
 {
   int index;
@@ -592,6 +594,8 @@ bool GetOnlyDirPrefix(LPCWSTR fileName, UString &resultName)
   return true;
 }
 #endif
+
+#endif // #if 0 - USELESS
 
 #endif
 

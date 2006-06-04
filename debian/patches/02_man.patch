@@ -1,13 +1,7 @@
-#! /bin/sh /usr/share/dpatch/dpatch-run
-## 02_man.dpatch by Mohammed Adnène Trojette <adn+deb@diwi.org>
-##
-## All lines beginning with `## DP:' are a description of the patch.
-## DP: Specifics and correction in manpages
-
-@DPATCH@
-
---- p7zip-4.39.dfsg.1.orig/man1/7z.1	2006-04-16 14:44:14.000000000 +0200
-+++ p7zip-4.39.dfsg.1/man1/7z.1	2006-04-17 19:15:45.000000000 +0200
+Index: p7zip-4.42.dfsg.1/man1/7z.1
+===================================================================
+--- p7zip-4.42.dfsg.1.orig/man1/7z.1	2006-06-04 10:09:56.000000000 +0200
++++ p7zip-4.42.dfsg.1/man1/7z.1	2006-06-04 10:39:43.000000000 +0200
 @@ -55,7 +55,7 @@
  don't store symlinks; store the files/directories they point to (CAUTION : the scanning stage can never end because of recursive symlinks like 'ln -s .. ldir')
  .TP
@@ -26,8 +20,10 @@
  .TP
  .B -slt
  Sets technical mode for l (list) command
---- p7zip-4.39.dfsg.1.orig/man1/7za.1	2006-04-16 14:44:14.000000000 +0200
-+++ p7zip-4.39.dfsg.1/man1/7za.1	2006-04-17 19:13:40.000000000 +0200
+Index: p7zip-4.42.dfsg.1/man1/7za.1
+===================================================================
+--- p7zip-4.42.dfsg.1.orig/man1/7za.1	2006-06-04 10:09:56.000000000 +0200
++++ p7zip-4.42.dfsg.1/man1/7za.1	2006-06-04 10:39:43.000000000 +0200
 @@ -55,7 +55,7 @@
  don't store symlinks; store the files/directories they point to (CAUTION : the scanning stage can never end because of recursive symlinks like 'ln -s .. ldir')
  .TP

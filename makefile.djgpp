@@ -2,7 +2,10 @@
 # makefile for DJGPP
 # (available target for DJGPP : all test clean)
 #
-ALLFLAGS=-O -s \
+
+OPTFLAGS=-O
+
+ALLFLAGS=${OPTFLAGS} -s \
     	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
 	-DNDEBUG -D_REENTRANT -DENV_UNIX \
 	$(LOCAL_FLAGS)

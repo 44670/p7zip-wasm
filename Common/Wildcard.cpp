@@ -208,7 +208,7 @@ bool CItem::CheckPath(const UStringVector &pathParts, bool isFile) const
 int CCensorNode::FindSubNode(const UString &name) const
 {
   for (int i = 0; i < SubNodes.Size(); i++)
-#ifdef ENV_UNIX // Unix Filesystem are case sensitive.
+#ifdef FILESYSTEM_IS_CASE_SENSITIVE // Unix Filesystem are case sensitive.
     if (SubNodes[i].Name.Compare(name) == 0)
 #else
     if (SubNodes[i].Name.CompareNoCase(name) == 0)
@@ -372,7 +372,7 @@ void CCensorNode::ExtendExclude(const CCensorNode &fromNodes)
 int CCensor::FindPrefix(const UString &prefix) const
 {
   for (int i = 0; i < Pairs.Size(); i++)
-#ifdef ENV_UNIX // Unix Filesystem are case sensitive.
+#ifdef FILESYSTEM_IS_CASE_SENSITIVE // Unix Filesystem are case sensitive.
     if (Pairs[i].Prefix.Compare(prefix) == 0)
 #else
     if (Pairs[i].Prefix.CompareNoCase(prefix) == 0)
@@ -467,20 +467,4 @@ void CCensor::ExtendExclude()
       Pairs[i].Head.ExtendExclude(Pairs[index].Head);
 }
 
-}
-
-bool AreTheFileNamesDirDelimiterEqual(const UString &name1, const UString &name2)
-{
-  if(name1.Length() != name2.Length())
-    return false;
-  for(int i = 0; i < name1.Length(); i++)
-  {
-    wchar_t char1 = name1[i], char2 = name2[i];
-    if (char1 == char2)
-      continue;
-    if (IsCharDirLimiter(char1) && IsCharDirLimiter(char2))
-      continue;
-    return false;
-  }
-  return true;
 }

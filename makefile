@@ -37,6 +37,7 @@ depend:
 	cd 7zip/Archive/GZip      ; $(MAKE) depend
 	cd 7zip/Archive/Iso       ; $(MAKE) depend
 	cd 7zip/Archive/Lzh       ; $(MAKE) depend
+	cd 7zip/Archive/Nsis      ; $(MAKE) depend
 	cd 7zip/Archive/Rar       ; $(MAKE) depend
 	cd 7zip/Archive/RPM       ; $(MAKE) depend
 	cd 7zip/Archive/Split     ; $(MAKE) depend
@@ -51,6 +52,7 @@ depend:
 	cd 7zip/Compress/Implode  ; $(MAKE) depend
 	cd 7zip/Compress/LZMA     ; $(MAKE) depend
 	cd 7zip/Compress/PPMD     ; $(MAKE) depend
+	cd 7zip/Compress/Rar29    ; $(MAKE) depend
 	cd 7zip/Crypto/7zAES      ; $(MAKE) depend
 	cd 7zip/Crypto/AES        ; $(MAKE) depend
 	cd 7zip/Bundles/Alone7z   ; $(MAKE) depend
@@ -72,6 +74,7 @@ sfx: common
 	cd 7zip/Archive/GZip      ; $(MAKE) all
 	cd 7zip/Archive/Iso       ; $(MAKE) all
 	cd 7zip/Archive/Lzh       ; $(MAKE) all
+	cd 7zip/Archive/Nsis      ; $(MAKE) all
 	cd 7zip/Archive/Rar       ; $(MAKE) all
 	cd 7zip/Archive/RPM       ; $(MAKE) all
 	cd 7zip/Archive/Split     ; $(MAKE) all
@@ -86,6 +89,7 @@ sfx: common
 	cd 7zip/Compress/Implode  ; $(MAKE) all
 	cd 7zip/Compress/LZMA     ; $(MAKE) all
 	cd 7zip/Compress/PPMD     ; $(MAKE) all
+	cd 7zip/Compress/Rar29    ; $(MAKE) all
 	cd 7zip/Crypto/7zAES      ; $(MAKE) all
 	cd 7zip/Crypto/AES        ; $(MAKE) all
 
@@ -105,6 +109,7 @@ clean:
 	cd 7zip/Archive/GZip      ; $(MAKE) clean
 	cd 7zip/Archive/Iso       ; $(MAKE) clean
 	cd 7zip/Archive/Lzh       ; $(MAKE) clean
+	cd 7zip/Archive/Nsis      ; $(MAKE) clean
 	cd 7zip/Archive/Rar       ; $(MAKE) clean
 	cd 7zip/Archive/RPM       ; $(MAKE) clean
 	cd 7zip/Archive/Split     ; $(MAKE) clean
@@ -119,10 +124,13 @@ clean:
 	cd 7zip/Compress/Implode  ; $(MAKE) clean
 	cd 7zip/Compress/LZMA     ; $(MAKE) clean
 	cd 7zip/Compress/PPMD     ; $(MAKE) clean
+	cd 7zip/Compress/Rar29    ; $(MAKE) clean
 	cd 7zip/Crypto/7zAES      ; $(MAKE) clean
 	cd 7zip/Crypto/AES        ; $(MAKE) clean
 	cd 7zip/Bundles/Alone7z   ; $(MAKE) clean
-	chmod +x install.sh contrib/VirtualFileSystemForMidnightCommander/u7z check/check.sh check/clean_all.sh check/check_7zr.sh
+	chmod +x contrib/VirtualFileSystemForMidnightCommander/u7z
+	chmod +x contrib/gzip-like_CLI_wrapper_for_7z/p7zip
+	chmod +x install.sh check/check.sh check/clean_all.sh check/check_7zr.sh 
 	cd check                  ; ./clean_all.sh
 	find . -name "*~" -exec rm -f {} \;
 	find . -name "*.orig" -exec rm -f {} \;
@@ -143,7 +151,7 @@ install:
 REP=$(shell pwd)
 ARCHIVE=$(shell basename $(REP))
 
-.PHONY: tar_all tar_all2 tar_src tar_src_extra src_7z tar_bin
+.PHONY: tar_all tar_all2 tar_src tar_src_extra src_7z tar_bin tar_bin2
 
 tar_all : clean
 	rm -f  ../$(ARCHIVE)_src_all.tar.bz2
@@ -151,9 +159,9 @@ tar_all : clean
 	cd .. ; (tar cf - $(ARCHIVE) | bzip2 -9 > $(ARCHIVE)_src_all.tar.bz2)
 
 tar_all2 : clean
-	rm -f  ../$(ARCHIVE)_src_all_7z.tar.bz2
+	rm -f  ../$(ARCHIVE)_src_all.tar.bz2
 	cp makefile.linux_x86_ppc_alpha makefile.machine
-	cd .. ; ( 7za a -ttar -so tt $(ARCHIVE) | 7za a -mx=9 -tbzip2 -si $(ARCHIVE)_src_all_7z.tar.bz2 )
+	cd .. ; (tar cf - $(ARCHIVE) | 7za a -mx=9 -tbzip2 -si $(ARCHIVE)_src_all.tar.bz2 )
 
 src_7z : clean
 	rm -f  ../$(ARCHIVE)_src.7z
@@ -161,6 +169,11 @@ src_7z : clean
 
 tar_bin:
 	rm -f  ../$(ARCHIVE)_x86_linux_bin.tar.bz2
-	chmod +x install.sh contrib/VirtualFileSystemForMidnightCommander/u7z
+	chmod +x install.sh contrib/VirtualFileSystemForMidnightCommander/u7z contrib/gzip-like_CLI_wrapper_for_7z/p7zip
 	cd .. ; (tar cf - $(ARCHIVE)/bin $(ARCHIVE)/contrib $(ARCHIVE)/man1 $(ARCHIVE)/install.sh $(ARCHIVE)/ChangeLog $(ARCHIVE)/DOCS $(ARCHIVE)/README $(ARCHIVE)/TODO | bzip2 -9 > $(ARCHIVE)_x86_linux_bin.tar.bz2)
+
+tar_bin2:
+	rm -f  ../$(ARCHIVE)_x86_linux_bin.tar.bz2
+	chmod +x install.sh contrib/VirtualFileSystemForMidnightCommander/u7z contrib/gzip-like_CLI_wrapper_for_7z/p7zip
+	cd .. ; (tar cf - $(ARCHIVE)/bin $(ARCHIVE)/contrib $(ARCHIVE)/man1 $(ARCHIVE)/install.sh $(ARCHIVE)/ChangeLog $(ARCHIVE)/DOCS $(ARCHIVE)/README $(ARCHIVE)/TODO | 7za a -mx=9 -tbzip2 -si $(ARCHIVE)_x86_linux_bin.tar.bz2)
 

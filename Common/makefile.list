@@ -1,4 +1,4 @@
-SRCS= AlignedBuffer.cpp \
+SRCS= \
  Alloc.cpp \
  CommandLineParser.cpp \
  CRC.cpp \
@@ -32,8 +32,6 @@ StringToInt.o : StringToInt.cpp
 	$(CXX) $(CFLAGS) StringToInt.cpp
 Vector.o : Vector.cpp
 	$(CXX) $(CFLAGS) Vector.cpp
-AlignedBuffer.o : AlignedBuffer.cpp
-	$(CXX) $(CFLAGS) AlignedBuffer.cpp
 CommandLineParser.o : CommandLineParser.cpp
 	$(CXX) $(CFLAGS) CommandLineParser.cpp
 ListFileUtils.o : ListFileUtils.cpp

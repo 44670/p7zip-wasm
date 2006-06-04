@@ -2,13 +2,13 @@ Source: p7zip
 Section: utils
 Priority: optional
 Maintainer: Mohammed Adnène Trojette <adn+deb@diwi.org>
-Build-Depends: debhelper (>= 4.0.0), dpatch
+Build-Depends: debhelper (>= 4.0.0), quilt
 Standards-Version: 3.7.2
 
 Package: p7zip
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Recommends: p7zip-full (= ${Source-Version})
+Recommends: p7zip-full
 Suggests:
 Description: 7-Zip is a file archiver with high compression ratio
  7-Zip is the file archiver that archives with the highest compression

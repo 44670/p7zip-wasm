@@ -45,7 +45,7 @@ if [ "${file}" != "" ] ; then
     rm ${file}
   else
     case ${file} in
-      *.7zr)
+      *.7z)
         7zr x ${file}
         rm ${file}
       ;;

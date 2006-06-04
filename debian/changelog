@@ -1,3 +1,14 @@
+p7zip (4.42.dfsg.1-1) unstable; urgency=low
+
+  * New upstream version (Closes: #369284)
+  * Switch to quilt patch management
+     + changes to debian/rules
+     + build-depend on quilt
+  * debian/script/p7zip: correct typo on file extension
+  * [asac@debian.org] - removed version from Recommends of p7zip-full
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sun,  4 Jun 2006 10:43:06 +0200
+
 p7zip (4.39.dfsg.1-3) unstable; urgency=low
 
   * debian/rules: 7z is in /usr/lib/p7zip, not /usr/lib/p7zip-full.

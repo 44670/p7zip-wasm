@@ -1,6 +1,10 @@
 
 #if !defined(__DJGPP__)
 
+#ifndef __CYGWIN__
+  #define FILESYSTEM_IS_CASE_SENSITIVE 1
+#endif
+
   #if !defined(ENV_MACOSX) && !defined(ENV_BEOS)
 
     /* <wchar.h> */

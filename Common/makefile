@@ -10,7 +10,6 @@ OBJS=\
 main.o \
 StringToInt.o \
 Vector.o \
-AlignedBuffer.o \
 Alloc.o \
 CommandLineParser.o \
 CRC.o \

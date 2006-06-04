@@ -28,8 +28,10 @@ fi
 # cleaning previous install
 rm -f ${DEST_DIR}${DEST_BIN}/7z
 rm -f ${DEST_DIR}${DEST_BIN}/7za
+rm -f ${DEST_DIR}${DEST_BIN}/7zr
 rm -f ${DEST_DIR}${DEST_SHARE}/7z
 rm -f ${DEST_DIR}${DEST_SHARE}/7za
+rm -f ${DEST_DIR}${DEST_SHARE}/7zr
 rm -f ${DEST_DIR}${DEST_SHARE}/7zCon.sfx
 rm -fr ${DEST_DIR}${DEST_SHARE}/Codecs ${DEST_DIR}${DEST_SHARE}/Formats
 rmdir ${DEST_DIR}${DEST_SHARE} 2> /dev/null
@@ -48,6 +50,18 @@ then
     echo "#! /bin/sh" > ${DEST_DIR}${DEST_BIN}/7za
     echo "${DEST_SHARE}/7za \"\$@\"" >> ${DEST_DIR}${DEST_BIN}/7za
     chmod 555 ${DEST_DIR}${DEST_BIN}/7za
+  fi
+
+  if [ -x bin/7zr ]
+  then
+    echo "-installing ${DEST_DIR}${DEST_BIN}/7zr"
+    cp bin/7zr ${DEST_DIR}${DEST_SHARE}/7zr
+    chmod 777 ${DEST_DIR}${DEST_SHARE}/7zr
+    strip     ${DEST_DIR}${DEST_SHARE}/7zr
+    chmod 555 ${DEST_DIR}${DEST_SHARE}/7zr
+    echo "#! /bin/sh" > ${DEST_DIR}${DEST_BIN}/7zr
+    echo "${DEST_SHARE}/7zr \"\$@\"" >> ${DEST_DIR}${DEST_BIN}/7zr
+    chmod 555 ${DEST_DIR}${DEST_BIN}/7zr
   fi
 
   if [ -x bin/7zCon.sfx ]
@@ -81,13 +95,26 @@ else
     cp bin/7za ${DEST_DIR}${DEST_BIN}/7za
     chmod 555 ${DEST_DIR}${DEST_BIN}/7za
   fi
+
+  if [-x bin/7zr ]
+  then
+    echo "- installing ${DEST_DIR}${DEST_BIN}/7zr"
+    mkdir -p ${DEST_DIR}${DEST_BIN}
+    cp bin/7zr ${DEST_DIR}${DEST_BIN}/7zr
+    chmod 555 ${DEST_DIR}${DEST_BIN}/7zr
+  fi
 fi
 
 mkdir -p ${DEST_DIR}${DEST_MAN}/man1
 echo "- installing ${DEST_DIR}${DEST_MAN}/man1/7z.1"
 cp man1/7z.1 ${DEST_DIR}${DEST_MAN}/man1/
 chmod 444    ${DEST_DIR}${DEST_MAN}/man1/7z.1
+
 echo "- installing ${DEST_DIR}${DEST_MAN}/man1/7za.1"
 cp man1/7za.1 ${DEST_DIR}${DEST_MAN}/man1/
 chmod 444    ${DEST_DIR}${DEST_MAN}/man1/7za.1
+
+echo "- installing ${DEST_DIR}${DEST_MAN}/man1/7zr.1"
+cp man1/7zr.1 ${DEST_DIR}${DEST_MAN}/man1/
+chmod 444    ${DEST_DIR}${DEST_MAN}/man1/7zr.1
 

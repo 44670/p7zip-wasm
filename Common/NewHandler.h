@@ -5,4 +5,12 @@
 
 class CNewException {};
 
+#ifdef _WIN32
+void 
+#ifdef _MSC_VER
+__cdecl 
+#endif
+operator delete(void *p) throw();
+#endif 
+
 #endif 

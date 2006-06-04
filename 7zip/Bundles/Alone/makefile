@@ -42,7 +42,6 @@ OBJS=\
 7zProperties.o \
 7zSpecStream.o \
 7zUpdate.o \
-../../../Common/AlignedBuffer.o \
 ../../../Common/Alloc.o \
 ../../../Common/CommandLineParser.o \
 ../../../Common/ListFileUtils.o \
@@ -175,7 +174,6 @@ BlockSort.o
 include ../../../makefile.glb
 
 OBJ7ZA= \
-../../../Common/AlignedBuffer.o \
 ../../../Common/Alloc.o \
 ../../../Common/Vector.o \
 ../../../Common/StringConvert.o \

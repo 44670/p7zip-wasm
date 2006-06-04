@@ -44,6 +44,7 @@ typedef unsigned int UINT;
 typedef UInt32 UINT32;
 typedef INT32 LONG;   // LONG, ULONG and DWORD must be 32-bit
 typedef UINT32 ULONG;
+
 #undef DWORD
 typedef UINT32 DWORD;
 
@@ -104,6 +105,7 @@ struct IUnknown
   STDMETHOD(QueryInterface) (REFIID iid, void **outObject) PURE;
   STDMETHOD_(ULONG, AddRef)() PURE;
   STDMETHOD_(ULONG, Release)() PURE;
+  virtual ~IUnknown() {} // FIXED
 };
 
 typedef IUnknown *LPUNKNOWN;

@@ -34,6 +34,7 @@ void NormalizeDirPathPrefix(UString &dirPath)
 }
 #endif
 
+#if 0 // FIXED - USELESS
 namespace NPathType
 {
   EEnum GetPathType(const UString &path)
@@ -107,5 +108,6 @@ void SplitNameToPureNameAndExtension(const UString &fullName,
     extension = fullName.Mid(index + 1);
   }
 }
+#endif // #if 0
 
 }}}

@@ -34,8 +34,11 @@ test_emul.o: test_emul.cpp StdAfx.h config.h ../Common/MyWindows.h \
   ../Common/MyWindows.h ../include_windows/winnt.h \
   ../include_windows/basetyps.h ../include_windows/tchar.h myPrivate.h \
   ../Common/StringConvert.h ../Common/MyWindows.h ../Common/String.h \
-  ../Common/Vector.h ../Common/Defs.h ../Common/StringConvert.cpp \
-  StdAfx.h ../Common/StringConvert.h
+  ../Common/Vector.h ../Common/Defs.h ../Common/StdOutStream.h \
+  ../Common/StringConvert.cpp StdAfx.h ../Common/StringConvert.h \
+  ../Common/StdOutStream.cpp ../Common/StdOutStream.h \
+  ../Common/IntToString.h ../Common/StringConvert.h \
+  ../Common/IntToString.cpp ../Common/IntToString.h
 wine_date_and_time.o: wine_date_and_time.cpp config.h \
   ../include_windows/windows.h ../include_windows/windef.h \
   ../Common/MyWindows.h ../Common/Types.h ../Common/MyGuidDef.h \

@@ -13,7 +13,6 @@ OBJS = \
 ../../../Common/MyWindows.o \
 ../../../Common/Alloc.o\
 ../../../Common/CRC.o\
-../../../Common/AlignedBuffer.o\
 DllExports.o\
 InBuffer.o\
 OutBuffer.o\

@@ -12,6 +12,7 @@ static wchar_t GetHex(Byte value)
   return (value < 10) ? ('0' + value) : ('A' + (value - 10));
 }
 
+#if 0 // FIXED - USELESS
 static bool HexCharToInt(wchar_t value, Byte &result)
 {
   if (value >= '0' && value <= '9')
@@ -36,18 +37,6 @@ static bool TwoHexCharsToInt(wchar_t valueHigh, wchar_t valueLow, Byte &result)
   return true;
 }
 
-UString CMethodID::ConvertToString() const
-{
-  UString result;
-  for (int i = 0; i < IDSize; i++)
-  {
-    Byte b = ID[i];
-    result += GetHex(b >> 4);
-    result += GetHex(b & 0xF);
-  }
-  return result;
-}
-
 bool CMethodID::ConvertFromString(const UString &srcString)
 {
   int length = srcString.Length();
@@ -61,6 +50,19 @@ bool CMethodID::ConvertFromString(const UString &srcString)
   for(; i < kMethodIDSize; i++)
     ID[i] = 0;
   return true;
+}
+#endif
+
+UString CMethodID::ConvertToString() const
+{
+  UString result;
+  for (int i = 0; i < IDSize; i++)
+  {
+    Byte b = ID[i];
+    result += GetHex(b >> 4);
+    result += GetHex(b & 0xF);
+  }
+  return result;
 }
 
 bool operator==(const CMethodID &a1, const CMethodID &a2)

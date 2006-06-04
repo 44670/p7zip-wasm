@@ -1,3 +1,45 @@
+
+Version 4.42
+============
+  - From Windows version of 7-zip 4.42 :
+    - Some bugs were fixed
+
+  - the binaries provided by p7zip_4.XY_x86_linux_bin.tar.bz2
+    can now run on Fedora x86_64,
+    and should now run on any 64bits Linux.
+
+  - patch #1473746 - gzip-like CLI wrapper (for 7z)
+    see the directory "contrib/gzip-like_CLI_wrapper_for_7z".
+
+  - patch #471478 - Support for OPTFLAGS
+    This patch allows to use system specific opt flags.
+    example : make OPTFLAGS="-O2 -march=athlon-xp"
+
+  - the djgpp and cygwin makefile now build "7za" with case insensitive filenames
+    (Windows filesystem is case insensitive).
+
+
+Version 4.41
+============
+  - From Windows version of 7-zip 4.41 :
+    - Some bugs were fixed
+
+
+Version 4.40
+============
+
+  - From Windows version of 7-zip 4.40 :
+    - 7-Zip now can unpack some installers created by NSIS
+    - Some bugs were fixed
+
+  - format LZH/LHA : fixed directory display during listing or extracting
+    (a directory does not end with the path separator)
+
+  - patch #1470817 - Handle 7zr in install.sh
+
+  - code cleanup
+
+
 Version 4.39
 ============
 
@@ -5,6 +47,7 @@ Version 4.39
     - Bug in versions 4.33:4.38 was fixed:
       7-Zip could not correctly compress files larger than 2 GB 
       to 7z archive in fast/fastest modes (HC4 match finder).
+
 
 Version 4.38
 ============

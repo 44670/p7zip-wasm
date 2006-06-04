@@ -22,6 +22,7 @@ void SortStringsToIndices(const UStringVector &strings, CIntVector &indices)
   indices.Sort(CompareStrings, (void *)&strings);
 }
 
+#if 0 // FIXED - USELESS
 void SortStrings(const UStringVector &src, UStringVector &dest)
 {
   CIntVector indices;
@@ -31,3 +32,5 @@ void SortStrings(const UStringVector &src, UStringVector &dest)
   for (int i = 0; i < indices.Size(); i++)
     dest.Add(src[indices[i]]);
 }
+#endif
+

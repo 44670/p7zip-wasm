@@ -1,3 +1,13 @@
+p7zip (4.42.dfsg.1-2) unstable; urgency=low
+
+  * Backup makefile.machine before replacing it and restore it after build.
+  * Put ${file} between quotes for the case the filename contains spaces.
+  * Pop all patches first in clean target so that it does not fail.
+
+   Thanks Ingo Saitz for pointing these.
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Thu, 29 Jun 2006 00:01:56 +0200
+
 p7zip (4.42.dfsg.1-1) unstable; urgency=low
 
   * New upstream version (Closes: #369284)

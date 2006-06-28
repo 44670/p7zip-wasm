@@ -41,13 +41,13 @@ done
 
 if [ "${file}" != "" ] ; then
   if ${compress} ; then
-    7zr a ${file}.7z ${file}
-    rm ${file}
+    7zr a "${file}.7z" "${file}"
+    rm "${file}"
   else
-    case ${file} in
+    case "${file}" in
       *.7z)
-        7zr x ${file}
-        rm ${file}
+        7zr x "${file}"
+        rm "${file}"
       ;;
       *)
         echo "$0: ${file}: unknown suffix -- ignored"

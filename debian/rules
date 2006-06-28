@@ -13,8 +13,10 @@ build-stamp:
 
 	# Add here commands to compile the package.
 	QUILT_PATCHES=debian/patches quilt push -a || test $$? = 2
+	cp makefile.machine makefile.machine.bak
 	cp makefile.linux_x86_ppc_alpha__gcc_4.X makefile.machine
 	$(MAKE) all3
+	cp makefile.machine.bak makefile.machine
 
 	touch build-stamp
 
@@ -24,6 +26,7 @@ clean:
 	rm -f build-stamp
 
 	# Add here commands to clean up after the build process.
+	QUILT_PATCHES=debian/patches quilt pop -a -R || test $$? = 2
 	QUILT_PATCHES=debian/patches quilt push
 	-$(MAKE) clean
 

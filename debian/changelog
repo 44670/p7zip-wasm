@@ -1,3 +1,10 @@
+p7zip (4.42.dfsg.1-3) unstable; urgency=low
+
+  * Include improvements to Robert Millan's wrapper script. (Closes: #379397)
+  * Correct watch file to use <http://qa.debian.org/watch/sf.php/>.
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Tue, 19 Sep 2006 02:15:01 +0200
+
 p7zip (4.42.dfsg.1-2) unstable; urgency=low
 
   * Backup makefile.machine before replacing it and restore it after build.

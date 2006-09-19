@@ -19,7 +19,7 @@ while [ "$#" != "0" ] ; do
   case "$1" in
     -d) compress=false ;; # decompressing
     -c) echo "$0: ignoring $1 option (not yet implemented)" ;;
-    -h|--help) usage ;;
+    -h|--help|-*) usage ;;
     *)
       if [ "${file}" = "" ] ; then
         file="$1"
@@ -42,26 +42,26 @@ done
 if [ "${file}" != "" ] ; then
   if ${compress} ; then
     7zr a "${file}.7z" "${file}"
-    rm "${file}"
+    exec rm "${file}"
   else
     case "${file}" in
       *.7z)
         7zr x "${file}"
-        rm "${file}"
+        exec rm "${file}"
       ;;
       *)
         echo "$0: ${file}: unknown suffix -- ignored"
+        exit 0
       ;;
     esac
   fi
-  exit 0
 fi
 
 tmp=`mktemp`
 trap "rm -f ${tmp}" 0
 
 if ${compress} ; then
-  if tty > /dev/null ; then
+  if tty -s <&1 >/dev/null ; then
     echo "$0: compressed data not written to a terminal."
     echo "For help, type: $0 -h"
     exit 1
@@ -74,4 +74,4 @@ else
   7zr x ${tmp} -so 2>/dev/null | cat
 fi
 
-rm -f ${tmp}
+exec rm -f ${tmp}

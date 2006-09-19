@@ -1,13 +1,6 @@
-# format version number, currently 2; this line is compulsory!
-version=2
+# format version number, currently 3; this line is compulsory!
+version=3
 
 # Line continuations are performed with \
-
-#http://prdownloads.sourceforge.net/p/p7/p7zip/p7zip_(.*)_src.tar.bz2 debian uupdate
-
-ftp://66.35.250.221/pub/sourceforge/p/p7/p7zip/p7zip_(.*)_src.tar.bz2 uupdate
-ftp://128.101.80.130/pub/sourceforge/p/p7/p7zip/p7zip_(.*)_src.tar.bz2 uupdate
-ftp://150.65.7.130/pub/sourceforge/p/p7/p7zip/p7zip_(.*)_src.tar.bz2 uupdate
-ftp://193.1.219.87/p/p7/p7zip/p7zip_(.*)_src.tar.bz2 uupdate
- uupdate
-ftp://195.141.101.221/pub/sourceforge/p/p7/p7zip/p7zip_(.*)_src.tar.bz2 uupdate
+opts=dversionmangle=s/\.dfsg\.\d+$// \
+ http://qa.debian.org/watch/sf.php/p7zip/p7zip_(.*)_src_all.tar.bz2 debian uupdate

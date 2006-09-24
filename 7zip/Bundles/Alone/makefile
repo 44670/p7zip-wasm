@@ -3,14 +3,30 @@ PROG=../../../bin/7za
 PROGS=lib7za.a testlib testlib.exe
 
 LOCAL_FLAGS= \
--DCOMPRESS_BZIP2_MT \
--DCOMPRESS_MT \
--DEXCLUDE_COM -DNO_REGISTRY -DFORMAT_7Z -DFORMAT_BZIP2 -DFORMAT_ZIP \
--DFORMAT_TAR -DFORMAT_GZIP -DCOMPRESS_LZMA -DCOMPRESS_BCJ_X86 \
--DFORMAT_SPLIT -DFORMAT_Z \
--DCOMPRESS_BCJ2 -DCOMPRESS_COPY -DCOMPRESS_MF_MT -DCOMPRESS_PPMD \
--DCOMPRESS_DEFLATE -DCOMPRESS_DEFLATE64 -DCOMPRESS_IMPLODE -DCOMPRESS_BZIP2 \
--DCRYPTO_ZIP -DCRYPTO_7ZAES -DCRYPTO_AES
+  -DEXCLUDE_COM \
+  -DNO_REGISTRY \
+  -DFORMAT_7Z \
+  -DFORMAT_BZIP2 \
+  -DFORMAT_GZIP \
+  -DFORMAT_SPLIT \
+  -DFORMAT_TAR \
+  -DFORMAT_Z \
+  -DFORMAT_ZIP \
+  -DCOMPRESS_MT \
+  -DCOMPRESS_BCJ_X86 \
+  -DCOMPRESS_BCJ2 \
+  -DCOMPRESS_BZIP2 \
+  -DCOMPRESS_BZIP2_MT \
+  -DCOMPRESS_COPY \
+  -DCOMPRESS_DEFLATE \
+  -DCOMPRESS_DEFLATE64 \
+  -DCOMPRESS_IMPLODE \
+  -DCOMPRESS_LZMA \
+  -DCOMPRESS_MF_MT \
+  -DCOMPRESS_PPMD \
+  -DCRYPTO_7ZAES \
+  -DCRYPTO_AES \
+  -DCRYPTO_ZIP
 
 include ../../../makefile.machine
 
@@ -55,7 +71,6 @@ OBJS=\
 ../../../Common/CRC.o \
 ../../../Common/IntToString.o \
 ../../../Common/StringToInt.o \
-../../../Common/Random.o \
 BZip2Decoder.o \
 BZip2Encoder.o \
 BZip2Handler.o \
@@ -103,6 +118,9 @@ Main.o \
 MultiStream.o \
 MyAES.o \
 OffsetStream.o \
+MemBlocks.o \
+OutMemStream.o \
+ProgressMt.o \
 StreamUtils.o \
 OpenCallbackConsole.o \
 OutBuffer.o \
@@ -116,7 +134,6 @@ PropIDUtils.o \
 PropVariant.o \
 PropVariantConversions.o \
 RangeCoderBit.o \
-SHA256.o \
 SortUtils.o \
 SplitHandler.o \
 StreamBinder.o \
@@ -169,7 +186,13 @@ FileIO.o \
 ShrinkDecoder.o \
 ZDecoder.o \
 ZHandler.o \
-BlockSort.o
+BlockSort.o \
+HmacSha1.o \
+Pbkdf2HmacSha1.o \
+RandGen.o \
+Sha1.o \
+Sha256.o \
+WzAES.o
 
 include ../../../makefile.glb
 
@@ -240,21 +263,28 @@ RangeCoderBit.o \
 ZDecoder.o \
 ZHandler.o \
 7zAES.o \
-SHA256.o \
 aescrypt.o \
 aeskey.o \
 aestab.o \
 MyAES.o \
+StreamUtils.o \
 FileDir.o \
 FileFind.o \
 FileIO.o \
 PropVariant.o \
 Synchronization.o \
 BlockSort.o\
+HmacSha1.o \
+Pbkdf2HmacSha1.o \
+RandGen.o \
+Sha1.o \
+Sha256.o \
+WzAES.o \
 ../../../Common/MyWindows.o \
 	$(MY_HOME)/myGetTickCount.o \
 	$(MY_HOME)/wine_date_and_time.o \
 	$(MY_HOME)/myModuleFileName.o \
+	$(MY_HOME)/myGetNumberOfProcessors.o \
 	$(MY_HOME)/mySplitCommandLine.o
 
 lib7za.a: $(OBJ7ZA)

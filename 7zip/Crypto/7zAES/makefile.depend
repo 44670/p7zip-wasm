@@ -21,7 +21,8 @@
   ../../Archive/Common/../../../Common/MyCom.h \
   ../../Archive/Common/../../../Windows/DLL.h \
   ../../Archive/Common/../../../Windows/../Common/String.h \
-  ../../Archive/Common/../../ICoder.h SHA256.h
+  ../../Archive/Common/../../ICoder.h ../Hash/Sha256.h \
+  ../../../Common/Types.h
 StreamObjects.o: ../../Common/StreamObjects.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
@@ -64,14 +65,6 @@ DllExports.o: DllExports.cpp ../../../myWindows/StdAfx.h \
   ../../Archive/Common/../../../Windows/DLL.h \
   ../../Archive/Common/../../../Windows/../Common/String.h \
   ../../Archive/Common/../../ICoder.h
-SHA256.o: SHA256.cpp ../../../myWindows/StdAfx.h \
-  ../../../myWindows/config.h ../../../Common/MyWindows.h \
-  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
-  ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h SHA256.h ../../../Common/Types.h \
-  ../../../Windows/Defs.h
 DLL.o: ../../../Windows/DLL.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -117,3 +110,11 @@ Synchronization.o: ../../../Windows/Synchronization.cpp \
   ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
   ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../../Windows/Synchronization.h ../../../Windows/Defs.h
+Sha256.o: ../../Crypto/Hash/Sha256.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Crypto/Hash/Sha256.h \
+  ../../../Common/Types.h ../../Crypto/Hash/RotateDefs.h

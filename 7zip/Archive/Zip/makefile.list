@@ -18,6 +18,10 @@ SRCS=\
  ../../Common/StreamBinder.cpp \
  ../../Common/StreamObjects.cpp \
  ../../Common/StreamUtils.cpp \
+ ../../Common/MemBlocks.cpp \
+ ../../Common/OutMemStream.cpp \
+ ../../Common/ProgressMt.cpp \
+ ../../Common/OffsetStream.cpp \
  ../../Compress/Copy/CopyCoder.cpp \
  ../../Compress/Implode/ImplodeDecoder.cpp \
  ../../Compress/Implode/ImplodeHuffmanDecoder.cpp \
@@ -25,6 +29,11 @@ SRCS=\
  ../../Compress/Shrink/ShrinkDecoder.cpp \
  ../../Crypto/Zip/ZipCipher.cpp \
  ../../Crypto/Zip/ZipCrypto.cpp \
+ ../../Crypto/Hash/Pbkdf2HmacSha1.cpp \
+ ../../Crypto/Hash/HmacSha1.cpp \
+ ../../Crypto/Hash/Sha1.cpp \
+ ../../Crypto/Hash/RandGen.cpp \
+ ../../Crypto/WzAES/WzAES.cpp \
  ./DllExports.cpp \
  ../../../Windows/DLL.cpp \
  ../../../Windows/FileFind.cpp \
@@ -77,6 +86,12 @@ StreamObjects.o : ../../Common/StreamObjects.cpp
 	$(CXX) $(CFLAGS) ../../Common/StreamObjects.cpp
 StreamUtils.o : ../../Common/StreamUtils.cpp
 	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
+MemBlocks.o : ../../Common/MemBlocks.cpp
+	$(CXX) $(CFLAGS) ../../Common/MemBlocks.cpp
+OutMemStream.o : ../../Common/OutMemStream.cpp
+	$(CXX) $(CFLAGS) ../../Common/OutMemStream.cpp
+ProgressMt.o : ../../Common/ProgressMt.cpp
+	$(CXX) $(CFLAGS) ../../Common/ProgressMt.cpp
 ZipAddCommon.o : ./ZipAddCommon.cpp
 	$(CXX) $(CFLAGS) ./ZipAddCommon.cpp
 ZipHandler.o : ./ZipHandler.cpp
@@ -101,6 +116,16 @@ ZipCipher.o : ../../Crypto/Zip/ZipCipher.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/Zip/ZipCipher.cpp
 ZipCrypto.o : ../../Crypto/Zip/ZipCrypto.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/Zip/ZipCrypto.cpp
+Pbkdf2HmacSha1.o : ../../Crypto/Hash/Pbkdf2HmacSha1.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Hash/Pbkdf2HmacSha1.cpp
+HmacSha1.o : ../../Crypto/Hash/HmacSha1.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Hash/HmacSha1.cpp
+Sha1.o : ../../Crypto/Hash/Sha1.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Hash/Sha1.cpp
+RandGen.o : ../../Crypto/Hash/RandGen.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Hash/RandGen.cpp
+WzAES.o : ../../Crypto/WzAES/WzAES.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/WzAES/WzAES.cpp
 7zMethodID.o : ../7z/7zMethodID.cpp
 	$(CXX) $(CFLAGS) ../7z/7zMethodID.cpp
 7zMethods.o : ../7z/7zMethods.cpp

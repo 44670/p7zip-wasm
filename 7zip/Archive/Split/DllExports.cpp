@@ -13,9 +13,9 @@ DEFINE_GUID(CLSID_CSplitHandler,
   0x23170F69, 0x40C1, 0x278A, 0x10, 0x00, 0x00, 0x01, 0x10, 0xEA, 0x00, 0x00);
 
 extern "C"
-DLLEXPORT BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /*lpReserved*/)
+DLLEXPORT BOOL WINAPI DllMain(HINSTANCE /* hInstance */, DWORD /* dwReason */, LPVOID /* lpReserved */)
 {
-	return TRUE;
+  return TRUE;
 }
 
 STDAPI CreateObject(

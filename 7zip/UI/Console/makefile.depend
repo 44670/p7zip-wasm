@@ -59,12 +59,12 @@ ArchiveExtractCallback.o: ../Common/ArchiveExtractCallback.cpp \
   ../Common/../../Common/../../Common/MyCom.h ../Common/../../IPassword.h \
   ../Common/../../../Common/MyUnknown.h ../Common/../../../Common/Types.h \
   ../Common/ExtractMode.h ../../../Common/Wildcard.h \
-  ../../../Common/StringConvert.h ../../../Windows/FileDir.h \
-  ../../../Windows/../Common/String.h ../../../Windows/Defs.h \
-  ../../../Windows/FileFind.h ../../../Windows/FileName.h \
-  ../../../Windows/Time.h ../../../Common/Types.h ../../../Windows/Defs.h \
-  ../../../Windows/Defs.h ../../../Windows/PropVariant.h \
-  ../../../Windows/../Common/MyWindows.h \
+  ../../../Common/StringConvert.h ../../../Common/ComTry.h \
+  ../../../Windows/FileDir.h ../../../Windows/../Common/String.h \
+  ../../../Windows/Defs.h ../../../Windows/FileFind.h \
+  ../../../Windows/FileName.h ../../../Windows/Time.h \
+  ../../../Common/Types.h ../../../Windows/Defs.h ../../../Windows/Defs.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
   ../../../Windows/PropVariantConversions.h \
   ../Common/../../Common/FilePathAutoRename.h \
@@ -91,8 +91,8 @@ ArchiveOpenCallback.o: ../Common/ArchiveOpenCallback.cpp \
   ../Common/../../Archive/../../Common/Types.h \
   ../Common/../../Archive/../IProgress.h \
   ../Common/../../Archive/../PropID.h ../../../Common/StringConvert.h \
-  ../../../Common/String.h ../../../Windows/PropVariant.h \
-  ../../../Windows/../Common/MyWindows.h \
+  ../../../Common/String.h ../../../Common/ComTry.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../Common/../../Common/FileStreams.h \
   ../Common/../../Common/../../Windows/FileIO.h ../../../Common/String.h \
   ../Common/../../Common/../IStream.h \
@@ -330,7 +330,8 @@ UpdateCallback.o: ../Common/UpdateCallback.cpp \
   ../Common/../Common/UpdateProduce.h ../Common/../Common/UpdatePair.h \
   ../../../Common/StringConvert.h ../../../Common/String.h \
   ../../../Common/IntToString.h ../../../Common/Defs.h \
-  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Common/ComTry.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../Common/../../Common/FileStreams.h \
   ../Common/../../Common/../../Windows/FileIO.h ../../../Common/String.h \
   ../Common/../../Common/../IStream.h \
@@ -510,7 +511,31 @@ MainAr.o: MainAr.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/Defs.h ../../../Common/StdOutStream.h \
   ../../../Common/NewHandler.h ../../../Common/Exception.h \
   ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
-  ../../../Common/String.h ../Common/ExitCode.h ConsoleClose.h
+  ../../../Common/String.h ../Common/ExitCode.h \
+  ../Common/ArchiveCommandLine.h ../../../Common/Wildcard.h \
+  ../../../Common/CommandLineParser.h ../Common/Extract.h \
+  ../../../Windows/FileFind.h ../../../Windows/../Common/String.h \
+  ../../../Windows/FileName.h ../../../Windows/Defs.h \
+  ../Common/../../Archive/IArchive.h ../Common/../../Archive/../IStream.h \
+  ../Common/../../Archive/../../Common/MyUnknown.h \
+  ../Common/../../Archive/../../Common/MyWindows.h \
+  ../Common/../../Archive/../../Common/Types.h \
+  ../Common/../../Archive/../IProgress.h \
+  ../Common/../../Archive/../PropID.h ../Common/ArchiveExtractCallback.h \
+  ../Common/IFileExtractCallback.h ../../../Common/String.h \
+  ../../../Common/MyCom.h ../Common/../../Common/FileStreams.h \
+  ../Common/../../Common/../../Windows/FileIO.h ../../../Common/String.h \
+  ../Common/../../Common/../IStream.h \
+  ../Common/../../Common/../../Common/MyCom.h ../Common/../../IPassword.h \
+  ../Common/../../../Common/MyUnknown.h ../Common/../../../Common/Types.h \
+  ../Common/ExtractMode.h ../Common/ArchiveOpenCallback.h \
+  ../Common/Property.h ../Common/Update.h ../Common/UpdateAction.h \
+  ../Common/UpdateCallback.h ../Common/../Common/UpdatePair.h \
+  ../Common/../Common/DirItem.h ../../../Common/Types.h \
+  ../Common/../Common/UpdateAction.h \
+  ../Common/../Common/../../Archive/IArchive.h \
+  ../Common/../Common/UpdateProduce.h ../Common/../Common/UpdatePair.h \
+  ConsoleClose.h
 Main.o: Main.cpp ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \

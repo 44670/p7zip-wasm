@@ -39,7 +39,7 @@ static void EnumerateDirectory(
     CRecordVector<DWORD> &errorCodes)
 {
   NFind::CEnumeratorW enumerator(baseFolderPrefix + directory + wchar_t(kAnyStringWildcard));
-  while (true)
+  for (;;)
   { 
     NFind::CFileInfoW fileInfo;
     bool found;
@@ -140,7 +140,7 @@ static HRESULT EnumerateDirItems(
         bool isDir = fileInfo.IsDirectory();
         if (isDir && !item.ForDir || !isDir && !item.ForFile)
         {
-          errorCodes.Add(E_FAIL);
+          errorCodes.Add((DWORD)E_FAIL);
           errorPaths.Add(fullPath);
           continue;
         }
@@ -194,7 +194,7 @@ static HRESULT EnumerateDirItems(
         }
         if (!fileInfo.IsDirectory())
         {
-          errorCodes.Add(E_FAIL);
+          errorCodes.Add((DWORD)E_FAIL);
           errorPaths.Add(fullPath);
           continue;
         }
@@ -209,7 +209,7 @@ static HRESULT EnumerateDirItems(
 
 
   NFind::CEnumeratorW enumerator(diskPrefix + wchar_t(kAnyStringWildcard));
-  while (true)
+  for (;;)
   {
     NFind::CFileInfoW fileInfo;
     bool found;

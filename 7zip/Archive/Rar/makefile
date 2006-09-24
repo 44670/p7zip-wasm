@@ -37,7 +37,6 @@ RarIn.o\
 RarItem.o\
 RarVolumeInStream.o\
 RarAES.o\
-sha1.o\
 Rar20Cipher.o\
 Rar20Crypto.o\
 LimitedStreams.o\
@@ -45,7 +44,8 @@ ProgressUtils.o\
 StreamObjects.o\
 StreamUtils.o\
 7zMethodID.o\
-7zMethods.o
+7zMethods.o \
+Sha1.o
 
 include ../../../makefile.glb
 

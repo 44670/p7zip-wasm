@@ -1,7 +1,7 @@
-Index: p7zip-4.42.dfsg.1/man1/7z.1
+Index: p7zip-4.43~dfsg.1/man1/7z.1
 ===================================================================
---- p7zip-4.42.dfsg.1.orig/man1/7z.1	2006-06-04 10:09:56.000000000 +0200
-+++ p7zip-4.42.dfsg.1/man1/7z.1	2006-06-04 10:39:43.000000000 +0200
+--- p7zip-4.43~dfsg.1.orig/man1/7z.1	2006-09-25 00:13:17.000000000 +0200
++++ p7zip-4.43~dfsg.1/man1/7z.1	2006-09-25 00:13:21.000000000 +0200
 @@ -55,7 +55,7 @@
  don't store symlinks; store the files/directories they point to (CAUTION : the scanning stage can never end because of recursive symlinks like 'ln -s .. ldir')
  .TP
@@ -9,9 +9,9 @@ Index: p7zip-4.42.dfsg.1/man1/7z.1
 -Set Compression Method
 +Set Compression Method (see /usr/share/doc/p7zip/DOCS/MANUAL/switches/method.htm for a list of methods)
  .TP
- .B -o{Directory}
- Set Output directory
-@@ -73,7 +73,7 @@
+ .B -mhe=on|off
+ 7z format only : enables or disables archive header encryption (Default : off)
+@@ -76,7 +76,7 @@
  Read data from StdIn (eg: tar cf - directory | 7z a -si directory.tar.7z)
  .TP
  .B -so
@@ -20,10 +20,10 @@ Index: p7zip-4.42.dfsg.1/man1/7z.1
  .TP
  .B -slt
  Sets technical mode for l (list) command
-Index: p7zip-4.42.dfsg.1/man1/7za.1
+Index: p7zip-4.43~dfsg.1/man1/7za.1
 ===================================================================
---- p7zip-4.42.dfsg.1.orig/man1/7za.1	2006-06-04 10:09:56.000000000 +0200
-+++ p7zip-4.42.dfsg.1/man1/7za.1	2006-06-04 10:39:43.000000000 +0200
+--- p7zip-4.43~dfsg.1.orig/man1/7za.1	2006-09-25 00:13:17.000000000 +0200
++++ p7zip-4.43~dfsg.1/man1/7za.1	2006-09-25 00:13:21.000000000 +0200
 @@ -55,7 +55,7 @@
  don't store symlinks; store the files/directories they point to (CAUTION : the scanning stage can never end because of recursive symlinks like 'ln -s .. ldir')
  .TP
@@ -31,9 +31,9 @@ Index: p7zip-4.42.dfsg.1/man1/7za.1
 -Set Compression Method
 +Set Compression Method (see /usr/share/doc/p7zip/DOCS/MANUAL/switches/method.htm for a list of methods)
  .TP
- .B -o{Directory}
- Set Output directory
-@@ -73,7 +73,7 @@
+ .B -mhe=on|off
+ 7z format only : enables or disables archive header encryption (Default : off)
+@@ -76,7 +76,7 @@
  Read data from StdIn (eg: tar cf - directory | 7za a -si directory.tar.7z)
  .TP
  .B -so

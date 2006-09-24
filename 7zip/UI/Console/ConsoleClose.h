@@ -9,10 +9,8 @@ bool TestBreakSignal();
 
 class CCtrlHandlerSetter
 {
-#ifdef ENV_UNIX
   void (*memo_sig_int)(int);
   void (*memo_sig_term)(int);
-#endif
 public:
   CCtrlHandlerSetter();
   virtual ~CCtrlHandlerSetter();

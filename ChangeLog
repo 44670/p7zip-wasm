@@ -1,4 +1,31 @@
 
+Version 4.43
+============
+  - From Windows version of 7-zip 4.43 :
+    - 7-Zip now can use multi-threading mode for compressing to .ZIP archives.
+    - ZIP format supporting was improved.
+    - 7-Zip now supports WinZip-compatible AES-256 encryption for .ZIP archives.
+    - 7-Zip now uses order list (list of extensions) for files sorting for compressing 
+      to .7z archives. It can slightly increase compression ratio in some cases.
+    - 7-Zip now restores modification time of folders during .7z archives extracting.
+    - Some bugs were fixed.
+
+  - fixed : the user can now see the percentage indicator.
+
+  - support added for Tru64 / OSF 5.1  (makefile.tru64)
+
+  - small fix "Bugs item #1533765" in install.sh (7zr install)
+
+  - fix "Bugs item #1507913" : "make all" now build 7za and 7zCon.sfx
+    following the README.
+
+  - manpage updated "bugs item #1509098" : exit codes added
+
+  - manpage updated :-mhe=on (Header encryption) added
+
+  - install.sh now can install the file README, ChangeLog and the directory DOCS
+
+
 Version 4.42
 ============
   - From Windows version of 7-zip 4.42 :
@@ -78,7 +105,7 @@ Version 4.37
   - fix build for Solaris 10 x86
   - fix build for OpenBSD
   - p7zip can now be build with djgpp.
-  - new target  : 7zr (lite version of 7za)
+  - new target  : 7zr (light version of 7za)
   - new machine : IBM AIX 
 
 Version 4.36

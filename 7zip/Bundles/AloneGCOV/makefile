@@ -3,14 +3,30 @@ CXX=g++ \
 -fprofile-arcs -ftest-coverage \
     	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
 	-DNDEBUG -D_REENTRANT -DENV_UNIX \
--DCOMPRESS_BZIP2_MT \
--DCOMPRESS_MT \
--DEXCLUDE_COM -DNO_REGISTRY -DFORMAT_7Z -DFORMAT_BZIP2 -DFORMAT_ZIP \
--DFORMAT_TAR -DFORMAT_GZIP -DCOMPRESS_LZMA -DCOMPRESS_BCJ_X86 \
--DFORMAT_SPLIT -DFORMAT_Z \
--DCOMPRESS_BCJ2 -DCOMPRESS_COPY -DCOMPRESS_MF_MT -DCOMPRESS_PPMD \
--DCOMPRESS_DEFLATE -DCOMPRESS_DEFLATE64 -DCOMPRESS_IMPLODE -DCOMPRESS_BZIP2 \
--DCRYPTO_ZIP -DCRYPTO_7ZAES -DCRYPTO_AES \
+  -DEXCLUDE_COM \
+  -DNO_REGISTRY \
+  -DFORMAT_7Z \
+  -DFORMAT_BZIP2 \
+  -DFORMAT_GZIP \
+  -DFORMAT_SPLIT \
+  -DFORMAT_TAR \
+  -DFORMAT_Z \
+  -DFORMAT_ZIP \
+  -DCOMPRESS_MT \
+  -DCOMPRESS_BCJ_X86 \
+  -DCOMPRESS_BCJ2 \
+  -DCOMPRESS_BZIP2 \
+  -DCOMPRESS_BZIP2_MT \
+  -DCOMPRESS_COPY \
+  -DCOMPRESS_DEFLATE \
+  -DCOMPRESS_DEFLATE64 \
+  -DCOMPRESS_IMPLODE \
+  -DCOMPRESS_LZMA \
+  -DCOMPRESS_MF_MT \
+  -DCOMPRESS_PPMD \
+  -DCRYPTO_7ZAES \
+  -DCRYPTO_AES \
+  -DCRYPTO_ZIP \
 	-I../../Archive/7z -I../../Crypto/7zAES/ \
 	-I../../Archive/BZip2 \
 	-I../../Archive/Common \
@@ -35,6 +51,8 @@ CXX=g++ \
 	-I../../Compress/Z \
 	-I../../Crypto/AES \
 	-I../../Crypto/Zip \
+	-I../../Crypto/Hash \
+	-I../../Crypto/WzAES \
 	-I../../UI/Console \
 	-I../../UI/Common \
 	-I../../../Windows \
@@ -105,6 +123,9 @@ SRCS=\
  ../../Common/LockedStream.cpp \
  ../../Common/LSBFDecoder.cpp \
  ../../Common/LSBFEncoder.cpp \
+ ../../Common/MemBlocks.cpp \
+ ../../Common/OutMemStream.cpp \
+ ../../Common/ProgressMt.cpp \
  ../../Common/OffsetStream.cpp \
  ../../Common/StreamUtils.cpp \
  ../../Common/OutBuffer.cpp \
@@ -135,8 +156,13 @@ SRCS=\
  ../../Compress/Shrink/ShrinkDecoder.cpp \
  ../../Compress/Z/ZDecoder.cpp \
  ../../Crypto/7zAES/7zAES.cpp \
- ../../Crypto/7zAES/SHA256.cpp \
  ../../Crypto/AES/MyAES.cpp \
+ ../../Crypto/Hash/Pbkdf2HmacSha1.cpp \
+ ../../Crypto/Hash/Sha256.cpp \
+ ../../Crypto/Hash/HmacSha1.cpp \
+ ../../Crypto/Hash/Sha1.cpp \
+ ../../Crypto/Hash/RandGen.cpp \
+ ../../Crypto/WzAES/WzAES.cpp \
  ../../Crypto/Zip/ZipCipher.cpp \
  ../../Crypto/Zip/ZipCrypto.cpp \
  ../../UI/Common/ArchiveCommandLine.cpp \
@@ -193,8 +219,7 @@ SRCS=\
 ../../../Common/String.cpp \
 ../../../Common/CRC.cpp \
 ../../../Common/IntToString.cpp \
-../../../Common/StringToInt.cpp \
-../../../Common/Random.cpp
+../../../Common/StringToInt.cpp 
 
  SRCS_C=../../Crypto/AES/aescrypt.c \
  ../../Crypto/AES/aeskey.c \

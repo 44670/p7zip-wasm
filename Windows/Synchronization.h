@@ -16,21 +16,41 @@
 namespace NWindows {
 namespace NSynchronization {
 
-class CBaseEvent
+struct CBaseHandle
+{
+	typedef enum { EVENT , SEMAPHORE } t_type;
+
+	CBaseHandle(t_type t) { type = t;  }
+
+	t_type type;
+	union
+	{
+		struct
+		{
+			bool _manual_reset;
+			bool _state;
+		} event;
+		struct
+		{
+			LONG count;
+			LONG maxCount;
+		} sema;
+	} u;
+  operator HANDLE() { return ((HANDLE)this); }
+  bool Close() { return true; }
+};
+
+class CBaseEvent : public CBaseHandle
 {
 public:
-  bool _manual_reset;
-  bool _state;
 
-  CBaseEvent() {} 
+  CBaseEvent() : CBaseHandle(CBaseHandle::EVENT) {} 
   ~CBaseEvent() { Close(); }
-
-  operator HANDLE() { return (HANDLE)this; }
 
   bool Create(bool manualReset, bool initiallyOwn)
   {
-    _manual_reset = manualReset;
-    _state        = initiallyOwn;
+    this->u.event._manual_reset = manualReset;
+    this->u.event._state        = initiallyOwn;
     return true;
   }
 
@@ -39,7 +59,6 @@ public:
 
   bool Lock();
   
-  bool Close() { return true; }
 };
 
 class CEvent: public CBaseEvent
@@ -155,6 +174,20 @@ public:
 };
 #endif
 #endif
+
+class CSemaphore : public CBaseHandle
+{
+public:
+  CSemaphore() : CBaseHandle(CBaseHandle::SEMAPHORE) {} 
+  bool Create(LONG initiallyCount, LONG maxCount)
+  {
+    if ((initiallyCount < 0) || (initiallyCount > maxCount) || (maxCount < 1)) return false;
+    this->u.sema.count    = initiallyCount;
+    this->u.sema.maxCount = maxCount;
+    return true;
+  }
+  bool Release(LONG releaseCount = 1);
+};
 
 class CCriticalSectionLock
 {

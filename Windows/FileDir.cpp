@@ -20,12 +20,16 @@
 #include <sys/types.h>
 #include <fcntl.h>
 
+#include <utime.h>
+
 // #define TRACEN(u) u;
 #define TRACEN(u)  /* */
 
 #ifdef HAVE_LSTAT
 extern int global_use_lstat;
 #endif
+
+extern BOOLEAN WINAPI RtlTimeToSecondsSince1970( const LARGE_INTEGER *Time, DWORD *Seconds );
 
 DWORD WINAPI GetFullPathName( LPCSTR name, DWORD len, LPSTR buffer, LPSTR *lastpart ) {
   if (name == 0) return 0;
@@ -218,6 +222,50 @@ namespace NDirectory {
 bool MyRemoveDirectory(LPCTSTR pathName)
 {
   return BOOLToBool(::RemoveDirectory(pathName));
+}
+
+bool SetDirTime(LPCWSTR fileName, const FILETIME * /* creationTime */ ,
+      const FILETIME *lpLastAccessTime, const FILETIME *lpLastWriteTime)
+{
+  AString  cfilename = UnicodeStringToMultiByte(fileName);
+  const char * unix_filename = nameWindowToUnix((const char *)cfilename);
+
+  struct utimbuf buf;
+
+  struct stat    oldbuf;
+  int ret = stat(unix_filename,&oldbuf);
+  if (ret == 0) {
+    buf.actime  = oldbuf.st_atime;
+    buf.modtime = oldbuf.st_mtime;
+  } else {
+    time_t current_time = time(0);
+    buf.actime  = current_time;
+    buf.modtime = current_time;
+  }
+
+  if (lpLastAccessTime)
+  {
+    LARGE_INTEGER  ltime;
+    DWORD dw;
+    ltime.QuadPart = lpLastAccessTime->dwHighDateTime;
+    ltime.QuadPart = (ltime.QuadPart << 32) | lpLastAccessTime->dwLowDateTime;
+    RtlTimeToSecondsSince1970( &ltime, &dw );
+    buf.actime = dw;
+  }
+
+  if (lpLastWriteTime)
+  {
+    LARGE_INTEGER  ltime;
+    DWORD dw;
+    ltime.QuadPart = lpLastWriteTime->dwHighDateTime;
+    ltime.QuadPart = (ltime.QuadPart << 32) | lpLastWriteTime->dwLowDateTime;
+    RtlTimeToSecondsSince1970( &ltime, &dw );
+    buf.modtime = dw;
+  }
+
+  /* ret = */ utime(unix_filename, &buf);
+
+  return true;
 }
 
 #ifndef _UNICODE

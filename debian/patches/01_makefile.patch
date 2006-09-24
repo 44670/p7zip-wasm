@@ -1,8 +1,8 @@
-Index: p7zip-4.42.dfsg.1/makefile
+Index: p7zip-4.43~dfsg.1/makefile
 ===================================================================
---- p7zip-4.42.dfsg.1.orig/makefile	2006-06-04 10:38:01.000000000 +0200
-+++ p7zip-4.42.dfsg.1/makefile	2006-06-04 10:38:12.000000000 +0200
-@@ -52,7 +52,6 @@
+--- p7zip-4.43~dfsg.1.orig/makefile	2006-09-25 00:13:17.000000000 +0200
++++ p7zip-4.43~dfsg.1/makefile	2006-09-25 00:13:21.000000000 +0200
+@@ -54,7 +54,6 @@
  	cd 7zip/Compress/Implode  ; $(MAKE) depend
  	cd 7zip/Compress/LZMA     ; $(MAKE) depend
  	cd 7zip/Compress/PPMD     ; $(MAKE) depend
@@ -10,7 +10,7 @@ Index: p7zip-4.42.dfsg.1/makefile
  	cd 7zip/Crypto/7zAES      ; $(MAKE) depend
  	cd 7zip/Crypto/AES        ; $(MAKE) depend
  	cd 7zip/Bundles/Alone7z   ; $(MAKE) depend
-@@ -89,7 +88,6 @@
+@@ -92,7 +91,6 @@
  	cd 7zip/Compress/Implode  ; $(MAKE) all
  	cd 7zip/Compress/LZMA     ; $(MAKE) all
  	cd 7zip/Compress/PPMD     ; $(MAKE) all
@@ -18,7 +18,7 @@ Index: p7zip-4.42.dfsg.1/makefile
  	cd 7zip/Crypto/7zAES      ; $(MAKE) all
  	cd 7zip/Crypto/AES        ; $(MAKE) all
  
-@@ -124,7 +122,6 @@
+@@ -127,7 +125,6 @@
  	cd 7zip/Compress/Implode  ; $(MAKE) clean
  	cd 7zip/Compress/LZMA     ; $(MAKE) clean
  	cd 7zip/Compress/PPMD     ; $(MAKE) clean

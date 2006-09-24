@@ -3,9 +3,11 @@ DEST_BIN=/usr/local/bin
 DEST_SHARE=/usr/local/lib/p7zip
 DEST_MAN=/usr/local/man
 
-.PHONY: all all2 7za sfx 7z 7zr common clean tar_src tar_bin depend test test_7z test_7zr
+.PHONY: default all all2 7za sfx 7z 7zr common clean tar_bin depend test test_7z test_7zr
 
-all::7za
+default:7za
+
+all:7za sfx
 
 all2: 7za sfx 7z
 
@@ -56,6 +58,7 @@ depend:
 	cd 7zip/Crypto/7zAES      ; $(MAKE) depend
 	cd 7zip/Crypto/AES        ; $(MAKE) depend
 	cd 7zip/Bundles/Alone7z   ; $(MAKE) depend
+	cd 7zip/Bundles/Format7z  ; $(MAKE) depend
 
 sfx: common
 	mkdir -p  bin
@@ -128,14 +131,18 @@ clean:
 	cd 7zip/Crypto/7zAES      ; $(MAKE) clean
 	cd 7zip/Crypto/AES        ; $(MAKE) clean
 	cd 7zip/Bundles/Alone7z   ; $(MAKE) clean
-	chmod +x contrib/VirtualFileSystemForMidnightCommander/u7z
-	chmod +x contrib/gzip-like_CLI_wrapper_for_7z/p7zip
-	chmod +x install.sh check/check.sh check/clean_all.sh check/check_7zr.sh 
-	cd check                  ; ./clean_all.sh
+	cd 7zip/Bundles/Format7z  ; $(MAKE) clean
 	find . -name "*~" -exec rm -f {} \;
 	find . -name "*.orig" -exec rm -f {} \;
 	find . -name ".*.swp" -exec rm -f {} \;
+	find . -name "*.[ch]" -exec chmod -x {} \;
+	find . -name "*.cpp" -exec chmod -x {} \;
+	find . -name "makefile*" -exec chmod -x {} \;
+	chmod +x contrib/VirtualFileSystemForMidnightCommander/u7z
+	chmod +x contrib/gzip-like_CLI_wrapper_for_7z/p7zip
+	chmod +x install.sh check/check.sh check/clean_all.sh check/check_7zr.sh 
 	rm -fr bin
+	cd check                  ; ./clean_all.sh
 
 test: all
 	cd check ; ./check.sh ../bin/7za
@@ -151,7 +158,7 @@ install:
 REP=$(shell pwd)
 ARCHIVE=$(shell basename $(REP))
 
-.PHONY: tar_all tar_all2 tar_src tar_src_extra src_7z tar_bin tar_bin2
+.PHONY: tar_all tar_all2 src_7z tar_bin tar_bin2
 
 tar_all : clean
 	rm -f  ../$(ARCHIVE)_src_all.tar.bz2

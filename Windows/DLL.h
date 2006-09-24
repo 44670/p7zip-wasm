@@ -38,10 +38,10 @@ public:
   // operator HMODULE() const { return _module; };
   // bool IsLoaded() const { return (_module != NULL); };
   bool Free();
-  bool LoadEx(LPCTSTR fileName, DWORD flags = LOAD_LIBRARY_AS_DATAFILE );
+  bool LoadEx(LPCTSTR fileName, DWORD flags = LOAD_LIBRARY_AS_DATAFILE);
   bool Load(LPCTSTR fileName);
   #ifndef _UNICODE
-  bool LoadEx(LPCWSTR fileName, DWORD flags = LOAD_LIBRARY_AS_DATAFILE );
+  bool LoadEx(LPCWSTR fileName, DWORD flags = LOAD_LIBRARY_AS_DATAFILE);
   bool Load(LPCWSTR fileName);
   #endif
   FARPROC GetProcAddress(LPCSTR procName) const;

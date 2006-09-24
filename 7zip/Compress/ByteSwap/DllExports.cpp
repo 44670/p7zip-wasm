@@ -8,9 +8,9 @@
 #include "../../ICoder.h"
 
 extern "C"
-DLLEXPORT BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /*lpReserved*/)
+DLLEXPORT BOOL WINAPI DllMain(HINSTANCE /* hInstance */, DWORD /* dwReason */, LPVOID /*lpReserved*/)
 {
-	return TRUE;
+  return TRUE;
 }
 
 STDAPI CreateObject(const GUID *clsid, const GUID *iid, void **outObject)

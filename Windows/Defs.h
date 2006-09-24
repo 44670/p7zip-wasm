@@ -6,6 +6,11 @@
 inline bool BOOLToBool(BOOL value)
   { return (value != FALSE); }
 
+#ifdef _WIN32
+inline bool LRESULTToBool(LRESULT value)
+  { return (value != FALSE); }
+#endif
+
 inline BOOL BoolToBOOL(bool value)
   { return (value ? TRUE: FALSE); }
 

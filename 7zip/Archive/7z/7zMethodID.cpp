@@ -9,18 +9,18 @@ namespace N7z {
 
 static wchar_t GetHex(Byte value)
 {
-  return (value < 10) ? ('0' + value) : ('A' + (value - 10));
+  return (wchar_t)((value < 10) ? ('0' + value) : ('A' + (value - 10)));
 }
 
 #if 0 // FIXED - USELESS
 static bool HexCharToInt(wchar_t value, Byte &result)
 {
   if (value >= '0' && value <= '9')
-    result = value - '0';
+    result = (Byte)(value - '0');
   else if (value >= 'a' && value <= 'f')
-    result = 10 + value - 'a';
+    result = (Byte)(10 + value - 'a');
   else if (value >= 'A' && value <= 'F')
-    result = 10 + value - 'A';
+    result = (Byte)(10 + value - 'A');
   else
     return false;
   return true;
@@ -33,8 +33,20 @@ static bool TwoHexCharsToInt(wchar_t valueHigh, wchar_t valueLow, Byte &result)
     return false;
   if (!HexCharToInt(valueLow, resultLow))
     return false;
-  result = (resultHigh << 4) + resultLow;
+  result = (Byte)((resultHigh << 4) + resultLow);
   return true;
+}
+
+UString CMethodID::ConvertToString() const
+{
+  UString result;
+  for (int i = 0; i < IDSize; i++)
+  {
+    Byte b = ID[i];
+    result += GetHex((Byte)(b >> 4));
+    result += GetHex((Byte)(b & 0xF));
+  }
+  return result;
 }
 
 bool CMethodID::ConvertFromString(const UString &srcString)
@@ -42,7 +54,7 @@ bool CMethodID::ConvertFromString(const UString &srcString)
   int length = srcString.Length();
   if ((length & 1) != 0 || (length >> 1) > kMethodIDSize)
     return false;
-  IDSize = length / 2;
+  IDSize = (Byte)(length / 2);
   UInt32 i;
   for(i = 0; i < IDSize; i++)
     if (!TwoHexCharsToInt(srcString[i * 2], srcString[i * 2 + 1], ID[i]))

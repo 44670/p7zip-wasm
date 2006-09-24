@@ -33,8 +33,8 @@ SRCS=\
  ../../Compress/LZMA/LZMADecoder.cpp \
  ../../Compress/PPMD/PPMDDecoder.cpp \
  ../../Crypto/7zAES/7zAES.cpp \
- ../../Crypto/7zAES/SHA256.cpp \
  ../../Crypto/AES/MyAES.cpp \
+ ../../Crypto/Hash/Sha256.cpp \
  ./Main.cpp \
  ../../UI/Common/ArchiveExtractCallback.cpp \
  ../../UI/Common/ArchiveOpenCallback.cpp \
@@ -123,10 +123,10 @@ CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp
 7zAES.o : ../../Crypto/7zAES/7zAES.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/7zAES/7zAES.cpp
-SHA256.o : ../../Crypto/7zAES/SHA256.cpp
-	$(CXX) $(CFLAGS) ../../Crypto/7zAES/SHA256.cpp
 MyAES.o : ../../Crypto/AES/MyAES.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/AES/MyAES.cpp
+Sha256.o : ../../Crypto/Hash/Sha256.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Hash/Sha256.cpp
 Error.o : ../../../Windows/Error.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/Error.cpp
 FileDir.o : ../../../Windows/FileDir.cpp

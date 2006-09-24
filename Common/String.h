@@ -45,6 +45,15 @@ inline wchar_t * MyStringUpper(wchar_t *s);
 #else
 wchar_t * MyStringUpper(wchar_t *s);
 #endif
+
+inline char * MyStringLower(char *s);
+#ifdef _UNICODE
+inline wchar_t * MyStringLower(wchar_t *s);
+#else
+wchar_t * MyStringLower(wchar_t *s);
+#endif
+
+
 inline char* MyStringGetPrevCharPointer(char *base, char *p)
   { return CharPrevA(base, p); }
 inline const char* MyStringGetPrevCharPointer(const char *base, const char *p)

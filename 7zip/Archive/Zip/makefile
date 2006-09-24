@@ -1,6 +1,6 @@
 PROG=../../../bin/Formats/Zip.so
 
-LOCAL_FLAGS=-DCRYPTO_ZIP -DCOMPRESS_MT
+LOCAL_FLAGS=-DCOMPRESS_MT
 
 MY_WINDOWS= \
 	$(MY_HOME)/wine_date_and_time.o \
@@ -21,7 +21,7 @@ OBJS = \
 ../../../Common/String.o\
 ../../../Common/CRC.o\
 ../../../Common/StringToInt.o\
-../../../Common/Random.o\
+../../../Common/IntToString.o\
 DllExports.o\
 DLL.o\
 FileFind.o\
@@ -60,7 +60,15 @@ ShrinkDecoder.o\
 ImplodeDecoder.o\
 ImplodeHuffmanDecoder.o\
 LZOutWindow.o\
-LSBFDecoder.o
+LSBFDecoder.o \
+MemBlocks.o \
+OutMemStream.o \
+ProgressMt.o \
+HmacSha1.o \
+Pbkdf2HmacSha1.o \
+RandGen.o \
+Sha1.o \
+WzAES.o
 
 include ../../../makefile.glb
 

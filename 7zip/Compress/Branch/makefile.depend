@@ -7,7 +7,7 @@ ARM.o: ARM.cpp ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ARM.h BranchCoder.h ../../../Common/MyCom.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/Alloc.h ../../ICoder.h \
   ../../IStream.h ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
-  ../../../Common/Types.h BranchARM.c BranchARM.h
+  ../../../Common/Types.h BranchARM.c BranchARM.h BranchTypes.h
 ARMThumb.o: ARMThumb.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -18,7 +18,7 @@ ARMThumb.o: ARMThumb.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/MyCom.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/Alloc.h ../../ICoder.h \
   ../../IStream.h ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
-  ../../../Common/Types.h BranchARMThumb.c BranchARMThumb.h
+  ../../../Common/Types.h BranchARMThumb.c BranchARMThumb.h BranchTypes.h
 BranchCoder.o: BranchCoder.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -61,9 +61,10 @@ DllExports.o: DllExports.cpp ../../../myWindows/StdAfx.h \
   BranchCoder.h ../../../Common/MyCom.h ../../../Common/Types.h \
   ../../../Common/Alloc.h ../../ICoder.h ../../IStream.h \
   ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
-  ../../../Common/Types.h BranchX86.h PPC.h IA64.h ARM.h ARMThumb.h \
-  x86_2.h ../../../Common/MyCom.h ../RangeCoder/RangeCoderBit.h \
-  ../RangeCoder/RangeCoder.h ../RangeCoder/../../Common/InBuffer.h \
+  ../../../Common/Types.h BranchX86.h BranchTypes.h PPC.h IA64.h ARM.h \
+  ARMThumb.h x86_2.h ../../../Common/MyCom.h \
+  ../RangeCoder/RangeCoderBit.h ../RangeCoder/RangeCoder.h \
+  ../RangeCoder/../../Common/InBuffer.h \
   ../RangeCoder/../../Common/../IStream.h \
   ../RangeCoder/../../Common/../../Common/MyCom.h \
   ../RangeCoder/../../Common/OutBuffer.h SPARC.h
@@ -77,7 +78,7 @@ IA64.o: IA64.cpp ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/Alloc.h ../../ICoder.h ../../IStream.h \
   ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
-  ../../../Common/Types.h BranchIA64.c BranchIA64.h
+  ../../../Common/Types.h BranchIA64.c BranchIA64.h BranchTypes.h
 PPC.o: PPC.cpp ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
@@ -87,7 +88,8 @@ PPC.o: PPC.cpp ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   PPC.h BranchCoder.h ../../../Common/MyCom.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/Alloc.h ../../ICoder.h \
   ../../IStream.h ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
-  ../../../Common/Types.h ../../../Windows/Defs.h BranchPPC.c BranchPPC.h
+  ../../../Common/Types.h ../../../Windows/Defs.h BranchPPC.c BranchPPC.h \
+  BranchTypes.h
 SPARC.o: SPARC.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -99,7 +101,7 @@ SPARC.o: SPARC.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/Types.h ../../../Common/Alloc.h ../../ICoder.h \
   ../../IStream.h ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Windows/Defs.h BranchSPARC.c \
-  BranchSPARC.h
+  BranchSPARC.h BranchTypes.h
 x86_2.o: x86_2.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -125,4 +127,5 @@ x86.o: x86.cpp ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   x86.h BranchCoder.h ../../../Common/MyCom.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/Alloc.h ../../ICoder.h \
   ../../IStream.h ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
-  ../../../Common/Types.h BranchX86.h ../../../Windows/Defs.h BranchX86.c
+  ../../../Common/Types.h BranchX86.h BranchTypes.h \
+  ../../../Windows/Defs.h BranchX86.c

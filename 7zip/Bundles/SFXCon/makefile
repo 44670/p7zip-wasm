@@ -1,10 +1,18 @@
 PROG=../../../bin/7zCon.sfx
 
 LOCAL_FLAGS= \
--DCOMPRESS_BZIP2_MT -DCOMPRESS_MT\
--DCOMPRESS_BCJ2 -DEXTRACT_ONLY -DEXCLUDE_COM -DNO_REGISTRY -DFORMAT_7Z \
--DCOMPRESS_LZMA -DCOMPRESS_BCJ_X86 -DCOMPRESS_COPY -DCOMPRESS_PPMD -D_SFX \
--DCRYPTO_7ZAES -DCRYPTO_AES
+  -DEXCLUDE_COM \
+  -DNO_REGISTRY \
+  -DEXTRACT_ONLY \
+  -D_SFX \
+  -DFORMAT_7Z \
+  -DCOMPRESS_BCJ_X86 \
+  -DCOMPRESS_BCJ2 \
+  -DCOMPRESS_COPY \
+  -DCOMPRESS_LZMA \
+  -DCOMPRESS_PPMD \
+  -DCRYPTO_7ZAES \
+  -DCRYPTO_AES
 
 include ../../../makefile.machine
 
@@ -47,7 +55,6 @@ PPMDDecoder.o\
 LZOutWindow.o\
 CopyCoder.o\
 7zAES.o\
-SHA256.o\
 MyAES.o\
 Error.o\
 FileDir.o\
@@ -90,6 +97,7 @@ ExtractingFilePath.o\
 OpenArchive.o\
 PropIDUtils.o\
 Main.o\
+Sha256.o \
 aescrypt.o\
 aeskey.o\
 aestab.o

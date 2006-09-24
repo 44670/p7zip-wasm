@@ -51,6 +51,10 @@
     <TD><A class="parameter" href="#ZipMultiThread">mt=[off | on | {N}]</A></TD> 
     <TD align="center">on</TD>  
     <TD>Sets multithreading mode.</TD></TR>
+  <TR> 
+    <TD>em={EncryptionMethodID}</TD> 
+    <TD align="center">ZipCrypto</TD> 
+    <TD>Sets a encryption method: ZipCrypto, AES128, AES192, AES256</TD> </TR>
 </TABLE>
 
 <DL>
@@ -104,8 +108,10 @@
   <DD>
     <P>Sets multithread mode. If you have multiprocessor system or Pentium 
        4 with hyperthreading, you can get speed increasing with 
-       this switch. This option affects only BZip2 compressing / decompressing. 
-       If you specify {N}, for example mt=4, 7-Zip tries to use 4 threads.</P>
+       this switch. This option affects only compressing with BZip2, Deflate and 
+       Deflate64 methods and decompressing of BZip2 streams. 
+       Each thread in multithread mode uses 32 MB of RAM for buffering.
+       If you specify {N}, 7-Zip tries to use N threads.</P>
   </DD>
 </DL>
 

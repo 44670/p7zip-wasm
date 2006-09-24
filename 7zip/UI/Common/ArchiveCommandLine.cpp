@@ -162,6 +162,16 @@ static const char *kIncorrectWildCardInListFile = "Incorrect wildcard in listfil
 static const char *kIncorrectWildCardInCommandLine  = "Incorrect wildcard in command line";
 static const char *kTerminalOutError = "I won't write compressed data to a terminal";
 
+static void ThrowException(const char *errorMessage)
+{
+  throw CArchiveCommandLineException(errorMessage);
+};
+
+static void ThrowUserErrorException()
+{
+  ThrowException(kUserErrorMessage);
+};
+
 // ---------------------------
 
 bool CArchiveCommand::IsFromExtractGroup() const
@@ -229,7 +239,7 @@ static bool AddNameToCensor(NWildcard::CCensor &wildcardCensor,
     const UString &name, bool include, NRecursedType::EEnum type)
 {
   bool isWildCard = DoesNameContainWildCard(name);
-  bool recursed;
+  bool recursed = false;
 
   switch (type)
   {
@@ -292,13 +302,13 @@ static void ParseMapWithPaths(NWildcard::CCensor &wildcardCensor,
 {
   int splitPos = switchParam.Find(L':');
   if (splitPos < 0)
-    throw kUserErrorMessage;
+    ThrowUserErrorException();
   UString mappingName = switchParam.Left(splitPos);
   
   UString switchParam2 = switchParam.Mid(splitPos + 1);
   splitPos = switchParam2.Find(L':');
   if (splitPos < 0)
-    throw kUserErrorMessage;
+    ThrowUserErrorException();
   
   UString mappingSize = switchParam2.Left(splitPos);
   UString eventName = switchParam2.Mid(splitPos + 1);
@@ -308,15 +318,15 @@ static void ParseMapWithPaths(NWildcard::CCensor &wildcardCensor,
   {
     CFileMapping fileMapping;
     if (!fileMapping.Open(FILE_MAP_READ, false, GetSystemString(mappingName)))
-      throw L"Can not open mapping";
+      ThrowException("Can not open mapping");
     LPVOID data = fileMapping.MapViewOfFile(FILE_MAP_READ, 0, dataSize);
     if (data == NULL)
-      throw L"MapViewOfFile error";
+      ThrowException("MapViewOfFile error");
     try
     {
       const wchar_t *curData = (const wchar_t *)data;
       if (*curData != 0)
-        throw L"Incorrect mapping data";
+        ThrowException("Incorrect mapping data");
       UInt32 numChars = dataSize / sizeof(wchar_t);
       UString name;
       for (UInt32 i = 1; i < numChars; i++)
@@ -332,7 +342,7 @@ static void ParseMapWithPaths(NWildcard::CCensor &wildcardCensor,
           name += c;
       }
       if (!name.IsEmpty())
-        throw L"data error";
+        ThrowException("data error");
     }
     catch(...)
     {
@@ -360,7 +370,7 @@ static void AddSwitchWildCardsToCensor(NWildcard::CCensor &wildcardCensor,
     NRecursedType::EEnum recursedType;
     int pos = 0;
     if (name.Length() < kSomeCludePostStringMinSize)
-      throw kUserErrorMessage;
+      ThrowUserErrorException();
     if (::MyCharUpper(name[pos]) == kRecursedIDChar)
     {
       pos++;
@@ -372,7 +382,7 @@ static void AddSwitchWildCardsToCensor(NWildcard::CCensor &wildcardCensor,
     else
       recursedType = commonRecursedType;
     if (name.Length() < pos + kSomeCludeAfterRecursedPostStringMinSize)
-      throw kUserErrorMessage;
+      ThrowUserErrorException();
     UString tail = name.Mid(pos + 1);
     if (name[pos] == kImmediateNameID)
       AddCommandLineWildCardToCensr(wildcardCensor, tail, include, recursedType);
@@ -383,7 +393,7 @@ static void AddSwitchWildCardsToCensor(NWildcard::CCensor &wildcardCensor,
       ParseMapWithPaths(wildcardCensor, tail, include, recursedType);
     #endif
     else
-      throw kUserErrorMessage;
+      ThrowUserErrorException();
   }
 }
 
@@ -522,7 +532,7 @@ static void ParseUpdateCommandString(CUpdateOptions &options,
 
       UString postString;
       if (!ParseUpdateCommandString2(updateString, actionSet, postString))
-        throw kUserErrorMessage;
+        ThrowUserErrorException();
       if(postString.IsEmpty())
       {
         if(options.UpdateArchiveItself)
@@ -531,11 +541,11 @@ static void ParseUpdateCommandString(CUpdateOptions &options,
       else
       {
         if(MyCharUpper(postString[0]) != kUpdateNewArchivePostCharID)
-          throw kUserErrorMessage;
+          ThrowUserErrorException();
         CUpdateArchiveCommand uc;
         UString archivePath = postString.Mid(1);
         if (archivePath.IsEmpty())
-          throw kUserErrorMessage;
+          ThrowUserErrorException();
         uc.ArchivePath.BaseExtension = options.ArchivePath.BaseExtension;
         uc.ArchivePath.VolExtension = options.ArchivePath.VolExtension;
         uc.ArchivePath.ParseFromPath(archivePath);
@@ -626,7 +636,8 @@ static void SetAddCommandOptions(
     else
       options.WorkingDir = postString;
   }
-  if(options.SfxMode = parser[NKey::kSfx].ThereIs)
+  options.SfxMode = parser[NKey::kSfx].ThereIs;
+  if (options.SfxMode)
     options.SfxModule = parser[NKey::kSfx].PostStrings[0];
 
   if (parser[NKey::kVolume].ThereIs)
@@ -636,7 +647,7 @@ static void SetAddCommandOptions(
     {
       UInt64 size;
       if (!ParseComplexSize(sv[i], size))
-        throw "incorrect volume size";
+        ThrowException("Incorrect volume size");
       options.VolumesSizes.Add(size);
     }
   }
@@ -676,9 +687,9 @@ static void SetArchiveType(const UString &archiveType,
   CObjectVector<CArchiverInfo> archiverInfoVector;
   ReadArchiverInfoList(archiverInfoVector);
   if (archiverInfoVector.Size() == 0)
-    throw "There are no installed archive handlers";
+    ThrowException("There are no installed archive handlers");
   if (archiveType.IsEmpty())
-    throw "Incorrect archive type was assigned";
+    ThrowException("Incorrect archive type was assigned");
   for (int i = 0; i < archiverInfoVector.Size(); i++)
   {
     const CArchiverInfo &archiverInfo = archiverInfoVector[i];
@@ -696,7 +707,7 @@ static void SetArchiveType(const UString &archiveType,
       return;
     }
   }
-  throw "Incorrect archive type was assigned";
+  ThrowException("Incorrect archive type was assigned");
 }
 
 
@@ -711,7 +722,7 @@ void CArchiveCommandLineParser::Parse1(const UStringVector &commandStrings,
   }
   catch(...) 
   {
-    throw kUserErrorMessage;
+    ThrowUserErrorException();
   }
 
   options.IsInTerminal = (isatty(fileno(stdin)) != 0);
@@ -737,10 +748,10 @@ void CArchiveCommandLineParser::Parse2(CArchiveCommandLineOptions &options)
   const UStringVector &nonSwitchStrings = parser.NonSwitchStrings;
   int numNonSwitchStrings = nonSwitchStrings.Size();
   if(numNonSwitchStrings < kMinNonSwitchWords)  
-    throw kUserErrorMessage;
+    ThrowUserErrorException();
 
   if (!ParseArchiveCommand(nonSwitchStrings[kCommandIndex], options.Command))
-    throw kUserErrorMessage;
+    ThrowUserErrorException();
 
   options.TechMode = parser[NKey::kTechMode].ThereIs;
 
@@ -768,7 +779,7 @@ void CArchiveCommandLineParser::Parse2(CArchiveCommandLineOptions &options)
   if (thereIsArchiveName)
   {
     if(curCommandIndex >= numNonSwitchStrings)  
-      throw kUserErrorMessage;
+      ThrowUserErrorException();
     options.ArchiveName = nonSwitchStrings[curCommandIndex++];
   }
 
@@ -795,9 +806,9 @@ void CArchiveCommandLineParser::Parse2(CArchiveCommandLineOptions &options)
   if(isExtractGroupCommand || options.Command.CommandType == NCommandType::kList)
   {
     if (options.StdInMode)
-      throw "reading archives from stdin is not implemented";
+      ThrowException("Reading archives from stdin is not implemented");
     if (!options.WildcardCensor.AllAreRelative())
-      throw "cannot use absolute pathnames for this command";
+      ThrowException("Cannot use absolute pathnames for this command");
 
     NWildcard::CCensor archiveWildcardCensor;
 
@@ -923,7 +934,8 @@ void CArchiveCommandLineParser::Parse2(CArchiveCommandLineOptions &options)
         options.EnablePercents = false;
     }
 
-    if (updateOptions.EMailMode = parser[NKey::kEmail].ThereIs)
+    updateOptions.EMailMode = parser[NKey::kEmail].ThereIs;
+    if (updateOptions.EMailMode)
     {
       updateOptions.EMailAddress = parser[NKey::kEmail].PostStrings.Front();
       if (updateOptions.EMailAddress.Length() > 0)
@@ -949,6 +961,6 @@ void CArchiveCommandLineParser::Parse2(CArchiveCommandLineOptions &options)
     #endif
   }
   else 
-    throw kUserErrorMessage;
+    ThrowUserErrorException();
   options.WildcardCensor.ExtendExclude();
 }

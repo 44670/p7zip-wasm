@@ -38,12 +38,6 @@ MyWindows.o: MyWindows.cpp ../myWindows/StdAfx.h ../myWindows/config.h \
   ../include_windows/windef.h ../Common/MyWindows.h \
   ../include_windows/winnt.h ../include_windows/basetyps.h \
   ../include_windows/tchar.h MyWindows.h Types.h
-Random.o: Random.cpp ../myWindows/StdAfx.h ../myWindows/config.h \
-  ../Common/MyWindows.h ../Common/Types.h ../Common/MyGuidDef.h \
-  ../Common/Types.h ../include_windows/windows.h \
-  ../include_windows/windef.h ../Common/MyWindows.h \
-  ../include_windows/winnt.h ../include_windows/basetyps.h \
-  ../include_windows/tchar.h ../Common/Random.h
 StdInStream.o: StdInStream.cpp ../myWindows/StdAfx.h \
   ../myWindows/config.h ../Common/MyWindows.h ../Common/Types.h \
   ../Common/MyGuidDef.h ../Common/Types.h ../include_windows/windows.h \

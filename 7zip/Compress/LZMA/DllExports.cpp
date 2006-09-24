@@ -21,7 +21,7 @@ DEFINE_GUID(CLSID_CLZMAEncoder,
 0x23170F69, 0x40C1, 0x278B, 0x03, 0x01, 0x01, 0x00, 0x00, 0x00, 0x01, 0x00);
 
 extern "C"
-DLLEXPORT BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /*lpReserved*/)
+DLLEXPORT BOOL WINAPI DllMain(HINSTANCE /* hInstance */, DWORD dwReason, LPVOID /*lpReserved*/)
 {
   if (dwReason == DLL_PROCESS_ATTACH)
   {
@@ -31,7 +31,7 @@ DLLEXPORT BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /*lpRe
     SetLargePageSize();
     #endif
   }
-	return TRUE;
+  return TRUE;
 }
 
 STDAPI CreateObject(const GUID *clsid, const GUID *iid, void **outObject)

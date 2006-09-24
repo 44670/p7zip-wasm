@@ -13,7 +13,7 @@ SRCS=\
  ../../Crypto/Rar20/Rar20Cipher.cpp \
  ../../Crypto/Rar20/Rar20Crypto.cpp \
  ../../Crypto/RarAES/RarAES.cpp \
- ../../Crypto/RarAES/sha1.cpp \
+ ../../Crypto/Hash/Sha1.cpp \
 ../Common/ItemNameUtils.cpp \
  ./DllExports.cpp \
  ./RarHandler.cpp \
@@ -60,12 +60,12 @@ RarVolumeInStream.o : ./RarVolumeInStream.cpp
 	$(CXX) $(CFLAGS) ./RarVolumeInStream.cpp
 RarAES.o : ../../Crypto/RarAES/RarAES.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/RarAES/RarAES.cpp
-sha1.o : ../../Crypto/RarAES/sha1.cpp
-	$(CXX) $(CFLAGS) ../../Crypto/RarAES/sha1.cpp
 Rar20Cipher.o : ../../Crypto/Rar20/Rar20Cipher.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/Rar20/Rar20Cipher.cpp
 Rar20Crypto.o : ../../Crypto/Rar20/Rar20Crypto.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/Rar20/Rar20Crypto.cpp
+Sha1.o : ../../Crypto/Hash/Sha1.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Hash/Sha1.cpp
 LimitedStreams.o : ../../Common/LimitedStreams.cpp
 	$(CXX) $(CFLAGS) ../../Common/LimitedStreams.cpp
 ProgressUtils.o : ../../Common/ProgressUtils.cpp

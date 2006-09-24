@@ -16,7 +16,6 @@ CRC.o \
 IntToString.o \
 ListFileUtils.o \
 MyWindows.o \
-Random.o \
 StdInStream.o \
 StdOutStream.o \
 StringConvert.o \

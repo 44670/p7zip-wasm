@@ -38,7 +38,9 @@ test_emul.o: test_emul.cpp StdAfx.h config.h ../Common/MyWindows.h \
   ../Common/StringConvert.cpp StdAfx.h ../Common/StringConvert.h \
   ../Common/StdOutStream.cpp ../Common/StdOutStream.h \
   ../Common/IntToString.h ../Common/StringConvert.h \
-  ../Common/IntToString.cpp ../Common/IntToString.h
+  ../Common/IntToString.cpp ../Common/IntToString.h \
+  ../Windows/Synchronization.cpp StdAfx.h ../Windows/Synchronization.h \
+  ../Windows/Defs.h
 wine_date_and_time.o: wine_date_and_time.cpp config.h \
   ../include_windows/windows.h ../include_windows/windef.h \
   ../Common/MyWindows.h ../Common/Types.h ../Common/MyGuidDef.h \

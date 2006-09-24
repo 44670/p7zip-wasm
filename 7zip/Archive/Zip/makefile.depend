@@ -211,6 +211,56 @@ StreamUtils.o: ../../Common/StreamUtils.cpp ../../../myWindows/StdAfx.h \
   ../../Common/../../Common/MyWindows.h ../../Common/StreamUtils.h \
   ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
   ../../Common/../../Common/Types.h
+MemBlocks.o: ../../Common/MemBlocks.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../Common/StreamUtils.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
+  ../../Common/MemBlocks.h ../../../Common/Alloc.h \
+  ../../../Common/Types.h ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../../Windows/Synchronization.h ../../../Windows/Defs.h
+OutMemStream.o: ../../Common/OutMemStream.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/OutMemStream.h \
+  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../Common/MemBlocks.h ../../../Common/Alloc.h \
+  ../../../Common/Types.h ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../../Windows/Synchronization.h ../../../Windows/Defs.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h
+ProgressMt.o: ../../Common/ProgressMt.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/ProgressMt.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/MyWindows.h \
+  ../../Common/../ICoder.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h ../../Common/../../Common/Types.h \
+  ../../Common/../IProgress.h ../../../Windows/Synchronization.h \
+  ../../../Windows/Defs.h ../../Common/../../Common/Vector.h \
+  ../../Common/../../Common/Defs.h
+OffsetStream.o: ../../Common/OffsetStream.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Common/Defs.h \
+  ../../Common/OffsetStream.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h
 CopyCoder.o: ../../Compress/Copy/CopyCoder.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
@@ -312,14 +362,16 @@ ZipCipher.o: ../../Crypto/Zip/ZipCipher.cpp ../../../myWindows/StdAfx.h \
   ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
   ../../../include_windows/tchar.h ../../Crypto/Zip/ZipCipher.h \
   ../../../Common/MyCom.h ../../../Common/MyWindows.h \
-  ../../../Common/Random.h ../../../Common/Types.h \
-  ../../Crypto/Zip/../../ICoder.h ../../Crypto/Zip/../../IStream.h \
+  ../../../Common/Types.h ../../Crypto/Zip/../../ICoder.h \
+  ../../Crypto/Zip/../../IStream.h \
   ../../Crypto/Zip/../../../Common/MyUnknown.h \
   ../../Crypto/Zip/../../../Common/MyWindows.h \
   ../../Crypto/Zip/../../../Common/Types.h \
   ../../Crypto/Zip/../../IPassword.h ../../Crypto/Zip/ZipCrypto.h \
   ../../../Windows/Defs.h ../../Crypto/Zip/../../Common/StreamUtils.h \
-  ../../Crypto/Zip/../../Common/../IStream.h
+  ../../Crypto/Zip/../../Common/../IStream.h \
+  ../../Crypto/Zip/../Hash/RandGen.h ../../Crypto/Zip/../Hash/Sha1.h \
+  ../../Crypto/Zip/../Hash/../../../Common/Types.h
 ZipCrypto.o: ../../Crypto/Zip/ZipCrypto.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -328,14 +380,83 @@ ZipCrypto.o: ../../Crypto/Zip/ZipCrypto.cpp ../../../myWindows/StdAfx.h \
   ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
   ../../../include_windows/tchar.h ../../Crypto/Zip/ZipCipher.h \
   ../../../Common/MyCom.h ../../../Common/MyWindows.h \
-  ../../../Common/Random.h ../../../Common/Types.h \
-  ../../Crypto/Zip/../../ICoder.h ../../Crypto/Zip/../../IStream.h \
+  ../../../Common/Types.h ../../Crypto/Zip/../../ICoder.h \
+  ../../Crypto/Zip/../../IStream.h \
   ../../Crypto/Zip/../../../Common/MyUnknown.h \
   ../../Crypto/Zip/../../../Common/MyWindows.h \
   ../../Crypto/Zip/../../../Common/Types.h \
   ../../Crypto/Zip/../../IPassword.h ../../Crypto/Zip/ZipCrypto.h \
   ../../Crypto/Zip/../../../Common/CRC.h \
   ../../Crypto/Zip/../../../Common/Types.h
+Pbkdf2HmacSha1.o: ../../Crypto/Hash/Pbkdf2HmacSha1.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../include_windows/windef.h \
+  ../../../Common/MyWindows.h ../../../include_windows/winnt.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Crypto/Hash/HmacSha1.h ../../Crypto/Hash/Sha1.h \
+  ../../Crypto/Hash/../../../Common/Types.h
+HmacSha1.o: ../../Crypto/Hash/HmacSha1.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Crypto/Hash/HmacSha1.h \
+  ../../Crypto/Hash/Sha1.h ../../Crypto/Hash/../../../Common/Types.h
+Sha1.o: ../../Crypto/Hash/Sha1.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Crypto/Hash/Sha1.h \
+  ../../Crypto/Hash/../../../Common/Types.h \
+  ../../Crypto/Hash/RotateDefs.h
+RandGen.o: ../../Crypto/Hash/RandGen.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Windows/Synchronization.h \
+  ../../../Windows/Defs.h ../../Crypto/Hash/RandGen.h \
+  ../../Crypto/Hash/Sha1.h ../../Crypto/Hash/../../../Common/Types.h
+WzAES.o: ../../Crypto/WzAES/WzAES.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Windows/Defs.h \
+  ../../Crypto/WzAES/../../Common/StreamObjects.h \
+  ../../Crypto/WzAES/../../Common/../../Common/DynamicBuffer.h \
+  ../../Crypto/WzAES/../../Common/../../Common/Buffer.h \
+  ../../Crypto/WzAES/../../Common/../../Common/Defs.h \
+  ../../Crypto/WzAES/../../Common/../../Common/MyCom.h \
+  ../../Crypto/WzAES/../../Common/../../Common/MyWindows.h \
+  ../../Crypto/WzAES/../../Common/../IStream.h \
+  ../../Crypto/WzAES/../../Common/../../Common/MyUnknown.h \
+  ../../Crypto/WzAES/../../Common/../../Common/Types.h \
+  ../../Crypto/WzAES/../../Common/StreamUtils.h \
+  ../../Crypto/WzAES/../Hash/Pbkdf2HmacSha1.h \
+  ../../Crypto/WzAES/../Hash/../../../Common/Types.h \
+  ../../Crypto/WzAES/../Hash/RandGen.h ../../Crypto/WzAES/../Hash/Sha1.h \
+  ../../Crypto/WzAES/WzAES.h ../../Crypto/WzAES/../Hash/HmacSha1.h \
+  ../../../Common/MyCom.h ../../../Common/Buffer.h \
+  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../Crypto/WzAES/../../ICoder.h ../../Crypto/WzAES/../../IStream.h \
+  ../../Crypto/WzAES/../../IPassword.h \
+  ../../Crypto/WzAES/../../../Common/MyUnknown.h \
+  ../../Crypto/WzAES/../../../Common/Types.h \
+  ../../Crypto/WzAES/../../Archive/Common/CoderLoader.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../../Common/String.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../../Common/Vector.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../../Common/MyCom.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../../Windows/DLL.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../../Windows/../Common/String.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../ICoder.h
 DllExports.o: DllExports.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -354,7 +475,20 @@ DllExports.o: DllExports.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/Buffer.h ZipCompressionMode.h ../../../Common/Vector.h \
   ../../../Windows/System.h ../../../Windows/PropVariant.h \
   ../../../Windows/../Common/MyWindows.h \
-  ../../../Windows/../Common/Types.h ../../IPassword.h
+  ../../../Windows/../Common/Types.h ../../IPassword.h \
+  ../../Crypto/WzAES/WzAES.h ../../Crypto/WzAES/../Hash/HmacSha1.h \
+  ../../Crypto/WzAES/../Hash/Sha1.h \
+  ../../Crypto/WzAES/../Hash/../../../Common/Types.h \
+  ../../../Common/MyCom.h ../../../Common/Buffer.h \
+  ../../../Common/Vector.h ../../Crypto/WzAES/../../ICoder.h \
+  ../../Crypto/WzAES/../../IPassword.h \
+  ../../Crypto/WzAES/../../Archive/Common/CoderLoader.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../../Common/String.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../../Common/MyCom.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../../Windows/DLL.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../../Windows/../Common/String.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../ICoder.h \
+  ../Common/CodecsPath.h ../Common/../../../Common/String.h
 DLL.o: ../../../Windows/DLL.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -407,21 +541,29 @@ ZipAddCommon.o: ZipAddCommon.cpp ../../../myWindows/StdAfx.h \
   ../../../Windows/../Common/Types.h ../../../Windows/Defs.h \
   ../../ICoder.h ../../IStream.h ../../../Common/MyUnknown.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h ../../IPassword.h \
-  ../7z/7zMethods.h ../7z/7zMethodID.h ../7z/../../../Common/String.h \
-  ../7z/../../../Common/Vector.h ../7z/../../../Common/Defs.h \
-  ../7z/../../../Common/Types.h ZipAddCommon.h ../../IProgress.h \
-  ../../Compress/Copy/CopyCoder.h ../../Compress/Copy/../../ICoder.h \
-  ../../Compress/Copy/../../../Common/MyCom.h \
-  ../../Compress/Copy/../../../Common/MyWindows.h ../Common/CoderLoader.h \
-  ../Common/../../../Common/String.h ../Common/../../../Common/MyCom.h \
-  ../Common/../../../Windows/DLL.h \
+  ../Common/InStreamWithCRC.h ../Common/../../../Common/CRC.h \
+  ../Common/../../../Common/MyCom.h ../Common/../../../Common/MyWindows.h \
+  ../Common/../../IStream.h ../7z/7zMethods.h ../7z/7zMethodID.h \
+  ../7z/../../../Common/String.h ../7z/../../../Common/Vector.h \
+  ../7z/../../../Common/Defs.h ../7z/../../../Common/Types.h \
+  ZipAddCommon.h ../../IProgress.h ../../Compress/Copy/CopyCoder.h \
+  ../../Compress/Copy/../../ICoder.h \
+  ../../Compress/Copy/../../../Common/MyCom.h ../Common/CoderLoader.h \
+  ../Common/../../../Common/String.h ../Common/../../../Windows/DLL.h \
   ../Common/../../../Windows/../Common/String.h ../Common/../../ICoder.h \
   ../Common/FilterCoder.h ../Common/../../IPassword.h \
   ZipCompressionMode.h ../../../Common/Vector.h ../../../Common/String.h \
   ../../Crypto/Zip/ZipCipher.h ../../../Common/MyCom.h \
-  ../../../Common/Random.h ../../../Common/Types.h \
-  ../../Crypto/Zip/../../ICoder.h ../../Crypto/Zip/../../IPassword.h \
-  ../../Crypto/Zip/ZipCrypto.h ZipHeader.h ../../../Common/Types.h
+  ../../../Common/Types.h ../../Crypto/Zip/../../ICoder.h \
+  ../../Crypto/Zip/../../IPassword.h ../../Crypto/Zip/ZipCrypto.h \
+  ../../Crypto/WzAES/WzAES.h ../../Crypto/WzAES/../Hash/HmacSha1.h \
+  ../../Crypto/WzAES/../Hash/Sha1.h \
+  ../../Crypto/WzAES/../Hash/../../../Common/Types.h \
+  ../../../Common/MyCom.h ../../../Common/Buffer.h ../../../Common/Defs.h \
+  ../../../Common/Vector.h ../../Crypto/WzAES/../../ICoder.h \
+  ../../Crypto/WzAES/../../IPassword.h \
+  ../../Crypto/WzAES/../../Archive/Common/CoderLoader.h ZipHeader.h \
+  ../../../Common/Types.h
 ZipHandler.o: ZipHandler.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -440,8 +582,8 @@ ZipHandler.o: ZipHandler.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/Vector.h ../../../Windows/System.h \
   ../../../Common/Defs.h ../../../Common/CRC.h \
   ../../../Common/StringConvert.h ../../../Common/String.h \
-  ../../../Common/ComTry.h ../../../Windows/Time.h \
-  ../../../Common/Types.h ../../../Windows/Defs.h \
+  ../../../Common/ComTry.h ../../../Common/IntToString.h \
+  ../../../Windows/Time.h ../../../Common/Types.h ../../../Windows/Defs.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../IPassword.h \
   ../../Common/ProgressUtils.h ../../Common/../../Common/MyCom.h \
@@ -472,11 +614,21 @@ ZipHandler.o: ZipHandler.cpp ../../../myWindows/StdAfx.h \
   ../../Compress/Implode/../../Common/InBuffer.h \
   ../../Compress/Implode/../../Common/../../Common/MyCom.h \
   ../../Crypto/Zip/ZipCipher.h ../../../Common/MyCom.h \
-  ../../../Common/Random.h ../../../Common/Types.h \
-  ../../Crypto/Zip/../../ICoder.h ../../Crypto/Zip/../../IPassword.h \
-  ../../Crypto/Zip/ZipCrypto.h ../Common/CoderLoader.h \
-  ../Common/../../../Windows/DLL.h \
-  ../Common/../../../Windows/../Common/String.h
+  ../../../Common/Types.h ../../Crypto/Zip/../../ICoder.h \
+  ../../Crypto/Zip/../../IPassword.h ../../Crypto/Zip/ZipCrypto.h \
+  ../../Crypto/WzAES/WzAES.h ../../Crypto/WzAES/../Hash/HmacSha1.h \
+  ../../Crypto/WzAES/../Hash/Sha1.h \
+  ../../Crypto/WzAES/../Hash/../../../Common/Types.h \
+  ../../../Common/MyCom.h ../../../Common/Buffer.h \
+  ../../../Common/Vector.h ../../Crypto/WzAES/../../ICoder.h \
+  ../../Crypto/WzAES/../../IPassword.h \
+  ../../Crypto/WzAES/../../Archive/Common/CoderLoader.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../../Common/String.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../../Common/MyCom.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../../Windows/DLL.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../../Windows/../Common/String.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../ICoder.h \
+  ../Common/CoderLoader.h
 ZipHandlerOut.o: ZipHandlerOut.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -500,7 +652,18 @@ ZipHandlerOut.o: ZipHandlerOut.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/Types.h ../../../Windows/Defs.h ../../IPassword.h \
   ../Common/ItemNameUtils.h ../Common/../../../Common/String.h \
   ../Common/ParseProperties.h ../../../Common/String.h \
-  ../../../Common/Types.h
+  ../../../Common/Types.h ../../Crypto/WzAES/WzAES.h \
+  ../../Crypto/WzAES/../Hash/HmacSha1.h ../../Crypto/WzAES/../Hash/Sha1.h \
+  ../../Crypto/WzAES/../Hash/../../../Common/Types.h \
+  ../../../Common/MyCom.h ../../../Common/Buffer.h \
+  ../../../Common/Vector.h ../../Crypto/WzAES/../../ICoder.h \
+  ../../Crypto/WzAES/../../IPassword.h \
+  ../../Crypto/WzAES/../../Archive/Common/CoderLoader.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../../Common/String.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../../Common/MyCom.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../../Windows/DLL.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../../Windows/../Common/String.h \
+  ../../Crypto/WzAES/../../Archive/Common/../../ICoder.h
 ZipHeader.o: ZipHeader.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -571,13 +734,23 @@ ZipUpdate.o: ZipUpdate.cpp ../../../myWindows/StdAfx.h \
   ../Common/FilterCoder.h ../Common/../../IPassword.h \
   ../Common/../../../Common/MyUnknown.h ../Common/../../../Common/Types.h \
   ../../Crypto/Zip/ZipCipher.h ../../../Common/MyCom.h \
-  ../../../Common/Random.h ../../../Common/Types.h \
-  ../../Crypto/Zip/../../ICoder.h ../../Crypto/Zip/../../IPassword.h \
-  ../../Crypto/Zip/ZipCrypto.h ZipOut.h ../../../Common/Defs.h \
-  ../../../Common/AutoPtr.h ../../../Common/StringConvert.h \
-  ../../../Common/String.h ../../../Windows/Defs.h \
-  ../../Common/ProgressUtils.h ../../Common/../../Common/MyCom.h \
-  ../../Common/../ICoder.h ../../Common/../IProgress.h \
+  ../../../Common/Types.h ../../Crypto/Zip/../../ICoder.h \
+  ../../Crypto/Zip/../../IPassword.h ../../Crypto/Zip/ZipCrypto.h \
+  ../../Crypto/WzAES/WzAES.h ../../Crypto/WzAES/../Hash/HmacSha1.h \
+  ../../Crypto/WzAES/../Hash/Sha1.h \
+  ../../Crypto/WzAES/../Hash/../../../Common/Types.h \
+  ../../../Common/MyCom.h ../../../Common/Buffer.h \
+  ../../../Common/Vector.h ../../Crypto/WzAES/../../ICoder.h \
+  ../../Crypto/WzAES/../../IPassword.h \
+  ../../Crypto/WzAES/../../Archive/Common/CoderLoader.h ZipOut.h \
+  ../../../Common/Defs.h ../../../Common/AutoPtr.h \
+  ../../../Common/StringConvert.h ../../../Common/String.h \
+  ../../../Windows/Defs.h ../../../Windows/Thread.h \
+  ../../../Windows/Defs.h ../../Common/ProgressUtils.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../ICoder.h \
+  ../../Common/../IProgress.h ../../Common/ProgressMt.h \
+  ../../../Windows/Synchronization.h ../../Common/../../Common/Vector.h \
   ../../Common/LimitedStreams.h ../../Common/../IStream.h \
-  ../Common/InStreamWithCRC.h ../Common/../../../Common/CRC.h \
-  ../Common/../../../Common/Types.h ../Common/../../IStream.h
+  ../../Common/OutMemStream.h ../../../Common/MyCom.h \
+  ../../Common/MemBlocks.h ../../../Common/Alloc.h \
+  ../../../Common/Types.h ../../../Common/Vector.h

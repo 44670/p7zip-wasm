@@ -165,6 +165,41 @@ MainAr.o: ../../UI/Console/MainAr.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/NewHandler.h ../../../Common/Exception.h \
   ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
   ../../../Common/String.h ../../UI/Console/../Common/ExitCode.h \
+  ../../UI/Console/../Common/ArchiveCommandLine.h \
+  ../../../Common/Wildcard.h ../../../Common/CommandLineParser.h \
+  ../../UI/Console/../Common/Extract.h ../../../Windows/FileFind.h \
+  ../../../Windows/../Common/String.h ../../../Windows/FileName.h \
+  ../../../Windows/Defs.h \
+  ../../UI/Console/../Common/../../Archive/IArchive.h \
+  ../../UI/Console/../Common/../../Archive/../IStream.h \
+  ../../UI/Console/../Common/../../Archive/../../Common/MyUnknown.h \
+  ../../UI/Console/../Common/../../Archive/../../Common/MyWindows.h \
+  ../../UI/Console/../Common/../../Archive/../../Common/Types.h \
+  ../../UI/Console/../Common/../../Archive/../IProgress.h \
+  ../../UI/Console/../Common/../../Archive/../PropID.h \
+  ../../UI/Console/../Common/ArchiveExtractCallback.h \
+  ../../UI/Console/../Common/IFileExtractCallback.h \
+  ../../../Common/String.h ../../../Common/MyCom.h \
+  ../../UI/Console/../Common/../../Common/FileStreams.h \
+  ../../UI/Console/../Common/../../Common/../../Windows/FileIO.h \
+  ../../../Common/String.h \
+  ../../UI/Console/../Common/../../Common/../IStream.h \
+  ../../UI/Console/../Common/../../Common/../../Common/MyCom.h \
+  ../../UI/Console/../Common/../../IPassword.h \
+  ../../UI/Console/../Common/../../../Common/MyUnknown.h \
+  ../../UI/Console/../Common/../../../Common/Types.h \
+  ../../UI/Console/../Common/ExtractMode.h \
+  ../../UI/Console/../Common/ArchiveOpenCallback.h \
+  ../../UI/Console/../Common/Property.h \
+  ../../UI/Console/../Common/Update.h \
+  ../../UI/Console/../Common/UpdateAction.h \
+  ../../UI/Console/../Common/UpdateCallback.h \
+  ../../UI/Console/../Common/../Common/UpdatePair.h \
+  ../../UI/Console/../Common/../Common/DirItem.h ../../../Common/Types.h \
+  ../../UI/Console/../Common/../Common/UpdateAction.h \
+  ../../UI/Console/../Common/../Common/../../Archive/IArchive.h \
+  ../../UI/Console/../Common/../Common/UpdateProduce.h \
+  ../../UI/Console/../Common/../Common/UpdatePair.h \
   ../../UI/Console/ConsoleClose.h
 OpenCallbackConsole.o: ../../UI/Console/OpenCallbackConsole.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
@@ -328,6 +363,7 @@ UserInputUtils.o: ../../UI/Console/UserInputUtils.cpp \
   ../../../Common/MyCom.h ../../../Common/Types.h ../../../Common/Alloc.h \
   ../../Archive/7z/../../Compress/Branch/../../ICoder.h \
   ../../Archive/7z/../../Compress/Branch/BranchX86.h \
+  ../../Archive/7z/../../Compress/Branch/BranchTypes.h \
   ../../Archive/7z/../../Compress/Branch/x86_2.h \
   ../../Archive/7z/../../Compress/Branch/../../../Common/MyCom.h \
   ../../Archive/7z/../../Compress/Branch/../RangeCoder/RangeCoderBit.h \
@@ -415,6 +451,7 @@ UserInputUtils.o: ../../UI/Console/UserInputUtils.cpp \
   ../../../Common/MyCom.h ../../../Common/Types.h ../../../Common/Alloc.h \
   ../../Archive/7z/../../Compress/Branch/../../ICoder.h \
   ../../Archive/7z/../../Compress/Branch/BranchX86.h \
+  ../../Archive/7z/../../Compress/Branch/BranchTypes.h \
   ../../Archive/7z/../../Compress/Branch/x86_2.h \
   ../../Archive/7z/../../Compress/Branch/../../../Common/MyCom.h \
   ../../Archive/7z/../../Compress/Branch/../RangeCoder/RangeCoderBit.h
@@ -798,24 +835,17 @@ UserInputUtils.o: ../../UI/Console/UserInputUtils.cpp \
   ../../Archive/7z/../../../Common/Vector.h \
   ../../Archive/7z/../../../Common/Defs.h \
   ../../Archive/7z/../../../Common/Types.h ../../Archive/7z/7zItem.h \
-  ../../Archive/7z/../../../Common/Buffer.h \
+  ../../Archive/7z/../../../Common/Buffer.h ../../Archive/7z/7zOut.h \
   ../../Archive/7z/7zCompressionMode.h \
   ../../Archive/7z/../../../Windows/PropVariant.h \
   ../../Archive/7z/../../../Windows/../Common/MyWindows.h \
   ../../Archive/7z/../../../Windows/../Common/Types.h \
-  ../../Archive/7z/../IArchive.h ../../Archive/7z/../../IStream.h \
-  ../../Archive/7z/../../IProgress.h ../../Archive/7z/../../PropID.h \
-  ../../Archive/7z/7zFolderInStream.h \
-  ../../Archive/7z/../Common/InStreamWithCRC.h \
-  ../../Archive/7z/../Common/../../../Common/CRC.h \
-  ../../Archive/7z/../Common/../../../Common/Types.h \
-  ../../Archive/7z/../Common/../../../Common/MyCom.h \
-  ../../Archive/7z/../Common/../../IStream.h \
-  ../../Archive/7z/../../ICoder.h ../../Archive/7z/../../IStream.h \
   ../../Archive/7z/7zEncode.h ../../Archive/7z/../Common/CoderMixer2.h \
   ../../Archive/7z/../Common/../../../Common/Vector.h \
   ../../Archive/7z/../Common/../../../Common/Types.h \
+  ../../Archive/7z/../Common/../../../Common/MyCom.h \
   ../../Archive/7z/../Common/../../ICoder.h \
+  ../../Archive/7z/../Common/../../IStream.h \
   ../../Archive/7z/../Common/CoderMixer2MT.h \
   ../../Archive/7z/../Common/CoderMixer2.h \
   ../../Archive/7z/../Common/../../../Windows/Thread.h \
@@ -825,11 +855,18 @@ UserInputUtils.o: ../../UI/Console/UserInputUtils.cpp \
   ../../Archive/7z/../Common/../../Common/../../Windows/Synchronization.h \
   ../../Archive/7z/../Common/../../Common/../../Windows/Defs.h \
   ../../Archive/7z/../Common/CoderMixer2ST.h ../../Archive/7z/7zMethods.h \
-  ../../Archive/7z/7zHandler.h ../../Archive/7z/../../../Windows/System.h \
-  ../../Archive/7z/7zOut.h ../../Archive/7z/../../Common/OutBuffer.h \
+  ../../Archive/7z/../../Common/OutBuffer.h \
   ../../Archive/7z/../../../Common/DynamicBuffer.h \
   ../../Archive/7z/../../../Common/Buffer.h \
   ../../Archive/7z/../../../Common/CRC.h \
+  ../../Archive/7z/../../../Common/Types.h ../../Archive/7z/../IArchive.h \
+  ../../Archive/7z/../../IStream.h ../../Archive/7z/../../IProgress.h \
+  ../../Archive/7z/../../PropID.h ../../Archive/7z/7zFolderInStream.h \
+  ../../Archive/7z/../Common/InStreamWithCRC.h \
+  ../../Archive/7z/../Common/../../../Common/CRC.h \
+  ../../Archive/7z/../Common/../../IStream.h \
+  ../../Archive/7z/../../ICoder.h ../../Archive/7z/7zHandler.h \
+  ../../Archive/7z/../../../Windows/System.h \
   ../../Archive/7z/../../Compress/Copy/CopyCoder.h \
   ../../Archive/7z/../../Compress/Copy/../../ICoder.h \
   ../../Archive/7z/../../Compress/Copy/../../../Common/MyCom.h \
@@ -1186,8 +1223,8 @@ x86.o: ../../Compress/Branch/x86.cpp ../../../myWindows/StdAfx.h \
   ../../Compress/Branch/../../../Common/MyUnknown.h \
   ../../Compress/Branch/../../../Common/MyWindows.h \
   ../../Compress/Branch/../../../Common/Types.h \
-  ../../Compress/Branch/BranchX86.h ../../../Windows/Defs.h \
-  ../../Compress/Branch/BranchX86.c
+  ../../Compress/Branch/BranchX86.h ../../Compress/Branch/BranchTypes.h \
+  ../../../Windows/Defs.h ../../Compress/Branch/BranchX86.c
 CopyCoder.o: ../../Compress/Copy/CopyCoder.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
@@ -1419,11 +1456,12 @@ ArchiveExtractCallback.o: ../../UI/Common/ArchiveExtractCallback.cpp \
   ../../UI/Common/../../../Common/MyUnknown.h \
   ../../UI/Common/../../../Common/Types.h ../../UI/Common/ExtractMode.h \
   ../../../Common/Wildcard.h ../../../Common/StringConvert.h \
-  ../../../Windows/FileDir.h ../../../Windows/../Common/String.h \
-  ../../../Windows/Defs.h ../../../Windows/FileFind.h \
-  ../../../Windows/FileName.h ../../../Windows/Time.h \
-  ../../../Common/Types.h ../../../Windows/Defs.h ../../../Windows/Defs.h \
-  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Common/ComTry.h ../../../Windows/FileDir.h \
+  ../../../Windows/../Common/String.h ../../../Windows/Defs.h \
+  ../../../Windows/FileFind.h ../../../Windows/FileName.h \
+  ../../../Windows/Time.h ../../../Common/Types.h ../../../Windows/Defs.h \
+  ../../../Windows/Defs.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
   ../../../Windows/PropVariantConversions.h \
   ../../UI/Common/../../Common/FilePathAutoRename.h \
@@ -1450,7 +1488,8 @@ ArchiveOpenCallback.o: ../../UI/Common/ArchiveOpenCallback.cpp \
   ../../UI/Common/../../Archive/../IProgress.h \
   ../../UI/Common/../../Archive/../PropID.h \
   ../../../Common/StringConvert.h ../../../Common/String.h \
-  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Common/ComTry.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
   ../../UI/Common/../../Common/FileStreams.h \
   ../../UI/Common/../../Common/../../Windows/FileIO.h \
@@ -1675,8 +1714,8 @@ UpdateCallback.o: ../../UI/Common/UpdateCallback.cpp \
   ../../UI/Common/../Common/UpdateProduce.h \
   ../../UI/Common/../Common/UpdatePair.h ../../../Common/StringConvert.h \
   ../../../Common/String.h ../../../Common/IntToString.h \
-  ../../../Common/Defs.h ../../../Windows/PropVariant.h \
-  ../../../Windows/../Common/MyWindows.h \
+  ../../../Common/Defs.h ../../../Common/ComTry.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
   ../../UI/Common/../../Common/FileStreams.h \
   ../../UI/Common/../../Common/../../Windows/FileIO.h \

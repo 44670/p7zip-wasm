@@ -81,6 +81,7 @@
   ../../../Common/MyCom.h ../../../Common/Types.h ../../../Common/Alloc.h \
   ../../Archive/7z/../../Compress/Branch/../../ICoder.h \
   ../../Archive/7z/../../Compress/Branch/BranchX86.h \
+  ../../Archive/7z/../../Compress/Branch/BranchTypes.h \
   ../../Archive/7z/../../Compress/Branch/x86_2.h \
   ../../Archive/7z/../../Compress/Branch/../../../Common/MyCom.h \
   ../../Archive/7z/../../Compress/Branch/../RangeCoder/RangeCoderBit.h \
@@ -582,8 +583,8 @@ x86.o: ../../Compress/Branch/x86.cpp ../../../myWindows/StdAfx.h \
   ../../Compress/Branch/../../../Common/MyUnknown.h \
   ../../Compress/Branch/../../../Common/MyWindows.h \
   ../../Compress/Branch/../../../Common/Types.h \
-  ../../Compress/Branch/BranchX86.h ../../../Windows/Defs.h \
-  ../../Compress/Branch/BranchX86.c
+  ../../Compress/Branch/BranchX86.h ../../Compress/Branch/BranchTypes.h \
+  ../../../Windows/Defs.h ../../Compress/Branch/BranchX86.c
 CopyCoder.o: ../../Compress/Copy/CopyCoder.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
@@ -699,15 +700,8 @@ PPMDDecoder.o: ../../Compress/PPMD/PPMDDecoder.cpp \
   ../../Crypto/7zAES/../AES/MyAES.h ../../../Common/Types.h \
   ../../../Common/MyCom.h ../../Crypto/7zAES/../AES/../../ICoder.h \
   ../../Crypto/7zAES/../AES/AES_CBC.h ../../Crypto/7zAES/../AES/aescpp.h \
-  ../../Crypto/7zAES/../AES/aes.h ../../Crypto/7zAES/SHA256.h
-SHA256.o: ../../Crypto/7zAES/SHA256.cpp ../../../myWindows/StdAfx.h \
-  ../../../myWindows/config.h ../../../Common/MyWindows.h \
-  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
-  ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
-  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Crypto/7zAES/SHA256.h \
-  ../../../Common/Types.h ../../../Windows/Defs.h
+  ../../Crypto/7zAES/../AES/aes.h ../../Crypto/7zAES/../Hash/Sha256.h \
+  ../../../Common/Types.h
 MyAES.o: ../../Crypto/AES/MyAES.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
@@ -723,6 +717,14 @@ MyAES.o: ../../Crypto/AES/MyAES.cpp ../../../myWindows/StdAfx.h \
   ../../Crypto/AES/../../../Common/Types.h ../../Crypto/AES/AES_CBC.h \
   ../../Crypto/AES/aescpp.h ../../Crypto/AES/aes.h \
   ../../../Windows/Defs.h ../../Crypto/AES/aesopt.h
+Sha256.o: ../../Crypto/Hash/Sha256.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../include_windows/windef.h ../../../Common/MyWindows.h \
+  ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Crypto/Hash/Sha256.h \
+  ../../../Common/Types.h ../../Crypto/Hash/RotateDefs.h
 Main.o: Main.cpp ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/Types.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
@@ -792,11 +794,12 @@ ArchiveExtractCallback.o: ../../UI/Common/ArchiveExtractCallback.cpp \
   ../../UI/Common/../../../Common/MyUnknown.h \
   ../../UI/Common/../../../Common/Types.h ../../UI/Common/ExtractMode.h \
   ../../../Common/Wildcard.h ../../../Common/StringConvert.h \
-  ../../../Windows/FileDir.h ../../../Windows/../Common/String.h \
-  ../../../Windows/Defs.h ../../../Windows/FileFind.h \
-  ../../../Windows/FileName.h ../../../Windows/Time.h \
-  ../../../Common/Types.h ../../../Windows/Defs.h ../../../Windows/Defs.h \
-  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Common/ComTry.h ../../../Windows/FileDir.h \
+  ../../../Windows/../Common/String.h ../../../Windows/Defs.h \
+  ../../../Windows/FileFind.h ../../../Windows/FileName.h \
+  ../../../Windows/Time.h ../../../Common/Types.h ../../../Windows/Defs.h \
+  ../../../Windows/Defs.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
   ../../../Windows/PropVariantConversions.h \
   ../../UI/Common/../../Common/FilePathAutoRename.h \
@@ -826,7 +829,8 @@ ArchiveOpenCallback.o: ../../UI/Common/ArchiveOpenCallback.cpp \
   ../../UI/Common/../../Archive/../IProgress.h \
   ../../UI/Common/../../Archive/../PropID.h \
   ../../../Common/StringConvert.h ../../../Common/String.h \
-  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Common/ComTry.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
   ../../UI/Common/../../Common/FileStreams.h \
   ../../UI/Common/../../Common/../../Windows/FileIO.h \
@@ -1081,6 +1085,41 @@ MainAr.o: ../../UI/Console/MainAr.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/NewHandler.h ../../../Common/Exception.h \
   ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
   ../../../Common/String.h ../../UI/Console/../Common/ExitCode.h \
+  ../../UI/Console/../Common/ArchiveCommandLine.h \
+  ../../../Common/Wildcard.h ../../../Common/CommandLineParser.h \
+  ../../UI/Console/../Common/Extract.h ../../../Windows/FileFind.h \
+  ../../../Windows/../Common/String.h ../../../Windows/FileName.h \
+  ../../../Windows/Defs.h \
+  ../../UI/Console/../Common/../../Archive/IArchive.h \
+  ../../UI/Console/../Common/../../Archive/../IStream.h \
+  ../../UI/Console/../Common/../../Archive/../../Common/MyUnknown.h \
+  ../../UI/Console/../Common/../../Archive/../../Common/MyWindows.h \
+  ../../UI/Console/../Common/../../Archive/../../Common/Types.h \
+  ../../UI/Console/../Common/../../Archive/../IProgress.h \
+  ../../UI/Console/../Common/../../Archive/../PropID.h \
+  ../../UI/Console/../Common/ArchiveExtractCallback.h \
+  ../../UI/Console/../Common/IFileExtractCallback.h \
+  ../../../Common/String.h ../../../Common/MyCom.h \
+  ../../UI/Console/../Common/../../Common/FileStreams.h \
+  ../../UI/Console/../Common/../../Common/../../Windows/FileIO.h \
+  ../../../Common/String.h \
+  ../../UI/Console/../Common/../../Common/../IStream.h \
+  ../../UI/Console/../Common/../../Common/../../Common/MyCom.h \
+  ../../UI/Console/../Common/../../IPassword.h \
+  ../../UI/Console/../Common/../../../Common/MyUnknown.h \
+  ../../UI/Console/../Common/../../../Common/Types.h \
+  ../../UI/Console/../Common/ExtractMode.h \
+  ../../UI/Console/../Common/ArchiveOpenCallback.h \
+  ../../UI/Console/../Common/Property.h \
+  ../../UI/Console/../Common/Update.h \
+  ../../UI/Console/../Common/UpdateAction.h \
+  ../../UI/Console/../Common/UpdateCallback.h \
+  ../../UI/Console/../Common/../Common/UpdatePair.h \
+  ../../UI/Console/../Common/../Common/DirItem.h ../../../Common/Types.h \
+  ../../UI/Console/../Common/../Common/UpdateAction.h \
+  ../../UI/Console/../Common/../Common/../../Archive/IArchive.h \
+  ../../UI/Console/../Common/../Common/UpdateProduce.h \
+  ../../UI/Console/../Common/../Common/UpdatePair.h \
   ../../UI/Console/ConsoleClose.h
 OpenCallbackConsole.o: ../../UI/Console/OpenCallbackConsole.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \

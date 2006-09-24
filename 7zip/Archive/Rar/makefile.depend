@@ -178,15 +178,17 @@ RarAES.o: ../../Crypto/RarAES/RarAES.cpp ../../../myWindows/StdAfx.h \
   ../../Crypto/RarAES/../../Archive/Common/../../../Windows/../Common/String.h \
   ../../Crypto/RarAES/../../Archive/Common/../../ICoder.h \
   ../../../Common/Types.h ../../../Common/Buffer.h ../../../Common/Defs.h \
-  ../../Crypto/RarAES/sha1.h ../../Crypto/RarAES/../../../Common/Types.h
-sha1.o: ../../Crypto/RarAES/sha1.cpp ../../../myWindows/StdAfx.h \
+  ../../Crypto/RarAES/../Hash/Sha1.h \
+  ../../Crypto/RarAES/../Hash/../../../Common/Types.h
+Sha1.o: ../../Crypto/Hash/Sha1.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
   ../../../include_windows/windef.h ../../../Common/MyWindows.h \
   ../../../include_windows/winnt.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../Crypto/RarAES/sha1.h \
-  ../../Crypto/RarAES/../../../Common/Types.h
+  ../../../include_windows/tchar.h ../../Crypto/Hash/Sha1.h \
+  ../../Crypto/Hash/../../../Common/Types.h \
+  ../../Crypto/Hash/RotateDefs.h
 ItemNameUtils.o: ../Common/ItemNameUtils.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../../Common/MyGuidDef.h \

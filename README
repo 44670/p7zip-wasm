@@ -1,4 +1,4 @@
-	p7zip 4.42
+	p7zip 4.43
 	==========
 
 Homepage : http://p7zip.sourceforge.net/
@@ -11,8 +11,7 @@ Homepage : www.7-zip.org
 7z uses plugins to handle archives.
 7za is a stand-alone executable.
 7za handles less archive formats than 7z.exe.
-7zr is a standalone version of 7z that supports only 7z/LZMA/BCJ/BCJ2.
-
+7zr is a light stand-alone executable that supports only 7z/LZMA/BCJ/BCJ2.
 
 CAUTION :
 ---------
@@ -62,6 +61,7 @@ BUILD :
 
   this procedure has been tested on :
    - x86 CPU :
+	DOS   - (built with DJGPP, see http://blairdude.googlepages.com/p7zip )
 	Linux - Redhat 9.0 Standart
 	Linux - Fedora 2 (Redhat) (gcc 3.3.3 and gcc-3.4.1 with 
                 stack-smashing protector from www.trl.ibm.com/projects/security/ssp/)
@@ -94,6 +94,8 @@ BUILD :
    - IBM :
 	AIX 5.3 with gcc 4.1.0
 
+   - Tru64 :
+	OSF 5.1 with gcc 3.4.2
 
 INSTALL :
 ---------
@@ -144,6 +146,9 @@ USAGE:
 
   You can use password for archives:
   7za a -pmy_password archive.7z  dir1
+
+  For .7z archive only, you can enable archive header encryption with "-mhe"
+  7za a -mhe=on -pmy_password archive.7z  dir1
 
   For more, see the documentation of 7za.exe in DOCS/MANUAL directory
   7za a -t7z  -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on archive.7z  dir1 :

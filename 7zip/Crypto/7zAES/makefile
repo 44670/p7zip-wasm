@@ -23,9 +23,9 @@ StreamUtils.o\
 DLL.o\
 Synchronization.o\
 7zAES.o\
-SHA256.o\
 FileFind.o \
-FileDir.o
+FileDir.o \
+Sha256.o
 
 include ../../../makefile.glb
 

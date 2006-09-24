@@ -32,6 +32,8 @@
 #include "Common/StdOutStream.cpp"
 #include "Common/IntToString.cpp"
 
+#include "Windows/Synchronization.cpp"
+
 
 #if  defined(HAVE_WCHAR_H) && defined(HAVE_MBSTOWCS) && defined(HAVE_WCSTOMBS)
 void test_mbs(void) {
@@ -211,12 +213,61 @@ static void test_time()
 	display("  GetSystemTime : ", systimeGM);
 }
 
+
+static void test_semaphore()
+{
+	g_StdOut << "\nTEST SEMAPHORE :\n";
+
+	NWindows::NSynchronization::CSemaphore sema;
+	bool bres;
+	DWORD waitResult;
+	int i;
+
+	sema.Create(2,10);
+
+	g_StdOut << "   - Release(1)\n";
+	for(i = 0 ;i < 8;i++)
+	{
+		bres = sema.Release(1);
+		assert(bres == true);
+	}
+	bres = sema.Release(1);
+	assert(bres == false);
+
+	g_StdOut << "   - WaitForMultipleObjects(INFINITE)\n";
+	HANDLE events[1] = { sema };
+	for(i=0;i<10;i++)
+	{
+		waitResult = ::WaitForMultipleObjects(1, events, FALSE, INFINITE);
+		assert(waitResult == WAIT_OBJECT_0);
+	}
+
+	g_StdOut << "   - WaitForMultipleObjects(0)\n";
+	waitResult = ::WaitForMultipleObjects(1, events, FALSE, 0);
+	assert(waitResult == WAIT_TIMEOUT);
+
+	g_StdOut << "   - Release(3)\n";
+	bres = sema.Release(3);
+	assert(bres == true);
+
+	for(int i = 0 ;i < 3;i++)
+	{
+		waitResult = ::WaitForMultipleObjects(1, events, TRUE, INFINITE);
+		assert(waitResult == WAIT_OBJECT_0);
+	}
+	waitResult = ::WaitForMultipleObjects(1, events, TRUE, 0);
+	assert(waitResult == WAIT_TIMEOUT);
+
+	g_StdOut << "   Done\n";
+}
+
+
+
 int main() {
 #if defined(BIG_ENDIAN)
   printf("BIG_ENDIAN : %d\n",(int)BIG_ENDIAN);
 #endif
 #if defined(LITTLE_ENDIAN)
-
   printf("LITTLE_ENDIAN : %d\n",(int)LITTLE_ENDIAN);
 #endif
 
@@ -227,6 +278,20 @@ int main() {
   printf("sizeof(UInt64) : %d\n",(int)sizeof(UInt64));
   printf("sizeof(UINT64) : %d\n",(int)sizeof(UINT64));
   printf("sizeof(void *) : %d\n",(int)sizeof(void *));
+
+  union {
+	Byte b[2];
+	UInt16 s;
+  } u;
+  u.s = 0x1234;
+
+  if ((u.b[0] == 0x12) && (u.b[1] == 0x34)) {
+    printf("CPU : big endian\n");
+  } else if ((u.b[0] == 0x34) && (u.b[1] == 0x12)) {
+    printf("CPU : little endian\n");
+  } else {
+    printf("CPU : unknown endianess\n");
+  }
 
 #if  defined(HAVE_WCHAR_H) && defined(HAVE_MBSTOWCS) && defined(HAVE_WCSTOMBS)
 #ifdef HAVE_LOCALE
@@ -241,6 +306,8 @@ int main() {
   test_split_astring();
 
   test_time();
+
+  test_semaphore();
 
   return 0;
 }

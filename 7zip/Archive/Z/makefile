@@ -2,7 +2,7 @@ PROG=../../../bin/Formats/z.so
 
 LOCAL_FLAGS=
 
-MY_WINDOWS=$(MY_HOME)/myModuleFileName.o
+MY_WINDOWS= $(MY_HOME)/myModuleFileName.o
 
 include ../../../makefile.machine
 
@@ -22,7 +22,6 @@ InBuffer.o\
 OutBuffer.o\
 ProgressUtils.o\
 StreamUtils.o\
-CodecsPath.o\
 DummyOutStream.o
 
 include ../../../makefile.glb

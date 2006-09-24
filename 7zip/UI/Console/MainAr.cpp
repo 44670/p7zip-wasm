@@ -10,8 +10,12 @@
 #include "Common/NewHandler.h"
 #include "Common/Exception.h"
 #include "Common/StringConvert.h"
+#ifdef _WIN32
+#include "Common/Alloc.h"
+#endif
 
 #include "../Common/ExitCode.h"
+#include "../Common/ArchiveCommandLine.h"
 #include "ConsoleClose.h"
 
 using namespace NWindows;
@@ -63,9 +67,10 @@ int numArguments, const char *arguments[]
   #endif
   // setlocale(LC_COLLATE, ".OCP");
   NConsoleClose::CCtrlHandlerSetter ctrlHandlerSetter;
+  int res = 0;
   try
   {
-    return Main2(
+    res = Main2(
 #ifndef _WIN32
       numArguments, arguments
 #endif
@@ -80,6 +85,11 @@ int numArguments, const char *arguments[]
   {
     (*g_StdStream) << endl << kUserBreak;
     return (NExitCode::kUserBreak);
+  }
+  catch(const CArchiveCommandLineException &e)
+  {
+    (*g_StdStream) << kExceptionErrorMessage << e << endl;
+    return (NExitCode::kUserError);
   }
   catch(const CSystemException &systemError)
   {
@@ -136,4 +146,5 @@ int numArguments, const char *arguments[]
     (*g_StdStream) << kUnknownExceptionMessage;
     return (NExitCode::kFatalError);
   }
+  return  res;
 }

@@ -13,6 +13,8 @@ namespace NWindows {
 namespace NFile {
 namespace NDirectory {
 
+bool SetDirTime(LPCWSTR fileName, const FILETIME *creationTime, const FILETIME *lastAccessTime, const FILETIME *lastWriteTime);
+
 bool MySetFileAttributes(LPCTSTR fileName, DWORD fileAttributes);
 #ifndef _UNICODE
 bool MySetFileAttributes(LPCWSTR fileName, DWORD fileAttributes);

@@ -6,7 +6,6 @@ SRCS= \
  ListFileUtils.cpp \
  main.c \
  MyWindows.cpp \
- Random.cpp \
  StdInStream.cpp \
  StdOutStream.cpp \
  StringConvert.cpp \
@@ -36,8 +35,6 @@ CommandLineParser.o : CommandLineParser.cpp
 	$(CXX) $(CFLAGS) CommandLineParser.cpp
 ListFileUtils.o : ListFileUtils.cpp
 	$(CXX) $(CFLAGS) ListFileUtils.cpp
-Random.o : Random.cpp
-	$(CXX) $(CFLAGS) Random.cpp
 StdInStream.o : StdInStream.cpp
 	$(CXX) $(CFLAGS) StdInStream.cpp
 StdOutStream.o : StdOutStream.cpp

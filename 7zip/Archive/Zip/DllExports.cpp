@@ -8,6 +8,8 @@
 #include "Windows/PropVariant.h"
 #include "../../ICoder.h"
 #include "../../IPassword.h"
+#include "../../Crypto/WzAES/WzAES.h"
+#include "../Common/CodecsPath.h"
 
 // {23170F69-40C1-278B-0401-080000000100}
 DEFINE_GUID(CLSID_CCompressDeflateEncoder, 
@@ -50,12 +52,38 @@ DEFINE_GUID(CLSID_CZipHandler,
   0x23170F69, 0x40C1, 0x278A, 0x10, 0x00, 0x00, 0x01, 0x10, 0x01, 0x00, 0x00);
 
 HINSTANCE g_hInstance;
+#ifdef _WIN32
+#ifndef _UNICODE
+bool g_IsNT = false;
+static bool IsItWindowsNT()
+{
+  OSVERSIONINFO versionInfo;
+  versionInfo.dwOSVersionInfoSize = sizeof(versionInfo);
+  if (!::GetVersionEx(&versionInfo)) 
+    return false;
+  return (versionInfo.dwPlatformId == VER_PLATFORM_WIN32_NT);
+}
+#endif
+#endif
+
+void GetCryptoFolderPrefix(TCHAR *path)
+{
+  CSysString s = GetCodecsFolderPrefix();
+  lstrcpy(path, s);
+}
 
 extern "C"
 DLLEXPORT BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /*lpReserved*/)
 {
   if (dwReason == DLL_PROCESS_ATTACH)
+  {
     g_hInstance = hInstance;
+#ifdef _WIN32
+    #ifndef _UNICODE
+    g_IsNT = IsItWindowsNT();
+    #endif
+#endif
+  }
   return TRUE;
 }
 

@@ -57,6 +57,9 @@ SRCS=\
  ../../Common/LockedStream.cpp \
  ../../Common/LSBFDecoder.cpp \
  ../../Common/LSBFEncoder.cpp \
+ ../../Common/MemBlocks.cpp \
+ ../../Common/OutMemStream.cpp \
+ ../../Common/ProgressMt.cpp \
  ../../Common/OffsetStream.cpp \
  ../../Common/StreamUtils.cpp \
  ../../Common/OutBuffer.cpp \
@@ -87,8 +90,13 @@ SRCS=\
  ../../Compress/Shrink/ShrinkDecoder.cpp \
  ../../Compress/Z/ZDecoder.cpp \
  ../../Crypto/7zAES/7zAES.cpp \
- ../../Crypto/7zAES/SHA256.cpp \
  ../../Crypto/AES/MyAES.cpp \
+ ../../Crypto/Hash/Pbkdf2HmacSha1.cpp \
+ ../../Crypto/Hash/Sha256.cpp \
+ ../../Crypto/Hash/HmacSha1.cpp \
+ ../../Crypto/Hash/Sha1.cpp \
+ ../../Crypto/Hash/RandGen.cpp \
+ ../../Crypto/WzAES/WzAES.cpp \
  ../../Crypto/Zip/ZipCipher.cpp \
  ../../Crypto/Zip/ZipCrypto.cpp \
  ../../UI/Common/ArchiveCommandLine.cpp \
@@ -183,6 +191,12 @@ LSBFDecoder.o : ../../Common/LSBFDecoder.cpp
 	$(CXX) $(CFLAGS) ../../Common/LSBFDecoder.cpp
 LSBFEncoder.o : ../../Common/LSBFEncoder.cpp
 	$(CXX) $(CFLAGS) ../../Common/LSBFEncoder.cpp
+MemBlocks.o : ../../Common/MemBlocks.cpp
+	$(CXX) $(CFLAGS) ../../Common/MemBlocks.cpp
+OutMemStream.o : ../../Common/OutMemStream.cpp
+	$(CXX) $(CFLAGS) ../../Common/OutMemStream.cpp
+ProgressMt.o : ../../Common/ProgressMt.cpp
+	$(CXX) $(CFLAGS) ../../Common/ProgressMt.cpp
 OffsetStream.o : ../../Common/OffsetStream.cpp
 	$(CXX) $(CFLAGS) ../../Common/OffsetStream.cpp
 StreamUtils.o : ../../Common/StreamUtils.cpp
@@ -367,6 +381,18 @@ UpdatePair.o : ../../UI/Common/UpdatePair.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/UpdatePair.cpp
 UpdateProduce.o : ../../UI/Common/UpdateProduce.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/UpdateProduce.cpp
+Pbkdf2HmacSha1.o : ../../Crypto/Hash/Pbkdf2HmacSha1.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Hash/Pbkdf2HmacSha1.cpp
+Sha256.o : ../../Crypto/Hash/Sha256.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Hash/Sha256.cpp
+HmacSha1.o : ../../Crypto/Hash/HmacSha1.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Hash/HmacSha1.cpp
+Sha1.o : ../../Crypto/Hash/Sha1.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Hash/Sha1.cpp
+RandGen.o : ../../Crypto/Hash/RandGen.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Hash/RandGen.cpp
+WzAES.o : ../../Crypto/WzAES/WzAES.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/WzAES/WzAES.cpp
 ZipCipher.o : ../../Crypto/Zip/ZipCipher.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/Zip/ZipCipher.cpp
 ZipCrypto.o : ../../Crypto/Zip/ZipCrypto.cpp
@@ -375,8 +401,6 @@ MyAES.o : ../../Crypto/AES/MyAES.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/AES/MyAES.cpp
 7zAES.o : ../../Crypto/7zAES/7zAES.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/7zAES/7zAES.cpp
-SHA256.o : ../../Crypto/7zAES/SHA256.cpp
-	$(CXX) $(CFLAGS) ../../Crypto/7zAES/SHA256.cpp
 SplitHandler.o : ../../Archive/Split/SplitHandler.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Split/SplitHandler.cpp
 aescrypt.o : ../../Crypto/AES/aescrypt.c

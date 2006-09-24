@@ -329,28 +329,27 @@
   ../../Common/../../Common/MyCom.h 7zHeader.h 7zMethodID.h \
   ../../../Common/String.h ../../../Common/Vector.h \
   ../../../Common/Defs.h ../../../Common/Types.h 7zItem.h \
-  ../../../Common/Buffer.h 7zCompressionMode.h \
+  ../../../Common/Buffer.h 7zOut.h 7zCompressionMode.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
-  ../../../Windows/../Common/Types.h ../IArchive.h ../../IStream.h \
-  ../../IProgress.h ../../PropID.h 7zFolderInStream.h \
-  ../Common/InStreamWithCRC.h ../Common/../../../Common/CRC.h \
-  ../Common/../../../Common/Types.h ../Common/../../../Common/MyCom.h \
-  ../Common/../../IStream.h ../../ICoder.h ../../IStream.h 7zEncode.h \
-  ../Common/CoderMixer2.h ../Common/../../../Common/Vector.h \
-  ../Common/../../../Common/Types.h ../Common/../../ICoder.h \
-  ../Common/CoderMixer2MT.h ../Common/CoderMixer2.h \
-  ../Common/../../../Windows/Thread.h ../Common/../../../Windows/Defs.h \
-  ../Common/../../Common/StreamBinder.h \
+  ../../../Windows/../Common/Types.h 7zEncode.h ../Common/CoderMixer2.h \
+  ../Common/../../../Common/Vector.h ../Common/../../../Common/Types.h \
+  ../Common/../../../Common/MyCom.h ../Common/../../ICoder.h \
+  ../Common/../../IStream.h ../Common/CoderMixer2MT.h \
+  ../Common/CoderMixer2.h ../Common/../../../Windows/Thread.h \
+  ../Common/../../../Windows/Defs.h ../Common/../../Common/StreamBinder.h \
   ../Common/../../Common/../IStream.h \
   ../Common/../../Common/../../Windows/Synchronization.h \
   ../Common/../../Common/../../Windows/Defs.h ../Common/CoderMixer2ST.h \
   ../Common/CoderLoader.h ../Common/../../../Common/String.h \
   ../Common/../../../Windows/DLL.h \
-  ../Common/../../../Windows/../Common/String.h 7zMethods.h 7zHandler.h \
-  ../../../Windows/System.h 7zOut.h ../../Common/OutBuffer.h \
-  ../../../Common/DynamicBuffer.h ../../../Common/Buffer.h \
-  ../../../Common/CRC.h ../../Compress/Copy/CopyCoder.h \
-  ../../Compress/Copy/../../ICoder.h \
+  ../Common/../../../Windows/../Common/String.h 7zMethods.h \
+  ../../Common/OutBuffer.h ../../../Common/DynamicBuffer.h \
+  ../../../Common/Buffer.h ../../../Common/CRC.h ../../../Common/Types.h \
+  ../IArchive.h ../../IStream.h ../../IProgress.h ../../PropID.h \
+  7zFolderInStream.h ../Common/InStreamWithCRC.h \
+  ../Common/../../../Common/CRC.h ../Common/../../IStream.h \
+  ../../ICoder.h 7zHandler.h ../../../Windows/System.h \
+  ../../Compress/Copy/CopyCoder.h ../../Compress/Copy/../../ICoder.h \
   ../../Compress/Copy/../../../Common/MyCom.h \
   ../../Common/ProgressUtils.h ../../Common/../ICoder.h \
   ../../Common/../IProgress.h ../../Common/LimitedStreams.h \

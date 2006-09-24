@@ -3,11 +3,11 @@ SRCS=\
  ../../Common/StreamObjects.cpp \
  ../../Common/StreamUtils.cpp \
  ./DllExports.cpp \
- ./SHA256.cpp \
  ../../../Windows/DLL.cpp \
  ../../../Windows/FileDir.cpp \
  ../../../Windows/FileFind.cpp \
- ../../../Windows/Synchronization.cpp
+ ../../../Windows/Synchronization.cpp \
+ ../../Crypto/Hash/Sha256.cpp
 
 DllExports.o : ./DllExports.cpp
 	$(CXX) $(CFLAGS) ./DllExports.cpp
@@ -19,8 +19,8 @@ Synchronization.o : ../../../Windows/Synchronization.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/Synchronization.cpp
 7zAES.o : ./7zAES.cpp
 	$(CXX) $(CFLAGS) ./7zAES.cpp
-SHA256.o : ./SHA256.cpp
-	$(CXX) $(CFLAGS) ./SHA256.cpp
+Sha256.o : ../../Crypto/Hash/Sha256.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Hash/Sha256.cpp
 FileDir.o : ../../../Windows/FileDir.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/FileDir.cpp
 FileFind.o : ../../../Windows/FileFind.cpp

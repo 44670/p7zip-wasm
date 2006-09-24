@@ -10,7 +10,7 @@ LOCAL_FLAGS= \
   -DCOMPRESS_BCJ2 \
   -DCOMPRESS_COPY \
   -DCOMPRESS_LZMA \
-  -DCOMPRESS_MF_MT
+  -DCOMPRESS_MF_MT 
 
 include ../../../makefile.machine
 
@@ -38,7 +38,6 @@ UserInputUtils.o \
 ../../../Common/CRC.o \
 ../../../Common/IntToString.o \
 ../../../Common/ListFileUtils.o \
-../../../Common/Random.o \
 ../../../Common/MyWindows.o \
 ../../../Common/StdInStream.o \
 ../../../Common/StdOutStream.o \

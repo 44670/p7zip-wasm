@@ -10,12 +10,17 @@ Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Recommends: p7zip-full
 Suggests:
-Description: 7-Zip is a file archiver with high compression ratio
- 7-Zip is the file archiver that archives with the highest compression
- ratios. The program supports 7z (that implements LZMA compression
- algorithm).
+Description: 7zr file archiver with high compression ratio
+ p7zip is the Unix port of 7-Zip, a file archiver that archives with
+ very high compression ratios.
  .
- p7zip-full provides 7z and 7za which handles more compression formats.
+ p7zip provides /usr/bin/7zr, a standalone minimal version of the 7-zip
+ tool that only handles 7z archives. 7z compression is 30-50% better
+ than ZIP compression.
+ .
+ p7zip-full provides 7z and 7za which support more compression formats.
+ .
+  Homepage: http://p7zip.sourceforge.net/
 
 Package: p7zip-full
 Architecture: any
@@ -23,9 +28,20 @@ Depends: ${shlibs:Depends}, ${misc:Depends}
 Conflicts: p7zip (<< 4.39-1)
 Replaces: p7zip (<< 4.39-1)
 Suggests:
-Description: 7-Zip is a file archiver with high compression ratio
- 7-Zip is the file archiver that archives with the highest compression
- ratios. The program supports 7z (that implements LZMA compression
- algorithm), ZIP, Zip64, CAB, RAR, ARJ, GZIP, BZIP2, TAR, CPIO, RPM, ISO
- and DEB formats. Compression ratios with the new 7z format are 30 to 50%
- better than ratios with the ZIP format.
+Description: 7z and 7za file archivers with high compression ratio
+ p7zip is the Unix port of 7-Zip, a file archiver that archives with
+ very high compression ratios.
+ .
+ p7zip-full provides:
+  - /usr/bin/7za
+     a standalone version of the 7-zip tool that handles 7z archives
+     (implementation of the LZMA compression algorithm) and some other
+     formats.
+  - /usr/bin/7z
+     not only does it handle 7z but also ZIP, Zip64, CAB, RAR, ARJ,
+     GZIP, BZIP2, TAR, CPIO, RPM, ISO and DEB archives. 7z compression
+     is 30-50% better than ZIP compression.
+ .
+ p7zip provides 7zr, a light version of 7za.
+ .
+  Homepage: http://p7zip.sourceforge.net/

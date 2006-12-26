@@ -1,3 +1,15 @@
+p7zip (4.43~dfsg.1-2) unstable; urgency=low
+
+  * Improve description wording. (Closes: #391066, #404081, #404092)
+  * Correct manpages: 02_man.patch and debian/p7zip.1
+     + replace {DEST_SHARE_DOC} with /usr/share/doc/p7zip.
+       (Closes: #404096)
+     + improve "SEE ALSO" section by adding references to other tools and by
+       ordering them alphabetically (Closes: #403968)
+     + correct title and NAME. (Closes: #404095)
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Tue, 26 Dec 2006 20:13:19 +0100
+
 p7zip (4.43~dfsg.1-1) unstable; urgency=low
 
   * New upstream release.

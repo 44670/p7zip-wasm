@@ -1,7 +1,16 @@
 Index: p7zip-4.43~dfsg.1/man1/7z.1
 ===================================================================
---- p7zip-4.43~dfsg.1.orig/man1/7z.1	2006-09-25 00:13:17.000000000 +0200
-+++ p7zip-4.43~dfsg.1/man1/7z.1	2006-09-25 00:13:21.000000000 +0200
+--- p7zip-4.43~dfsg.1.orig/man1/7z.1	2006-09-01 13:22:38.000000000 +0200
++++ p7zip-4.43~dfsg.1/man1/7z.1	2006-12-26 20:16:50.000000000 +0100
+@@ -1,6 +1,6 @@
+-.TH P7ZIP 1 "September 1 2006" "Mohammed Adnene Trojette"
++.TH 7z 1 "September 1 2006" "Mohammed Adnene Trojette"
+ .SH NAME
+-7-Zip - A file archiver with highest compression ratio
++7z - A file archiver with highest compression ratio
+ .SH SYNOPSIS
+ .B 7z
+ .BR [adeltux]
 @@ -55,7 +55,7 @@
  don't store symlinks; store the files/directories they point to (CAUTION : the scanning stage can never end because of recursive symlinks like 'ln -s .. ldir')
  .TP
@@ -20,10 +29,33 @@ Index: p7zip-4.43~dfsg.1/man1/7z.1
  .TP
  .B -slt
  Sets technical mode for l (list) command
+@@ -165,9 +165,10 @@
+ 7z a -mhe=on -pmy_password archive.7z a_directory
+ add all files from directory "a_directory" to the archive "archive.7z" (with data and header archive encryption on)
+ .SH "SEE ALSO"
+-.BR 7za (1)
+-.BR 7zr (1)
+-.BR HTML Help ( {DEST_SHARE_DOC}/MANUAL/index.htm )
++7za(1), 7zr(1), bzip2(1), gzip(1), zip(1)
++.PP
++.SH "HTML Documentation"
++/usr/share/doc/p7zip-full/MANUAL/index.htm
+ .SH AUTHOR
+ .TP
+ Written for Debian by Mohammed Adnene Trojette.
 Index: p7zip-4.43~dfsg.1/man1/7za.1
 ===================================================================
---- p7zip-4.43~dfsg.1.orig/man1/7za.1	2006-09-25 00:13:17.000000000 +0200
-+++ p7zip-4.43~dfsg.1/man1/7za.1	2006-09-25 00:13:21.000000000 +0200
+--- p7zip-4.43~dfsg.1.orig/man1/7za.1	2006-09-01 13:23:44.000000000 +0200
++++ p7zip-4.43~dfsg.1/man1/7za.1	2006-12-26 20:16:59.000000000 +0100
+@@ -1,6 +1,6 @@
+-.TH P7ZIP 1 "September 1 2006" "Mohammed Adnene Trojette"
++.TH 7za 1 "September 1 2006" "Mohammed Adnene Trojette"
+ .SH NAME
+-7-Zip - A file archiver with highest compression ratio
++7za - A file archiver with highest compression ratio
+ .SH SYNOPSIS
+ .B 7za
+ .BR [adeltux]
 @@ -55,7 +55,7 @@
  don't store symlinks; store the files/directories they point to (CAUTION : the scanning stage can never end because of recursive symlinks like 'ln -s .. ldir')
  .TP
@@ -42,3 +74,44 @@ Index: p7zip-4.43~dfsg.1/man1/7za.1
  .TP
  .B -slt
  Sets technical mode for l (list) command
+@@ -165,9 +165,10 @@
+ 7za a -mhe=on -pmy_password archive.7z a_directory
+ add all files from directory "a_directory" to the archive "archive.7z" (with data and header archive encryption on)
+ .SH "SEE ALSO"
+-.BR 7z (1)
+-.BR 7zr (1)
+-.BR HTML Help ( {DEST_SHARE_DOC}/MANUAL/index.htm )
++7z(1), 7zr(1), bzip2(1), gzip(1), zip(1)
++.PP
++.SH "HTML Documentation"
++/usr/share/doc/p7zip-full/MANUAL/index.htm
+ .SH AUTHOR
+ .TP
+ Written for Debian by Mohammed Adnene Trojette.
+Index: p7zip-4.43~dfsg.1/man1/7zr.1
+===================================================================
+--- p7zip-4.43~dfsg.1.orig/man1/7zr.1	2006-12-26 20:04:58.000000000 +0100
++++ p7zip-4.43~dfsg.1/man1/7zr.1	2006-12-26 20:17:02.000000000 +0100
+@@ -1,6 +1,6 @@
+-.TH P7ZIP 1 "September 1 2006" "Mohammed Adnene Trojette"
++.TH 7zr 1 "September 1 2006" "Mohammed Adnene Trojette"
+ .SH NAME
+-7-Zip - A file archiver with highest compression ratio
++7zr - A file archiver with highest compression ratio
+ .SH SYNOPSIS
+ .B 7zr
+ .BR [adeltux]
+@@ -162,9 +162,10 @@
+ 7zr a -mhe=on -pmy_password archive.7z a_directory
+ add all files from directory "a_directory" to the archive "archive.7z" (with data and header archive encryption on)
+ .SH "SEE ALSO"
+-.BR 7z (1)
+-.BR 7za (1)
+-.BR HTML Help ( {DEST_SHARE_DOC}/MANUAL/index.htm )
++7z(1), 7za(1), bzip2(1), gzip(1), zip(1)
++.PP
++.SH "HTML Documentation"
++/usr/share/doc/p7zip-full/MANUAL/index.htm
+ .SH AUTHOR
+ .TP
+ Written for Debian by Mohammed Adnene Trojette.

@@ -1,0 +1,146 @@
+InBuffer.o: ../../Common/InBuffer.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/InBuffer.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/Alloc.h
+OutBuffer.o: ../../Common/OutBuffer.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/OutBuffer.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/Alloc.h
+StreamUtils.o: ../../Common/StreamUtils.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/../../Common/MyCom.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/StreamUtils.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/Types.h
+DllExports.o: DllExports.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Common/MyInitGuid.h \
+  ../../../Common/MyGuidDef.h ../../../Common/ComTry.h \
+  ../../../Common/MyWindows.h LZMAEncoder.h ../../../Common/MyCom.h \
+  ../../../Common/Alloc.h ../../ICoder.h ../../IStream.h \
+  ../../../Common/MyUnknown.h ../../../Common/Types.h \
+  ../../../../C/Compress/Lz/MatchFinder.h \
+  ../../../../C/Compress/Lz/../../IStream.h \
+  ../../../../C/Compress/Lz/../../Types.h \
+  ../../../../C/Compress/Lz/MatchFinderMt.h \
+  ../../../../C/Compress/Lz/../../Threads.h \
+  ../../../../C/Compress/Lz/MatchFinder.h \
+  ../RangeCoder/RangeCoderBitTree.h ../RangeCoder/RangeCoderBit.h \
+  ../RangeCoder/RangeCoder.h ../RangeCoder/../../Common/InBuffer.h \
+  ../RangeCoder/../../Common/../IStream.h \
+  ../RangeCoder/../../Common/../../Common/MyCom.h \
+  ../RangeCoder/../../Common/OutBuffer.h ../RangeCoder/RangeCoderOpt.h \
+  LZMA.h LZMADecoder.h ../LZ/LZOutWindow.h ../LZ/../../IStream.h \
+  ../LZ/../../Common/OutBuffer.h
+LZOutWindow.o: ../LZ/LZOutWindow.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../LZ/../../../Common/Alloc.h \
+  ../LZ/LZOutWindow.h ../LZ/../../IStream.h \
+  ../LZ/../../../Common/MyUnknown.h ../LZ/../../../Common/MyWindows.h \
+  ../LZ/../../../Common/Types.h ../LZ/../../Common/OutBuffer.h \
+  ../LZ/../../Common/../IStream.h ../LZ/../../Common/../../Common/MyCom.h \
+  ../LZ/../../Common/../../Common/MyWindows.h
+LZMADecoder.o: LZMADecoder.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h LZMADecoder.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../../Common/Alloc.h ../../ICoder.h \
+  ../../IStream.h ../../../Common/MyUnknown.h ../../../Common/Types.h \
+  ../LZ/LZOutWindow.h ../LZ/../../IStream.h \
+  ../LZ/../../Common/OutBuffer.h ../LZ/../../Common/../IStream.h \
+  ../LZ/../../Common/../../Common/MyCom.h \
+  ../RangeCoder/RangeCoderBitTree.h ../RangeCoder/RangeCoderBit.h \
+  ../RangeCoder/RangeCoder.h ../RangeCoder/../../Common/InBuffer.h \
+  ../RangeCoder/../../Common/../IStream.h \
+  ../RangeCoder/../../Common/../../Common/MyCom.h \
+  ../RangeCoder/../../Common/OutBuffer.h ../RangeCoder/RangeCoderOpt.h \
+  LZMA.h ../../../Common/Defs.h
+LZMAEncoder.o: LZMAEncoder.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Common/Defs.h \
+  ../../Common/StreamUtils.h ../../Common/../IStream.h \
+  ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
+  LZMAEncoder.h ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../../Common/Alloc.h ../../ICoder.h ../../IStream.h \
+  ../../../../C/Compress/Lz/MatchFinder.h \
+  ../../../../C/Compress/Lz/../../IStream.h \
+  ../../../../C/Compress/Lz/../../Types.h \
+  ../../../../C/Compress/Lz/MatchFinderMt.h \
+  ../../../../C/Compress/Lz/../../Threads.h \
+  ../../../../C/Compress/Lz/MatchFinder.h \
+  ../RangeCoder/RangeCoderBitTree.h ../RangeCoder/RangeCoderBit.h \
+  ../RangeCoder/RangeCoder.h ../RangeCoder/../../Common/InBuffer.h \
+  ../RangeCoder/../../Common/../IStream.h \
+  ../RangeCoder/../../Common/../../Common/MyCom.h \
+  ../RangeCoder/../../Common/OutBuffer.h ../RangeCoder/RangeCoderOpt.h \
+  LZMA.h
+RangeCoderBit.o: ../RangeCoder/RangeCoderBit.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../Common/MyWindows.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../RangeCoder/RangeCoderBit.h ../RangeCoder/RangeCoder.h \
+  ../RangeCoder/../../Common/InBuffer.h \
+  ../RangeCoder/../../Common/../IStream.h \
+  ../RangeCoder/../../Common/../../Common/MyUnknown.h \
+  ../RangeCoder/../../Common/../../Common/MyWindows.h \
+  ../RangeCoder/../../Common/../../Common/Types.h \
+  ../RangeCoder/../../Common/../../Common/MyCom.h \
+  ../RangeCoder/../../Common/OutBuffer.h
+Synchronization.o: ../../../Windows/Synchronization.cpp \
+  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../Common/MyWindows.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Windows/Synchronization.h ../../../Windows/Defs.h
+7zCrc.o: ../../../../C/7zCrc.c ../../../../C/7zCrc.h \
+  ../../../../C/Types.h
+Sort.o: ../../../../C/Sort.c ../../../../C/Sort.h ../../../../C/Types.h
+Threads.o: ../../../../C/Threads.c ../../../../C/Threads.h \
+  ../../../include_windows/windows.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/basetyps.h ../../../../C/Types.h
+MatchFinder.o: ../../../../C/Compress/Lz/MatchFinder.c \
+  ../../../../C/Compress/Lz/MatchFinder.h \
+  ../../../../C/Compress/Lz/../../IStream.h \
+  ../../../../C/Compress/Lz/../../Types.h \
+  ../../../../C/Compress/Lz/LzHash.h \
+  ../../../../C/Compress/Lz/../../7zCrc.h
+MatchFinderMt.o: ../../../../C/Compress/Lz/MatchFinderMt.c \
+  ../../../../C/Compress/Lz/../../7zCrc.h \
+  ../../../../C/Compress/Lz/../../Types.h \
+  ../../../../C/Compress/Lz/LzHash.h \
+  ../../../../C/Compress/Lz/MatchFinderMt.h \
+  ../../../../C/Compress/Lz/../../Threads.h \
+  ../../../include_windows/windows.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../include_windows/basetyps.h \
+  ../../../../C/Compress/Lz/MatchFinder.h \
+  ../../../../C/Compress/Lz/../../IStream.h

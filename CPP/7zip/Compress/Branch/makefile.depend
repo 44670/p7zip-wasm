@@ -1,0 +1,133 @@
+ARM.o: ARM.cpp ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../Common/MyWindows.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ARM.h BranchCoder.h ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/Alloc.h ../../ICoder.h \
+  ../../IStream.h ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../../C/Compress/Branch/BranchARM.c \
+  ../../../../C/Compress/Branch/BranchARM.h \
+  ../../../../C/Compress/Branch/BranchTypes.h
+ARMThumb.o: ARMThumb.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ARMThumb.h BranchCoder.h \
+  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/Alloc.h ../../ICoder.h \
+  ../../IStream.h ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../../C/Compress/Branch/BranchARMThumb.c \
+  ../../../../C/Compress/Branch/BranchARMThumb.h \
+  ../../../../C/Compress/Branch/BranchTypes.h
+BranchCoder.o: BranchCoder.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h BranchCoder.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/Alloc.h ../../ICoder.h ../../IStream.h \
+  ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h
+InBuffer.o: ../../Common/InBuffer.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/InBuffer.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/Alloc.h
+OutBuffer.o: ../../Common/OutBuffer.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../Common/OutBuffer.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/Alloc.h
+DllExports.o: DllExports.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h ../../../Common/MyInitGuid.h \
+  ../../../Common/ComTry.h ../../../Common/MyWindows.h x86.h \
+  BranchCoder.h ../../../Common/MyCom.h ../../../Common/Types.h \
+  ../../../Common/Alloc.h ../../ICoder.h ../../IStream.h \
+  ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../../C/Compress/Branch/BranchX86.h \
+  ../../../../C/Compress/Branch/BranchTypes.h PPC.h IA64.h ARM.h \
+  ARMThumb.h x86_2.h ../../../Common/MyCom.h \
+  ../RangeCoder/RangeCoderBit.h ../RangeCoder/RangeCoder.h \
+  ../RangeCoder/../../Common/InBuffer.h \
+  ../RangeCoder/../../Common/../IStream.h \
+  ../RangeCoder/../../Common/../../Common/MyCom.h \
+  ../RangeCoder/../../Common/OutBuffer.h SPARC.h
+IA64.o: IA64.cpp ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../Common/MyWindows.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  IA64.h BranchCoder.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../../../Common/Types.h \
+  ../../../Common/Alloc.h ../../ICoder.h ../../IStream.h \
+  ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../../C/Compress/Branch/BranchIA64.c \
+  ../../../../C/Compress/Branch/BranchIA64.h \
+  ../../../../C/Compress/Branch/BranchTypes.h
+PPC.o: PPC.cpp ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../Common/MyWindows.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  PPC.h BranchCoder.h ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/Alloc.h ../../ICoder.h \
+  ../../IStream.h ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Windows/Defs.h \
+  ../../../../C/Compress/Branch/BranchPPC.c \
+  ../../../../C/Compress/Branch/BranchPPC.h \
+  ../../../../C/Compress/Branch/BranchTypes.h
+SPARC.o: SPARC.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h SPARC.h BranchCoder.h \
+  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/Alloc.h ../../ICoder.h \
+  ../../IStream.h ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Windows/Defs.h \
+  ../../../../C/Compress/Branch/BranchSPARC.c \
+  ../../../../C/Compress/Branch/BranchSPARC.h \
+  ../../../../C/Compress/Branch/BranchTypes.h
+x86_2.o: x86_2.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../Common/Types.h ../../../include_windows/windows.h \
+  ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h x86_2.h ../../../Common/MyCom.h \
+  ../../../Common/MyWindows.h ../RangeCoder/RangeCoderBit.h \
+  ../RangeCoder/RangeCoder.h ../RangeCoder/../../Common/InBuffer.h \
+  ../RangeCoder/../../Common/../IStream.h \
+  ../RangeCoder/../../Common/../../Common/MyUnknown.h \
+  ../RangeCoder/../../Common/../../Common/MyWindows.h \
+  ../RangeCoder/../../Common/../../Common/Types.h \
+  ../RangeCoder/../../Common/../../Common/MyCom.h \
+  ../RangeCoder/../../Common/OutBuffer.h ../../ICoder.h ../../IStream.h \
+  ../../../Common/Alloc.h
+x86.o: x86.cpp ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
+  ../../../Common/MyWindows.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../Common/MyWindows.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  x86.h BranchCoder.h ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../Common/Alloc.h ../../ICoder.h \
+  ../../IStream.h ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
+  ../../../Common/Types.h ../../../../C/Compress/Branch/BranchX86.h \
+  ../../../../C/Compress/Branch/BranchTypes.h ../../../Windows/Defs.h \
+  ../../../../C/Compress/Branch/BranchX86.c \
+  ../../../../C/Compress/Branch/BranchX86.h

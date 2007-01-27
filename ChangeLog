@@ -1,4 +1,38 @@
 
+Version 4.44
+============
+
+  - From Windows version of 7-zip 4.43 :
+    - 7za : Cab support
+    - Speed optimizations for LZMA, Deflate, BZip2 and unRAR.
+    - fix : now, updating a crypted header archive keeps the crypted header 
+
+  - fixes in the help displayed by 7za/7z/7zr.
+
+  - code cleanup
+    - remove of mySetModuleFileNameA (and its memory leak), GetModuleFileName ...
+
+  - fixed : p7zip for DJGPP can now update an archive (thanks stranix)
+
+  - fixed : in the plugins of 7z, the "Utf16" state was always off.
+
+  - fixed : support for directory names that are not encoded with the current locale.
+    (ex : directory name is in "iso 8859-15" whereas the locale is "utf8")
+
+  - patch #1581907 : fix for FreeBSD in contrib/gzip-like_CLI_wrapper_for_7z/p7zip
+
+  - fixed : p7zip can now restore a symbolic link from a Zip archive (archive.zip made with "zip -y")
+      remark/todo : p7zip stores, in a zip archive, the linked file instead of the symbolic link
+
+  - fixed #1630452 : small fix in the output of the script install.sh
+
+  - fixed #632912 : Extracting large directories takes quadratic time
+
+  - preliminary support of HP-UX : remove of RTLD_GROUP for dlopen in DLL.cpp
+      makefile.hpux-acc should be able to build 7za for HP-UX (thanks to furiol)
+
+  - Client7z added.
+
 Version 4.43
 ============
   - From Windows version of 7-zip 4.43 :
@@ -11,6 +45,8 @@ Version 4.43
     - Some bugs were fixed.
 
   - fixed : the user can now see the percentage indicator.
+
+  - fix "Bugs item #1612285" : doesn't preserve directory timestamps
 
   - support added for Tru64 / OSF 5.1  (makefile.tru64)
 

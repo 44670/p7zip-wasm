@@ -15,18 +15,18 @@
 <H4>Examples</H4>
 
 <PRE class="example">
-7z a -tzip archive.zip subdir\*
+7z a -tzip archive.zip subdir\
 </PRE>
 
-<P>adds all files from directory <SPAN class="filename">subdir</SPAN> to archive
+<P>adds all files and subfolders from folder <SPAN class="filename">subdir</SPAN> to archive
   <SPAN class="filename">archive.zip</SPAN>.</P>
 
 <PRE class="example">
-7z a -tzip Files.zip "Program files\*"
+7z a -t7zip Files.7z *.txt -r
 </PRE>
 
-<P>adds all files from directory <SPAN class="filename">Program</SPAN> to archive
-    <SPAN class="filename">Files.zip</SPAN>.</P>
+<P>adds all *.txt files from current folder and its subfolders to archive
+    <SPAN class="filename">Files.7z</SPAN>.</P>
 
 <H4>Switches that can be used with this command</H4>
 

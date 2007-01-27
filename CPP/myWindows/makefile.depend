@@ -1,0 +1,34 @@
+myGetTickCount.o: myGetTickCount.cpp StdAfx.h config.h \
+  ../Common/MyWindows.h ../Common/MyGuidDef.h ../Common/Types.h \
+  ../Common/Types.h ../include_windows/windows.h ../Common/MyWindows.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h
+mySplitCommandLine.o: mySplitCommandLine.cpp StdAfx.h config.h \
+  ../Common/MyWindows.h ../Common/MyGuidDef.h ../Common/Types.h \
+  ../Common/Types.h ../include_windows/windows.h ../Common/MyWindows.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h \
+  ../Common/StringConvert.h ../Common/MyWindows.h ../Common/String.h \
+  ../Common/Vector.h ../Common/Defs.h myPrivate.h
+myAddExeFlag.o: myAddExeFlag.cpp StdAfx.h config.h ../Common/MyWindows.h \
+  ../Common/MyGuidDef.h ../Common/Types.h ../Common/Types.h \
+  ../include_windows/windows.h ../Common/MyWindows.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h myPrivate.h \
+  ../Common/StringConvert.h ../Common/MyWindows.h ../Common/String.h \
+  ../Common/Vector.h ../Common/Defs.h
+myGetNumberOfProcessors.o: myGetNumberOfProcessors.cpp
+test_emul.o: test_emul.cpp StdAfx.h config.h ../Common/MyWindows.h \
+  ../Common/MyGuidDef.h ../Common/Types.h ../Common/Types.h \
+  ../include_windows/windows.h ../Common/MyWindows.h \
+  ../include_windows/basetyps.h ../include_windows/tchar.h \
+  ../Common/StringConvert.h ../Common/MyWindows.h ../Common/String.h \
+  ../Common/Vector.h ../Common/Defs.h ../Common/StdOutStream.h \
+  ../Common/StringConvert.cpp StdAfx.h ../Common/StringConvert.h \
+  ../Common/StdOutStream.cpp ../Common/StdOutStream.h \
+  ../Common/IntToString.h ../Common/StringConvert.h \
+  ../Common/IntToString.cpp ../Common/IntToString.h \
+  ../Windows/Synchronization.cpp StdAfx.h ../Windows/Synchronization.h \
+  ../Windows/Defs.h ../Windows/FileFind.cpp ../Windows/FileFind.h \
+  ../Windows/../Common/String.h ../Windows/FileName.h \
+  ../Windows/../Common/StringConvert.h myPrivate.h
+wine_date_and_time.o: wine_date_and_time.cpp config.h \
+  ../include_windows/windows.h ../Common/MyWindows.h \
+  ../Common/MyGuidDef.h ../Common/Types.h ../include_windows/basetyps.h

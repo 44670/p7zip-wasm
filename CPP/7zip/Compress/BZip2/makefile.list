@@ -1,0 +1,32 @@
+SRCS=\
+ ../BWT/BlockSort.cpp \
+ ./BZip2CRC.cpp \
+ ./BZip2Decoder.cpp \
+ ./BZip2Encoder.cpp \
+ ../../Common/InBuffer.cpp \
+ ../../Common/OutBuffer.cpp \
+ ./DllExports.cpp \
+ ../../../Windows/Synchronization.cpp \
+../../../../C/Sort.c \
+../../../../C/Compress/Huffman/HuffmanEncode.c
+
+DllExports.o : ./DllExports.cpp
+	$(CXX) $(CFLAGS) ./DllExports.cpp
+BZip2Decoder.o : ./BZip2Decoder.cpp
+	$(CXX) $(CFLAGS) ./BZip2Decoder.cpp
+BZip2Encoder.o : ./BZip2Encoder.cpp
+	$(CXX) $(CFLAGS) ./BZip2Encoder.cpp
+BZip2CRC.o : ./BZip2CRC.cpp
+	$(CXX) $(CFLAGS) ./BZip2CRC.cpp
+BlockSort.o : ../BWT/BlockSort.cpp
+	$(CXX) $(CFLAGS) ../BWT/BlockSort.cpp
+InBuffer.o : ../../Common/InBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
+OutBuffer.o : ../../Common/OutBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp
+Synchronization.o : ../../../Windows/Synchronization.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/Synchronization.cpp
+Sort.o : ../../../../C/Sort.c
+	$(CC) $(CFLAGS) ../../../../C/Sort.c
+HuffmanEncode.o : ../../../../C/Compress/Huffman/HuffmanEncode.c
+	$(CC) $(CFLAGS) ../../../../C/Compress/Huffman/HuffmanEncode.c

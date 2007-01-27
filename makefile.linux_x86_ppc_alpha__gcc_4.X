@@ -6,12 +6,11 @@
 OPTFLAGS=-O
 
 ALLFLAGS=${OPTFLAGS} -s -fPIC \
-	-DHAVE_GCCVISIBILITYPATCH -fvisibility=hidden -fvisibility-inlines-hidden \
     	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
 	-DNDEBUG -D_REENTRANT -DENV_UNIX \
 	$(LOCAL_FLAGS)
 
-CXX=g++ $(ALLFLAGS)
+CXX=g++ $(ALLFLAGS) -DHAVE_GCCVISIBILITYPATCH -fvisibility=hidden -fvisibility-inlines-hidden
 CC=gcc $(ALLFLAGS)
 LINK_SHARED=-shared
 

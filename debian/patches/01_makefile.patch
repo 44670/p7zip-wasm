@@ -1,28 +1,28 @@
-Index: p7zip-4.43~dfsg.1/makefile
+Index: p7zip-4.44/makefile
 ===================================================================
---- p7zip-4.43~dfsg.1.orig/makefile	2006-09-25 00:13:17.000000000 +0200
-+++ p7zip-4.43~dfsg.1/makefile	2006-09-25 00:13:21.000000000 +0200
-@@ -54,7 +54,6 @@
- 	cd 7zip/Compress/Implode  ; $(MAKE) depend
- 	cd 7zip/Compress/LZMA     ; $(MAKE) depend
- 	cd 7zip/Compress/PPMD     ; $(MAKE) depend
--	cd 7zip/Compress/Rar29    ; $(MAKE) depend
- 	cd 7zip/Crypto/7zAES      ; $(MAKE) depend
- 	cd 7zip/Crypto/AES        ; $(MAKE) depend
- 	cd 7zip/Bundles/Alone7z   ; $(MAKE) depend
-@@ -92,7 +91,6 @@
- 	cd 7zip/Compress/Implode  ; $(MAKE) all
- 	cd 7zip/Compress/LZMA     ; $(MAKE) all
- 	cd 7zip/Compress/PPMD     ; $(MAKE) all
--	cd 7zip/Compress/Rar29    ; $(MAKE) all
- 	cd 7zip/Crypto/7zAES      ; $(MAKE) all
- 	cd 7zip/Crypto/AES        ; $(MAKE) all
+--- p7zip-4.44.orig/makefile	2007-01-23 22:02:08.000000000 +0100
++++ p7zip-4.44/makefile	2007-01-27 01:10:36.000000000 +0100
+@@ -62,7 +62,6 @@
+ 	cd CPP/7zip/Compress/Deflate  ; $(MAKE) depend
+ 	cd CPP/7zip/Compress/LZMA     ; $(MAKE) depend
+ 	cd CPP/7zip/Compress/PPMD     ; $(MAKE) depend
+-	cd CPP/7zip/Compress/Rar      ; $(MAKE) depend
+ 	cd CPP/7zip/Crypto/7zAES      ; $(MAKE) depend
+ 	cd CPP/7zip/Crypto/AES        ; $(MAKE) depend
+ 	cd CPP/7zip/Bundles/Alone7z   ; $(MAKE) depend
+@@ -99,7 +98,6 @@
+ 	cd CPP/7zip/Compress/Deflate  ; $(MAKE) all
+ 	cd CPP/7zip/Compress/LZMA     ; $(MAKE) all
+ 	cd CPP/7zip/Compress/PPMD     ; $(MAKE) all
+-	cd CPP/7zip/Compress/Rar      ; $(MAKE) all
+ 	cd CPP/7zip/Crypto/7zAES      ; $(MAKE) all
+ 	cd CPP/7zip/Crypto/AES        ; $(MAKE) all
  
-@@ -127,7 +125,6 @@
- 	cd 7zip/Compress/Implode  ; $(MAKE) clean
- 	cd 7zip/Compress/LZMA     ; $(MAKE) clean
- 	cd 7zip/Compress/PPMD     ; $(MAKE) clean
--	cd 7zip/Compress/Rar29    ; $(MAKE) clean
- 	cd 7zip/Crypto/7zAES      ; $(MAKE) clean
- 	cd 7zip/Crypto/AES        ; $(MAKE) clean
- 	cd 7zip/Bundles/Alone7z   ; $(MAKE) clean
+@@ -134,7 +132,6 @@
+ 	cd CPP/7zip/Compress/Deflate  ; $(MAKE) clean
+ 	cd CPP/7zip/Compress/LZMA     ; $(MAKE) clean
+ 	cd CPP/7zip/Compress/PPMD     ; $(MAKE) clean
+-	cd CPP/7zip/Compress/Rar      ; $(MAKE) clean
+ 	cd CPP/7zip/Crypto/7zAES      ; $(MAKE) clean
+ 	cd CPP/7zip/Crypto/AES        ; $(MAKE) clean
+ 	cd CPP/7zip/Bundles/Alone7z   ; $(MAKE) clean

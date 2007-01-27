@@ -66,7 +66,7 @@ then
 
   if [ -x bin/7zr ]
   then
-    echo "-installing ${DEST_DIR}${DEST_BIN}/7zr"
+    echo "- installing ${DEST_DIR}${DEST_BIN}/7zr"
     cp bin/7zr ${DEST_DIR}${DEST_SHARE}/7zr
     chmod 777 ${DEST_DIR}${DEST_SHARE}/7zr
     strip     ${DEST_DIR}${DEST_SHARE}/7zr

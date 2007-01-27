@@ -1,0 +1,48 @@
+SRCS=\
+../../../Windows/DLL.cpp \
+../../../Windows/FileDir.cpp \
+../../../Windows/FileFind.cpp \
+../../../Windows/FileIO.cpp \
+../../../Windows/FileName.cpp \
+../../../Windows/PropVariant.cpp \
+../../../Windows/PropVariantConversions.cpp \
+../../../Common/IntToString.cpp \
+../../../Common/MyWindows.cpp \
+../../../Common/String.cpp \
+../../../Common/StringConvert.cpp \
+../../../Common/Vector.cpp \
+../../../Common/Wildcard.cpp \
+../../Common/FileStreams.cpp \
+./Client7z.cpp
+
+DLL.o : ../../../Windows/DLL.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/DLL.cpp
+FileDir.o : ../../../Windows/FileDir.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileDir.cpp
+FileFind.o : ../../../Windows/FileFind.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileFind.cpp
+FileIO.o : ../../../Windows/FileIO.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileIO.cpp
+FileName.o : ../../../Windows/FileName.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileName.cpp
+PropVariant.o : ../../../Windows/PropVariant.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
+PropVariantConversions.o : ../../../Windows/PropVariantConversions.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/PropVariantConversions.cpp
+IntToString.o : ../../../Common/IntToString.cpp
+	$(CXX) $(CFLAGS) ../../../Common/IntToString.cpp
+MyWindows.o : ../../../Common/MyWindows.cpp
+	$(CXX) $(CFLAGS) ../../../Common/MyWindows.cpp
+String.o : ../../../Common/String.cpp
+	$(CXX) $(CFLAGS) ../../../Common/String.cpp
+StringConvert.o : ../../../Common/StringConvert.cpp
+	$(CXX) $(CFLAGS) ../../../Common/StringConvert.cpp
+Vector.o : ../../../Common/Vector.cpp
+	$(CXX) $(CFLAGS) ../../../Common/Vector.cpp
+Wildcard.o : ../../../Common/Wildcard.cpp
+	$(CXX) $(CFLAGS) ../../../Common/Wildcard.cpp
+FileStreams.o : ../../Common/FileStreams.cpp
+	$(CXX) $(CFLAGS) ../../Common/FileStreams.cpp
+Client7z.o : ./Client7z.cpp
+	$(CXX) $(CFLAGS) ./Client7z.cpp
+

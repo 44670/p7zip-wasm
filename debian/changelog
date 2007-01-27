@@ -1,3 +1,10 @@
+p7zip (4.44~dfsg.1-1) experimental; urgency=low
+
+  * New upstream version.
+  * Refresh patches and escape hyphens in manpages.
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sat, 27 Jan 2007 01:30:00 +0100
+
 p7zip (4.43~dfsg.1-2) unstable; urgency=low
 
   * Improve description wording. (Closes: #391066, #404081, #404092)

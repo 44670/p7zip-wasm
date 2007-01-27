@@ -3,7 +3,7 @@ DEST_BIN=/usr/local/bin
 DEST_SHARE=/usr/local/lib/p7zip
 DEST_MAN=/usr/local/man
 
-.PHONY: default all all2 7za sfx 7z 7zr common clean tar_bin depend test test_7z test_7zr
+.PHONY: default all all2 7za sfx 7z 7zr Client7z common clean tar_bin depend test test_7z test_7zr test_Client7z all_test
 
 default:7za
 
@@ -13,125 +13,134 @@ all2: 7za sfx 7z
 
 all3: 7za sfx 7z 7zr
 
+all_test : test test_7z test_7zr test_Client7z
+
 common:
 	mkdir -p  bin
-	cd Common       ; $(MAKE) all
-	cd myWindows    ; $(MAKE) all
+	cd CPP/Common       ; $(MAKE) all
+	cd CPP/myWindows    ; $(MAKE) all
 
 7za: common
-	cd 7zip/Bundles/Alone ; $(MAKE) all
+	cd CPP/7zip/Bundles/Alone ; $(MAKE) all
 
 7zr: common
-	cd 7zip/Bundles/Alone7z ; $(MAKE) all
+	cd CPP/7zip/Bundles/Alone7z ; $(MAKE) all
+
+Client7z: common
+	mkdir -p  bin/Formats
+	cd CPP/7zip/Bundles/Format7z ; $(MAKE) all
+	cd CPP/7zip/UI/Client7z      ; $(MAKE) all
+
 depend:
-	cd Common                 ; $(MAKE) depend
-	cd myWindows              ; $(MAKE) depend
-	cd 7zip/Bundles/Alone     ; $(MAKE) depend
-	cd 7zip/Bundles/SFXCon    ; $(MAKE) depend
-	cd 7zip/UI/Console        ; $(MAKE) depend
-	cd 7zip/Archive/7z        ; $(MAKE) depend
-	cd 7zip/Archive/Arj       ; $(MAKE) depend
-	cd 7zip/Archive/BZip2     ; $(MAKE) depend
-	cd 7zip/Archive/Cab       ; $(MAKE) depend
-	cd 7zip/Archive/Chm       ; $(MAKE) depend
-	cd 7zip/Archive/Cpio      ; $(MAKE) depend
-	cd 7zip/Archive/Deb       ; $(MAKE) depend
-	cd 7zip/Archive/GZip      ; $(MAKE) depend
-	cd 7zip/Archive/Iso       ; $(MAKE) depend
-	cd 7zip/Archive/Lzh       ; $(MAKE) depend
-	cd 7zip/Archive/Nsis      ; $(MAKE) depend
-	cd 7zip/Archive/Rar       ; $(MAKE) depend
-	cd 7zip/Archive/RPM       ; $(MAKE) depend
-	cd 7zip/Archive/Split     ; $(MAKE) depend
-	cd 7zip/Archive/Tar       ; $(MAKE) depend
-	cd 7zip/Archive/Z         ; $(MAKE) depend
-	cd 7zip/Archive/Zip       ; $(MAKE) depend
-	cd 7zip/Compress/Branch   ; $(MAKE) depend
-	cd 7zip/Compress/ByteSwap ; $(MAKE) depend
-	cd 7zip/Compress/BZip2    ; $(MAKE) depend
-	cd 7zip/Compress/Copy     ; $(MAKE) depend
-	cd 7zip/Compress/Deflate  ; $(MAKE) depend
-	cd 7zip/Compress/Implode  ; $(MAKE) depend
-	cd 7zip/Compress/LZMA     ; $(MAKE) depend
-	cd 7zip/Compress/PPMD     ; $(MAKE) depend
-	cd 7zip/Compress/Rar29    ; $(MAKE) depend
-	cd 7zip/Crypto/7zAES      ; $(MAKE) depend
-	cd 7zip/Crypto/AES        ; $(MAKE) depend
-	cd 7zip/Bundles/Alone7z   ; $(MAKE) depend
-	cd 7zip/Bundles/Format7z  ; $(MAKE) depend
+	cd CPP/Common                 ; $(MAKE) depend
+	cd CPP/myWindows              ; $(MAKE) depend
+	cd CPP/7zip/Bundles/Alone     ; $(MAKE) depend
+	cd CPP/7zip/Bundles/SFXCon    ; $(MAKE) depend
+	cd CPP/7zip/UI/Console        ; $(MAKE) depend
+	cd CPP/7zip/UI/Client7z       ; $(MAKE) depend
+	cd CPP/7zip/Archive/7z        ; $(MAKE) depend
+	cd CPP/7zip/Archive/Arj       ; $(MAKE) depend
+	cd CPP/7zip/Archive/BZip2     ; $(MAKE) depend
+	cd CPP/7zip/Archive/Cab       ; $(MAKE) depend
+	cd CPP/7zip/Archive/Chm       ; $(MAKE) depend
+	cd CPP/7zip/Archive/Cpio      ; $(MAKE) depend
+	cd CPP/7zip/Archive/Deb       ; $(MAKE) depend
+	cd CPP/7zip/Archive/GZip      ; $(MAKE) depend
+	cd CPP/7zip/Archive/Iso       ; $(MAKE) depend
+	cd CPP/7zip/Archive/Lzh       ; $(MAKE) depend
+	cd CPP/7zip/Archive/Nsis      ; $(MAKE) depend
+	cd CPP/7zip/Archive/Rar       ; $(MAKE) depend
+	cd CPP/7zip/Archive/RPM       ; $(MAKE) depend
+	cd CPP/7zip/Archive/Split     ; $(MAKE) depend
+	cd CPP/7zip/Archive/Tar       ; $(MAKE) depend
+	cd CPP/7zip/Archive/Z         ; $(MAKE) depend
+	cd CPP/7zip/Archive/Zip       ; $(MAKE) depend
+	cd CPP/7zip/Compress/Branch   ; $(MAKE) depend
+	cd CPP/7zip/Compress/ByteSwap ; $(MAKE) depend
+	cd CPP/7zip/Compress/BZip2    ; $(MAKE) depend
+	cd CPP/7zip/Compress/Copy     ; $(MAKE) depend
+	cd CPP/7zip/Compress/Deflate  ; $(MAKE) depend
+	cd CPP/7zip/Compress/LZMA     ; $(MAKE) depend
+	cd CPP/7zip/Compress/PPMD     ; $(MAKE) depend
+	cd CPP/7zip/Compress/Rar      ; $(MAKE) depend
+	cd CPP/7zip/Crypto/7zAES      ; $(MAKE) depend
+	cd CPP/7zip/Crypto/AES        ; $(MAKE) depend
+	cd CPP/7zip/Bundles/Alone7z   ; $(MAKE) depend
+	cd CPP/7zip/Bundles/Format7z  ; $(MAKE) depend
 
 sfx: common
 	mkdir -p  bin
-	cd 7zip/Bundles/SFXCon ; $(MAKE) all
+	cd CPP/7zip/Bundles/SFXCon ; $(MAKE) all
 
 7z: common
 	mkdir -p  bin/Codecs bin/Formats
-	cd 7zip/UI/Console        ; $(MAKE) all
-	cd 7zip/Archive/7z        ; $(MAKE) all
-	cd 7zip/Archive/Arj       ; $(MAKE) all
-	cd 7zip/Archive/BZip2     ; $(MAKE) all
-	cd 7zip/Archive/Cab       ; $(MAKE) all
-	cd 7zip/Archive/Chm       ; $(MAKE) all
-	cd 7zip/Archive/Cpio      ; $(MAKE) all
-	cd 7zip/Archive/Deb       ; $(MAKE) all
-	cd 7zip/Archive/GZip      ; $(MAKE) all
-	cd 7zip/Archive/Iso       ; $(MAKE) all
-	cd 7zip/Archive/Lzh       ; $(MAKE) all
-	cd 7zip/Archive/Nsis      ; $(MAKE) all
-	cd 7zip/Archive/Rar       ; $(MAKE) all
-	cd 7zip/Archive/RPM       ; $(MAKE) all
-	cd 7zip/Archive/Split     ; $(MAKE) all
-	cd 7zip/Archive/Tar       ; $(MAKE) all
-	cd 7zip/Archive/Z         ; $(MAKE) all
-	cd 7zip/Archive/Zip       ; $(MAKE) all
-	cd 7zip/Compress/Branch   ; $(MAKE) all
-	cd 7zip/Compress/ByteSwap ; $(MAKE) all
-	cd 7zip/Compress/BZip2    ; $(MAKE) all
-	cd 7zip/Compress/Copy     ; $(MAKE) all
-	cd 7zip/Compress/Deflate  ; $(MAKE) all
-	cd 7zip/Compress/Implode  ; $(MAKE) all
-	cd 7zip/Compress/LZMA     ; $(MAKE) all
-	cd 7zip/Compress/PPMD     ; $(MAKE) all
-	cd 7zip/Compress/Rar29    ; $(MAKE) all
-	cd 7zip/Crypto/7zAES      ; $(MAKE) all
-	cd 7zip/Crypto/AES        ; $(MAKE) all
+	cd CPP/7zip/UI/Console        ; $(MAKE) all
+	cd CPP/7zip/Archive/7z        ; $(MAKE) all
+	cd CPP/7zip/Archive/Arj       ; $(MAKE) all
+	cd CPP/7zip/Archive/BZip2     ; $(MAKE) all
+	cd CPP/7zip/Archive/Cab       ; $(MAKE) all
+	cd CPP/7zip/Archive/Chm       ; $(MAKE) all
+	cd CPP/7zip/Archive/Cpio      ; $(MAKE) all
+	cd CPP/7zip/Archive/Deb       ; $(MAKE) all
+	cd CPP/7zip/Archive/GZip      ; $(MAKE) all
+	cd CPP/7zip/Archive/Iso       ; $(MAKE) all
+	cd CPP/7zip/Archive/Lzh       ; $(MAKE) all
+	cd CPP/7zip/Archive/Nsis      ; $(MAKE) all
+	cd CPP/7zip/Archive/Rar       ; $(MAKE) all
+	cd CPP/7zip/Archive/RPM       ; $(MAKE) all
+	cd CPP/7zip/Archive/Split     ; $(MAKE) all
+	cd CPP/7zip/Archive/Tar       ; $(MAKE) all
+	cd CPP/7zip/Archive/Z         ; $(MAKE) all
+	cd CPP/7zip/Archive/Zip       ; $(MAKE) all
+	cd CPP/7zip/Compress/Branch   ; $(MAKE) all
+	cd CPP/7zip/Compress/ByteSwap ; $(MAKE) all
+	cd CPP/7zip/Compress/BZip2    ; $(MAKE) all
+	cd CPP/7zip/Compress/Copy     ; $(MAKE) all
+	cd CPP/7zip/Compress/Deflate  ; $(MAKE) all
+	cd CPP/7zip/Compress/LZMA     ; $(MAKE) all
+	cd CPP/7zip/Compress/PPMD     ; $(MAKE) all
+	cd CPP/7zip/Compress/Rar      ; $(MAKE) all
+	cd CPP/7zip/Crypto/7zAES      ; $(MAKE) all
+	cd CPP/7zip/Crypto/AES        ; $(MAKE) all
 
 clean:
-	cd Common                 ; $(MAKE) clean
-	cd myWindows              ; $(MAKE) clean
-	cd 7zip/Bundles/Alone     ; $(MAKE) clean
-	cd 7zip/Bundles/SFXCon    ; $(MAKE) clean
-	cd 7zip/UI/Console        ; $(MAKE) clean
-	cd 7zip/Archive/7z        ; $(MAKE) clean
-	cd 7zip/Archive/Arj       ; $(MAKE) clean
-	cd 7zip/Archive/BZip2     ; $(MAKE) clean
-	cd 7zip/Archive/Cab       ; $(MAKE) clean
-	cd 7zip/Archive/Chm       ; $(MAKE) clean
-	cd 7zip/Archive/Cpio      ; $(MAKE) clean
-	cd 7zip/Archive/Deb       ; $(MAKE) clean
-	cd 7zip/Archive/GZip      ; $(MAKE) clean
-	cd 7zip/Archive/Iso       ; $(MAKE) clean
-	cd 7zip/Archive/Lzh       ; $(MAKE) clean
-	cd 7zip/Archive/Nsis      ; $(MAKE) clean
-	cd 7zip/Archive/Rar       ; $(MAKE) clean
-	cd 7zip/Archive/RPM       ; $(MAKE) clean
-	cd 7zip/Archive/Split     ; $(MAKE) clean
-	cd 7zip/Archive/Tar       ; $(MAKE) clean
-	cd 7zip/Archive/Z         ; $(MAKE) clean
-	cd 7zip/Archive/Zip       ; $(MAKE) clean
-	cd 7zip/Compress/Branch   ; $(MAKE) clean
-	cd 7zip/Compress/ByteSwap ; $(MAKE) clean
-	cd 7zip/Compress/BZip2    ; $(MAKE) clean
-	cd 7zip/Compress/Copy     ; $(MAKE) clean
-	cd 7zip/Compress/Deflate  ; $(MAKE) clean
-	cd 7zip/Compress/Implode  ; $(MAKE) clean
-	cd 7zip/Compress/LZMA     ; $(MAKE) clean
-	cd 7zip/Compress/PPMD     ; $(MAKE) clean
-	cd 7zip/Compress/Rar29    ; $(MAKE) clean
-	cd 7zip/Crypto/7zAES      ; $(MAKE) clean
-	cd 7zip/Crypto/AES        ; $(MAKE) clean
-	cd 7zip/Bundles/Alone7z   ; $(MAKE) clean
-	cd 7zip/Bundles/Format7z  ; $(MAKE) clean
+	cd CPP/Common                 ; $(MAKE) clean
+	cd CPP/myWindows              ; $(MAKE) clean
+	cd CPP/7zip/Bundles/Alone     ; $(MAKE) clean
+	cd CPP/7zip/Bundles/SFXCon    ; $(MAKE) clean
+	cd CPP/7zip/UI/Console        ; $(MAKE) clean
+	cd CPP/7zip/UI/Client7z        ; $(MAKE) clean
+	cd CPP/7zip/Archive/7z        ; $(MAKE) clean
+	cd CPP/7zip/Archive/Arj       ; $(MAKE) clean
+	cd CPP/7zip/Archive/BZip2     ; $(MAKE) clean
+	cd CPP/7zip/Archive/Cab       ; $(MAKE) clean
+	cd CPP/7zip/Archive/Chm       ; $(MAKE) clean
+	cd CPP/7zip/Archive/Cpio      ; $(MAKE) clean
+	cd CPP/7zip/Archive/Deb       ; $(MAKE) clean
+	cd CPP/7zip/Archive/GZip      ; $(MAKE) clean
+	cd CPP/7zip/Archive/Iso       ; $(MAKE) clean
+	cd CPP/7zip/Archive/Lzh       ; $(MAKE) clean
+	cd CPP/7zip/Archive/Nsis      ; $(MAKE) clean
+	cd CPP/7zip/Archive/Rar       ; $(MAKE) clean
+	cd CPP/7zip/Archive/RPM       ; $(MAKE) clean
+	cd CPP/7zip/Archive/Split     ; $(MAKE) clean
+	cd CPP/7zip/Archive/Tar       ; $(MAKE) clean
+	cd CPP/7zip/Archive/Z         ; $(MAKE) clean
+	cd CPP/7zip/Archive/Zip       ; $(MAKE) clean
+	cd CPP/7zip/Compress/Branch   ; $(MAKE) clean
+	cd CPP/7zip/Compress/ByteSwap ; $(MAKE) clean
+	cd CPP/7zip/Compress/BZip2    ; $(MAKE) clean
+	cd CPP/7zip/Compress/Copy     ; $(MAKE) clean
+	cd CPP/7zip/Compress/Deflate  ; $(MAKE) clean
+	cd CPP/7zip/Compress/LZMA     ; $(MAKE) clean
+	cd CPP/7zip/Compress/PPMD     ; $(MAKE) clean
+	cd CPP/7zip/Compress/Rar      ; $(MAKE) clean
+	cd CPP/7zip/Crypto/7zAES      ; $(MAKE) clean
+	cd CPP/7zip/Crypto/AES        ; $(MAKE) clean
+	cd CPP/7zip/Bundles/Alone7z   ; $(MAKE) clean
+	cd CPP/7zip/Bundles/Format7z  ; $(MAKE) clean
+	rm -fr bin
+	rm -f make.log
 	find . -name "*~" -exec rm -f {} \;
 	find . -name "*.orig" -exec rm -f {} \;
 	find . -name ".*.swp" -exec rm -f {} \;
@@ -141,7 +150,6 @@ clean:
 	chmod +x contrib/VirtualFileSystemForMidnightCommander/u7z
 	chmod +x contrib/gzip-like_CLI_wrapper_for_7z/p7zip
 	chmod +x install.sh check/check.sh check/clean_all.sh check/check_7zr.sh 
-	rm -fr bin
 	cd check                  ; ./clean_all.sh
 
 test: all
@@ -152,6 +160,10 @@ test_7z: all2
 
 test_7zr: 7zr
 	cd check ; ./check_7zr.sh ../bin/7zr
+
+test_Client7z: Client7z
+	cd check ; ./check_Client7z.sh ../bin/Client7z
+
 install:
 	./install.sh $(DEST_BIN) $(DEST_SHARE) $(DEST_MAN)
 

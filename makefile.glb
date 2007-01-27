@@ -27,4 +27,5 @@ clean:
 	-@$(RM) $(PROG) $(PROG).exe *.o *~ .*.swp *.orig $(PROGS)
 	-@$(RM) -r SunWS_cache/ 
 	-@$(RM) -r .inslog2 pchdir/ tca.map
+	-@$(RM) make.log tags
 

@@ -19,3 +19,6 @@
   - date (format arj/rar/chm)
 
   - absolute path ?
+
+- zip format : better support of symbolic links
+

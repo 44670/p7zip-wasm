@@ -1,0 +1,68 @@
+Index: p7zip-4.44~dfsg.1/CPP/Windows/FileDir.cpp
+===================================================================
+--- p7zip-4.44~dfsg.1.orig/CPP/Windows/FileDir.cpp	2007-04-10 00:26:22.000000000 +0200
++++ p7zip-4.44~dfsg.1/CPP/Windows/FileDir.cpp	2007-04-10 00:26:25.000000000 +0200
+@@ -18,6 +18,7 @@
+ 
+ #include <sys/stat.h> // mkdir
+ #include <sys/types.h>
++#include <sys/stat.h>
+ #include <fcntl.h>
+ 
+ #include <utime.h>
+@@ -332,6 +333,13 @@
+     }
+   }
+ 
++  mode_t user_mask = umask(0);
++  // This is a race condition. Any parallel thread or forked process at
++  // this point gets an undesirable umask. The correct fix is to remove
++  // all chmod calls from the code, and determine permissions before files
++  // are open()ed or mkdir()ed.
++  umask(user_mask);
++
+   if (fileAttributes & FILE_ATTRIBUTE_UNIX_EXTENSION) {
+      stat_info.st_mode = fileAttributes >> 16;
+ #ifdef HAVE_LSTAT
+@@ -343,11 +351,11 @@
+      } else
+ #endif
+      if (S_ISREG(stat_info.st_mode)) {
+-       chmod(name,stat_info.st_mode);
++       chmod(name,stat_info.st_mode & ~user_mask);
+      } else if (S_ISDIR(stat_info.st_mode)) {
+        // user/7za must be able to create files in this directory
+        stat_info.st_mode |= (S_IRUSR | S_IWUSR | S_IXUSR);
+-       chmod(name,stat_info.st_mode);
++       chmod(name,stat_info.st_mode & ~user_mask);
+      }
+ #ifdef HAVE_LSTAT
+   } else if (!S_ISLNK(stat_info.st_mode)) {
+@@ -365,7 +373,7 @@
+       stat_info.st_mode |= (0600 | ((stat_info.st_mode & 044) >> 1)) ;
+     }
+ 
+-    chmod(name,stat_info.st_mode);
++    chmod(name,stat_info.st_mode & ~user_mask);
+   }
+   TRACEN((printf("MySetFileAttributes(%s,%d) : true\n",name,fileAttributes)))
+ 
+Index: p7zip-4.44~dfsg.1/CPP/myWindows/myAddExeFlag.cpp
+===================================================================
+--- p7zip-4.44~dfsg.1.orig/CPP/myWindows/myAddExeFlag.cpp	2007-04-10 00:26:43.000000000 +0200
++++ p7zip-4.44~dfsg.1/CPP/myWindows/myAddExeFlag.cpp	2007-04-10 00:27:15.000000000 +0200
+@@ -13,9 +13,13 @@
+ 
+ void myAddExeFlag(LPCTSTR filename)
+ {
++	struct stat fileinfo;
+ 	const char * name = nameWindowToUnix(filename);
+ 	// printf("myAddExeFlag(%s)\n",name);
+-	chmod(name,0777);
++        // should detect error, but this interface gives no capability to do so
++        stat(name, &fileinfo);
++        mode_t filemode = fileinfo.st_mode;
++        chmod(name, filemode | S_IXUSR | S_IXGRP | S_IXOTH);
+ }
+ 
+ void myAddExeFlag(const UString &u_name)

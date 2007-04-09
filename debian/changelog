@@ -1,3 +1,13 @@
+p7zip (4.44~dfsg.1-2) unstable; urgency=low
+
+  * Correct path to HTML documentation in manpage. (Closes: #411491)
+  * 03_respect-umask.diff:
+     + new patch from Joshua Rodman <jrodman@debbugs.spamportal.net>
+     + not applied currently
+     + don't always create world-writable directories. (Ref: #413829)
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Tue, 10 Apr 2007 00:28:08 +0200
+
 p7zip (4.44~dfsg.1-1) experimental; urgency=low
 
   * New upstream version.

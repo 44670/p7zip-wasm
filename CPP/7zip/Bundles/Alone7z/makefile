@@ -1,18 +1,15 @@
 PROG=../../../../bin/7zr
 
 LOCAL_FLAGS= \
-	-DEXCLUDE_COM \
-	-DNO_REGISTRY \
-	-D_NO_CRYPTO \
-	-DFORMAT_7Z \
-	-DCOMPRESS_MT \
-	-DCOMPRESS_BCJ_X86 \
-	-DCOMPRESS_BCJ2 \
-	-DCOMPRESS_COPY \
-	-DCOMPRESS_LZMA \
-	-DCOMPRESS_MF_MT \
-	-D_NO_CRYPTO
+  -D_NO_CRYPTO \
+  -DWIN_LONG_PATH \
+  -DCOMPRESS_MT \
+  -DCOMPRESS_MF_MT \
+  -D_NO_CRYPTO \
+  -DBREAK_HANDLER \
+  -DBENCH_MT
 
+include ../../../../makefile.crc32
 include ../../../../makefile.machine
 
 LIBS=$(LOCAL_LIBS)
@@ -24,16 +21,6 @@ MY_WINDOWS= \
 	$(MY_HOME)/mySplitCommandLine.o
 
 OBJS=\
-ConsoleClose.o \
-ExtractCallbackConsole.o \
-List.o \
-Main.o \
-MainAr.o \
-OpenCallbackConsole.o \
-PercentPrinter.o \
-UpdateCallbackConsole.o \
-UserInputUtils.o \
-../../../Common/Alloc.o \
 ../../../Common/CommandLineParser.o \
 ../../../Common/CRC.o \
 ../../../Common/IntToString.o \
@@ -44,81 +31,117 @@ UserInputUtils.o \
 ../../../Common/String.o \
 ../../../Common/StringConvert.o \
 ../../../Common/StringToInt.o \
+../../../Common/UTFConvert.o \
 ../../../Common/Vector.o \
 ../../../Common/Wildcard.o \
-Error.o \
-FileDir.o \
-FileFind.o \
-FileIO.o \
-FileName.o \
-PropVariant.o \
-PropVariantConversions.o \
-Synchronization.o \
-FilePathAutoRename.o \
-FileStreams.o \
-InBuffer.o \
-InOutTempBuffer.o \
-LimitedStreams.o \
-LockedStream.o \
-OutBuffer.o \
-ProgressUtils.o \
-StreamBinder.o \
-StreamObjects.o \
-StreamUtils.o \
-ArchiveCommandLine.o \
-ArchiveExtractCallback.o \
-ArchiveOpenCallback.o \
-ArchiverInfo.o \
-DefaultName.o \
-EnumDirItems.o \
-Extract.o \
-ExtractingFilePath.o \
-OpenArchive.o \
-PropIDUtils.o \
-SetProperties.o \
-SortUtils.o \
-TempFiles.o \
-Update.o \
-UpdateAction.o \
-UpdateCallback.o \
-UpdatePair.o \
-UpdateProduce.o \
-CoderMixer2.o \
-CoderMixer2MT.o \
-CrossThreadProgress.o \
-FilterCoder.o \
-InStreamWithCRC.o \
-ItemNameUtils.o \
-MultiStream.o \
-OutStreamWithCRC.o \
-ParseProperties.o \
-7zCompressionMode.o \
-7zDecode.o \
-7zEncode.o \
-7zExtract.o \
-7zFolderInStream.o \
-7zFolderOutStream.o \
-7zHandler.o \
-7zHandlerOut.o \
-7zHeader.o \
-7zIn.o \
-7zMethodID.o \
-7zOut.o \
-7zProperties.o \
-7zSpecStream.o \
-7zUpdate.o \
-BranchCoder.o \
+ConsoleClose.o  \
+ExtractCallbackConsole.o  \
+List.o  \
+Main.o  \
+MainAr.o  \
+OpenCallbackConsole.o  \
+PercentPrinter.o  \
+UpdateCallbackConsole.o  \
+UserInputUtils.o  \
+Error.o  \
+FileDir.o  \
+FileFind.o  \
+FileIO.o  \
+FileName.o  \
+PropVariant.o  \
+PropVariantConversions.o  \
+Synchronization.o  \
+CreateCoder.o  \
+CrossThreadProgress.o  \
+FilePathAutoRename.o  \
+FileStreams.o  \
+FilterCoder.o  \
+InBuffer.o  \
+InOutTempBuffer.o  \
+LimitedStreams.o  \
+LockedStream.o  \
+LSBFDecoder.o  \
+LSBFEncoder.o  \
+MethodId.o  \
+OffsetStream.o  \
+OutBuffer.o  \
+ProgressMt.o  \
+ProgressUtils.o  \
+StreamBinder.o  \
+StreamObjects.o  \
+StreamUtils.o  \
+BranchCoder.o  \
+CopyCoder.o  \
+CopyRegister.o  \
+LZOutWindow.o  \
+LZMADecoder.o  \
+LZMAEncoder.o  \
+LZMARegister.o  \
+RangeCoderBit.o  \
+LzmaBench.o  \
+LzmaBenchCon.o  \
+7zCompressionMode.o  \
+7zDecode.o  \
+7zEncode.o  \
+7zExtract.o  \
+7zFolderInStream.o  \
+7zFolderOutStream.o  \
+7zHandler.o  \
+7zHandlerOut.o  \
+7zHeader.o  \
+7zIn.o  \
+7zOut.o  \
+7zProperties.o  \
+7zRegister.o  \
+7zSpecStream.o  \
+7zUpdate.o  \
+CoderMixer2.o  \
+CoderMixer2MT.o  \
+CoderMixer2ST.o  \
+DummyOutStream.o  \
+InStreamWithCRC.o  \
+ItemNameUtils.o  \
+MultiStream.o  \
+OutStreamWithCRC.o  \
+ParseProperties.o  \
+ArchiveCommandLine.o  \
+ArchiveExtractCallback.o  \
+ArchiveOpenCallback.o  \
+DefaultName.o  \
+EnumDirItems.o  \
+Extract.o  \
+ExtractingFilePath.o  \
+LoadCodecs.o  \
+OpenArchive.o  \
+PropIDUtils.o  \
+SetProperties.o  \
+SortUtils.o  \
+TempFiles.o  \
+Update.o  \
+UpdateAction.o  \
+UpdateCallback.o  \
+UpdatePair.o  \
+UpdateProduce.o  \
+BranchRegister.o \
+ARM.o \
+ARMThumb.o \
+BCJRegister.o \
+BCJ2Register.o \
+BranchARM.o  \
+BranchARMThumb.o  \
+BranchIA64.o  \
+BranchPPC.o  \
+BranchSPARC.o  \
+BranchX86.o  \
+IA64.o \
+PPC.o \
+SPARC.o \
 x86.o \
 x86_2.o \
-LZOutWindow.o \
-LZMADecoder.o \
-LZMAEncoder.o \
-CopyCoder.o \
-RangeCoderBit.o \
+$(OBJ_CRC32) \
+Alloc.o  \
 MatchFinder.o  \
 MatchFinderMt.o  \
-7zCrc.o  \
-Sort.o  \
 Threads.o
 
 include ../../../../makefile.glb

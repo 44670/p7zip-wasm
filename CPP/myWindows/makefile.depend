@@ -14,7 +14,7 @@ myAddExeFlag.o: myAddExeFlag.cpp StdAfx.h config.h ../Common/MyWindows.h \
   ../include_windows/basetyps.h ../include_windows/tchar.h myPrivate.h \
   ../Common/StringConvert.h ../Common/MyWindows.h ../Common/String.h \
   ../Common/Vector.h ../Common/Defs.h
-myGetNumberOfProcessors.o: myGetNumberOfProcessors.cpp
+myGetNumberOfProcessors.o: myGetNumberOfProcessors.cpp ../Common/Types.h
 test_emul.o: test_emul.cpp StdAfx.h config.h ../Common/MyWindows.h \
   ../Common/MyGuidDef.h ../Common/Types.h ../Common/Types.h \
   ../include_windows/windows.h ../Common/MyWindows.h \
@@ -22,6 +22,7 @@ test_emul.o: test_emul.cpp StdAfx.h config.h ../Common/MyWindows.h \
   ../Common/StringConvert.h ../Common/MyWindows.h ../Common/String.h \
   ../Common/Vector.h ../Common/Defs.h ../Common/StdOutStream.h \
   ../Common/StringConvert.cpp StdAfx.h ../Common/StringConvert.h \
+  ../Common/UTFConvert.cpp ../Common/UTFConvert.h \
   ../Common/StdOutStream.cpp ../Common/StdOutStream.h \
   ../Common/IntToString.h ../Common/StringConvert.h \
   ../Common/IntToString.cpp ../Common/IntToString.h \

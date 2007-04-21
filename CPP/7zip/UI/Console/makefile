@@ -1,7 +1,15 @@
 PROG=../../../../bin/7z
 
-LOCAL_FLAGS=-DCOMPRESS_MT
+LOCAL_FLAGS=\
+  -DCOMPRESS_MT \
+  -DWIN_LONG_PATH \
+  -DEXTERNAL_LZMA \
+  -DEXTERNAL_CODECS \
+  -DBREAK_HANDLER \
+  -DBENCH_MT \
+  -D_7ZIP_LARGE_PAGES
 
+include ../../../../makefile.crc32
 include ../../../../makefile.machine
 
 LIBS=$(LOCAL_LIBS_DLL)
@@ -14,8 +22,8 @@ MY_WINDOWS=\
 
 OBJS = \
 ../../../Common/MyWindows.o \
-../../../Common/Alloc.o \
 ../../../Common/CommandLineParser.o \
+../../../Common/CRC.o \
 ../../../Common/StdInStream.o \
 ../../../Common/StdOutStream.o \
 ../../../Common/ListFileUtils.o \
@@ -50,7 +58,7 @@ EnumDirItems.o \
 Extract.o \
 SetProperties.o \
 ExtractingFilePath.o \
-ArchiverInfo.o \
+LoadCodecs.o \
 OpenArchive.o \
 PropIDUtils.o \
 SortUtils.o \
@@ -63,7 +71,11 @@ UpdateProduce.o \
 FilePathAutoRename.o \
 FileStreams.o \
 CopyCoder.o \
-StreamUtils.o
+StreamUtils.o \
+LzmaBench.o \
+LzmaBenchCon.o \
+Alloc.o \
+$(OBJ_CRC32)
 
 include ../../../../makefile.glb
 

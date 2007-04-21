@@ -5,17 +5,17 @@ SRCS=\
  ../../Archive/7z/7zHandler.cpp \
  ../../Archive/7z/7zHeader.cpp \
  ../../Archive/7z/7zIn.cpp \
- ../../Archive/7z/7zMethodID.cpp \
+../../Archive/7z/7zRegister.cpp \
  ../../Archive/Common/CoderMixer2.cpp \
  ../../Archive/Common/CoderMixer2MT.cpp \
  ../../Archive/Common/CoderMixer2ST.cpp \
  ../../Archive/Common/CrossThreadProgress.cpp \
- ../../Archive/Common/FilterCoder.cpp \
  ../../Archive/Common/ItemNameUtils.cpp \
  ../../Archive/Common/OutStreamWithCRC.cpp \
- ../../Archive/Common/ParseProperties.cpp \
+ ../../Common/CreateCoder.cpp \
  ../../Common/FilePathAutoRename.cpp \
  ../../Common/FileStreams.cpp \
+ ../../Common/FilterCoder.cpp \
  ../../Common/InBuffer.cpp \
  ../../Common/LimitedStreams.cpp \
  ../../Common/LockedStream.cpp \
@@ -27,24 +27,29 @@ SRCS=\
  ../../Compress/Branch/BranchCoder.cpp \
  ../../Compress/Branch/x86_2.cpp \
  ../../Compress/Branch/x86.cpp \
+ ../../Compress/Branch/BCJ2Register.cpp \
+ ../../Compress/Branch/BCJRegister.cpp \
  ../../Compress/Copy/CopyCoder.cpp \
+ ../../Compress/Copy/CopyRegister.cpp \
  ../../Compress/LZ/LZOutWindow.cpp \
  ../../Compress/LZMA/LZMADecoder.cpp \
+ ../../Compress/LZMA/LZMARegister.cpp \
  ../../Compress/PPMD/PPMDDecoder.cpp \
+ ../../Compress/PPMD/PPMDRegister.cpp \
  ../../Crypto/7zAES/7zAES.cpp \
+ ../../Crypto/7zAES/7zAESRegister.cpp \
  ../../Crypto/AES/MyAES.cpp \
  ../../Crypto/Hash/Sha256.cpp \
  ./Main.cpp \
  ../../UI/Common/ArchiveExtractCallback.cpp \
  ../../UI/Common/ArchiveOpenCallback.cpp \
- ../../UI/Common/ArchiverInfo.cpp \
  ../../UI/Common/DefaultName.cpp \
+ ../../UI/Common/LoadCodecs.cpp \
  ../../UI/Common/Extract.cpp \
  ../../UI/Common/ExtractingFilePath.cpp \
  ../../UI/Common/OpenArchive.cpp \
  ../../UI/Common/PropIDUtils.cpp \
  ../../UI/Console/ConsoleClose.cpp \
- ../../UI/Common/SetProperties.cpp \
  ../../UI/Console/ExtractCallbackConsole.cpp \
  ../../UI/Console/List.cpp \
  ../../UI/Console/MainAr.cpp \
@@ -62,7 +67,10 @@ SRCS=\
 SRCS_C=\
  ../../Crypto/AES/aescrypt.c \
  ../../Crypto/AES/aeskey.c \
- ../../Crypto/AES/aestab.c
+ ../../Crypto/AES/aestab.c \
+../../../../C/Compress/Branch/BranchX86.c \
+../../../../C/7zCrc.c \
+../../../../C/Alloc.c
 
 CoderMixer2.o : ../../Archive/Common/CoderMixer2.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/CoderMixer2.cpp
@@ -72,14 +80,10 @@ CoderMixer2ST.o : ../../Archive/Common/CoderMixer2ST.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/CoderMixer2ST.cpp
 CrossThreadProgress.o : ../../Archive/Common/CrossThreadProgress.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/CrossThreadProgress.cpp
-FilterCoder.o : ../../Archive/Common/FilterCoder.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Common/FilterCoder.cpp
 ItemNameUtils.o : ../../Archive/Common/ItemNameUtils.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/ItemNameUtils.cpp
 OutStreamWithCRC.o : ../../Archive/Common/OutStreamWithCRC.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/OutStreamWithCRC.cpp
-ParseProperties.o : ../../Archive/Common/ParseProperties.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Common/ParseProperties.cpp
 ConsoleClose.o : ../../UI/Console/ConsoleClose.cpp
 	$(CXX) $(CFLAGS) ../../UI/Console/ConsoleClose.cpp
 ExtractCallbackConsole.o : ../../UI/Console/ExtractCallbackConsole.cpp
@@ -104,8 +108,6 @@ UserInputUtils.o : ../../UI/Console/UserInputUtils.cpp
 	$(CXX) $(CFLAGS) ../../Archive/7z/7zHeader.cpp
 7zIn.o : ../../Archive/7z/7zIn.cpp
 	$(CXX) $(CFLAGS) ../../Archive/7z/7zIn.cpp
-7zMethodID.o : ../../Archive/7z/7zMethodID.cpp
-	$(CXX) $(CFLAGS) ../../Archive/7z/7zMethodID.cpp
 LZMADecoder.o : ../../Compress/LZMA/LZMADecoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/LZMA/LZMADecoder.cpp
 BranchCoder.o : ../../Compress/Branch/BranchCoder.cpp
@@ -142,10 +144,14 @@ PropVariantConversions.o : ../../../Windows/PropVariantConversions.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/PropVariantConversions.cpp
 Synchronization.o : ../../../Windows/Synchronization.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/Synchronization.cpp
+CreateCoder.o : ../../Common/CreateCoder.cpp
+	$(CXX) $(CFLAGS) ../../Common/CreateCoder.cpp
 FilePathAutoRename.o : ../../Common/FilePathAutoRename.cpp
 	$(CXX) $(CFLAGS) ../../Common/FilePathAutoRename.cpp
 FileStreams.o : ../../Common/FileStreams.cpp
 	$(CXX) $(CFLAGS) ../../Common/FileStreams.cpp
+FilterCoder.o : ../../Common/FilterCoder.cpp
+	$(CXX) $(CFLAGS) ../../Common/FilterCoder.cpp
 InBuffer.o : ../../Common/InBuffer.cpp
 	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
 LimitedStreams.o : ../../Common/LimitedStreams.cpp
@@ -166,14 +172,12 @@ ArchiveExtractCallback.o : ../../UI/Common/ArchiveExtractCallback.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/ArchiveExtractCallback.cpp
 ArchiveOpenCallback.o : ../../UI/Common/ArchiveOpenCallback.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/ArchiveOpenCallback.cpp
-ArchiverInfo.o : ../../UI/Common/ArchiverInfo.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/ArchiverInfo.cpp
+LoadCodecs.o : ../../UI/Common/LoadCodecs.cpp
+	$(CXX) $(CFLAGS) ../../UI/Common/LoadCodecs.cpp
 DefaultName.o : ../../UI/Common/DefaultName.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/DefaultName.cpp
 Extract.o : ../../UI/Common/Extract.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/Extract.cpp
-SetProperties.o : ../../UI/Common/SetProperties.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/SetProperties.cpp
 ExtractingFilePath.o : ../../UI/Common/ExtractingFilePath.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/ExtractingFilePath.cpp
 OpenArchive.o : ../../UI/Common/OpenArchive.cpp
@@ -188,3 +192,21 @@ aeskey.o : ../../Crypto/AES/aeskey.c
 	$(CC) $(CFLAGS) ../../Crypto/AES/aeskey.c
 aestab.o : ../../Crypto/AES/aestab.c
 	$(CC) $(CFLAGS) ../../Crypto/AES/aestab.c
+BranchX86.o : ../../../../C/Compress/Branch/BranchX86.c
+	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchX86.c
+Alloc.o : ../../../../C/Alloc.c
+	$(CC) $(CFLAGS) ../../../../C/Alloc.c
+7zRegister.o : ../../Archive/7z/7zRegister.cpp
+	$(CXX) $(CFLAGS) ../../Archive/7z/7zRegister.cpp
+LZMARegister.o : ../../Compress/LZMA/LZMARegister.cpp
+	$(CXX) $(CFLAGS) ../../Compress/LZMA/LZMARegister.cpp
+BCJ2Register.o : ../../Compress/Branch/BCJ2Register.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Branch/BCJ2Register.cpp
+BCJRegister.o : ../../Compress/Branch/BCJRegister.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Branch/BCJRegister.cpp
+PPMDRegister.o : ../../Compress/PPMD/PPMDRegister.cpp
+	$(CXX) $(CFLAGS) ../../Compress/PPMD/PPMDRegister.cpp
+CopyRegister.o : ../../Compress/Copy/CopyRegister.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyRegister.cpp
+7zAESRegister.o : ../../Crypto/7zAES/7zAESRegister.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/7zAES/7zAESRegister.cpp

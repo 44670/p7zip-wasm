@@ -2,6 +2,7 @@ PROG=common
 
 LOCAL_FLAGS=-I../myWindows -I../ -I../include_windows
 
+include ../../makefile.crc32
 include ../../makefile.machine
 
 LIBS=$(LOCAL_LIBS)
@@ -10,7 +11,6 @@ OBJS=\
 main.o \
 StringToInt.o \
 Vector.o \
-Alloc.o \
 CommandLineParser.o \
 CRC.o \
 IntToString.o \

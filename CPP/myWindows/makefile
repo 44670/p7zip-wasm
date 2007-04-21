@@ -2,6 +2,7 @@ PROG=test_emul
 
 LOCAL_FLAGS=-I. -I.. -I../include_windows
 
+include ../../makefile.crc32
 include ../../makefile.machine
 
 LIBS=$(LOCAL_LIBS)

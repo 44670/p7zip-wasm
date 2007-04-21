@@ -15,7 +15,7 @@ void myAddExeFlag(LPCTSTR filename)
 {
 	const char * name = nameWindowToUnix(filename);
 	// printf("myAddExeFlag(%s)\n",name);
-	chmod(name,0777);
+	chmod(name,0700);
 }
 
 void myAddExeFlag(const UString &u_name)

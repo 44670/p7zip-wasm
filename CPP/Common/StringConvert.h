@@ -43,9 +43,9 @@ inline AString GetOemString(const UString &unicodeString)
     { return unicodeString;}
   inline const UString& GetSystemString(const UString &unicodeString)
     { return unicodeString;}
-  inline const wchar_t* GetSystemString(const wchar_t* unicodeString, UINT codePage)
+  inline const wchar_t* GetSystemString(const wchar_t* unicodeString, UINT /* codePage */)
     { return unicodeString;}
-  inline const UString& GetSystemString(const UString &unicodeString, UINT codePage)
+  inline const UString& GetSystemString(const UString &unicodeString, UINT /* codePage */)
     { return unicodeString;}
   inline UString GetSystemString(const AString &multiByteString, UINT codePage)
     { return MultiByteToUnicodeString(multiByteString, codePage);}

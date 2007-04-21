@@ -101,7 +101,8 @@ StringConvert.o: ../../../Common/StringConvert.cpp \
   ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
   ../../../Common/String.h ../../../Common/Vector.h \
-  ../../../Common/Defs.h
+  ../../../Common/Defs.h ../../../Common/UTFConvert.cpp \
+  ../../../Common/UTFConvert.h
 Vector.o: ../../../Common/Vector.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \

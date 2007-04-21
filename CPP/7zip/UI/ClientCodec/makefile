@@ -2,6 +2,7 @@ PROG=../../../../bin/ClientCodec
 
 LOCAL_FLAGS=-DCOMPRESS_MT
 
+include ../../../../makefile.crc32
 include ../../../../makefile.machine
 
 LIBS=$(LOCAL_LIBS_DLL)
@@ -17,18 +18,6 @@ StringConvert.o \
 PropVariant.o \
 DLL.o 
 
-OBJ2_OUT=\
-FileDir.o \
-FileFind.o \
-FileIO.o \
-FileName.o \
-PropVariantConversions.o \
-IntToString.o \
-Vector.o \
-Wildcard.o \
-FileStreams.o \
-
-include ../../../../makefile.glb
 
 
 .PHONY: test
@@ -49,4 +38,6 @@ test : all
 
 clean2:
 	rm -f f1 f2 f3
+
+include ../../../../makefile.glb
 

@@ -1,4 +1,62 @@
 SRCS=\
+ ../../UI/Console/ConsoleClose.cpp \
+ ../../UI/Console/ExtractCallbackConsole.cpp \
+ ../../UI/Console/List.cpp \
+ ../../UI/Console/Main.cpp \
+ ../../UI/Console/MainAr.cpp \
+ ../../UI/Console/OpenCallbackConsole.cpp \
+ ../../UI/Console/PercentPrinter.cpp \
+ ../../UI/Console/UpdateCallbackConsole.cpp \
+ ../../UI/Console/UserInputUtils.cpp \
+ ../../../Windows/Error.cpp \
+ ../../../Windows/FileDir.cpp \
+ ../../../Windows/FileFind.cpp \
+ ../../../Windows/FileIO.cpp \
+ ../../../Windows/FileName.cpp \
+ ../../../Windows/PropVariant.cpp \
+ ../../../Windows/PropVariantConversions.cpp \
+ ../../../Windows/Synchronization.cpp \
+ ../../Common/CreateCoder.cpp \
+ ../../Archive/Common/CrossThreadProgress.cpp \
+ ../../Compress/Branch/ARM.cpp \
+ ../../Compress/Branch/ARMThumb.cpp \
+ ../../Compress/Branch/BCJ2Register.cpp \
+ ../../Compress/Branch/BCJRegister.cpp \
+ ../../Compress/Branch/BranchCoder.cpp \
+ ../../Compress/Branch/BranchRegister.cpp \
+ ../../Compress/Branch/IA64.cpp \
+ ../../Compress/Branch/PPC.cpp \
+ ../../Compress/Branch/SPARC.cpp \
+ ../../Compress/Branch/x86.cpp \
+ ../../Compress/Branch/x86_2.cpp \
+ ../../Compress/BZip2/BZip2CRC.cpp \
+ ../../Compress/BZip2/BZip2Decoder.cpp \
+ ../../Compress/BZip2/BZip2Encoder.cpp \
+ ../../Compress/BZip2/BZip2Register.cpp \
+ ../../Compress/Copy/CopyCoder.cpp \
+ ../../Compress/Copy/CopyRegister.cpp \
+ ../../Compress/Deflate/Deflate64Register.cpp \
+ ../../Compress/Deflate/DeflateDecoder.cpp \
+ ../../Compress/Deflate/DeflateEncoder.cpp \
+ ../../Compress/Deflate/DeflateRegister.cpp \
+ ../../Compress/Implode/ImplodeDecoder.cpp \
+ ../../Compress/Implode/ImplodeHuffmanDecoder.cpp \
+ ../../Compress/LZ/LZOutWindow.cpp \
+ ../../Compress/LZMA/LZMADecoder.cpp \
+ ../../Compress/LZMA/LZMAEncoder.cpp \
+ ../../Compress/LZMA/LZMARegister.cpp \
+ ../../Compress/PPMD/PPMDDecoder.cpp \
+ ../../Compress/PPMD/PPMDEncoder.cpp \
+ ../../Compress/PPMD/PPMDRegister.cpp \
+ ../../Compress/RangeCoder/RangeCoderBit.cpp \
+ ../../Compress/Shrink/ShrinkDecoder.cpp \
+ ../../Compress/Z/ZDecoder.cpp \
+ ../../Compress/BWT/BlockSort.cpp \
+ ../../Compress/Lzx/Lzx86Converter.cpp \
+ ../../Compress/Lzx/LzxDecoder.cpp \
+ ../../Compress/Quantum/QuantumDecoder.cpp \
+ ../../Compress/LZMA_Alone/LzmaBench.cpp \
+ ../../Compress/LZMA_Alone/LzmaBenchCon.cpp \
  ../../Archive/7z/7zCompressionMode.cpp \
  ../../Archive/7z/7zDecode.cpp \
  ../../Archive/7z/7zEncode.cpp \
@@ -9,36 +67,28 @@ SRCS=\
  ../../Archive/7z/7zHandlerOut.cpp \
  ../../Archive/7z/7zHeader.cpp \
  ../../Archive/7z/7zIn.cpp \
- ../../Archive/7z/7zMethodID.cpp \
  ../../Archive/7z/7zOut.cpp \
  ../../Archive/7z/7zProperties.cpp \
+ ../../Archive/7z/7zRegister.cpp \
  ../../Archive/7z/7zSpecStream.cpp \
  ../../Archive/7z/7zUpdate.cpp \
+ ../../Archive/BZip2/bz2Register.cpp \
  ../../Archive/BZip2/BZip2Handler.cpp \
  ../../Archive/BZip2/BZip2HandlerOut.cpp \
  ../../Archive/BZip2/BZip2Update.cpp \
- ../../Archive/Common/CoderMixer2.cpp \
- ../../Archive/Common/CoderMixer2MT.cpp \
- ../../Archive/Common/CrossThreadProgress.cpp \
- ../../Archive/Common/DummyOutStream.cpp \
- ../../Archive/Common/FilterCoder.cpp \
- ../../Archive/Common/InStreamWithCRC.cpp \
- ../../Archive/Common/ItemNameUtils.cpp \
- ../../Archive/Common/MultiStream.cpp \
- ../../Archive/Common/OutStreamWithCRC.cpp \
- ../../Archive/Common/ParseProperties.cpp \
  ../../Archive/GZip/GZipHandler.cpp \
  ../../Archive/GZip/GZipHandlerOut.cpp \
  ../../Archive/GZip/GZipHeader.cpp \
  ../../Archive/GZip/GZipIn.cpp \
  ../../Archive/GZip/GZipOut.cpp \
+ ../../Archive/GZip/GZipRegister.cpp \
  ../../Archive/GZip/GZipUpdate.cpp \
- ../../Archive/Split/SplitHandler.cpp \
  ../../Archive/Tar/TarHandler.cpp \
  ../../Archive/Tar/TarHandlerOut.cpp \
  ../../Archive/Tar/TarHeader.cpp \
  ../../Archive/Tar/TarIn.cpp \
  ../../Archive/Tar/TarOut.cpp \
+ ../../Archive/Tar/TarRegister.cpp \
  ../../Archive/Tar/TarUpdate.cpp \
  ../../Archive/Zip/ZipAddCommon.cpp \
  ../../Archive/Zip/ZipHandler.cpp \
@@ -47,10 +97,58 @@ SRCS=\
  ../../Archive/Zip/ZipIn.cpp \
  ../../Archive/Zip/ZipItem.cpp \
  ../../Archive/Zip/ZipOut.cpp \
+ ../../Archive/Zip/ZipRegister.cpp \
  ../../Archive/Zip/ZipUpdate.cpp \
+ ../../Archive/Common/CoderMixer2.cpp \
+ ../../Archive/Common/CoderMixer2MT.cpp \
+ ../../Archive/Common/CoderMixer2ST.cpp \
+ ../../Archive/Common/DummyOutStream.cpp \
+ ../../Archive/Common/InStreamWithCRC.cpp \
+ ../../Archive/Common/ItemNameUtils.cpp \
+ ../../Archive/Common/MultiStream.cpp \
+ ../../Archive/Common/OutStreamWithCRC.cpp \
+ ../../Archive/Common/ParseProperties.cpp \
+ ../../Archive/Split/SplitHandler.cpp \
+ ../../Archive/Split/SplitRegister.cpp \
  ../../Archive/Z/ZHandler.cpp \
+ ../../Archive/Z/ZRegister.cpp \
+ ../../Archive/Cab/CabBlockInStream.cpp \
+ ../../Archive/Cab/CabHandler.cpp \
+ ../../Archive/Cab/CabHeader.cpp \
+ ../../Archive/Cab/CabIn.cpp \
+ ../../Archive/Cab/CabRegister.cpp \
+ ../../UI/Common/ArchiveCommandLine.cpp \
+ ../../UI/Common/ArchiveExtractCallback.cpp \
+ ../../UI/Common/ArchiveOpenCallback.cpp \
+ ../../UI/Common/DefaultName.cpp \
+ ../../UI/Common/EnumDirItems.cpp \
+ ../../UI/Common/Extract.cpp \
+ ../../UI/Common/ExtractingFilePath.cpp \
+ ../../UI/Common/LoadCodecs.cpp \
+ ../../UI/Common/OpenArchive.cpp \
+ ../../UI/Common/PropIDUtils.cpp \
+ ../../UI/Common/SetProperties.cpp \
+ ../../UI/Common/SortUtils.cpp \
+ ../../UI/Common/TempFiles.cpp \
+ ../../UI/Common/Update.cpp \
+ ../../UI/Common/UpdateAction.cpp \
+ ../../UI/Common/UpdateCallback.cpp \
+ ../../UI/Common/UpdatePair.cpp \
+ ../../UI/Common/UpdateProduce.cpp \
+ ../../Crypto/Zip/ZipCipher.cpp \
+ ../../Crypto/Zip/ZipCrypto.cpp \
+ ../../Crypto/AES/MyAES.cpp \
+ ../../Crypto/7zAES/7zAES.cpp \
+ ../../Crypto/7zAES/7zAESRegister.cpp \
+ ../../Crypto/WzAES/WzAES.cpp \
+ ../../Crypto/Hash/HmacSha1.cpp \
+ ../../Crypto/Hash/Pbkdf2HmacSha1.cpp \
+ ../../Crypto/Hash/RandGen.cpp \
+ ../../Crypto/Hash/Sha1.cpp \
+ ../../Crypto/Hash/Sha256.cpp \
  ../../Common/FilePathAutoRename.cpp \
  ../../Common/FileStreams.cpp \
+ ../../Common/FilterCoder.cpp \
  ../../Common/InBuffer.cpp \
  ../../Common/InOutTempBuffer.cpp \
  ../../Common/LimitedStreams.cpp \
@@ -58,96 +156,33 @@ SRCS=\
  ../../Common/LSBFDecoder.cpp \
  ../../Common/LSBFEncoder.cpp \
  ../../Common/MemBlocks.cpp \
+ ../../Common/MethodId.cpp \
+ ../../Common/OffsetStream.cpp \
+ ../../Common/OutBuffer.cpp \
  ../../Common/OutMemStream.cpp \
  ../../Common/ProgressMt.cpp \
- ../../Common/OffsetStream.cpp \
- ../../Common/StreamUtils.cpp \
- ../../Common/OutBuffer.cpp \
  ../../Common/ProgressUtils.cpp \
  ../../Common/StreamBinder.cpp \
  ../../Common/StreamObjects.cpp \
- ../../Compress/Branch/BranchCoder.cpp \
- ../../Compress/Branch/x86_2.cpp \
- ../../Compress/Branch/x86.cpp \
- ../../Compress/BWT/BlockSort.cpp \
- ../../Compress/BZip2/BZip2CRC.cpp \
- ../../Compress/BZip2/BZip2Decoder.cpp \
- ../../Compress/BZip2/BZip2Encoder.cpp \
- ../../Compress/Copy/CopyCoder.cpp \
- ../../Compress/Deflate/DeflateDecoder.cpp \
- ../../Compress/Deflate/DeflateEncoder.cpp \
- ../../Compress/Implode/ImplodeDecoder.cpp \
- ../../Compress/Implode/ImplodeHuffmanDecoder.cpp \
- ../../Compress/LZ/LZOutWindow.cpp \
- ../../Compress/LZMA/LZMADecoder.cpp \
- ../../Compress/LZMA/LZMAEncoder.cpp \
- ../../Compress/PPMD/PPMDDecoder.cpp \
- ../../Compress/PPMD/PPMDEncoder.cpp \
- ../../Compress/RangeCoder/RangeCoderBit.cpp \
- ../../Compress/Shrink/ShrinkDecoder.cpp \
- ../../Compress/Z/ZDecoder.cpp \
- ../../Crypto/7zAES/7zAES.cpp \
- ../../Crypto/AES/MyAES.cpp \
- ../../Crypto/Hash/Pbkdf2HmacSha1.cpp \
- ../../Crypto/Hash/Sha256.cpp \
- ../../Crypto/Hash/HmacSha1.cpp \
- ../../Crypto/Hash/Sha1.cpp \
- ../../Crypto/Hash/RandGen.cpp \
- ../../Crypto/WzAES/WzAES.cpp \
- ../../Crypto/Zip/ZipCipher.cpp \
- ../../Crypto/Zip/ZipCrypto.cpp \
- ../../UI/Common/ArchiveCommandLine.cpp \
- ../../UI/Common/ArchiveExtractCallback.cpp \
- ../../UI/Common/ArchiveOpenCallback.cpp \
- ../../UI/Common/ArchiverInfo.cpp \
- ../../UI/Common/DefaultName.cpp \
- ../../UI/Common/EnumDirItems.cpp \
- ../../UI/Common/Extract.cpp \
- ../../UI/Common/ExtractingFilePath.cpp \
- ../../UI/Common/OpenArchive.cpp \
- ../../UI/Common/PropIDUtils.cpp \
- ../../UI/Common/SetProperties.cpp \
- ../../UI/Common/SortUtils.cpp \
- ../../UI/Common/TempFiles.cpp \
- ../../UI/Common/UpdateAction.cpp \
- ../../UI/Common/UpdateCallback.cpp \
- ../../UI/Common/Update.cpp \
- ../../UI/Common/UpdatePair.cpp \
- ../../UI/Common/UpdateProduce.cpp \
- ../../UI/Console/ConsoleClose.cpp \
- ../../UI/Console/ExtractCallbackConsole.cpp \
- ../../UI/Console/List.cpp \
- ../../UI/Console/MainAr.cpp \
- ../../UI/Console/Main.cpp \
- ../../UI/Console/OpenCallbackConsole.cpp \
- ../../UI/Console/PercentPrinter.cpp \
- ../../UI/Console/UpdateCallbackConsole.cpp \
- ../../UI/Console/UserInputUtils.cpp \
- ../../../Windows/Error.cpp \
- ../../../Windows/FileDir.cpp \
- ../../../Windows/FileFind.cpp \
- ../../../Windows/FileIO.cpp \
- ../../../Windows/FileName.cpp \
- ../../../Windows/PropVariantConversions.cpp \
- ../../../Windows/PropVariant.cpp \
- ../../../Windows/Synchronization.cpp \
- ../../Archive/Cab/CabHandler.cpp \
- ../../Archive/Cab/CabHeader.cpp \
- ../../Archive/Cab/CabIn.cpp \
- ../../Archive/Cab/CabBlockInStream.cpp \
- ../../Compress/Lzx/LzxDecoder.cpp \
- ../../Compress/Lzx/Lzx86Converter.cpp \
- ../../Compress/Quantum/QuantumDecoder.cpp
+ ../../Common/StreamUtils.cpp
 
- SRCS_C=../../Crypto/AES/aescrypt.c \
+SRCS_C=\
+ ../../Crypto/AES/aescrypt.c \
  ../../Crypto/AES/aeskey.c \
  ../../Crypto/AES/aestab.c \
-../../../../C/Compress/Huffman/HuffmanEncode.c \
-../../../../C/Compress/Lz/MatchFinder.c \
-../../../../C/Compress/Lz/MatchFinderMt.c \
-../../../../C/7zCrc.c \
-../../../../C/Sort.c \
-../../../../C/Threads.c
+ ../../../../C/Compress/Lz/MatchFinder.c \
+ ../../../../C/Compress/Lz/MatchFinderMt.c \
+ ../../../../C/Compress/Huffman/HuffmanEncode.c \
+ ../../../../C/Compress/Branch/BranchARM.c \
+ ../../../../C/Compress/Branch/BranchARMThumb.c \
+ ../../../../C/Compress/Branch/BranchIA64.c \
+ ../../../../C/Compress/Branch/BranchPPC.c \
+ ../../../../C/Compress/Branch/BranchSPARC.c \
+ ../../../../C/Compress/Branch/BranchX86.c \
+ ../../../../C/7zCrc.c \
+ ../../../../C/Alloc.c \
+ ../../../../C/Sort.c \
+ ../../../../C/Threads.c
 
 ConsoleClose.o : ../../UI/Console/ConsoleClose.cpp
 	$(CXX) $(CFLAGS) ../../UI/Console/ConsoleClose.cpp
@@ -167,6 +202,36 @@ UpdateCallbackConsole.o : ../../UI/Console/UpdateCallbackConsole.cpp
 	$(CXX) $(CFLAGS) ../../UI/Console/UpdateCallbackConsole.cpp
 UserInputUtils.o : ../../UI/Console/UserInputUtils.cpp
 	$(CXX) $(CFLAGS) ../../UI/Console/UserInputUtils.cpp
+AlignedBuffer.o : ../../../Common/AlignedBuffer.cpp
+	$(CXX) $(CFLAGS) ../../../Common/AlignedBuffer.cpp
+CommandLineParser.o : ../../../Common/CommandLineParser.cpp
+	$(CXX) $(CFLAGS) ../../../Common/CommandLineParser.cpp
+CRC.o : ../../../Common/CRC.cpp
+	$(CXX) $(CFLAGS) ../../../Common/CRC.cpp
+IntToString.o : ../../../Common/IntToString.cpp
+	$(CXX) $(CFLAGS) ../../../Common/IntToString.cpp
+ListFileUtils.o : ../../../Common/ListFileUtils.cpp
+	$(CXX) $(CFLAGS) ../../../Common/ListFileUtils.cpp
+MyWindows.o : ../../../Common/MyWindows.cpp
+	$(CXX) $(CFLAGS) ../../../Common/MyWindows.cpp
+Random.o : ../../../Common/Random.cpp
+	$(CXX) $(CFLAGS) ../../../Common/Random.cpp
+StdInStream.o : ../../../Common/StdInStream.cpp
+	$(CXX) $(CFLAGS) ../../../Common/StdInStream.cpp
+StdOutStream.o : ../../../Common/StdOutStream.cpp
+	$(CXX) $(CFLAGS) ../../../Common/StdOutStream.cpp
+String.o : ../../../Common/String.cpp
+	$(CXX) $(CFLAGS) ../../../Common/String.cpp
+StringConvert.o : ../../../Common/StringConvert.cpp
+	$(CXX) $(CFLAGS) ../../../Common/StringConvert.cpp
+StringToInt.o : ../../../Common/StringToInt.cpp
+	$(CXX) $(CFLAGS) ../../../Common/StringToInt.cpp
+UTFConvert.o : ../../../Common/UTFConvert.cpp
+	$(CXX) $(CFLAGS) ../../../Common/UTFConvert.cpp
+Vector.o : ../../../Common/Vector.cpp
+	$(CXX) $(CFLAGS) ../../../Common/Vector.cpp
+Wildcard.o : ../../../Common/Wildcard.cpp
+	$(CXX) $(CFLAGS) ../../../Common/Wildcard.cpp
 Error.o : ../../../Windows/Error.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/Error.cpp
 FileDir.o : ../../../Windows/FileDir.cpp
@@ -177,18 +242,24 @@ FileIO.o : ../../../Windows/FileIO.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/FileIO.cpp
 FileName.o : ../../../Windows/FileName.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/FileName.cpp
+MemoryLock.o : ../../../Windows/MemoryLock.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/MemoryLock.cpp
 PropVariant.o : ../../../Windows/PropVariant.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
 PropVariantConversions.o : ../../../Windows/PropVariantConversions.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/PropVariantConversions.cpp
 Synchronization.o : ../../../Windows/Synchronization.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/Synchronization.cpp
+CreateCoder.o : ../../Common/CreateCoder.cpp
+	$(CXX) $(CFLAGS) ../../Common/CreateCoder.cpp
 CrossThreadProgress.o : ../../Archive/Common/CrossThreadProgress.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/CrossThreadProgress.cpp
 FilePathAutoRename.o : ../../Common/FilePathAutoRename.cpp
 	$(CXX) $(CFLAGS) ../../Common/FilePathAutoRename.cpp
 FileStreams.o : ../../Common/FileStreams.cpp
 	$(CXX) $(CFLAGS) ../../Common/FileStreams.cpp
+FilterCoder.o : ../../Common/FilterCoder.cpp
+	$(CXX) $(CFLAGS) ../../Common/FilterCoder.cpp
 InBuffer.o : ../../Common/InBuffer.cpp
 	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
 InOutTempBuffer.o : ../../Common/InOutTempBuffer.cpp
@@ -203,42 +274,66 @@ LSBFEncoder.o : ../../Common/LSBFEncoder.cpp
 	$(CXX) $(CFLAGS) ../../Common/LSBFEncoder.cpp
 MemBlocks.o : ../../Common/MemBlocks.cpp
 	$(CXX) $(CFLAGS) ../../Common/MemBlocks.cpp
+MethodId.o : ../../Common/MethodId.cpp
+	$(CXX) $(CFLAGS) ../../Common/MethodId.cpp
+OffsetStream.o : ../../Common/OffsetStream.cpp
+	$(CXX) $(CFLAGS) ../../Common/OffsetStream.cpp
+OutBuffer.o : ../../Common/OutBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp
 OutMemStream.o : ../../Common/OutMemStream.cpp
 	$(CXX) $(CFLAGS) ../../Common/OutMemStream.cpp
 ProgressMt.o : ../../Common/ProgressMt.cpp
 	$(CXX) $(CFLAGS) ../../Common/ProgressMt.cpp
-OffsetStream.o : ../../Common/OffsetStream.cpp
-	$(CXX) $(CFLAGS) ../../Common/OffsetStream.cpp
-StreamUtils.o : ../../Common/StreamUtils.cpp
-	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
-OutBuffer.o : ../../Common/OutBuffer.cpp
-	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp
 ProgressUtils.o : ../../Common/ProgressUtils.cpp
 	$(CXX) $(CFLAGS) ../../Common/ProgressUtils.cpp
 StreamBinder.o : ../../Common/StreamBinder.cpp
 	$(CXX) $(CFLAGS) ../../Common/StreamBinder.cpp
 StreamObjects.o : ../../Common/StreamObjects.cpp
 	$(CXX) $(CFLAGS) ../../Common/StreamObjects.cpp
+StreamUtils.o : ../../Common/StreamUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
+ARM.o : ../../Compress/Branch/ARM.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Branch/ARM.cpp
+ARMThumb.o : ../../Compress/Branch/ARMThumb.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Branch/ARMThumb.cpp
+BCJ2Register.o : ../../Compress/Branch/BCJ2Register.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Branch/BCJ2Register.cpp
+BCJRegister.o : ../../Compress/Branch/BCJRegister.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Branch/BCJRegister.cpp
 BranchCoder.o : ../../Compress/Branch/BranchCoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Branch/BranchCoder.cpp
+BranchRegister.o : ../../Compress/Branch/BranchRegister.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Branch/BranchRegister.cpp
+IA64.o : ../../Compress/Branch/IA64.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Branch/IA64.cpp
+PPC.o : ../../Compress/Branch/PPC.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Branch/PPC.cpp
+SPARC.o : ../../Compress/Branch/SPARC.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Branch/SPARC.cpp
 x86.o : ../../Compress/Branch/x86.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Branch/x86.cpp
 x86_2.o : ../../Compress/Branch/x86_2.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Branch/x86_2.cpp
+BZip2CRC.o : ../../Compress/BZip2/BZip2CRC.cpp
+	$(CXX) $(CFLAGS) ../../Compress/BZip2/BZip2CRC.cpp
 BZip2Decoder.o : ../../Compress/BZip2/BZip2Decoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/BZip2/BZip2Decoder.cpp
 BZip2Encoder.o : ../../Compress/BZip2/BZip2Encoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/BZip2/BZip2Encoder.cpp
-BZip2CRC.o : ../../Compress/BZip2/BZip2CRC.cpp
-	$(CXX) $(CFLAGS) ../../Compress/BZip2/BZip2CRC.cpp
-BlockSort.o : ../../Compress/BWT/BlockSort.cpp
-	$(CXX) $(CFLAGS) ../../Compress/BWT/BlockSort.cpp
+BZip2Register.o : ../../Compress/BZip2/BZip2Register.cpp
+	$(CXX) $(CFLAGS) ../../Compress/BZip2/BZip2Register.cpp
 CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp
+CopyRegister.o : ../../Compress/Copy/CopyRegister.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyRegister.cpp
+Deflate64Register.o : ../../Compress/Deflate/Deflate64Register.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Deflate/Deflate64Register.cpp
 DeflateDecoder.o : ../../Compress/Deflate/DeflateDecoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Deflate/DeflateDecoder.cpp
 DeflateEncoder.o : ../../Compress/Deflate/DeflateEncoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Deflate/DeflateEncoder.cpp
+DeflateRegister.o : ../../Compress/Deflate/DeflateRegister.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Deflate/DeflateRegister.cpp
 ImplodeDecoder.o : ../../Compress/Implode/ImplodeDecoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Implode/ImplodeDecoder.cpp
 ImplodeHuffmanDecoder.o : ../../Compress/Implode/ImplodeHuffmanDecoder.cpp
@@ -249,12 +344,32 @@ LZMADecoder.o : ../../Compress/LZMA/LZMADecoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/LZMA/LZMADecoder.cpp
 LZMAEncoder.o : ../../Compress/LZMA/LZMAEncoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/LZMA/LZMAEncoder.cpp
+LZMARegister.o : ../../Compress/LZMA/LZMARegister.cpp
+	$(CXX) $(CFLAGS) ../../Compress/LZMA/LZMARegister.cpp
 PPMDDecoder.o : ../../Compress/PPMD/PPMDDecoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/PPMD/PPMDDecoder.cpp
 PPMDEncoder.o : ../../Compress/PPMD/PPMDEncoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/PPMD/PPMDEncoder.cpp
+PPMDRegister.o : ../../Compress/PPMD/PPMDRegister.cpp
+	$(CXX) $(CFLAGS) ../../Compress/PPMD/PPMDRegister.cpp
 RangeCoderBit.o : ../../Compress/RangeCoder/RangeCoderBit.cpp
 	$(CXX) $(CFLAGS) ../../Compress/RangeCoder/RangeCoderBit.cpp
+ShrinkDecoder.o : ../../Compress/Shrink/ShrinkDecoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Shrink/ShrinkDecoder.cpp
+ZDecoder.o : ../../Compress/Z/ZDecoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Z/ZDecoder.cpp
+BlockSort.o : ../../Compress/BWT/BlockSort.cpp
+	$(CXX) $(CFLAGS) ../../Compress/BWT/BlockSort.cpp
+Lzx86Converter.o : ../../Compress/Lzx/Lzx86Converter.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Lzx/Lzx86Converter.cpp
+LzxDecoder.o : ../../Compress/Lzx/LzxDecoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Lzx/LzxDecoder.cpp
+QuantumDecoder.o : ../../Compress/Quantum/QuantumDecoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Quantum/QuantumDecoder.cpp
+LzmaBench.o : ../../Compress/LZMA_Alone/LzmaBench.cpp
+	$(CXX) $(CFLAGS) ../../Compress/LZMA_Alone/LzmaBench.cpp
+LzmaBenchCon.o : ../../Compress/LZMA_Alone/LzmaBenchCon.cpp
+	$(CXX) $(CFLAGS) ../../Compress/LZMA_Alone/LzmaBenchCon.cpp
 7zCompressionMode.o : ../../Archive/7z/7zCompressionMode.cpp
 	$(CXX) $(CFLAGS) ../../Archive/7z/7zCompressionMode.cpp
 7zDecode.o : ../../Archive/7z/7zDecode.cpp
@@ -275,16 +390,18 @@ RangeCoderBit.o : ../../Compress/RangeCoder/RangeCoderBit.cpp
 	$(CXX) $(CFLAGS) ../../Archive/7z/7zHeader.cpp
 7zIn.o : ../../Archive/7z/7zIn.cpp
 	$(CXX) $(CFLAGS) ../../Archive/7z/7zIn.cpp
-7zMethodID.o : ../../Archive/7z/7zMethodID.cpp
-	$(CXX) $(CFLAGS) ../../Archive/7z/7zMethodID.cpp
 7zOut.o : ../../Archive/7z/7zOut.cpp
 	$(CXX) $(CFLAGS) ../../Archive/7z/7zOut.cpp
 7zProperties.o : ../../Archive/7z/7zProperties.cpp
 	$(CXX) $(CFLAGS) ../../Archive/7z/7zProperties.cpp
+7zRegister.o : ../../Archive/7z/7zRegister.cpp
+	$(CXX) $(CFLAGS) ../../Archive/7z/7zRegister.cpp
 7zSpecStream.o : ../../Archive/7z/7zSpecStream.cpp
 	$(CXX) $(CFLAGS) ../../Archive/7z/7zSpecStream.cpp
 7zUpdate.o : ../../Archive/7z/7zUpdate.cpp
 	$(CXX) $(CFLAGS) ../../Archive/7z/7zUpdate.cpp
+bz2Register.o : ../../Archive/BZip2/bz2Register.cpp
+	$(CXX) $(CFLAGS) ../../Archive/BZip2/bz2Register.cpp
 BZip2Handler.o : ../../Archive/BZip2/BZip2Handler.cpp
 	$(CXX) $(CFLAGS) ../../Archive/BZip2/BZip2Handler.cpp
 BZip2HandlerOut.o : ../../Archive/BZip2/BZip2HandlerOut.cpp
@@ -301,6 +418,8 @@ GZipIn.o : ../../Archive/GZip/GZipIn.cpp
 	$(CXX) $(CFLAGS) ../../Archive/GZip/GZipIn.cpp
 GZipOut.o : ../../Archive/GZip/GZipOut.cpp
 	$(CXX) $(CFLAGS) ../../Archive/GZip/GZipOut.cpp
+GZipRegister.o : ../../Archive/GZip/GZipRegister.cpp
+	$(CXX) $(CFLAGS) ../../Archive/GZip/GZipRegister.cpp
 GZipUpdate.o : ../../Archive/GZip/GZipUpdate.cpp
 	$(CXX) $(CFLAGS) ../../Archive/GZip/GZipUpdate.cpp
 TarHandler.o : ../../Archive/Tar/TarHandler.cpp
@@ -313,6 +432,8 @@ TarIn.o : ../../Archive/Tar/TarIn.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Tar/TarIn.cpp
 TarOut.o : ../../Archive/Tar/TarOut.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Tar/TarOut.cpp
+TarRegister.o : ../../Archive/Tar/TarRegister.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Tar/TarRegister.cpp
 TarUpdate.o : ../../Archive/Tar/TarUpdate.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Tar/TarUpdate.cpp
 ZipAddCommon.o : ../../Archive/Zip/ZipAddCommon.cpp
@@ -329,48 +450,68 @@ ZipItem.o : ../../Archive/Zip/ZipItem.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Zip/ZipItem.cpp
 ZipOut.o : ../../Archive/Zip/ZipOut.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Zip/ZipOut.cpp
+ZipRegister.o : ../../Archive/Zip/ZipRegister.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Zip/ZipRegister.cpp
 ZipUpdate.o : ../../Archive/Zip/ZipUpdate.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Zip/ZipUpdate.cpp
 CoderMixer2.o : ../../Archive/Common/CoderMixer2.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/CoderMixer2.cpp
 CoderMixer2MT.o : ../../Archive/Common/CoderMixer2MT.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/CoderMixer2MT.cpp
+CoderMixer2ST.o : ../../Archive/Common/CoderMixer2ST.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Common/CoderMixer2ST.cpp
 DummyOutStream.o : ../../Archive/Common/DummyOutStream.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/DummyOutStream.cpp
-FilterCoder.o : ../../Archive/Common/FilterCoder.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Common/FilterCoder.cpp
 InStreamWithCRC.o : ../../Archive/Common/InStreamWithCRC.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/InStreamWithCRC.cpp
 ItemNameUtils.o : ../../Archive/Common/ItemNameUtils.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/ItemNameUtils.cpp
+MultiStream.o : ../../Archive/Common/MultiStream.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Common/MultiStream.cpp
 OutStreamWithCRC.o : ../../Archive/Common/OutStreamWithCRC.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/OutStreamWithCRC.cpp
 ParseProperties.o : ../../Archive/Common/ParseProperties.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/ParseProperties.cpp
-MultiStream.o : ../../Archive/Common/MultiStream.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Common/MultiStream.cpp
+SplitHandler.o : ../../Archive/Split/SplitHandler.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Split/SplitHandler.cpp
+SplitRegister.o : ../../Archive/Split/SplitRegister.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Split/SplitRegister.cpp
+ZHandler.o : ../../Archive/Z/ZHandler.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Z/ZHandler.cpp
+ZRegister.o : ../../Archive/Z/ZRegister.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Z/ZRegister.cpp
+CabBlockInStream.o : ../../Archive/Cab/CabBlockInStream.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Cab/CabBlockInStream.cpp
+CabHandler.o : ../../Archive/Cab/CabHandler.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Cab/CabHandler.cpp
+CabHeader.o : ../../Archive/Cab/CabHeader.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Cab/CabHeader.cpp
+CabIn.o : ../../Archive/Cab/CabIn.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Cab/CabIn.cpp
+CabRegister.o : ../../Archive/Cab/CabRegister.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Cab/CabRegister.cpp
 ArchiveCommandLine.o : ../../UI/Common/ArchiveCommandLine.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/ArchiveCommandLine.cpp
 ArchiveExtractCallback.o : ../../UI/Common/ArchiveExtractCallback.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/ArchiveExtractCallback.cpp
 ArchiveOpenCallback.o : ../../UI/Common/ArchiveOpenCallback.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/ArchiveOpenCallback.cpp
-ArchiverInfo.o : ../../UI/Common/ArchiverInfo.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/ArchiverInfo.cpp
 DefaultName.o : ../../UI/Common/DefaultName.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/DefaultName.cpp
 EnumDirItems.o : ../../UI/Common/EnumDirItems.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/EnumDirItems.cpp
 Extract.o : ../../UI/Common/Extract.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/Extract.cpp
-SetProperties.o : ../../UI/Common/SetProperties.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/SetProperties.cpp
 ExtractingFilePath.o : ../../UI/Common/ExtractingFilePath.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/ExtractingFilePath.cpp
+LoadCodecs.o : ../../UI/Common/LoadCodecs.cpp
+	$(CXX) $(CFLAGS) ../../UI/Common/LoadCodecs.cpp
 OpenArchive.o : ../../UI/Common/OpenArchive.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/OpenArchive.cpp
 PropIDUtils.o : ../../UI/Common/PropIDUtils.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/PropIDUtils.cpp
+SetProperties.o : ../../UI/Common/SetProperties.cpp
+	$(CXX) $(CFLAGS) ../../UI/Common/SetProperties.cpp
 SortUtils.o : ../../UI/Common/SortUtils.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/SortUtils.cpp
 TempFiles.o : ../../UI/Common/TempFiles.cpp
@@ -385,18 +526,8 @@ UpdatePair.o : ../../UI/Common/UpdatePair.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/UpdatePair.cpp
 UpdateProduce.o : ../../UI/Common/UpdateProduce.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/UpdateProduce.cpp
-Pbkdf2HmacSha1.o : ../../Crypto/Hash/Pbkdf2HmacSha1.cpp
-	$(CXX) $(CFLAGS) ../../Crypto/Hash/Pbkdf2HmacSha1.cpp
-Sha256.o : ../../Crypto/Hash/Sha256.cpp
-	$(CXX) $(CFLAGS) ../../Crypto/Hash/Sha256.cpp
-HmacSha1.o : ../../Crypto/Hash/HmacSha1.cpp
-	$(CXX) $(CFLAGS) ../../Crypto/Hash/HmacSha1.cpp
-Sha1.o : ../../Crypto/Hash/Sha1.cpp
-	$(CXX) $(CFLAGS) ../../Crypto/Hash/Sha1.cpp
-RandGen.o : ../../Crypto/Hash/RandGen.cpp
-	$(CXX) $(CFLAGS) ../../Crypto/Hash/RandGen.cpp
-WzAES.o : ../../Crypto/WzAES/WzAES.cpp
-	$(CXX) $(CFLAGS) ../../Crypto/WzAES/WzAES.cpp
+WorkDir.o : ../../UI/Common/WorkDir.cpp
+	$(CXX) $(CFLAGS) ../../UI/Common/WorkDir.cpp
 ZipCipher.o : ../../Crypto/Zip/ZipCipher.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/Zip/ZipCipher.cpp
 ZipCrypto.o : ../../Crypto/Zip/ZipCrypto.cpp
@@ -405,43 +536,48 @@ MyAES.o : ../../Crypto/AES/MyAES.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/AES/MyAES.cpp
 7zAES.o : ../../Crypto/7zAES/7zAES.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/7zAES/7zAES.cpp
-SplitHandler.o : ../../Archive/Split/SplitHandler.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Split/SplitHandler.cpp
+7zAESRegister.o : ../../Crypto/7zAES/7zAESRegister.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/7zAES/7zAESRegister.cpp
+WzAES.o : ../../Crypto/WzAES/WzAES.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/WzAES/WzAES.cpp
+HmacSha1.o : ../../Crypto/Hash/HmacSha1.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Hash/HmacSha1.cpp
+Pbkdf2HmacSha1.o : ../../Crypto/Hash/Pbkdf2HmacSha1.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Hash/Pbkdf2HmacSha1.cpp
+RandGen.o : ../../Crypto/Hash/RandGen.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Hash/RandGen.cpp
+Sha1.o : ../../Crypto/Hash/Sha1.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Hash/Sha1.cpp
+Sha256.o : ../../Crypto/Hash/Sha256.cpp
+	$(CXX) $(CFLAGS) ../../Crypto/Hash/Sha256.cpp
 aescrypt.o : ../../Crypto/AES/aescrypt.c
 	$(CC) $(CFLAGS) ../../Crypto/AES/aescrypt.c
 aeskey.o : ../../Crypto/AES/aeskey.c
 	$(CC) $(CFLAGS) ../../Crypto/AES/aeskey.c
 aestab.o : ../../Crypto/AES/aestab.c
 	$(CC) $(CFLAGS) ../../Crypto/AES/aestab.c
-ShrinkDecoder.o : ../../Compress/Shrink/ShrinkDecoder.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Shrink/ShrinkDecoder.cpp
-ZHandler.o : ../../Archive/Z/ZHandler.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Z/ZHandler.cpp
-ZDecoder.o : ../../Compress/Z/ZDecoder.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Z/ZDecoder.cpp
-CabHandler.o : ../../Archive/Cab/CabHandler.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Cab/CabHandler.cpp
-CabHeader.o : ../../Archive/Cab/CabHeader.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Cab/CabHeader.cpp
-CabIn.o : ../../Archive/Cab/CabIn.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Cab/CabIn.cpp
-CabBlockInStream.o : ../../Archive/Cab/CabBlockInStream.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Cab/CabBlockInStream.cpp
-LzxDecoder.o : ../../Compress/Lzx/LzxDecoder.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Lzx/LzxDecoder.cpp
-Lzx86Converter.o : ../../Compress/Lzx/Lzx86Converter.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Lzx/Lzx86Converter.cpp
-QuantumDecoder.o : ../../Compress/Quantum/QuantumDecoder.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Quantum/QuantumDecoder.cpp
-HuffmanEncode.o : ../../../../C/Compress/Huffman/HuffmanEncode.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Huffman/HuffmanEncode.c
 MatchFinder.o : ../../../../C/Compress/Lz/MatchFinder.c
 	$(CC) $(CFLAGS) ../../../../C/Compress/Lz/MatchFinder.c
 MatchFinderMt.o : ../../../../C/Compress/Lz/MatchFinderMt.c
 	$(CC) $(CFLAGS) ../../../../C/Compress/Lz/MatchFinderMt.c
-7zCrc.o : ../../../../C/7zCrc.c
-	$(CC) $(CFLAGS) ../../../../C/7zCrc.c
+HuffmanEncode.o : ../../../../C/Compress/Huffman/HuffmanEncode.c
+	$(CC) $(CFLAGS) ../../../../C/Compress/Huffman/HuffmanEncode.c
+BranchARM.o : ../../../../C/Compress/Branch/BranchARM.c
+	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchARM.c
+BranchARMThumb.o : ../../../../C/Compress/Branch/BranchARMThumb.c
+	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchARMThumb.c
+BranchIA64.o : ../../../../C/Compress/Branch/BranchIA64.c
+	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchIA64.c
+BranchPPC.o : ../../../../C/Compress/Branch/BranchPPC.c
+	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchPPC.c
+BranchSPARC.o : ../../../../C/Compress/Branch/BranchSPARC.c
+	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchSPARC.c
+BranchX86.o : ../../../../C/Compress/Branch/BranchX86.c
+	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchX86.c
+Alloc.o : ../../../../C/Alloc.c
+	$(CC) $(CFLAGS) ../../../../C/Alloc.c
 Sort.o : ../../../../C/Sort.c
 	$(CC) $(CFLAGS) ../../../../C/Sort.c
 Threads.o : ../../../../C/Threads.c
 	$(CC) $(CFLAGS) ../../../../C/Threads.c
+

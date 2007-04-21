@@ -1,0 +1,18 @@
+
+OPTFLAGS=-O
+
+# use "-m32" to have a 32bits executable
+ALLFLAGS=-m64 ${OPTFLAGS} -s -fPIC \
+    	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
+	-DNDEBUG -D_REENTRANT -DENV_UNIX \
+	$(LOCAL_FLAGS)
+
+CXX=g++ $(ALLFLAGS)
+CC=gcc $(ALLFLAGS)
+LINK_SHARED=-shared
+
+LOCAL_LIBS=-lpthread
+LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
+
+OBJ_CRC32=$(OBJ_CRC32_x86_64)
+

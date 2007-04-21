@@ -8,8 +8,6 @@
 
 #include "Vector.h"
 
-static const char *kTrimDefaultCharSet  = " \n\t";
-
 LPSTR WINAPI CharNextA( LPCSTR ptr );
 LPSTR WINAPI CharPrevA( LPCSTR start, LPCSTR ptr );
 
@@ -137,7 +135,7 @@ class CStringBase
 protected:
   T *_chars;
   int _length;
-	int _capacity;
+  int _capacity;
   
   void SetCapacity(int newCapacity)
   {
@@ -346,7 +344,7 @@ public:
   int Find(T c, int startIndex) const
   {
     T *p = _chars + startIndex;
-    while (true)
+    for (;;)
     {
       if (*p == c)
         return (int)(p - _chars);
@@ -376,7 +374,7 @@ public:
     if (_length == 0)
       return -1;
     T *p = _chars + _length - 1;
-    while (true)
+    for (;;)
     {
       if (*p == c)
         return (int)(p - _chars);
@@ -404,9 +402,9 @@ public:
   CStringBase GetTrimDefaultCharSet()
   {
     CStringBase<T> charSet;
-    for(int i = 0; i < (int)(sizeof(kTrimDefaultCharSet) /
-      sizeof(kTrimDefaultCharSet[0])); i++)
-      charSet += (T)kTrimDefaultCharSet[i];
+    charSet += (T)' ';
+    charSet += (T)'\n';
+    charSet += (T)'\t';
     return charSet;
   }
   public:

@@ -9,6 +9,8 @@
 #include <stdlib.h>
 #endif
 
+/* #define DEBUG_SYNCHRO 1 */
+#undef DEBUG_SYNCHRO
 
 #ifdef ENV_BEOS
 
@@ -254,6 +256,238 @@ HRes Thread_Close(CThread *thread)
     return SZ_OK;
 }
 
+#ifdef DEBUG_SYNCHRO
+
+#include <stdio.h>
+
+static void dump_error(int ligne,int ret,const char *text,void *param)
+{
+  printf("\n##T%d#ERROR2 (l=%d) %s : param=%p ret = %d (%s)##\n",(int)pthread_self(),ligne,text,param,ret,strerror(ret));
+    // abort();
+}
+
+
+HRes AutoResetEvent_Create(CAutoResetEvent *p, int initialSignaled)
+{
+  /* memset(&p->_mutex,0,sizeof(p->_mutex)); */
+  pthread_mutexattr_t mutexattr;
+  int ret = pthread_mutexattr_init(&mutexattr);
+  if (ret != 0) dump_error(__LINE__,ret,"AREC::pthread_mutexattr_init",&mutexattr);
+  ret = pthread_mutexattr_settype(&mutexattr,PTHREAD_MUTEX_ERRORCHECK_NP);
+  if (ret != 0) dump_error(__LINE__,ret,"AREC::pthread_mutexattr_settype",&mutexattr);
+  ret = pthread_mutex_init(&p->_mutex,&mutexattr);
+  if (ret != 0) dump_error(__LINE__,ret,"AREC::pthread_mutexattr_init",&p->_mutex);
+  if (ret == 0)
+  {
+    /* memset(&p->_cond,0,sizeof(p->_cond)); */
+    ret = pthread_cond_init(&p->_cond,0);
+    if (ret != 0) dump_error(__LINE__,ret,"AREC::pthread_cond_init",&p->_cond);
+    p->_manual_reset = FALSE;
+    p->_state        = (initialSignaled ? TRUE : FALSE);
+    p->_created = 1;
+  }
+  return ret;
+}
+
+HRes AutoResetEvent_CreateNotSignaled(CAutoResetEvent *p) { return AutoResetEvent_Create(p, 0); }
+
+HRes Event_Set(CEvent *p) {
+  int ret = pthread_mutex_lock(&p->_mutex);
+  if (ret != 0) dump_error(__LINE__,ret,"ES::pthread_mutex_lock",&p->_mutex);
+  if (ret == 0)
+  {
+    p->_state = TRUE;
+    ret = pthread_mutex_unlock(&p->_mutex);
+    if (ret != 0) dump_error(__LINE__,ret,"ES::pthread_mutex_unlock",&p->_mutex);
+    if (ret == 0)
+    {
+       ret = pthread_cond_broadcast(&p->_cond);
+       if (ret != 0) dump_error(__LINE__,ret,"ES::pthread_cond_broadcast",&p->_cond);
+    }
+  }
+  return ret;
+}
+
+HRes Event_Reset(CEvent *p) {
+  int ret = pthread_mutex_lock(&p->_mutex);
+  if (ret != 0) dump_error(__LINE__,ret,"ER::pthread_mutex_lock",&p->_mutex);
+  if (ret == 0)
+  {
+    p->_state = FALSE;
+    ret = pthread_mutex_unlock(&p->_mutex);
+    if (ret != 0) dump_error(__LINE__,ret,"ER::pthread_mutex_unlock",&p->_mutex);
+  }
+  return ret;
+
+}
+ 
+HRes Event_Wait(CEvent *p) {
+  int ret = pthread_mutex_lock(&p->_mutex);
+  if (ret != 0) dump_error(__LINE__,ret,"EW::pthread_mutex_lock",&p->_mutex);
+  if (ret == 0)
+  {
+    while ((p->_state == FALSE) && (ret == 0))
+    {
+       ret = pthread_cond_wait(&p->_cond, &p->_mutex);
+       if (ret != 0) dump_error(__LINE__,ret,"EW::pthread_cond_wait",&p->_mutex);
+    }
+    if (ret == 0)
+    {
+       if (p->_manual_reset == FALSE)
+       {
+         p->_state = FALSE;
+       }
+       ret = pthread_mutex_unlock(&p->_mutex);
+       if (ret != 0) dump_error(__LINE__,ret,"EW::pthread_mutex_unlock",&p->_mutex);
+    }
+  }
+  return ret;
+}
+
+HRes Event_Close(CEvent *p) { 
+  if (p->_created)
+  {
+    p->_created = 0;
+    int ret = pthread_mutex_destroy(&p->_mutex);
+    if (ret != 0) dump_error(__LINE__,ret,"EC::pthread_mutex_destroy",&p->_mutex);
+    ret = pthread_cond_destroy(&p->_cond);
+    if (ret != 0) dump_error(__LINE__,ret,"EC::pthread_cond_destroy",&p->_cond);
+  }
+  return 0;
+}
+
+HRes Semaphore_Create(CSemaphore *p, UInt32 initiallyCount, UInt32 maxCount)
+{
+  /* memset(&p->_mutex,0,sizeof(p->_mutex)); */
+  pthread_mutexattr_t mutexattr;
+  int ret = pthread_mutexattr_init(&mutexattr);
+  if (ret != 0) dump_error(__LINE__,ret,"SemC::pthread_mutexattr_init",&mutexattr);
+  ret = pthread_mutexattr_settype(&mutexattr,PTHREAD_MUTEX_ERRORCHECK_NP);
+  if (ret != 0) dump_error(__LINE__,ret,"SemC::pthread_mutexattr_settype",&mutexattr);
+  ret = pthread_mutex_init(&p->_mutex,&mutexattr);
+  if (ret != 0) dump_error(__LINE__,ret,"SemC::pthread_mutexattr_init",&p->_mutex);
+  if (ret == 0)
+  {
+    /* memset(&p->_cond,0,sizeof(p->_cond)); */
+    ret = pthread_cond_init(&p->_cond,0);
+    if (ret != 0) dump_error(__LINE__,ret,"SemC::pthread_cond_init",&p->_mutex);
+    p->_count    = initiallyCount;
+    p->_maxCount = maxCount;
+    p->_created = 1;
+  }
+  return ret;
+}
+
+HRes Semaphore_ReleaseN(CSemaphore *p, UInt32 releaseCount)
+{
+  int ret;
+  if (releaseCount < 1) return EINVAL;
+
+  ret = pthread_mutex_lock(&p->_mutex);
+  if (ret != 0) dump_error(__LINE__,ret,"SemR::pthread_mutex_lock",&p->_mutex);
+  if (ret == 0)
+  {
+    UInt32 newCount = p->_count + releaseCount;
+    if (newCount > p->_maxCount)
+    {
+      ret = pthread_mutex_unlock(&p->_mutex);
+      if (ret != 0) dump_error(__LINE__,ret,"SemR::pthread_mutex_unlock",&p->_mutex);
+      return EINVAL;
+    }
+    p->_count = newCount;
+    ret = pthread_mutex_unlock(&p->_mutex);
+    if (ret != 0) dump_error(__LINE__,ret,"SemR::pthread_mutex_unlock",&p->_mutex);
+    if (ret == 0)
+    {
+       ret = pthread_cond_broadcast(&p->_cond);
+       if (ret != 0) dump_error(__LINE__,ret,"SemR::pthread_cond_broadcast",&p->_cond);
+    }
+  }
+  return ret;
+}
+
+HRes Semaphore_Release1(CSemaphore *p)
+{
+  return Semaphore_ReleaseN(p, 1);
+}
+
+
+HRes Semaphore_Wait(CSemaphore *p) {
+  int ret = pthread_mutex_lock(&p->_mutex);
+  if (ret != 0) dump_error(__LINE__,ret,"SemW::pthread_mutex_lock",&p->_mutex);
+  if (ret == 0)
+  {
+    while ((p->_count < 1) && (ret == 0))
+    {
+       ret = pthread_cond_wait(&p->_cond, &p->_mutex);
+       if (ret != 0) dump_error(__LINE__,ret,"SemW::pthread_cond_wait",&p->_mutex);
+    }
+    if (ret == 0)
+    {
+      p->_count--;
+      ret = pthread_mutex_unlock(&p->_mutex);
+      if (ret != 0) dump_error(__LINE__,ret,"SemW::pthread_mutex_unlock",&p->_mutex);
+    }
+  }
+  return ret;
+}
+
+HRes Semaphore_Close(CSemaphore *p) {
+  if (p->_created)
+  {
+    p->_created = 0;
+    int ret = pthread_mutex_destroy(&p->_mutex);
+    if (ret != 0) dump_error(__LINE__,ret,"Semc::pthread_mutex_destroy",&p->_mutex);
+    ret = pthread_cond_destroy(&p->_cond);
+    if (ret != 0) dump_error(__LINE__,ret,"Semc::pthread_cond_destroy",&p->_cond);
+  }
+  return 0;
+}
+
+HRes CriticalSection_Init(CCriticalSection * lpCriticalSection)
+{
+	if (lpCriticalSection)
+	{
+		pthread_mutexattr_t mutexattr;
+		int ret = pthread_mutexattr_init(&mutexattr);
+		if (ret != 0) dump_error(__LINE__,ret,"CS I::pthread_mutexattr_init",&mutexattr);
+		ret = pthread_mutexattr_settype(&mutexattr,PTHREAD_MUTEX_ERRORCHECK_NP);
+		if (ret != 0) dump_error(__LINE__,ret,"CS I::pthread_mutexattr_settype",&mutexattr);
+		ret = pthread_mutex_init(&lpCriticalSection->_mutex,&mutexattr);
+		if (ret != 0) dump_error(__LINE__,ret,"CS I::pthread_mutexattr_init",&lpCriticalSection->_mutex);
+		return ret;
+	}
+	return EINTR;
+}
+
+void CriticalSection_Enter(CCriticalSection * lpCriticalSection)
+{
+	if (lpCriticalSection)
+	{
+		int ret = pthread_mutex_lock(&(lpCriticalSection->_mutex));
+                if (ret != 0) dump_error(__LINE__,ret,"CS::pthread_mutex_lock",&(lpCriticalSection->_mutex));
+	}
+}
+
+void CriticalSection_Leave(CCriticalSection * lpCriticalSection)
+{
+	if (lpCriticalSection)
+	{
+		int ret = pthread_mutex_unlock(&(lpCriticalSection->_mutex));
+                if (ret != 0) dump_error(__LINE__,ret,"CS::pthread_mutex_unlock",&(lpCriticalSection->_mutex));
+	}
+}
+
+void CriticalSection_Delete(CCriticalSection * lpCriticalSection)
+{
+	if (lpCriticalSection)
+	{
+		int ret = pthread_mutex_destroy(&(lpCriticalSection->_mutex));
+                if (ret != 0) dump_error(__LINE__,ret,"CS::pthread_mutex_destroy",&(lpCriticalSection->_mutex));
+	}
+}
+
+#else
 
 HRes AutoResetEvent_Create(CAutoResetEvent *p, int initialSignaled)
 {
@@ -431,6 +665,8 @@ void CriticalSection_Delete(CCriticalSection * lpCriticalSection)
 		pthread_mutex_destroy(&(lpCriticalSection->_mutex));
 	}
 }
+
+#endif /* DEBUG_SYNCHRO */
 
 #endif
 

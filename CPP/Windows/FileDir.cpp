@@ -169,10 +169,10 @@ static BOOL CopyFile(const char *src,const char *dst)
   flags |= O_LARGEFILE;
 #endif
 
-  int fout = open(dst,O_CREAT | O_WRONLY | O_EXCL | flags, 0777);
+  int fout = open(dst,O_CREAT | O_WRONLY | O_EXCL | flags, 0600);
   if (fout != -1)
   {
-    int fin = open(src,O_RDONLY | flags , 0777);
+    int fin = open(src,O_RDONLY | flags , 0600);
     if (fin != -1)
     {
       ret = copy_fd(fin,fout);
@@ -381,7 +381,7 @@ bool MyCreateDirectory(LPCTSTR pathName)
 
   const char * name = nameWindowToUnix(pathName);
   bool bret = false;
-  if (mkdir( name, 0777 ) == 0) bret = true;
+  if (mkdir( name, 0700 ) == 0) bret = true;
 
   TRACEN((printf("MyCreateDirectory(%s)=%d\n",name,(int)bret)))
   return bret;

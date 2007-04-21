@@ -1,22 +1,13 @@
-PROG=../../../../bin/Formats/7za.so
+PROG=../../../../bin/7za.so
 
 LOCAL_FLAGS=\
-  -DEXCLUDE_COM \
-  -DNO_REGISTRY \
-  -DFORMAT_7Z \
   -DCOMPRESS_MT \
-  -DCOMPRESS_BCJ_X86 \
-  -DCOMPRESS_BCJ2 \
-  -DCOMPRESS_BZIP2_DECODER \
-  -DCOMPRESS_BZIP2_MT \
-  -DCOMPRESS_COPY \
-  -DCOMPRESS_DEFLATE_DECODER \
-  -DCOMPRESS_LZMA \
   -DCOMPRESS_MF_MT \
-  -DCOMPRESS_PPMD \
-  -DCRYPTO_7ZAES \
-  -DCRYPTO_AES
+  -DCOMPRESS_BZIP2_MT \
+  -DDEFLATE_EXTRACT_ONLY \
+  -DBZIP2_EXTRACT_ONLY
 
+include ../../../../makefile.crc32
 include ../../../../makefile.machine
 
 LOCAL_SHARED=$(LINK_SHARED)
@@ -26,10 +17,7 @@ MY_WINDOWS= \
 	$(MY_HOME)/wine_date_and_time.o \
 	$(MY_HOME)/myGetNumberOfProcessors.o
 
-include ../../../../makefile.machine
-
 OBJS = \
-../../../Common/Alloc.o \
 ../../../Common/CRC.o \
 ../../../Common/IntToString.o \
 ../../../Common/String.o \
@@ -43,25 +31,29 @@ FileFind.o \
 FileIO.o \
 PropVariant.o \
 Synchronization.o \
+CreateCoder.o \
 InBuffer.o \
 InOutTempBuffer.o \
+FilterCoder.o \
 LimitedStreams.o \
 LockedStream.o \
 LSBFDecoder.o \
+MethodId.o \
 OutBuffer.o \
 ProgressUtils.o \
 StreamBinder.o \
 StreamObjects.o \
 StreamUtils.o \
+ArchiveExports.o \
+DllExports2.o \
 CoderMixer2.o \
 CoderMixer2MT.o \
 CrossThreadProgress.o \
-FilterCoder.o \
 InStreamWithCRC.o \
 ItemNameUtils.o \
 OutStreamWithCRC.o \
 ParseProperties.o \
-DllExports.o \
+7zCompressionMode.o \
 7zDecode.o \
 7zEncode.o \
 7zExtract.o \
@@ -71,34 +63,58 @@ DllExports.o \
 7zHandlerOut.o \
 7zHeader.o \
 7zIn.o \
-7zMethodID.o \
 7zOut.o \
 7zProperties.o \
 7zSpecStream.o \
 7zUpdate.o \
+7zRegister.o \
+CodecExports.o \
 BranchCoder.o \
 x86.o \
 x86_2.o \
+ARM.o \
+ARMThumb.o \
+IA64.o \
+PPC.o \
+SPARC.o \
+BranchRegister.o \
+BCJRegister.o \
+BCJ2Register.o \
+ByteSwap.o \
+ByteSwapRegister.o \
 BZip2CRC.o \
+BZip2Register.o \
 BZip2Decoder.o \
+CopyCoder.o \
+CopyRegister.o \
 DeflateDecoder.o \
+DeflateRegister.o \
 LZOutWindow.o \
 LZMADecoder.o \
 LZMAEncoder.o \
+LZMARegister.o \
 PPMDDecoder.o \
 PPMDEncoder.o \
+PPMDRegister.o \
 7zAES.o \
+7zAESRegister.o \
 MyAES.o \
 aescrypt.o \
 aeskey.o \
 aestab.o \
-CopyCoder.o \
-RangeCoderBit.o \
 Sha256.o \
-MatchFinder.o  \
-MatchFinderMt.o  \
-7zCrc.o  \
-Threads.o
+Alloc.o \
+Threads.o \
+$(OBJ_CRC32) \
+MatchFinder.o \
+MatchFinderMt.o \
+BranchARM.o \
+BranchARMThumb.o \
+BranchIA64.o \
+BranchPPC.o \
+BranchSPARC.o \
+BranchX86.o \
+RangeCoderBit.o
 
 include ../../../../makefile.glb
 

@@ -45,7 +45,7 @@
 #if BLOCK_SIZE == 16
 
 #if defined(ARRAYS)
-#define locals(y,x)     x[4],y[4]
+#define locals(y,x)     x[8],y[8]
 #else
 #define locals(y,x)     x##0,x##1,x##2,x##3,y##0,y##1,y##2,y##3
  /* 

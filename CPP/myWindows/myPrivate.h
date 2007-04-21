@@ -1,7 +1,7 @@
 
 void WINAPI RtlSecondsSince1970ToFileTime( DWORD Seconds, FILETIME * ft );
 
-extern int global_use_utf16_conversion;
+extern "C" int global_use_utf16_conversion;
 const char *my_getlocale(void);
 
 #ifdef NEED_NAME_WINDOWS_TO_UNIX

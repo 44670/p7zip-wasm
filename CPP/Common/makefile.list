@@ -1,5 +1,4 @@
 SRCS= \
- Alloc.cpp \
  CommandLineParser.cpp \
  CRC.cpp \
  IntToString.cpp \
@@ -17,8 +16,6 @@ SRCS= \
 
 MyWindows.o : MyWindows.cpp
 	$(CXX) $(CFLAGS) MyWindows.cpp
-Alloc.o : Alloc.cpp
-	$(CXX) $(CFLAGS) Alloc.cpp
 CRC.o : CRC.cpp
 	$(CXX) $(CFLAGS) CRC.cpp
 IntToString.o : IntToString.cpp

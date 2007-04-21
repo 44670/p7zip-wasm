@@ -1,8 +1,32 @@
 
+Version 4.45
+============
+
+  - From Windows version of 7-zip 4.45 :
+   - Default dictionary size was increased: Normal: 16 MB, Max: 32 MB.
+   - Speed optimizations.
+   - Benchmark was improved (new "b" command in command line version).
+   - The number of DLL files was reduced.
+   - switch -mhcf=off is not supported now.
+   - If -t{Type} switch is not specified, 7-Zip now uses extension of archive to detect the type of archive.
+   - Some bugs were fixed (BZip2 in multithread)
+   - x86 or x86_64 : ASM version of crc32 available
+
+  - better detection of executable file (scripts do not need BCJ/BCJ2 filter)
+
+  - default permissions are now :
+    - for a file      : -rw-------
+    - for a directory : drwx------
+
+  - on MacOSX, locale is always utf8 (because the MacOSX filesystem supports only utf8 filenames)
+
+  - makefile.qnx_static and makefile.qnx_shared added (Thank to termterm)
+
+
 Version 4.44
 ============
 
-  - From Windows version of 7-zip 4.43 :
+  - From Windows version of 7-zip 4.44 :
     - 7za : Cab support
     - Speed optimizations for LZMA, Deflate, BZip2 and unRAR.
     - fix : now, updating a crypted header archive keeps the crypted header 

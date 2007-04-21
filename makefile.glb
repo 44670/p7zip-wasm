@@ -11,6 +11,7 @@ DFLAGS=-MM \
 -I../../../myWindows \
 -I../../../ \
 -I../../../include_windows
+
 all:$(PROG)
 
 $(PROG): $(OBJS) $(MY_WINDOWS)

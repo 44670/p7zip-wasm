@@ -6,6 +6,7 @@ namespace NWindows
 	namespace NSystem
 	{
 		int GetNumberOfProcessors();
+		UInt64 GetRamSize();
 	}
 }
 #endif

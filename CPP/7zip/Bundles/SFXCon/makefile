@@ -1,19 +1,11 @@
 PROG=../../../../bin/7zCon.sfx
 
 LOCAL_FLAGS= \
-  -DEXCLUDE_COM \
-  -DNO_REGISTRY \
   -DEXTRACT_ONLY \
-  -D_SFX \
-  -DFORMAT_7Z \
-  -DCOMPRESS_BCJ_X86 \
-  -DCOMPRESS_BCJ2 \
-  -DCOMPRESS_COPY \
-  -DCOMPRESS_LZMA \
-  -DCOMPRESS_PPMD \
-  -DCRYPTO_7ZAES \
-  -DCRYPTO_AES
+  -DNO_READ_FROM_CODER \
+  -D_SFX
 
+include ../../../../makefile.crc32
 include ../../../../makefile.machine
 
 LIBS=$(LOCAL_LIBS)
@@ -32,7 +24,6 @@ CrossThreadProgress.o\
 FilterCoder.o\
 ItemNameUtils.o\
 OutStreamWithCRC.o\
-ParseProperties.o \
 ConsoleClose.o\
 ExtractCallbackConsole.o\
 List.o\
@@ -45,15 +36,19 @@ UserInputUtils.o\
 7zHandler.o\
 7zHeader.o\
 7zIn.o\
-7zMethodID.o\
+7zRegister.o\
 LZMADecoder.o\
+LZMARegister.o\
 BranchCoder.o\
 x86.o\
 x86_2.o\
 PPMDDecoder.o\
+PPMDRegister.o\
 LZOutWindow.o\
 CopyCoder.o\
+CopyRegister.o\
 7zAES.o\
+7zAESRegister.o\
 MyAES.o\
 Error.o\
 FileDir.o\
@@ -64,7 +59,6 @@ PropVariant.o\
 PropVariantConversions.o\
 Synchronization.o\
 ../../../Common/MyWindows.o\
-../../../Common/Alloc.o\
 ../../../Common/CommandLineParser.o\
 ../../../Common/StdInStream.o\
 ../../../Common/StdOutStream.o\
@@ -74,7 +68,6 @@ Synchronization.o\
 ../../../Common/Vector.o\
 ../../../Common/Wildcard.o\
 ../../../Common/IntToString.o\
-../../../Common/StringToInt.o\
 FilePathAutoRename.o\
 FileStreams.o\
 InBuffer.o\
@@ -87,18 +80,23 @@ StreamBinder.o\
 StreamObjects.o\
 ArchiveExtractCallback.o\
 ArchiveOpenCallback.o\
-ArchiverInfo.o\
 DefaultName.o\
+LoadCodecs.o\
 Extract.o\
-SetProperties.o\
 ExtractingFilePath.o\
 OpenArchive.o\
 PropIDUtils.o\
+CreateCoder.o\
 Main.o\
 Sha256.o \
 aescrypt.o\
 aeskey.o\
-aestab.o
+aestab.o \
+BranchX86.o \
+BCJ2Register.o\
+BCJRegister.o\
+$(OBJ_CRC32) \
+Alloc.o
 
 include ../../../../makefile.glb
 

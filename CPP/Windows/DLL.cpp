@@ -20,7 +20,7 @@
 #define NEED_NAME_WINDOWS_TO_UNIX
 #include "myPrivate.h"
 
-//#define TRACEN(u) u;
+// #define TRACEN(u) u;
 #define TRACEN(u)  /* */
 
 namespace NWindows {
@@ -93,11 +93,11 @@ bool CLibrary::LoadOperations(HMODULE newModule)
   return true;
 }
 
-bool CLibrary::LoadEx(LPCTSTR fileName, DWORD flags)
-{
-  /* return LoadOperations(::LoadLibraryEx(fileName, NULL, flags)); */
-  return this->Load(fileName);
-}
+// bool CLibrary::LoadEx(LPCTSTR fileName, DWORD flags)
+// {
+//   /* return LoadOperations(::LoadLibraryEx(fileName, NULL, flags)); */
+//   return this->Load(fileName);
+// }
 
 typedef BOOL (*t_DllMain)(HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved);
 
@@ -136,7 +136,17 @@ bool CLibrary::Load(LPCTSTR lpLibFileName)
     handler = 0;
   }
 #else
-  handler = dlopen(name,RTLD_GLOBAL | RTLD_NOW);
+  int options_dlopen = 0;
+#ifdef RTLD_LOCAL
+  options_dlopen |= RTLD_LOCAL;
+#endif
+#ifdef RTLD_NOW
+  options_dlopen |= RTLD_NOW;
+#endif
+#ifdef RTLD_GROUP
+  options_dlopen |= RTLD_GROUP; // for solaris
+#endif
+  handler = dlopen(name,options_dlopen);
 #endif // __APPLE_CC__
   TRACEN((printf("LoadLibraryA(%s)=%p\n",name,handler)))
   if (handler) {
@@ -147,10 +157,13 @@ bool CLibrary::Load(LPCTSTR lpLibFileName)
     {
       p_DllMain(0,DLL_PROCESS_ATTACH,0);
     }
-
     // Propagate the value of global_use_utf16_conversion into the plugins
     int *tmp = (int *)local_GetProcAddress(handler,"global_use_utf16_conversion");
     if (tmp) *tmp = global_use_utf16_conversion;
+
+    // test construtors calls
+    void (*fctTest)(void) = (void (*)(void))local_GetProcAddress(handler,"sync_TestConstructor");
+    if (fctTest) fctTest();
 
   } else {
 #ifdef __APPLE_CC__
@@ -170,10 +183,10 @@ bool CLibrary::Load(LPCTSTR lpLibFileName)
 }
 
 #ifndef _UNICODE
-bool CLibrary::LoadEx(LPCWSTR fileName, DWORD flags)
-{
-  return LoadEx(UnicodeStringToMultiByte(fileName, CP_ACP), flags);
-}
+// bool CLibrary::LoadEx(LPCWSTR fileName, DWORD flags)
+// {
+//   return LoadEx(UnicodeStringToMultiByte(fileName, CP_ACP), flags);
+// }
 
 
 bool CLibrary::Load(LPCWSTR fileName)

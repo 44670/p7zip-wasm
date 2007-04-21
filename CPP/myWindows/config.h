@@ -14,7 +14,9 @@
     #define HAVE_WCTYPE_H
 
     /* mbrtowc */
-    #define HAVE_MBRTOWC
+/* #ifndef __hpux */
+/*    #define HAVE_MBRTOWC */
+/* #endif */
 
     /* towupper */
     #define HAVE_TOWUPPER
@@ -41,6 +43,17 @@
 
 #ifndef ENV_BEOS
 #define HAVE_PTHREAD
+#endif
+
+#if defined(ENV_MACOSX)
+#define LOCALE_IS_UTF8
+#endif
+
+#ifdef LOCALE_IS_UTF8
+#undef HAVE_LOCALE
+#undef HAVE_MBSTOWCS
+#undef HAVE_WCSTOMBS
+/* #undef HAVE_MBRTOWC */
 #endif
 
 #define MAX_PATHNAME_LEN   1024

@@ -57,7 +57,7 @@ bool CFileBase::Create(LPCTSTR filename, DWORD dwDesiredAccess,
   flags |= O_LARGEFILE;
 #endif
 
- int mode = 0666;
+ int mode = 0600;
 
   if (dwDesiredAccess & GENERIC_WRITE) flags |= O_WRONLY;
   if (dwDesiredAccess & GENERIC_READ)  flags |= O_RDONLY;

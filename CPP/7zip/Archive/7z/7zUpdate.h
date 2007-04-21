@@ -35,7 +35,7 @@ struct CUpdateItem
   bool IsLastAccessTimeDefined;
   bool AttributesAreDefined;
 
-  const bool HasStream() const 
+  bool HasStream() const 
     { return !IsDirectory && !IsAnti && Size != 0; }
   CUpdateItem():  
       IsAnti(false), 
@@ -68,6 +68,7 @@ struct CUpdateOptions
 };
 
 HRESULT Update(
+    DECL_EXTERNAL_CODECS_LOC_VARS
     IInStream *inStream,
     const CArchiveDatabaseEx *database,
     const CObjectVector<CUpdateItem> &updateItems,

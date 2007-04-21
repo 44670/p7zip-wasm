@@ -14,7 +14,7 @@ build-stamp:
 	# Add here commands to compile the package.
 	QUILT_PATCHES=debian/patches quilt push -a || test $$? = 2
 	cp makefile.machine makefile.machine.bak
-	cp makefile.linux_x86_ppc_alpha__gcc_4.X makefile.machine
+	cp makefile.linux_x86_ppc_alpha_gcc_4.X makefile.machine
 	$(MAKE) all3
 	cp makefile.machine.bak makefile.machine
 

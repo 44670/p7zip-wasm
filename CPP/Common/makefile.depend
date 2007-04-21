@@ -1,7 +1,3 @@
-Alloc.o: Alloc.cpp ../myWindows/StdAfx.h ../myWindows/config.h \
-  ../Common/MyWindows.h ../Common/MyGuidDef.h ../Common/Types.h \
-  ../Common/Types.h ../include_windows/windows.h ../Common/MyWindows.h \
-  ../include_windows/basetyps.h ../include_windows/tchar.h Alloc.h
 CommandLineParser.o: CommandLineParser.cpp ../myWindows/StdAfx.h \
   ../myWindows/config.h ../Common/MyWindows.h ../Common/MyGuidDef.h \
   ../Common/Types.h ../Common/Types.h ../include_windows/windows.h \
@@ -11,7 +7,8 @@ CommandLineParser.o: CommandLineParser.cpp ../myWindows/StdAfx.h \
 CRC.o: CRC.cpp ../myWindows/StdAfx.h ../myWindows/config.h \
   ../Common/MyWindows.h ../Common/MyGuidDef.h ../Common/Types.h \
   ../Common/Types.h ../include_windows/windows.h ../Common/MyWindows.h \
-  ../include_windows/basetyps.h ../include_windows/tchar.h CRC.h Types.h
+  ../include_windows/basetyps.h ../include_windows/tchar.h \
+  ../../C/7zCrc.h ../../C/Types.h
 IntToString.o: IntToString.cpp ../myWindows/StdAfx.h \
   ../myWindows/config.h ../Common/MyWindows.h ../Common/MyGuidDef.h \
   ../Common/Types.h ../Common/Types.h ../include_windows/windows.h \
@@ -24,7 +21,7 @@ ListFileUtils.o: ListFileUtils.cpp ../myWindows/StdAfx.h \
   ../include_windows/tchar.h ListFileUtils.h ../Common/String.h \
   ../Common/Vector.h ../Common/Defs.h ../Common/Types.h StdInStream.h \
   Types.h StringConvert.h MyWindows.h UTFConvert.h
-main.o: main.c
+main.o: main.c ../../C/7zCrc.c ../../C/7zCrc.h ../../C/Types.h
 MyWindows.o: MyWindows.cpp ../myWindows/StdAfx.h ../myWindows/config.h \
   ../Common/MyWindows.h ../Common/MyGuidDef.h ../Common/Types.h \
   ../Common/Types.h ../include_windows/windows.h ../Common/MyWindows.h \
@@ -48,7 +45,8 @@ StringConvert.o: StringConvert.cpp ../myWindows/StdAfx.h \
   ../Common/Types.h ../Common/Types.h ../include_windows/windows.h \
   ../Common/MyWindows.h ../include_windows/basetyps.h \
   ../include_windows/tchar.h StringConvert.h MyWindows.h \
-  ../Common/String.h ../Common/Vector.h ../Common/Defs.h Types.h
+  ../Common/String.h ../Common/Vector.h ../Common/Defs.h Types.h \
+  UTFConvert.cpp UTFConvert.h
 String.o: String.cpp ../myWindows/StdAfx.h ../myWindows/config.h \
   ../Common/MyWindows.h ../Common/MyGuidDef.h ../Common/Types.h \
   ../Common/Types.h ../include_windows/windows.h ../Common/MyWindows.h \

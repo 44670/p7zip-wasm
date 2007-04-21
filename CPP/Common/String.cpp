@@ -37,20 +37,20 @@ LPSTR WINAPI CharPrevA( LPCSTR start, LPCSTR ptr ) { // OK for MBS
 LPSTR WINAPI CharNextA( LPCSTR ptr ) {
   if (!*ptr)
     return (LPSTR)ptr;
-#ifdef HAVE_MBRTOWC
-  if (global_use_utf16_conversion)
-  {
-    wchar_t wc;
-    size_t len  = mbrtowc(&wc,ptr,MB_LEN_MAX,0); 
-    if (len >= 1) return (LPSTR)(ptr + len);
-    printf("INTERNAL ERROR - CharNextA\n");
-    exit(EXIT_FAILURE);
-  } else {
-    return (LPSTR)(ptr + 1);
-  }
-#else
-  return (LPSTR)(ptr + 1); // FIXME
-#endif
+// #ifdef HAVE_MBRTOWC
+//  if (global_use_utf16_conversion)
+//  {
+//    wchar_t wc;
+//    size_t len  = mbrtowc(&wc,ptr,MB_LEN_MAX,0);  // mbrtowc stales on some configurations.
+//    if (len >= 1) return (LPSTR)(ptr + len);
+//    printf("INTERNAL ERROR - CharNextA\n");
+//    exit(EXIT_FAILURE);
+//  } else {
+//    return (LPSTR)(ptr + 1);
+//  }
+//#else
+  return (LPSTR)(ptr + 1); // p7zip search only for ASCII characters like '/' so no need to worry about current locale
+//#endif
 }
 
 wchar_t MyCharLower(wchar_t c)

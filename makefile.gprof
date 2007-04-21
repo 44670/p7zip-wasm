@@ -14,3 +14,5 @@ LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
 # static linkage
 # LOCAL_LIBS=-static -lpthread
 
+OBJ_CRC32=$(OBJ_CRC32_C)
+

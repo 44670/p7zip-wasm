@@ -8,22 +8,25 @@
 #include <unistd.h>
 #endif
 
+#include "Common/Types.h"
+
 namespace NWindows
 {
 	namespace NSystem
 	{
+		/************************ GetNumberOfProcessors ************************/
+
 		#if defined (__NetBSD__) || defined(__OpenBSD__)
 		int GetNumberOfProcessors() {
-			int mib[2];
-			size_t value[2];
+			int mib[2], value;
         		int nbcpu = 1;
 
         		mib[0] = CTL_HW;
         		mib[1] = HW_NCPU;
-        		value[1] = sizeof(size_t);
-        		if (sysctl(mib, 2, value, value+1, NULL, 0) >= 0)
-           		if (value[0] > nbcpu)
-                    		nbcpu = value[0];
+        		size_t len = sizeof(size_t);
+        		if (sysctl(mib, 2, &value, &len, NULL, 0) >= 0)
+           		if (value > nbcpu)
+                    		nbcpu = value;
 			return nbcpu;
 		}
 		#elif defined (__FreeBSD__)
@@ -56,6 +59,53 @@ namespace NWindows
 			return 1;
 		}
 		#endif
+
+		/************************ GetRamSize ************************/
+UInt64 GetRamSize() {
+    UInt64 ullTotalPhys = 0;	
+
+#ifdef linux
+    FILE * f = fopen( "/proc/meminfo", "r" );
+    if (f)
+    {
+        char buffer[256];
+        unsigned long total;
+
+        while (fgets( buffer, sizeof(buffer), f ))
+        {
+	    /* old style /proc/meminfo ... */
+            if (sscanf( buffer, "Mem: %lu", &total))
+            {
+                ullTotalPhys += total;
+            }
+
+            /* new style /proc/meminfo ... */
+            if (sscanf(buffer, "MemTotal: %lu", &total))
+                ullTotalPhys = ((UInt64)total)*1024;
+        }
+        fclose( f );
+    }
+#elif defined(__FreeBSD__) || defined(__FreeBSD_kernel__) || defined(__NetBSD__) || defined(__APPLE__)
+    unsigned long val;
+    int mib[2];
+
+    mib[0] = CTL_HW;
+    mib[1] = HW_PHYSMEM;
+    size_t size_sys = sizeof(val);
+    sysctl(mib, 2, &val, &size_sys, NULL, 0);
+    if (val) ullTotalPhys = val;
+#elif defined ( sun )
+    unsigned long pagesize=sysconf(_SC_PAGESIZE);
+    unsigned long maxpages=sysconf(_SC_PHYS_PAGES);
+    ullTotalPhys = ((UInt64)pagesize)*maxpages;
+#else
+#warning Generic GetRamSize
+	ullTotalPhys = 128 * 1024 * 1024; // FIXME 128MB
+#endif
+
+    return ullTotalPhys;
+}
+
 	}
 }
 

@@ -1,0 +1,24 @@
+
+.PHONY : default_target all
+
+default_target : all
+
+# CRC32, C version
+OBJ_CRC32_C=7zCrc.o
+
+7zCrc.o : ../../../../C/7zCrc.c
+	$(CC) $(CFLAGS) ../../../../C/7zCrc.c
+
+# CRC32, ASM version
+OBJ_CRC32_x86=7zCrcT8.o 7zCrcT8U_x86.o
+OBJ_CRC32_x86_64=7zCrcT8.o 7zCrcT8U_x64.o
+
+7zCrcT8.o : ../../../../C/7zCrcT8.c
+	$(CC) $(CFLAGS) ../../../../C/7zCrcT8.c
+
+7zCrcT8U_x86.o : ../../../../Asm/7zCrcT8U_x86.asm
+	nasm -f elf ../../../../Asm/7zCrcT8U_x86.asm -o 7zCrcT8U_x86.o
+
+7zCrcT8U_x64.o : ../../../../Asm/7zCrcT8U_x64.asm
+	yasm -f elf -m amd64 ../../../../Asm/7zCrcT8U_x64.asm -o 7zCrcT8U_x64.o
+

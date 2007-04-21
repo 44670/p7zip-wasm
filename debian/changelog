@@ -1,3 +1,17 @@
+p7zip (4.45~dfsg.1-1) unstable; urgency=low
+
+  * New upstream version:
+     + (new -b command to benchmark).
+     + if -t is not specified, try to autodetect format using file extension.
+     + all the Codecs are now linked in 7z.so and no more stored in Codecs/.
+  * Add AES code license to debian/copyright.
+  * Suggests: p7zip-rar.
+  * Refresh 01_makefile.patch.
+  * Update debian/rules with new makefile name.
+  * p7zip-full.install: bin/Formats no longer exists.
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sat, 21 Apr 2007 23:00:15 +0200
+
 p7zip (4.44~dfsg.1-2) unstable; urgency=low
 
   * Correct path to HTML documentation in manpage. (Closes: #411491)

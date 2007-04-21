@@ -12,8 +12,10 @@ sure()
 }
 
 PZIP7="$1"
-LD_LIBRARY_PATH=../bin/Formats
+LD_LIBRARY_PATH=`cd ../bin ; pwd`:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH
+
+echo "LD_LIBRARY_PATH=${LD_LIBRARY_PATH}"
 
 sure rm -fr 7za433_ref 7za433_7zip_bzip2 7za433_7zip_lzma 7za433_7zip_lzma_crypto 7za433_7zip_ppmd 7za433_tar
 sure rm -fr 7za433_7zip_bzip2.7z 7za433_7zip_lzma.7z 7za433_7zip_lzma_crypto.7z 7za433_7zip_ppmd.7z 7za433_tar.tar

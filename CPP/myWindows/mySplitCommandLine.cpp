@@ -45,6 +45,10 @@ void mySplitCommandLine(int numArguments,const char *arguments[],UStringVector &
       free(locale_upper);
     }
   }
+#elif defined(LOCALE_IS_UTF8)
+  global_use_utf16_conversion = 1; // assume LC_CTYPE="utf8"
+#else
+  global_use_utf16_conversion = 0; // assume LC_CTYPE="C"
 #endif
 
   parts.Clear();
@@ -69,6 +73,8 @@ const char *my_getlocale(void) {
   if (ret == 0)
     ret ="C";
   return ret;
+#elif defined(LOCALE_IS_UTF8)
+  return "utf8";
 #else
   return "C";
 #endif

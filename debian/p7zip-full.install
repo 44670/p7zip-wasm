@@ -1,4 +1,3 @@
 bin/7z usr/lib/p7zip
 bin/7za usr/bin
-bin/Codecs usr/lib/p7zip
-bin/Formats usr/lib/p7zip
+bin/7z.so usr/lib/p7zip

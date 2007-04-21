@@ -2,7 +2,6 @@ SRCS=\
  ../Common/ArchiveCommandLine.cpp \
  ../Common/ArchiveExtractCallback.cpp \
  ../Common/ArchiveOpenCallback.cpp \
- ../Common/ArchiverInfo.cpp \
  ../Common/DefaultName.cpp \
  ../Common/EnumDirItems.cpp \
  ../Common/Extract.cpp \
@@ -11,6 +10,7 @@ SRCS=\
  ../../Common/FileStreams.cpp \
  ../../Common/StreamUtils.cpp \
  ../Common/OpenArchive.cpp \
+ ../Common/LoadCodecs.cpp \
  ../Common/PropIDUtils.cpp \
  ../Common/SetProperties.cpp \
  ../Common/SortUtils.cpp \
@@ -21,6 +21,8 @@ SRCS=\
  ../Common/UpdatePair.cpp \
  ../Common/UpdateProduce.cpp \
  ../../Compress/Copy/CopyCoder.cpp \
+ ../../Compress/LZMA_Alone/LzmaBench.cpp \
+ ../../Compress/LZMA_Alone/LzmaBenchCon.cpp \
  ./ConsoleClose.cpp \
  ./ExtractCallbackConsole.cpp \
  ./List.cpp \
@@ -38,6 +40,10 @@ SRCS=\
  ../../../Windows/FileName.cpp \
  ../../../Windows/PropVariantConversions.cpp \
  ../../../Windows/PropVariant.cpp
+
+SRCS_C=\
+ ../../../../C/Alloc.c \
+ ../../../../C/7zCrc.c
 
 ConsoleClose.o : ./ConsoleClose.cpp
 	$(CXX) $(CFLAGS) ./ConsoleClose.cpp
@@ -79,8 +85,6 @@ ArchiveExtractCallback.o : ../Common/ArchiveExtractCallback.cpp
 	$(CXX) $(CFLAGS) ../Common/ArchiveExtractCallback.cpp
 ArchiveOpenCallback.o : ../Common/ArchiveOpenCallback.cpp
 	$(CXX) $(CFLAGS) ../Common/ArchiveOpenCallback.cpp
-ArchiverInfo.o : ../Common/ArchiverInfo.cpp
-	$(CXX) $(CFLAGS) ../Common/ArchiverInfo.cpp
 DefaultName.o : ../Common/DefaultName.cpp
 	$(CXX) $(CFLAGS) ../Common/DefaultName.cpp
 EnumDirItems.o : ../Common/EnumDirItems.cpp
@@ -93,6 +97,8 @@ ExtractingFilePath.o : ../Common/ExtractingFilePath.cpp
 	$(CXX) $(CFLAGS) ../Common/ExtractingFilePath.cpp
 OpenArchive.o : ../Common/OpenArchive.cpp
 	$(CXX) $(CFLAGS) ../Common/OpenArchive.cpp
+LoadCodecs.o : ../Common/LoadCodecs.cpp
+	$(CXX) $(CFLAGS) ../Common/LoadCodecs.cpp
 PropIDUtils.o : ../Common/PropIDUtils.cpp
 	$(CXX) $(CFLAGS) ../Common/PropIDUtils.cpp
 SortUtils.o : ../Common/SortUtils.cpp
@@ -117,3 +123,9 @@ StreamUtils.o : ../../Common/StreamUtils.cpp
 	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
 CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp
+LzmaBench.o : ../../Compress/LZMA_Alone/LzmaBench.cpp
+	$(CXX) $(CFLAGS) ../../Compress/LZMA_Alone/LzmaBench.cpp
+LzmaBenchCon.o : ../../Compress/LZMA_Alone/LzmaBenchCon.cpp
+	$(CXX) $(CFLAGS) ../../Compress/LZMA_Alone/LzmaBenchCon.cpp
+Alloc.o : ../../../../C/Alloc.c
+	$(CC) $(CFLAGS) ../../../../C/Alloc.c

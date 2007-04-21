@@ -1,4 +1,4 @@
-	p7zip 4.44
+	p7zip 4.45
 	==========
 
 Homepage : http://p7zip.sourceforge.net/
@@ -8,7 +8,7 @@ p7zip is a port of the Windows programs 7z.exe and 7za.exe provided by 7-zip.
 7-zip is a file archiver with the highest compression ratio.
 Homepage : www.7-zip.org
 
-7z uses plugins to handle archives.
+7z uses plugins (7z.so and Codecs/Rar29.so) to handle archives.
 7za is a stand-alone executable.
 7za handles less archive formats than 7z.exe.
 7zr is a light stand-alone executable that supports only 7z/LZMA/BCJ/BCJ2.
@@ -50,8 +50,10 @@ BUILD :
 	make clean    : to clean all directories
 	make          : to build bin/7za
 	make sfx      : to build bin/7zCon.sfx (7za can now create SFX archive)
-	make 7z       : to build bin/7z and its plugins
-	make 7zr      : to build bin/7zr and its plugins
+	make 7z       : to build bin/7z and its plugins :
+                          - "bin/7z.so" (GNU LGPL + AES code license)
+                          - "bin/Codecs/Rar29.so" (GNU LGPL + unRAR restriction)
+	make 7zr      : to build bin/7zr
 	make all      : to build bin/7za and bin/7zCon.sfx
 	make all2     : to build bin/7za, bin/7z (with its plugins) and bin/7zCon.sfx
 	make all3     : to build bin/7za, bin/7z (with its plugins), bin/7zr and bin/7zCon.sfx
@@ -96,6 +98,11 @@ BUILD :
 
    - Tru64 :
 	OSF 5.1 with gcc 3.4.2
+
+   - PA-RISC :
+	HP-UX 11.11 with aCC (HP ANSI C++ B3910B A.03.73)
+	HP-UX 11.11 with gcc 3.4.2 (7za and 7zr : OK, 7z : Ko because of a buggy gcc for HP-UX,
+                                    plugins don't work because C++ constructors are not called !)
 
 INSTALL :
 ---------
@@ -161,13 +168,22 @@ USAGE:
       -md=32m  : dictionary size = 32 megabytes
       -ms=on   : solid archive = on
 
+BENCHMARKS :
+------------
+  7za b : bench LZMA codec
+  7z b -mm=crc : make internal crc check.
+
+LICENSE :
+---------
+  please read DOCS/License.txt.
+
 LIMITATIONS from 7-zip :
 ------------------------
 
   - does not support uid/gid for the .tar format (so, use tar on Unix)
 
-LIMITATIONS for Unix/MacOS X version only :
-------------------------------------------
+LIMITATIONS for Unix version only :
+-----------------------------------
 
   - can handle properly UNICODE filenames only if the environment is UTF-8.
   Example : export LANG=en_US.UTF-8 ; unset LC_CTYPE

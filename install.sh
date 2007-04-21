@@ -92,7 +92,7 @@ then
     chmod 777 ${DEST_DIR}${DEST_SHARE}/7z
     strip     ${DEST_DIR}${DEST_SHARE}/7z
     chmod 555 ${DEST_DIR}${DEST_SHARE}/7z
-    cp -r bin/Codecs bin/Formats ${DEST_DIR}${DEST_SHARE}/
+    cp -r bin/Codecs ${DEST_DIR}${DEST_SHARE}/
     chmod 555 ${DEST_DIR}${DEST_SHARE}/*/*
     echo "#! /bin/sh" > ${DEST_DIR}${DEST_BIN}/7z
     echo "${DEST_SHARE}/7z \"\$@\"" >> ${DEST_DIR}${DEST_BIN}/7z

@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+  <META http-equiv="Content-Type" content="text/html; charset=Windows-1252">
+  <TITLE>b (Benchmark) command</TITLE>
+  <LINK href="style.css" rel="stylesheet" type="text/css">
+</HEAD>
+
+<BODY>
+
+<H1>b (Benchmark) command</H1>
+
+<P>Measures speed of the CPU and checks RAM for errors.</P>
+
+<H4>Syntax</H4>
+
+<PRE class="syntax">
+b [number_of_iterations] [-mmt{N}] [-md{N}] [-mm={Method}]
+</PRE>
+
+<P>There are two tests:<P>
+<OL>
+  <LI>Compressing with LZMA method
+  <LI>Decompressing with LZMA method
+</OL>
+
+<P>Benchmark shows rating in MIPS (million instructions per second).
+Rating value is calculated from measured speed and it
+is normalized with Intel Core 2 Duo E6600 (2.4 GHz, 4 MB L2) CPU in 64-bit Windows 
+with multi-threading option switched off. So if you have Intel Core 2 Duo, 
+rating values must be close to real CPU frequency.</P>
+
+<P>You can change upper dictionary size to increase memory usage by -md{N} switch.
+Also you can change number of threads by -mmt{N} switch.</P>
+
+<P><B>Dict</B> column shows dictionary size. For example, 21 means 2^21 = 2 MB.</P>
+
+<P><B>Usage</B> column shows the percentage of time the processor is working.
+It's normalized for one-thread load. For example, 180% CPU Usage for 2 threads 
+can mean that average CPU usage is about 90% for each thread.</P>
+
+<P><B>R / U</B> column shows rating normalized for 100% of CPU usage.
+That column shows performance of the one CPU thread.</P>
+
+<P><B>Avr</B> shows averages for different dictionary sizes.</P>
+<P><B>Tot</B> shows averages of the compressing and decompression ratings.</P>
+
+<P>Compressing speed and rating strongly depend from memory (RAM) latency.
+
+<P>Decompressing speed and rating strongly depend from integer part of CPU.
+For example, Intel Pentium 4 has big branch 
+misprediction penalty (which is effect of long pipeline) and pretty slow 
+multiply and shift operations. So Pentium 4 has pretty low decompressing 
+ratings.</P>
+
+<P>You can call CRC calculation benchmark by specifying -mm=crc.
+That test shows the speed of CRC calculation in MB/s. First column shows the size of block. 
+Next column shows the speed of CRC calculation for one thread. Other columns are results 
+for multi-threaded CRC calculation.</P> 
+
+
+<H4>Examples</H4>
+
+<PRE class="example">
+7z b
+</PRE>
+calls benchmarking.
+
+<PRE class="example">
+7z b -mmt1 -md26
+</PRE>
+calls benchmarking with one thread and 64 MB dictionary.
+
+<PRE class="example">
+7z b 30
+</PRE>
+<P>calls benchmarking with 30 iterations.</P>
+
+</BODY>
+</HTML>

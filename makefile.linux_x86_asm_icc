@@ -1,0 +1,22 @@
+#
+# makefile for Linux (x86, PPC, alpha ...)
+# LITTLE_ENDIAN and BIG_ENDIAN are already defined by the system headers
+#
+
+# OPTFLAGS=-fast -msse3 -s -fPIC
+OPTFLAGS=-O2 -msse2 -s -fPIC
+
+ALLFLAGS=${OPTFLAGS} \
+    	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
+	-DNDEBUG -D_REENTRANT -DENV_UNIX \
+	$(LOCAL_FLAGS)
+
+CXX=icpc -i-static $(ALLFLAGS) # -DHAVE_GCCVISIBILITYPATCH -fvisibility=hidden -fvisibility-inlines-hidden
+CC=icc $(ALLFLAGS)
+LINK_SHARED=-shared
+
+LOCAL_LIBS=-lpthread
+LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
+
+OBJ_CRC32=$(OBJ_CRC32_x86)
+

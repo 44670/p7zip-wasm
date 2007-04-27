@@ -1,3 +1,9 @@
+p7zip (4.45~dfsg.1-2) unstable; urgency=low
+
+  * Install 7zCon.sfx so enable SFX archives too.
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sat, 28 Apr 2007 01:31:22 +0200
+
 p7zip (4.45~dfsg.1-1) unstable; urgency=low
 
   * New upstream version:

@@ -1,3 +1,4 @@
 bin/7z usr/lib/p7zip
+bin/7zCon.sfx usr/lib/p7zip
 bin/7za usr/bin
 bin/7z.so usr/lib/p7zip

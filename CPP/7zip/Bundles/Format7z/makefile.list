@@ -64,7 +64,6 @@ SRCS_C=../../Crypto/AES/aescrypt.c \
 ../../../../C/Compress/Lz/MatchFinder.c \
 ../../../../C/Compress/Lz/MatchFinderMt.c \
 ../../../../C/7zCrc.c \
-../../../../C/Alloc.c \
 ../../../../C/Threads.c
 
 ArchiveExports.o : ../../Archive/ArchiveExports.cpp
@@ -463,8 +462,6 @@ BranchSPARC.o : ../../../../C/Compress/Branch/BranchSPARC.c
 	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchSPARC.c
 BranchX86.o : ../../../../C/Compress/Branch/BranchX86.c
 	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchX86.c
-Alloc.o : ../../../../C/Alloc.c
-	$(CC) $(CFLAGS) ../../../../C/Alloc.c
 Sort.o : ../../../../C/Sort.c
 	$(CC) $(CFLAGS) ../../../../C/Sort.c
 Threads.o : ../../../../C/Threads.c

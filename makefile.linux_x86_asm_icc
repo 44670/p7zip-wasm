@@ -14,9 +14,11 @@ ALLFLAGS=${OPTFLAGS} \
 CXX=icpc -i-static $(ALLFLAGS) # -DHAVE_GCCVISIBILITYPATCH -fvisibility=hidden -fvisibility-inlines-hidden
 CC=icc $(ALLFLAGS)
 LINK_SHARED=-shared
+ASM=nasm -f elf
 
 LOCAL_LIBS=-lpthread
 LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
 
+CPU=x86
 OBJ_CRC32=$(OBJ_CRC32_x86)
 

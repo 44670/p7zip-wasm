@@ -286,7 +286,7 @@ DWORD WINAPI WaitForMultipleObjects( DWORD count, const HANDLE *handles, BOOL wa
 namespace NWindows {
 namespace NSynchronization {
 
-bool CBaseEvent::Set()
+HRes CBaseEvent::Set()
 {
   gbl_synchro.Enter();
 #ifdef DEBUG_SYNCHRO
@@ -294,10 +294,10 @@ bool CBaseEvent::Set()
 #endif
   this->u.event._state = true;
   gbl_synchro.LeaveAndSignal();
-  return true;
+  return S_OK;
 }
 
-bool CBaseEvent::Reset()
+HRes CBaseEvent::Reset()
 {
   gbl_synchro.Enter();
 #ifdef DEBUG_SYNCHRO
@@ -305,10 +305,10 @@ bool CBaseEvent::Reset()
 #endif
   this->u.event._state = false;
   gbl_synchro.LeaveAndSignal();
-  return true;
+  return S_OK;
 }
 
-bool CBaseEvent::Lock()
+HRes CBaseEvent::Lock()
 {
   gbl_synchro.Enter();
 #ifdef DEBUG_SYNCHRO
@@ -320,22 +320,16 @@ bool CBaseEvent::Lock()
         this->u.event._state = false;
       }
       gbl_synchro.Leave();
-      return true;
+      return S_OK;
     }
     gbl_synchro.WaitCond();
   }
   // dead code
 }
 
-CEvent::CEvent(bool manualReset, bool initiallyOwn)
+HRes CSemaphore::Release(LONG releaseCount)
 {
-  if (!Create(manualReset, initiallyOwn))
-    throw "CreateEvent error";
-}
-
-bool CSemaphore::Release(LONG releaseCount)
-{
-  if (releaseCount < 1) return false;
+  if (releaseCount < 1) return S_FALSE;
 
   gbl_synchro.Enter();
 #ifdef DEBUG_SYNCHRO
@@ -345,13 +339,13 @@ bool CSemaphore::Release(LONG releaseCount)
   if (newCount > this->u.sema.maxCount)
   {
     gbl_synchro.Leave();
-    return false;
+    return S_FALSE;
   }
   this->u.sema.count = newCount;
 
   gbl_synchro.LeaveAndSignal();
 
-  return true;
+  return S_OK;
 }
 
 }}

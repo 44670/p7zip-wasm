@@ -16,7 +16,7 @@
 
 /* TODO : optimize the code and verify the returned values */ 
 
-HRes Thread_Create(CThread *thread, unsigned (StdCall *startAddress)(void *), LPVOID parameter)
+HRes Thread_Create(CThread *thread, THREAD_FUNC_RET_TYPE (THREAD_FUNC_CALL_TYPE *startAddress)(void *), LPVOID parameter)
 { 
 	thread->_tid = spawn_thread((int32 (*)(void *))startAddress, "CThread", B_LOW_PRIORITY, parameter);
 	if (thread->_tid >= B_OK) {
@@ -208,7 +208,7 @@ void CriticalSection_Delete(CCriticalSection * lpCriticalSection)
 
 #else
 
-HRes Thread_Create(CThread *thread, unsigned (StdCall *startAddress)(void *), LPVOID parameter)
+HRes Thread_Create(CThread *thread, THREAD_FUNC_RET_TYPE (THREAD_FUNC_CALL_TYPE *startAddress)(void *), LPVOID parameter)
 { 
 	pthread_attr_t attr;
 	int ret;

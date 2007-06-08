@@ -15,8 +15,8 @@ data_size equ (28)
 crc_table equ (data_size + 4)
 
 align 16
-global CrcUpdateT8:function
-global _CrcUpdateT8:function
+global CrcUpdateT8
+global _CrcUpdateT8
 CrcUpdateT8:
 _CrcUpdateT8:
     push EBX

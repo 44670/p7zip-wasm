@@ -109,7 +109,6 @@ SRCS=\
  ../../../../C/Compress/Branch/BranchSPARC.c \
  ../../../../C/Compress/Branch/BranchX86.c \
  ../../../../C/7zCrc.c \
- ../../../../C/Alloc.c \
  ../../../../C/Compress/Lz/MatchFinder.c \
  ../../../../C/Compress/Lz/MatchFinderMt.c \
  ../../../../C/Threads.c
@@ -327,8 +326,6 @@ BranchSPARC.o : ../../../../C/Compress/Branch/BranchSPARC.c
 	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchSPARC.c
 BranchX86.o : ../../../../C/Compress/Branch/BranchX86.c
 	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchX86.c
-Alloc.o : ../../../../C/Alloc.c
-	$(CC) $(CFLAGS) ../../../../C/Alloc.c
 MatchFinder.o : ../../../../C/Compress/Lz/MatchFinder.c
 	$(CC) $(CFLAGS) ../../../../C/Compress/Lz/MatchFinder.c
 MatchFinderMt.o : ../../../../C/Compress/Lz/MatchFinderMt.c

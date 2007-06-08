@@ -22,21 +22,29 @@ static inline HRESULT ConvertBoolToHRESULT(bool result)
 
 bool CInFileStream::Open(LPCTSTR fileName)
 {
+#ifdef ENV_UNIX
   return File.Open(fileName,_ignoreSymbolicLink);
+#else
+  return File.Open(fileName);
+#endif
 }
 
-#if defined(_WIN32) || defined(ENV_UNIX)
+#ifdef USE_WIN_FILE
 #ifndef _UNICODE
 bool CInFileStream::Open(LPCWSTR fileName)
 {
+#ifdef ENV_UNIX
   return File.Open(fileName,_ignoreSymbolicLink);
+#else
+  return File.Open(fileName);
+#endif
 }
 #endif
 #endif
 
 STDMETHODIMP CInFileStream::Read(void *data, UInt32 size, UInt32 *processedSize)
 {
-  #if defined(_WIN32) || defined(ENV_UNIX)
+  #ifdef USE_WIN_FILE
   
   UInt32 realProcessedSize;
   bool result = File.ReadPart(data, size, realProcessedSize);
@@ -98,7 +106,7 @@ STDMETHODIMP CInFileStream::Seek(Int64 offset, UInt32 seekOrigin,
   if(seekOrigin >= 3)
     return STG_E_INVALIDFUNCTION;
 
-  #if defined(_WIN32) || defined(ENV_UNIX)
+  #ifdef USE_WIN_FILE
 
   UInt64 realNewPosition;
   bool result = File.Seek(offset, seekOrigin, realNewPosition);
@@ -132,7 +140,7 @@ bool COutFileStream::Create(LPCTSTR fileName, bool createAlways)
   return File.Create(fileName, createAlways);
 }
 
-#if defined(_WIN32) || defined(ENV_UNIX)
+#ifdef USE_WIN_FILE
 #ifndef _UNICODE
 bool COutFileStream::Create(LPCWSTR fileName, bool createAlways)
 {
@@ -143,7 +151,7 @@ bool COutFileStream::Create(LPCWSTR fileName, bool createAlways)
 
 STDMETHODIMP COutFileStream::Write(const void *data, UInt32 size, UInt32 *processedSize)
 {
-  #if defined(_WIN32) || defined(ENV_UNIX)
+  #ifdef USE_WIN_FILE
 
   UInt32 realProcessedSize;
   bool result = File.WritePart(data, size, realProcessedSize);
@@ -170,7 +178,7 @@ STDMETHODIMP COutFileStream::Seek(Int64 offset, UInt32 seekOrigin,
 {
   if(seekOrigin >= 3)
     return STG_E_INVALIDFUNCTION;
-  #if defined(_WIN32) || defined(ENV_UNIX)
+  #ifdef USE_WIN_FILE
 
   UInt64 realNewPosition;
   bool result = File.Seek(offset, seekOrigin, realNewPosition);
@@ -192,7 +200,7 @@ STDMETHODIMP COutFileStream::Seek(Int64 offset, UInt32 seekOrigin,
 
 STDMETHODIMP COutFileStream::SetSize(Int64 newSize)
 {
-  #if defined(_WIN32) || defined(ENV_UNIX)
+  #ifdef USE_WIN_FILE
   UInt64 currentPos;
   if(!File.Seek(0, FILE_CURRENT, currentPos))
     return E_FAIL;

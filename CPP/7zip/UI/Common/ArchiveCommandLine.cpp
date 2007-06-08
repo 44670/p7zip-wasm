@@ -2,7 +2,9 @@
 
 #include "StdAfx.h"
 
-// #include <io.h>
+#ifdef _WIN32
+#include <io.h>
+#endif
 #include <stdio.h>
 
 #include "Common/ListFileUtils.h"
@@ -29,8 +31,6 @@ extern int global_use_lstat;
 using namespace NCommandLineParser;
 using namespace NWindows;
 using namespace NFile;
-
-static const int kNumSwitches = 27;
 
 namespace NKey {
 enum Enum
@@ -95,7 +95,7 @@ NExtract::NOverwriteMode::EEnum k_OverwriteModes[] =
   NExtract::NOverwriteMode::kAutoRenameExisting
 };
 
-static const CSwitchForm kSwitchForms[kNumSwitches] = 
+static const CSwitchForm kSwitchForms[] = 
   {
     { L"?",  NSwitchType::kSimple, false },
     { L"H",  NSwitchType::kSimple, false },
@@ -126,7 +126,6 @@ static const CSwitchForm kSwitchForms[kNumSwitches] =
     { L"SLT", NSwitchType::kSimple, false }
   };
 
-
 static const CCommandForm g_CommandForms[] = 
 {
   { L"A", false },
@@ -142,7 +141,6 @@ static const CCommandForm g_CommandForms[] =
 
 static const int kNumCommandForms = sizeof(g_CommandForms) /  sizeof(g_CommandForms[0]);
 
-static const int kMaxCmdLineSize = 1000;
 static const wchar_t *kUniversalWildcard = L"*";
 static const int kMinNonSwitchWords = 1;
 static const int kCommandIndex = 0;
@@ -348,9 +346,9 @@ static void ParseMapWithPaths(NWildcard::CCensor &wildcardCensor,
   }
   
   {
-    NSynchronization::CEvent event;
-    event.Open(EVENT_MODIFY_STATE, false, GetSystemString(eventName));
-    event.Set();
+    NSynchronization::CManualResetEvent event;
+    if (event.Open(EVENT_MODIFY_STATE, false, GetSystemString(eventName)) == S_OK)
+      event.Set();
   }
 }
 #endif
@@ -668,7 +666,8 @@ static void SetMethodOptions(const CParser &parser, CObjectVector<CProperty> &pr
   }
 }
 
-CArchiveCommandLineParser::CArchiveCommandLineParser(): parser(kNumSwitches) {}
+CArchiveCommandLineParser::CArchiveCommandLineParser(): 
+  parser(sizeof(kSwitchForms) / sizeof(kSwitchForms[0])) {}
 
 void CArchiveCommandLineParser::Parse1(const UStringVector &commandStrings,
     CArchiveCommandLineOptions &options)

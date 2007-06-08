@@ -27,7 +27,7 @@ DEFINE_GUID(CLSID_CFormat7z,
 
 using namespace NWindows;
 
-static const char *kCopyrightString = "7-Zip 4.43 (7za.DLL client example)  (c) 1999-2006 Igor Pavlov  2006-08-10\n";
+static const char *kCopyrightString = "7-Zip 4.43 (7z.DLL client example)  (c) 1999-2006 Igor Pavlov  2006-08-10\n";
 static const char *kHelpString = 
 "Usage: Client7z.exe [a | l | x ] archive.7z [fileName ...]\n"
 "Examples:\n"
@@ -687,7 +687,7 @@ main(int argc, char* argv[])
     return 1;
   }
   NWindows::NDLL::CLibrary library;
-  if (!library.Load(TEXT("7za.dll")))
+  if (!library.Load(TEXT("7z.dll")))
   {
     PrintStringLn("Can not load library");
     return 1;

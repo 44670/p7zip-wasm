@@ -257,7 +257,6 @@ SRCS_C=\
  ../../../../C/Compress/Branch/BranchSPARC.c \
  ../../../../C/Compress/Branch/BranchX86.c \
  ../../../../C/7zCrc.c \
- ../../../../C/Alloc.c \
  ../../../../C/Sort.c \
  ../../../../C/Threads.c
 

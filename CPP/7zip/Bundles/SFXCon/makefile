@@ -95,8 +95,7 @@ aestab.o \
 BranchX86.o \
 BCJ2Register.o\
 BCJRegister.o\
-$(OBJ_CRC32) \
-Alloc.o
+$(OBJ_CRC32)
 
 include ../../../../makefile.glb
 

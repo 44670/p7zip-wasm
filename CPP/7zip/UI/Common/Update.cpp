@@ -46,10 +46,7 @@ using namespace NCOM;
 using namespace NFile;
 using namespace NName;
 
-static const wchar_t *kTempArchiveFilePrefixString = L"7zi";
 static const wchar_t *kTempFolderPrefix = L"7zE";
-
-static const char *kIllegalFileNameMessage = "Illegal file name for temp archive";
 
 using namespace NUpdateArchive;
 

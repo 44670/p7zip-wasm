@@ -62,7 +62,7 @@ namespace NWindows
 
 		/************************ GetRamSize ************************/
 UInt64 GetRamSize() {
-    UInt64 ullTotalPhys = 0;	
+    UInt64 ullTotalPhys = 128 * 1024 * 1024; // FIXME 128MB
 
 #ifdef linux
     FILE * f = fopen( "/proc/meminfo", "r" );
@@ -70,6 +70,8 @@ UInt64 GetRamSize() {
     {
         char buffer[256];
         unsigned long total;
+
+	ullTotalPhys = 0;
 
         while (fgets( buffer, sizeof(buffer), f ))
         {
@@ -94,13 +96,17 @@ UInt64 GetRamSize() {
     size_t size_sys = sizeof(val);
     sysctl(mib, 2, &val, &size_sys, NULL, 0);
     if (val) ullTotalPhys = val;
+#elif defined(__CYGWIN__)
+    unsigned long pagesize=4096; // FIXME - sysconf(_SC_PAGESIZE) returns 65536 !?
+                                 // see http://readlist.com/lists/cygwin.com/cygwin/0/3313.html
+    unsigned long maxpages=sysconf(_SC_PHYS_PAGES);
+    ullTotalPhys = ((UInt64)pagesize)*maxpages;
 #elif defined ( sun )
     unsigned long pagesize=sysconf(_SC_PAGESIZE);
     unsigned long maxpages=sysconf(_SC_PHYS_PAGES);
     ullTotalPhys = ((UInt64)pagesize)*maxpages;
 #else
 #warning Generic GetRamSize
-	ullTotalPhys = 128 * 1024 * 1024; // FIXME 128MB
 #endif
 
     return ullTotalPhys;

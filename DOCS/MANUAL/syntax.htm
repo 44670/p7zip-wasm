@@ -23,8 +23,8 @@
 
 <P>Expressions in square brackets (between '[' and ']') are optional.</P>
 
-<P>Expressions in curly braces ('{' and '}') means that instead that 
-Expression (including braces) must be used some string.</P>
+<P>Expressions in curly braces ('{' and '}') mean that instead of that 
+Expression (including braces), the user must substitute some string.</P>
 
 <P>Expression</P>
 
@@ -64,10 +64,10 @@ rest of the argument token as the optional argument.</P>
 </UL>
 
 <P>
-7-Zip doesn't uses system wildcard mask parser, and 7-Zip doesn't 
-follow that archaic rule, when *.* means any file. 7-Zip treats 
-*.* as any file that have extension. To process all files you must 
-use * wildcard.</P>
+7-Zip doesn't uses the system wildcard parser.   7-Zip doesn't
+follow the archaic rule by which *.* means any file. 7-Zip treats
+*.* as matching the name of any file that has an extension. To process all files, you must
+use a * wildcard.</P>
 
 <P>Examples:</P>
 <TABLE border = "0">
@@ -78,43 +78,43 @@ use * wildcard.</P>
 </TABLE>
 
 
-<P>The default wildcard "*" will be used if there is no filename/wildcard in
+<P>The default wildcard "*" will be used if there is no filename/wildcard in the
 command line.</P>
 
-<P>Slash ('\') at the end of path means directory. Without Slash ('\') at 
-the end of path it can refer to both file and directory.
+<P>Slash ('\') at the end of a path means a directory. Without a Slash ('\') at
+the end of the path, the path can refer either to a file or a directory.
 
 
 <H2><A name = "ListFile"></A>List file</H2>
 
 <P>You can supply one or more filenames or wildcards for special list files
 (files containing lists of files). The filenames in such list file must be
-separated new line symbol(s).</P>
+separated by new line symbol(s).</P>
 
-<P>For list files 7-Zip uses UTF-8 encoding by default. You can change encoding 
+<P>For list files, 7-Zip uses UTF-8 encoding by default. You can change encoding
 using <A href = "switches/charset.htm">-scs</A> switch.</P>
 
 <P>Multiple list files are supported.</P>
 
-<P>For example, if contents of file "listfile.txt" is the following:</P>
+<P>For example, if the file "listfile.txt" contains the following:</P>
 
 <PRE>
     My programs\*.cpp
     Src\*.cpp
 </PRE>
-<P>then command</P>
+<P>then the command</P>
 
 <PRE>
     7z a -tzip archive.zip @listfile.txt
 </PRE>
 
-<P>adds to archive "archive.zip" all "*.cpp" files from directories "My
+<P>adds to the archive "archive.zip" all "*.cpp" files from directories "My
 programs" and "Src".</P>
 
 <H2><A name = "ListFile"></A>Short and Long File Names</H2>
 
 <P>7-Zip supports short file names  (like FILENA~1.TXT) in some cases. 
-But it's strongly recommended to use real (long) file names.</P>
+However, it's strongly recommended to use only the real (long) file names.</P>
 
 </BODY>
 </HTML>

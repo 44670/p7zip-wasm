@@ -139,7 +139,6 @@ SPARC.o \
 x86.o \
 x86_2.o \
 $(OBJ_CRC32) \
-Alloc.o  \
 MatchFinder.o  \
 MatchFinderMt.o  \
 Threads.o

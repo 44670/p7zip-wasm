@@ -41,8 +41,12 @@ typedef struct _CThread
 
 #define Thread_Construct(thread) (thread)->_created = 0
 #define Thread_WasCreated(thread) ((thread)->_created != 0)
+
+typedef unsigned THREAD_FUNC_RET_TYPE;
+#define THREAD_FUNC_CALL_TYPE StdCall
+#define THREAD_FUNC_DECL THREAD_FUNC_RET_TYPE THREAD_FUNC_CALL_TYPE
  
-HRes Thread_Create(CThread *thread, unsigned (StdCall *startAddress)(void *), LPVOID parameter);
+HRes Thread_Create(CThread *thread, THREAD_FUNC_RET_TYPE (THREAD_FUNC_CALL_TYPE *startAddress)(void *), LPVOID parameter);
 HRes Thread_Wait(CThread *thread);
 HRes Thread_Close(CThread *thread);
 

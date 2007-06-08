@@ -2,8 +2,6 @@
 
 #include "StdAfx.h"
 
-// #include <io.h>
-
 #include "Common/MyInitGuid.h"
 
 #include "Common/CommandLineParser.h"
@@ -134,7 +132,6 @@ static const char *kHelpString =
 // ---------------------------
 // exception messages
 
-static const char *kProcessArchiveMessage = " archive: ";
 static const char *kEverythingIsOk = "Everything is Ok";
 static const char *kUserErrorMessage  = "Incorrect command line"; // NExitCode::kUserError
 
@@ -460,6 +457,7 @@ int Main2(
     }
     else
     {
+      UInt64 numErrors = 0;
       HRESULT result = ListArchives(
           codecs,
           options.ArchivePathsSorted, 
@@ -468,7 +466,12 @@ int Main2(
           options.EnableHeaders, 
           options.TechMode,
           options.PasswordEnabled, 
-          options.Password);
+          options.Password, numErrors);
+      if (numErrors > 0)
+      {
+        g_StdOut << endl << "Errors: " << numErrors;
+        return NExitCode::kFatalError;
+      }
       if (result != S_OK)
         throw CSystemException(result);
     }

@@ -74,7 +74,6 @@ CopyCoder.o \
 StreamUtils.o \
 LzmaBench.o \
 LzmaBenchCon.o \
-Alloc.o \
 $(OBJ_CRC32)
 
 include ../../../../makefile.glb

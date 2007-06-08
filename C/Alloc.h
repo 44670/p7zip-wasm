@@ -1,14 +1,15 @@
-// Common/Alloc.h
+/* Alloc.h */
 
 #ifndef __COMMON_ALLOC_H
 #define __COMMON_ALLOC_H
 
 #include <stddef.h>
 
+#ifdef _WIN32
+
 void *MyAlloc(size_t size);
 void MyFree(void *address);
 
-#ifdef _WIN32
 
 void SetLargePageSize();
 
@@ -19,10 +20,12 @@ void BigFree(void *address);
 
 #else
 
-#define MidAlloc(size) MyAlloc(size)
-#define MidFree(address) MyFree(address)
-#define BigAlloc(size) MyAlloc(size)
-#define BigFree(address) MyFree(address)
+#define MyAlloc(size) malloc(size)
+#define MyFree(address) free(address)
+#define MidAlloc(size) malloc(size)
+#define MidFree(address) free(address)
+#define BigAlloc(size) malloc(size)
+#define BigFree(address) free(address)
 
 #endif
 

@@ -42,7 +42,6 @@ SRCS=\
  ../../../Windows/PropVariant.cpp
 
 SRCS_C=\
- ../../../../C/Alloc.c \
  ../../../../C/7zCrc.c
 
 ConsoleClose.o : ./ConsoleClose.cpp
@@ -127,5 +126,3 @@ LzmaBench.o : ../../Compress/LZMA_Alone/LzmaBench.cpp
 	$(CXX) $(CFLAGS) ../../Compress/LZMA_Alone/LzmaBench.cpp
 LzmaBenchCon.o : ../../Compress/LZMA_Alone/LzmaBenchCon.cpp
 	$(CXX) $(CFLAGS) ../../Compress/LZMA_Alone/LzmaBenchCon.cpp
-Alloc.o : ../../../../C/Alloc.c
-	$(CC) $(CFLAGS) ../../../../C/Alloc.c

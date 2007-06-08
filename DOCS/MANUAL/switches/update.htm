@@ -10,7 +10,7 @@
 
 <H1>-u (Update options) switch</H1>
 
-<P>Specifies how to update files in archive and (or) how to create new archives.</P>
+<P>Specifies how to update files in an archive and (or) how to create new archives.</P>
 
 <H4>Syntax</H4>
 
@@ -31,20 +31,20 @@
 
 <DL>
   <DT><A name="disable_base_archive"></A>dash (-)</DT>
-  <DD><P>Disables any updates in base archive.</P>
+  <DD><P>Disables any updates in the base archive.</P>
 
-      <P>Term <B>base archive</B> means archive assigned by "base_archive_name"
-      string in command line. See <A href="../syntax.htm">Command line syntax</A>
+      <P>The term <B>base archive</B> means the archive assigned by "base_archive_name"
+      on the command line. See <A href="../syntax.htm">Command line syntax</A>
       for more details.</P>
   </DD>
   <DT><A name="new_archive_name"></A>{new_archive_name}</DT>
-  <DD><P>Specifies path of the new archive, which must be created.
+  <DD><P>Specifies the path name of the new archive to be created.
     All options in this switch will refer to this new archive.</P>
     <P>If not assigned, then all options in this switch will
-                  refer to base archive of command.</P>
+                  refer to the base archive of the command.</P>
   </DD>
   <DT><A name="state"></A>&lt;state></DT>
-  <DD><P>Specifies state for particular processed file.</P>
+  <DD><P>Specifies the state of a particular file to be processed.</P>
     <PRE class="syntax">&lt;state> ::= p | q | r | x | y | z | w</PRE>
     <P>For each unique filename there are 6 variants of state:</P>
     <TABLE>
@@ -76,7 +76,7 @@
   </DD>
 
   <DT><A name="action"></A>&lt;action></DT>
-  <DD><P>Specifies action for appropriate  <A class="parameter" href="#state">&lt;state></A>.</P>
+  <DD><P>Specifies the action for a given <A class="parameter" href="#state">&lt;state></A>.</P>
     <PRE class="syntax">&lt;action> ::= 0 | 1 | 2 | 3</PRE>
     <P>For each state you can specify one of the three variants of actions:</P>
     <TABLE>
@@ -107,18 +107,18 @@
 </TABLE>
 
 
-<P>If you don't specify
+<P>If you don't specify a
 <A class="parameter" href="#new_archive_name"><I>!{new_archive_name}</I></A> option, then
-all options will refer to main archive (archive assigned in command line after command).
+all options will refer to the main archive (the archive assigned on the command line after the 7z command).
 If you specify <A class="parameter" href="#new_archive_name"><I>!{new_archive_name}</I></A>
-option, then 7-Zip also will create a new archive with specified name and all options
+option, then 7-Zip also will create a new archive with the specified name and all options
 will refer to that new archive.</P>
 
 <P>Multiple update switches are supported.
 7-Zip can create any number of new archives during one operation.</P>
 
-<P>By default, action set for each new archive is assigned
-as action set of main command. There are 3 different
+<P>By default, the action set for each new archive is assigned
+as the action set of the main command. There are 3 different
 action sets for commands: <A href="../commands/add.htm">a (Add)</A>,
   <A href="../commands/delete.htm">d (Delete)</A>,
   <A href="../commands/update.htm">u (Update)</A>.
@@ -130,8 +130,8 @@ You can overload any &lt;state_action> pair.</P>
 7z u c:\1\exist.7z -u- -up0q3x2z0!c:\1\update.7z *
 </PRE>
 
-<P>creates new archive <SPAN class="filename">update.7z</SPAN> and
-writes to this archive all files from current directory that differs from 
+<P>creates a new archive <SPAN class="filename">update.7z</SPAN> and
+writes to this archive all files from current directory which differ from
 files in <SPAN class="filename">exist.7z</SPAN> archive.
 <SPAN class="filename">exist.7z</SPAN> archive will not be changed.</P>
 
@@ -139,12 +139,12 @@ files in <SPAN class="filename">exist.7z</SPAN> archive.
 7z u c:\1\exist.7z -up0q3x2z0!c:\1\update.7z * -ms=off
 </PRE>
 
-<P>creates new archive <SPAN class="filename">update.7z</SPAN> and
-writes to this archive all files from current directory that differs from 
+<P>creates a new archive <SPAN class="filename">update.7z</SPAN> and
+writes to this archive all files from the current directory which differ from
 files in <SPAN class="filename">exist.7z</SPAN> archive.
 
-<P>Note: Current version of 7-Zip cannot change archive, created with solid option switched on.
-To update .7z archive you must create and update archive in non-solid 
+<P>Note: The current version of 7-Zip cannot change an archive created with the solid option switched on.
+To update a .7z archive, you must create and update the archive in non-solid
 mode (-ms=off switch).</P>
 
 <H4>Commands that can be used with this switch</H4>

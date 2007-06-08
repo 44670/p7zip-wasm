@@ -39,9 +39,9 @@ DLLEXPORT BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /*lpRe
   {
     g_hInstance = hInstance;
     #ifndef _UNICODE
-#ifdef _WIN32
+    #ifdef _WIN32
     g_IsNT = IsItWindowsNT();
-#endif
+    #endif
     #endif
     #if defined(_WIN32) && defined(_7ZIP_LARGE_PAGES)
     SetLargePageSize();

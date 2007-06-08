@@ -27,9 +27,10 @@ test_emul.o: test_emul.cpp StdAfx.h config.h ../Common/MyWindows.h \
   ../Common/IntToString.h ../Common/StringConvert.h \
   ../Common/IntToString.cpp ../Common/IntToString.h \
   ../Windows/Synchronization.cpp StdAfx.h ../Windows/Synchronization.h \
-  ../Windows/Defs.h ../Windows/FileFind.cpp ../Windows/FileFind.h \
-  ../Windows/../Common/String.h ../Windows/FileName.h \
-  ../Windows/../Common/StringConvert.h myPrivate.h
+  ../Windows/Defs.h ../Windows/../../C/Threads.h \
+  ../Windows/../../C/Types.h ../Windows/FileFind.cpp \
+  ../Windows/FileFind.h ../Windows/../Common/String.h \
+  ../Windows/FileName.h ../Windows/../Common/StringConvert.h myPrivate.h
 wine_date_and_time.o: wine_date_and_time.cpp config.h \
   ../include_windows/windows.h ../Common/MyWindows.h \
   ../Common/MyGuidDef.h ../Common/Types.h ../include_windows/basetyps.h

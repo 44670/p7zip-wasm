@@ -10,7 +10,7 @@
 
 <H1>-m (Set compression Method) switch</H1>
 
-<P>Specifies compression method.</P>
+<P>Specifies the compression method.</P>
 
 <H4>Syntax</H4>
 
@@ -19,7 +19,7 @@
 
 </PRE>
 
-<P>Format of this switch is depended from archive type.</P>
+<P>The format for this switch depends on the archive type.</P>
 
 <H4>Zip</H4>
 <TABLE>
@@ -71,6 +71,8 @@
       <TR> <TD class="cc">9</TD> <TD class="cc">128</TD> <TD class="cc">10</TD> <TD>Ultra</TD> </TR>
     </TABLE>
 
+    <P>x=1 and x=3 with Deflate method set fast mode for compression.</P>
+
     <P>BZip2 settings:</P>
     <TABLE>
       <TR> <TH>Level</TH> <TH>Dictionary</TH> <TH>NumPasses</TH> <TH>Description</TH> </TR>
@@ -84,33 +86,33 @@
 
   <DT><A name="Deflate_FastBytes"></A>fb={NumFastBytes}</DT>
   <DD>
-    <P>Sets number of fast bytes for Deflate/Deflate64 encoder. 
-       It can be in range from 3 to 258 (257 for Deflate64).
-       Usually big number gives a little bit better 
-       compression ratio and slower compression process.
-       Big number of fast bytes parameter can significantly increase compression ratio 
-       in case when files contain long identical sequences of bytes.</P>
+    <P>Sets the number of fast bytes for the Deflate/Deflate64 encoder.
+       It can be in the range from 3 to 258 (257 for Deflate64).
+       Usually, a big number gives a little bit better
+       compression ratio and a slower compression process.
+       A large fast bytes parameter can significantly increase the compression ratio
+       for files which contain long identical sequences of bytes.</P>
   </DD>
   <DT><A name="Zip_Pass"></A>pass={NumPasses}</DT>
   <DD>
-    <P>Sets number of passes for Deflate encoder. It can be in range from 1 to 15 for Deflate and 
-       from 1 to 10 for BZip2. Usually big number gives a little bit better 
-       compression ratio and slower compression process.
+    <P>Sets number of passes for Deflate encoder. It can be in the range from 1 to 15 for Deflate and
+       from 1 to 10 for BZip2. Usually, a big number gives a little bit better
+       compression ratio and a slower compression process.
     </P>
   </DD>
   <DT><A name="ZipDictionarySize"></A>d={Size}[b|k|m]</DT>
   <DD>
-    <P> Sets Dictionary size for BZip2. You must specify size in bytes, kilobytes, or megabytes.
-       The maximum value for dictionary size is 900000b. If you do not specify any symbol 
+    <P> Sets the Dictionary size for BZip2. You must specify the size in bytes, kilobytes, or megabytes.
+       The maximum value for the Dictionary size is 900000b. If you do not specify any symbol 
        from set [b|k|m], dictionary size will be calculated as DictionarySize = 2^Size bytes.</P>
   </DD>
   <DT><A name="ZipMultiThread"></A>mt=[off | on | {N}]</DT>
   <DD>
-    <P>Sets multithread mode. If you have multiprocessor system or Pentium 
-       4 with hyperthreading, you can get speed increasing with 
-       this switch. This option affects only compressing with BZip2, Deflate and 
-       Deflate64 methods and decompressing of BZip2 streams. 
-       Each thread in multithread mode uses 32 MB of RAM for buffering.
+    <P>Sets multithread mode. If you have a multiprocessor or multicore system, 
+       you can get a speed increase with
+       this switch. This option affects only compression with BZip2, Deflate and 
+       Deflate64 methods and decompression of BZip2 streams. 
+       Each thread in the multithread mode uses 32 MB of RAM for buffering.
        If you specify {N}, 7-Zip tries to use N threads.</P>
   </DD>
 </DL>
@@ -152,15 +154,15 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
 
   <DT><A name="#BZip2Pass"></A>pass={NumPasses}</DT>
   <DD>
-    <P>Sets number of passes. It can be in range from 1 to 10.
-       Default value is 1 for normal mode, 2 for maximum mode and 7 for ultra mode.
-       Bigger number can give a little bit better compression ratio and slower compression process.
+    <P>Sets the number of passes. It can be in the range from 1 to 10.
+       The default value is 1 for normal mode, 2 for maximum mode and 7 for ultra mode.
+       A bigger number can give a little bit better compression ratio and a slower compression process.
     </P>
   </DD>
   <DT><A name="BZip2MultiThread"></A>mt=[off | on | {N}]</DT>
   <DD>
-    <P>Sets multithread mode. If you have multiprocessor system or Pentium 
-       4 with hyperthreading, you can get speed increasing with 
+    <P>Sets multithread mode. If you have a multiprocessor or multicore system, 
+       you can get a speed increase with
        this switch. If you specify {N}, for example mt=4, 7-Zip tries to use 4 threads.</P>
   </DD>
 </DL>
@@ -204,16 +206,16 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
   <DT><A name="Solid"></A>s=[off | on | [e] [{N}f] [{N}b | {N}k | {N}m | {N}g)]</DT>
   <DD>
     <P> Enables or disables solid mode. The default mode is s=on. 
-        In solid mode files are grouped together. Usually compressing in  
-        solid mode improves compression ratio.</P>
+        In solid mode, files are grouped together. Usually, compressing in  
+        solid mode improves the compression ratio.</P>
 
     <TABLE>
-      <TR> <TD>e</TD> <TD>Use separate solid block for each new file extension</TD> </TR>
-      <TR> <TD>{N}f</TD> <TD>Set limit for number of files in one solid block</TD> </TR>
-      <TR> <TD>{N}b | {N}k | {N}m | {N}g</TD> <TD>Set limit for total size of solid block in bytes</TD> </TR>
+      <TR> <TD>e</TD> <TD>Use a separate solid block for each new file extension</TD> </TR>
+      <TR> <TD>{N}f</TD> <TD>Set the limit for number of files in one solid block</TD> </TR>
+      <TR> <TD>{N}b | {N}k | {N}m | {N}g</TD> <TD>Set a limit for the total size of a solid block in bytes</TD> </TR>
     </TABLE>
 
-    <P>By default there is limitation for solid block size:</P>
+    <P>These are the default limits for the solid block size:</P>
 
     <TABLE>
       <TR> <TH width="150">Compression Level</TH> <TH>Solid block size</TH> </TR>
@@ -226,13 +228,13 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
     </TABLE>
 
 
-    <P>Limitation for solid block size usually decreases compression ratio but gives the following advantages:</P>
+    <P>Limitation of the solid block size usually decreases compression ratio but gives the following advantages:</P>
     <UL>
-      <LI>Decreases losses in case of future archive's damaging.
-      <LI>Decreases extracting time of the group of files (it can be one
-     file), if this group doesn't contain all files of archive.</LI>
+      <LI>Decreases losses in case of future archive damage.
+      <LI>Decreases extraction time of a group of files (or just one
+     file), so long as the group doesn't contain the entire archive.</LI></LI>
     </UL>
-    <P>Current version of 7-Zip doesn't support updating for solid 
+    <P>The current version of 7-Zip doesn't support updating of solid
     archives, if it requires repacking solid blocks.</P>
 
     <P>Example:</P>
@@ -260,7 +262,7 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
   <DT>{N}</DT>
   <DD>
     <P>Sets order of methods. It is used also to associate parameters with
-        methods. Numbers must begin from 0. Method that have minor number will be used
+        methods. Numbers must begin from 0. Methods that have smaller numbers will be used
         before others.</P>
   </DD>
 
@@ -278,12 +280,11 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
 
   <DT><A name="MultiThread"></A>mt=[off | on | {N}]</DT>
   <DD>
-    <P>Sets multithread mode. If you have multiprocessor system or Pentium 
-       4 with hyperthreading, you can get speed increasing with this switch.
-       7-Zip supports multithread mode only for LZMA compressing and 
-       BZip2 compressing / decompressing. If you specify {N}, for example mt=4, 
-       7-Zip tries to use 4 threads. LZMA compressing uses 
-       only 2 threads.
+    <P>Sets multithread mode. If you have a multiprocessor or multicore system, 
+       you can get a increase with this switch.
+       7-Zip supports multithread mode only for LZMA compression and 
+       BZip2 compression / decompression. If you specify {N}, for example mt=4, 
+       7-Zip tries to use 4 threads. LZMA compression uses only 2 threads.
     </P>
   </DD>
   
@@ -319,14 +320,14 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
       <TR> <TD>BC_PPC_B</TD> <TD>converter for PowerPC (big endian) executables</TD> </TR>
       <TR> <TD>BC_SPARC</TD> <TD>converter for SPARC executables</TD> </TR>
     </TABLE>
-    <P>Filters allow to increase compression ratio for some types of files. Filters 
+    <P>Filters increase the compression ratio for some types of files. Filters
        must be used with one of the compression method (for example, BCJ + LZMA).</P>
   </DD>
 
  <H4><A name="LZMA"></A>LZMA</H4>
- <P> LZMA is an algorithm based on Lempel-Ziv algorithm. 
-   It provides very fast decompressing (about 10-20 times faster than compressing). 
-   Memory requirements for compressing and decompressing also are different (see 
+ <P> LZMA is an algorithm based on Lempel-Ziv algorithm.
+   It provides very fast decompression (about 10-20 times faster than compression). 
+   Memory requirements for compression and decompression also are different (see
    <A class="parameter" href="#DictionarySize">d={Size}[b|k|m]</A> switch for details).</P>
 
  <TABLE>
@@ -354,27 +355,27 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
  <DL>
   <DT><A name="#LZMAMode"></A>a=[0|1]</DT>
   <DD>
-    <P> Sets compressing mode: 0 = fast, 1 = normal.
+    <P> Sets compression mode: 0 = fast, 1 = normal.
       Default value is 1.</P>
   </DD>
   <DT><A name="DictionarySize"></A>d={Size}[b|k|m]</DT>
   <DD>
-    <P> Sets Dictionary size for LZMA. You must specify size in bytes, kilobytes, or megabytes.
-       The maximum value for dictionary size is 1 GB = 2^30 bytes. Default value for LZMA
-       is 24 (16 MB) in normal mode, 25 (32 MB) in maiximum mode (-mx=7) 
+    <P> Sets Dictionary size for LZMA. You must specify the size in bytes, kilobytes, or megabytes.
+       The maximum value for dictionary size is 1 GB = 2^30 bytes. Default values for LZMA
+       are 24 (16 MB) in normal mode, 25 (32 MB) in maximum mode (-mx=7) 
        and 26 (64 MB) in ultra mode (-mx=9). 
-       If you do not specify any symbol from set [b|k|m], 
+       If you do not specify any symbol from the set [b|k|m], the
        dictionary size will be calculated as DictionarySize = 2^Size bytes.
-       For decompressing file compressed by LZMA method with dictionary size N you need
+       For decompressing a file compressed by LZMA method with dictionary size N, you need
        about N bytes of memory (RAM) available.
        </P>
   </DD>
   <DT><A name="MatchFinder"></A>mf={MF_ID}</DT>
   <DD>
     <P> Sets Match Finder for LZMA. Default method is bt4. 
-       Algorithms from hc* group doesn't provide good compression ratio,
-       but they often works pretty fast in combination with fast mode (a=0).
-       Memory requirements depend from dictionary size (parameter "d" in table below).
+       Algorithms from hc* group don't provide a good compression ratio,
+       but they often work pretty fast in combination with fast mode (a=0).
+       Memory requirements depend on dictionary size (parameter "d" in table below).
     </P>
     <TABLE>
       <TR> <TH width="60">MF_ID</TH> <TH width="120">Memory</TH> <TH>Description</TH> </TR>
@@ -383,15 +384,15 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
       <TR> <TD>bt4</TD> <TD>d*11.5 + 4 MB</TD> <TD>Binary Tree with 4 bytes hashing.</TD> </TR>
       <TR> <TD>hc4</TD> <TD>d*7.5 + 4 MB</TD> <TD>Hash Chain with 4 bytes hashing.</TD> </TR>
     </TABLE>
-    <P>Note: Operation system also needs some amount of physical memory for system's purposes. 
+    <P>Note: Your operation system also needs some amount of physical memory for internal purposes. 
       So keep at least 32MB of physical memory unused.</P>
   </DD>
   
   <DT><A name="FastBytes"></A>fb={N}</DT>
   <DD>
-    <P>Sets number of fast bytes for LZMA. It can be in range from 5 to 273.
-       Default value is 32 for normal mode and 64 for maximum and ultra modes.
-       Usually big number gives a little bit better
+    <P>Sets number of fast bytes for LZMA. It can be in the range from 5 to 273.
+       The default value is 32 for normal mode and 64 for maximum and ultra modes.
+       Usually, a big number gives a little bit better
        compression ratio and slower compression process.
        </P>
   </DD>
@@ -401,30 +402,30 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
        Default value is (16 + number_of_fast_bytes / 2) for BT* match finders and 
        (8 + number_of_fast_bytes / 4) for HC4 match finder. 
        If you specify mc=0, LZMA will use default value.
-       Usually big number gives a little bit better compression ratio and slower 
-       compression process. For example, mf=HC4 and mc=10000 can provide almost same 
+       Usually, a big number gives a little bit better compression ratio and slower
+       compression process. For example, mf=HC4 and mc=10000 can provide almost the same
        compression ratio as mf=BT4.</P>
   </DD>
   <DT><A name="LitContext"></A>lc={N}</DT>
   <DD>
-    <P>Sets number of literal context bits (high bits of previous literal). 
+    <P>Sets the number of literal context bits (high bits of previous literal).
        It can be in range from 0 to 8.
        Default value is 3. Sometimes lc=4 gives gain for big files.</P>
   </DD>
   <DT><A name="LitPos"></A>lp={N}</DT>
   <DD>
-    <P>Sets number of literal pos bits (low bits of current position for literals).
-       It can be in range from 0 to 4.
-       Default value is 0. lp switch is intended for periodical data when 
-       period is equal 2^value (where lp=value). For example, for 32-bit (4 bytes)
+    <P>Sets the number of literal pos bits (low bits of current position for literals).
+       It can be in the range from 0 to 4.
+       The default value is 0. The lp switch is intended for periodical data when the 
+       period is equal to 2^value (where lp=value). For example, for 32-bit (4 bytes)
        periodical data you can use lp=2. Often it's better to set lc=0, 
        if you change lp switch.</P>
   </DD>
   <DT><A name="PosBits"></A>pb={N}</DT>
   <DD>
-    <P>Sets number of pos bits (low bits of current position). 
-       It can be in range from 0 to 4.
-       Default value is 2. pb switch is intended for periodical data when
+    <P>Sets the number of pos bits (low bits of current position).
+       It can be in the range from 0 to 4.
+       The default value is 2. The pb switch is intended for periodical data when the
        period is equal 2^value (where lp=value). </P>
   </DD>
   
@@ -432,9 +433,9 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
   
  <H4><A name="PPMd"></A>PPMd</H4>
  <P> PPMd is a PPM-based algorithm. This algorithm is mostly based 
- on Dmitry Shkarin's PPMdH sources. PPMd provides very good compression ratio for 
- plain text files. There is no difference between compressing speed and 
- decompressing speed. Memory requirements for compressing and decompressing 
+ on Dmitry Shkarin's PPMdH source code. PPMd provides very good compression ratio for 
+ plain text files. There is no difference between compression speed and
+ decompression speed. Memory requirements for compression and decompression
  also are the same.</P>
  <TABLE>
    <TR> <TH width="80">Parameter</TH> <TH align="center">Default</TH> <TH>Description</TH> </TR>
@@ -446,33 +447,32 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
  <DL>
   <DT><A name="MemorySize"></A>mem={Size}[b|k|m]</DT>
   <DD>
-    <P> Sets size of used memory for PPMd. You must specify size in bytes, kilobytes, or megabytes.
-       The maximum value is 2GB = 2^31 bytes. Default value 
-       is 24 (16MB). If you do not specify any symbol from set [b|k|m], 
+    <P> Sets the size of memory used for PPMd. You must specify the size in bytes, kilobytes, or megabytes.
+       The maximum value is 2GB = 2^31 bytes. The default value
+       is 24 (16MB). If you do not specify any symbol from the set [b|k|m], the
        memory size will be calculated as (2^Size) bytes. PPMd uses the same 
-       amount of memory for compressing and decompressing.</P>
+       amount of memory for compression and decompression.</P>
   </DD>
   
   <DT><A name="Order"></A>o={Size}</DT>
   <DD>
-    <P> Sets model order for PPMd. Size must be in range [2,32].
-        Default value is 6.</P>
+    <P>Sets the model order for PPMd. The size must be in the range [2,32]. The default value is 6.</P>
   </DD>
  </DL>
 
  <H4><A name="BCJ2"></A>BCJ2</H4>
- <P>BCJ2 is Branch converter for 32-bit x86 executables (version 2). 
+ <P>BCJ2 is a Branch converter for 32-bit x86 executables (version 2). 
  It converts some branch instructions for increasing further compression.</P>
- <P>BCJ2 encoder has one input stream and four output streams:</P>
+ <P>A BCJ2 encoder has one input stream and four output streams:</P>
  <UL>
    <LI>s0: main stream. It requires further compression.</LI> 
    <LI>s1: stream for converted CALL values. It requires further compression.</LI>  
    <LI>s2: stream for converted JUMP values. It requires further compression.</LI>  
    <LI>s3: service stream. It is already compressed.</LI>  
  </UL>
- <P>If LZMA is used, size of dictionary for streams 
+ <P>If LZMA is used, the size of the dictionary for streams
     s1 and s2 can be much smaller (512 KB is enough for most cases) 
-    than dictionary size for stream s0.</P>
+    than the dictionary size for stream s0.</P>
 
 </DL>
 
@@ -491,7 +491,7 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
 
 <P>adds <SPAN class="filename">*.exe</SPAN> and <SPAN class="filename">*.dll</SPAN> 
 files to solid archive  <SPAN class="filename">archive.7z</SPAN> using LZMA method with 
-2 MB dictionary and BCJ converter. Compressing will use multithreading optimization.</P>
+2 MB dictionary and BCJ converter. Compression will use multithreading optimization.</P>
 
 <PRE class="example">
 7z a -t7z archive.7z *.exe *.dll -m0=BCJ2 -m1=LZMA:d23 -m2=LZMA:d19 -m3=LZMA:d19 

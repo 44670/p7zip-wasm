@@ -10,7 +10,7 @@
 
 <H1>-so (write data to stdout) switch</H1>
 
-<P>Makes 7-Zip to use stdout (standard output stream).</P>
+<P>Causes 7-Zip to write output data to stdout (standard output stream).</P> 
 
 <H4>Syntax</H4>
 
@@ -25,7 +25,7 @@
 </PRE>
 
 <P>decompresses <SPAN class="filename">archive.gz</SPAN> 
-archive to output stream and writes that stream to 
+archive to output stream and then redirects that stream to
 <SPAN class="filename">Doc.txt</SPAN> file.</P>
 
 
@@ -33,7 +33,7 @@ archive to output stream and writes that stream to
 7z a dummy -tgzip -so Doc.txt > archive.gz
 </PRE>
 
-<P>compresses <SPAN class="filename">Doc.txt</SPAN> file to 
+<P>compresses the <SPAN class="filename">Doc.txt</SPAN> file to the 7-Zip standard
 output stream and writes that stream to 
 <SPAN class="filename">archive.gz</SPAN> file.</P>
 

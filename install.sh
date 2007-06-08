@@ -12,8 +12,8 @@ DEST_DIR=
 [ "$1" ] && DEST_BIN=$1
 [ "$2" ] && DEST_SHARE=$2
 [ "$3" ] && DEST_MAN=$3
-[ "$4" ] && DEST_DIR=$4
-[ "$5" ] && DEST_SHARE_DOC=$5
+[ "$4" ] && DEST_SHARE_DOC=$4
+[ "$5" ] && DEST_DIR=$5
 
 use_share="n"
 
@@ -94,6 +94,8 @@ then
     chmod 555 ${DEST_DIR}${DEST_SHARE}/7z
     cp -r bin/Codecs ${DEST_DIR}${DEST_SHARE}/
     chmod 555 ${DEST_DIR}${DEST_SHARE}/*/*
+    cp bin/7z.so ${DEST_DIR}${DEST_SHARE}/7z.so
+    chmod 555 ${DEST_DIR}${DEST_SHARE}/7z.so
     echo "#! /bin/sh" > ${DEST_DIR}${DEST_BIN}/7z
     echo "${DEST_SHARE}/7z \"\$@\"" >> ${DEST_DIR}${DEST_BIN}/7z
     chmod 555 ${DEST_DIR}${DEST_BIN}/7z

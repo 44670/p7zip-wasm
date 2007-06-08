@@ -38,8 +38,6 @@ bool CLocalItem::IsImplodeLiteralsOn() const
   return (Flags & NFileHeader::NFlags::kImplodeLiteralsOnMask) != 0; 
 }
 
-static const char *kUnknownAttributes = "Unknown file attributes";
-
 #if 0
 bool CLocalItem::IsDirectory() const
 { 

@@ -69,8 +69,7 @@ SRCS_C=\
  ../../Crypto/AES/aeskey.c \
  ../../Crypto/AES/aestab.c \
 ../../../../C/Compress/Branch/BranchX86.c \
-../../../../C/7zCrc.c \
-../../../../C/Alloc.c
+../../../../C/7zCrc.c
 
 CoderMixer2.o : ../../Archive/Common/CoderMixer2.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/CoderMixer2.cpp
@@ -194,8 +193,6 @@ aestab.o : ../../Crypto/AES/aestab.c
 	$(CC) $(CFLAGS) ../../Crypto/AES/aestab.c
 BranchX86.o : ../../../../C/Compress/Branch/BranchX86.c
 	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchX86.c
-Alloc.o : ../../../../C/Alloc.c
-	$(CC) $(CFLAGS) ../../../../C/Alloc.c
 7zRegister.o : ../../Archive/7z/7zRegister.cpp
 	$(CXX) $(CFLAGS) ../../Archive/7z/7zRegister.cpp
 LZMARegister.o : ../../Compress/LZMA/LZMARegister.cpp

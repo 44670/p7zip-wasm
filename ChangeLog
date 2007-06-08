@@ -1,4 +1,33 @@
 
+Version 4.47
+============
+  - From Windows version of 7-zip 4.47 :
+    - Bugs of 7-Zip 4.46 beta were fixed: BZip2 could work incorrectly
+
+Version 4.46 (never published)
+============
+
+  - From Windows version of 7-zip 4.46 :
+    - New fast compression mode for Deflate method in Zip and GZip.
+    - Some bugs were fixed.
+
+  - LZMA Benchmark :
+    - cygwin : RAM size detection
+    - computation of the CPU %   
+
+  - fixed #1721827 : install.sh now copies 7z.so
+
+  - Client7z now uses 7z.so instead of 7za.so
+
+  - new target : cygwin with asm
+
+  - LZMA SDK added in the source package (CPP/7zip/Compress/LZMA_Alone)
+
+  - fixed #1716987 : 7zr removed from 4.45 binary distribution
+  
+  - fixed #1706002 : make and install.sh use the same variables in the same order.
+
+
 Version 4.45
 ============
 

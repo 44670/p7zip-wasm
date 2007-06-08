@@ -1,0 +1,121 @@
+include ../../../../makefile.machine
+
+PROG = lzma
+LIB = $(LOCAL_LIBS)
+RM = rm -f
+CFLAGS = -c -I. -I../../../  -I../../../myWindows  -I../../../include_windows \
+         -UENV_UNIX
+
+OBJS = \
+  LzmaAlone.o \
+  LzmaBench.o \
+  LzmaBenchCon.o \
+  LzmaRam.o \
+  LZMADecoder.o \
+  LZMAEncoder.o \
+  LZOutWindow.o \
+  RangeCoderBit.o \
+  InBuffer.o \
+  OutBuffer.o \
+  FileStreams.o \
+  StreamUtils.o \
+  CommandLineParser.o \
+  CRC.o \
+  IntToString.o \
+  String.o \
+  StringConvert.o \
+  StringToInt.o \
+  Vector.o \
+  7zCrc.o \
+  BranchX86.o \
+  MatchFinder.o \
+  LzmaDecode.o \
+  LzmaRamDecode.o \
+  C_FileIO.o
+
+all: $(PROG)
+
+$(PROG): $(OBJS)
+	$(CXX) -o $(PROG) $(LDFLAGS) $(OBJS) $(LIB)
+
+LzmaAlone.o: LzmaAlone.cpp
+	$(CXX) $(CFLAGS) LzmaAlone.cpp
+
+LzmaBench.o: LzmaBench.cpp
+	$(CXX) $(CFLAGS) LzmaBench.cpp
+
+LzmaBenchCon.o: LzmaBenchCon.cpp
+	$(CXX) $(CFLAGS) LzmaBenchCon.cpp
+
+LzmaRam.o: LzmaRam.cpp
+	$(CXX) $(CFLAGS) LzmaRam.cpp
+
+LZMADecoder.o: ../LZMA/LZMADecoder.cpp
+	$(CXX) $(CFLAGS) ../LZMA/LZMADecoder.cpp
+
+LZMAEncoder.o: ../LZMA/LZMAEncoder.cpp
+	$(CXX) $(CFLAGS) ../LZMA/LZMAEncoder.cpp
+
+LZOutWindow.o: ../LZ/LZOutWindow.cpp
+	$(CXX) $(CFLAGS) ../LZ/LZOutWindow.cpp
+
+RangeCoderBit.o: ../RangeCoder/RangeCoderBit.cpp
+	$(CXX) $(CFLAGS) ../RangeCoder/RangeCoderBit.cpp
+
+InBuffer.o: ../../Common/InBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
+
+OutBuffer.o: ../../Common/OutBuffer.cpp
+	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp
+
+FileStreams.o: ../../Common/FileStreams.cpp
+	$(CXX) $(CFLAGS) ../../Common/FileStreams.cpp
+
+StreamUtils.o: ../../Common/StreamUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
+
+C_FileIO.o: ../../../Common/C_FileIO.cpp
+	$(CXX) $(CFLAGS) ../../../Common/C_FileIO.cpp
+
+CommandLineParser.o: ../../../Common/CommandLineParser.cpp
+	$(CXX) $(CFLAGS) ../../../Common/CommandLineParser.cpp
+
+CRC.o: ../../../Common/CRC.cpp
+	$(CXX) $(CFLAGS) ../../../Common/CRC.cpp
+
+MyWindows.o: ../../../Common/MyWindows.cpp
+	$(CXX) $(CFLAGS) ../../../Common/MyWindows.cpp
+
+IntToString.o: ../../../Common/IntToString.cpp
+	$(CXX) $(CFLAGS) ../../../Common/IntToString.cpp
+
+String.o: ../../../Common/String.cpp
+	$(CXX) $(CFLAGS) ../../../Common/String.cpp
+
+StringConvert.o: ../../../Common/StringConvert.cpp
+	$(CXX) $(CFLAGS) ../../../Common/StringConvert.cpp
+
+StringToInt.o: ../../../Common/StringToInt.cpp
+	$(CXX) $(CFLAGS) ../../../Common/StringToInt.cpp
+
+Vector.o: ../../../Common/Vector.cpp
+	$(CXX) $(CFLAGS) ../../../Common/Vector.cpp
+
+7zCrc.o: ../../../../C/7zCrc.c
+	$(CC) $(CFLAGS) ../../../../C/7zCrc.c
+
+BranchX86.o: ../../../../C/Compress/Branch/BranchX86.c
+	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchX86.c
+
+MatchFinder.o: ../../../../C/Compress/Lz/MatchFinder.c
+	$(CC) $(CFLAGS) ../../../../C/Compress/Lz/MatchFinder.c
+
+LzmaDecode.o: ../../../../C/Compress/Lzma/LzmaDecode.c
+	$(CC) $(CFLAGS) ../../../../C/Compress/Lzma/LzmaDecode.c
+
+LzmaRamDecode.o: LzmaRamDecode.c
+	$(CC) $(CFLAGS) LzmaRamDecode.c
+
+clean:
+	-$(RM) $(PROG) $(OBJS)
+

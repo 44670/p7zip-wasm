@@ -104,7 +104,8 @@ Synchronization.o: ../../../Windows/Synchronization.cpp \
   ../../../Common/Types.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../Common/MyWindows.h \
   ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../../Windows/Synchronization.h ../../../Windows/Defs.h
+  ../../../Windows/Synchronization.h ../../../Windows/Defs.h \
+  ../../../Windows/../../C/Threads.h ../../../Windows/../../C/Types.h
 LZOutWindow.o: ../../Compress/LZ/LZOutWindow.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/MyGuidDef.h \
@@ -699,6 +700,8 @@ BZip2Decoder.o: ../../Compress/BZip2/BZip2Decoder.cpp \
   ../../../Common/Types.h ../../Compress/BZip2/../../../Windows/Thread.h \
   ../../Compress/BZip2/../../../Windows/Defs.h \
   ../../Compress/BZip2/../../../Windows/Synchronization.h \
+  ../../Compress/BZip2/../../../Windows/../../C/Threads.h \
+  ../../Compress/BZip2/../../../Windows/../../C/Types.h \
   ../../Compress/BZip2/../../../../C/Alloc.h \
   ../../Compress/BZip2/../../../Common/Defs.h \
   ../../Compress/BZip2/../BWT/Mtf8.h ../../../Common/Types.h
@@ -725,6 +728,8 @@ BZip2Encoder.o: ../../Compress/BZip2/BZip2Encoder.cpp \
   ../../../Common/Types.h ../../Compress/BZip2/../../../Windows/Thread.h \
   ../../Compress/BZip2/../../../Windows/Defs.h \
   ../../Compress/BZip2/../../../Windows/Synchronization.h \
+  ../../Compress/BZip2/../../../Windows/../../C/Threads.h \
+  ../../Compress/BZip2/../../../Windows/../../C/Types.h \
   ../../Compress/BZip2/../BWT/BlockSort.h ../../../Common/Types.h \
   ../../Compress/BZip2/../BWT/Mtf8.h \
   ../../Compress/BZip2/../../../../C/Compress/Huffman/HuffmanEncode.h \
@@ -756,6 +761,8 @@ BZip2Register.o: ../../Compress/BZip2/BZip2Register.cpp \
   ../../../Common/Types.h ../../Compress/BZip2/../../../Windows/Thread.h \
   ../../Compress/BZip2/../../../Windows/Defs.h \
   ../../Compress/BZip2/../../../Windows/Synchronization.h \
+  ../../Compress/BZip2/../../../Windows/../../C/Threads.h \
+  ../../Compress/BZip2/../../../Windows/../../C/Types.h \
   ../../Compress/BZip2/BZip2Encoder.h \
   ../../Compress/BZip2/../../Common/MSBFEncoder.h ../../../Common/Defs.h \
   ../../Compress/BZip2/../../Common/OutBuffer.h
@@ -1153,6 +1160,7 @@ MyAES.o: ../../Crypto/AES/MyAES.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
   ../../../include_windows/tchar.h ../../../Windows/Defs.h \
   ../../../Windows/Synchronization.h ../../../Windows/Defs.h \
+  ../../../Windows/../../C/Threads.h ../../../Windows/../../C/Types.h \
   ../../Crypto/7zAES/../../Common/StreamObjects.h \
   ../../Crypto/7zAES/../../Common/../../Common/DynamicBuffer.h \
   ../../Crypto/7zAES/../../Common/../../Common/Buffer.h \
@@ -1214,7 +1222,8 @@ RandGen.o: ../../Crypto/Hash/RandGen.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
   ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
   ../../../include_windows/tchar.h ../../../Windows/Synchronization.h \
-  ../../../Windows/Defs.h ../../Crypto/Hash/RandGen.h \
+  ../../../Windows/Defs.h ../../../Windows/../../C/Threads.h \
+  ../../../Windows/../../C/Types.h ../../Crypto/Hash/RandGen.h \
   ../../Crypto/Hash/Sha1.h ../../Crypto/Hash/../../../Common/Types.h
 Sha1.o: ../../Crypto/Hash/Sha1.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
@@ -1409,9 +1418,12 @@ LockedStream.o: ../../Common/LockedStream.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
   ../../../include_windows/tchar.h ../../Common/LockedStream.h \
   ../../Common/../../Windows/Synchronization.h \
-  ../../Common/../../Windows/Defs.h ../../Common/../../Common/MyCom.h \
-  ../../Common/../../Common/MyWindows.h ../../Common/../IStream.h \
-  ../../Common/../../Common/MyUnknown.h ../../Common/../../Common/Types.h
+  ../../Common/../../Windows/Defs.h \
+  ../../Common/../../Windows/../../C/Threads.h \
+  ../../Common/../../Windows/../../C/Types.h \
+  ../../Common/../../Common/MyCom.h ../../Common/../../Common/MyWindows.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
+  ../../Common/../../Common/Types.h
 LSBFDecoder.o: ../../Common/LSBFDecoder.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
@@ -1441,7 +1453,8 @@ MemBlocks.o: ../../Common/MemBlocks.cpp ../../../myWindows/StdAfx.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
   ../../Common/MemBlocks.h ../../Common/../../../C/Alloc.h \
   ../../../Common/Types.h ../../../Common/Vector.h ../../../Common/Defs.h \
-  ../../../Windows/Synchronization.h ../../../Windows/Defs.h
+  ../../../Windows/Synchronization.h ../../../Windows/Defs.h \
+  ../../../Windows/../../C/Threads.h ../../../Windows/../../C/Types.h
 MethodId.o: ../../Common/MethodId.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
@@ -1479,6 +1492,7 @@ OutMemStream.o: ../../Common/OutMemStream.cpp ../../../myWindows/StdAfx.h \
   ../../Common/MemBlocks.h ../../Common/../../../C/Alloc.h \
   ../../../Common/Types.h ../../../Common/Vector.h ../../../Common/Defs.h \
   ../../../Windows/Synchronization.h ../../../Windows/Defs.h \
+  ../../../Windows/../../C/Threads.h ../../../Windows/../../C/Types.h \
   ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h
 ProgressMt.o: ../../Common/ProgressMt.cpp ../../../myWindows/StdAfx.h \
@@ -1491,7 +1505,8 @@ ProgressMt.o: ../../Common/ProgressMt.cpp ../../../myWindows/StdAfx.h \
   ../../Common/../ICoder.h ../../Common/../IStream.h \
   ../../Common/../../Common/MyUnknown.h ../../Common/../../Common/Types.h \
   ../../Common/../IProgress.h ../../../Windows/Synchronization.h \
-  ../../../Windows/Defs.h ../../Common/../../Common/Vector.h \
+  ../../../Windows/Defs.h ../../../Windows/../../C/Threads.h \
+  ../../../Windows/../../C/Types.h ../../Common/../../Common/Vector.h \
   ../../Common/../../Common/Defs.h
 ProgressUtils.o: ../../Common/ProgressUtils.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
@@ -1512,8 +1527,10 @@ StreamBinder.o: ../../Common/StreamBinder.cpp ../../../myWindows/StdAfx.h \
   ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
   ../../Common/../../Windows/Synchronization.h \
-  ../../Common/../../Windows/Defs.h ../../Common/../../Common/Defs.h \
-  ../../Common/../../Common/MyCom.h
+  ../../Common/../../Windows/Defs.h \
+  ../../Common/../../Windows/../../C/Threads.h \
+  ../../Common/../../Windows/../../C/Types.h \
+  ../../Common/../../Common/Defs.h ../../Common/../../Common/MyCom.h
 StreamObjects.o: ../../Common/StreamObjects.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/MyGuidDef.h \
@@ -1567,6 +1584,8 @@ StreamUtils.o: ../../Common/StreamUtils.cpp ../../../myWindows/StdAfx.h \
   ../../Archive/7z/../Common/../../Common/../IStream.h \
   ../../Archive/7z/../Common/../../Common/../../Windows/Synchronization.h \
   ../../Archive/7z/../Common/../../Common/../../Windows/Defs.h \
+  ../../Archive/7z/../Common/../../Common/../../Windows/../../C/Threads.h \
+  ../../Archive/7z/../Common/../../Common/../../Windows/../../C/Types.h \
   ../../Archive/7z/../../Common/CreateCoder.h ../../../Common/MyCom.h \
   ../../../Common/String.h ../../../Common/Vector.h \
   ../../Archive/7z/../../Common/../ICoder.h \
@@ -1623,6 +1642,8 @@ StreamUtils.o: ../../Common/StreamUtils.cpp ../../../myWindows/StdAfx.h \
   ../../Archive/7z/../Common/../../Common/../IStream.h \
   ../../Archive/7z/../Common/../../Common/../../Windows/Synchronization.h \
   ../../Archive/7z/../Common/../../Common/../../Windows/Defs.h \
+  ../../Archive/7z/../Common/../../Common/../../Windows/../../C/Threads.h \
+  ../../Archive/7z/../Common/../../Common/../../Windows/../../C/Types.h \
   ../../Archive/7z/7zItem.h ../../Archive/7z/../../../Common/Buffer.h \
   ../../Archive/7z/7zHeader.h ../../Archive/7z/../../../Common/Types.h \
   ../../Archive/7z/../../Common/CreateCoder.h ../../../Common/MyCom.h \
@@ -1703,6 +1724,8 @@ StreamUtils.o: ../../Common/StreamUtils.cpp ../../../myWindows/StdAfx.h \
   ../../Archive/7z/../Common/../../Common/../IStream.h \
   ../../Archive/7z/../Common/../../Common/../../Windows/Synchronization.h \
   ../../Archive/7z/../Common/../../Common/../../Windows/Defs.h \
+  ../../Archive/7z/../Common/../../Common/../../Windows/../../C/Threads.h \
+  ../../Archive/7z/../Common/../../Common/../../Windows/../../C/Types.h \
   ../../Archive/7z/../../../Common/ComTry.h \
   ../../Archive/7z/../../Common/StreamObjects.h \
   ../../Archive/7z/../../Common/../../Common/DynamicBuffer.h \
@@ -1859,6 +1882,8 @@ StreamUtils.o: ../../Common/StreamUtils.cpp ../../../myWindows/StdAfx.h \
   ../../Archive/7z/../Common/../../Common/../IStream.h \
   ../../Archive/7z/../Common/../../Common/../../Windows/Synchronization.h \
   ../../Archive/7z/../Common/../../Common/../../Windows/Defs.h \
+  ../../Archive/7z/../Common/../../Common/../../Windows/../../C/Threads.h \
+  ../../Archive/7z/../Common/../../Common/../../Windows/../../C/Types.h \
   ../../Archive/7z/../../Common/OutBuffer.h \
   ../../Archive/7z/../../../Common/DynamicBuffer.h \
   ../../Archive/7z/../../../Common/Buffer.h ../../Archive/7z/7zUpdate.h \
@@ -1916,6 +1941,8 @@ StreamUtils.o: ../../Common/StreamUtils.cpp ../../../myWindows/StdAfx.h \
   ../../Archive/7z/../Common/../../Common/../IStream.h \
   ../../Archive/7z/../Common/../../Common/../../Windows/Synchronization.h \
   ../../Archive/7z/../Common/../../Common/../../Windows/Defs.h \
+  ../../Archive/7z/../Common/../../Common/../../Windows/../../C/Threads.h \
+  ../../Archive/7z/../Common/../../Common/../../Windows/../../C/Types.h \
   ../../Archive/7z/../../Common/StreamObjects.h \
   ../../Archive/7z/../../Common/../../Common/DynamicBuffer.h \
   ../../Archive/7z/../../Common/../../Common/Buffer.h \
@@ -1964,6 +1991,8 @@ StreamUtils.o: ../../Common/StreamUtils.cpp ../../../myWindows/StdAfx.h \
   ../../Archive/7z/../Common/../../Common/../IStream.h \
   ../../Archive/7z/../Common/../../Common/../../Windows/Synchronization.h \
   ../../Archive/7z/../Common/../../Common/../../Windows/Defs.h \
+  ../../Archive/7z/../Common/../../Common/../../Windows/../../C/Threads.h \
+  ../../Archive/7z/../Common/../../Common/../../Windows/../../C/Types.h \
   ../../Archive/7z/../../Common/CreateCoder.h ../../../Common/MyCom.h \
   ../../../Common/String.h ../../Archive/7z/../../Common/../ICoder.h \
   ../../Archive/7z/../../Common/MethodId.h \
@@ -2102,6 +2131,8 @@ StreamUtils.o: ../../Common/StreamUtils.cpp ../../../myWindows/StdAfx.h \
   ../../Archive/7z/../Common/../../Common/../IStream.h \
   ../../Archive/7z/../Common/../../Common/../../Windows/Synchronization.h \
   ../../Archive/7z/../Common/../../Common/../../Windows/Defs.h \
+  ../../Archive/7z/../Common/../../Common/../../Windows/../../C/Threads.h \
+  ../../Archive/7z/../Common/../../Common/../../Windows/../../C/Types.h \
   ../../Archive/7z/../../Common/OutBuffer.h \
   ../../Archive/7z/../../../Common/DynamicBuffer.h \
   ../../Archive/7z/../../../Common/Buffer.h \
@@ -2764,6 +2795,8 @@ CoderMixer2MT.o: ../../Archive/Common/CoderMixer2MT.cpp \
   ../../Archive/Common/../../Common/../IStream.h \
   ../../Archive/Common/../../Common/../../Windows/Synchronization.h \
   ../../Archive/Common/../../Common/../../Windows/Defs.h \
+  ../../Archive/Common/../../Common/../../Windows/../../C/Threads.h \
+  ../../Archive/Common/../../Common/../../Windows/../../C/Types.h \
   ../../Archive/Common/CrossThreadProgress.h \
   ../../Archive/Common/../../../Windows/Synchronization.h
 CrossThreadProgress.o: ../../Archive/Common/CrossThreadProgress.cpp \
@@ -2780,6 +2813,8 @@ CrossThreadProgress.o: ../../Archive/Common/CrossThreadProgress.cpp \
   ../../Archive/Common/../../../Common/Types.h \
   ../../Archive/Common/../../../Windows/Synchronization.h \
   ../../Archive/Common/../../../Windows/Defs.h \
+  ../../Archive/Common/../../../Windows/../../C/Threads.h \
+  ../../Archive/Common/../../../Windows/../../C/Types.h \
   ../../Archive/Common/../../../Common/MyCom.h
 DummyOutStream.o: ../../Archive/Common/DummyOutStream.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
@@ -4114,7 +4149,8 @@ ZipUpdate.o: ../../Archive/Zip/ZipUpdate.cpp ../../../myWindows/StdAfx.h \
   ../../Archive/Zip/../../Common/ProgressUtils.h \
   ../../Archive/Zip/../../Common/../IProgress.h \
   ../../Archive/Zip/../../Common/ProgressMt.h \
-  ../../../Windows/Synchronization.h \
+  ../../../Windows/Synchronization.h ../../../Windows/../../C/Threads.h \
+  ../../../Windows/../../C/Types.h \
   ../../Archive/Zip/../../Common/../../Common/Vector.h \
   ../../Archive/Zip/../../Common/LimitedStreams.h \
   ../../Archive/Zip/../../Common/../IStream.h \

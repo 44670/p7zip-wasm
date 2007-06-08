@@ -222,7 +222,6 @@ BranchPPC.o  \
 BranchSPARC.o  \
 BranchX86.o  \
 $(OBJ_CRC32)  \
-Alloc.o  \
 Sort.o  \
 Threads.o
 

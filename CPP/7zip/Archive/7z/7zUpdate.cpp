@@ -375,7 +375,6 @@ static bool IsExeFile(const UString &name)
 }
 #endif
 
-static const UInt64 k_Copy = 0x0;
 static const UInt64 k_LZMA  = 0x030101;
 static const UInt64 k_BCJ   = 0x03030103;
 static const UInt64 k_BCJ2  = 0x0303011B;
@@ -867,6 +866,8 @@ static HRESULT Update2(
 }
 
 #ifdef _7Z_VOL
+
+static const UInt64 k_Copy = 0x0;
 
 static HRESULT WriteVolumeHeader(COutArchive &archive, CFileItem &file, const CUpdateOptions &options)
 {

@@ -105,8 +105,6 @@ private:
 
   int m_BlockIndex;
 
-  void FinishStream(bool needLeave);
-
   void WriteBits2(UInt32 value, UInt32 numBits);
   void WriteByte2(Byte b);
   void WriteBit2(bool v);
@@ -130,15 +128,17 @@ public:
   UInt64 m_PackSize;
 
   Byte MtPad[1 << 8]; // It's pad for Multi-Threading. Must be >= Cache_Line_Size.
+  HRes Create();
+  void FinishStream(bool needLeave);
+  DWORD ThreadFunc();
   #endif
 
   CThreadInfo(): m_BlockSorterIndex(0), m_Block(0) {}
   ~CThreadInfo() { Free(); }
-  bool Create();
+  bool Alloc();
   void Free();
 
   HRESULT EncodeBlock3(UInt32 blockSize);
-  DWORD ThreadFunc();
 };
 
 class CEncoder :
@@ -189,7 +189,7 @@ public:
   void WriteCRC(UInt32 v);
 
   #ifdef COMPRESS_BZIP2_MT
-  bool Create();
+  HRes Create();
   void Free();
   #endif
 
@@ -224,7 +224,7 @@ public:
   #ifdef COMPRESS_BZIP2_MT
   MY_UNKNOWN_IMP2(ICompressSetCoderMt, ICompressSetCoderProperties)
   #else
-  MY_UNKNOWN_IMP1(ICompressGetInStreamProcessedSize)
+  MY_UNKNOWN_IMP1(ICompressSetCoderProperties)
   #endif
 
   HRESULT CodeReal(ISequentialInStream *inStream,

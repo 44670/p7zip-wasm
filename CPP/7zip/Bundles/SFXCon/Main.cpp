@@ -127,9 +127,7 @@ static const NRecursedType::EEnum kCommandRecursedDefault[kNumCommandForms] =
 // static const bool kTestExtractRecursedDefault = true;
 // static const bool kAddRecursedDefault = false;
 
-static const int kMaxCmdLineSize = 1000;
 static const wchar_t *kUniversalWildcard = L"*";
-// static const int kMinNonSwitchWords = 1;
 static const int kCommandIndex = 0;
 
 static const char *kHelpString = 
@@ -340,7 +338,7 @@ int Main2(
     throw kCantFindSFX;
   if (archiveFileInfo.IsDirectory())
     throw kCantFindSFX;
-
+  
   UString outputDir;
   if(parser[NKey::kOutputDir].ThereIs)
   {
@@ -417,13 +415,19 @@ int Main2(
     }
     else
     {
+      UInt64 numErrors = 0;
       HRESULT result = ListArchives(
           codecs,
           v1, v2,
           wildcardCensorHead, 
           true, false, 
           passwordEnabled, 
-          password);
+          password, numErrors);
+      if (numErrors > 0)
+      {
+        g_StdOut << endl << "Errors: " << numErrors;
+        return NExitCode::kFatalError;
+      }
       if (result != S_OK)
         throw CSystemException(result);
     }

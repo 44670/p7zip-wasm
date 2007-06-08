@@ -4,6 +4,10 @@
 #define __FILESTREAMS_H
 
 #if defined(_WIN32) || defined(ENV_UNIX)
+#define USE_WIN_FILE
+#endif
+
+#ifdef USE_WIN_FILE
 #include "../../Windows/FileIO.h"
 #else
 #include "../../Common/C_FileIO.h"
@@ -19,7 +23,7 @@ class CInFileStream:
 {
   bool _ignoreSymbolicLink;
 public:
-  #if defined(_WIN32) || defined(ENV_UNIX)
+  #ifdef USE_WIN_FILE
   NWindows::NFile::NIO::CInFile File;
   #else
   NC::NFile::NIO::CInFile File;
@@ -28,7 +32,7 @@ public:
   virtual ~CInFileStream() {}
 
   bool Open(LPCTSTR fileName);
-  #if defined(_WIN32) || defined(ENV_UNIX)
+  #ifdef USE_WIN_FILE
   #ifndef _UNICODE
   bool Open(LPCWSTR fileName);
   #endif
@@ -63,14 +67,14 @@ class COutFileStream:
   public CMyUnknownImp
 {
 public:
-  #if defined(_WIN32) || defined(ENV_UNIX)
+  #ifdef USE_WIN_FILE
   NWindows::NFile::NIO::COutFile File;
   #else
   NC::NFile::NIO::COutFile File;
   #endif
   virtual ~COutFileStream() {}
   bool Create(LPCTSTR fileName, bool createAlways);
-  #if defined(_WIN32) || defined(ENV_UNIX)
+  #ifdef USE_WIN_FILE
   #ifndef _UNICODE
   bool Create(LPCWSTR fileName, bool createAlways);
   #endif

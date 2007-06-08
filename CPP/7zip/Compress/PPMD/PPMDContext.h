@@ -142,7 +142,7 @@ struct CInfo
     if (maxOrder < 2) 
     {
         memset(CharMask,0,sizeof(CharMask));
-        OrderFall = this->MaxOrder;               
+        OrderFall = MaxOrder;               
         MinContext = MaxContext;
         while (MinContext->Suffix != 0) 
         {
@@ -154,7 +154,7 @@ struct CInfo
     } 
     else 
     {
-        this->MaxOrder = maxOrder;                
+        MaxOrder = maxOrder;                
         RestartModelRare();
         NS2BSIndx[0] = 2 * 0;                   
         NS2BSIndx[1] = 2 * 1;

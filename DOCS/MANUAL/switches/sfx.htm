@@ -21,7 +21,7 @@
 <DL>
   <DT><A name="SFX_Module"></A>{SFX_Module}</DT>
   <DD>
-    <P>Specifies the SFX module that will be added to archive. 
+    <P>Specifies the SFX module that will be combined with the archive.
        This module must be placed in the same directory as the 7z.exe.
        If {SFX_Module} is not assigned, 7-Zip will use standard console 
        SFX module 7zCon.sfx.</P>
@@ -38,34 +38,35 @@
 <P>
 All SFX modules are uncompressed. You can use UPX program 
 (http://upx.sourceforge.net) 
-to compresss such modules. After compressing by UPX program size of 
-sfx module will be reduced to 40-50% of original size. 
+to compresss such modules. After compressing by the UPX program, the size of the
+sfx module will be reduced to 40-50% of its original size.
 </P>
 
 <H4>SFX modules for installers</H4>
-<P>SFX modules for installers are included in external package (7z_extra). You can download 
-these modules from www.7-zip.org. SFX modules for installers (7zS.sfx and 7zSD.sfx) allow to create installation program.
-Such module extracts archive to temp folder and then runs specified program 
-and removes temp files after program finishing.
-Self-extract archive for installers must be created as joining 3 files: 
+<P>SFX modules for installers are included in an external package (7z_extra). You can download
+these modules from www.7-zip.org. SFX modules for installers (7zS.sfx and 7zSD.sfx)
+allow you to create your own installation program.
+Such a module extracts the archive to the user's temp folder, and runs a specified program,
+and removes the temp files after the program finishes.
+A self-extracting archive for installers must be created as joining 3 files:
 SFX_Module, Installer_Config, 7z_Archive. 
-Installer_Config is optional file. You can use the following command to 
-create installer self-extract archive:</P>
+In addition, an optional file, Installer_Config, is allowed. You can use the following command to
+create an installer self-extracting archive:</P>
 <PRE class="example">
 copy /b 7zS.sfx + config.txt + archive.7z archive.exe
 </PRE>
 
-<P>The smallest installation package size can be achivied, 
-if installation files was uncompressed before including to 7z archive.</P>
+<P>An optimally small installation package size can be achieved,
+if the installation files are uncompressed before including them in the 7z archive.</P>
 
-<P><SPAN class="filename">-y</SPAN> switch for installer module specifies quiet mode for extracting.</P>
+<P><SPAN class="filename">-y</SPAN> switch for installer module specifies quiet mode extraction.</P>
 
 <H4>Installer Config file format</H4>
 <P>
-Config file contains commands for Installer. File begins from string
+This config file contains commands for the Installer. The file begins with the string
 <B>;!@Install@!UTF-8!</B> and ends with <B>;!@InstallEnd@!</B>.
-File must be written in UTF-8 encoding.
-File contains string pairs: 
+The file must be written in UTF-8 encoding.
+The file contains any or all these string pairs:
 <P>ID_String="Value"</P>
 <P>
     <TABLE>
@@ -80,14 +81,14 @@ File contains string pairs:
       <TR> <TD>ExecuteParameters</TD> <TD>Parameters for "ExecuteFile"</TD> </TR>
     </TABLE>
 </P>
-<P>You can omit any values.</P>
+<P>You may omit any pair.</P>
 
-<P>There are two ways to run program: <B>RunProgram</B> and <B>ExecuteFile</B>. 
-Use <B>RunProgram</B>, if you want to run some program from .7z archive. 
-Use <B>ExecuteFile</B>, if you want to open some document from .7z archive or 
-if you want to execute some command from Windows.</P>
+<P>There are two ways to run a installation program: <B>RunProgram</B> and <B>ExecuteFile</B>.
+Use <B>RunProgram</B>, if you want to run a program from the .7z archive.
+Use <B>ExecuteFile</B>, if you want to open a document from the .7z archive, or
+if you want to execute a command from Windows.</P>
 
-<P>If you use <B>RunProgram</B> and if you specify empty directory prefix: <B>Directory</B>="", 
+<P>If you use <B>RunProgram</B>, and if you specify empty directory prefix: <B>Directory</B>="",
 the system searches for the executable file in the following sequence:</P>
 <OL>
 <LI>The directory from which the application (installer) loaded. 

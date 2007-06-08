@@ -103,7 +103,6 @@ aescrypt.o \
 aeskey.o \
 aestab.o \
 Sha256.o \
-Alloc.o \
 Threads.o \
 $(OBJ_CRC32) \
 MatchFinder.o \

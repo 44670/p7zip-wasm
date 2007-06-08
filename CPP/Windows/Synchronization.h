@@ -5,6 +5,15 @@
 
 #include "Defs.h"
 
+extern "C" 
+{ 
+#include "../../C/Threads.h"
+}
+
+#ifdef _WIN32
+#include "Handle.h"
+#endif
+
 #ifdef ENV_BEOS
 #include <Locker.h>
 #include <kernel/OS.h>
@@ -61,46 +70,59 @@ struct CBaseHandle
 		} sema;
 	} u;
   operator HANDLE() { return ((HANDLE)this); }
-  bool Close() { return true; }
 };
 
 class CBaseEvent : public CBaseHandle
 {
+  bool _created;
 public:
-  CBaseEvent() : CBaseHandle(CBaseHandle::EVENT) {} 
+  bool IsCreated() { return _created; }
+  CBaseEvent() : CBaseHandle(CBaseHandle::EVENT), _created(false) {} 
   ~CBaseEvent() { Close(); }
 
-  bool Create(bool manualReset, bool initiallyOwn)
+  HRes Close() { _created = false ; return S_OK; }
+
+  HRes Create(bool manualReset, bool initiallyOwn)
   {
     this->u.event._manual_reset = manualReset;
     this->u.event._state        = initiallyOwn;
-    return true;
+    this->_created = true;
+    return S_OK;
   }
 
-  bool Set();
-  bool Reset();
-  bool Lock();
+  HRes Set();
+  HRes Reset();
+  HRes Lock();
 };
 
-class CEvent: public CBaseEvent
+class CManualResetEvent: public CBaseEvent
 {
 public:
-  CEvent() {};
-  CEvent(bool manualReset, bool initiallyOwn);
+  HRes Create(bool initiallyOwn = false)
+  {
+    return CBaseEvent::Create(true, initiallyOwn);
+  }
+  HRes CreateIfNotCreated()
+  {
+    if (IsCreated())
+      return 0;
+    return CBaseEvent::Create(true, false);
+  }
 };
 
-class CManualResetEvent: public CEvent
+class CAutoResetEvent: public CBaseEvent
 {
 public:
-  CManualResetEvent(bool initiallyOwn = false):
-    CEvent(true, initiallyOwn) {};
-};
-
-class CAutoResetEvent: public CEvent
-{
-public:
-  CAutoResetEvent(bool initiallyOwn = false):
-    CEvent(false, initiallyOwn) {};
+  HRes Create()
+  {
+    return CBaseEvent::Create(false, false);
+  }
+  HRes CreateIfNotCreated()
+  {
+    if (IsCreated())
+      return 0;
+    return CBaseEvent::Create(false, false);
+  }
 };
 
 #ifdef ENV_BEOS
@@ -176,14 +198,15 @@ class CSemaphore : public CBaseHandle
 {
 public:
   CSemaphore() : CBaseHandle(CBaseHandle::SEMAPHORE) {} 
-  bool Create(LONG initiallyCount, LONG maxCount)
+  HRes Create(LONG initiallyCount, LONG maxCount)
   {
-    if ((initiallyCount < 0) || (initiallyCount > maxCount) || (maxCount < 1)) return false;
+    if ((initiallyCount < 0) || (initiallyCount > maxCount) || (maxCount < 1)) return S_FALSE;
     this->u.sema.count    = initiallyCount;
     this->u.sema.maxCount = maxCount;
-    return true;
+    return S_OK;
   }
-  bool Release(LONG releaseCount = 1);
+  HRes Release(LONG releaseCount = 1);
+  HRes Close() { return S_OK; }
 };
 
 class CCriticalSectionLock

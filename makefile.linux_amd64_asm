@@ -10,9 +10,11 @@ ALLFLAGS=-m64 ${OPTFLAGS} -s -fPIC \
 CXX=g++ $(ALLFLAGS)
 CC=gcc $(ALLFLAGS)
 LINK_SHARED=-shared
+ASM=yasm -f elf -m amd64
 
 LOCAL_LIBS=-lpthread
 LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
 
+CPU=x64
 OBJ_CRC32=$(OBJ_CRC32_x86_64)
 

@@ -473,6 +473,7 @@ LzmaBench.o: ../../Compress/LZMA_Alone/LzmaBench.cpp \
   ../../Compress/LZMA_Alone/../../../Common/MyCom.h \
   ../../Compress/LZMA_Alone/../../ICoder.h ../../../Windows/Thread.h \
   ../../../Windows/Defs.h ../../../Windows/Synchronization.h \
+  ../../../Windows/../../C/Threads.h ../../../Windows/../../C/Types.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h
 LzmaBenchCon.o: ../../Compress/LZMA_Alone/LzmaBenchCon.cpp \
@@ -503,7 +504,8 @@ LzmaBenchCon.o: ../../Compress/LZMA_Alone/LzmaBenchCon.cpp \
   ../../Compress/LZMA_Alone/../../UI/Common/../../Archive/../../Common/MyUnknown.h \
   ../../Compress/LZMA_Alone/../../UI/Common/../../Archive/../../Common/Types.h \
   ../../Compress/LZMA_Alone/../../UI/Common/../../Archive/../PropID.h \
-  ../../Compress/LZMA_Alone/LzmaBenchCon.h ../../../Windows/System.h \
+  ../../Compress/LZMA_Alone/LzmaBenchCon.h ../../../Common/IntToString.h \
+  ../../../Windows/System.h \
   ../../Compress/LZMA_Alone/../../UI/Console/ConsoleClose.h \
   ../../Compress/LZMA_Alone/../../../Common/MyCom.h
 ConsoleClose.o: ConsoleClose.cpp ../../../myWindows/StdAfx.h \
@@ -735,6 +737,7 @@ UpdateCallbackConsole.o: UpdateCallbackConsole.cpp \
   ../Common/../../IStream.h ../Common/../../../Windows/DLL.h \
   ../Common/../../../Windows/../Common/String.h ../../../Windows/Error.h \
   ../../../Common/String.h ../../../Windows/Synchronization.h \
+  ../../../Windows/../../C/Threads.h ../../../Windows/../../C/Types.h \
   ConsoleClose.h UserInputUtils.h
 UserInputUtils.o: UserInputUtils.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \

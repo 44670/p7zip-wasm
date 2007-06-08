@@ -1,7 +1,9 @@
 
-DEST_BIN=/usr/local/bin
-DEST_SHARE=/usr/local/lib/p7zip
-DEST_MAN=/usr/local/man
+DEST_HOME=/usr/local
+DEST_BIN=$(DEST_HOME)/bin
+DEST_SHARE=$(DEST_HOME)/lib/p7zip
+DEST_SHARE_DOC=$(DEST_HOME)/share/doc/p7zip
+DEST_MAN=$(DEST_HOME)/man
 
 .PHONY: default all all2 7za sfx 7z 7zr Client7z common clean tar_bin depend test test_7z test_7zr test_Client7z all_test
 
@@ -26,8 +28,7 @@ common:
 7zr: common
 	cd CPP/7zip/Bundles/Alone7z ; $(MAKE) all
 
-Client7z: common
-	cd CPP/7zip/Bundles/Format7z ; $(MAKE) all
+Client7z: 7z
 	cd CPP/7zip/UI/Client7z      ; $(MAKE) all
 
 depend:
@@ -53,18 +54,19 @@ sfx: common
 	cd CPP/7zip/Compress/Rar         ; $(MAKE) all
 
 clean:
-	cd CPP/Common                 ; $(MAKE) clean
-	cd CPP/myWindows              ; $(MAKE) clean
-	cd CPP/7zip/Bundles/Alone     ; $(MAKE) clean
-	cd CPP/7zip/Bundles/Alone7z   ; $(MAKE) clean
-	cd CPP/7zip/Bundles/SFXCon    ; $(MAKE) clean
-	cd CPP/7zip/UI/Client7z       ; $(MAKE) clean
-	cd CPP/7zip/UI/Console        ; $(MAKE) clean
-	cd CPP/7zip/Bundles/Format7zF ; $(MAKE) clean
+	cd CPP/Common                    ; $(MAKE) clean
+	cd CPP/myWindows                 ; $(MAKE) clean
+	cd CPP/7zip/Bundles/Alone        ; $(MAKE) clean
+	cd CPP/7zip/Bundles/Alone7z      ; $(MAKE) clean
+	cd CPP/7zip/Bundles/SFXCon       ; $(MAKE) clean
+	cd CPP/7zip/UI/Client7z          ; $(MAKE) clean
+	cd CPP/7zip/UI/Console           ; $(MAKE) clean
+	cd CPP/7zip/Bundles/Format7zF    ; $(MAKE) clean
 	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) clean
-	cd CPP/7zip/Bundles/Format7z  ; $(MAKE) clean
-	cd CPP/7zip/Compress/Rar      ; $(MAKE) clean
-	cd CPP/7zip/Bundles/AloneGCOV ; $(MAKE) clean
+	cd CPP/7zip/Bundles/Format7z     ; $(MAKE) clean
+	cd CPP/7zip/Compress/Rar         ; $(MAKE) clean
+	cd CPP/7zip/Compress/LZMA_Alone  ; $(MAKE) clean
+	cd CPP/7zip/Bundles/AloneGCOV    ; $(MAKE) clean
 	rm -fr bin
 	rm -f make.log
 	find . -name "*~" -exec rm -f {} \;
@@ -92,7 +94,7 @@ test_Client7z: Client7z
 	cd check ; ./check_Client7z.sh ../bin/Client7z
 
 install:
-	./install.sh $(DEST_BIN) $(DEST_SHARE) $(DEST_MAN)
+	./install.sh $(DEST_BIN) $(DEST_SHARE) $(DEST_MAN) $(DEST_SHARE_DOC) $(DEST_DIR)
 
 REP=$(shell pwd)
 ARCHIVE=$(shell basename $(REP))

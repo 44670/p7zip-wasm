@@ -1,27 +1,27 @@
-Index: p7zip-4.47~dfsg.1/makefile
+Index: p7zip-4.51/makefile
 ===================================================================
---- p7zip-4.47~dfsg.1.orig/makefile	2007-06-08 10:54:43.000000000 +0200
-+++ p7zip-4.47~dfsg.1/makefile	2007-06-08 10:56:35.000000000 +0200
-@@ -41,7 +41,6 @@
+--- p7zip-4.51.orig/makefile	2007-08-04 20:54:26.000000000 +0200
++++ p7zip-4.51/makefile	2007-08-04 21:05:03.000000000 +0200
+@@ -38,7 +38,6 @@
+ 	cd CPP/7zip/UI/Client7z       ; $(MAKE) depend
  	cd CPP/7zip/UI/Console        ; $(MAKE) depend
  	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) depend
- 	cd CPP/7zip/Bundles/Format7z  ; $(MAKE) depend
 -	cd CPP/7zip/Compress/Rar      ; $(MAKE) depend
  
  sfx: common
  	mkdir -p  bin
-@@ -51,7 +50,6 @@
+@@ -48,7 +47,6 @@
  	mkdir -p  bin/Codecs
  	cd CPP/7zip/UI/Console           ; $(MAKE) all
  	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) all
 -	cd CPP/7zip/Compress/Rar         ; $(MAKE) all
  
  clean:
- 	cd CPP/Common                    ; $(MAKE) clean
-@@ -64,7 +62,6 @@
- 	cd CPP/7zip/Bundles/Format7zF    ; $(MAKE) clean
+ 	cd CPP/myWindows                 ; $(MAKE) clean
+@@ -58,7 +56,6 @@
+ 	cd CPP/7zip/UI/Client7z          ; $(MAKE) clean
+ 	cd CPP/7zip/UI/Console           ; $(MAKE) clean
  	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) clean
- 	cd CPP/7zip/Bundles/Format7z     ; $(MAKE) clean
 -	cd CPP/7zip/Compress/Rar         ; $(MAKE) clean
  	cd CPP/7zip/Compress/LZMA_Alone  ; $(MAKE) clean
  	cd CPP/7zip/Bundles/AloneGCOV    ; $(MAKE) clean

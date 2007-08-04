@@ -3,13 +3,9 @@
 #ifndef __WINDOWS_DLL_H
 #define __WINDOWS_DLL_H
 
-#include "../Common/String.h"
+#include "../Common/MyString.h"
 
-// #ifndef LOAD_LIBRARY_AS_DATAFILE
-// #define LOAD_LIBRARY_AS_DATAFILE      0x0000000
-// #endif
-
-typedef void * HMODULE; // FIXME
+typedef void * HMODULE;
 
 typedef int (*FARPROC)();
 

@@ -8,7 +8,7 @@ Standards-Version: 3.7.2
 Package: p7zip
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Recommends: p7zip-full
+Suggests: p7zip-full
 Description: 7zr file archiver with high compression ratio
  p7zip is the Unix port of 7-Zip, a file archiver that archives with
  very high compression ratios.

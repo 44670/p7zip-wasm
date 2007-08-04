@@ -14,26 +14,23 @@ include ../../../../makefile.machine
 
 LIBS=$(LOCAL_LIBS)
 
-MY_WINDOWS= \
-	$(MY_HOME)/wine_date_and_time.o \
-	$(MY_HOME)/myAddExeFlag.o \
-	$(MY_HOME)/myGetNumberOfProcessors.o \
-	$(MY_HOME)/mySplitCommandLine.o
-
 OBJS=\
-../../../Common/CommandLineParser.o \
-../../../Common/CRC.o \
-../../../Common/IntToString.o \
-../../../Common/ListFileUtils.o \
-../../../Common/MyWindows.o \
-../../../Common/StdInStream.o \
-../../../Common/StdOutStream.o \
-../../../Common/String.o \
-../../../Common/StringConvert.o \
-../../../Common/StringToInt.o \
-../../../Common/UTFConvert.o \
-../../../Common/Vector.o \
-../../../Common/Wildcard.o \
+wine_date_and_time.o \
+myAddExeFlag.o \
+mySplitCommandLine.o \
+CommandLineParser.o \
+CRC.o \
+IntToString.o \
+ListFileUtils.o \
+MyWindows.o \
+StdInStream.o \
+StdOutStream.o \
+MyString.o \
+StringConvert.o \
+StringToInt.o \
+UTFConvert.o \
+MyVector.o \
+Wildcard.o \
 ConsoleClose.o  \
 ExtractCallbackConsole.o  \
 List.o  \
@@ -51,6 +48,7 @@ FileName.o  \
 PropVariant.o  \
 PropVariantConversions.o  \
 Synchronization.o  \
+System.o  \
 CreateCoder.o  \
 CrossThreadProgress.o  \
 FilePathAutoRename.o  \
@@ -63,6 +61,8 @@ LockedStream.o  \
 LSBFDecoder.o  \
 LSBFEncoder.o  \
 MethodId.o  \
+MethodProps.o  \
+VirtThread.o \
 OffsetStream.o  \
 OutBuffer.o  \
 ProgressMt.o  \
@@ -97,9 +97,9 @@ LzmaBenchCon.o  \
 7zUpdate.o  \
 CoderMixer2.o  \
 CoderMixer2MT.o  \
-CoderMixer2ST.o  \
 DummyOutStream.o  \
 InStreamWithCRC.o  \
+HandlerOut.o  \
 ItemNameUtils.o  \
 MultiStream.o  \
 OutStreamWithCRC.o  \

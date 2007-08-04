@@ -10,9 +10,6 @@
 
 #include "Common/StringConvert.h"
 #include "Common/IntToString.h"
-#include "../../Common/FileStreams.h"
-#include "../../Archive/IArchive.h"
-#include "../../IPassword.h"
 
 #include "Windows/PropVariant.h"
 #include "Windows/PropVariantConversions.h"
@@ -21,13 +18,24 @@
 #include "Windows/FileName.h"
 #include "Windows/FileFind.h"
 
+#include "../../Common/FileStreams.h"
+#include "../../Archive/IArchive.h"
+#include "../../IPassword.h"
+#include "../../MyVersion.h"
+
+
 // {23170F69-40C1-278A-1000-000110070000}
 DEFINE_GUID(CLSID_CFormat7z, 
   0x23170F69, 0x40C1, 0x278A, 0x10, 0x00, 0x00, 0x01, 0x10, 0x07, 0x00, 0x00);
 
 using namespace NWindows;
 
-static const char *kCopyrightString = "7-Zip 4.43 (7z.DLL client example)  (c) 1999-2006 Igor Pavlov  2006-08-10\n";
+#define kDllName "7z.dll"
+
+static const char *kCopyrightString = MY_7ZIP_VERSION
+" ("  kDllName " client) "  
+MY_COPYRIGHT " " MY_DATE;
+
 static const char *kHelpString = 
 "Usage: Client7z.exe [a | l | x ] archive.7z [fileName ...]\n"
 "Examples:\n"
@@ -121,12 +129,12 @@ public:
   CArchiveOpenCallback() : PasswordIsDefined(false) {}
 };
 
-STDMETHODIMP CArchiveOpenCallback::SetTotal(const UInt64 *files, const UInt64 *bytes)
+STDMETHODIMP CArchiveOpenCallback::SetTotal(const UInt64 * /* files */, const UInt64 * /* bytes */)
 {
   return S_OK;
 }
 
-STDMETHODIMP CArchiveOpenCallback::SetCompleted(const UInt64 *files, const UInt64 *bytes)
+STDMETHODIMP CArchiveOpenCallback::SetCompleted(const UInt64 * /* files */, const UInt64 * /* bytes */)
 {
   return S_OK;
 }
@@ -217,12 +225,12 @@ void CArchiveExtractCallback::Init(IInArchive *archiveHandler, const UString &di
   NFile::NName::NormalizeDirPathPrefix(_directoryPath);
 }
 
-STDMETHODIMP CArchiveExtractCallback::SetTotal(UInt64 size)
+STDMETHODIMP CArchiveExtractCallback::SetTotal(UInt64 /* size */)
 {
   return S_OK;
 }
 
-STDMETHODIMP CArchiveExtractCallback::SetCompleted(const UInt64 *completeValue)
+STDMETHODIMP CArchiveExtractCallback::SetCompleted(const UInt64 * /* completeValue */)
 {
   return S_OK;
 }
@@ -249,6 +257,9 @@ STDMETHODIMP CArchiveExtractCallback::GetStream(UInt32 index,
     }
     _filePath = fullPath;
   }
+
+  if (askExtractMode != NArchive::NExtract::NAskMode::kExtract)
+    return S_OK;
 
   {
     // Get Attributes
@@ -487,23 +498,23 @@ public:
   }
 };
 
-STDMETHODIMP CArchiveUpdateCallback::SetTotal(UInt64 size)
+STDMETHODIMP CArchiveUpdateCallback::SetTotal(UInt64 /* size */)
 {
   return S_OK;
 }
 
-STDMETHODIMP CArchiveUpdateCallback::SetCompleted(const UInt64 *completeValue)
+STDMETHODIMP CArchiveUpdateCallback::SetCompleted(const UInt64 * /* completeValue */)
 {
   return S_OK;
 }
 
 
-STDMETHODIMP CArchiveUpdateCallback::EnumProperties(IEnumSTATPROPSTG **enumerator)
+STDMETHODIMP CArchiveUpdateCallback::EnumProperties(IEnumSTATPROPSTG ** /* enumerator */)
 {
   return E_NOTIMPL;
 }
 
-STDMETHODIMP CArchiveUpdateCallback::GetUpdateItemInfo(UInt32 index, 
+STDMETHODIMP CArchiveUpdateCallback::GetUpdateItemInfo(UInt32 /* index */, 
       Int32 *newData, Int32 *newProperties, UInt32 *indexInArchive)
 {
   if(newData != NULL)
@@ -608,7 +619,7 @@ STDMETHODIMP CArchiveUpdateCallback::GetStream(UInt32 index, ISequentialInStream
   return S_OK;
 }
 
-STDMETHODIMP CArchiveUpdateCallback::SetOperationResult(Int32 operationResult)
+STDMETHODIMP CArchiveUpdateCallback::SetOperationResult(Int32 /* operationResult */)
 {
   m_NeedBeClosed = true;
   return S_OK;
@@ -687,7 +698,7 @@ main(int argc, char* argv[])
     return 1;
   }
   NWindows::NDLL::CLibrary library;
-  if (!library.Load(TEXT("7z.dll")))
+  if (!library.Load(TEXT(kDllName)))
   {
     PrintStringLn("Can not load library");
     return 1;
@@ -851,7 +862,7 @@ main(int argc, char* argv[])
       extractCallbackSpec->PasswordIsDefined = false;
       // extractCallbackSpec->PasswordIsDefined = true;
       // extractCallbackSpec->Password = L"1";
-      archive->Extract(0, (UInt32)(Int32)(-1), false, extractCallback);
+      archive->Extract(NULL, (UInt32)(Int32)(-1), false, extractCallback);
     }
   }
   return 0;

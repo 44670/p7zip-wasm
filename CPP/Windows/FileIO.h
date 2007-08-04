@@ -3,7 +3,7 @@
 #ifndef __WINDOWS_FILEIO_H
 #define __WINDOWS_FILEIO_H
 
-#include <Common/String.h>
+#include <Common/MyString.h>
 
 #ifndef _WIN32
 

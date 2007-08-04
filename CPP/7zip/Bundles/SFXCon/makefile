@@ -10,16 +10,22 @@ include ../../../../makefile.machine
 
 LIBS=$(LOCAL_LIBS)
 
-MY_WINDOWS= \
-	$(MY_HOME)/myGetTickCount.o\
-	$(MY_HOME)/wine_date_and_time.o\
-	$(MY_HOME)/mySplitCommandLine.o\
-	$(MY_HOME)/myGetNumberOfProcessors.o
-
 OBJS=\
+myGetTickCount.o\
+wine_date_and_time.o\
+mySplitCommandLine.o\
+CommandLineParser.o\
+CRC.o\
+IntToString.o\
+StdInStream.o\
+StdOutStream.o\
+MyString.o\
+MyWindows.o\
+StringConvert.o\
+MyVector.o\
+Wildcard.o\
 CoderMixer2.o\
 CoderMixer2MT.o\
-CoderMixer2ST.o\
 CrossThreadProgress.o\
 FilterCoder.o\
 ItemNameUtils.o\
@@ -58,16 +64,7 @@ FileName.o\
 PropVariant.o\
 PropVariantConversions.o\
 Synchronization.o\
-../../../Common/MyWindows.o\
-../../../Common/CommandLineParser.o\
-../../../Common/StdInStream.o\
-../../../Common/StdOutStream.o\
-../../../Common/StringConvert.o\
-../../../Common/String.o\
-../../../Common/CRC.o\
-../../../Common/Vector.o\
-../../../Common/Wildcard.o\
-../../../Common/IntToString.o\
+System.o\
 FilePathAutoRename.o\
 FileStreams.o\
 InBuffer.o\
@@ -78,6 +75,7 @@ OutBuffer.o\
 ProgressUtils.o\
 StreamBinder.o\
 StreamObjects.o\
+VirtThread.o \
 ArchiveExtractCallback.o\
 ArchiveOpenCallback.o\
 DefaultName.o\
@@ -89,13 +87,12 @@ PropIDUtils.o\
 CreateCoder.o\
 Main.o\
 Sha256.o \
-aescrypt.o\
-aeskey.o\
-aestab.o \
 BranchX86.o \
 BCJ2Register.o\
 BCJRegister.o\
-$(OBJ_CRC32)
+Threads.o\
+$(OBJ_CRC32) \
+Aes.o
 
 include ../../../../makefile.glb
 

@@ -3,8 +3,8 @@
 # LITTLE_ENDIAN and BIG_ENDIAN are already defined by the system headers
 #
 
-# OPTFLAGS=-fast -msse3 -s -fPIC
-OPTFLAGS=-O2 -msse2 -s -fPIC
+# OPTFLAGS=-fast -msse3 -s
+OPTFLAGS=-O2 -msse2 -s -Wcheck -fstack-security-check
 
 ALLFLAGS=${OPTFLAGS} \
     	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
@@ -13,7 +13,8 @@ ALLFLAGS=${OPTFLAGS} \
 
 CXX=icpc -i-static $(ALLFLAGS) # -DHAVE_GCCVISIBILITYPATCH -fvisibility=hidden -fvisibility-inlines-hidden
 CC=icc $(ALLFLAGS)
-LINK_SHARED=-shared
+CC_SHARED=-fPIC
+LINK_SHARED=-fPIC -shared
 ASM=nasm -f elf
 
 LOCAL_LIBS=-lpthread

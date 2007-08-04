@@ -19,8 +19,6 @@ all_test : test test_7z test_7zr test_Client7z
 
 common:
 	mkdir -p  bin
-	cd CPP/Common       ; $(MAKE) all
-	cd CPP/myWindows    ; $(MAKE) all
 
 7za: common
 	cd CPP/7zip/Bundles/Alone ; $(MAKE) all
@@ -28,19 +26,18 @@ common:
 7zr: common
 	cd CPP/7zip/Bundles/Alone7z ; $(MAKE) all
 
-Client7z: 7z
+Client7z: common
+	mkdir -p  bin/Codecs
+	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) all
 	cd CPP/7zip/UI/Client7z      ; $(MAKE) all
 
 depend:
-	cd CPP/Common                 ; $(MAKE) depend
-	cd CPP/myWindows              ; $(MAKE) depend
 	cd CPP/7zip/Bundles/Alone     ; $(MAKE) depend
 	cd CPP/7zip/Bundles/Alone7z   ; $(MAKE) depend
 	cd CPP/7zip/Bundles/SFXCon    ; $(MAKE) depend
 	cd CPP/7zip/UI/Client7z       ; $(MAKE) depend
 	cd CPP/7zip/UI/Console        ; $(MAKE) depend
 	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) depend
-	cd CPP/7zip/Bundles/Format7z  ; $(MAKE) depend
 	cd CPP/7zip/Compress/Rar      ; $(MAKE) depend
 
 sfx: common
@@ -54,16 +51,13 @@ sfx: common
 	cd CPP/7zip/Compress/Rar         ; $(MAKE) all
 
 clean:
-	cd CPP/Common                    ; $(MAKE) clean
 	cd CPP/myWindows                 ; $(MAKE) clean
 	cd CPP/7zip/Bundles/Alone        ; $(MAKE) clean
 	cd CPP/7zip/Bundles/Alone7z      ; $(MAKE) clean
 	cd CPP/7zip/Bundles/SFXCon       ; $(MAKE) clean
 	cd CPP/7zip/UI/Client7z          ; $(MAKE) clean
 	cd CPP/7zip/UI/Console           ; $(MAKE) clean
-	cd CPP/7zip/Bundles/Format7zF    ; $(MAKE) clean
 	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) clean
-	cd CPP/7zip/Bundles/Format7z     ; $(MAKE) clean
 	cd CPP/7zip/Compress/Rar         ; $(MAKE) clean
 	cd CPP/7zip/Compress/LZMA_Alone  ; $(MAKE) clean
 	cd CPP/7zip/Bundles/AloneGCOV    ; $(MAKE) clean

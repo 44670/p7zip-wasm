@@ -1,4 +1,20 @@
 SRCS=\
+ ../../../myWindows/wine_date_and_time.cpp \
+ ../../../myWindows/myAddExeFlag.cpp \
+ ../../../myWindows/mySplitCommandLine.cpp \
+ ../../../Common/CommandLineParser.cpp \
+ ../../../Common/CRC.cpp \
+ ../../../Common/IntToString.cpp \
+ ../../../Common/ListFileUtils.cpp \
+ ../../../Common/MyWindows.cpp \
+ ../../../Common/StdInStream.cpp \
+ ../../../Common/StdOutStream.cpp \
+ ../../../Common/MyString.cpp \
+ ../../../Common/StringConvert.cpp \
+ ../../../Common/StringToInt.cpp \
+ ../../../Common/UTFConvert.cpp \
+ ../../../Common/MyVector.cpp \
+ ../../../Common/Wildcard.cpp \
  ../Common/ArchiveCommandLine.cpp \
  ../Common/ArchiveExtractCallback.cpp \
  ../Common/ArchiveOpenCallback.cpp \
@@ -39,10 +55,47 @@ SRCS=\
  ../../../Windows/FileIO.cpp \
  ../../../Windows/FileName.cpp \
  ../../../Windows/PropVariantConversions.cpp \
- ../../../Windows/PropVariant.cpp
+ ../../../Windows/PropVariant.cpp \
+ ../../../Windows/System.cpp
 
 SRCS_C=\
- ../../../../C/7zCrc.c
+ ../../../../C/7zCrc.c \
+ ../../../../C/Threads.c
+
+wine_date_and_time.o : ../../../myWindows/wine_date_and_time.cpp
+	$(CXX) $(CFLAGS) ../../../myWindows/wine_date_and_time.cpp
+myAddExeFlag.o : ../../../myWindows/myAddExeFlag.cpp
+	$(CXX) $(CFLAGS) ../../../myWindows/myAddExeFlag.cpp 
+mySplitCommandLine.o : ../../../myWindows/mySplitCommandLine.cpp
+	$(CXX) $(CFLAGS) ../../../myWindows/mySplitCommandLine.cpp
+CommandLineParser.o : ../../../Common/CommandLineParser.cpp
+	$(CXX) $(CFLAGS) ../../../Common/CommandLineParser.cpp
+CRC.o : ../../../Common/CRC.cpp
+	$(CXX) $(CFLAGS) ../../../Common/CRC.cpp
+IntToString.o : ../../../Common/IntToString.cpp
+	$(CXX) $(CFLAGS) ../../../Common/IntToString.cpp
+ListFileUtils.o : ../../../Common/ListFileUtils.cpp
+	$(CXX) $(CFLAGS) ../../../Common/ListFileUtils.cpp
+MyWindows.o : ../../../Common/MyWindows.cpp
+	$(CXX) $(CFLAGS) ../../../Common/MyWindows.cpp
+Random.o : ../../../Common/Random.cpp
+	$(CXX) $(CFLAGS) ../../../Common/Random.cpp
+StdInStream.o : ../../../Common/StdInStream.cpp
+	$(CXX) $(CFLAGS) ../../../Common/StdInStream.cpp
+StdOutStream.o : ../../../Common/StdOutStream.cpp
+	$(CXX) $(CFLAGS) ../../../Common/StdOutStream.cpp
+MyString.o : ../../../Common/MyString.cpp
+	$(CXX) $(CFLAGS) ../../../Common/MyString.cpp
+StringConvert.o : ../../../Common/StringConvert.cpp
+	$(CXX) $(CFLAGS) ../../../Common/StringConvert.cpp
+StringToInt.o : ../../../Common/StringToInt.cpp
+	$(CXX) $(CFLAGS) ../../../Common/StringToInt.cpp
+UTFConvert.o : ../../../Common/UTFConvert.cpp
+	$(CXX) $(CFLAGS) ../../../Common/UTFConvert.cpp
+MyVector.o : ../../../Common/MyVector.cpp
+	$(CXX) $(CFLAGS) ../../../Common/MyVector.cpp
+Wildcard.o : ../../../Common/Wildcard.cpp
+	$(CXX) $(CFLAGS) ../../../Common/Wildcard.cpp
 
 ConsoleClose.o : ./ConsoleClose.cpp
 	$(CXX) $(CFLAGS) ./ConsoleClose.cpp
@@ -78,6 +131,8 @@ PropVariant.o : ../../../Windows/PropVariant.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
 PropVariantConversions.o : ../../../Windows/PropVariantConversions.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/PropVariantConversions.cpp
+System.o : ../../../Windows/System.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/System.cpp
 ArchiveCommandLine.o : ../Common/ArchiveCommandLine.cpp
 	$(CXX) $(CFLAGS) ../Common/ArchiveCommandLine.cpp
 ArchiveExtractCallback.o : ../Common/ArchiveExtractCallback.cpp
@@ -126,3 +181,11 @@ LzmaBench.o : ../../Compress/LZMA_Alone/LzmaBench.cpp
 	$(CXX) $(CFLAGS) ../../Compress/LZMA_Alone/LzmaBench.cpp
 LzmaBenchCon.o : ../../Compress/LZMA_Alone/LzmaBenchCon.cpp
 	$(CXX) $(CFLAGS) ../../Compress/LZMA_Alone/LzmaBenchCon.cpp
+Threads.o : ../../../../C/Threads.c
+	$(CC) $(CFLAGS) ../../../../C/Threads.c
+# CRC32, C version
+7zCrc.o : ../../../../C/7zCrc.c
+	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/7zCrc.c
+# CRC32, ASM version
+7zCrcT8.o : ../../../../C/7zCrcT8.c
+	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/7zCrcT8.c

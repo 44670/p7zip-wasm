@@ -10,7 +10,7 @@ extern "C"
 #include "../../Common/Defs.h"
 #include "StreamUtils.h"
 
-static const int kBufferSize = 1 << 17;
+static const UInt32 kBufferSize = 1 << 17;
 
 CFilterCoder::CFilterCoder()
 { 
@@ -234,9 +234,27 @@ STDMETHODIMP CFilterCoder::CryptoSetPassword(const Byte *data, UInt32 size)
 #endif
 
 #ifndef EXTRACT_ONLY
+STDMETHODIMP CFilterCoder::SetCoderProperties(const PROPID *propIDs, 
+      const PROPVARIANT *properties, UInt32 numProperties)
+{
+  return _SetCoderProperties->SetCoderProperties(propIDs, properties, numProperties);
+}
+
 STDMETHODIMP CFilterCoder::WriteCoderProperties(ISequentialOutStream *outStream)
 {
   return _writeCoderProperties->WriteCoderProperties(outStream);
+}
+
+/*
+STDMETHODIMP CFilterCoder::ResetSalt()
+{
+  return _CryptoResetSalt->ResetSalt();
+}
+*/
+
+STDMETHODIMP CFilterCoder::ResetInitVector()
+{
+  return _CryptoResetInitVector->ResetInitVector();
 }
 #endif
 

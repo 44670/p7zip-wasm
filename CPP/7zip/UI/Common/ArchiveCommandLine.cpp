@@ -24,6 +24,16 @@
 #include "SortUtils.h"
 #include "EnumDirItems.h"
 
+extern bool g_CaseSensitive;
+
+#if _MSC_VER >= 1400
+#define MY_isatty_fileno(x) _isatty(_fileno(x))
+#else
+#define MY_isatty_fileno(x) isatty(fileno(x))
+#endif
+
+#define MY_IS_TERMINAL(x) (MY_isatty_fileno(x) != 0); 
+
 #ifdef HAVE_LSTAT
 extern int global_use_lstat;
 #endif
@@ -61,7 +71,8 @@ enum Enum
   kEmail,
   kShowDialog,
   kUseLStat,
-  kTechMode
+  kTechMode,
+  kCaseSensitive
 };
 
 }
@@ -123,7 +134,8 @@ static const CSwitchForm kSwitchForms[] =
     { L"SEML", NSwitchType::kUnLimitedPostString, false, 0},
     { L"AD",  NSwitchType::kSimple, false },
     { L"L",  NSwitchType::kSimple, false },
-    { L"SLT", NSwitchType::kSimple, false }
+    { L"SLT", NSwitchType::kSimple, false },
+    { L"SSC", NSwitchType::kPostChar, false, 0, 0, L"-" }
   };
 
 static const CCommandForm g_CommandForms[] = 
@@ -681,9 +693,9 @@ void CArchiveCommandLineParser::Parse1(const UStringVector &commandStrings,
     ThrowUserErrorException();
   }
 
-  options.IsInTerminal = (isatty(fileno(stdin)) != 0);
-  options.IsStdOutTerminal = (isatty(fileno(stdout)) != 0);
-  options.IsStdErrTerminal = (isatty(fileno(stderr)) != 0);
+  options.IsInTerminal = MY_IS_TERMINAL(stdin);
+  options.IsStdOutTerminal = MY_IS_TERMINAL(stdout);
+  options.IsStdErrTerminal = MY_IS_TERMINAL(stderr);
   options.StdOutMode = parser[NKey::kStdOut].ThereIs;
   options.EnableHeaders = !parser[NKey::kDisableHeaders].ThereIs;
   options.HelpMode = parser[NKey::kHelp1].ThereIs || parser[NKey::kHelp2].ThereIs  || parser[NKey::kHelp3].ThereIs;
@@ -722,6 +734,9 @@ void CArchiveCommandLineParser::Parse2(CArchiveCommandLineOptions &options)
     ThrowUserErrorException();
 
   options.TechMode = parser[NKey::kTechMode].ThereIs;
+
+  if (parser[NKey::kCaseSensitive].ThereIs)
+    g_CaseSensitive = (parser[NKey::kCaseSensitive].PostCharIndex < 0);
 
   NRecursedType::EEnum recursedType;
   if (parser[NKey::kRecursed].ThereIs)
@@ -837,7 +852,7 @@ void CArchiveCommandLineParser::Parse2(CArchiveCommandLineOptions &options)
       archivePathsFull.Add(fullPath);
     }
     CIntVector indices;
-    SortStringsToIndices(archivePathsFull, indices);
+    SortFileNames(archivePathsFull, indices);
     options.ArchivePathsSorted.Reserve(indices.Size());
     options.ArchivePathsFullSorted.Reserve(indices.Size());
     for (i = 0; i < indices.Size(); i++)

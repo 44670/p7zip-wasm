@@ -7,13 +7,11 @@ include ../../../../makefile.machine
 
 LIBS=$(LOCAL_LIBS_DLL)
 
-MY_WINDOWS=\
-	$(MY_HOME)/wine_date_and_time.o
-
 OBJS = \
-../../../Common/MyWindows.o \
+wine_date_and_time.o \
+MyWindows.o \
 ClientCodec.o \
-String.o \
+MyString.o \
 StringConvert.o \
 PropVariant.o \
 DLL.o 
@@ -31,9 +29,9 @@ CODER=../../../bin/Codecs/LZMA.so # OK - ICompressWriteCoderProperties=5
 
 test : all
 	cp ClientCodec.cpp f1
-	../../../bin/ClientCodec $(CODER) i
-	../../../bin/ClientCodec $(CODER) e f1 f2
-	../../../bin/ClientCodec $(CODER) d f2 f3
+	../../../../bin/ClientCodec $(CODER) i
+	../../../../bin/ClientCodec $(CODER) e f1 f2
+	../../../../bin/ClientCodec $(CODER) d f2 f3
 	diff -q f1 f3
 
 clean2:

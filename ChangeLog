@@ -1,4 +1,60 @@
 
+Version 4.51
+============
+  - From Windows version of 7-zip 4.50 :
+     - Bug was fixed: 7-Zip 4.50 beta could not open some .7z archives.
+
+  - fix built of test_emul
+
+Version 4.50 (never published)
+============
+  - From Windows version of 7-zip 4.50 :
+    - New switch for command line version:
+    -ssc[-] enables/disables case-sensitive mode for file names.
+    - Speed optimizations for AES encryption.
+    - Some bugs were fixed.
+
+  - contrib/gzip-like_CLI_wrapper_for_7z/p7zip now supports commands like :
+    p7zip -- -name
+    p7zip "file name"
+    p7zip file1 file2 file3
+    p7zip -d file1.7z file2.7z file3.7z
+
+  never published because this version does not pass my tests.
+
+Version 4.49
+============
+  - From Windows version of 7-zip 4.49 :
+    - 7-Zip (7z) now can unpack WIM archives
+
+   - fixed : On Sparc Solaris, core dump during "7z a -sfx exe.x dir" with p7zip compiled with makefile.solaris_sparc_CC_32
+
+   - some code cleanup
+
+   - On HPUX, p7zip can get the number of CPU and the size of the memory.
+
+
+Version 4.48
+============
+  - From Windows version of 7-zip 4.48 :
+    - Encryption strength for .7z format was increased. 
+      Now it uses random initialization vectors.
+    - Some bugs were fixed.
+
+  - fixed #1729236 : Makefile infrastructure not safe for parallel compilation
+    (if your make command understands -C and -j4, copy makefile.parallel_jobs over makefile)
+
+  - Now the executables are not built with the PIC (position-independent code) flag.
+    7z.so are still built with the PIC flag.
+    7za and 7zr are now faster than 7z with 7z.so.
+    7za, 7zr and 7r are now smaller.
+
+  - contrib/gzip-like_CLI_wrapper_for_7z/p7zip now supports spaces in filename
+    and use 7za instead of 7z.
+
+  - contrib/qnx630sp3 added to support QNX built (thanks to termterm)
+
+
 Version 4.47
 ============
   - From Windows version of 7-zip 4.47 :

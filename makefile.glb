@@ -1,6 +1,4 @@
 
-MY_HOME=../../../myWindows
-
 RM=rm -f
 CFLAGS=-c \
 -I../../../myWindows \
@@ -14,8 +12,8 @@ DFLAGS=-MM \
 
 all:$(PROG)
 
-$(PROG): $(OBJS) $(MY_WINDOWS)
-	$(CXX) $(LOCAL_SHARED) -o $(PROG) $(LDFLAGS) $(OBJS) $(MY_WINDOWS) $(LIBS)
+$(PROG): $(OBJS)
+	$(CXX) $(LOCAL_SHARED) -o $(PROG) $(LDFLAGS) $(OBJS) $(LIBS)
 
 include makefile.list
 include makefile.depend
@@ -30,13 +28,6 @@ clean:
 	-@$(RM) -r .inslog2 pchdir/ tca.map
 	-@$(RM) make.log tags
 
-# CRC32, C version
-7zCrc.o : ../../../../C/7zCrc.c
-	$(CC) $(CFLAGS) ../../../../C/7zCrc.c
-
 # CRC32, ASM version
-7zCrcT8.o : ../../../../C/7zCrcT8.c
-	$(CC) $(CFLAGS) ../../../../C/7zCrcT8.c
-
 7zCrcT8U.o : ../../../../Asm/$(CPU)/7zCrcT8U.asm
 	$(ASM) ../../../../Asm/$(CPU)/7zCrcT8U.asm -o 7zCrcT8U.o

@@ -28,11 +28,13 @@ static const UINT kIconTypesResId = 100;
 using namespace NWindows;
 using namespace NFile;
 
+#ifdef _WIN32
 extern HINSTANCE g_hInstance;
+#endif
 
 static CSysString GetLibraryFolderPrefix()
 {
-#ifdef _WIN32
+  #ifdef _WIN32
   TCHAR fullPath[MAX_PATH + 1];
   ::GetModuleFileName(g_hInstance, fullPath, MAX_PATH);
   CSysString path = fullPath;
@@ -42,7 +44,7 @@ static CSysString GetLibraryFolderPrefix()
   const char *p7zip_home_dir = getenv("P7ZIP_HOME_DIR");
   if (p7zip_home_dir == 0) p7zip_home_dir="./";
   return p7zip_home_dir;
-#endif
+  #endif
 }
 
 #define kCodecsFolderName TEXT("Codecs")

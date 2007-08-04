@@ -1,3 +1,17 @@
+p7zip (4.51~dfsg.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Fix FTBFS on GNU/kFreeBSD (Closes: #430357)
+     + patch courtesy from Petr Salinger.
+  * Suggest p7zip-full instead of Recommend-ing it. (Closes: #435592)
+  * Install 7za to /usr/lib/p7zip and use a wrapper to call it so as
+    to have -sfx option working. (Closes: #435556)
+  * Fix lintian warnings:
+     + don't hide clean target errors.
+     + don't install DOCS/License.txt.
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sat, 04 Aug 2007 21:27:22 +0200
+
 p7zip (4.47~dfsg.1-1) unstable; urgency=low
 
   * New upstream version:

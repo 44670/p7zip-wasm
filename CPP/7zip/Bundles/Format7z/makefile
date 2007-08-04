@@ -14,23 +14,24 @@ LOCAL_SHARED=$(LINK_SHARED)
 LIBS=$(LOCAL_LIBS_DLL)
 
 MY_WINDOWS= \
-	$(MY_HOME)/wine_date_and_time.o \
-	$(MY_HOME)/myGetNumberOfProcessors.o
 
 OBJS = \
-../../../Common/CRC.o \
-../../../Common/IntToString.o \
-../../../Common/String.o \
-../../../Common/StringConvert.o \
-../../../Common/StringToInt.o \
-../../../Common/Vector.o \
-../../../Common/MyWindows.o \
-../../../Common/Wildcard.o \
+myGetTickCount.o \
+wine_date_and_time.o \
+CRC.o \
+IntToString.o \
+MyString.o \
+StringConvert.o \
+StringToInt.o \
+MyVector.o \
+MyWindows.o \
+Wildcard.o \
 FileDir.o \
 FileFind.o \
 FileIO.o \
 PropVariant.o \
 Synchronization.o \
+System.o \
 CreateCoder.o \
 InBuffer.o \
 InOutTempBuffer.o \
@@ -39,6 +40,8 @@ LimitedStreams.o \
 LockedStream.o \
 LSBFDecoder.o \
 MethodId.o \
+MethodProps.o \
+VirtThread.o \
 OutBuffer.o \
 ProgressUtils.o \
 StreamBinder.o \
@@ -50,6 +53,7 @@ CoderMixer2.o \
 CoderMixer2MT.o \
 CrossThreadProgress.o \
 InStreamWithCRC.o \
+HandlerOut.o \
 ItemNameUtils.o \
 OutStreamWithCRC.o \
 ParseProperties.o \
@@ -99,9 +103,8 @@ PPMDRegister.o \
 7zAES.o \
 7zAESRegister.o \
 MyAES.o \
-aescrypt.o \
-aeskey.o \
-aestab.o \
+RandGen.o \
+Sha1.o \
 Sha256.o \
 Threads.o \
 $(OBJ_CRC32) \
@@ -113,7 +116,8 @@ BranchIA64.o \
 BranchPPC.o \
 BranchSPARC.o \
 BranchX86.o \
-RangeCoderBit.o
+RangeCoderBit.o \
+Aes.o
 
 include ../../../../makefile.glb
 

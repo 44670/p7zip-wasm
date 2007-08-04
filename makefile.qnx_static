@@ -1,7 +1,6 @@
 ##################################################
 # makefile.machine for "static 7za 7zr 7zCon.sfx" :
-# LITTLE_ENDIAN and BIG_ENDIAN are already defined by the system headers
-# tested on qnx-6.3.0 sp3 x86 target
+# tested with p7zip-4.47_beta on qnx-6.3.0 sp3 x86 target
 
 OPTFLAGS=-O
 

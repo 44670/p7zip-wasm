@@ -285,8 +285,7 @@ bool MyRemoveDirectory(LPCWSTR pathName)
 bool MyMoveFile(LPCWSTR existFileName, LPCWSTR newFileName)
 {  
   UINT codePage = CP_ACP;
-  return ::MyMoveFile(UnicodeStringToMultiByte(existFileName, codePage),
-      UnicodeStringToMultiByte(newFileName, codePage));
+  return ::MyMoveFile(UnicodeStringToMultiByte(existFileName, codePage), UnicodeStringToMultiByte(newFileName, codePage));
 }
 #endif
 
@@ -506,51 +505,6 @@ bool DeleteFileAlways(LPCWSTR name)
 }
 #endif
 
-static bool RemoveDirectorySubItems2(const CSysString pathPrefix,
-    const NFind::CFileInfo &fileInfo)
-{
-  if(fileInfo.IsDirectory())
-    return RemoveDirectoryWithSubItems(pathPrefix + fileInfo.Name);
-  else
-    return DeleteFileAlways(pathPrefix + fileInfo.Name);
-}
-
-bool RemoveDirectoryWithSubItems(const CSysString &path)
-{
-  NFind::CFileInfo fileInfo;
-  CSysString pathPrefix = path + NName::kDirDelimiter;
-  {
-    NFind::CEnumerator enumerator(pathPrefix + TCHAR(NName::kAnyStringWildcard));
-    while(enumerator.Next(fileInfo))
-      if(!RemoveDirectorySubItems2(pathPrefix, fileInfo))
-        return false;
-  }
-  return BOOLToBool(::RemoveDirectory(path));
-}
-
-#ifndef _UNICODE
-static bool RemoveDirectorySubItems2(const UString pathPrefix,
-    const NFind::CFileInfoW &fileInfo)
-{
-  if(fileInfo.IsDirectory())
-    return RemoveDirectoryWithSubItems(pathPrefix + fileInfo.Name);
-  else
-    return DeleteFileAlways(pathPrefix + fileInfo.Name);
-}
-bool RemoveDirectoryWithSubItems(const UString &path)
-{
-  NFind::CFileInfoW fileInfo;
-  UString pathPrefix = path + UString(NName::kDirDelimiter);
-  {
-    NFind::CEnumeratorW enumerator(pathPrefix + UString(NName::kAnyStringWildcard));
-    while(enumerator.Next(fileInfo))
-      if(!RemoveDirectorySubItems2(pathPrefix, fileInfo))
-        return false;
-  }
-  return MyRemoveDirectory(path);
-}
-#endif
-
 #ifndef _WIN32_WCE
 
 bool MyGetFullPathName(LPCTSTR fileName, CSysString &resultPath, 
@@ -606,97 +560,40 @@ bool MyGetFullPathName(LPCWSTR fileName, UString &path)
 
 #endif
 
-static DWORD mySearchPathA( LPCSTR path, LPCSTR name, LPCSTR ext,
-                            DWORD buflen, LPSTR buffer, LPSTR *lastpart ) {
+/* needed to find .DLL/.so and SFX */
+bool MySearchPath(LPCWSTR path, LPCWSTR fileName, LPCWSTR extension, UString &resultPath)
+{
   if (path != 0) {
-    printf("NOT EXPECTED : SearchPathA : path != NULL\n");
+    printf("NOT EXPECTED : MySearchPath : path != NULL\n");
     exit(EXIT_FAILURE);
   }
 
-  if (ext != 0) {
-    printf("NOT EXPECTED : SearchPathA : ext != NULL\n");
+  if (extension != 0) {
+    printf("NOT EXPECTED : MySearchPath : extension != NULL\n");
+    exit(EXIT_FAILURE);
+  }
+
+  if (fileName == 0) {
+    printf("NOT EXPECTED : MySearchPath : fileName == NULL\n");
     exit(EXIT_FAILURE);
   }
 
   const char *p7zip_home_dir = getenv("P7ZIP_HOME_DIR");
   if (p7zip_home_dir) {
-    AString dir_path = p7zip_home_dir;
-    dir_path += name;
+    AString file_path = p7zip_home_dir;
+    file_path += UnicodeStringToMultiByte(fileName, CP_ACP);
 
-    TRACEN((printf("mySearchPathA() fopen-2(%s)\n",(const char *)dir_path)))
-    FILE *file = fopen((const char *)dir_path,"r");
+    TRACEN((printf("MySearchPath() fopen(%s)\n",(const char *)file_path)))
+    FILE *file = fopen((const char *)file_path,"r");
     if (file) {
-      DWORD ret = strlen((const char *)dir_path);
+      // file is found
       fclose(file);
-      if (ret >= buflen) {
-        SetLastError(ERROR_FILENAME_EXCED_RANGE);
-        return 0;
-      }
-      strcpy(buffer,(const char *)dir_path);
-      if (lastpart)
-        *lastpart = buffer + strlen(p7zip_home_dir);
-
-      return ret;
+      resultPath = MultiByteToUnicodeString(file_path, CP_ACP);
+      return true;
     }
   }
-
-  return 0;
+  return false;
 }
-
-/* needed to find .DLL/.so and SFX */
-static DWORD SearchPathA( LPCSTR path, LPCSTR name, LPCSTR ext,
-                   DWORD buflen, LPSTR buffer, LPSTR *lastpart ) {
-  if (buffer == 0) {
-    printf("NOT EXPECTED : SearchPathA : buffer == NULL\n");
-    exit(EXIT_FAILURE);
-  }
-  *buffer=0;
-  DWORD ret = mySearchPathA(path,name,ext,buflen,buffer,lastpart);
-
-  TRACEN((printf("SearchPathA(%s,%s,%s,%d,%s,%p)=%d\n",
-                 (path ? path : "<NULL>"),
-                 (name ? name : "<NULL>"),
-                 (ext ? ext : "<NULL>"),
-                 (int)buflen,
-                 buffer,lastpart,(int)ret)));
-  return ret;
-}
-
-bool MySearchPath(LPCTSTR path, LPCTSTR fileName, LPCTSTR extension, 
-  CSysString &resultPath, UInt32 &filePart)
-{
-  LPTSTR filePartPointer;
-  DWORD value = SearchPathA(path, fileName, extension, 
-    MAX_PATH, resultPath.GetBuffer(MAX_PATH), &filePartPointer);
-  filePart = filePartPointer - (LPCTSTR)resultPath;
-  resultPath.ReleaseBuffer();
-  if (value == 0 || value > MAX_PATH)
-    return false;
-  return true;
-}
-
-#ifndef _UNICODE
-bool MySearchPath(LPCWSTR path, LPCWSTR fileName, LPCWSTR extension, 
-  UString &resultPath, UInt32 &filePart)
-{
-  const UINT currentPage = CP_ACP;
-  CSysString sysPath;
-  if (!MySearchPath(
-      path != 0 ? (LPCTSTR)UnicodeStringToMultiByte(path, currentPage): 0,
-      fileName != 0 ? (LPCTSTR)UnicodeStringToMultiByte(fileName, currentPage): 0,
-      extension != 0 ? (LPCTSTR)UnicodeStringToMultiByte(extension, currentPage): 0,
-      sysPath, filePart))
-    return false;
-  UString resultPath1 = MultiByteToUnicodeString(
-    sysPath.Left(filePart), currentPage);
-  UString resultPath2 = MultiByteToUnicodeString(
-    sysPath.Mid(filePart), currentPage);
-  filePart = resultPath1.Length();
-  resultPath = resultPath1 + resultPath2;
-  return true;
-}
-#endif
-
 
 bool MyGetTempPath(CSysString &path)
 {
@@ -704,63 +601,25 @@ bool MyGetTempPath(CSysString &path)
   return true;
 }
 
-
-#ifndef _UNICODE
 bool MyGetTempPath(UString &path)
 {
-    CSysString sysPath;
-    if (!MyGetTempPath(sysPath))
-      return false;
-    path = MultiByteToUnicodeString(sysPath, CP_ACP);
-    return true;
+  path = L"c:/tmp/"; // final '/' is needed
+  return true;
 }
-#endif
-
-
-UINT MyGetTempFileName(LPCTSTR dirPath, LPCTSTR prefix, CSysString &path)
-{
-/* UINT number = ::GetTempFileName(dirPath, prefix, 0, path.GetBuffer(MAX_PATH)); */
-  UINT number = (UINT)getpid();
-  sprintf(path.GetBuffer(MAX_PATH),"%s%s%d.tmp",dirPath,prefix,(int)number);
-  path.ReleaseBuffer();
-  TRACEN((printf("GetTempFileNameA(%s,%s,0,%s)=%d\n",dirPath,prefix,(const char *)path,(int)number)))
-  return number;
-}
-
-#ifndef _UNICODE
-UINT MyGetTempFileName(LPCWSTR dirPath, LPCWSTR prefix, UString &path)
-{
-      const UINT currentPage = CP_ACP;
-      CSysString sysPath;
-      UINT number = MyGetTempFileName(
-          dirPath ? (LPCTSTR)UnicodeStringToMultiByte(dirPath, currentPage): 0, 
-          prefix ?  (LPCTSTR)UnicodeStringToMultiByte(prefix, currentPage): 0, 
-          sysPath);
-      path = MultiByteToUnicodeString(sysPath, currentPage);
-  return number;
-}
-#endif
 
 UINT CTempFile::Create(LPCTSTR dirPath, LPCTSTR prefix, CSysString &resultPath)
 {
   Remove();
-  UINT number = MyGetTempFileName(dirPath, prefix, resultPath);
+/* UINT number = ::GetTempFileName(dirPath, prefix, 0, path.GetBuffer(MAX_PATH)); */
+  UINT number = (UINT)getpid();
+  sprintf(resultPath.GetBuffer(MAX_PATH),"%s%s%d.tmp",dirPath,prefix,(int)number);
+  resultPath.ReleaseBuffer();
   if(number != 0)
   {
     _fileName = resultPath;
     _mustBeDeleted = true;
   }
   return number;
-}
-
-bool CTempFile::Create(LPCTSTR prefix, CSysString &resultPath)
-{
-  CSysString tempPath;
-  if(!MyGetTempPath(tempPath))
-    return false;
-  if (Create(tempPath, prefix, resultPath) != 0)
-    return true;
-  return false;
 }
 
 bool CTempFile::Remove()
@@ -770,39 +629,5 @@ bool CTempFile::Remove()
   _mustBeDeleted = !DeleteFileAlways(_fileName);
   return !_mustBeDeleted;
 }
-
-#ifndef _UNICODE
-
-UINT CTempFileW::Create(LPCWSTR dirPath, LPCWSTR prefix, UString &resultPath)
-{
-  Remove();
-  UINT number = MyGetTempFileName(dirPath, prefix, resultPath);
-  if(number != 0)
-  {
-    _fileName = resultPath;
-    _mustBeDeleted = true;
-  }
-  return number;
-}
-
-bool CTempFileW::Create(LPCWSTR prefix, UString &resultPath)
-{
-  UString tempPath;
-  if(!MyGetTempPath(tempPath))
-    return false;
-  if (Create(tempPath, prefix, resultPath) != 0)
-    return true;
-  return false;
-}
-
-bool CTempFileW::Remove()
-{
-  if (!_mustBeDeleted)
-    return true;
-  _mustBeDeleted = !DeleteFileAlways(_fileName);
-  return !_mustBeDeleted;
-}
-
-#endif
 
 }}}

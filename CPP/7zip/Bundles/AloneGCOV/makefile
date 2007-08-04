@@ -1,6 +1,4 @@
 
-include ../../../../makefile.glb
-
 ALLFLAGS=-fprofile-arcs -ftest-coverage \
     	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
 	-DNDEBUG -D_REENTRANT -DENV_UNIX \
@@ -61,7 +59,6 @@ SRCS=\
  ../../../myWindows/myGetTickCount.cpp \
  ../../../myWindows/wine_date_and_time.cpp \
  ../../../myWindows/myAddExeFlag.cpp \
- ../../../myWindows/myGetNumberOfProcessors.cpp \
  ../../../myWindows/mySplitCommandLine.cpp \
  ../../UI/Console/ConsoleClose.cpp \
  ../../UI/Console/ExtractCallbackConsole.cpp \
@@ -80,6 +77,7 @@ SRCS=\
  ../../../Windows/PropVariant.cpp \
  ../../../Windows/PropVariantConversions.cpp \
  ../../../Windows/Synchronization.cpp \
+ ../../../Windows/System.cpp \
  ../../Common/CreateCoder.cpp \
  ../../Archive/Common/CrossThreadProgress.cpp \
  ../../Compress/Branch/ARM.cpp \
@@ -165,10 +163,10 @@ SRCS=\
  ../../Archive/Zip/ZipUpdate.cpp \
  ../../Archive/Common/CoderMixer2.cpp \
  ../../Archive/Common/CoderMixer2MT.cpp \
- ../../Archive/Common/CoderMixer2ST.cpp \
  ../../Archive/Common/DummyOutStream.cpp \
  ../../Archive/Common/InStreamWithCRC.cpp \
  ../../Archive/Common/ItemNameUtils.cpp \
+ ../../Archive/Common/HandlerOut.cpp \
  ../../Archive/Common/MultiStream.cpp \
  ../../Archive/Common/OutStreamWithCRC.cpp \
  ../../Archive/Common/ParseProperties.cpp \
@@ -220,7 +218,9 @@ SRCS=\
  ../../Common/LSBFDecoder.cpp \
  ../../Common/LSBFEncoder.cpp \
  ../../Common/MemBlocks.cpp \
+ ../../Common/VirtThread.cpp \
  ../../Common/MethodId.cpp \
+ ../../Common/MethodProps.cpp \
  ../../Common/OffsetStream.cpp \
  ../../Common/OutBuffer.cpp \
  ../../Common/OutMemStream.cpp \
@@ -235,18 +235,15 @@ SRCS=\
 ../../../Common/StdInStream.cpp \
 ../../../Common/StdOutStream.cpp \
 ../../../Common/Wildcard.cpp \
-../../../Common/Vector.cpp \
+../../../Common/MyVector.cpp \
 ../../../Common/StringConvert.cpp \
-../../../Common/String.cpp \
+../../../Common/MyString.cpp \
 ../../../Common/CRC.cpp \
 ../../../Common/IntToString.cpp \
 ../../../Common/StringToInt.cpp \
 ../../../Common/UTFConvert.cpp
 
 SRCS_C=\
- ../../Crypto/AES/aescrypt.c \
- ../../Crypto/AES/aeskey.c \
- ../../Crypto/AES/aestab.c \
  ../../../../C/Compress/Lz/MatchFinder.c \
  ../../../../C/Compress/Lz/MatchFinderMt.c \
  ../../../../C/Compress/Huffman/HuffmanEncode.c \
@@ -258,7 +255,8 @@ SRCS_C=\
  ../../../../C/Compress/Branch/BranchX86.c \
  ../../../../C/7zCrc.c \
  ../../../../C/Sort.c \
- ../../../../C/Threads.c
+ ../../../../C/Threads.c \
+ ../../../../C/Crypto/Aes.c
 
 all : copy 7za.exe
 	

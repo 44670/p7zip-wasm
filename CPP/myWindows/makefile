@@ -11,11 +11,10 @@ OBJS=myGetTickCount.o \
 	wine_date_and_time.o \
 	mySplitCommandLine.o \
 	myAddExeFlag.o \
-	myGetNumberOfProcessors.o \
 	test_emul.o \
-	../Common/Vector.o \
-	../Common/String.o \
-	../Common/MyWindows.o
+	MyVector.o \
+	MyString.o \
+	MyWindows.o
 
 include ../../makefile.glb
 

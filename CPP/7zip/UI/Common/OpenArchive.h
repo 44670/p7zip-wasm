@@ -3,7 +3,7 @@
 #ifndef __OPENARCHIVE_H
 #define __OPENARCHIVE_H
 
-#include "Common/String.h"
+#include "Common/MyString.h"
 #include "Windows/FileFind.h"
 
 #include "../../Archive/IArchive.h"
@@ -14,6 +14,7 @@ HRESULT GetArchiveItemPath(IInArchive *archive, UInt32 index, UString &result);
 HRESULT GetArchiveItemPath(IInArchive *archive, UInt32 index, const UString &defaultName, UString &result);
 HRESULT GetArchiveItemFileTime(IInArchive *archive, UInt32 index, 
     const FILETIME &defaultFileTime, FILETIME &fileTime);
+HRESULT IsArchiveItemProp(IInArchive *archive, UInt32 index, PROPID propID, bool &result);
 HRESULT IsArchiveItemFolder(IInArchive *archive, UInt32 index, bool &result);
 HRESULT IsArchiveItemAnti(IInArchive *archive, UInt32 index, bool &result);
 
@@ -51,7 +52,7 @@ HRESULT OpenArchive(
     IArchiveOpenCallback *openArchiveCallback);
 
 
-HRESULT ReOpenArchive(IInArchive *archive, const UString &fileName);
+HRESULT ReOpenArchive(IInArchive *archive, const UString &fileName, IArchiveOpenCallback *openArchiveCallback);
 
 HRESULT MyOpenArchive(
     CCodecs *codecs,
@@ -94,6 +95,9 @@ struct CArchiveLink
     return result;
   }
 
+  bool IsOpen;
+
+  CArchiveLink(): IsOpen(false) {};
 
   IInArchive *GetArchive() { return Archive1 != 0 ? Archive1: Archive0; }
   UString GetDefaultItemName()  { return Archive1 != 0 ? DefaultItemName1: DefaultItemName0; }

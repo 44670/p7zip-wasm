@@ -1,7 +1,7 @@
 
 OPTFLAGS=-fast
 
-ALLFLAGS=${OPTFLAGS} -s -KPIC -mt \
+ALLFLAGS=${OPTFLAGS} -s -mt \
         -DHAVE_LONG_LONG \
         -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
         -DBIG_ENDIAN -DENV_UNIX \
@@ -10,7 +10,8 @@ ALLFLAGS=${OPTFLAGS} -s -KPIC -mt \
 
 CXX=CC $(ALLFLAGS)
 CC=cc $(ALLFLAGS)
-LINK_SHARED=-G
+CC_SHARED=-KPIC
+LINK_SHARED=-KPIC -G
 
 # -lCrun : standard C++ library (for new/delete)
 LOCAL_LIBS=-lpthread -lCrun

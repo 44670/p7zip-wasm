@@ -13,21 +13,18 @@ include ../../../../makefile.machine
 LOCAL_SHARED=$(LINK_SHARED)
 LIBS=$(LOCAL_LIBS_DLL)
 
-MY_WINDOWS= \
-	$(MY_HOME)/wine_date_and_time.o \
-	$(MY_HOME)/myGetNumberOfProcessors.o \
-	$(MY_HOME)/myGetTickCount.o
-
 OBJS = \
-../../../Common/CRC.o \
-../../../Common/IntToString.o \
-../../../Common/String.o \
-../../../Common/StringConvert.o \
-../../../Common/StringToInt.o \
-../../../Common/Vector.o \
-../../../Common/UTFConvert.o \
-../../../Common/MyWindows.o \
-../../../Common/Wildcard.o \
+wine_date_and_time.o \
+myGetTickCount.o \
+CRC.o \
+IntToString.o \
+MyString.o \
+StringConvert.o \
+StringToInt.o \
+MyVector.o \
+UTFConvert.o \
+MyWindows.o \
+Wildcard.o \
 ArchiveExports.o  \
 CodecExports.o  \
 DllExports2.o  \
@@ -36,6 +33,7 @@ FileFind.o  \
 FileIO.o  \
 PropVariant.o  \
 Synchronization.o  \
+System.o  \
 LZOutWindow.o  \
 PPMDDecoder.o  \
 PPMDEncoder.o  \
@@ -103,6 +101,8 @@ LSBFDecoder.o  \
 LSBFEncoder.o  \
 MemBlocks.o  \
 MethodId.o  \
+MethodProps.o  \
+VirtThread.o \
 OffsetStream.o  \
 OutBuffer.o  \
 OutMemStream.o  \
@@ -153,6 +153,7 @@ CoderMixer2MT.o  \
 CrossThreadProgress.o  \
 DummyOutStream.o  \
 InStreamWithCRC.o  \
+HandlerOut.o \
 ItemNameUtils.o  \
 MultiStream.o  \
 OutStreamWithCRC.o  \
@@ -209,9 +210,6 @@ ZipItem.o  \
 ZipOut.o  \
 ZipRegister.o  \
 ZipUpdate.o  \
-aescrypt.o  \
-aeskey.o  \
-aestab.o  \
 MatchFinder.o  \
 MatchFinderMt.o  \
 HuffmanEncode.o  \
@@ -221,9 +219,14 @@ BranchIA64.o  \
 BranchPPC.o  \
 BranchSPARC.o  \
 BranchX86.o  \
+WimHandler.o \
+WimIn.o \
+WimRegister.o \
+OutStreamWithSha1.o \
 $(OBJ_CRC32)  \
 Sort.o  \
-Threads.o
+Threads.o \
+Aes.o
 
 include ../../../../makefile.glb
 

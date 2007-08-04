@@ -4,7 +4,7 @@ PROG = lzma
 LIB = $(LOCAL_LIBS)
 RM = rm -f
 CFLAGS = -c -I. -I../../../  -I../../../myWindows  -I../../../include_windows \
-         -UENV_UNIX
+         -UENV_UNIX -DBENCH_MT
 
 OBJS = \
   LzmaAlone.o \
@@ -22,16 +22,18 @@ OBJS = \
   CommandLineParser.o \
   CRC.o \
   IntToString.o \
-  String.o \
+  MyString.o \
   StringConvert.o \
   StringToInt.o \
-  Vector.o \
+  MyVector.o \
   7zCrc.o \
   BranchX86.o \
   MatchFinder.o \
   LzmaDecode.o \
   LzmaRamDecode.o \
-  C_FileIO.o
+  C_FileIO.o \
+  System.o \
+  Threads.o
 
 all: $(PROG)
 
@@ -89,8 +91,8 @@ MyWindows.o: ../../../Common/MyWindows.cpp
 IntToString.o: ../../../Common/IntToString.cpp
 	$(CXX) $(CFLAGS) ../../../Common/IntToString.cpp
 
-String.o: ../../../Common/String.cpp
-	$(CXX) $(CFLAGS) ../../../Common/String.cpp
+MyString.o: ../../../Common/MyString.cpp
+	$(CXX) $(CFLAGS) ../../../Common/MyString.cpp
 
 StringConvert.o: ../../../Common/StringConvert.cpp
 	$(CXX) $(CFLAGS) ../../../Common/StringConvert.cpp
@@ -98,8 +100,8 @@ StringConvert.o: ../../../Common/StringConvert.cpp
 StringToInt.o: ../../../Common/StringToInt.cpp
 	$(CXX) $(CFLAGS) ../../../Common/StringToInt.cpp
 
-Vector.o: ../../../Common/Vector.cpp
-	$(CXX) $(CFLAGS) ../../../Common/Vector.cpp
+MyVector.o: ../../../Common/MyVector.cpp
+	$(CXX) $(CFLAGS) ../../../Common/MyVector.cpp
 
 7zCrc.o: ../../../../C/7zCrc.c
 	$(CC) $(CFLAGS) ../../../../C/7zCrc.c
@@ -115,6 +117,12 @@ LzmaDecode.o: ../../../../C/Compress/Lzma/LzmaDecode.c
 
 LzmaRamDecode.o: LzmaRamDecode.c
 	$(CC) $(CFLAGS) LzmaRamDecode.c
+
+System.o : ../../../Windows/System.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/System.cpp
+
+Threads.o : ../../../../C/Threads.c
+	$(CC) $(CFLAGS) ../../../../C/Threads.c
 
 clean:
 	-$(RM) $(PROG) $(OBJS)

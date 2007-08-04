@@ -9,11 +9,11 @@
 
 #include "7zCompressionMode.h"
 
-#ifdef COMPRESS_MT
-#include "../../../Windows/System.h"
-#endif
-
 #include "../../Common/CreateCoder.h"
+
+#ifndef EXTRACT_ONLY
+#include "../Common/HandlerOut.h"
+#endif
 
 namespace NArchive {
 namespace N7z {
@@ -25,17 +25,6 @@ struct CRef
   int ItemIndex;
 };
 
-/*
-struct CRef2
-{
-  CRecordVector<CRef> Refs;
-  UInt64 UnPackSize;
-  UInt64 PackSize;
-  UInt64 StartPos;
-  CRef2(): UnPackSize(0), PackSize(0), StartPos(0) {}
-};
-*/
-
 struct CVolume
 {
   int StartRef2Index;
@@ -43,19 +32,6 @@ struct CVolume
   CArchiveDatabaseEx Database;
 };
 #endif
-
-#ifndef EXTRACT_ONLY
-
-struct COneMethodInfo
-{
-  CObjectVector<CProperty> CoderProperties;
-  UString MethodName;
-};
-#endif
-
-// {23170F69-40C1-278A-1000-000110070000}
-DEFINE_GUID(CLSID_CFormat7z, 
-  0x23170F69, 0x40C1, 0x278A, 0x10, 0x00, 0x00, 0x01, 0x10, 0x07, 0x00, 0x00);
 
 #ifndef __7Z_SET_PROPERTIES
 
@@ -71,6 +47,9 @@ DEFINE_GUID(CLSID_CFormat7z,
 
 
 class CHandler: 
+  #ifndef EXTRACT_ONLY
+  public NArchive::COutHandler,
+  #endif
   public IInArchive,
   #ifdef _7Z_VOL
   public IInArchiveGetStream,
@@ -99,26 +78,7 @@ public:
   MY_QUERYINTERFACE_END
   MY_ADDREF_RELEASE
 
-
-  STDMETHOD(Open)(IInStream *stream, 
-      const UInt64 *maxCheckStartPosition,
-      IArchiveOpenCallback *openArchiveCallback);  
-  STDMETHOD(Close)();  
-  
-  STDMETHOD(GetNumberOfItems)(UInt32 *numItems);  
-  STDMETHOD(GetProperty)(UInt32 index, PROPID propID,  PROPVARIANT *value);
-  STDMETHOD(Extract)(const UInt32* indices, UInt32 numItems, 
-      Int32 testMode, IArchiveExtractCallback *extractCallback);
-
-  STDMETHOD(GetArchiveProperty)(PROPID propID, PROPVARIANT *value);
-
-  STDMETHOD(GetNumberOfProperties)(UInt32 *numProperties);  
-  STDMETHOD(GetPropertyInfo)(UInt32 index,     
-      BSTR *name, PROPID *propID, VARTYPE *varType);
-
-  STDMETHOD(GetNumberOfArchiveProperties)(UInt32 *numProperties);  
-  STDMETHOD(GetArchivePropertyInfo)(UInt32 index,     
-      BSTR *name, PROPID *propID, VARTYPE *varType);
+  INTERFACE_IInArchive(;)
 
   #ifdef _7Z_VOL
   STDMETHOD(GetStream)(UInt32 index, ISequentialInStream **stream);  
@@ -129,16 +89,7 @@ public:
   #endif
 
   #ifndef EXTRACT_ONLY
-  // IOutArchiveHandler
-  STDMETHOD(UpdateItems)(ISequentialOutStream *outStream, UInt32 numItems,
-      IArchiveUpdateCallback *updateCallback);
-
-  STDMETHOD(GetFileTimeType)(UInt32 *type);  
-
-  // ISetProperties
-  
-  HRESULT SetSolidSettings(const UString &s);
-  HRESULT SetSolidSettings(const PROPVARIANT &value);
+  INTERFACE_IOutArchive(;)
   #endif
 
   DECL_ISetCompressCodecsInfo
@@ -154,37 +105,15 @@ private:
   NArchive::N7z::CArchiveDatabaseEx _database;
   #endif
 
-
+  #ifdef EXTRACT_ONLY
+  
   #ifdef COMPRESS_MT
   UInt32 _numThreads;
   #endif
-
-  #ifndef EXTRACT_ONLY
-  CObjectVector<COneMethodInfo> _methods;
+  
+  #else
+  
   CRecordVector<CBind> _binds;
-  bool _removeSfxBlock;
-  UInt64 _numSolidFiles; 
-  UInt64 _numSolidBytes;
-  bool _numSolidBytesDefined;
-  bool _solidExtension;
-
-  bool _compressHeaders;
-  bool _encryptHeaders;
-
-  bool WriteModified;
-  bool WriteCreated;
-  bool WriteAccessed;
-
-
-  bool _autoFilter;
-  UInt32 _level;
-
-  bool _volumeMode;
-
-  DECL_EXTERNAL_CODECS_VARS
-
-  HRESULT SetParam(COneMethodInfo &oneMethodInfo, const UString &name, const UString &value);
-  HRESULT SetParams(COneMethodInfo &oneMethodInfo, const UString &srcString);
 
   HRESULT SetPassword(CCompressionMethodMode &methodMode, IArchiveUpdateCallback *updateCallback);
 
@@ -207,39 +136,6 @@ private:
   CRecordVector<UInt64> _fileInfoPopIDs;
   void FillPopIDs();
 
-  #endif
-
-  #ifndef EXTRACT_ONLY
-
-  void InitSolidFiles() { _numSolidFiles = UInt64(Int64(-1)); }
-  void InitSolidSize()  { _numSolidBytes = UInt64(Int64(-1)); }
-  void InitSolid()
-  {
-    InitSolidFiles();
-    InitSolidSize();
-    _solidExtension = false;
-    _numSolidBytesDefined = false;
-  }
-
-  void Init()
-  {
-    _removeSfxBlock = false;
-    _compressHeaders = true;
-    _encryptHeaders = false;
-
-    WriteModified = true;
-    WriteCreated = false;
-    WriteAccessed = false;
-
-    #ifdef COMPRESS_MT
-    _numThreads = NWindows::NSystem::GetNumberOfProcessors();
-    #endif
-
-    _level = 5;
-    _autoFilter = true;
-    _volumeMode = false;
-    InitSolid();
-  }
   #endif
 };
 

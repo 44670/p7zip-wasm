@@ -7,11 +7,9 @@ include ../../../../makefile.machine
 
 LIBS=$(LOCAL_LIBS_DLL)
 
-MY_WINDOWS=\
-	$(MY_HOME)/wine_date_and_time.o
-
 OBJS = \
-../../../Common/MyWindows.o \
+wine_date_and_time.o \
+MyWindows.o \
 DLL.o \
 FileDir.o \
 FileFind.o \
@@ -20,9 +18,9 @@ FileName.o \
 PropVariant.o \
 PropVariantConversions.o \
 IntToString.o \
-String.o \
+MyString.o \
 StringConvert.o \
-Vector.o \
+MyVector.o \
 Wildcard.o \
 FileStreams.o \
 Client7z.o

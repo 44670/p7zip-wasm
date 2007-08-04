@@ -1,4 +1,8 @@
 SRCS=\
+ ../../../myWindows/myGetTickCount.cpp \
+ ../../../myWindows/wine_date_and_time.cpp \
+ ../../../myWindows/myAddExeFlag.cpp \
+ ../../../myWindows/mySplitCommandLine.cpp \
  ../../UI/Console/ConsoleClose.cpp \
  ../../UI/Console/ExtractCallbackConsole.cpp \
  ../../UI/Console/List.cpp \
@@ -8,6 +12,19 @@ SRCS=\
  ../../UI/Console/PercentPrinter.cpp \
  ../../UI/Console/UpdateCallbackConsole.cpp \
  ../../UI/Console/UserInputUtils.cpp \
+ ../../../Common/CommandLineParser.cpp \
+ ../../../Common/CRC.cpp \
+ ../../../Common/IntToString.cpp \
+ ../../../Common/ListFileUtils.cpp \
+ ../../../Common/MyWindows.cpp \
+ ../../../Common/StdInStream.cpp \
+ ../../../Common/StdOutStream.cpp \
+ ../../../Common/MyString.cpp \
+ ../../../Common/StringConvert.cpp \
+ ../../../Common/StringToInt.cpp \
+ ../../../Common/UTFConvert.cpp \
+ ../../../Common/MyVector.cpp \
+ ../../../Common/Wildcard.cpp \
  ../../../Windows/Error.cpp \
  ../../../Windows/FileDir.cpp \
  ../../../Windows/FileFind.cpp \
@@ -16,6 +33,7 @@ SRCS=\
  ../../../Windows/PropVariant.cpp \
  ../../../Windows/PropVariantConversions.cpp \
  ../../../Windows/Synchronization.cpp \
+ ../../../Windows/System.cpp \
  ../../Common/CreateCoder.cpp \
  ../../Archive/Common/CrossThreadProgress.cpp \
  ../../Compress/Branch/ARM.cpp \
@@ -101,9 +119,9 @@ SRCS=\
  ../../Archive/Zip/ZipUpdate.cpp \
  ../../Archive/Common/CoderMixer2.cpp \
  ../../Archive/Common/CoderMixer2MT.cpp \
- ../../Archive/Common/CoderMixer2ST.cpp \
  ../../Archive/Common/DummyOutStream.cpp \
  ../../Archive/Common/InStreamWithCRC.cpp \
+ ../../Archive/Common/HandlerOut.cpp \
  ../../Archive/Common/ItemNameUtils.cpp \
  ../../Archive/Common/MultiStream.cpp \
  ../../Archive/Common/OutStreamWithCRC.cpp \
@@ -156,7 +174,9 @@ SRCS=\
  ../../Common/LSBFDecoder.cpp \
  ../../Common/LSBFEncoder.cpp \
  ../../Common/MemBlocks.cpp \
+ ../../Common/VirtThread.cpp \
  ../../Common/MethodId.cpp \
+ ../../Common/MethodProps.cpp \
  ../../Common/OffsetStream.cpp \
  ../../Common/OutBuffer.cpp \
  ../../Common/OutMemStream.cpp \
@@ -167,9 +187,6 @@ SRCS=\
  ../../Common/StreamUtils.cpp
 
 SRCS_C=\
- ../../Crypto/AES/aescrypt.c \
- ../../Crypto/AES/aeskey.c \
- ../../Crypto/AES/aestab.c \
  ../../../../C/Compress/Lz/MatchFinder.c \
  ../../../../C/Compress/Lz/MatchFinderMt.c \
  ../../../../C/Compress/Huffman/HuffmanEncode.c \
@@ -181,8 +198,17 @@ SRCS_C=\
  ../../../../C/Compress/Branch/BranchX86.c \
  ../../../../C/7zCrc.c \
  ../../../../C/Sort.c \
- ../../../../C/Threads.c
+ ../../../../C/Threads.c \
+ ../../../../C/Crypto/Aes.c
 
+myGetTickCount.o : ../../../myWindows/myGetTickCount.cpp
+	$(CXX) $(CFLAGS) ../../../myWindows/myGetTickCount.cpp
+wine_date_and_time.o : ../../../myWindows/wine_date_and_time.cpp
+	$(CXX) $(CFLAGS) ../../../myWindows/wine_date_and_time.cpp
+myAddExeFlag.o : ../../../myWindows/myAddExeFlag.cpp
+	$(CXX) $(CFLAGS) ../../../myWindows/myAddExeFlag.cpp 
+mySplitCommandLine.o : ../../../myWindows/mySplitCommandLine.cpp
+	$(CXX) $(CFLAGS) ../../../myWindows/mySplitCommandLine.cpp
 ConsoleClose.o : ../../UI/Console/ConsoleClose.cpp
 	$(CXX) $(CFLAGS) ../../UI/Console/ConsoleClose.cpp
 ExtractCallbackConsole.o : ../../UI/Console/ExtractCallbackConsole.cpp
@@ -219,16 +245,16 @@ StdInStream.o : ../../../Common/StdInStream.cpp
 	$(CXX) $(CFLAGS) ../../../Common/StdInStream.cpp
 StdOutStream.o : ../../../Common/StdOutStream.cpp
 	$(CXX) $(CFLAGS) ../../../Common/StdOutStream.cpp
-String.o : ../../../Common/String.cpp
-	$(CXX) $(CFLAGS) ../../../Common/String.cpp
+MyString.o : ../../../Common/MyString.cpp
+	$(CXX) $(CFLAGS) ../../../Common/MyString.cpp
 StringConvert.o : ../../../Common/StringConvert.cpp
 	$(CXX) $(CFLAGS) ../../../Common/StringConvert.cpp
 StringToInt.o : ../../../Common/StringToInt.cpp
 	$(CXX) $(CFLAGS) ../../../Common/StringToInt.cpp
 UTFConvert.o : ../../../Common/UTFConvert.cpp
 	$(CXX) $(CFLAGS) ../../../Common/UTFConvert.cpp
-Vector.o : ../../../Common/Vector.cpp
-	$(CXX) $(CFLAGS) ../../../Common/Vector.cpp
+MyVector.o : ../../../Common/MyVector.cpp
+	$(CXX) $(CFLAGS) ../../../Common/MyVector.cpp
 Wildcard.o : ../../../Common/Wildcard.cpp
 	$(CXX) $(CFLAGS) ../../../Common/Wildcard.cpp
 Error.o : ../../../Windows/Error.cpp
@@ -249,6 +275,8 @@ PropVariantConversions.o : ../../../Windows/PropVariantConversions.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/PropVariantConversions.cpp
 Synchronization.o : ../../../Windows/Synchronization.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/Synchronization.cpp
+System.o : ../../../Windows/System.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/System.cpp
 CreateCoder.o : ../../Common/CreateCoder.cpp
 	$(CXX) $(CFLAGS) ../../Common/CreateCoder.cpp
 CrossThreadProgress.o : ../../Archive/Common/CrossThreadProgress.cpp
@@ -273,8 +301,12 @@ LSBFEncoder.o : ../../Common/LSBFEncoder.cpp
 	$(CXX) $(CFLAGS) ../../Common/LSBFEncoder.cpp
 MemBlocks.o : ../../Common/MemBlocks.cpp
 	$(CXX) $(CFLAGS) ../../Common/MemBlocks.cpp
+VirtThread.o : ../../Common/VirtThread.cpp
+	$(CXX) $(CFLAGS) ../../Common/VirtThread.cpp
 MethodId.o : ../../Common/MethodId.cpp
 	$(CXX) $(CFLAGS) ../../Common/MethodId.cpp
+MethodProps.o : ../../Common/MethodProps.cpp
+	$(CXX) $(CFLAGS) ../../Common/MethodProps.cpp
 OffsetStream.o : ../../Common/OffsetStream.cpp
 	$(CXX) $(CFLAGS) ../../Common/OffsetStream.cpp
 OutBuffer.o : ../../Common/OutBuffer.cpp
@@ -457,12 +489,12 @@ CoderMixer2.o : ../../Archive/Common/CoderMixer2.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/CoderMixer2.cpp
 CoderMixer2MT.o : ../../Archive/Common/CoderMixer2MT.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/CoderMixer2MT.cpp
-CoderMixer2ST.o : ../../Archive/Common/CoderMixer2ST.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Common/CoderMixer2ST.cpp
 DummyOutStream.o : ../../Archive/Common/DummyOutStream.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/DummyOutStream.cpp
 InStreamWithCRC.o : ../../Archive/Common/InStreamWithCRC.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/InStreamWithCRC.cpp
+HandlerOut.o : ../../Archive/Common/HandlerOut.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Common/HandlerOut.cpp
 ItemNameUtils.o : ../../Archive/Common/ItemNameUtils.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/ItemNameUtils.cpp
 MultiStream.o : ../../Archive/Common/MultiStream.cpp
@@ -549,12 +581,6 @@ Sha1.o : ../../Crypto/Hash/Sha1.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/Hash/Sha1.cpp
 Sha256.o : ../../Crypto/Hash/Sha256.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/Hash/Sha256.cpp
-aescrypt.o : ../../Crypto/AES/aescrypt.c
-	$(CC) $(CFLAGS) ../../Crypto/AES/aescrypt.c
-aeskey.o : ../../Crypto/AES/aeskey.c
-	$(CC) $(CFLAGS) ../../Crypto/AES/aeskey.c
-aestab.o : ../../Crypto/AES/aestab.c
-	$(CC) $(CFLAGS) ../../Crypto/AES/aestab.c
 MatchFinder.o : ../../../../C/Compress/Lz/MatchFinder.c
 	$(CC) $(CFLAGS) ../../../../C/Compress/Lz/MatchFinder.c
 MatchFinderMt.o : ../../../../C/Compress/Lz/MatchFinderMt.c
@@ -577,4 +603,11 @@ Sort.o : ../../../../C/Sort.c
 	$(CC) $(CFLAGS) ../../../../C/Sort.c
 Threads.o : ../../../../C/Threads.c
 	$(CC) $(CFLAGS) ../../../../C/Threads.c
-
+Aes.o : ../../../../C/Crypto/Aes.c
+	$(CC) $(CFLAGS) ../../../../C/Crypto/Aes.c
+# CRC32, C version
+7zCrc.o : ../../../../C/7zCrc.c
+	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/7zCrc.c
+# CRC32, ASM version
+7zCrcT8.o : ../../../../C/7zCrcT8.c
+	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/7zCrcT8.c

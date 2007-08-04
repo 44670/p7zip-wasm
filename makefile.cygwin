@@ -9,6 +9,7 @@ ALLFLAGS=${OPTFLAGS} -s \
 
 CXX=g++ $(ALLFLAGS)
 CC=gcc $(ALLFLAGS)
+CC_SHARED=
 LINK_SHARED=-shared
 
 # Cygwin does not need -ldl

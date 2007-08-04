@@ -5,14 +5,15 @@
 
 OPTFLAGS=-O
 
-ALLFLAGS=${OPTFLAGS} -m32 -s -fPIC \
+ALLFLAGS=${OPTFLAGS} -m32 -s \
     	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
 	-DNDEBUG -D_REENTRANT -DENV_UNIX \
 	$(LOCAL_FLAGS)
 
 CXX=g++ $(ALLFLAGS) -DHAVE_GCCVISIBILITYPATCH -fvisibility=hidden -fvisibility-inlines-hidden
 CC=gcc $(ALLFLAGS)
-LINK_SHARED=-shared
+CC_SHARED=-fPIC
+LINK_SHARED=-fPIC -shared
 ASM=nasm -f elf
 
 LOCAL_LIBS=-lpthread

@@ -54,6 +54,7 @@ CPropVariant& CPropVariant::operator=(LPCOLESTR lpszSrc)
 {
   InternalClear();
   vt = VT_BSTR;
+  wReserved1 = 0;
   bstrVal = ::SysAllocString(lpszSrc);
   if (bstrVal == NULL && lpszSrc != NULL)
   {
@@ -176,6 +177,7 @@ static HRESULT MyPropVariantClear(PROPVARIANT *propVariant)
     case VT_CY:
     case VT_DATE:
       propVariant->vt = VT_EMPTY;
+      propVariant->wReserved1 = 0; 
       return S_OK;
   }
   return ::VariantClear((VARIANTARG *)propVariant); 

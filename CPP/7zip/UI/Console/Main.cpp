@@ -5,7 +5,7 @@
 #include "Common/MyInitGuid.h"
 
 #include "Common/CommandLineParser.h"
-#include "Common/Exception.h"
+#include "Common/MyException.h"
 #include "Common/IntToString.h"
 #include "Common/ListFileUtils.h"
 #include "Common/StdInStream.h"
@@ -122,6 +122,7 @@ static const char *kHelpString =
         "a"
 #endif
         " a dummy -tgzip -so Doc.txt > archive.gz)\n"
+    "  -ssc[-]: set sensitive case mode\n"
     "  -t{Type}: Set type of archive\n"
     "  -v{Size}[b|k|m|g]: Create volumes\n"
     "  -u[-][p#][q#][r#][x#][y#][z#][!newArchiveName]: Update options\n"

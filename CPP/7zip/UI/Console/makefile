@@ -14,25 +14,22 @@ include ../../../../makefile.machine
 
 LIBS=$(LOCAL_LIBS_DLL)
 
-MY_WINDOWS=\
-	$(MY_HOME)/mySplitCommandLine.o \
-	$(MY_HOME)/myAddExeFlag.o \
-	$(MY_HOME)/myGetNumberOfProcessors.o \
-	$(MY_HOME)/wine_date_and_time.o
-
 OBJS = \
-../../../Common/MyWindows.o \
-../../../Common/CommandLineParser.o \
-../../../Common/CRC.o \
-../../../Common/StdInStream.o \
-../../../Common/StdOutStream.o \
-../../../Common/ListFileUtils.o \
-../../../Common/Vector.o \
-../../../Common/Wildcard.o \
-../../../Common/StringConvert.o \
-../../../Common/String.o \
-../../../Common/IntToString.o \
-../../../Common/StringToInt.o \
+mySplitCommandLine.o \
+myAddExeFlag.o \
+wine_date_and_time.o \
+CommandLineParser.o \
+CRC.o \
+IntToString.o \
+ListFileUtils.o \
+MyWindows.o \
+StdInStream.o \
+StdOutStream.o \
+MyString.o \
+StringConvert.o \
+StringToInt.o \
+MyVector.o \
+Wildcard.o \
 ConsoleClose.o \
 ExtractCallbackConsole.o \
 List.o \
@@ -50,6 +47,7 @@ FileIO.o \
 FileName.o \
 PropVariant.o \
 PropVariantConversions.o \
+System.o \
 ArchiveCommandLine.o \
 ArchiveExtractCallback.o \
 ArchiveOpenCallback.o \
@@ -74,6 +72,7 @@ CopyCoder.o \
 StreamUtils.o \
 LzmaBench.o \
 LzmaBenchCon.o \
+Threads.o \
 $(OBJ_CRC32)
 
 include ../../../../makefile.glb

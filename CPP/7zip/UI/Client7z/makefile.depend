@@ -1,13 +1,18 @@
+wine_date_and_time.o: ../../../myWindows/wine_date_and_time.cpp \
+  ../../../myWindows/config.h ../../../include_windows/windows.h \
+  ../../../Common/MyWindows.h ../../../Common/MyGuidDef.h \
+  ../../../Common/Types.h ../../../include_windows/basetyps.h
 DLL.o: ../../../Windows/DLL.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
   ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
   ../../../include_windows/tchar.h ../../../Windows/DLL.h \
-  ../../../Windows/../Common/String.h ../../../Windows/../Common/Vector.h \
-  ../../../Windows/../Common/Defs.h ../../../Windows/Defs.h \
-  ../../../Windows/../Common/StringConvert.h \
-  ../../../Windows/../Common/MyWindows.h ../../../Common/String.h \
+  ../../../Windows/../Common/MyString.h \
+  ../../../Windows/../Common/MyVector.h ../../../Windows/../Common/Defs.h \
+  ../../../Windows/Defs.h ../../../Windows/../Common/StringConvert.h \
+  ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/MyString.h \
   ../../../Windows/../Common/Types.h ../../../myWindows/myPrivate.h
 FileDir.o: ../../../Windows/FileDir.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
@@ -15,11 +20,12 @@ FileDir.o: ../../../Windows/FileDir.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
   ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
   ../../../include_windows/tchar.h ../../../Windows/FileDir.h \
-  ../../../Windows/../Common/String.h ../../../Windows/../Common/Vector.h \
-  ../../../Windows/../Common/Defs.h ../../../Windows/Defs.h \
-  ../../../Windows/FileName.h ../../../Windows/FileFind.h \
-  ../../../Windows/../Common/StringConvert.h \
-  ../../../Windows/../Common/MyWindows.h ../../../Common/String.h \
+  ../../../Windows/../Common/MyString.h \
+  ../../../Windows/../Common/MyVector.h ../../../Windows/../Common/Defs.h \
+  ../../../Windows/Defs.h ../../../Windows/FileName.h \
+  ../../../Windows/FileFind.h ../../../Windows/../Common/StringConvert.h \
+  ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/MyString.h \
   ../../../Windows/../Common/Types.h ../../../myWindows/myPrivate.h
 FileFind.o: ../../../Windows/FileFind.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
@@ -27,10 +33,12 @@ FileFind.o: ../../../Windows/FileFind.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
   ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
   ../../../include_windows/tchar.h ../../../Windows/FileFind.h \
-  ../../../Windows/../Common/String.h ../../../Windows/../Common/Vector.h \
-  ../../../Windows/../Common/Defs.h ../../../Windows/FileName.h \
-  ../../../Windows/Defs.h ../../../Windows/../Common/StringConvert.h \
-  ../../../Windows/../Common/MyWindows.h ../../../Common/String.h \
+  ../../../Windows/../Common/MyString.h \
+  ../../../Windows/../Common/MyVector.h ../../../Windows/../Common/Defs.h \
+  ../../../Windows/FileName.h ../../../Windows/Defs.h \
+  ../../../Windows/../Common/StringConvert.h \
+  ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/MyString.h \
   ../../../Windows/../Common/Types.h ../../../myWindows/myPrivate.h
 FileIO.o: ../../../Windows/FileIO.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
@@ -38,10 +46,11 @@ FileIO.o: ../../../Windows/FileIO.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
   ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
   ../../../include_windows/tchar.h ../../../Windows/FileIO.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/MyString.h ../../../Common/MyVector.h \
   ../../../Common/Defs.h ../../../Windows/Defs.h \
   ../../../Windows/../Common/StringConvert.h \
   ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/MyString.h \
   ../../../Windows/../Common/Types.h ../../../myWindows/myPrivate.h
 FileName.o: ../../../Windows/FileName.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
@@ -49,9 +58,9 @@ FileName.o: ../../../Windows/FileName.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
   ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
   ../../../include_windows/tchar.h ../../../Windows/FileName.h \
-  ../../../Windows/../Common/String.h ../../../Windows/../Common/Vector.h \
-  ../../../Windows/../Common/Defs.h ../../../Common/Wildcard.h \
-  ../../../Common/String.h
+  ../../../Windows/../Common/MyString.h \
+  ../../../Windows/../Common/MyVector.h ../../../Windows/../Common/Defs.h \
+  ../../../Common/Wildcard.h ../../../Common/MyString.h
 PropVariant.o: ../../../Windows/PropVariant.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/MyGuidDef.h \
@@ -67,10 +76,10 @@ PropVariantConversions.o: ../../../Windows/PropVariantConversions.cpp \
   ../../../include_windows/windows.h ../../../Common/MyWindows.h \
   ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../../Windows/PropVariantConversions.h ../../../Common/Types.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/MyString.h ../../../Common/MyVector.h \
   ../../../Common/Defs.h ../../../Windows/Defs.h \
   ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
-  ../../../Common/String.h ../../../Common/IntToString.h
+  ../../../Common/MyString.h ../../../Common/IntToString.h
 IntToString.o: ../../../Common/IntToString.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/MyGuidDef.h \
@@ -84,14 +93,14 @@ MyWindows.o: ../../../Common/MyWindows.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
   ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
   ../../../include_windows/tchar.h ../../../Common/MyWindows.h
-String.o: ../../../Common/String.cpp ../../../myWindows/StdAfx.h \
+MyString.o: ../../../Common/MyString.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
   ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
   ../../../include_windows/tchar.h ../../../Common/StringConvert.h \
-  ../../../Common/MyWindows.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../../Common/MyWindows.h ../../../Common/MyString.h \
+  ../../../Common/MyVector.h ../../../Common/Defs.h \
   ../../../myWindows/myPrivate.h
 StringConvert.o: ../../../Common/StringConvert.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
@@ -100,15 +109,15 @@ StringConvert.o: ../../../Common/StringConvert.cpp \
   ../../../include_windows/windows.h ../../../Common/MyWindows.h \
   ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/MyString.h ../../../Common/MyVector.h \
   ../../../Common/Defs.h ../../../Common/UTFConvert.cpp \
   ../../../Common/UTFConvert.h
-Vector.o: ../../../Common/Vector.cpp ../../../myWindows/StdAfx.h \
+MyVector.o: ../../../Common/MyVector.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
   ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h ../../../Common/Vector.h \
+  ../../../include_windows/tchar.h ../../../Common/MyVector.h \
   ../../../Common/Defs.h
 Wildcard.o: ../../../Common/Wildcard.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
@@ -116,7 +125,7 @@ Wildcard.o: ../../../Common/Wildcard.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
   ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
   ../../../include_windows/tchar.h ../../../Common/Wildcard.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/MyString.h ../../../Common/MyVector.h \
   ../../../Common/Defs.h
 FileStreams.o: ../../Common/FileStreams.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
@@ -124,8 +133,8 @@ FileStreams.o: ../../Common/FileStreams.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/Types.h ../../../include_windows/windows.h \
   ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
   ../../../include_windows/tchar.h ../../Common/FileStreams.h \
-  ../../Common/../../Windows/FileIO.h ../../../Common/String.h \
-  ../../../Common/Vector.h ../../../Common/Defs.h \
+  ../../Common/../../Windows/FileIO.h ../../../Common/MyString.h \
+  ../../../Common/MyVector.h ../../../Common/Defs.h \
   ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
   ../../Common/../../Common/MyCom.h
@@ -136,10 +145,17 @@ Client7z.o: Client7z.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
   ../../../include_windows/tchar.h ../../../Common/MyInitGuid.h \
   ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
-  ../../../Common/String.h ../../../Common/Vector.h \
+  ../../../Common/MyString.h ../../../Common/MyVector.h \
   ../../../Common/Defs.h ../../../Common/IntToString.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/Types.h \
+  ../../../Windows/PropVariantConversions.h ../../../Common/Types.h \
+  ../../../Common/MyString.h ../../../Windows/DLL.h \
+  ../../../Windows/../Common/MyString.h ../../../Windows/FileDir.h \
+  ../../../Windows/Defs.h ../../../Windows/FileName.h \
+  ../../../Windows/FileFind.h ../../../Windows/FileName.h \
   ../../Common/FileStreams.h ../../Common/../../Windows/FileIO.h \
-  ../../../Common/String.h ../../Common/../IStream.h \
+  ../../../Common/MyString.h ../../Common/../IStream.h \
   ../../Common/../../Common/MyUnknown.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
   ../../Common/../../Common/MyCom.h ../../Archive/IArchive.h \
@@ -147,10 +163,4 @@ Client7z.o: Client7z.cpp ../../../myWindows/StdAfx.h \
   ../../Archive/../../Common/MyUnknown.h \
   ../../Archive/../../Common/Types.h ../../Archive/../PropID.h \
   ../../IPassword.h ../../../Common/MyUnknown.h ../../../Common/Types.h \
-  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
-  ../../../Windows/../Common/Types.h \
-  ../../../Windows/PropVariantConversions.h ../../../Common/Types.h \
-  ../../../Windows/DLL.h ../../../Windows/../Common/String.h \
-  ../../../Windows/FileDir.h ../../../Windows/Defs.h \
-  ../../../Windows/FileName.h ../../../Windows/FileFind.h \
-  ../../../Windows/FileName.h
+  ../../MyVersion.h

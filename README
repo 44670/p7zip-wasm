@@ -1,4 +1,4 @@
-	p7zip 4.47
+	p7zip 4.49
 	==========
 
 Homepage : http://p7zip.sourceforge.net/
@@ -43,9 +43,12 @@ BUILD :
 	run on many x86 linux.
 
   If you have downloaded the "source" package,
+
 	According to your OS, copy makefile.linux,
 	makefile.freebsd, makefile.cygwin, ...
         over makefile.machine
+
+	If you want to make a parallel build : make -j4 -f makefile.parallel_jobs TARGET
 
 	make clean    : to clean all directories
 	make          : to build bin/7za

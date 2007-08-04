@@ -1,4 +1,5 @@
 SRCS=\
+../../../myWindows/wine_date_and_time.cpp \
 ../../../Windows/DLL.cpp \
 ../../../Windows/FileDir.cpp \
 ../../../Windows/FileFind.cpp \
@@ -8,13 +9,27 @@ SRCS=\
 ../../../Windows/PropVariantConversions.cpp \
 ../../../Common/IntToString.cpp \
 ../../../Common/MyWindows.cpp \
-../../../Common/String.cpp \
+../../../Common/MyString.cpp \
 ../../../Common/StringConvert.cpp \
-../../../Common/Vector.cpp \
+../../../Common/MyVector.cpp \
 ../../../Common/Wildcard.cpp \
 ../../Common/FileStreams.cpp \
 ./Client7z.cpp
 
+wine_date_and_time.o : ../../../myWindows/wine_date_and_time.cpp
+	$(CXX) $(CFLAGS) ../../../myWindows/wine_date_and_time.cpp
+IntToString.o : ../../../Common/IntToString.cpp
+	$(CXX) $(CFLAGS) ../../../Common/IntToString.cpp
+MyWindows.o : ../../../Common/MyWindows.cpp
+	$(CXX) $(CFLAGS) ../../../Common/MyWindows.cpp
+MyString.o : ../../../Common/MyString.cpp
+	$(CXX) $(CFLAGS) ../../../Common/MyString.cpp
+StringConvert.o : ../../../Common/StringConvert.cpp
+	$(CXX) $(CFLAGS) ../../../Common/StringConvert.cpp
+MyVector.o : ../../../Common/MyVector.cpp
+	$(CXX) $(CFLAGS) ../../../Common/MyVector.cpp
+Wildcard.o : ../../../Common/Wildcard.cpp
+	$(CXX) $(CFLAGS) ../../../Common/Wildcard.cpp
 DLL.o : ../../../Windows/DLL.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/DLL.cpp
 FileDir.o : ../../../Windows/FileDir.cpp
@@ -29,20 +44,7 @@ PropVariant.o : ../../../Windows/PropVariant.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
 PropVariantConversions.o : ../../../Windows/PropVariantConversions.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/PropVariantConversions.cpp
-IntToString.o : ../../../Common/IntToString.cpp
-	$(CXX) $(CFLAGS) ../../../Common/IntToString.cpp
-MyWindows.o : ../../../Common/MyWindows.cpp
-	$(CXX) $(CFLAGS) ../../../Common/MyWindows.cpp
-String.o : ../../../Common/String.cpp
-	$(CXX) $(CFLAGS) ../../../Common/String.cpp
-StringConvert.o : ../../../Common/StringConvert.cpp
-	$(CXX) $(CFLAGS) ../../../Common/StringConvert.cpp
-Vector.o : ../../../Common/Vector.cpp
-	$(CXX) $(CFLAGS) ../../../Common/Vector.cpp
-Wildcard.o : ../../../Common/Wildcard.cpp
-	$(CXX) $(CFLAGS) ../../../Common/Wildcard.cpp
 FileStreams.o : ../../Common/FileStreams.cpp
 	$(CXX) $(CFLAGS) ../../Common/FileStreams.cpp
 Client7z.o : ./Client7z.cpp
 	$(CXX) $(CFLAGS) ./Client7z.cpp
-

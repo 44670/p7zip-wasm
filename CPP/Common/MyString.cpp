@@ -8,7 +8,7 @@
 #endif
 #include "StringConvert.h" // FIXED
 
-#include "Common/String.h" // FIXED to avoid confusion with <string.h> on some filesystems
+#include "MyString.h" // FIXED to avoid confusion with <string.h> on some filesystems
 
 #include <stdio.h>
 #include <stdlib.h>

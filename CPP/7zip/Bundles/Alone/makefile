@@ -1,4 +1,3 @@
-
 PROG=../../../../bin/7za
 
 LOCAL_FLAGS= \
@@ -15,27 +14,24 @@ include ../../../../makefile.machine
 
 LIBS=$(LOCAL_LIBS)
 
-MY_WINDOWS= \
-	$(MY_HOME)/myGetTickCount.o \
-	$(MY_HOME)/wine_date_and_time.o \
-	$(MY_HOME)/myAddExeFlag.o \
-	$(MY_HOME)/myGetNumberOfProcessors.o \
-	$(MY_HOME)/mySplitCommandLine.o
-
 OBJS=\
-../../../Common/CommandLineParser.o \
-../../../Common/CRC.o \
-../../../Common/IntToString.o \
-../../../Common/ListFileUtils.o \
-../../../Common/MyWindows.o \
-../../../Common/StdInStream.o \
-../../../Common/StdOutStream.o \
-../../../Common/String.o \
-../../../Common/StringConvert.o \
-../../../Common/StringToInt.o \
-../../../Common/UTFConvert.o \
-../../../Common/Vector.o \
-../../../Common/Wildcard.o \
+myGetTickCount.o \
+wine_date_and_time.o \
+myAddExeFlag.o \
+mySplitCommandLine.o \
+CommandLineParser.o \
+CRC.o \
+IntToString.o \
+ListFileUtils.o \
+MyWindows.o \
+StdInStream.o \
+StdOutStream.o \
+MyString.o \
+StringConvert.o \
+StringToInt.o \
+UTFConvert.o \
+MyVector.o \
+Wildcard.o \
 ConsoleClose.o \
 ExtractCallbackConsole.o \
 List.o \
@@ -53,6 +49,7 @@ FileName.o \
 PropVariant.o \
 PropVariantConversions.o \
 Synchronization.o \
+System.o \
 CreateCoder.o \
 CrossThreadProgress.o \
 FilePathAutoRename.o \
@@ -65,7 +62,9 @@ LockedStream.o \
 LSBFDecoder.o \
 LSBFEncoder.o \
 MemBlocks.o \
+VirtThread.o \
 MethodId.o \
+MethodProps.o \
 OffsetStream.o \
 OutBuffer.o \
 OutMemStream.o \
@@ -157,9 +156,9 @@ ZipRegister.o \
 ZipUpdate.o \
 CoderMixer2.o \
 CoderMixer2MT.o \
-CoderMixer2ST.o \
 DummyOutStream.o \
 InStreamWithCRC.o \
+HandlerOut.o \
 ItemNameUtils.o \
 MultiStream.o \
 OutStreamWithCRC.o \
@@ -202,9 +201,6 @@ Pbkdf2HmacSha1.o \
 RandGen.o \
 Sha1.o \
 Sha256.o \
-aescrypt.o \
-aeskey.o \
-aestab.o \
 MatchFinder.o \
 MatchFinderMt.o \
 HuffmanEncode.o \
@@ -216,7 +212,8 @@ BranchSPARC.o \
 BranchX86.o \
 $(OBJ_CRC32) \
 Sort.o \
-Threads.o
+Threads.o \
+Aes.o
 
 include ../../../../makefile.glb
 

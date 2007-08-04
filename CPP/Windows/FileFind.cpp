@@ -274,7 +274,8 @@ bool CFindFile::FindFirst(LPCWSTR wildcard, CFileInfoW &fileInfo)
 {
   Close();
   CFileInfo fileInfo0;
-  bool bret = FindFirst((LPCTSTR)UnicodeStringToMultiByte(wildcard, CP_ACP), fileInfo0);
+  AString Awildcard = UnicodeStringToMultiByte(wildcard, CP_ACP);
+  bool bret = FindFirst((LPCTSTR)Awildcard, fileInfo0);
   if (bret)
   {
      fileInfo.Attributes = fileInfo0.Attributes;
@@ -355,8 +356,8 @@ bool DoesFileExist(LPCTSTR name)
 #ifndef _UNICODE
 bool DoesFileExist(LPCWSTR name)
 {
-  
-  bool bret = DoesFileExist((LPCTSTR)UnicodeStringToMultiByte(name, CP_ACP));
+  AString Aname = UnicodeStringToMultiByte(name, CP_ACP); 
+  bool bret = DoesFileExist((LPCTSTR)Aname);
   if (bret) return bret;
 
   // Try to recover the original filename

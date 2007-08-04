@@ -6,7 +6,7 @@
 #include <string.h>
 // #include <wchar.h>
 
-#include "Vector.h"
+#include "MyVector.h"
 
 LPSTR WINAPI CharNextA( LPCSTR ptr );
 LPSTR WINAPI CharPrevA( LPCSTR start, LPCSTR ptr );

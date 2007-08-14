@@ -1,3 +1,12 @@
+p7zip (4.51~dfsg.1-2) unstable; urgency=low
+
+  * Our clean rule is clean, not distclean!
+  * 04_no_strip_by_default.diff: don't strip binaries by default.
+    (Closes: #437736)
+  * Don't install License.txt.
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Tue, 14 Aug 2007 22:35:09 +0200
+
 p7zip (4.51~dfsg.1-1) unstable; urgency=low
 
   * New upstream release

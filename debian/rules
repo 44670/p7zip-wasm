@@ -28,7 +28,7 @@ clean:
 	# Add here commands to clean up after the build process.
 	QUILT_PATCHES=debian/patches quilt pop -a -R || test $$? = 2
 	QUILT_PATCHES=debian/patches quilt push
-	[ ! -f Makefile ] || $(MAKE) distclean
+	[ ! -f Makefile ] || $(MAKE) clean
 
 	QUILT_PATCHES=debian/patches quilt pop -a -R || test $$? = 2
 	rm -rf .pc
@@ -58,6 +58,7 @@ binary-arch: build install
 	dh_installdocs
 	rm -f debian/p7zip-full/usr/share/doc/p7zip-full/DOCS/copying.txt
 	rm -f debian/p7zip/usr/share/doc/p7zip/DOCS/copying.txt
+	rm -f debian/p7zip-full/usr/share/doc/p7zip-full/DOCS/License.txt
 	rm -f debian/p7zip/usr/share/doc/p7zip/DOCS/License.txt
 	dh_install
 	dh_installman -pp7zip-full man1/7z.1 man1/7za.1

@@ -1,0 +1,13 @@
+Index: p7zip-4.51~dfsg.1/makefile.linux_x86_ppc_alpha_gcc_4.X
+===================================================================
+--- p7zip-4.51~dfsg.1.orig/makefile.linux_x86_ppc_alpha_gcc_4.X	2007-08-14 21:43:55.000000000 +0200
++++ p7zip-4.51~dfsg.1/makefile.linux_x86_ppc_alpha_gcc_4.X	2007-08-14 21:44:00.000000000 +0200
+@@ -5,7 +5,7 @@
+ 
+ OPTFLAGS=-O
+ 
+-ALLFLAGS=${OPTFLAGS} -s \
++ALLFLAGS=${OPTFLAGS} \
+     	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
+ 	-DNDEBUG -D_REENTRANT -DENV_UNIX \
+ 	$(LOCAL_FLAGS)

@@ -1,4 +1,4 @@
-	p7zip 4.49
+	p7zip 4.52
 	==========
 
 Homepage : http://p7zip.sourceforge.net/
@@ -84,6 +84,10 @@ BUILD :
    - AMD64 CPU :
 	Linux - SuSE 8 ES (AMD64 Opteron) with gcc 3.2.2
 	Linux - Fedora 4  (AMD64 Turion)  with gcc 4.0.1
+
+   - s390x CPU :
+	Linux - SUSE Enterprise Linux 10 - with gcc 4.1.2
+	( only the 32bits built works, the 64bits built does not pass the tests )
 
    - sparc CPU :
 	Solaris 8 (sparc) with gcc 2.95.2

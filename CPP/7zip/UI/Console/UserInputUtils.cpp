@@ -7,9 +7,18 @@
 
 #include "UserInputUtils.h"
 
+#ifdef USE_FLTK
+// the programs like file-roller or xarchiver do not support archives with password
+// these programs freeze because p7zip is waiting for a password
+// defining USE_FLTK allows p7zip to use a popup in order to ask the password.
+#include <FL/Fl.H>
+#include <FL/Fl_Window.H>
+#include <FL/fl_ask.H>
+#else
 #ifdef HAVE_GETPASS
 #include <pwd.h>
 #include <unistd.h>
+#endif
 #endif
 
 static const char kYes = 'Y';
@@ -56,6 +65,11 @@ NUserAnswerMode::EEnum ScanUserYesNoAllQuit(CStdOutStream *outStream)
 
 UString GetPassword(CStdOutStream *outStream)
 {
+#ifdef USE_FLTK 
+  const char *r = fl_password("Enter password", 0);
+  AString oemPassword = "";
+  if (r) oemPassword = r;
+#else /* USE_FLTK */
 #ifdef HAVE_GETPASS
   (*outStream) << "\nEnter password (will not be echoed) :";
   outStream->Flush();
@@ -65,5 +79,6 @@ UString GetPassword(CStdOutStream *outStream)
   outStream->Flush();
   AString oemPassword = g_StdIn.ScanStringUntilNewLine();
 #endif
+#endif /* USE_FLTK */
   return MultiByteToUnicodeString(oemPassword, CP_OEMCP); 
 }

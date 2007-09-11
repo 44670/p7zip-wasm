@@ -137,6 +137,9 @@ SRCS=\
  ../../Archive/Chm/ChmHeader.cpp \
  ../../Archive/Chm/ChmIn.cpp \
  ../../Archive/Chm/ChmRegister.cpp \
+ ../../Archive/Com/ComHandler.cpp \
+ ../../Archive/Com/ComIn.cpp \
+ ../../Archive/Com/ComRegister.cpp \
  ../../Archive/Common/CoderMixer2.cpp \
  ../../Archive/Common/CoderMixer2MT.cpp \
  ../../Archive/Common/CrossThreadProgress.cpp \
@@ -508,6 +511,12 @@ ChmIn.o : ../../Archive/Chm/ChmIn.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Chm/ChmIn.cpp
 ChmRegister.o : ../../Archive/Chm/ChmRegister.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Chm/ChmRegister.cpp
+ComHandler.o : ../../Archive/Com/ComHandler.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Com/ComHandler.cpp
+ComIn.o : ../../Archive/Com/ComIn.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Com/ComIn.cpp
+ComRegister.o : ../../Archive/Com/ComRegister.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Com/ComRegister.cpp
 CoderMixer2.o : ../../Archive/Common/CoderMixer2.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Common/CoderMixer2.cpp
 CoderMixer2MT.o : ../../Archive/Common/CoderMixer2MT.cpp

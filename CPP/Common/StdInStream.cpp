@@ -75,7 +75,7 @@ bool CStdInStream::Eof()
 
 int CStdInStream::GetChar()
 {
-  int c = getc(_stream);
+  int c = fgetc(_stream);
   if(c == EOF && !Eof())
     throw kReadErrorMessage;
   return c;

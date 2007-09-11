@@ -27,6 +27,7 @@
 
 <P>Large Pages mode increases the speed of compression.
 However, there is a pause at the start of compression while 7-Zip allocates the large pages in memory.
+If 7-Zip can't allocate large pages, it allocates usual small pages.
 Also, the Windows Task Manager doesn't show the real memory usage of the program, if 7-Zip uses large pages.
 This feature works only on Windows 2003 / XP x64 / Vista. 
 Also, it requires administrator's rights for your system.

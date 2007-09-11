@@ -4,7 +4,7 @@ PROG = lzma
 LIB = $(LOCAL_LIBS)
 RM = rm -f
 CFLAGS = -c -I. -I../../../  -I../../../myWindows  -I../../../include_windows \
-         -UENV_UNIX -DBENCH_MT
+         -UENV_UNIX -DCOMPRESS_MF_MT -DBENCH_MT
 
 OBJS = \
   LzmaAlone.o \
@@ -33,7 +33,8 @@ OBJS = \
   LzmaRamDecode.o \
   C_FileIO.o \
   System.o \
-  Threads.o
+  Threads.o \
+  MatchFinderMt.o
 
 all: $(PROG)
 
@@ -109,9 +110,6 @@ MyVector.o: ../../../Common/MyVector.cpp
 BranchX86.o: ../../../../C/Compress/Branch/BranchX86.c
 	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchX86.c
 
-MatchFinder.o: ../../../../C/Compress/Lz/MatchFinder.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Lz/MatchFinder.c
-
 LzmaDecode.o: ../../../../C/Compress/Lzma/LzmaDecode.c
 	$(CC) $(CFLAGS) ../../../../C/Compress/Lzma/LzmaDecode.c
 
@@ -124,6 +122,25 @@ System.o : ../../../Windows/System.cpp
 Threads.o : ../../../../C/Threads.c
 	$(CC) $(CFLAGS) ../../../../C/Threads.c
 
+MatchFinder.o : ../../../../C/Compress/Lz/MatchFinder.c
+	$(CC) $(CFLAGS) ../../../../C/Compress/Lz/MatchFinder.c
+
+MatchFinderMt.o : ../../../../C/Compress/Lz/MatchFinderMt.c
+	$(CC) $(CFLAGS) ../../../../C/Compress/Lz/MatchFinderMt.c
+
 clean:
-	-$(RM) $(PROG) $(OBJS)
+	-$(RM) $(PROG) $(OBJS) testfile*
+
+test: $(PROG)
+	cp LzmaAlone.cpp testfile
+	./$(PROG) e testfile testfile.ppmd
+	./$(PROG) d testfile.ppmd testfile.ppmd.d 
+	diff -s testfile testfile.ppmd.d
+	./$(PROG) e -si -so < testfile > testfile.ppmd.2
+	./$(PROG) d -si -so < testfile.ppmd.2 > testfile.ppmd.2.d 
+	diff -s testfile testfile.ppmd.2.d
+	@echo =========
+	@echo All Done 
+	@echo =========
+
 

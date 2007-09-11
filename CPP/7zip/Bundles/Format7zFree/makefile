@@ -226,7 +226,10 @@ OutStreamWithSha1.o \
 $(OBJ_CRC32)  \
 Sort.o  \
 Threads.o \
-Aes.o
+Aes.o \
+ComHandler.o \
+ComIn.o \
+ComRegister.o
 
 include ../../../../makefile.glb
 

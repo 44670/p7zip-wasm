@@ -31,7 +31,7 @@ clean:
 	[ ! -f Makefile ] || $(MAKE) clean
 
 	QUILT_PATCHES=debian/patches quilt pop -a -R || test $$? = 2
-	rm -rf .pc
+	rm -rf .pc bin/
 	dh_clean 
 
 install: build

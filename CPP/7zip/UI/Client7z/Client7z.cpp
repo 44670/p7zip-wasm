@@ -339,7 +339,7 @@ STDMETHODIMP CArchiveExtractCallback::GetStream(UInt32 index,
     
     _outFileStreamSpec = new COutFileStream;
     CMyComPtr<ISequentialOutStream> outStreamLoc(_outFileStreamSpec);
-    if (!_outFileStreamSpec->File.Open(fullProcessedPath, CREATE_ALWAYS))
+    if (!_outFileStreamSpec->Open(fullProcessedPath, CREATE_ALWAYS))
     {
       PrintString((UString)L"can not open output file " + fullProcessedPath);
       return E_ABORT;
@@ -402,7 +402,7 @@ STDMETHODIMP CArchiveExtractCallback::SetOperationResult(Int32 operationResult)
   }
 
   if(_outFileStream != NULL && _processedFileInfo.UTCLastWriteTimeIsDefined)
-    _outFileStreamSpec->File.SetLastWriteTime(&_processedFileInfo.UTCLastWriteTime);
+    _outFileStreamSpec->SetLastWriteTime(&_processedFileInfo.UTCLastWriteTime);
   _outFileStream.Release();
   if (_extractMode && _processedFileInfo.AttributesAreDefined)
     NFile::NDirectory::MySetFileAttributes(_diskFilePath, _processedFileInfo.Attributes);

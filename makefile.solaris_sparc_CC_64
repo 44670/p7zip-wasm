@@ -6,7 +6,7 @@ OPTFLAGS=-fast -xarch=v9
 ALLFLAGS=${OPTFLAGS} -s -mt \
         -DHAVE_LONG_LONG \
         -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
-        -DBIG_ENDIAN -DENV_UNIX \
+        -DENV_UNIX \
         -DNDEBUG -D_REENTRANT \
         $(LOCAL_FLAGS)
 

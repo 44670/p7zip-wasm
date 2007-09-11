@@ -1,3 +1,9 @@
+p7zip (4.53~dfsg.1-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Tue, 11 Sep 2007 16:39:29 +0200
+
 p7zip (4.51~dfsg.1-2) unstable; urgency=low
 
   * Our clean rule is clean, not distclean!

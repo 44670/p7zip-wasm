@@ -411,11 +411,13 @@ bool CreateComplexDirectory(LPCTSTR _aPathName)
       break;
     if(::GetLastError() == ERROR_ALREADY_EXISTS)
     {
+#ifdef _WIN32 // FIXED for supporting symbolic link instead of a directory
       NFind::CFileInfo fileInfo;
       if (!NFind::FindFile(pathName, fileInfo)) // For network folders
         return true;
       if (!fileInfo.IsDirectory())
         return false;
+#endif
       break;
     }
     pos = pathName.ReverseFind(TEXT(CHAR_PATH_SEPARATOR));
@@ -457,11 +459,13 @@ bool CreateComplexDirectory(LPCWSTR _aPathName)
       break;
     if(::GetLastError() == ERROR_ALREADY_EXISTS)
     {
+#ifdef _WIN32 // FIXED for supporting symbolic link instead of a directory
       NFind::CFileInfoW fileInfo;
       if (!NFind::FindFile(pathName, fileInfo)) // For network folders
         return true;
       if (!fileInfo.IsDirectory())
         return false;
+#endif
       break;
     }
     pos = pathName.ReverseFind(WCHAR_PATH_SEPARATOR);

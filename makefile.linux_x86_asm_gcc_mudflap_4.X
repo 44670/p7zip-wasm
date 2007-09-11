@@ -1,6 +1,5 @@
 #
 # makefile for Linux (x86, PPC, alpha ...)
-# LITTLE_ENDIAN and BIG_ENDIAN are already defined by the system headers
 #
 
 OPTFLAGS=-g2

@@ -1,7 +1,6 @@
 #
 # NetBSD >= 1.5.2 (which has no libc_r -- use libpthread)
 # makefile for NetBSD (x86, PPC, alpha ...)
-# LITTLE_ENDIAN and BIG_ENDIAN are already defined by the system headers
 #
 
 OPTFLAGS=-O

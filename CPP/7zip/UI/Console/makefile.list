@@ -24,6 +24,7 @@ SRCS=\
  ../Common/ExtractingFilePath.cpp \
  ../../Common/FilePathAutoRename.cpp \
  ../../Common/FileStreams.cpp \
+ ../../Common/ProgressUtils.cpp \
  ../../Common/StreamUtils.cpp \
  ../Common/OpenArchive.cpp \
  ../Common/LoadCodecs.cpp \
@@ -173,6 +174,8 @@ FilePathAutoRename.o : ../../Common/FilePathAutoRename.cpp
 	$(CXX) $(CFLAGS) ../../Common/FilePathAutoRename.cpp
 FileStreams.o : ../../Common/FileStreams.cpp
 	$(CXX) $(CFLAGS) ../../Common/FileStreams.cpp
+ProgressUtils.o : ../../Common/ProgressUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/ProgressUtils.cpp
 StreamUtils.o : ../../Common/StreamUtils.cpp
 	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
 CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp

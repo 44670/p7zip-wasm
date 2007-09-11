@@ -54,7 +54,11 @@ typedef struct LARGE_INTEGER { LONGLONG QuadPart; }LARGE_INTEGER;
 typedef struct _ULARGE_INTEGER { ULONGLONG QuadPart;} ULARGE_INTEGER;
 
 typedef const CHAR *LPCSTR;
+#ifdef _UNICODE
+typedef wchar_t TCHAR;
+#else
 typedef CHAR TCHAR;
+#endif
 typedef const TCHAR *LPCTSTR;
 typedef wchar_t WCHAR;
 typedef WCHAR OLECHAR;

@@ -1,7 +1,36 @@
 
+Version 4.53
+============
+  - From Windows version of 7-zip 4.53 :
+    - The bug in 7-Zip 4.48 - 4.52 beta was fixed:
+        7-Zip could create .ZIP archives with broken files.
+    - Some bugs were fixed.
+
+Version 4.52 (never published)
+============
+  - From Windows version of 7-zip 4.52 :
+    - 7z now can unpack Compound files (msi, doc, ...).
+    - Some bugs were fixed (CAB decompressing)
+
+  - lzma (CPP/7zip/Compress/LZMA_Alone) is now multi-threaded.
+
+  - fixed #632912 : Extracting large directories takes quadratic time
+    (this bug was not fully fixed ...)
+
+  - fixed : "7za x -odirectory archive.7z" now works even if "directory" is a symbolic link. 
+
+  - makefile.linux_s390x added : support for Linux on IBM z/Series Mainframe with s390x CPU
+    (thank y_stephen)
+
+  - fixed crashes on BeOs with the flag "@filename"
+
+  - cleanup in the makefile : defining LITTLE_ENDIAN or BIG_ENDIAN is not needed anymore
+
+  - ppmd.exe added (CPP/7zip/Compress/PPMD_Alone)
+
 Version 4.51
 ============
-  - From Windows version of 7-zip 4.50 :
+  - From Windows version of 7-zip 4.51 :
      - Bug was fixed: 7-Zip 4.50 beta could not open some .7z archives.
 
   - fix built of test_emul
@@ -52,7 +81,7 @@ Version 4.48
   - contrib/gzip-like_CLI_wrapper_for_7z/p7zip now supports spaces in filename
     and use 7za instead of 7z.
 
-  - contrib/qnx630sp3 added to support QNX built (thanks to termterm)
+  - contrib/qnx630sp3 added to support QNX built (thank termterm)
 
 
 Version 4.47
@@ -121,7 +150,7 @@ Version 4.44
   - code cleanup
     - remove of mySetModuleFileNameA (and its memory leak), GetModuleFileName ...
 
-  - fixed : p7zip for DJGPP can now update an archive (thanks stranix)
+  - fixed : p7zip for DJGPP can now update an archive (thank stranix)
 
   - fixed : in the plugins of 7z, the "Utf16" state was always off.
 
@@ -138,7 +167,7 @@ Version 4.44
   - fixed #632912 : Extracting large directories takes quadratic time
 
   - preliminary support of HP-UX : remove of RTLD_GROUP for dlopen in DLL.cpp
-      makefile.hpux-acc should be able to build 7za for HP-UX (thanks to furiol)
+      makefile.hpux-acc should be able to build 7za for HP-UX (thank furiol)
 
   - Client7z added.
 
@@ -236,7 +265,7 @@ Version 4.38
   - DosDateTimeToFileTime fixed (rar format)
 
   - contrib/VirtualFileSystemForMidnightCommander/u7z updated
-    (thanks sgh_punk)
+    (thank sgh_punk)
 
 
 Version 4.37
@@ -430,7 +459,7 @@ Version 4.16
       7-Zip just skips that file and shows warning.
     - Some bugs were fixed
 
-  - man pages added (thanks to Mohammed Adnene Trojette)
+  - man pages added (thank Mohammed Adnene Trojette)
   - bug #1112167 fixed (Temporary directory must be on same partition as target)
     p7zip failed moving the temporary file at the end of
     compressing to target file if the directories don't reside

@@ -60,6 +60,7 @@ clean:
 	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) clean
 	cd CPP/7zip/Compress/Rar         ; $(MAKE) clean
 	cd CPP/7zip/Compress/LZMA_Alone  ; $(MAKE) clean
+	cd CPP/7zip/Compress/PPMD_Alone  ; $(MAKE) clean
 	cd CPP/7zip/Bundles/AloneGCOV    ; $(MAKE) clean
 	rm -fr bin
 	rm -f make.log
@@ -70,6 +71,7 @@ clean:
 	find . -name "*.cpp" -exec chmod -x {} \;
 	find . -name "*.asm" -exec chmod -x {} \;
 	find . -name "makefile*" -exec chmod -x {} \;
+	chmod -x ChangeLog README TODO man1/* DOCS/*.txt
 	chmod +x contrib/VirtualFileSystemForMidnightCommander/u7z
 	chmod +x contrib/gzip-like_CLI_wrapper_for_7z/p7zip
 	chmod +x install.sh check/check.sh check/clean_all.sh check/check_7zr.sh 

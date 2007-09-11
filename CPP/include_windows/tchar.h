@@ -70,6 +70,7 @@ typedef	wchar_t	TCHAR;
  * macro within your programs.  It's name and function could change without
  * notice.
  */
+#undef __TEXT
 #define	__TEXT(q)	L##q
 
 /*

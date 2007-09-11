@@ -68,6 +68,7 @@ UpdatePair.o \
 UpdateProduce.o \
 FilePathAutoRename.o \
 FileStreams.o \
+ProgressUtils.o \
 CopyCoder.o \
 StreamUtils.o \
 LzmaBench.o \

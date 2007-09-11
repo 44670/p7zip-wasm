@@ -59,6 +59,43 @@ void my_windows_split_path(const AString &p_path, AString &dir , AString &base) 
   }
 }
 
+static void my_windows_split_path(const UString &p_path, UString &dir , UString &base) {
+  int pos = p_path.ReverseFind(L'/');
+  if (pos == -1) {
+    // no separator
+    dir  = L".";
+    if (p_path.IsEmpty())
+      base = L".";
+    else
+      base = p_path;
+  } else if ((pos+1) < p_path.Length()) {
+    // true separator
+    base = p_path.Mid(pos+1);
+    while ((pos >= 1) && (p_path[pos-1] == L'/'))
+      pos--;
+    if (pos == 0)
+      dir = L"/";
+    else
+      dir = p_path.Left(pos);
+  } else {
+    // separator at the end of the path
+    // pos = p_path.find_last_not_of("/");
+    pos = -1;
+    int ind = 0;
+    while (p_path[ind]) {
+      if (p_path[ind] != L'/')
+        pos = ind;
+      ind++;
+    }
+    if (pos == -1) {
+      base = L"/";
+      dir = L"/";
+    } else {
+      my_windows_split_path(p_path.Left(pos+1),dir,base);
+    }
+  }
+}
+
 static int filter_pattern(const char *string , const char *pattern , int flags_nocase) {
   if ((string == 0) || (*string==0)) {
     if (pattern == 0)
@@ -116,6 +153,25 @@ bool CFileInfoW::IsDots() const
   return Name.Length() == 1 || (Name[1] == kDot && Name.Length() == 2);
 }
 #endif
+
+static bool originalFilename(const UString & src, AString & res)
+{
+  // Try to recover the original filename
+  res = "";
+  int is_good = 1;
+  int i=0;
+  while (src[i])
+  {
+    if (src[i] >= 256) {
+      return false;
+    } else {
+      res += char(src[i]);
+    }
+    i++;
+  }
+  return true;
+}
+
 
 
 // Warning this function cannot update "fileInfo.Name"
@@ -222,22 +278,13 @@ bool CFindFile::FindFirst(LPCTSTR wildcard, CFileInfo &fileInfo)
   TRACEN((printf("CFindFile::FindFirst : %s (dirname=%s,pattern=%s)\n",wildcard,(const char *)_directory,(const char *)_pattern)))
 
   _dirp = ::opendir((const char *)_directory);
-  TRACEN((printf("CFindFile::FindFirst : _dirp=%p\n",_dirp)))
+  TRACEN((printf("CFindFile::FindFirst : opendir=%p\n",_dirp)))
 
   if ((_dirp == 0) && (global_use_utf16_conversion)) {
     // Try to recover the original filename
     UString ustr = MultiByteToUnicodeString(_directory, 0);
     AString resultString;
-    int is_good = 1;
-    for (int i = 0; i < ustr.Length(); i++)
-    {
-      if (ustr[i] >= 256) {
-        is_good = 0;
-        break;
-      } else {
-        resultString += char(ustr[i]);
-      }
-    }
+    bool is_good = originalFilename(ustr, resultString);
     if (is_good) {
       _dirp = ::opendir((const char *)resultString);
       _directory = resultString;
@@ -333,15 +380,47 @@ bool CFindFile::FindNext(CFileInfoW &fileInfo)
 
 bool FindFile(LPCTSTR wildcard, CFileInfo &fileInfo)
 {
-  CFindFile finder;
-  return finder.FindFirst(wildcard, fileInfo);
+  // CFindFile finder;
+  // return finder.FindFirst(wildcard, fileInfo);
+  AString dir,base;
+  my_windows_split_path(wildcard, dir , base);
+  int ret = fillin_CFileInfo(fileInfo,nameWindowToUnix(wildcard));
+  fileInfo.Name = base;
+  TRACEN((printf("FindFile(%s,CFileInfo) ret=%d\n",wildcard,ret)))
+  return (ret == 0);
 }
 
 #ifndef _UNICODE
 bool FindFile(LPCWSTR wildcard, CFileInfoW &fileInfo)
 {
-  CFindFile finder;
-  return finder.FindFirst(wildcard, fileInfo);
+  // CFindFile finder;
+  // return finder.FindFirst(wildcard, fileInfo);
+  AString name = UnicodeStringToMultiByte(wildcard, CP_ACP); 
+  CFileInfo fileInfo0;
+  int ret = fillin_CFileInfo(fileInfo0,nameWindowToUnix((const char *)name));
+  TRACEN((printf("FindFile-1(%s,CFileInfo) ret=%d\n",(const char *)name,ret)))
+  if (ret != 0)
+  {
+    // Try to recover the original filename
+    AString resultString;
+    bool is_good = originalFilename(wildcard, resultString);
+    if (is_good) {
+       ret = fillin_CFileInfo(fileInfo0,nameWindowToUnix((const char *)resultString));
+       TRACEN((printf("FindFile-2(%s,CFileInfo) ret=%d\n",(const char *)resultString,ret)))
+    }
+  }
+  if (ret == 0)
+  {
+     UString dir,base;
+     my_windows_split_path(wildcard, dir , base);
+     fileInfo.Attributes = fileInfo0.Attributes;
+     fileInfo.CreationTime = fileInfo0.CreationTime;
+     fileInfo.LastAccessTime = fileInfo0.LastAccessTime;
+     fileInfo.LastWriteTime = fileInfo0.LastWriteTime;
+     fileInfo.Size = fileInfo0.Size;
+     fileInfo.Name = base;
+  }
+  return (ret == 0);
 }
 #endif
 
@@ -362,18 +441,7 @@ bool DoesFileExist(LPCWSTR name)
 
   // Try to recover the original filename
   AString resultString;
-  int is_good = 1;
-  int i=0;
-  while (name[i])
-  {
-    if (name[i] >= 256) {
-      is_good = 0;
-      break;
-    } else {
-      resultString += char(name[i]);
-    }
-    i++;
-  }
+  bool is_good = originalFilename(name, resultString);
   if (is_good) {
      bret = DoesFileExist((const char *)resultString);
   }

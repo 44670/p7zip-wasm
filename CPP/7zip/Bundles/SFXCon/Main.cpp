@@ -390,11 +390,12 @@ int Main2(
       eo.YesToAll = yesToAll;
 
       UString errorMessage;
+      CDecompressStat stat;
       HRESULT result = DecompressArchives(
           codecs,
           v1, v2,
           wildcardCensorHead, 
-          eo, &openCallback, ecs, errorMessage);
+          eo, &openCallback, ecs, errorMessage, stat);
       if (!errorMessage.IsEmpty())
       {
         (*g_StdStream) << endl << "Error: " << errorMessage;;

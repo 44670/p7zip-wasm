@@ -41,19 +41,15 @@ void CArchiveExtractCallback::Init(
 {
   _stdOutMode = stdOutMode;
   _numErrors = 0;
-  _ratioMode = false;
   _unpTotal = 1;
   _packTotal = packSize;
 
   _extractCallback2 = extractCallback2;
   _compressProgress.Release();
   _extractCallback2.QueryInterface(IID_ICompressProgressInfo, &_compressProgress);
-  if (!_localProgress)
-  {
-    LocalProgressSpec = new CLocalProgress();
-    _localProgress = LocalProgressSpec;
-  }
+
   LocalProgressSpec->Init(extractCallback2, true);
+  LocalProgressSpec->SendProgress = false;
 
   _itemDefaultName = itemDefaultName;
   _utcLastWriteTimeDefault = utcLastWriteTimeDefault;
@@ -101,8 +97,6 @@ STDMETHODIMP CArchiveExtractCallback::SetCompleted(const UInt64 *completeValue)
 
   if (_multiArchives)
   {
-    if (_ratioMode)
-      return S_OK;
     if (completeValue != NULL)
     {
       UInt64 packCur = LocalProgressSpec->InSize + MyMultDiv64(*completeValue, _unpTotal, _packTotal);
@@ -116,7 +110,6 @@ STDMETHODIMP CArchiveExtractCallback::SetCompleted(const UInt64 *completeValue)
 STDMETHODIMP CArchiveExtractCallback::SetRatioInfo(const UInt64 *inSize, const UInt64 *outSize)
 {
   COM_TRY_BEGIN
-  _ratioMode = true;
   return _localProgress->SetRatioInfo(inSize, outSize);
   COM_TRY_END
 }

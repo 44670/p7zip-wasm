@@ -98,10 +98,13 @@ public:
       WriteCreated(false),
       WriteAccessed(false),
       _multiArchives(false)
-      {}
+  {
+    LocalProgressSpec = new CLocalProgress();
+    _localProgress = LocalProgressSpec;
+  }
+
   CLocalProgress *LocalProgressSpec;
   CMyComPtr<ICompressProgressInfo> _localProgress;
-  bool _ratioMode;
   UInt64 _packTotal;
   UInt64 _unpTotal;
 

@@ -1,4 +1,4 @@
-	p7zip 4.52
+	p7zip 4.55
 	==========
 
 Homepage : http://p7zip.sourceforge.net/
@@ -84,6 +84,9 @@ BUILD :
    - AMD64 CPU :
 	Linux - SuSE 8 ES (AMD64 Opteron) with gcc 3.2.2
 	Linux - Fedora 4  (AMD64 Turion)  with gcc 4.0.1
+
+   - Itanium CPU :
+        HP-UX B.11.31 U ia64 with aCC (HP C/aC++ B3910B A.06.14 [Feb 22 2007])
 
    - s390x CPU :
 	Linux - SUSE Enterprise Linux 10 - with gcc 4.1.2

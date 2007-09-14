@@ -586,7 +586,7 @@ UInt32 * MixMatches2(CMatchFinderMt *p, UInt32 matchMinPos, UInt32 *distances)
   hash[hash2Value] = lzPos;
 
   if (curMatch2 >= matchMinPos) 
-    if (cur[(size_t)curMatch2 - lzPos] == cur[0])
+    if (cur[(ptrdiff_t)curMatch2 - lzPos] == cur[0])
     {
       *distances++ = 2; 
       *distances++ = lzPos - curMatch2 - 1;
@@ -609,10 +609,10 @@ UInt32 * MixMatches3(CMatchFinderMt *p, UInt32 matchMinPos, UInt32 *distances)
   hash[kFix3HashSize + hash3Value] = 
     lzPos;
 
-  if (curMatch2 >= matchMinPos && cur[(size_t)curMatch2 - lzPos] == cur[0])
+  if (curMatch2 >= matchMinPos && cur[(ptrdiff_t)curMatch2 - lzPos] == cur[0])
   { 
     distances[1] = lzPos - curMatch2 - 1;
-    if (cur[(size_t)curMatch2 - lzPos + 2] == cur[2])
+    if (cur[(ptrdiff_t)curMatch2 - lzPos + 2] == cur[2])
     {
       distances[0] = 3;
       return distances + 2;
@@ -620,7 +620,7 @@ UInt32 * MixMatches3(CMatchFinderMt *p, UInt32 matchMinPos, UInt32 *distances)
     distances[0] = 2; 
     distances += 2;
   }
-  if (curMatch3 >= matchMinPos && cur[(size_t)curMatch3 - lzPos] == cur[0])
+  if (curMatch3 >= matchMinPos && cur[(ptrdiff_t)curMatch3 - lzPos] == cur[0])
   { 
     *distances++ = 3; 
     *distances++ = lzPos - curMatch3 - 1; 
@@ -646,21 +646,21 @@ UInt32 *MixMatches4(CMatchFinderMt *p, UInt32 matchMinPos, UInt32 *distances)
   hash[kFix4HashSize + hash4Value] = 
     lzPos;
 
-  if (curMatch2 >= matchMinPos && cur[(size_t)curMatch2 - lzPos] == cur[0])
+  if (curMatch2 >= matchMinPos && cur[(ptrdiff_t)curMatch2 - lzPos] == cur[0])
   {
     distances[1] = lzPos - curMatch2 - 1;
-    if (cur[(size_t)curMatch2 - lzPos + 2] == cur[2])
+    if (cur[(ptrdiff_t)curMatch2 - lzPos + 2] == cur[2])
     {
-      distances[0] =  (cur[(size_t)curMatch2 - lzPos + 3] == cur[3]) ? 4 : 3;
+      distances[0] =  (cur[(ptrdiff_t)curMatch2 - lzPos + 3] == cur[3]) ? 4 : 3;
       return distances + 2;
     }
     distances[0] = 2;
     distances += 2;
   }
-  if (curMatch3 >= matchMinPos && cur[(size_t)curMatch3 - lzPos] == cur[0])
+  if (curMatch3 >= matchMinPos && cur[(ptrdiff_t)curMatch3 - lzPos] == cur[0])
   {
     distances[1] = lzPos - curMatch3 - 1;
-    if (cur[(size_t)curMatch3 - lzPos + 3] == cur[3])
+    if (cur[(ptrdiff_t)curMatch3 - lzPos + 3] == cur[3])
     {
       distances[0] = 4;
       return distances + 2;
@@ -671,8 +671,8 @@ UInt32 *MixMatches4(CMatchFinderMt *p, UInt32 matchMinPos, UInt32 *distances)
 
   if (curMatch4 >= matchMinPos)
     if (
-      cur[(size_t)curMatch4 - lzPos] == cur[0] &&
-      cur[(size_t)curMatch4 - lzPos + 3] == cur[3]
+      cur[(ptrdiff_t)curMatch4 - lzPos] == cur[0] &&
+      cur[(ptrdiff_t)curMatch4 - lzPos + 3] == cur[3]
       )
     {
       *distances++ = 4;

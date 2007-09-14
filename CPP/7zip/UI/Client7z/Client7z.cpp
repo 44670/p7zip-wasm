@@ -2,12 +2,7 @@
 
 #include "StdAfx.h"
 
-#ifdef _WIN32
-#include <initguid.h>
-#else
 #include "Common/MyInitGuid.h"
-#endif
-
 #include "Common/StringConvert.h"
 #include "Common/IntToString.h"
 
@@ -684,11 +679,11 @@ __cdecl
 #endif
 main(int argc, char* argv[])
 {
-#ifdef _WIN32
+  #ifdef _WIN32
   #ifndef _UNICODE
   g_IsNT = IsItWindowsNT();
   #endif
-#endif
+  #endif
 
   PrintStringLn(kCopyrightString);
 

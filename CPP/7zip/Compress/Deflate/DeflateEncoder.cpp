@@ -285,7 +285,7 @@ NO_INLINE void CCoder::GetMatches()
       UInt32 distance = distanceTmp[numPairs - 1] + 1;
       if (numAvail > m_MatchMaxLen)
         numAvail = m_MatchMaxLen;
-      for (; len < numAvail && pby[len] == pby[(size_t)len - distance]; len++);
+      for (; len < numAvail && pby[len] == pby[(ptrdiff_t)len - distance]; len++);
       m_MatchDistances[i - 1] = (UInt16)len;
     }
   }

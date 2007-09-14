@@ -1,4 +1,20 @@
 
+Version 4.55
+============
+  - From Windows version of 7-zip 4.55 :
+    - Some bugs were fixed
+
+  - fixed #1789154 : 7z use default or -m0=LZMA runtime error under HP-UX IA11.23
+
+  - support added for HPUX on Itanium.
+    (makefile.hpux-acc and makefile.hpux-acc_64)
+
+
+Version 4.54 (never published)
+============
+  - From Windows version of 7-zip 4.54 :
+    - Decompression speed was increased
+
 Version 4.53
 ============
   - From Windows version of 7-zip 4.53 :

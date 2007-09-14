@@ -1,7 +1,7 @@
-Index: p7zip-4.51/makefile
+Index: p7zip-4.55~dfsg.1/makefile
 ===================================================================
---- p7zip-4.51.orig/makefile	2007-08-04 20:54:26.000000000 +0200
-+++ p7zip-4.51/makefile	2007-08-04 21:05:03.000000000 +0200
+--- p7zip-4.55~dfsg.1.orig/makefile	2007-08-15 12:55:46.000000000 +0200
++++ p7zip-4.55~dfsg.1/makefile	2007-09-14 23:01:08.000000000 +0200
 @@ -38,7 +38,6 @@
  	cd CPP/7zip/UI/Client7z       ; $(MAKE) depend
  	cd CPP/7zip/UI/Console        ; $(MAKE) depend
@@ -24,5 +24,5 @@ Index: p7zip-4.51/makefile
  	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) clean
 -	cd CPP/7zip/Compress/Rar         ; $(MAKE) clean
  	cd CPP/7zip/Compress/LZMA_Alone  ; $(MAKE) clean
+ 	cd CPP/7zip/Compress/PPMD_Alone  ; $(MAKE) clean
  	cd CPP/7zip/Bundles/AloneGCOV    ; $(MAKE) clean
- 	rm -fr bin

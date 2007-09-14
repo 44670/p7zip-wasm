@@ -115,7 +115,7 @@ STDMETHODIMP CFolderInStream::GetSubStreamSize(UInt64 subStream, UInt64 *value)
   *value = 0;
   if (subStream < Sizes.Size())
   {
-    *value= Sizes[(int)(size_t)subStream];
+    *value= Sizes[(int)(ptrdiff_t)subStream];
     return S_OK;
   }
   if (subStream > Sizes.Size())

@@ -2,7 +2,7 @@ Source: p7zip
 Section: utils
 Priority: optional
 Maintainer: Mohammed Adnène Trojette <adn+deb@diwi.org>
-Build-Depends: debhelper (>= 4.0.0), quilt
+Build-Depends: debhelper (>= 5.0.0), quilt
 Standards-Version: 3.7.2
 
 Package: p7zip

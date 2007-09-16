@@ -1,3 +1,10 @@
+p7zip (4.55~dfsg.1-2) unstable; urgency=low
+
+  * Bump debhelper compatibility to 5.
+  * Our Makefile is called makefile. (Closes: #442697)
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sun, 16 Sep 2007 23:19:51 +0200
+
 p7zip (4.55~dfsg.1-1) unstable; urgency=low
 
   * New upstream release.

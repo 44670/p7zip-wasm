@@ -1,4 +1,4 @@
-// Thresds.h
+// Threads.h
 
 #ifndef __7Z_THRESDS_H
 #define __7Z_THRESDS_H

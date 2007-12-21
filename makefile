@@ -16,6 +16,8 @@ all2: 7za sfx 7z
 all3: 7za sfx 7z 7zr
 
 all_test : test test_7z test_7zr test_Client7z
+	cd CPP/7zip/Compress/PPMD_Alone  ; $(MAKE) test
+	cd CPP/7zip/Compress/LZMA_Alone  ; $(MAKE) test
 
 common:
 	mkdir -p  bin

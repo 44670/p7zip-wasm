@@ -278,6 +278,9 @@ int main() {
   printf("sizeof(UInt64) : %d\n",(int)sizeof(UInt64));
   printf("sizeof(UINT64) : %d\n",(int)sizeof(UINT64));
   printf("sizeof(void *) : %d\n",(int)sizeof(void *));
+  printf("sizeof(size_t) : %d\n",(int)sizeof(size_t));
+  printf("sizeof(ptrdiff_t) : %d\n",(int)sizeof(ptrdiff_t));
+  printf("sizeof(off_t) : %d\n",(int)sizeof(off_t));
 
   union {
 	Byte b[2];

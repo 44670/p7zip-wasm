@@ -61,8 +61,6 @@ typedef UInt64 CFileSize;
 
 #define SZ_RESULT int
 
-#include <errno.h>
-
 typedef int HRes;
 #define RES_OK (0)
 
@@ -71,14 +69,8 @@ typedef int HRes;
 #define SZE_CRC_ERROR (3)
 #define SZE_ARCHIVE_ERROR (6)
 
+#include <errno.h>
 #define SZE_OUTOFMEMORY (ENOMEM)
-/*
-#define SZE_OUTOFMEMORY (0x8007000EL)
-#define SZE_NOTIMPL (0x80004001L)
-#define SZE_FAIL (0x80004005L)
-#define SZE_INVALIDARG (0x80070057L)
-*/
-
 
 #ifndef RINOK
 #define RINOK(x) { HRes __result_ = (x); if(__result_ != 0) return __result_; }

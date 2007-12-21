@@ -46,6 +46,7 @@ ALLFLAGS=-fprofile-arcs -ftest-coverage \
 	-I../../../../C \
 	-I../../../../C/Compress/Huffman \
 	-I../../../../C/Compress/Lz \
+	-I../../../../C/Crypto/ \
 	-I../../Compress/LZMA_Alone \
 	-I../../../../C/Compress/Branch \
 -I../../../myWindows \
@@ -264,10 +265,12 @@ all : copy 7za.exe
 	$(CXX) -c *.cpp 
 	$(CC)  -c *.c
 	$(CXX) *.o -o 7za.exe -lpthread
+	ld -r *.o -o  7za.ld
+	nm -u -C 7za.ld > 7za.undefined
 copy:
 	rm -f *.cpp *.c
 	cp -p $(SRCS) $(SRCS_C) .
 
 clean:
-	rm -f 7za.exe *.cpp *.c *.gcov *.gcda *.gcno *.o core
+	rm -f 7za.exe 7za.ld 7za.undefined *.cpp *.c *.gcov *.gcda *.gcno *.o core
 

@@ -30,7 +30,8 @@ bool MyFormatMessage(DWORD messageID, CSysString &message)
     message = txt;
   } else {
     char msgBuf[256];
-    sprintf(msgBuf,"error #%x",(unsigned)messageID);
+    snprintf(msgBuf,sizeof(msgBuf),"error #%x",(unsigned)messageID);
+    msgBuf[sizeof(msgBuf)-1] = 0;
     message = msgBuf;
   }
   

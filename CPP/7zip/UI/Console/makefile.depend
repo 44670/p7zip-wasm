@@ -51,10 +51,11 @@ ListFileUtils.o: ../../../Common/ListFileUtils.cpp \
   ../../../Common/Types.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../Common/MyWindows.h \
   ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../../Common/ListFileUtils.h ../../../Common/MyString.h \
+  ../../../Common/../Windows/FileIO.h ../../../Common/MyString.h \
   ../../../Common/MyVector.h ../../../Common/Defs.h \
-  ../../../Common/StdInStream.h ../../../Common/StringConvert.h \
-  ../../../Common/MyWindows.h ../../../Common/UTFConvert.h
+  ../../../Common/ListFileUtils.h ../../../Common/MyString.h \
+  ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
+  ../../../Common/UTFConvert.h
 MyWindows.o: ../../../Common/MyWindows.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \

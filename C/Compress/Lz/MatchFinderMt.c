@@ -142,18 +142,11 @@ void MtSync_Init(CMtSync *p) { p->needStart = True; }
 
 #define kMtMaxValForNormalize 0xFFFFFFFF
 
-/*
-Notes:
-instead of "size_t pos" we can use "UInt32 pos".
-But MSVC++ compilers have BUG:
-sometimes they use signed extending: (size_t)pos was compiled to "movsxd	r10, edx"
-*/
-
 #define DEF_GetHeads(name, v) \
-static void GetHeads ## name(const Byte *p, size_t pos, \
+static void GetHeads ## name(const Byte *p, UInt32 pos, \
 UInt32 *hash, UInt32 hashMask, UInt32 *heads, UInt32 numHeads) { \
 for (; numHeads != 0; numHeads--) { \
-const UInt32 value = (v); p++; *heads++ = (UInt32)pos - hash[value]; hash[value] = (UInt32)(pos++);  } }
+const UInt32 value = (v); p++; *heads++ = pos - hash[value]; hash[value] = pos++;  } }
 
 DEF_GetHeads(2,  (p[0] | ((UInt32)p[1] << 8)) & hashMask)
 DEF_GetHeads(3,  (g_CrcTable[p[0]] ^ p[1] ^ ((UInt32)p[2] << 8)) & hashMask)

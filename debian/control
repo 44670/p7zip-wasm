@@ -3,7 +3,8 @@ Section: utils
 Priority: optional
 Maintainer: Mohammed Adnène Trojette <adn+deb@diwi.org>
 Build-Depends: debhelper (>= 5.0.0), quilt
-Standards-Version: 3.7.2
+Standards-Version: 3.7.3
+Homepage: http://p7zip.sourceforge.net/
 
 Package: p7zip
 Architecture: any
@@ -13,13 +14,14 @@ Description: 7zr file archiver with high compression ratio
  p7zip is the Unix port of 7-Zip, a file archiver that archives with
  very high compression ratios.
  .
- p7zip provides /usr/bin/7zr, a standalone minimal version of the 7-zip
- tool that only handles 7z archives. 7z compression is 30-50% better
- than ZIP compression.
+ p7zip provides:
+  - /usr/bin/7zr
+    a standalone minimal version of the 7-zip tool that only handles
+    7z archives. 7z compression is 30-50% better than ZIP compression.
+  - /usr/bin/p7zip
+    a gzip like wrapper around 7zr.
  .
  p7zip-full provides 7z and 7za which support more compression formats.
- .
-  Homepage: http://p7zip.sourceforge.net/
 
 Package: p7zip-full
 Architecture: any
@@ -41,6 +43,5 @@ Description: 7z and 7za file archivers with high compression ratio
      GZIP, BZIP2, TAR, CPIO, RPM, ISO and DEB archives. 7z compression
      is 30-50% better than ZIP compression.
  .
- p7zip provides 7zr, a light version of 7za.
- .
-  Homepage: http://p7zip.sourceforge.net/
+ p7zip provides 7zr, a light version of 7za, and p7zip a gzip like
+ wrapper around 7zr.

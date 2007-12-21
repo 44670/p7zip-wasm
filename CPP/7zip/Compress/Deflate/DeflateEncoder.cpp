@@ -40,11 +40,11 @@ static const UInt32 kMatchArrayLimit = kMatchArraySize - kMatchMaxLen * 4 * size
 static const UInt32 kBlockUncompressedSizeThreshold = kMaxUncompressedBlockSize - 
     kMatchMaxLen - kNumOpts;
 
-static const int kMaxCodeBitLength = 15;
+static const int kMaxCodeBitLength = 12;
 static const int kMaxLevelBitLength = 7;
 
-static Byte kNoLiteralStatPrice = 13;
-static Byte kNoLenStatPrice = 13;
+static Byte kNoLiteralStatPrice = 12;
+static Byte kNoLenStatPrice = 12;
 static Byte kNoPosStatPrice = 6;
 
 static Byte g_LenSlots[kNumLenSymbolsMax];
@@ -282,10 +282,10 @@ NO_INLINE void CCoder::GetMatches()
     {
       UInt32 numAvail = Inline_MatchFinder_GetNumAvailableBytes(&_lzInWindow) + 1;
       const Byte *pby = Inline_MatchFinder_GetPointerToCurrentPos(&_lzInWindow) - 1;
-      UInt32 distance = distanceTmp[numPairs - 1] + 1;
+      const Byte *pby2 = pby - (distanceTmp[numPairs - 1] + 1);
       if (numAvail > m_MatchMaxLen)
         numAvail = m_MatchMaxLen;
-      for (; len < numAvail && pby[len] == pby[(ptrdiff_t)len - distance]; len++);
+      for (; len < numAvail && pby[len] == pby2[len]; len++);
       m_MatchDistances[i - 1] = (UInt16)len;
     }
   }

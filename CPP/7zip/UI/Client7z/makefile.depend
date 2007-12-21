@@ -137,7 +137,7 @@ FileStreams.o: ../../Common/FileStreams.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/MyVector.h ../../../Common/Defs.h \
   ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
-  ../../Common/../../Common/MyCom.h
+  ../../Common/../IDecl.h ../../Common/../../Common/MyCom.h
 Client7z.o: Client7z.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
@@ -158,9 +158,9 @@ Client7z.o: Client7z.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/MyString.h ../../Common/../IStream.h \
   ../../Common/../../Common/MyUnknown.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
-  ../../Common/../../Common/MyCom.h ../../Archive/IArchive.h \
-  ../../Archive/../IStream.h ../../Archive/../IProgress.h \
-  ../../Archive/../../Common/MyUnknown.h \
-  ../../Archive/../../Common/Types.h ../../Archive/../PropID.h \
-  ../../IPassword.h ../../../Common/MyUnknown.h ../../../Common/Types.h \
-  ../../MyVersion.h
+  ../../Common/../IDecl.h ../../Common/../../Common/MyCom.h \
+  ../../Archive/IArchive.h ../../Archive/../IStream.h \
+  ../../Archive/../IProgress.h ../../Archive/../../Common/MyUnknown.h \
+  ../../Archive/../../Common/Types.h ../../Archive/../IDecl.h \
+  ../../Archive/../PropID.h ../../IPassword.h ../../../Common/MyUnknown.h \
+  ../../../Common/Types.h ../../IDecl.h ../../MyVersion.h

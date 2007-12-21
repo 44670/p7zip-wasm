@@ -616,7 +616,9 @@ UINT CTempFile::Create(LPCTSTR dirPath, LPCTSTR prefix, CSysString &resultPath)
   Remove();
 /* UINT number = ::GetTempFileName(dirPath, prefix, 0, path.GetBuffer(MAX_PATH)); */
   UINT number = (UINT)getpid();
-  sprintf(resultPath.GetBuffer(MAX_PATH),"%s%s%d.tmp",dirPath,prefix,(int)number);
+  char * buf = resultPath.GetBuffer(MAX_PATH);
+  snprintf(buf,MAX_PATH,"%s%s%d.tmp",dirPath,prefix,(int)number);
+  buf[MAX_PATH-1]=0;
   resultPath.ReleaseBuffer();
   if(number != 0)
   {

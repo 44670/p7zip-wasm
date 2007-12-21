@@ -8,7 +8,9 @@
 #include <kernel/image.h>
 #include <Path.h>
 #else
+#define UINT64 DLL_UINT64 // HP-UX , dlfcn.h defines UINT64 but p7zip also defines UINT64
 #include <dlfcn.h>  // dlopen ...
+#undef UINT64 DLL_UINT64
 #endif
 
 #include "DLL.h"
@@ -57,7 +59,8 @@ static FARPROC local_GetProcAddress(HMODULE module,LPCSTR lpProcName)
   if (module) {
 #ifdef __APPLE_CC__
     char name[MAX_PATHNAME_LEN];
-    sprintf(name,"_%s",lpProcName);
+    snprintf(name,sizeof(name),"_%s",lpProcName);
+    name[sizeof(name)-1] = 0;
     TRACEN((printf("NSLookupSymbolInModule(%p,%s)\n",(void *)module,name)))
     NSSymbol sym;
     sym = NSLookupSymbolInModule((NSModule)module, name);
@@ -144,7 +147,9 @@ bool CLibrary::Load(LPCTSTR lpLibFileName)
   options_dlopen |= RTLD_NOW;
 #endif
 #ifdef RTLD_GROUP
-  options_dlopen |= RTLD_GROUP; // for solaris
+  #if ! (defined(hpux) || defined(__hpux))
+  options_dlopen |= RTLD_GROUP; // mainly for solaris but not for HPUX
+  #endif
 #endif
   handler = dlopen(name,options_dlopen);
 #endif // __APPLE_CC__

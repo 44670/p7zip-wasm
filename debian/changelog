@@ -1,3 +1,20 @@
+p7zip (4.57~dfsg.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+     + add Homepage field.
+     + bump Standards-Version to 3.7.3.
+     + tighten description to tell about /usr/bin/p7zip.
+  * debian/copyright converted to Unicode encoding.
+  * debian/patches:
+     + 03_fix_FTBFS_GNU-kFreeBSD.diff: removed, included upstream.
+     + 02_man.patch: refreshed and fixed link to DOCS. (Closes: #452084)
+  * Don't install /usr/share/p7zip/ which is empty.
+  * Install 7zr to /usr/lib/p7zip and use a wrapper to call it so as
+    to have -sfx option working.
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Fri, 21 Dec 2007 16:41:17 +0100
+
 p7zip (4.55~dfsg.1-2) unstable; urgency=low
 
   * Bump debhelper compatibility to 5.

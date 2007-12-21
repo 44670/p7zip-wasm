@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#if defined (__NetBSD__) || defined(__OpenBSD__) || defined (__FreeBSD__) || defined (__APPLE__)
+#if defined (__NetBSD__) || defined(__OpenBSD__) || defined (__FreeBSD__) || defined (__FreeBSD_kernel__) || defined (__APPLE__)
 #include <sys/param.h>
 #include <sys/sysctl.h>
 #elif defined(__linux__) || defined(__CYGWIN__) || defined(sun)
@@ -32,7 +32,7 @@ namespace NWindows
 						  		nbcpu = value;
 			return nbcpu;
 		}
-		#elif defined (__FreeBSD__)
+		#elif defined (__FreeBSD__) || defined (__FreeBSD_kernel__)
 		UInt32 GetNumberOfProcessors() {
 		  		int nbcpu = 1;
 			size_t value;

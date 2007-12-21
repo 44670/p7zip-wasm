@@ -95,7 +95,7 @@ typedef UInt32 (WINAPI *GetNumberOfMethodsFunc)(UInt32 *numMethods);
 typedef UInt32 (WINAPI *GetNumberOfFormatsFunc)(UInt32 *numFormats);
 typedef UInt32 (WINAPI *GetHandlerPropertyFunc)(PROPID propID, PROPVARIANT *value);
 typedef UInt32 (WINAPI *GetHandlerPropertyFunc2)(UInt32 index, PROPID propID, PROPVARIANT *value);
-typedef UINT32 (WINAPI *CreateObjectFunc)(const GUID *clsID, const GUID *iid, void **outObject);
+typedef UInt32 (WINAPI *CreateObjectFunc)(const GUID *clsID, const GUID *iid, void **outObject);
 
 
 static HRESULT GetCoderClass(GetMethodPropertyFunc getMethodProperty, UInt32 index, 

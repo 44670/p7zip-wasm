@@ -16,6 +16,8 @@ all2: 7za sfx 7z
 all3: 7za sfx 7z 7zr
 
 all_test : test test_7z test_7zr test_Client7z
+	$(MAKE) -C CPP/7zip/Compress/PPMD_Alone  test
+	$(MAKE) -C CPP/7zip/Compress/LZMA_Alone  test
 
 common:
 	mkdir -p  bin
@@ -32,13 +34,13 @@ Client7z: common
 	$(MAKE) -C CPP/7zip/UI/Client7z          all
 
 depend:
-	cd CPP/7zip/Bundles/Alone     ; $(MAKE) depend
-	cd CPP/7zip/Bundles/Alone7z   ; $(MAKE) depend
-	cd CPP/7zip/Bundles/SFXCon    ; $(MAKE) depend
-	cd CPP/7zip/UI/Client7z       ; $(MAKE) depend
-	cd CPP/7zip/UI/Console        ; $(MAKE) depend
-	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) depend
-	cd CPP/7zip/Compress/Rar      ; $(MAKE) depend
+	$(MAKE) -C CPP/7zip/Bundles/Alone         depend
+	$(MAKE) -C CPP/7zip/Bundles/Alone7z       depend
+	$(MAKE) -C CPP/7zip/Bundles/SFXCon        depend
+	$(MAKE) -C CPP/7zip/UI/Client7z           depend
+	$(MAKE) -C CPP/7zip/UI/Console            depend
+	$(MAKE) -C CPP/7zip/Bundles/Format7zFree  depend
+	$(MAKE) -C CPP/7zip/Compress/Rar          depend
 
 sfx: common
 	mkdir -p  bin
@@ -51,16 +53,17 @@ sfx: common
 	$(MAKE) -C CPP/7zip/Compress/Rar         all
 
 clean:
-	cd CPP/myWindows                 ; $(MAKE) clean
-	cd CPP/7zip/Bundles/Alone        ; $(MAKE) clean
-	cd CPP/7zip/Bundles/Alone7z      ; $(MAKE) clean
-	cd CPP/7zip/Bundles/SFXCon       ; $(MAKE) clean
-	cd CPP/7zip/UI/Client7z          ; $(MAKE) clean
-	cd CPP/7zip/UI/Console           ; $(MAKE) clean
-	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) clean
-	cd CPP/7zip/Compress/Rar         ; $(MAKE) clean
-	cd CPP/7zip/Compress/LZMA_Alone  ; $(MAKE) clean
-	cd CPP/7zip/Bundles/AloneGCOV    ; $(MAKE) clean
+	$(MAKE) -C CPP/myWindows                 clean
+	$(MAKE) -C CPP/7zip/Bundles/Alone        clean
+	$(MAKE) -C CPP/7zip/Bundles/Alone7z      clean
+	$(MAKE) -C CPP/7zip/Bundles/SFXCon       clean
+	$(MAKE) -C CPP/7zip/UI/Client7z          clean
+	$(MAKE) -C CPP/7zip/UI/Console           clean
+	$(MAKE) -C CPP/7zip/Bundles/Format7zFree clean
+	$(MAKE) -C CPP/7zip/Compress/Rar         clean
+	$(MAKE) -C CPP/7zip/Compress/LZMA_Alone  clean
+	$(MAKE) -C CPP/7zip/Compress/PPMD_Alone  clean
+	$(MAKE) -C CPP/7zip/Bundles/AloneGCOV    clean
 	rm -fr bin
 	rm -f make.log
 	find . -name "*~" -exec rm -f {} \;
@@ -70,6 +73,7 @@ clean:
 	find . -name "*.cpp" -exec chmod -x {} \;
 	find . -name "*.asm" -exec chmod -x {} \;
 	find . -name "makefile*" -exec chmod -x {} \;
+	chmod -x ChangeLog README TODO man1/* DOCS/*.txt
 	chmod +x contrib/VirtualFileSystemForMidnightCommander/u7z
 	chmod +x contrib/gzip-like_CLI_wrapper_for_7z/p7zip
 	chmod +x install.sh check/check.sh check/clean_all.sh check/check_7zr.sh 

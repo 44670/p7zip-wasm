@@ -17,6 +17,7 @@ using namespace NWindows;
 
 CArchiveUpdateCallback::CArchiveUpdateCallback():
   Callback(0),
+  ShareForWrite(false),
   StdInMode(false),
   DirItems(0),
   ArchiveItems(0),

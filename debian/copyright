@@ -1,7 +1,7 @@
-This package was debianized by Mohammed Adnène Trojette
+This package was debianized by Mohammed AdnÃ¨ne Trojette
 <adn+deb@diwi.org> on Sun, 12 Dec 2004 14:28:27 +0200.
 
-The current Debian maintainer is Mohammed Adnène Trojette
+The current Debian maintainer is Mohammed AdnÃ¨ne Trojette
 <adn+deb@diwi.org>.
 
 It was downloaded from <http://p7zip.sourceforge.net/>.
@@ -61,6 +61,6 @@ AES License
 Packaging
 ---------
 
-The current Debian packaging is (C) 2004-2006, Mohammed Adnène
+The current Debian packaging is (C) 2004-2006, Mohammed AdnÃ¨ne
 Trojette <adn+deb@diwi.org> and is licensed under the GPL, see
 /usr/share/common-licenses/GPL.

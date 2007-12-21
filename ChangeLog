@@ -1,8 +1,36 @@
 
+Version 4.57
+============
+  - From Windows version of 7-zip 4.57 :
+    - The BUG in command line version was fixed: -up3 switch could work incorrectly.
+    - Minor improvement in ZIP compression.
+
+Version 4.56  (never published)
+============
+  - From Windows version of 7-zip 4.56 :
+    - Some bugs were fixed
+
+  - On HPUX : fixed "Can't load '../bin/7z.dll'"
+    (Unsatisfied data symbol '_ZTVN10__cxxabiv121__vmi_class_type_infoE' in load module '../bin/7z.so'.)
+
+  - bug : p7zip used to build a zip file with an "FAT" header instead of "Unix" header
+     If LANG was set, "unzip" tried to translate the filenames from "FAT" to locale ...
+
+  - On AIX : fixed "HugeFiles=off" (thank kuriath)
+
+  - bug #1800180 : LZMAlone compilation error in COutFile
+
+  - Patch #1796569 : Fix FreeBSD FTBFS
+
+  - Patch #1796575 : fix man1/7za.1 man1/7zr.1 man1/7z.1
+
+
 Version 4.55
 ============
   - From Windows version of 7-zip 4.55 :
     - Some bugs were fixed
+
+  - fixed #1783007 : when make p7-zip 4.51 under hp-ux 11.11 error
 
   - fixed #1789154 : 7z use default or -m0=LZMA runtime error under HP-UX IA11.23
 

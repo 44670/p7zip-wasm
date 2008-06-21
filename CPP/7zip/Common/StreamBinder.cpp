@@ -53,9 +53,11 @@ STDMETHODIMP CSequentialOutStreamForBinder::Write(const void *data, UInt32 size,
 
 HRes CStreamBinder::CreateEvents()
 {
-  RINOK(_allBytesAreWritenEvent.Create(true));
+  _synchroFor_allBytesAreWritenEvent_and_readStreamIsClosedEvent = new NWindows::NSynchronization::CSynchro();
+  _synchroFor_allBytesAreWritenEvent_and_readStreamIsClosedEvent->Create();
+  RINOK(_allBytesAreWritenEvent.Create(_synchroFor_allBytesAreWritenEvent_and_readStreamIsClosedEvent,true));
   RINOK(_thereAreBytesToReadEvent.Create());
-  return _readStreamIsClosedEvent.Create();
+  return _readStreamIsClosedEvent.Create(_synchroFor_allBytesAreWritenEvent_and_readStreamIsClosedEvent);
 }
 
 void CStreamBinder::ReInit()
@@ -96,7 +98,11 @@ HRESULT CStreamBinder::Read(void *data, UInt32 size, UInt32 *processedSize)
     sizeToRead = MyMin(_bufferSize, size);
     if (_bufferSize > 0)
     {
+#ifdef _WIN32
       MoveMemory(data, _buffer, sizeToRead);
+#else
+      memmove(data, _buffer, sizeToRead);
+#endif
       _buffer = ((const Byte *)_buffer) + sizeToRead;
       _bufferSize -= sizeToRead;
       if (_bufferSize == 0)

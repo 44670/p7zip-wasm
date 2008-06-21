@@ -11,43 +11,50 @@ sure()
   fi
 }
 
-PZIP7="$1"
+PZIP7=`pwd`"/$1"
 
+REP=TMP_$$
+echo "REP=${REP}"
 
-sure rm -fr 7za433_ref 7za433_7zip_bzip2 7za433_7zip_lzma 7za433_7zip_lzma_crypto 7za433_7zip_ppmd 7za433_tar
-sure rm -fr 7za433_7zip_bzip2.7z 7za433_7zip_lzma.7z 7za433_7zip_lzma_crypto.7z 7za433_7zip_ppmd.7z 7za433_tar.tar
+chmod -R 777 ${REP} 2> /dev/null
+rm -fr   ${REP}
+mkdir -p ${REP}
+
+cd ${REP}
+
+# sure rm -fr 7za433_ref 7za433_7zip_bzip2 7za433_7zip_lzma 7za433_7zip_lzma_crypto 7za433_7zip_ppmd 7za433_tar
+# sure rm -fr 7za433_7zip_bzip2.7z 7za433_7zip_lzma.7z 7za433_7zip_lzma_crypto.7z 7za433_7zip_ppmd.7z 7za433_tar.tar
 
 echo ""
 echo "# TESTING ..."
 echo "#############"
 
-sure ${PZIP7} t test/7za433_tar.tar
-sure ${PZIP7} t test/7za433_7zip_lzma.7z
-sure ${PZIP7} t -pqwerty test/7za433_7zip_lzma_crypto.7z
-sure ${PZIP7} t test/7za433_7zip_ppmd.7z
-sure ${PZIP7} t test/7za433_7zip_bzip2.7z
-
+sure ${PZIP7} t ../test/7za433_tar.tar
+sure ${PZIP7} t ../test/7za433_7zip_lzma.7z
+sure ${PZIP7} t -pqwerty ../test/7za433_7zip_lzma_crypto.7z
+sure ${PZIP7} t ../test/7za433_7zip_ppmd.7z
+sure ${PZIP7} t ../test/7za433_7zip_bzip2.7z
 
 echo ""
 echo "# EXTRACTING ..."
 echo "################"
 
-sure tar xf test/7za433_tar.tar
+sure tar xf ../test/7za433_tar.tar
 sure mv 7za433_tar 7za433_ref
 
-sure ${PZIP7} x test/7za433_tar.tar
+sure ${PZIP7} x ../test/7za433_tar.tar
 sure diff -r 7za433_ref 7za433_tar
 
-sure ${PZIP7} x test/7za433_7zip_lzma.7z
+sure ${PZIP7} x ../test/7za433_7zip_lzma.7z
 sure diff -r 7za433_ref 7za433_7zip_lzma
 
-sure ${PZIP7} x -pqwerty test/7za433_7zip_lzma_crypto.7z
+sure ${PZIP7} x -pqwerty ../test/7za433_7zip_lzma_crypto.7z
 sure diff -r 7za433_ref 7za433_7zip_lzma_crypto
 
-sure ${PZIP7} x test/7za433_7zip_ppmd.7z
+sure ${PZIP7} x ../test/7za433_7zip_ppmd.7z
 sure diff -r 7za433_ref 7za433_7zip_ppmd
 
-sure ${PZIP7} x test/7za433_7zip_bzip2.7z
+sure ${PZIP7} x ../test/7za433_7zip_bzip2.7z
 sure diff -r 7za433_ref 7za433_7zip_bzip2
 
 echo ""
@@ -86,8 +93,31 @@ sure diff -r 7za433_ref 7za433_7zip_ppmd
 sure ${PZIP7} x 7za433_7zip_bzip2.7z
 sure diff -r 7za433_ref 7za433_7zip_bzip2
 
+echo ""
+echo "# EXTRACTING (LZMA) ..."
+echo "#######################"
 
-./clean_all.sh
+rm -f 7za.exe
+
+sure ${PZIP7} x ../test/7za.exe.lzma
+sure diff 7za.exe 7za433_ref/bin/7za.exe
+sure rm -f 7za.exe
+
+sure ${PZIP7} x ../test/7za.exe.lzma86
+sure diff 7za.exe 7za433_ref/bin/7za.exe
+sure rm -f 7za.exe
+
+sure ${PZIP7} x ../test/7za.exe.lzma_eos
+sure diff 7za.exe 7za433_ref/bin/7za.exe
+sure rm -f 7za.exe
+
+#####################################
+
+cd ..
+
+# ./clean_all.sh
+chmod -R 777 ${REP} 2> /dev/null
+rm -fr   ${REP}
 
 echo ""
 echo "========"

@@ -57,10 +57,14 @@ bool CFileBase::Create(LPCTSTR filename, DWORD dwDesiredAccess,
   flags |= O_LARGEFILE;
 #endif
 
- int mode = 0600;
+  /* now use the umask value */
+  int mask = umask(0);
+  (void)umask(mask);
+  int mode = 0666 & ~(mask & 066); /* keep the R/W for the user */
 
   if (dwDesiredAccess & GENERIC_WRITE) flags |= O_WRONLY;
   if (dwDesiredAccess & GENERIC_READ)  flags |= O_RDONLY;
+
 
   switch (dwCreationDisposition)
   {
@@ -70,6 +74,7 @@ bool CFileBase::Create(LPCTSTR filename, DWORD dwDesiredAccess,
     case OPEN_ALWAYS   : flags |= O_CREAT;          break;
     // case TRUNCATE_EXISTING : flags |= O_TRUNC;      break;
   }
+  // printf("##DBG open(%s,0x%x,%o)##\n",name,flags,(unsigned)mode);
 
   _fd = -1;
 #ifdef HAVE_LSTAT

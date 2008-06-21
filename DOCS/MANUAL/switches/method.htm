@@ -55,7 +55,16 @@
     <TD>em={EncryptionMethodID}</TD> 
     <TD align="center">ZipCrypto</TD> 
     <TD>Sets a encryption method: ZipCrypto, AES128, AES192, AES256</TD> </TR>
+  <TR> <TD><A class="parameter">tc=[off | on]</A></TD> 
+     <TD align="center">off</TD>  <TD>Stores NTFS timestamps for files: Modification time, Creation time, Last access time.</TD> </TR>
+  <TR> <TD><A class="parameter">cl=[off | on]</A></TD> 
+     <TD align="center">off</TD>  <TD>7-Zip always uses local code page for file names.</TD> </TR>
+  <TR> <TD><A class="parameter">cu=[off | on]</A></TD> 
+     <TD align="center">off</TD>  <TD>7-Zip uses UTF-8 for file names that contain non-ASCII symbols.</TD> </TR>
 </TABLE>
+
+<P>By default (if <B>cl</B> and <B>cu</B> switches are not specified), 7-Zip uses UTF-8 encoding
+only for file names that contain symbols unsupported by local code page.</P>
 
 <DL>
   <DT><A name="ZipX"></A>x=[0 | 1 | 3 | 5 | 7 | 9 ]</DT>
@@ -186,6 +195,8 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
        <TD align="center">LZMA</TD>  <TD>Sets a method: LZMA, PPMd, BZip2, Deflate, BCJ, BCJ2, Copy.</TD> </TR>
    <TR> <TD><A class="parameter" href="#MultiThread">mt=[off | on | {N}]</A></TD> 
         <TD align="center">on</TD>  <TD>Sets multithreading mode.</TD> </TR>
+   <TR> <TD><A class="parameter">tc=[off | on]</A></TD> 
+        <TD align="center">off</TD>  <TD>Stores file creation timestamps.</TD> </TR>
 </TABLE>
 
 <DL>
@@ -314,11 +325,11 @@ GZip uses the same parameters as Zip, but GZip compresses only with Deflate meth
       <TR> <TH width="60">MethodID</TH> <TH>Description</TH> </TR>
       <TR> <TD>BCJ</TD> <TD>converter for x86 executables</TD> </TR>
       <TR> <TD><A class="parameter" href="#BCJ2">BCJ2</A></TD> <TD>converter for x86 executables (version 2)</TD> </TR>
-      <TR> <TD>BC_ARM</TD> <TD>converter for ARM (little endian) executables</TD> </TR>
-      <TR> <TD>BC_ARMThumb</TD> <TD>converter for ARM Thumb (little endian) executables</TD> </TR>
-      <TR> <TD>BC_IA64</TD> <TD>converter for IA-64 executables</TD> </TR>
-      <TR> <TD>BC_PPC_B</TD> <TD>converter for PowerPC (big endian) executables</TD> </TR>
-      <TR> <TD>BC_SPARC</TD> <TD>converter for SPARC executables</TD> </TR>
+      <TR> <TD>ARM</TD> <TD>converter for ARM (little endian) executables</TD> </TR>
+      <TR> <TD>ARMT</TD> <TD>converter for ARM Thumb (little endian) executables</TD> </TR>
+      <TR> <TD>IA64</TD> <TD>converter for IA-64 executables</TD> </TR>
+      <TR> <TD>PPC</TD> <TD>converter for PowerPC (big endian) executables</TD> </TR>
+      <TR> <TD>SPARC</TD> <TD>converter for SPARC executables</TD> </TR>
     </TABLE>
     <P>Filters increase the compression ratio for some types of files. Filters
        must be used with one of the compression method (for example, BCJ + LZMA).</P>

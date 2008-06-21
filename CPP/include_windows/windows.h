@@ -36,8 +36,7 @@
 #define WINAPI 
 
 #undef BOOL
-typedef int WINBOOL;
-typedef WINBOOL BOOL;
+typedef int BOOL;
 
 /* BEGIN #include <winnt.h> */
 /* BEGIN <winerror.h> */
@@ -46,9 +45,7 @@ typedef WINBOOL BOOL;
 #define ERROR_FILE_EXISTS           EEXIST
 #define ERROR_INVALID_HANDLE        EBADF
 #define ERROR_PATH_NOT_FOUND        ENOENT
-#define ERROR_FILENAME_EXCED_RANGE  ENAMETOOLONG
 #define ERROR_DISK_FULL             ENOSPC
-#define WAIT_TIMEOUT                ETIMEDOUT
 #define ERROR_NO_MORE_FILES         0x100123 // FIXME
 
 /* see Common/WyWindows.h
@@ -74,14 +71,14 @@ typedef TCHAR *LPTSTR;
 
 #ifdef UNICODE
 /*
- * __TEXT is a private macro whose specific use is to force the expansion of a
+ * P7ZIP_TEXT is a private macro whose specific use is to force the expansion of a
  * macro passed as an argument to the macro TEXT.  DO NOT use this
  * macro within your programs.  It's name and function could change without
  * notice.
  */
-#define __TEXT(q) L##q
+#define P7ZIP_TEXT(q) L##q
 #else
-#define __TEXT(q) q
+#define P7ZIP_TEXT(q) q
 #endif
 /*
  * UNICODE a constant string when UNICODE is defined, else returns the string
@@ -89,8 +86,7 @@ typedef TCHAR *LPTSTR;
  * The corresponding macros  _TEXT() and _T() for mapping _UNICODE strings
  * passed to C runtime functions are defined in mingw/tchar.h
  */
-#define TEXT(q) __TEXT(q)    
-typedef void *HANDLE;
+#define TEXT(q) P7ZIP_TEXT(q)    
 
 typedef BYTE BOOLEAN;
 
@@ -154,19 +150,7 @@ BOOL WINAPI LocalFileTimeToFileTime(CONST FILETIME *,FILETIME *);
 VOID WINAPI GetSystemTime(SYSTEMTIME *);
 BOOL WINAPI SystemTimeToFileTime(const SYSTEMTIME*,FILETIME *);
 
-BOOL WINAPI SetFileAttributesA(LPCSTR,DWORD);
-BOOL WINAPI SetFileAttributesW(LPCWSTR,DWORD);
-
-#define MoveMemory memmove
-
 DWORD WINAPI GetTickCount(VOID);
-
-#ifndef UNICODE
-// FIXME
-#define lstrlen strlen  /* OK for MBS */
-#define lstrcpy strcpy
-#define lstrcat strcat
-#endif
 
 #ifdef __cplusplus
 }
@@ -182,19 +166,6 @@ DWORD WINAPI GetTickCount(VOID);
 /* #include <unknwn.h> */
 #include <basetyps.h>
 struct IEnumSTATPROPSTG;
-
-/* FIXME
-typedef WCHAR OLECHAR;
-typedef LPWSTR LPOLESTR;
-typedef LPCWSTR LPCOLESTR;
-#define OLESTR(s) L##s
-
-typedef unsigned short VARTYPE;
-typedef short VARIANT_BOOL;
-typedef VARIANT_BOOL _VARIANT_BOOL;
-
-typedef OLECHAR *BSTR;
-*/
 
 typedef struct  tagSTATPROPSTG {
 	LPOLESTR lpwstrName;

@@ -4,12 +4,21 @@
 #if defined (__NetBSD__) || defined(__OpenBSD__) || defined (__FreeBSD__) || defined (__FreeBSD_kernel__) || defined (__APPLE__)
 #include <sys/param.h>
 #include <sys/sysctl.h>
-#elif defined(__linux__) || defined(__CYGWIN__) || defined(sun)
+#elif defined(__linux__) || defined(__CYGWIN__) || defined(sun) || defined(__NETWARE__)
 #include <unistd.h>
 #elif defined(hpux) || defined(__hpux)
 #include <sys/param.h>
 #include <sys/pstat.h>
 #endif
+
+#if defined(__NETWARE__)
+#include <sys/sysinfo.h>
+#endif
+
+#if defined(ENV_BEOS)
+#include <be/kernel/OS.h>
+#endif
+
 
 #include "Common/Types.h"
 
@@ -22,19 +31,19 @@ namespace NWindows
 		#if defined (__NetBSD__) || defined(__OpenBSD__)
 		UInt32 GetNumberOfProcessors() {
 			int mib[2], value;
-		  		int nbcpu = 1;
+		  	int nbcpu = 1;
 
-		  		mib[0] = CTL_HW;
-		  		mib[1] = HW_NCPU;
-		  		size_t len = sizeof(size_t);
-		  		if (sysctl(mib, 2, &value, &len, NULL, 0) >= 0)
-			  		if (value > nbcpu)
-						  		nbcpu = value;
+		  	mib[0] = CTL_HW;
+		  	mib[1] = HW_NCPU;
+		  	size_t len = sizeof(size_t);
+		  	if (sysctl(mib, 2, &value, &len, NULL, 0) >= 0)
+		  		if (value > nbcpu)
+					nbcpu = value;
 			return nbcpu;
 		}
 		#elif defined (__FreeBSD__) || defined (__FreeBSD_kernel__)
 		UInt32 GetNumberOfProcessors() {
-		  		int nbcpu = 1;
+		  	int nbcpu = 1;
 			size_t value;
 			size_t len = sizeof(value);
 			if (sysctlbyname("hw.ncpu", &value, &len, NULL, 0) == 0)
@@ -43,7 +52,7 @@ namespace NWindows
 		}
 		#elif defined (__APPLE__)
 		UInt32 GetNumberOfProcessors() {
-		  		int nbcpu = 1,value;
+		  	int nbcpu = 1,value;
 			size_t valSize = sizeof(value);
 			if (sysctlbyname ("hw.ncpu", &value, &valSize, NULL, 0) == 0)
 				nbcpu = value;
@@ -52,7 +61,7 @@ namespace NWindows
 
 		#elif defined(__linux__) || defined(__CYGWIN__) || defined(sun)
 		UInt32 GetNumberOfProcessors() {
-		  		int nbcpu = sysconf (_SC_NPROCESSORS_CONF);
+		  	int nbcpu = sysconf (_SC_NPROCESSORS_CONF);
 			if (nbcpu < 1) nbcpu = 1;
 			return nbcpu;
 		}
@@ -63,6 +72,21 @@ namespace NWindows
 				return (UInt32)psd.psd_proc_cnt;
 			return 1;
 		}
+		#elif defined(__NETWARE__)
+		UInt32 GetNumberOfProcessors() {
+			// int nbcpu = get_nprocs_conf();
+			int nbcpu = get_nprocs();
+			if (nbcpu < 1) nbcpu = 1;
+			return nbcpu;
+		}
+		#elif defined(ENV_BEOS)
+		UInt32 GetNumberOfProcessors() {
+			system_info info;
+			get_system_info(&info);
+			int nbcpu = info.cpu_count;
+			if (nbcpu < 1) nbcpu = 1;
+			return nbcpu;
+		}
 		#else
 		#warning Generic GetNumberOfProcessors
 		UInt32 GetNumberOfProcessors() {
@@ -72,7 +96,7 @@ namespace NWindows
 
 		/************************ GetRamSize ************************/
 	UInt64 GetRamSize() {
-			UInt64 ullTotalPhys = 128 * 1024 * 1024; // FIXME 128MB
+			UInt64 ullTotalPhys = 128 * 1024 * 1024; // default : 128MB
 
 #ifdef linux
 	 		FILE * f = fopen( "/proc/meminfo", "r" );
@@ -111,7 +135,7 @@ namespace NWindows
 					// see http://readlist.com/lists/cygwin.com/cygwin/0/3313.html
 			unsigned long maxpages=sysconf(_SC_PHYS_PAGES);
 			ullTotalPhys = ((UInt64)pagesize)*maxpages;
-#elif defined ( sun )
+#elif defined ( sun ) || defined(__NETWARE__)
 			unsigned long pagesize=sysconf(_SC_PAGESIZE);
 			unsigned long maxpages=sysconf(_SC_PHYS_PAGES);
 			ullTotalPhys = ((UInt64)pagesize)*maxpages;
@@ -123,6 +147,11 @@ namespace NWindows
 			if ( pstat( PSTAT_STATIC, pu, (size_t)sizeof(pst), (size_t)0, 0 ) != -1 ) {
 				ullTotalPhys = ((UInt64)pst.physical_memory)*pst.page_size;
 			}
+#elif defined(ENV_BEOS)
+			system_info info;
+			get_system_info(&info);
+			ullTotalPhys = info.max_pages;
+			ullTotalPhys *= 4096;
 #else
 #warning Generic GetRamSize
 #endif

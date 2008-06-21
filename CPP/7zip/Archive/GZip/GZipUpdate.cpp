@@ -22,7 +22,11 @@ namespace NGZip {
 
 static const CMethodId kMethodId_Deflate = 0x040108;
 
+#ifdef _WIN32
 static const Byte kHostOS = NFileHeader::NHostOS::kFAT;
+#else
+static const Byte kHostOS = NFileHeader::NHostOS::kUnix;
+#endif
 
 HRESULT UpdateArchive(
     DECL_EXTERNAL_CODECS_LOC_VARS

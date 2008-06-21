@@ -52,7 +52,6 @@ SRCS=\
  ../../Crypto/7zAES/7zAES.cpp \
  ../../Crypto/7zAES/7zAESRegister.cpp \
  ../../Crypto/AES/MyAES.cpp \
- ../../Crypto/Hash/Sha256.cpp \
  ./Main.cpp \
  ../../UI/Common/ArchiveExtractCallback.cpp \
  ../../UI/Common/ArchiveOpenCallback.cpp \
@@ -79,10 +78,12 @@ SRCS=\
  ../../../Windows/System.cpp
 
 SRCS_C=\
-../../../../C/Compress/Branch/BranchX86.c \
 ../../../../C/7zCrc.c \
 ../../../../C/Threads.c \
-../../../../C/Crypto/Aes.c
+../../../../C/Sha256.c \
+../../../../C/LzmaDec.c \
+../../../../C/Bra86.c \
+../../../../C/Aes.c
 
 wine_date_and_time.o : ../../../myWindows/wine_date_and_time.cpp
 	$(CXX) $(CFLAGS) ../../../myWindows/wine_date_and_time.cpp
@@ -170,8 +171,6 @@ CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/7zAES/7zAES.cpp
 MyAES.o : ../../Crypto/AES/MyAES.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/AES/MyAES.cpp
-Sha256.o : ../../Crypto/Hash/Sha256.cpp
-	$(CXX) $(CFLAGS) ../../Crypto/Hash/Sha256.cpp
 Error.o : ../../../Windows/Error.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/Error.cpp
 FileDir.o : ../../../Windows/FileDir.cpp
@@ -234,8 +233,6 @@ PropIDUtils.o : ../../UI/Common/PropIDUtils.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/PropIDUtils.cpp
 Main.o : ./Main.cpp
 	$(CXX) $(CFLAGS) ./Main.cpp
-BranchX86.o : ../../../../C/Compress/Branch/BranchX86.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchX86.c
 7zRegister.o : ../../Archive/7z/7zRegister.cpp
 	$(CXX) $(CFLAGS) ../../Archive/7z/7zRegister.cpp
 LZMARegister.o : ../../Compress/LZMA/LZMARegister.cpp
@@ -252,8 +249,18 @@ CopyRegister.o : ../../Compress/Copy/CopyRegister.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/7zAES/7zAESRegister.cpp
 Threads.o : ../../../../C/Threads.c
 	$(CC) $(CFLAGS) ../../../../C/Threads.c
-Aes.o : ../../../../C/Crypto/Aes.c
-	$(CC) $(CFLAGS) ../../../../C/Crypto/Aes.c
+
+LzmaDec.o : ../../../../C/LzmaDec.c
+	$(CC) $(CFLAGS) ../../../../C/LzmaDec.c
+Sha256.o : ../../../../C/Sha256.c
+	$(CC) $(CFLAGS) ../../../../C/Sha256.c
+Aes.o : ../../../../C/Aes.c
+	$(CC) $(CFLAGS) ../../../../C/Aes.c
+Bra86.o : ../../../../C/Bra86.c
+	$(CC) $(CFLAGS) ../../../../C/Bra86.c
+
+
+
 # CRC32, C version
 7zCrc.o : ../../../../C/7zCrc.c
 	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/7zCrc.c

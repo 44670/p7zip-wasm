@@ -1,3 +1,4 @@
+MKDIR = mkdir -p
 
 DEST_HOME=/usr/local
 DEST_BIN=$(DEST_HOME)/bin
@@ -20,7 +21,7 @@ all_test : test test_7z test_7zr test_Client7z
 	cd CPP/7zip/Compress/LZMA_Alone  ; $(MAKE) test
 
 common:
-	mkdir -p  bin
+	$(MKDIR) bin
 
 7za: common
 	cd CPP/7zip/Bundles/Alone ; $(MAKE) all
@@ -29,7 +30,7 @@ common:
 	cd CPP/7zip/Bundles/Alone7z ; $(MAKE) all
 
 Client7z: common
-	mkdir -p  bin/Codecs
+	$(MKDIR) bin/Codecs
 	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) all
 	cd CPP/7zip/UI/Client7z      ; $(MAKE) all
 
@@ -43,11 +44,11 @@ depend:
 	cd CPP/7zip/Compress/Rar      ; $(MAKE) depend
 
 sfx: common
-	mkdir -p  bin
+	$(MKDIR) bin
 	cd CPP/7zip/Bundles/SFXCon ; $(MAKE) all
 
 7z: common
-	mkdir -p  bin/Codecs
+	$(MKDIR) bin/Codecs
 	cd CPP/7zip/UI/Console           ; $(MAKE) all
 	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) all
 	cd CPP/7zip/Compress/Rar         ; $(MAKE) all
@@ -66,6 +67,7 @@ clean:
 	cd CPP/7zip/Bundles/AloneGCOV    ; $(MAKE) clean
 	rm -fr bin
 	rm -f make.log
+	rm -f check/7z.so
 	find . -name "*~" -exec rm -f {} \;
 	find . -name "*.orig" -exec rm -f {} \;
 	find . -name ".*.swp" -exec rm -f {} \;

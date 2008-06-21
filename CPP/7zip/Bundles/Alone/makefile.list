@@ -36,15 +36,11 @@ SRCS=\
  ../../../Windows/System.cpp \
  ../../Common/CreateCoder.cpp \
  ../../Archive/Common/CrossThreadProgress.cpp \
- ../../Compress/Branch/ARM.cpp \
- ../../Compress/Branch/ARMThumb.cpp \
  ../../Compress/Branch/BCJ2Register.cpp \
  ../../Compress/Branch/BCJRegister.cpp \
  ../../Compress/Branch/BranchCoder.cpp \
+ ../../Compress/Branch/BranchMisc.cpp \
  ../../Compress/Branch/BranchRegister.cpp \
- ../../Compress/Branch/IA64.cpp \
- ../../Compress/Branch/PPC.cpp \
- ../../Compress/Branch/SPARC.cpp \
  ../../Compress/Branch/x86.cpp \
  ../../Compress/Branch/x86_2.cpp \
  ../../Compress/BZip2/BZip2CRC.cpp \
@@ -69,7 +65,6 @@ SRCS=\
  ../../Compress/RangeCoder/RangeCoderBit.cpp \
  ../../Compress/Shrink/ShrinkDecoder.cpp \
  ../../Compress/Z/ZDecoder.cpp \
- ../../Compress/BWT/BlockSort.cpp \
  ../../Compress/Lzx/Lzx86Converter.cpp \
  ../../Compress/Lzx/LzxDecoder.cpp \
  ../../Compress/Quantum/QuantumDecoder.cpp \
@@ -101,6 +96,10 @@ SRCS=\
  ../../Archive/GZip/GZipOut.cpp \
  ../../Archive/GZip/GZipRegister.cpp \
  ../../Archive/GZip/GZipUpdate.cpp \
+ ../../Archive/Lzma/LzmaArcRegister.cpp \
+ ../../Archive/Lzma/LzmaFiltersDecode.cpp \
+ ../../Archive/Lzma/LzmaHandler.cpp \
+ ../../Archive/Lzma/LzmaIn.cpp \
  ../../Archive/Tar/TarHandler.cpp \
  ../../Archive/Tar/TarHandlerOut.cpp \
  ../../Archive/Tar/TarHeader.cpp \
@@ -163,7 +162,6 @@ SRCS=\
  ../../Crypto/Hash/Pbkdf2HmacSha1.cpp \
  ../../Crypto/Hash/RandGen.cpp \
  ../../Crypto/Hash/Sha1.cpp \
- ../../Crypto/Hash/Sha256.cpp \
  ../../Common/FilePathAutoRename.cpp \
  ../../Common/FileStreams.cpp \
  ../../Common/FilterCoder.cpp \
@@ -187,19 +185,20 @@ SRCS=\
  ../../Common/StreamUtils.cpp
 
 SRCS_C=\
- ../../../../C/Compress/Lz/MatchFinder.c \
- ../../../../C/Compress/Lz/MatchFinderMt.c \
- ../../../../C/Compress/Huffman/HuffmanEncode.c \
- ../../../../C/Compress/Branch/BranchARM.c \
- ../../../../C/Compress/Branch/BranchARMThumb.c \
- ../../../../C/Compress/Branch/BranchIA64.c \
- ../../../../C/Compress/Branch/BranchPPC.c \
- ../../../../C/Compress/Branch/BranchSPARC.c \
- ../../../../C/Compress/Branch/BranchX86.c \
  ../../../../C/7zCrc.c \
  ../../../../C/Sort.c \
  ../../../../C/Threads.c \
- ../../../../C/Crypto/Aes.c
+ ../../../../C/Sha256.c \
+ ../../../../C/LzmaEnc.c \
+ ../../../../C/LzmaDec.c \
+ ../../../../C/BwtSort.c \
+ ../../../../C/BraIA64.c \
+ ../../../../C/Bra.c \
+ ../../../../C/Bra86.c \
+ ../../../../C/Aes.c \
+ ../../../../C/LzFind.c \
+ ../../../../C/LzFindMt.c \
+ ../../../../C/HuffEnc.c
 
 myGetTickCount.o : ../../../myWindows/myGetTickCount.cpp
 	$(CXX) $(CFLAGS) ../../../myWindows/myGetTickCount.cpp
@@ -323,24 +322,16 @@ StreamObjects.o : ../../Common/StreamObjects.cpp
 	$(CXX) $(CFLAGS) ../../Common/StreamObjects.cpp
 StreamUtils.o : ../../Common/StreamUtils.cpp
 	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
-ARM.o : ../../Compress/Branch/ARM.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Branch/ARM.cpp
-ARMThumb.o : ../../Compress/Branch/ARMThumb.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Branch/ARMThumb.cpp
 BCJ2Register.o : ../../Compress/Branch/BCJ2Register.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Branch/BCJ2Register.cpp
 BCJRegister.o : ../../Compress/Branch/BCJRegister.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Branch/BCJRegister.cpp
 BranchCoder.o : ../../Compress/Branch/BranchCoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Branch/BranchCoder.cpp
+BranchMisc.o : ../../Compress/Branch/BranchMisc.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Branch/BranchMisc.cpp
 BranchRegister.o : ../../Compress/Branch/BranchRegister.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Branch/BranchRegister.cpp
-IA64.o : ../../Compress/Branch/IA64.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Branch/IA64.cpp
-PPC.o : ../../Compress/Branch/PPC.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Branch/PPC.cpp
-SPARC.o : ../../Compress/Branch/SPARC.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Branch/SPARC.cpp
 x86.o : ../../Compress/Branch/x86.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Branch/x86.cpp
 x86_2.o : ../../Compress/Branch/x86_2.cpp
@@ -389,8 +380,6 @@ ShrinkDecoder.o : ../../Compress/Shrink/ShrinkDecoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Shrink/ShrinkDecoder.cpp
 ZDecoder.o : ../../Compress/Z/ZDecoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Z/ZDecoder.cpp
-BlockSort.o : ../../Compress/BWT/BlockSort.cpp
-	$(CXX) $(CFLAGS) ../../Compress/BWT/BlockSort.cpp
 Lzx86Converter.o : ../../Compress/Lzx/Lzx86Converter.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Lzx/Lzx86Converter.cpp
 LzxDecoder.o : ../../Compress/Lzx/LzxDecoder.cpp
@@ -453,6 +442,16 @@ GZipRegister.o : ../../Archive/GZip/GZipRegister.cpp
 	$(CXX) $(CFLAGS) ../../Archive/GZip/GZipRegister.cpp
 GZipUpdate.o : ../../Archive/GZip/GZipUpdate.cpp
 	$(CXX) $(CFLAGS) ../../Archive/GZip/GZipUpdate.cpp
+
+LzmaArcRegister.o : ../../Archive/Lzma/LzmaArcRegister.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Lzma/LzmaArcRegister.cpp
+LzmaFiltersDecode.o : ../../Archive/Lzma/LzmaFiltersDecode.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Lzma/LzmaFiltersDecode.cpp
+LzmaHandler.o : ../../Archive/Lzma/LzmaHandler.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Lzma/LzmaHandler.cpp
+LzmaIn.o : ../../Archive/Lzma/LzmaIn.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Lzma/LzmaIn.cpp
+
 TarHandler.o : ../../Archive/Tar/TarHandler.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Tar/TarHandler.cpp
 TarHandlerOut.o : ../../Archive/Tar/TarHandlerOut.cpp
@@ -579,35 +578,38 @@ RandGen.o : ../../Crypto/Hash/RandGen.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/Hash/RandGen.cpp
 Sha1.o : ../../Crypto/Hash/Sha1.cpp
 	$(CXX) $(CFLAGS) ../../Crypto/Hash/Sha1.cpp
-Sha256.o : ../../Crypto/Hash/Sha256.cpp
-	$(CXX) $(CFLAGS) ../../Crypto/Hash/Sha256.cpp
-MatchFinder.o : ../../../../C/Compress/Lz/MatchFinder.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Lz/MatchFinder.c
-MatchFinderMt.o : ../../../../C/Compress/Lz/MatchFinderMt.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Lz/MatchFinderMt.c
-HuffmanEncode.o : ../../../../C/Compress/Huffman/HuffmanEncode.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Huffman/HuffmanEncode.c
-BranchARM.o : ../../../../C/Compress/Branch/BranchARM.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchARM.c
-BranchARMThumb.o : ../../../../C/Compress/Branch/BranchARMThumb.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchARMThumb.c
-BranchIA64.o : ../../../../C/Compress/Branch/BranchIA64.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchIA64.c
-BranchPPC.o : ../../../../C/Compress/Branch/BranchPPC.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchPPC.c
-BranchSPARC.o : ../../../../C/Compress/Branch/BranchSPARC.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchSPARC.c
-BranchX86.o : ../../../../C/Compress/Branch/BranchX86.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchX86.c
 Sort.o : ../../../../C/Sort.c
 	$(CC) $(CFLAGS) ../../../../C/Sort.c
 Threads.o : ../../../../C/Threads.c
 	$(CC) $(CFLAGS) ../../../../C/Threads.c
-Aes.o : ../../../../C/Crypto/Aes.c
-	$(CC) $(CFLAGS) ../../../../C/Crypto/Aes.c
+
+Sha256.o : ../../../../C/Sha256.c
+	$(CC) $(CFLAGS) ../../../../C/Sha256.c
+LzmaEnc.o : ../../../../C/LzmaEnc.c
+	$(CC) $(CFLAGS) ../../../../C/LzmaEnc.c
+LzmaDec.o : ../../../../C/LzmaDec.c
+	$(CC) $(CFLAGS) ../../../../C/LzmaDec.c
+
+BwtSort.o : ../../../../C/BwtSort.c
+	$(CC) $(CFLAGS) ../../../../C/BwtSort.c
+BraIA64.o : ../../../../C/BraIA64.c
+	$(CC) $(CFLAGS) ../../../../C/BraIA64.c
+Bra.o : ../../../../C/Bra.c
+	$(CC) $(CFLAGS) ../../../../C/Bra.c
+Bra86.o : ../../../../C/Bra86.c
+	$(CC) $(CFLAGS) ../../../../C/Bra86.c
+Aes.o : ../../../../C/Aes.c
+	$(CC) $(CFLAGS) ../../../../C/Aes.c
+LzFind.o : ../../../../C/LzFind.c
+	$(CC) $(CFLAGS) ../../../../C/LzFind.c
+LzFindMt.o : ../../../../C/LzFindMt.c
+	$(CC) $(CFLAGS) ../../../../C/LzFindMt.c
+HuffEnc.o : ../../../../C/HuffEnc.c
+	$(CC) $(CFLAGS) ../../../../C/HuffEnc.c
+
 # CRC32, C version
 7zCrc.o : ../../../../C/7zCrc.c
-	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/7zCrc.c
+	$(CC) $(CFLAGS) ../../../../C/7zCrc.c
 # CRC32, ASM version
 7zCrcT8.o : ../../../../C/7zCrcT8.c
-	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/7zCrcT8.c
+	$(CC) $(CFLAGS) ../../../../C/7zCrcT8.c

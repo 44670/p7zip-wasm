@@ -10,15 +10,13 @@ OBJS = \
   LzmaAlone.o \
   LzmaBench.o \
   LzmaBenchCon.o \
-  LzmaRam.o \
   LZMADecoder.o \
   LZMAEncoder.o \
-  LZOutWindow.o \
-  RangeCoderBit.o \
   InBuffer.o \
   OutBuffer.o \
   FileStreams.o \
   StreamUtils.o \
+  C_FileIO.o \
   CommandLineParser.o \
   CRC.o \
   IntToString.o \
@@ -27,14 +25,15 @@ OBJS = \
   StringToInt.o \
   MyVector.o \
   7zCrc.o \
-  BranchX86.o \
-  MatchFinder.o \
-  LzmaDecode.o \
-  LzmaRamDecode.o \
-  C_FileIO.o \
   System.o \
   Threads.o \
-  MatchFinderMt.o
+  Bra86.o \
+  LzFind.o \
+  LzFindMt.o \
+  LzmaDec.o \
+  LzmaEnc.o \
+  Lzma86Dec.o \
+  Lzma86Enc.o
 
 all: $(PROG)
 
@@ -107,12 +106,6 @@ MyVector.o: ../../../Common/MyVector.cpp
 7zCrc.o: ../../../../C/7zCrc.c
 	$(CC) $(CFLAGS) ../../../../C/7zCrc.c
 
-BranchX86.o: ../../../../C/Compress/Branch/BranchX86.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchX86.c
-
-LzmaDecode.o: ../../../../C/Compress/Lzma/LzmaDecode.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Lzma/LzmaDecode.c
-
 LzmaRamDecode.o: LzmaRamDecode.c
 	$(CC) $(CFLAGS) LzmaRamDecode.c
 
@@ -122,14 +115,30 @@ System.o : ../../../Windows/System.cpp
 Threads.o : ../../../../C/Threads.c
 	$(CC) $(CFLAGS) ../../../../C/Threads.c
 
-MatchFinder.o : ../../../../C/Compress/Lz/MatchFinder.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Lz/MatchFinder.c
+Bra86.o: ../../../../C/Bra86.c
+	$(CC) $(CFLAGS) ../../../../C/Bra86.c
 
-MatchFinderMt.o : ../../../../C/Compress/Lz/MatchFinderMt.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Lz/MatchFinderMt.c
+LzFind.o: ../../../../C/LzFind.c
+	$(CC) $(CFLAGS) ../../../../C/LzFind.c
+
+LzFindMt.o: ../../../../C/LzFindMt.c
+	$(CC) $(CFLAGS) ../../../../C/LzFindMt.c
+
+LzmaDec.o: ../../../../C/LzmaDec.c
+	$(CC) $(CFLAGS) ../../../../C/LzmaDec.c
+
+LzmaEnc.o: ../../../../C/LzmaEnc.c
+	$(CC) $(CFLAGS) ../../../../C/LzmaEnc.c
+
+Lzma86Dec.o: ../../../../C/LzmaUtil/Lzma86Dec.c
+	$(CC) $(CFLAGS) ../../../../C/LzmaUtil/Lzma86Dec.c
+
+Lzma86Enc.o: ../../../../C/LzmaUtil/Lzma86Enc.c
+	$(CC) $(CFLAGS) ../../../../C/LzmaUtil/Lzma86Enc.c
 
 clean:
-	-$(RM) $(PROG) $(OBJS) testfile*
+	-$(RM) $(PROG) $(OBJS) testfile* *.exe ir.out
+	-$(RM) -fr SunWS_cache
 
 test: $(PROG)
 	cp LzmaAlone.cpp testfile

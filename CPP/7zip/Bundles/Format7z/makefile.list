@@ -40,7 +40,6 @@ SRCS=\
 ../../Crypto/7zAES/7zAES.cpp \
 ../../Crypto/Hash/RandGen.cpp \
 ../../Crypto/Hash/Sha1.cpp \
-../../Crypto/Hash/Sha256.cpp \
 ../../Archive/7z/7zDecode.cpp \
 ../../Archive/7z/7zEncode.cpp \
 ../../Archive/7z/7zExtract.cpp \
@@ -69,11 +68,8 @@ SRCS=\
 ../../Common/VirtThread.cpp
 
 SRCS_C=\
-../../../../C/Compress/Lz/MatchFinder.c \
-../../../../C/Compress/Lz/MatchFinderMt.c \
 ../../../../C/7zCrc.c \
-../../../../C/Threads.c \
-../../../../C/Crypto/Aes.c
+../../../../C/Threads.c
 
 wine_date_and_time.o : ../../../myWindows/wine_date_and_time.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../../myWindows/wine_date_and_time.cpp
@@ -121,10 +117,6 @@ PPMDEncoder.o : ../../Compress/PPMD/PPMDEncoder.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/PPMD/PPMDEncoder.cpp
 PPMDRegister.o : ../../Compress/PPMD/PPMDRegister.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/PPMD/PPMDRegister.cpp
-ARM.o : ../../Compress/Branch/ARM.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Branch/ARM.cpp
-ARMThumb.o : ../../Compress/Branch/ARMThumb.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Branch/ARMThumb.cpp
 BCJ2Register.o : ../../Compress/Branch/BCJ2Register.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Branch/BCJ2Register.cpp
 BCJRegister.o : ../../Compress/Branch/BCJRegister.cpp
@@ -133,12 +125,6 @@ BranchCoder.o : ../../Compress/Branch/BranchCoder.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Branch/BranchCoder.cpp
 BranchRegister.o : ../../Compress/Branch/BranchRegister.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Branch/BranchRegister.cpp
-IA64.o : ../../Compress/Branch/IA64.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Branch/IA64.cpp
-PPC.o : ../../Compress/Branch/PPC.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Branch/PPC.cpp
-SPARC.o : ../../Compress/Branch/SPARC.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Branch/SPARC.cpp
 x86.o : ../../Compress/Branch/x86.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Branch/x86.cpp
 x86_2.o : ../../Compress/Branch/x86_2.cpp
@@ -223,8 +209,6 @@ RandGen.o : ../../Crypto/Hash/RandGen.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Crypto/Hash/RandGen.cpp
 Sha1.o : ../../Crypto/Hash/Sha1.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Crypto/Hash/Sha1.cpp
-Sha256.o : ../../Crypto/Hash/Sha256.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Crypto/Hash/Sha256.cpp
 RarAES.o : ../../Crypto/RarAES/RarAES.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Crypto/RarAES/RarAES.cpp
 Rar20Cipher.o : ../../Crypto/Rar20/Rar20Cipher.cpp
@@ -475,30 +459,10 @@ ZipRegister.o : ../../Archive/Zip/ZipRegister.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Zip/ZipRegister.cpp
 ZipUpdate.o : ../../Archive/Zip/ZipUpdate.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Zip/ZipUpdate.cpp
-MatchFinder.o : ../../../../C/Compress/Lz/MatchFinder.c
-	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/Compress/Lz/MatchFinder.c
-MatchFinderMt.o : ../../../../C/Compress/Lz/MatchFinderMt.c
-	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/Compress/Lz/MatchFinderMt.c
-HuffmanEncode.o : ../../../../C/Compress/Huffman/HuffmanEncode.c
-	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/Compress/Huffman/HuffmanEncode.c
-BranchARM.o : ../../../../C/Compress/Branch/BranchARM.c
-	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/Compress/Branch/BranchARM.c
-BranchARMThumb.o : ../../../../C/Compress/Branch/BranchARMThumb.c
-	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/Compress/Branch/BranchARMThumb.c
-BranchIA64.o : ../../../../C/Compress/Branch/BranchIA64.c
-	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/Compress/Branch/BranchIA64.c
-BranchPPC.o : ../../../../C/Compress/Branch/BranchPPC.c
-	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/Compress/Branch/BranchPPC.c
-BranchSPARC.o : ../../../../C/Compress/Branch/BranchSPARC.c
-	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/Compress/Branch/BranchSPARC.c
-BranchX86.o : ../../../../C/Compress/Branch/BranchX86.c
-	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/Compress/Branch/BranchX86.c
 Sort.o : ../../../../C/Sort.c
 	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/Sort.c
 Threads.o : ../../../../C/Threads.c
 	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/Threads.c
-Aes.o : ../../../../C/Crypto/Aes.c
-	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/Crypto/Aes.c
 # CRC32, C version
 7zCrc.o : ../../../../C/7zCrc.c
 	$(CC) $(CC_SHARED) $(CC_SHARED) $(CFLAGS) ../../../../C/7zCrc.c

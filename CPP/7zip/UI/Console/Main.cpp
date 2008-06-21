@@ -56,7 +56,7 @@ using namespace NWindows;
 using namespace NFile;
 using namespace NCommandLineParser;
 
-HINSTANCE g_hInstance = 0;
+// HINSTANCE g_hInstance = 0;
 extern CStdOutStream *g_StdStream;
 
 static const char *kCopyrightString = "\n7-Zip"
@@ -327,7 +327,7 @@ int Main2(
     stdStream << endl << "Codecs:" << endl;
 
     #ifdef EXTERNAL_CODECS
-    UINT32 numMethods;
+    UInt32 numMethods;
     if (codecs->GetNumberOfMethods(&numMethods) == S_OK)
     for (UInt32 j = 0; j < numMethods; j++)
     {

@@ -1,4 +1,7 @@
 
+# gcov *.c *.cpp
+
+
 ALLFLAGS=-fprofile-arcs -ftest-coverage \
     	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
 	-DNDEBUG -D_REENTRANT -DENV_UNIX \

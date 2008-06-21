@@ -1,9 +1,49 @@
 
+Version 4.58
+============
+  - From Windows version of 7-zip 4.58 :
+    - Some speed optimizations.
+    - 7-Zip now can unpack .lzma archives.
+    - Unicode (UTF-8) support for filenames in .ZIP archives. Now there are 3 modes:
+        1) Default mode: 7-Zip uses UTF-8, if the local code page doesn't contain required symbols.
+        2) -mcu switch:  7-Zip uses UTF-8, if there are non-ASCII symbols.
+        3) -mcl switch:  7-Zip uses local code page.
+    - Now it's possible to store file creation time in 7z and ZIP archives (-mtc switch).
+    - 7-Zip now can unpack multivolume RAR archives created with 
+      "old style volume names" scheme and names *.001, *.002, ...
+    - Now it's possible to use -mSW- and -mSW+ switches instead of -mSW=off and -mSW=on  
+    - Some bugs were fixed.  
+
+  - Bug #1898410 : Timestamp error in archive listing
+      now "7za l .." and "ls -l just_extracted_file" give the same date and time.
+
+  - Bug #1860938 : unix file rights only 600 instead of 644
+
+  - Bug #1941574 : gzip files always marked as OS FAT, Now p7zip uses "Unix".
+
+  - Bug #1947700 : file containing excluded files not read
+      When using the -xr <filename> flag to list files not to be included in the
+      archive the file <filename> is not read if it is a symbolic link.
+
+  - Feature Requests #1868080 : add support to compile for NetWare (makefile.netware_asm_gcc_3.X)
+
+  - Patch #1883893 : Incorrect path ref to docs in man pages (When using the last ($DEST_DIR) argument with install.sh)
+  
+  - now "install.sh" supports filenames with spaces.
+
+  - some code cleanup (Synchronization)
+
+  - some minor fix in the BZip2 codec.
+
+  - fix with the define "__TEXT" for s390
+
+
 Version 4.57
 ============
   - From Windows version of 7-zip 4.57 :
     - The BUG in command line version was fixed: -up3 switch could work incorrectly.
     - Minor improvement in ZIP compression.
+
 
 Version 4.56  (never published)
 ============

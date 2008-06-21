@@ -73,7 +73,7 @@ void test_mbs(void) {
     ptr = CharNextA(ptr);
     len += 1;
   }
-  if (len != len1) {
+  if ((len != len1) && (len != 12)) { // 12 = when locale is UTF8 instead of ISO8859-15
     printf("ERROR CharNextA : len=%d, len1=%d\n",(int)len,(int)len1);
     exit(EXIT_FAILURE);
   }
@@ -218,21 +218,22 @@ static void test_semaphore()
 {
 	g_StdOut << "\nTEST SEMAPHORE :\n";
 
-	NWindows::NSynchronization::CSemaphore sema;
+	NWindows::NSynchronization::CSynchro sync;
+	NWindows::NSynchronization::CSemaphoreWFMO sema;
 	bool bres;
 	DWORD waitResult;
 	int i;
 
-	sema.Create(2,10);
+	sema.Create(&sync,2,10);
 
 	g_StdOut << "   - Release(1)\n";
 	for(i = 0 ;i < 8;i++)
 	{
 		bres = sema.Release(1);
-		assert(bres == true);
+		assert(bres == S_OK);
 	}
 	bres = sema.Release(1);
-	assert(bres == false);
+	assert(bres == S_FALSE);
 
 	g_StdOut << "   - WaitForMultipleObjects(INFINITE)\n";
 	HANDLE events[1] = { sema };
@@ -241,22 +242,6 @@ static void test_semaphore()
 		waitResult = ::WaitForMultipleObjects(1, events, FALSE, INFINITE);
 		assert(waitResult == WAIT_OBJECT_0);
 	}
-
-	g_StdOut << "   - WaitForMultipleObjects(0)\n";
-	waitResult = ::WaitForMultipleObjects(1, events, FALSE, 0);
-	assert(waitResult == WAIT_TIMEOUT);
-
-	g_StdOut << "   - Release(3)\n";
-	bres = sema.Release(3);
-	assert(bres == true);
-
-	for(int i = 0 ;i < 3;i++)
-	{
-		waitResult = ::WaitForMultipleObjects(1, events, TRUE, INFINITE);
-		assert(waitResult == WAIT_OBJECT_0);
-	}
-	waitResult = ::WaitForMultipleObjects(1, events, TRUE, 0);
-	assert(waitResult == WAIT_TIMEOUT);
 
 	g_StdOut << "   Done\n";
 }

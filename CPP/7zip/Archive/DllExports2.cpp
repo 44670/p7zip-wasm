@@ -17,10 +17,10 @@ extern "C"
 #include "../ICoder.h"
 #include "../IPassword.h"
 
-HINSTANCE g_hInstance;
 #ifndef _UNICODE
 #ifdef _WIN32
 bool g_IsNT = false;
+HINSTANCE g_hInstance;
 static bool IsItWindowsNT()
 {
   OSVERSIONINFO versionInfo;
@@ -32,8 +32,9 @@ static bool IsItWindowsNT()
 #endif
 #endif
 
+#ifdef _WIN32
 extern "C"
-DLLEXPORT BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /*lpReserved*/)
+BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /*lpReserved*/)
 {
   if (dwReason == DLL_PROCESS_ATTACH)
   {
@@ -43,12 +44,10 @@ DLLEXPORT BOOL WINAPI DllMain(HINSTANCE hInstance, DWORD dwReason, LPVOID /*lpRe
     g_IsNT = IsItWindowsNT();
     #endif
     #endif
-    #if defined(_WIN32) && defined(_7ZIP_LARGE_PAGES)
-    SetLargePageSize();
-    #endif
   }
   return TRUE;
 }
+#endif
 
 DEFINE_GUID(CLSID_CArchiveHandler, 
 0x23170F69, 0x40C1, 0x278A, 0x10, 0x00, 0x00, 0x01, 0x10, 0x00, 0x00, 0x00);

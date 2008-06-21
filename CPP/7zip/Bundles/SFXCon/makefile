@@ -86,13 +86,15 @@ OpenArchive.o\
 PropIDUtils.o\
 CreateCoder.o\
 Main.o\
-Sha256.o \
-BranchX86.o \
 BCJ2Register.o\
 BCJRegister.o\
-Threads.o\
 $(OBJ_CRC32) \
+Threads.o \
+Sha256.o \
+LzmaDec.o \
+Bra86.o \
 Aes.o
+
 
 include ../../../../makefile.glb
 

@@ -19,6 +19,22 @@ using namespace NWindows;
 
 CStdOutStream *g_StdStream = 0;
 
+#ifdef _WIN32
+#ifndef _UNICODE
+bool g_IsNT = false;
+#endif
+#if !defined(_UNICODE) || !defined(_WIN64)
+static inline bool IsItWindowsNT()
+{
+  OSVERSIONINFO versionInfo;
+  versionInfo.dwOSVersionInfoSize = sizeof(versionInfo);
+  if (!::GetVersionEx(&versionInfo)) 
+    return false;
+  return (versionInfo.dwPlatformId == VER_PLATFORM_WIN32_NT);
+}
+#endif
+#endif
+
 extern int Main2(
   #ifndef _WIN32  
   int numArguments, const char *arguments[]
@@ -32,22 +48,7 @@ static const char *kMemoryExceptionMessage = "\n\nERROR: Can't allocate required
 static const char *kUnknownExceptionMessage = "\n\nUnknown Error\n";
 static const char *kInternalExceptionMessage = "\n\nInternal Error #";
 
-#ifdef UNICODE
-static inline bool IsItWindowsNT()
-{
-  OSVERSIONINFO versionInfo;
-  versionInfo.dwOSVersionInfoSize = sizeof(versionInfo);
-  if (!::GetVersionEx(&versionInfo)) 
-    return false;
-  return (versionInfo.dwPlatformId == VER_PLATFORM_WIN32_NT);
-}
-#endif
-
-int 
-#ifdef _MSC_VER
-__cdecl 
-#endif
-main
+int MY_CDECL main
 (
 #ifndef _WIN32  
 int numArguments, const char *arguments[]
@@ -55,12 +56,20 @@ int numArguments, const char *arguments[]
 )
 {
   g_StdStream = &g_StdOut;
+  #ifdef _WIN32
+  
   #ifdef _UNICODE
+  #ifndef _WIN64
   if (!IsItWindowsNT())
   {
-    (*g_StdStream) << "This program requires Windows NT/2000/XP/2003";
+    (*g_StdStream) << "This program requires Windows NT/2000/XP/2003/Vista";
     return NExitCode::kFatalError;
   }
+  #endif
+  #else
+  g_IsNT = IsItWindowsNT();
+  #endif
+  
   #endif
 
   // setlocale(LC_COLLATE, ".OCP");

@@ -69,7 +69,8 @@ MyVector.o: ../../../Common/MyVector.cpp
 	$(CXX) $(CFLAGS) ../../../Common/MyVector.cpp
 
 clean:
-	-$(RM) $(PROG) $(OBJS) testfile*
+	-$(RM) $(PROG) $(OBJS) testfile* *.exe ir.out
+	-$(RM) -fr SunWS_cache
 
 
 test: $(PROG)

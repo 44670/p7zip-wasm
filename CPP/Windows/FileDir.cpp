@@ -29,6 +29,20 @@
 extern int global_use_lstat;
 #endif
 
+class Umask
+{
+  public:
+  mode_t  current_umask;
+  mode_t  mask;
+  Umask() {
+    current_umask = umask (0);  /* get and set the umask */
+    umask(current_umask);	/* restore the umask */
+    mask = 0777 & (~current_umask);
+  } 
+};
+
+static Umask gbl_umask;
+
 extern BOOLEAN WINAPI RtlTimeToSecondsSince1970( const LARGE_INTEGER *Time, DWORD *Seconds );
 
 DWORD WINAPI GetFullPathName( LPCSTR name, DWORD len, LPSTR buffer, LPSTR *lastpart ) {
@@ -203,7 +217,8 @@ bool MyMoveFile( LPCTSTR fn1, LPCTSTR fn2 ) {
       struct stat info_file;
       ret = stat(src,&info_file);
       if (ret == 0) {
-        ret = chmod(dst,info_file.st_mode);
+	TRACEN((printf("##DBG chmod-1(%s,%o)\n",dst,(unsigned)info_file.st_mode & gbl_umask.mask)))
+        ret = chmod(dst,info_file.st_mode & gbl_umask.mask);
       }
       if (ret == 0) {
          ret = unlink(src);
@@ -342,11 +357,13 @@ bool MySetFileAttributes(LPCTSTR fileName, DWORD fileAttributes)
      } else
 #endif
      if (S_ISREG(stat_info.st_mode)) {
-       chmod(name,stat_info.st_mode);
+       TRACEN((printf("##DBG chmod-2(%s,%o)\n",name,(unsigned)stat_info.st_mode & gbl_umask.mask)))
+       chmod(name,stat_info.st_mode & gbl_umask.mask);
      } else if (S_ISDIR(stat_info.st_mode)) {
        // user/7za must be able to create files in this directory
        stat_info.st_mode |= (S_IRUSR | S_IWUSR | S_IXUSR);
-       chmod(name,stat_info.st_mode);
+       TRACEN((printf("##DBG chmod-3(%s,%o)\n",name,(unsigned)stat_info.st_mode & gbl_umask.mask)))
+       chmod(name,stat_info.st_mode & gbl_umask.mask);
      }
 #ifdef HAVE_LSTAT
   } else if (!S_ISLNK(stat_info.st_mode)) {
@@ -354,17 +371,17 @@ bool MySetFileAttributes(LPCTSTR fileName, DWORD fileAttributes)
 #else
   } else {
 #endif
-    if (fileAttributes & FILE_ATTRIBUTE_READONLY) {
-      if(!S_ISDIR(stat_info.st_mode)) {
-        /* FILE_ATTRIBUTE_READONLY ignored for directory. */
-        stat_info.st_mode &= ~0222; /* octal!, clear write permission bits */
-      }
-    } else {
-      /* add write permission */
-      stat_info.st_mode |= (0600 | ((stat_info.st_mode & 044) >> 1)) ;
-    }
 
-    chmod(name,stat_info.st_mode);
+    /* Only Windows Attributes */
+    if( S_ISDIR(stat_info.st_mode)) {
+       /* Remark : FILE_ATTRIBUTE_READONLY ignored for directory. */
+       TRACEN((printf("##DBG chmod-4(%s,%o)\n",name,(unsigned)stat_info.st_mode & gbl_umask.mask)))
+       chmod(name,stat_info.st_mode & gbl_umask.mask);
+    } else {
+       if (fileAttributes & FILE_ATTRIBUTE_READONLY) stat_info.st_mode &= ~0222; /* octal!, clear write permission bits */
+       TRACEN((printf("##DBG chmod-5(%s,%o)\n",name,(unsigned)stat_info.st_mode & gbl_umask.mask)))
+       chmod(name,stat_info.st_mode & gbl_umask.mask);
+    }
   }
   TRACEN((printf("MySetFileAttributes(%s,%d) : true\n",name,fileAttributes)))
 
@@ -522,7 +539,7 @@ bool MyGetFullPathName(LPCTSTR fileName, CSysString &resultPath,
   if (needLength == 0 || needLength >= MAX_PATH)
     return false;
   if (fileNamePointer == 0)
-    fileNamePartStartIndex = lstrlen(fileName);
+    fileNamePartStartIndex = strlen(fileName);
   else
     fileNamePartStartIndex = fileNamePointer - buffer;
   return true;

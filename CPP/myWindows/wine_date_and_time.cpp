@@ -65,9 +65,9 @@ static inline void NormalizeTimeFields(CSHORT *FieldToNormalize, CSHORT *CarryFi
 static int TIME_GetBias() {
   time_t utc = time(NULL);
   struct tm *ptm = localtime(&utc);
-  int daylight = ptm->tm_isdst; /* daylight for local timezone */
+  int localdaylight = ptm->tm_isdst; /* daylight for local timezone */
   ptm = gmtime(&utc);
-  ptm->tm_isdst = daylight; /* use local daylight, not that of Greenwich */
+  ptm->tm_isdst = localdaylight; /* use local daylight, not that of Greenwich */
   int bias = (int)(utc-mktime(ptm));
   TRACEN((printf("TIME_GetBias %ld\n",bias)))
   return bias;

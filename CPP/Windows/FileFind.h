@@ -59,7 +59,6 @@ public:
 class CFindFile
 {
   friend class CEnumerator;
-  HANDLE _handle;
   DIR *_dirp;
   AString _pattern;
   AString _directory;  

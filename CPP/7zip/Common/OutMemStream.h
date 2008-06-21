@@ -16,8 +16,8 @@ class COutMemStream:
   bool _realStreamMode;
 
   bool _unlockEventWasSent;
-  NWindows::NSynchronization::CAutoResetEvent StopWritingEvent;
-  NWindows::NSynchronization::CAutoResetEvent WriteToRealStreamEvent;
+  NWindows::NSynchronization::CAutoResetEventWFMO StopWritingEvent;
+  NWindows::NSynchronization::CAutoResetEventWFMO WriteToRealStreamEvent;
   // NWindows::NSynchronization::CAutoResetEvent NoLockEvent;
 
   HRESULT StopWriteResult;
@@ -30,10 +30,10 @@ class COutMemStream:
 
 public:
 
-  HRes CreateEvents()
+  HRes CreateEvents(NWindows::NSynchronization::CSynchro *sync)
   {
-    RINOK(StopWritingEvent.CreateIfNotCreated());
-    return WriteToRealStreamEvent.CreateIfNotCreated();
+    RINOK(StopWritingEvent.CreateIfNotCreated(sync));
+    return WriteToRealStreamEvent.CreateIfNotCreated(sync);
   }
 
   void SetOutStream(IOutStream *outStream)

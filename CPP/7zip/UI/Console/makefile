@@ -6,8 +6,7 @@ LOCAL_FLAGS=\
   -DEXTERNAL_LZMA \
   -DEXTERNAL_CODECS \
   -DBREAK_HANDLER \
-  -DBENCH_MT \
-  -D_7ZIP_LARGE_PAGES
+  -DBENCH_MT
 
 include ../../../../makefile.crc32
 include ../../../../makefile.machine

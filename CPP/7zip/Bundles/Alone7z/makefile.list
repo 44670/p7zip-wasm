@@ -54,15 +54,11 @@ SRCS=\
  ../../Common/StreamBinder.cpp \
  ../../Common/StreamObjects.cpp \
  ../../Common/StreamUtils.cpp \
- ../../Compress/Branch/ARM.cpp \
- ../../Compress/Branch/ARMThumb.cpp \
  ../../Compress/Branch/BranchCoder.cpp \
+ ../../Compress/Branch/BranchMisc.cpp \
  ../../Compress/Branch/BranchRegister.cpp \
  ../../Compress/Branch/BCJ2Register.cpp \
  ../../Compress/Branch/BCJRegister.cpp \
- ../../Compress/Branch/IA64.cpp \
- ../../Compress/Branch/PPC.cpp \
- ../../Compress/Branch/SPARC.cpp \
  ../../Compress/Branch/x86.cpp \
  ../../Compress/Branch/x86_2.cpp \
  ../../Compress/Copy/CopyCoder.cpp \
@@ -89,6 +85,12 @@ SRCS=\
  ../../Archive/7z/7zRegister.cpp \
  ../../Archive/7z/7zSpecStream.cpp \
  ../../Archive/7z/7zUpdate.cpp \
+ ../../Archive/Lzma/LzmaArcRegister.cpp \
+ ../../Archive/Lzma/LzmaFiltersDecode.cpp \
+ ../../Archive/Lzma/LzmaHandler.cpp \
+ ../../Archive/Lzma/LzmaIn.cpp \
+ ../../Archive/Split/SplitHandler.cpp \
+ ../../Archive/Split/SplitRegister.cpp \
  ../../Archive/Common/CoderMixer2.cpp \
  ../../Archive/Common/CoderMixer2MT.cpp \
  ../../Archive/Common/DummyOutStream.cpp \
@@ -98,7 +100,6 @@ SRCS=\
  ../../Archive/Common/MultiStream.cpp \
  ../../Archive/Common/OutStreamWithCRC.cpp \
  ../../Archive/Common/ParseProperties.cpp \
- ../../Archive/Split/SplitHandler.cpp \
  ../../UI/Common/ArchiveCommandLine.cpp \
  ../../UI/Common/ArchiveExtractCallback.cpp \
  ../../UI/Common/ArchiveOpenCallback.cpp \
@@ -119,15 +120,7 @@ SRCS=\
  ../../UI/Common/UpdateProduce.cpp
 
  SRCS_C= \
- ../../../../C/Compress/Branch/BranchARM.c \
- ../../../../C/Compress/Branch/BranchARMThumb.c \
- ../../../../C/Compress/Branch/BranchIA64.c \
- ../../../../C/Compress/Branch/BranchPPC.c \
- ../../../../C/Compress/Branch/BranchSPARC.c \
- ../../../../C/Compress/Branch/BranchX86.c \
  ../../../../C/7zCrc.c \
- ../../../../C/Compress/Lz/MatchFinder.c \
- ../../../../C/Compress/Lz/MatchFinderMt.c \
  ../../../../C/Threads.c
 
 wine_date_and_time.o : ../../../myWindows/wine_date_and_time.cpp
@@ -248,18 +241,10 @@ BCJRegister.o : ../../Compress/Branch/BCJRegister.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Branch/BCJRegister.cpp
 BranchCoder.o : ../../Compress/Branch/BranchCoder.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Branch/BranchCoder.cpp
+BranchMisc.o : ../../Compress/Branch/BranchMisc.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Branch/BranchMisc.cpp
 BranchRegister.o : ../../Compress/Branch/BranchRegister.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Branch/BranchRegister.cpp
-ARM.o : ../../Compress/Branch/ARM.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Branch/ARM.cpp
-ARMThumb.o : ../../Compress/Branch/ARMThumb.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Branch/ARMThumb.cpp
-IA64.o : ../../Compress/Branch/IA64.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Branch/IA64.cpp
-PPC.o : ../../Compress/Branch/PPC.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Branch/PPC.cpp
-SPARC.o : ../../Compress/Branch/SPARC.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Branch/SPARC.cpp
 x86.o : ../../Compress/Branch/x86.cpp
 	$(CXX) $(CFLAGS) ../../Compress/Branch/x86.cpp
 x86_2.o : ../../Compress/Branch/x86_2.cpp
@@ -370,24 +355,43 @@ UpdateProduce.o : ../../UI/Common/UpdateProduce.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/UpdateProduce.cpp
 WorkDir.o : ../../UI/Common/WorkDir.cpp
 	$(CXX) $(CFLAGS) ../../UI/Common/WorkDir.cpp
-BranchARM.o : ../../../../C/Compress/Branch/BranchARM.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchARM.c
-BranchARMThumb.o : ../../../../C/Compress/Branch/BranchARMThumb.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchARMThumb.c
-BranchIA64.o : ../../../../C/Compress/Branch/BranchIA64.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchIA64.c
-BranchPPC.o : ../../../../C/Compress/Branch/BranchPPC.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchPPC.c
-BranchSPARC.o : ../../../../C/Compress/Branch/BranchSPARC.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchSPARC.c
-BranchX86.o : ../../../../C/Compress/Branch/BranchX86.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Branch/BranchX86.c
-MatchFinder.o : ../../../../C/Compress/Lz/MatchFinder.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Lz/MatchFinder.c
-MatchFinderMt.o : ../../../../C/Compress/Lz/MatchFinderMt.c
-	$(CC) $(CFLAGS) ../../../../C/Compress/Lz/MatchFinderMt.c
 Threads.o : ../../../../C/Threads.c
 	$(CC) $(CFLAGS) ../../../../C/Threads.c
+
+LzmaArcRegister.o : ../../Archive/Lzma/LzmaArcRegister.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Lzma/LzmaArcRegister.cpp
+LzmaFiltersDecode.o : ../../Archive/Lzma/LzmaFiltersDecode.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Lzma/LzmaFiltersDecode.cpp
+LzmaHandler.o : ../../Archive/Lzma/LzmaHandler.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Lzma/LzmaHandler.cpp
+LzmaIn.o : ../../Archive/Lzma/LzmaIn.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Lzma/LzmaIn.cpp
+
+SplitRegister.o : ../../Archive/Split/SplitRegister.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Split/SplitRegister.cpp
+SplitHandlerOut.o : ../../Archive/Split/SplitHandlerOut.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Split/SplitHandlerOut.cpp
+
+LzmaEnc.o : ../../../../C/LzmaEnc.c
+	$(CC) $(CFLAGS) ../../../../C/LzmaEnc.c
+LzmaDec.o : ../../../../C/LzmaDec.c
+	$(CC) $(CFLAGS) ../../../../C/LzmaDec.c
+BraIA64.o : ../../../../C/BraIA64.c
+	$(CC) $(CFLAGS) ../../../../C/BraIA64.c
+Bra.o : ../../../../C/Bra.c
+	$(CC) $(CFLAGS) ../../../../C/Bra.c
+Bra86.o : ../../../../C/Bra86.c
+	$(CC) $(CFLAGS) ../../../../C/Bra86.c
+Aes.o : ../../../../C/Aes.c
+	$(CC) $(CFLAGS) ../../../../C/Aes.c
+LzFind.o : ../../../../C/LzFind.c
+	$(CC) $(CFLAGS) ../../../../C/LzFind.c
+LzFindMt.o : ../../../../C/LzFindMt.c
+	$(CC) $(CFLAGS) ../../../../C/LzFindMt.c
+
+
+
+
 # CRC32, C version
 7zCrc.o : ../../../../C/7zCrc.c
 	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/7zCrc.c

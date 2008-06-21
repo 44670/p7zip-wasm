@@ -1,4 +1,4 @@
-// LzmaAlone.cpp
+// PPMDAlone.cpp
 
 #include "StdAfx.h"
 
@@ -24,22 +24,6 @@
 
 #include "../PPMD/PPMDDecoder.h"
 #include "../PPMD/PPMDEncoder.h"
-/* FIXME
-#include "../LZMA/LZMADecoder.h"
-#include "../LZMA/LZMAEncoder.h"
-
-#include "LzmaBenchCon.h"
-#include "LzmaRam.h"
-
-#ifdef COMPRESS_MF_MT
-#include "../../../Windows/System.h"
-#endif
-
-extern "C"
-{
-#include "LzmaRamDecode.h"
-}
-*/
 
 using namespace NCommandLineParser;
 
@@ -324,39 +308,21 @@ int main2(int n, const char *args[])
     NCompress::NPPMD::CDecoder *decoderSpec = new NCompress::NPPMD::CDecoder;
     CMyComPtr<ICompressCoder> decoder = decoderSpec;
     const UInt32 kPropertiesSize = 5;
-    Byte properties[kPropertiesSize];
-    UInt32 processedSize;
-    if (ReadStream(inStream, properties, kPropertiesSize, &processedSize) != S_OK)
+    Byte header[kPropertiesSize + 8];
+    if (ReadStream_FALSE(inStream, header, kPropertiesSize + 8) != S_OK)
     {
       fprintf(stderr, kReadError);
       return 1;
     }
-    if (processedSize != kPropertiesSize)
-    {
-      fprintf(stderr, kReadError);
-      return 1;
-    }
-    if (decoderSpec->SetDecoderProperties2(properties, kPropertiesSize) != S_OK)
+    if (decoderSpec->SetDecoderProperties2(header, kPropertiesSize) != S_OK)
     {
       fprintf(stderr, "SetDecoderProperties error");
       return 1;
     }
     fileSize = 0;
     for (int i = 0; i < 8; i++)
-    {
-      Byte b;
-      if (inStream->Read(&b, 1, &processedSize) != S_OK)
-      {
-        fprintf(stderr, kReadError);
-        return 1;
-      }
-      if (processedSize != 1)
-      {
-        fprintf(stderr, kReadError);
-        return 1;
-      }
-      fileSize |= ((UInt64)b) << (8 * i);
-    }
+      fileSize |= ((UInt64)header[kPropertiesSize + i]) << (8 * i);
+
     if (decoder->Code(inStream, outStream, 0, &fileSize, 0) != S_OK)
     {
       fprintf(stderr, "Decoder error");

@@ -3,7 +3,9 @@
 
 - suppress all exit(EXIT_FAILURE), FIXME, ...
 
-- no chmod/chown(uid,gid) for TAR
+- no chmod for TAR (should restore the rights set)
+
+- no chown(uid,gid) for TAR
 
 - Use a more portable "String.h"
 
@@ -11,12 +13,7 @@
 
 - KNOWN BUGS
 
-  - date ('x' and 'l')
-  7za l archive.7z  (7za l archive.tar)
-  and 7za x archive.7z and then "ls -l"
-  => not the same date
-
-  - date (format arj/rar/chm)
+  - date (format arj/rar/chm) ?
 
   - absolute path ?
 

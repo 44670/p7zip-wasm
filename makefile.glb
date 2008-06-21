@@ -23,9 +23,9 @@ depend:
 	$(CXX) $(DFLAGS) $(SRCS) > makefile.depend
 
 clean:
-	-@$(RM) $(PROG) $(PROG).exe *.o *~ .*.swp *.orig $(PROGS)
-	-@$(RM) -r SunWS_cache/ 
-	-@$(RM) -r .inslog2 pchdir/ tca.map
+	-@$(RM) $(PROG) *.exe *.o *~ .*.swp *.orig $(PROGS)
+	-@$(RM) -fr SunWS_cache/ 
+	-@$(RM) -r .inslog2 pchdir/ tca.map ir.out
 	-@$(RM) make.log tags
 
 # CRC32, ASM version

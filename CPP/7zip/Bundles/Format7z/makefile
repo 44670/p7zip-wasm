@@ -76,11 +76,6 @@ CodecExports.o \
 BranchCoder.o \
 x86.o \
 x86_2.o \
-ARM.o \
-ARMThumb.o \
-IA64.o \
-PPC.o \
-SPARC.o \
 BranchRegister.o \
 BCJRegister.o \
 BCJ2Register.o \
@@ -105,19 +100,15 @@ PPMDRegister.o \
 MyAES.o \
 RandGen.o \
 Sha1.o \
-Sha256.o \
 Threads.o \
 $(OBJ_CRC32) \
-MatchFinder.o \
-MatchFinderMt.o \
 BranchARM.o \
 BranchARMThumb.o \
 BranchIA64.o \
 BranchPPC.o \
 BranchSPARC.o \
 BranchX86.o \
-RangeCoderBit.o \
-Aes.o
+RangeCoderBit.o
 
 include ../../../../makefile.glb
 

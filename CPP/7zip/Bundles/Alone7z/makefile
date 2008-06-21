@@ -1,5 +1,3 @@
-PROG=../../../../bin/7zr
-
 LOCAL_FLAGS= \
   -D_NO_CRYPTO \
   -DWIN_LONG_PATH \
@@ -11,6 +9,8 @@ LOCAL_FLAGS= \
 
 include ../../../../makefile.crc32
 include ../../../../makefile.machine
+
+PROG=../../../../bin/7zr$(BINSUFFIX)
 
 LIBS=$(LOCAL_LIBS)
 
@@ -70,7 +70,6 @@ ProgressUtils.o  \
 StreamBinder.o  \
 StreamObjects.o  \
 StreamUtils.o  \
-BranchCoder.o  \
 CopyCoder.o  \
 CopyRegister.o  \
 LZOutWindow.o  \
@@ -95,6 +94,15 @@ LzmaBenchCon.o  \
 7zRegister.o  \
 7zSpecStream.o  \
 7zUpdate.o  \
+LzmaArcRegister.o \
+LzmaFiltersDecode.o \
+LzmaHandler.o \
+LzmaIn.o \
+SplitHandler.o \
+SplitHandlerOut.o \
+SplitRegister.o \
+BranchCoder.o \
+BranchMisc.o \
 CoderMixer2.o  \
 CoderMixer2MT.o  \
 DummyOutStream.o  \
@@ -123,25 +131,20 @@ UpdateCallback.o  \
 UpdatePair.o  \
 UpdateProduce.o  \
 BranchRegister.o \
-ARM.o \
-ARMThumb.o \
 BCJRegister.o \
 BCJ2Register.o \
-BranchARM.o  \
-BranchARMThumb.o  \
-BranchIA64.o  \
-BranchPPC.o  \
-BranchSPARC.o  \
-BranchX86.o  \
-IA64.o \
-PPC.o \
-SPARC.o \
 x86.o \
 x86_2.o \
 $(OBJ_CRC32) \
-MatchFinder.o  \
-MatchFinderMt.o  \
-Threads.o
+Threads.o \
+LzmaEnc.o \
+LzmaDec.o \
+BraIA64.o \
+Bra.o \
+Bra86.o \
+LzFind.o \
+LzFindMt.o \
+
 
 include ../../../../makefile.glb
 

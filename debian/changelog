@@ -1,3 +1,14 @@
+p7zip (4.58~dfsg.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * debian/control:
+     + bump Standards-Version to 3.8.0.
+     + bump build-dependency on debhelper 7.
+  * debian/compat: set compatibility level to 7.
+  * Don't use hyphen as a minus in man pages.
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sat, 21 Jun 2008 15:29:00 +0200
+
 p7zip (4.57~dfsg.1-1) unstable; urgency=low
 
   * New upstream release.

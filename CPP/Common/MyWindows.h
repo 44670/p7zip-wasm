@@ -54,11 +54,7 @@ typedef struct LARGE_INTEGER { LONGLONG QuadPart; }LARGE_INTEGER;
 typedef struct _ULARGE_INTEGER { ULONGLONG QuadPart;} ULARGE_INTEGER;
 
 typedef const CHAR *LPCSTR;
-#ifdef _UNICODE
-typedef wchar_t TCHAR;
-#else
 typedef CHAR TCHAR;
-#endif
 typedef const TCHAR *LPCTSTR;
 typedef wchar_t WCHAR;
 typedef WCHAR OLECHAR;
@@ -118,7 +114,8 @@ struct IUnknown
 };
 
 typedef IUnknown *LPUNKNOWN;
-#endif  /* __cplusplus */
+
+#endif
 
 #define VARIANT_TRUE ((VARIANT_BOOL)-1)
 #define VARIANT_FALSE ((VARIANT_BOOL)0)
@@ -191,7 +188,8 @@ typedef VARIANT VARIANTARG;
 
 MY_EXTERN_C HRESULT VariantClear(VARIANTARG *prop);
 MY_EXTERN_C HRESULT VariantCopy(VARIANTARG *dest, VARIANTARG *src);
-#endif /* __cplusplus */
+
+#endif
 
 MY_EXTERN_C BSTR SysAllocStringByteLen(LPCSTR psz, UINT len);
 MY_EXTERN_C BSTR SysAllocString(const OLECHAR *sz);

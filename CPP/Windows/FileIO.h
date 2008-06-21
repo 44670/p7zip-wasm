@@ -46,8 +46,7 @@ protected:
   #endif
 
 public:
-  CFileBase():
-    _fd(-1){};
+  CFileBase(): _fd(-1) {};
   virtual ~CFileBase();
 
   virtual bool Close();

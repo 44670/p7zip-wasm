@@ -10,7 +10,7 @@
 #else
 #define UINT64 DLL_UINT64 // HP-UX , dlfcn.h defines UINT64 but p7zip also defines UINT64
 #include <dlfcn.h>  // dlopen ...
-#undef UINT64 DLL_UINT64
+#undef UINT64
 #endif
 
 #include "DLL.h"
@@ -96,17 +96,8 @@ bool CLibrary::LoadOperations(HMODULE newModule)
   return true;
 }
 
-// bool CLibrary::LoadEx(LPCTSTR fileName, DWORD flags)
-// {
-//   /* return LoadOperations(::LoadLibraryEx(fileName, NULL, flags)); */
-//   return this->Load(fileName);
-// }
-
-typedef BOOL (*t_DllMain)(HINSTANCE hInstance, DWORD dwReason, LPVOID lpReserved);
-
 bool CLibrary::Load(LPCTSTR lpLibFileName)
 {
-  // HMODULE handler = ::LoadLibrary(fileName);
   void *handler = 0;
   char  name[MAX_PATHNAME_LEN+1];
   strcpy(name,nameWindowToUnix(lpLibFileName));
@@ -116,6 +107,8 @@ bool CLibrary::Load(LPCTSTR lpLibFileName)
   if ((len >=4) && (strcmp(name+len-4,".dll") == 0)) {
     strcpy(name+len-4,".so");
   }
+
+  TRACEN((printf("CLibrary::Load(%s) => %s\n",lpLibFileName,name)))
 
 #ifdef __APPLE_CC__
   NSObjectFileImage image;
@@ -133,10 +126,14 @@ bool CLibrary::Load(LPCTSTR lpLibFileName)
   // normalize path (remove things like "./", "..", etc..), otherwise it won't work
   BPath p(name, NULL, true);
   status_t err = B_OK;
-  handler = (HMODULE)load_add_on(p.Path());
-  if (handler < 0) {
+  image_id image = load_add_on(p.Path());
+TRACEN((printf("load_add_on(%s)=%d\n",p.Path(),(int)image)))
+  if (image < 0) {
     err = (image_id)handler;
     handler = 0;
+  } else {
+    err = 0;
+    handler = (HMODULE)image;
   }
 #else
   int options_dlopen = 0;
@@ -151,17 +148,14 @@ bool CLibrary::Load(LPCTSTR lpLibFileName)
   options_dlopen |= RTLD_GROUP; // mainly for solaris but not for HPUX
   #endif
 #endif
+  TRACEN((printf("CLibrary::Load - dlopen(%s,0x%d)\n",name,options_dlopen)))
   handler = dlopen(name,options_dlopen);
 #endif // __APPLE_CC__
-  TRACEN((printf("LoadLibraryA(%s)=%p\n",name,handler)))
+  TRACEN((printf("CLibrary::Load(%s) => %p\n",name,handler)))
   if (handler) {
 
-    // Call DllMain() like in Windows
-    t_DllMain p_DllMain = (t_DllMain)local_GetProcAddress (handler, "DllMain");
-    if (p_DllMain)
-    {
-      p_DllMain(0,DLL_PROCESS_ATTACH,0);
-    }
+    // Call DllMain() like in Windows : useless now
+
     // Propagate the value of global_use_utf16_conversion into the plugins
     int *tmp = (int *)local_GetProcAddress(handler,"global_use_utf16_conversion");
     if (tmp) *tmp = global_use_utf16_conversion;
@@ -186,19 +180,6 @@ bool CLibrary::Load(LPCTSTR lpLibFileName)
 
   return LoadOperations(handler);
 }
-
-#ifndef _UNICODE
-// bool CLibrary::LoadEx(LPCWSTR fileName, DWORD flags)
-// {
-//   return LoadEx(UnicodeStringToMultiByte(fileName, CP_ACP), flags);
-// }
-
-
-bool CLibrary::Load(LPCWSTR fileName)
-{
-  return Load(UnicodeStringToMultiByte(fileName, CP_ACP));
-}
-#endif
 
 }}
 

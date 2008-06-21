@@ -14,212 +14,174 @@ extern "C"
 #include "Handle.h"
 #endif
 
-#ifdef ENV_BEOS
-#include <Locker.h>
-#include <kernel/OS.h>
-#include <list>
-#endif
-
-#undef DEBUG_SYNCHRO
-// #define DEBUG_SYNCHRO 1
-
-DWORD WINAPI WaitForMultipleObjects( DWORD count, const HANDLE *handles, BOOL wait_all, DWORD timeout );
-
-
-#ifdef DEBUG_SYNCHRO
-typedef struct 
-{
-  void *ctx1;
-  // void *ctx2;
-} t_SyncCXT;
-
-void sync_GetContexts(t_SyncCXT & ctx);
-
-#endif
-
 namespace NWindows {
 namespace NSynchronization {
 
-struct CBaseHandle
-{
-#ifdef DEBUG_SYNCHRO
-	t_SyncCXT ctx;
-#endif
-
-	typedef enum { EVENT , SEMAPHORE } t_type;
-
-	CBaseHandle(t_type t) { 
-		type = t;
-#ifdef DEBUG_SYNCHRO
-		sync_GetContexts(ctx);
-#endif
-	}
-
-	t_type type;
-	union
-	{
-		struct
-		{
-			bool _manual_reset;
-			bool _state;
-		} event;
-		struct
-		{
-			LONG count;
-			LONG maxCount;
-		} sema;
-	} u;
-  operator HANDLE() { return ((HANDLE)this); }
+class Uncopyable {
+protected: 
+  Uncopyable() {} // allow construction
+  ~Uncopyable() {} // and destruction of derived objects...
+private:
+  Uncopyable(const Uncopyable&);             // ...but prevent copying
+  Uncopyable& operator=(const Uncopyable&);
 };
 
-class CBaseEvent : public CBaseHandle
+
+class CBaseEvent // FIXME : private Uncopyable
 {
-  bool _created;
+protected:
+  ::CEvent _object;
 public:
-  bool IsCreated() { return _created; }
-  CBaseEvent() : CBaseHandle(CBaseHandle::EVENT), _created(false) {} 
+  bool IsCreated() { return Event_IsCreated(&_object) != 0; }
+#ifdef _WIN32
+  operator HANDLE() { return _object.handle; }
+#endif
+  CBaseEvent() { Event_Construct(&_object); }
   ~CBaseEvent() { Close(); }
-
-  HRes Close() { _created = false ; return S_OK; }
-
-  HRes Create(bool manualReset, bool initiallyOwn)
+  WRes Close() { return Event_Close(&_object); }
+  #ifdef _WIN32
+  WRes Create(bool manualReset, bool initiallyOwn, LPCTSTR name = NULL,
+      LPSECURITY_ATTRIBUTES securityAttributes = NULL)
   {
-    this->u.event._manual_reset = manualReset;
-    this->u.event._state        = initiallyOwn;
-    this->_created = true;
-    return S_OK;
+    _object.handle = ::CreateEvent(securityAttributes, BoolToBOOL(manualReset),
+        BoolToBOOL(initiallyOwn), name);
+    if (_object.handle != 0)
+      return 0;
+    return ::GetLastError();
   }
+  WRes Open(DWORD desiredAccess, bool inheritHandle, LPCTSTR name)
+  {
+    _object.handle = ::OpenEvent(desiredAccess, BoolToBOOL(inheritHandle), name);
+    if (_object.handle != 0)
+      return 0;
+    return ::GetLastError();
+  }
+  #endif
 
-  HRes Set();
-  HRes Reset();
-  HRes Lock();
+  WRes Set() { return Event_Set(&_object); }
+  // bool Pulse() { return BOOLToBool(::PulseEvent(_handle)); }
+  WRes Reset() { return Event_Reset(&_object); }
+  WRes Lock() { return Event_Wait(&_object); }
 };
 
 class CManualResetEvent: public CBaseEvent
 {
 public:
-  HRes Create(bool initiallyOwn = false)
+  WRes Create(bool initiallyOwn = false)
   {
-    return CBaseEvent::Create(true, initiallyOwn);
+    return ManualResetEvent_Create(&_object, initiallyOwn ? 1: 0);
   }
-  HRes CreateIfNotCreated()
+  WRes CreateIfNotCreated()
   {
     if (IsCreated())
       return 0;
-    return CBaseEvent::Create(true, false);
+    return ManualResetEvent_CreateNotSignaled(&_object);
   }
+  #ifdef _WIN32
+  WRes CreateWithName(bool initiallyOwn, LPCTSTR name)
+  {
+    return CBaseEvent::Create(true, initiallyOwn, name);
+  }
+  #endif
 };
 
 class CAutoResetEvent: public CBaseEvent
 {
 public:
-  HRes Create()
+  WRes Create()
   {
-    return CBaseEvent::Create(false, false);
+    return AutoResetEvent_CreateNotSignaled(&_object);
   }
-  HRes CreateIfNotCreated()
+  WRes CreateIfNotCreated()
   {
     if (IsCreated())
       return 0;
-    return CBaseEvent::Create(false, false);
+    return AutoResetEvent_CreateNotSignaled(&_object);
   }
 };
 
-#ifdef ENV_BEOS
-class CCriticalSection : BLocker
+#ifdef _WIN32
+class CObject: public CHandle
 {
 public:
-  CCriticalSection() { }
-  ~CCriticalSection() {}
-  void Enter() { Lock(); }
-  void Leave() { Unlock(); }
+  WRes Lock(DWORD timeoutInterval = INFINITE)
+    { return (::WaitForSingleObject(_handle, timeoutInterval) == WAIT_OBJECT_0 ? 0 : ::GetLastError()); }
 };
-#else
-#ifdef DEBUG_SYNCHRO
-
-// #define TRACEN(u) u;
-#define TRACEN(u)  /* */
-
-class CCriticalSection
+class CMutex: public CObject
 {
-  pthread_mutex_t _object;
-  void dump_error(int ligne,int ret,const char *text,void *param)
+public:
+  WRes Create(bool initiallyOwn, LPCTSTR name = NULL,
+      LPSECURITY_ATTRIBUTES securityAttributes = NULL)
   {
-    printf("\n##T%d#ERROR (l=%d) %s : param=%p ret = %d (%s)##\n",(int)pthread_self(),ligne,text,param,ret,strerror(ret));
-    // abort();
+    _handle = ::CreateMutex(securityAttributes, BoolToBOOL(initiallyOwn), name);
+    if (_handle != 0)
+      return 0;
+    return ::GetLastError();
   }
-public:
-  CCriticalSection() {
-    pthread_mutexattr_t mutexattr;
-    int ret = pthread_mutexattr_init(&mutexattr);
-    if (ret != 0) dump_error(__LINE__,ret,"pthread_mutexattr_init",&mutexattr);
-    ret = pthread_mutexattr_settype(&mutexattr,PTHREAD_MUTEX_ERRORCHECK);
-    if (ret != 0) dump_error(__LINE__,ret,"pthread_mutexattr_settype",&mutexattr);
-    ret = ::pthread_mutex_init(&_object,&mutexattr);
-    if (ret != 0) dump_error(__LINE__,ret,"pthread_mutex_init",&_object);
-    TRACEN((printf("\nT%d : C1-Create(%p)\n",(int)pthread_self(),(void *)&_object)))
+  WRes Open(DWORD desiredAccess, bool inheritHandle, LPCTSTR name)
+  {
+    _handle = ::OpenMutex(desiredAccess, BoolToBOOL(inheritHandle), name);
+    if (_handle != 0)
+      return 0;
+    return ::GetLastError();
   }
-  ~CCriticalSection() {
-    TRACEN((printf("\nT%d : C1-FREE(%p)\n",(int)pthread_self(),(void *)&_object)))
-    int ret = ::pthread_mutex_destroy(&_object);
-    if (ret != 0) dump_error(__LINE__,ret,"pthread_mutex_destroy",&_object);
-  }
-  void Enter(int ligne = 0) { 
-    TRACEN((printf("\nT%d %d : C1-lock(%p)\n",(int)pthread_self(),ligne,(void *)&_object)))
-    int ret = ::pthread_mutex_lock(&_object);
-    if (ret != 0) dump_error(__LINE__,ret,"pthread_mutex_lock",&_object);
-    TRACEN((printf("\nT%d %d : C2-lock(%p)\n",(int)pthread_self(),ligne,(void *)&_object)))
-  }
-  void Leave(int ligne = 0) {
-    TRACEN((printf("\nT%d %d : C1-unlock(%p)\n",(int)pthread_self(),ligne,(void *)&_object)))
-    int ret = ::pthread_mutex_unlock(&_object);
-    if (ret != 0) dump_error(__LINE__,ret,"pthread_mutex_unlock",&_object);
-    TRACEN((printf("\nT%d %d : C2-unlock(%p)\n",(int)pthread_self(),ligne,(void *)&_object)))
+  WRes Release() 
+  { 
+    return ::ReleaseMutex(_handle) ? 0 : ::GetLastError();
   }
 };
-#else
-class CCriticalSection
+class CMutexLock
 {
-  pthread_mutex_t _object;
+  CMutex *_object;
 public:
-  CCriticalSection() {
-    ::pthread_mutex_init(&_object,0);
-  }
-  ~CCriticalSection() {
-    ::pthread_mutex_destroy(&_object);
-  }
-  void Enter() { ::pthread_mutex_lock(&_object); }
-  void Leave() { ::pthread_mutex_unlock(&_object); }
+  CMutexLock(CMutex &object): _object(&object) { _object->Lock(); } 
+  ~CMutexLock() { _object->Release(); }
 };
 #endif
-#endif
 
-class CSemaphore : public CBaseHandle
+class CSemaphore : private Uncopyable
 {
+  ::CSemaphore _object;
 public:
-  CSemaphore() : CBaseHandle(CBaseHandle::SEMAPHORE) {} 
-  HRes Create(LONG initiallyCount, LONG maxCount)
+  CSemaphore() { Semaphore_Construct(&_object); }
+  ~CSemaphore() { Close(); }
+  WRes Close() {  return Semaphore_Close(&_object); }
+#ifdef _WIN32
+  operator HANDLE() { return _object.handle; }
+#endif
+  WRes Create(UInt32 initiallyCount, UInt32 maxCount)
   {
-    if ((initiallyCount < 0) || (initiallyCount > maxCount) || (maxCount < 1)) return S_FALSE;
-    this->u.sema.count    = initiallyCount;
-    this->u.sema.maxCount = maxCount;
-    return S_OK;
+    return Semaphore_Create(&_object, initiallyCount, maxCount);
   }
-  HRes Release(LONG releaseCount = 1);
-  HRes Close() { return S_OK; }
+  WRes Release() { return Semaphore_Release1(&_object); }
+  WRes Release(UInt32 releaseCount) { return Semaphore_ReleaseN(&_object, releaseCount); }
+  WRes Lock() { return Semaphore_Wait(&_object); }
 };
 
-class CCriticalSectionLock
+class CCriticalSection : private Uncopyable
 {
-  CCriticalSection &_object;
-  void Unlock()  { _object.Leave(); }
+  ::CCriticalSection _object;
 public:
-  CCriticalSectionLock(CCriticalSection &object): _object(object) 
-    {_object.Enter(); } 
+  CCriticalSection() { CriticalSection_Init(&_object); }
+  ~CCriticalSection() { CriticalSection_Delete(&_object); }
+  void Enter() { CriticalSection_Enter(&_object); }
+  void Leave() { CriticalSection_Leave(&_object); }
+};
+
+class CCriticalSectionLock : private Uncopyable
+{
+  CCriticalSection *_object;
+  void Unlock()  { _object->Leave(); }
+public:
+  CCriticalSectionLock(CCriticalSection &object): _object(&object) {_object->Enter(); } 
   ~CCriticalSectionLock() { Unlock(); }
 };
 
 }}
+
+#ifndef _WIN32
+#include "Synchronization2.h"
+#endif
 
 #endif
 

@@ -31,10 +31,8 @@
 #undef CS /* fix for Solaris 10 x86 */
 
 /***************************/
-typedef void * HINSTANCE; // FIXME
 
 #define CLASS_E_CLASSNOTAVAILABLE        ((HRESULT)0x80040111L)
-#define DLL_PROCESS_ATTACH   1
 
 /************************* LastError *************************/
 inline DWORD WINAPI GetLastError(void) { return errno; }

@@ -17,11 +17,13 @@ void RegisterCodec(const CCodecInfo *codecInfo)
     g_Codecs[g_NumCodecs++] = codecInfo; 
 }
 
+#ifdef _WIN32
 extern "C"
-DLLEXPORT BOOL WINAPI DllMain(HINSTANCE /* hInstance */, DWORD /* dwReason */, LPVOID /*lpReserved*/)
+BOOL WINAPI DllMain(HINSTANCE /* hInstance */, DWORD /* dwReason */, LPVOID /*lpReserved*/)
 {
   return TRUE;
 }
+#endif
 
 static const UInt16 kDecodeId = 0x2790;
 

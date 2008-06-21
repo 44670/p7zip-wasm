@@ -38,15 +38,11 @@ LZOutWindow.o  \
 PPMDDecoder.o  \
 PPMDEncoder.o  \
 PPMDRegister.o  \
-ARM.o  \
-ARMThumb.o  \
 BCJ2Register.o  \
 BCJRegister.o  \
 BranchCoder.o  \
+BranchMisc.o \
 BranchRegister.o  \
-IA64.o  \
-PPC.o  \
-SPARC.o  \
 x86.o  \
 x86_2.o  \
 LZMADecoder.o  \
@@ -64,7 +60,6 @@ BZip2CRC.o  \
 BZip2Decoder.o  \
 BZip2Encoder.o  \
 BZip2Register.o  \
-BlockSort.o  \
 ImplodeDecoder.o  \
 ImplodeHuffmanDecoder.o  \
 Lzx86Converter.o  \
@@ -84,7 +79,6 @@ HmacSha1.o  \
 Pbkdf2HmacSha1.o  \
 RandGen.o  \
 Sha1.o  \
-Sha256.o  \
 RarAES.o  \
 Rar20Cipher.o  \
 Rar20Crypto.o  \
@@ -173,6 +167,10 @@ GZipIn.o  \
 GZipOut.o  \
 GZipRegister.o  \
 GZipUpdate.o  \
+LzmaArcRegister.o \
+LzmaFiltersDecode.o \
+LzmaHandler.o \
+LzmaIn.o \
 IsoHandler.o  \
 IsoHeader.o  \
 IsoIn.o  \
@@ -210,15 +208,6 @@ ZipItem.o  \
 ZipOut.o  \
 ZipRegister.o  \
 ZipUpdate.o  \
-MatchFinder.o  \
-MatchFinderMt.o  \
-HuffmanEncode.o  \
-BranchARM.o  \
-BranchARMThumb.o  \
-BranchIA64.o  \
-BranchPPC.o  \
-BranchSPARC.o  \
-BranchX86.o  \
 WimHandler.o \
 WimIn.o \
 WimRegister.o \
@@ -226,10 +215,20 @@ OutStreamWithSha1.o \
 $(OBJ_CRC32)  \
 Sort.o  \
 Threads.o \
-Aes.o \
 ComHandler.o \
 ComIn.o \
-ComRegister.o
+ComRegister.o \
+Sha256.o \
+Aes.o \
+LzmaEnc.o \
+LzmaDec.o \
+BwtSort.o \
+BraIA64.o \
+Bra.o \
+Bra86.o \
+LzFind.o \
+LzFindMt.o \
+HuffEnc.o
 
 include ../../../../makefile.glb
 

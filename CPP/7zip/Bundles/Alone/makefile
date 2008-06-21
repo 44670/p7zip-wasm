@@ -1,5 +1,3 @@
-PROG=../../../../bin/7za
-
 LOCAL_FLAGS= \
   -DWIN_LONG_PATH \
   -DCOMPRESS_MT \
@@ -11,6 +9,8 @@ LOCAL_FLAGS= \
 
 include ../../../../makefile.crc32
 include ../../../../makefile.machine
+
+PROG=../../../../bin/7za$(BINSUFFIX)
 
 LIBS=$(LOCAL_LIBS)
 
@@ -73,15 +73,11 @@ ProgressUtils.o \
 StreamBinder.o \
 StreamObjects.o \
 StreamUtils.o \
-ARM.o \
-ARMThumb.o \
 BCJ2Register.o \
 BCJRegister.o \
 BranchCoder.o \
+BranchMisc.o \
 BranchRegister.o \
-IA64.o \
-PPC.o \
-SPARC.o \
 x86.o \
 x86_2.o \
 BZip2CRC.o \
@@ -106,7 +102,6 @@ PPMDRegister.o \
 RangeCoderBit.o \
 ShrinkDecoder.o \
 ZDecoder.o \
-BlockSort.o \
 Lzx86Converter.o \
 LzxDecoder.o \
 QuantumDecoder.o \
@@ -138,6 +133,10 @@ GZipIn.o \
 GZipOut.o \
 GZipRegister.o \
 GZipUpdate.o \
+LzmaArcRegister.o \
+LzmaFiltersDecode.o \
+LzmaHandler.o \
+LzmaIn.o \
 TarHandler.o \
 TarHandlerOut.o \
 TarHeader.o \
@@ -200,20 +199,21 @@ HmacSha1.o \
 Pbkdf2HmacSha1.o \
 RandGen.o \
 Sha1.o \
-Sha256.o \
-MatchFinder.o \
-MatchFinderMt.o \
-HuffmanEncode.o \
-BranchARM.o \
-BranchARMThumb.o \
-BranchIA64.o \
-BranchPPC.o \
-BranchSPARC.o \
-BranchX86.o \
 $(OBJ_CRC32) \
 Sort.o \
 Threads.o \
-Aes.o
+Sha256.o \
+Aes.o \
+LzmaEnc.o \
+LzmaDec.o \
+BwtSort.o \
+BraIA64.o \
+Bra.o \
+Bra86.o \
+LzFind.o \
+LzFindMt.o \
+HuffEnc.o
+
 
 include ../../../../makefile.glb
 

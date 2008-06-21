@@ -1,24 +1,24 @@
-Index: p7zip-4.57/makefile
+Index: p7zip-4.58~dfsg.1/makefile
 ===================================================================
---- p7zip-4.57.orig/makefile	2007-12-19 23:53:11.000000000 +0100
-+++ p7zip-4.57/makefile	2007-12-19 23:53:12.000000000 +0100
-@@ -40,7 +40,6 @@
+--- p7zip-4.58~dfsg.1.orig/makefile	2008-06-21 15:28:28.000000000 +0200
++++ p7zip-4.58~dfsg.1/makefile	2008-06-21 15:30:42.000000000 +0200
+@@ -41,7 +41,6 @@
  	cd CPP/7zip/UI/Client7z       ; $(MAKE) depend
  	cd CPP/7zip/UI/Console        ; $(MAKE) depend
  	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) depend
 -	cd CPP/7zip/Compress/Rar      ; $(MAKE) depend
  
  sfx: common
- 	mkdir -p  bin
-@@ -50,7 +49,6 @@
- 	mkdir -p  bin/Codecs
+ 	$(MKDIR) bin
+@@ -51,7 +50,6 @@
+ 	$(MKDIR) bin/Codecs
  	cd CPP/7zip/UI/Console           ; $(MAKE) all
  	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) all
 -	cd CPP/7zip/Compress/Rar         ; $(MAKE) all
  
  clean:
  	cd CPP/myWindows                 ; $(MAKE) clean
-@@ -60,7 +58,6 @@
+@@ -61,7 +59,6 @@
  	cd CPP/7zip/UI/Client7z          ; $(MAKE) clean
  	cd CPP/7zip/UI/Console           ; $(MAKE) clean
  	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) clean

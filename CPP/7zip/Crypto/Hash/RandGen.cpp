@@ -8,6 +8,10 @@
 
 #include "RandGen.h"
 
+#ifdef __NETWARE__
+#include <sys/types.h>
+#endif
+
 #ifndef _WIN32
 #include <unistd.h>
 #define USE_POSIX_TIME

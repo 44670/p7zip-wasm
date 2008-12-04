@@ -6,7 +6,7 @@
 #include "Defs.h"
 
 template <class T> class CBuffer
-{    
+{
 protected:
   size_t _capacity;
   T *_items;
@@ -32,7 +32,7 @@ public:
     if (newCapacity > 0)
     {
       newBuffer = new T[newCapacity];
-      if(_capacity > 0)
+      if (_capacity > 0)
         memmove(newBuffer, _items, MyMin(_capacity, newCapacity) * sizeof(T));
     }
     else
@@ -44,7 +44,7 @@ public:
   CBuffer& operator=(const CBuffer &buffer)
   {
     Free();
-    if(buffer._capacity > 0)
+    if (buffer._capacity > 0)
     {
       SetCapacity(buffer._capacity);
       memmove(_items, buffer._items, buffer._capacity * sizeof(T));

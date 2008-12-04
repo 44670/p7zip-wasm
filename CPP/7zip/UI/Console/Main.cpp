@@ -43,8 +43,8 @@
 #include "../../MyVersion.h"
 
 #if defined( _WIN32) && defined( _7ZIP_LARGE_PAGES)
-extern "C" 
-{ 
+extern "C"
+{
 #include "../../../../C/Alloc.h"
 }
 #endif
@@ -71,7 +71,7 @@ static const char *kCopyrightString = "\n7-Zip"
 " " MY_VERSION_COPYRIGHT_DATE "\n"
 "p7zip Version " P7ZIP_VERSION ;
 
-static const char *kHelpString = 
+static const char *kHelpString =
     "\nUsage: 7z"
 #ifdef _NO_CRYPTO
     "r"
@@ -108,7 +108,9 @@ static const char *kHelpString =
     "            (ex:  ln -s .. ldir)\n"
 #endif
     "  -o{Directory}: set Output directory\n"
+    #ifndef _NO_CRYPTO
     "  -p{Password}: set Password\n"
+    #endif
     "  -r[-|0]: Recurse subdirectories\n"
     "  (CAUTION: this flag does not do what you think, avoid using it)\n"
     "  -sfx[{name}]: Create SFX archive\n"
@@ -135,6 +137,7 @@ static const char *kHelpString =
 
 static const char *kEverythingIsOk = "Everything is Ok";
 static const char *kUserErrorMessage  = "Incorrect command line"; // NExitCode::kUserError
+static const char *kNoFormats = "7-Zip cannot find the code that works with archives.";
 
 static const wchar_t *kDefaultSfxModule = L"7zCon.sfx";
 
@@ -174,7 +177,7 @@ static void ShowCopyrightAndHelp(CStdOutStream &s, bool needHelp)
     if (nbcpu > 1) s << nbcpu << " CPUs)\n";
     else           s << nbcpu << " CPU)\n";
 
-  if (needHelp) 
+  if (needHelp)
     s << kHelpString;
 }
 
@@ -201,24 +204,25 @@ static inline char GetHex(Byte value)
   return (char)((value < 10) ? ('0' + value) : ('A' + (value - 10)));
 }
 
+const char *kUnsupportedArcTypeMessage = "Unsupported archive type";
+
 int Main2(
-  #ifndef _WIN32  
+  #ifndef _WIN32
   int numArguments, const char *arguments[]
   #endif
 )
 {
-  #ifdef _WIN32  
+  #ifdef _WIN32
   SetFileApisToOEM();
   #endif
   
   UStringVector commandStrings;
-  #ifdef _WIN32  
+  #ifdef _WIN32
   NCommandLineParser::SplitCommandLine(GetCommandLineW(), commandStrings);
   #else
   // GetArguments(numArguments, arguments, commandStrings);
   extern void mySplitCommandLine(int numArguments,const char *arguments[],UStringVector &parts);
   mySplitCommandLine(numArguments,arguments,commandStrings);
-
   #endif
 
   if(commandStrings.Size() == 1)
@@ -269,6 +273,17 @@ int Main2(
     throw CSystemException(result);
 
   bool isExtractGroupCommand = options.Command.IsFromExtractGroup();
+
+  if (codecs->Formats.Size() == 0 &&
+        (isExtractGroupCommand ||
+        options.Command.CommandType == NCommandType::kList ||
+        options.Command.IsFromUpdateGroup()))
+    throw kNoFormats;
+
+  CIntVector formatIndices;
+  if (!codecs->FindFormatForArchiveType(options.ArcType, formatIndices))
+    throw kUnsupportedArcTypeMessage;
+
   if (options.Command.CommandType == NCommandType::kInfo)
   {
     stdStream << endl << "Formats:" << endl;
@@ -402,14 +417,21 @@ int Main2(
       CMyComPtr<IFolderArchiveExtractCallback> extractCallback = ecs;
 
       ecs->OutStream = &stdStream;
+
+      #ifndef _NO_CRYPTO
       ecs->PasswordIsDefined = options.PasswordEnabled;
       ecs->Password = options.Password;
+      #endif
+
       ecs->Init();
 
       COpenCallbackConsole openCallback;
       openCallback.OutStream = &stdStream;
+
+      #ifndef _NO_CRYPTO
       openCallback.PasswordIsDefined = options.PasswordEnabled;
       openCallback.Password = options.Password;
+      #endif
 
       CExtractOptions eo;
       eo.StdOutMode = options.StdOutMode;
@@ -425,9 +447,10 @@ int Main2(
       CDecompressStat stat;
       HRESULT result = DecompressArchives(
           codecs,
-          options.ArchivePathsSorted, 
+          formatIndices,
+          options.ArchivePathsSorted,
           options.ArchivePathsFullSorted,
-          options.WildcardCensor.Pairs.Front().Head, 
+          options.WildcardCensor.Pairs.Front().Head,
           eo, &openCallback, ecs, errorMessage, stat);
       if (!errorMessage.IsEmpty())
       {
@@ -459,7 +482,7 @@ int Main2(
         stdStream << "Folders: " << stat.NumFolders << endl;
       if (stat.NumFiles != 1 || stat.NumFolders != 0)
           stdStream << "Files: " << stat.NumFiles << endl;
-      stdStream 
+      stdStream
            << "Size:       " << stat.UnpackSize << endl
            << "Compressed: " << stat.PackSize << endl;
     }
@@ -468,13 +491,17 @@ int Main2(
       UInt64 numErrors = 0;
       HRESULT result = ListArchives(
           codecs,
-          options.ArchivePathsSorted, 
+          formatIndices,
+          options.ArchivePathsSorted,
           options.ArchivePathsFullSorted,
-          options.WildcardCensor.Pairs.Front().Head, 
-          options.EnableHeaders, 
+          options.WildcardCensor.Pairs.Front().Head,
+          options.EnableHeaders,
           options.TechMode,
-          options.PasswordEnabled, 
-          options.Password, numErrors);
+          #ifndef _NO_CRYPTO
+          options.PasswordEnabled,
+          options.Password,
+          #endif
+          numErrors);
       if (numErrors > 0)
       {
         g_StdOut << endl << "Errors: " << numErrors;
@@ -492,28 +519,33 @@ int Main2(
     if (uo.SfxMode && uo.SfxModule.IsEmpty())
       uo.SfxModule = kDefaultSfxModule;
 
-    bool passwordIsDefined = 
-        options.PasswordEnabled && !options.Password.IsEmpty();
-
     COpenCallbackConsole openCallback;
     openCallback.OutStream = &stdStream;
+
+    #ifndef _NO_CRYPTO
+    bool passwordIsDefined =
+        options.PasswordEnabled && !options.Password.IsEmpty();
     openCallback.PasswordIsDefined = passwordIsDefined;
     openCallback.Password = options.Password;
+    #endif
 
     CUpdateCallbackConsole callback;
     callback.EnablePercents = options.EnablePercents;
+
+    #ifndef _NO_CRYPTO
     callback.PasswordIsDefined = passwordIsDefined;
     callback.AskPassword = options.PasswordEnabled && options.Password.IsEmpty();
     callback.Password = options.Password;
+    #endif
     callback.StdOutMode = uo.StdOutMode;
     callback.Init(&stdStream);
 
     CUpdateErrorInfo errorInfo;
 
-    if (!uo.Init(codecs, options.ArchiveName, options.ArcType))
-      throw "Unsupported archive type";
-    HRESULT result = UpdateArchive(codecs, 
-        options.WildcardCensor, uo, 
+    if (!uo.Init(codecs, formatIndices, options.ArchiveName))
+      throw kUnsupportedArcTypeMessage;
+    HRESULT result = UpdateArchive(codecs,
+        options.WildcardCensor, uo,
         errorInfo, &openCallback, &callback);
 
 #ifdef ENV_UNIX
@@ -601,7 +633,7 @@ int Main2(
     }
     return exitCode;
   }
-  else 
+  else
     PrintHelpAndExit(stdStream);
   return 0;
 }

@@ -9,7 +9,7 @@ SECTION .text
     movzx EDX, BYTE [RSI]
     inc RSI
     movzx EBX, AL
-    xor EDX, EBX 
+    xor EDX, EBX
     shr EAX, 8
     xor EAX, [RDI + RDX * 4]
     dec R8

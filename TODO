@@ -1,5 +1,7 @@
 
-- auto-generate config.h
+7za/7z
+======
+- auto-generate config.h (use a configure script ...)
 
 - suppress all exit(EXIT_FAILURE), FIXME, ...
 
@@ -18,4 +20,11 @@
   - absolute path ?
 
 - zip format : better support of symbolic links
+
+7zG / p7zipForFilemanager
+==========================
+
+- better help displaying
+
+- better support for space in filenames
 

@@ -15,7 +15,7 @@
 
 #include "DLL.h"
 #include "Defs.h"
-#ifndef _UNICODE
+#ifdef _UNICODE
 #include "../Common/StringConvert.h"
 #endif
 
@@ -100,7 +100,12 @@ bool CLibrary::Load(LPCTSTR lpLibFileName)
 {
   void *handler = 0;
   char  name[MAX_PATHNAME_LEN+1];
+#ifdef _UNICODE
+  AString name2 = UnicodeStringToMultiByte(lpLibFileName);
+  strcpy(name,nameWindowToUnix((const char *)name2));
+#else
   strcpy(name,nameWindowToUnix(lpLibFileName));
+#endif
   
   // replace ".dll" with ".so"
   size_t len = strlen(name);
@@ -159,6 +164,9 @@ TRACEN((printf("load_add_on(%s)=%d\n",p.Path(),(int)image)))
     // Propagate the value of global_use_utf16_conversion into the plugins
     int *tmp = (int *)local_GetProcAddress(handler,"global_use_utf16_conversion");
     if (tmp) *tmp = global_use_utf16_conversion;
+
+    tmp = (int *)local_GetProcAddress(handler,"global_use_lstat");
+    if (tmp) *tmp = global_use_lstat;
 
     // test construtors calls
     void (*fctTest)(void) = (void (*)(void))local_GetProcAddress(handler,"sync_TestConstructor");

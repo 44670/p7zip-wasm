@@ -1,4 +1,4 @@
-	p7zip 4.58
+	p7zip 4.61
 	==========
 
 Homepage : http://p7zip.sourceforge.net/
@@ -8,10 +8,13 @@ p7zip is a port of the Windows programs 7z.exe and 7za.exe provided by 7-zip.
 7-zip is a file archiver with the highest compression ratio.
 Homepage : www.7-zip.org
 
-7z uses plugins (7z.so and Codecs/Rar29.so) to handle archives.
-7za is a stand-alone executable.
-7za handles less archive formats than 7z.exe.
-7zr is a light stand-alone executable that supports only 7z/LZMA/BCJ/BCJ2.
+  7z uses plugins (7z.so and Codecs/Rar29.so) to handle archives.
+  7za is a stand-alone executable.
+  7za handles less archive formats than 7z.exe.
+  7zr is a light stand-alone executable that supports only 7z/LZMA/BCJ/BCJ2.
+
+NEW:
+  7zG : see GUI/readme.txt
 
 CAUTION :
 ---------
@@ -39,8 +42,7 @@ BUILD :
   If you have downloaded the "bin" package,
 	use directly the program bin/7za.
 	(tested on Redhat 9.0, Fedora 2, Mandrake 10.0, Debian 3.0)
-	As the program is statically linked, its should
-	run on many x86 linux.
+	As the program is statically linked, its should run on many x86 linux.
 
   If you have downloaded the "source" package,
 
@@ -64,6 +66,12 @@ BUILD :
 	make test_7z  : to test bin/7z  (extracting, archiving, password ...)
 	make test_7zr : to test bin/7zr (extracting, archiving, ...)
 
+	make 7zG      : to build bin/7zG and its plugins :
+                          - "bin/7z.so" (GNU LGPL + AES code license)
+                          - "bin/Codecs/Rar29.so" (GNU LGPL + unRAR restriction)
+	make test_7zG : to test bin/7zG (extracting, archiving, ...)
+
+
   this procedure has been tested on :
    - x86 CPU :
 	DOS   - (built with DJGPP, see http://blairdude.googlepages.com/p7zip )
@@ -72,7 +80,9 @@ BUILD :
                 stack-smashing protector from www.trl.ibm.com/projects/security/ssp/)
 	Linux - Mandrake 10.0 Official
 	Linux - Debian 3.0 Stable
+	Linux - Ubuntu 8.04
 	FreeBSD 5.2.1 (gcc 3.3.3)
+	MacOS 10.4.8 
 	NetBSD 
 	CYGWIN_NT-5.1 1.5.9(0.112/4/2) 2004-03-18 23:05 i686 Cygwin
 	Solaris  9 (x86) with gcc 3.3.2
@@ -84,6 +94,7 @@ BUILD :
    - AMD64 CPU :
 	Linux - SuSE 8 ES (AMD64 Opteron) with gcc 3.2.2
 	Linux - Fedora 4  (AMD64 Turion)  with gcc 4.0.1
+	Linux - Ubuntu 8.10
 
    - Itanium CPU :
         HP-UX B.11.31 U ia64 with aCC (HP C/aC++ B3910B A.06.14 [Feb 22 2007])
@@ -128,8 +139,8 @@ INSTALL :
   - 7za is a stand-alone program, you can put this program where you want.
   example :  cp bin/7za /usr/local/bin/7za
 
-  - 7z needs its plugins. You must copy the file 7z and the two directories
-  Formats and Codecs in the same destination directory.
+  - 7z needs its plugins. You must copy the file 7z, 7z.so
+    and the directory Codecs in the same destination directory.
 
   - if you want to be able to create SFX archive, copy bin/7zCon.sfx
   to the directory where 7za or 7z can be found.

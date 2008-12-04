@@ -23,10 +23,10 @@ depend:
 	$(CXX) $(DFLAGS) $(SRCS) > makefile.depend
 
 clean:
-	-@$(RM) $(PROG) *.exe *.o *~ .*.swp *.orig $(PROGS)
+	-@$(RM) $(PROG) core *.exe *.o *~ .*.swp *.orig $(PROGS)
 	-@$(RM) -fr SunWS_cache/ 
 	-@$(RM) -r .inslog2 pchdir/ tca.map ir.out
-	-@$(RM) make.log tags
+	-@$(RM) make.log tags 1 2
 
 # CRC32, ASM version
 7zCrcT8U.o : ../../../../Asm/$(CPU)/7zCrcT8U.asm

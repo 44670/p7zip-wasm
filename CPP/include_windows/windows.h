@@ -161,7 +161,7 @@ DWORD WINAPI GetTickCount(VOID);
 
 #define CP_ACP   0
 #define CP_OEMCP 1
-// #define CP_UTF8  65001
+#define CP_UTF8  65001
 
 /* #include <unknwn.h> */
 #include <basetyps.h>

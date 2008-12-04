@@ -1,3 +1,10 @@
+p7zip (4.61~dfsg.1-1) experimental; urgency=low
+
+  * New upstream release:
+     + use BCJ /BCJ2 filters for executables. (Closes: #506657)
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Thu, 04 Dec 2008 23:34:59 +0100
+
 p7zip (4.58~dfsg.1-1) unstable; urgency=low
 
   * New upstream release.

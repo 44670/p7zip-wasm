@@ -54,9 +54,21 @@ typedef struct LARGE_INTEGER { LONGLONG QuadPart; }LARGE_INTEGER;
 typedef struct _ULARGE_INTEGER { ULONGLONG QuadPart;} ULARGE_INTEGER;
 
 typedef const CHAR *LPCSTR;
-typedef CHAR TCHAR;
-typedef const TCHAR *LPCTSTR;
 typedef wchar_t WCHAR;
+
+#ifdef _UNICODE
+typedef WCHAR TCHAR;
+#define lstrcpy wcscpy
+#define lstrcat wcscat
+#define lstrlen wcslen
+#else
+typedef CHAR TCHAR;
+#define lstrcpy strcpy
+#define lstrcat strcat
+#define lstrlen strlen
+#endif
+
+typedef const TCHAR *LPCTSTR;
 typedef WCHAR OLECHAR;
 typedef const WCHAR *LPCWSTR;
 typedef OLECHAR *BSTR;
@@ -85,9 +97,9 @@ typedef LONG SCODE;
 #define E_INVALIDARG ((HRESULT)0x80070057L)
 
 #ifdef _MSC_VER
-#define STDMETHODCALLTYPE __stdcall 
+#define STDMETHODCALLTYPE __stdcall
 #else
-#define STDMETHODCALLTYPE 
+#define STDMETHODCALLTYPE
 #endif
 
 #define STDMETHOD_(t, f) virtual t STDMETHODCALLTYPE f
@@ -97,7 +109,7 @@ typedef LONG SCODE;
 
 #define PURE = 0
 
-#define MIDL_INTERFACE(x) struct 
+#define MIDL_INTERFACE(x) struct
 
 #ifdef __cplusplus
 
@@ -163,7 +175,7 @@ typedef struct tagPROPVARIANT
   PROPVAR_PAD1 wReserved1;
   PROPVAR_PAD2 wReserved2;
   PROPVAR_PAD3 wReserved3;
-  union 
+  union
   {
     CHAR cVal;
     UCHAR bVal;

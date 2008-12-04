@@ -1,0 +1,276 @@
+SRCS=\
+	CompressDialog.cpp \
+	CompressDialog_rc.cpp \
+	ExtractDialog.cpp \
+	ExtractDialog_rc.cpp \
+	BenchmarkDialog.cpp \
+	BenchmarkDialog_rc.cpp \
+	ExtractGUI.cpp \
+	GUI.cpp \
+	wxGUI.cpp \
+	UpdateCallbackGUI.cpp \
+	UpdateGUI.cpp \
+	../Common/ArchiveCommandLine.cpp \
+	../Common/ArchiveExtractCallback.cpp \
+	../Common/ArchiveOpenCallback.cpp \
+	../Common/DefaultName.cpp \
+	../Common/EnumDirItems.cpp \
+	../Common/Extract.cpp \
+	../Common/ExtractingFilePath.cpp \
+	../Common/LoadCodecs.cpp \
+	../Common/OpenArchive.cpp \
+	../Common/PropIDUtils.cpp \
+	../Common/SetProperties.cpp \
+	../Common/SortUtils.cpp \
+	../Common/TempFiles.cpp \
+	../Common/Update.cpp \
+	../Common/UpdateAction.cpp \
+	../Common/UpdateCallback.cpp \
+	../Common/UpdatePair.cpp \
+	../Common/UpdateProduce.cpp \
+	../Common/WorkDir.cpp \
+	../Common/ZipRegistry.cpp \
+	../Explorer/MyMessages.cpp \
+	../FileManager/FormatUtils.cpp \
+	../FileManager/ProgramLocation.cpp \
+	../FileManager/ProgressDialog2.cpp \
+	../FileManager/ProgressDialog2_rc.cpp \
+	../FileManager/MessagesDialog.cpp \
+	../FileManager/MessagesDialog_rc.cpp \
+	../FileManager/OverwriteDialog.cpp \
+	../FileManager/OverwriteDialog_rc.cpp \
+	../FileManager/PasswordDialog.cpp \
+	../FileManager/PasswordDialog_rc.cpp \
+	../FileManager/ExtractCallback.cpp \
+	../FileManager/SplitUtils.cpp \
+	../FileManager/StringUtils.cpp \
+	../FileManager/LangUtils.cpp \
+	../../Common/FilePathAutoRename.cpp \
+	../../Common/FileStreams.cpp \
+	../../Common/ProgressUtils.cpp \
+	../../Common/StreamUtils.cpp \
+	../../Compress/Copy/CopyCoder.cpp \
+	../../Compress/LZMA_Alone/LzmaBench.cpp \
+	../../../Common/CommandLineParser.cpp \
+	../../../Common/CRC.cpp \
+	../../../Common/IntToString.cpp \
+	../../../Common/Lang.cpp \
+	../../../Common/ListFileUtils.cpp \
+	../../../Common/MyString.cpp \
+	../../../Common/MyVector.cpp \
+	../../../Common/StringConvert.cpp \
+	../../../Common/StringToInt.cpp \
+	../../../Common/TextConfig.cpp \
+	../../../Common/UTFConvert.cpp \
+	../../../Common/Wildcard.cpp \
+	../../../Windows/DLL.cpp \
+	../../../Windows/Error.cpp \
+	../../../Windows/FileDir.cpp \
+	../../../Windows/FileFind.cpp \
+	../../../Windows/FileIO.cpp \
+	../../../Windows/FileName.cpp \
+	../../../Windows/PropVariant.cpp \
+	../../../Windows/PropVariantConversions.cpp \
+	../../../Windows/Registry.cpp \
+	../../../Windows/Synchronization.cpp \
+	../../../Windows/Time.cpp \
+	../../../Windows/System.cpp \
+	../../../Windows/Window.cpp \
+	../../../Windows/Control/Dialog.cpp \
+	../../../Windows/Control/Controls.cpp \
+	../../../Common/MyWindows.cpp \
+	../../../myWindows/myGetTickCount.cpp \
+	../../../myWindows/wine_date_and_time.cpp \
+	../../../myWindows/wine_GetXXXDefaultLangID.cpp
+
+
+SRCS_OUT=\
+	../FileManager/HelpUtils.cpp \
+	../FileManager/OpenCallback.cpp \
+	../FileManager/RegistryUtils.cpp \
+	../../../Common/NewHandler.cpp \
+	../../../Windows/MemoryLock.cpp \
+	../../../Windows/Registry.cpp \
+	../../../Windows/ResourceString.cpp \
+	../../../Windows/Shell.cpp
+
+SRCS_C=\
+	../../../../C/7zCrc.c \
+	../../../../C/Threads.c
+
+CompressDialog.o : CompressDialog.cpp
+	$(CXX) $(CFLAGS) CompressDialog.cpp
+CompressDialog_rc.o : CompressDialog_rc.cpp
+	$(CXX) $(CFLAGS) CompressDialog_rc.cpp
+ExtractDialog.o : ExtractDialog.cpp
+	$(CXX) $(CFLAGS) ExtractDialog.cpp
+ExtractDialog_rc.o : ExtractDialog_rc.cpp
+	$(CXX) $(CFLAGS) ExtractDialog_rc.cpp
+BenchmarkDialog.o : BenchmarkDialog.cpp
+	$(CXX) $(CFLAGS) BenchmarkDialog.cpp
+BenchmarkDialog_rc.o : BenchmarkDialog_rc.cpp
+	$(CXX) $(CFLAGS) BenchmarkDialog_rc.cpp
+ExtractGUI.o : ExtractGUI.cpp
+	$(CXX) $(CFLAGS) ExtractGUI.cpp
+GUI.o : GUI.cpp
+	$(CXX) $(CFLAGS) GUI.cpp
+wxGUI.o : wxGUI.cpp
+	$(CXX) $(CFLAGS) wxGUI.cpp
+UpdateCallbackGUI.o : UpdateCallbackGUI.cpp
+	$(CXX) $(CFLAGS) UpdateCallbackGUI.cpp
+UpdateGUI.o : UpdateGUI.cpp
+	$(CXX) $(CFLAGS) UpdateGUI.cpp
+ArchiveCommandLine.o : ../Common/ArchiveCommandLine.cpp
+	$(CXX) $(CFLAGS) ../Common/ArchiveCommandLine.cpp
+ArchiveExtractCallback.o : ../Common/ArchiveExtractCallback.cpp
+	$(CXX) $(CFLAGS) ../Common/ArchiveExtractCallback.cpp
+ArchiveOpenCallback.o : ../Common/ArchiveOpenCallback.cpp
+	$(CXX) $(CFLAGS) ../Common/ArchiveOpenCallback.cpp
+DefaultName.o : ../Common/DefaultName.cpp
+	$(CXX) $(CFLAGS) ../Common/DefaultName.cpp
+EnumDirItems.o : ../Common/EnumDirItems.cpp
+	$(CXX) $(CFLAGS) ../Common/EnumDirItems.cpp
+Extract.o : ../Common/Extract.cpp
+	$(CXX) $(CFLAGS) ../Common/Extract.cpp
+ExtractingFilePath.o : ../Common/ExtractingFilePath.cpp
+	$(CXX) $(CFLAGS) ../Common/ExtractingFilePath.cpp
+LoadCodecs.o : ../Common/LoadCodecs.cpp
+	$(CXX) $(CFLAGS) ../Common/LoadCodecs.cpp
+OpenArchive.o : ../Common/OpenArchive.cpp
+	$(CXX) $(CFLAGS) ../Common/OpenArchive.cpp
+PropIDUtils.o : ../Common/PropIDUtils.cpp
+	$(CXX) $(CFLAGS) ../Common/PropIDUtils.cpp
+SetProperties.o : ../Common/SetProperties.cpp
+	$(CXX) $(CFLAGS) ../Common/SetProperties.cpp
+SortUtils.o : ../Common/SortUtils.cpp
+	$(CXX) $(CFLAGS) ../Common/SortUtils.cpp
+TempFiles.o : ../Common/TempFiles.cpp
+	$(CXX) $(CFLAGS) ../Common/TempFiles.cpp
+Update.o : ../Common/Update.cpp
+	$(CXX) $(CFLAGS) ../Common/Update.cpp
+UpdateAction.o : ../Common/UpdateAction.cpp
+	$(CXX) $(CFLAGS) ../Common/UpdateAction.cpp
+UpdateCallback.o : ../Common/UpdateCallback.cpp
+	$(CXX) $(CFLAGS) ../Common/UpdateCallback.cpp
+UpdatePair.o : ../Common/UpdatePair.cpp
+	$(CXX) $(CFLAGS) ../Common/UpdatePair.cpp
+UpdateProduce.o : ../Common/UpdateProduce.cpp
+	$(CXX) $(CFLAGS) ../Common/UpdateProduce.cpp
+WorkDir.o : ../Common/WorkDir.cpp
+	$(CXX) $(CFLAGS) ../Common/WorkDir.cpp
+ZipRegistry.o : ../Common/ZipRegistry.cpp
+	$(CXX) $(CFLAGS) ../Common/ZipRegistry.cpp
+MyMessages.o : ../Explorer/MyMessages.cpp
+	$(CXX) $(CFLAGS) ../Explorer/MyMessages.cpp
+FormatUtils.o : ../FileManager/FormatUtils.cpp
+	$(CXX) $(CFLAGS) ../FileManager/FormatUtils.cpp
+ProgramLocation.o : ../FileManager/ProgramLocation.cpp
+	$(CXX) $(CFLAGS) ../FileManager/ProgramLocation.cpp
+ProgressDialog2.o : ../FileManager/ProgressDialog2.cpp
+	$(CXX) $(CFLAGS) ../FileManager/ProgressDialog2.cpp
+ProgressDialog2_rc.o : ../FileManager/ProgressDialog2_rc.cpp
+	$(CXX) $(CFLAGS) ../FileManager/ProgressDialog2_rc.cpp
+MessagesDialog.o : ../FileManager/MessagesDialog.cpp
+	$(CXX) $(CFLAGS) ../FileManager/MessagesDialog.cpp
+MessagesDialog_rc.o : ../FileManager/MessagesDialog_rc.cpp
+	$(CXX) $(CFLAGS) ../FileManager/MessagesDialog_rc.cpp
+OverwriteDialog.o : ../FileManager/OverwriteDialog.cpp
+	$(CXX) $(CFLAGS) ../FileManager/OverwriteDialog.cpp
+OverwriteDialog_rc.o : ../FileManager/OverwriteDialog_rc.cpp
+	$(CXX) $(CFLAGS) ../FileManager/OverwriteDialog_rc.cpp
+PasswordDialog.o : ../FileManager/PasswordDialog.cpp
+	$(CXX) $(CFLAGS) ../FileManager/PasswordDialog.cpp
+PasswordDialog_rc.o : ../FileManager/PasswordDialog_rc.cpp
+	$(CXX) $(CFLAGS) ../FileManager/PasswordDialog_rc.cpp
+ExtractCallback.o : ../FileManager/ExtractCallback.cpp
+	$(CXX) $(CFLAGS) ../FileManager/ExtractCallback.cpp
+SplitUtils.o : ../FileManager/SplitUtils.cpp
+	$(CXX) $(CFLAGS) ../FileManager/SplitUtils.cpp
+StringUtils.o : ../FileManager/StringUtils.cpp
+	$(CXX) $(CFLAGS) ../FileManager/StringUtils.cpp
+LangUtils.o : ../FileManager/LangUtils.cpp
+	$(CXX) $(CFLAGS) ../FileManager/LangUtils.cpp
+FilePathAutoRename.o : ../../Common/FilePathAutoRename.cpp
+	$(CXX) $(CFLAGS) ../../Common/FilePathAutoRename.cpp
+FileStreams.o : ../../Common/FileStreams.cpp
+	$(CXX) $(CFLAGS) ../../Common/FileStreams.cpp
+ProgressUtils.o : ../../Common/ProgressUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/ProgressUtils.cpp
+StreamUtils.o : ../../Common/StreamUtils.cpp
+	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
+CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
+	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp
+LzmaBench.o : ../../Compress/LZMA_Alone/LzmaBench.cpp
+	$(CXX) $(CFLAGS) ../../Compress/LZMA_Alone/LzmaBench.cpp
+CommandLineParser.o : ../../../Common/CommandLineParser.cpp
+	$(CXX) $(CFLAGS) ../../../Common/CommandLineParser.cpp
+CRC.o : ../../../Common/CRC.cpp
+	$(CXX) $(CFLAGS) ../../../Common/CRC.cpp
+IntToString.o : ../../../Common/IntToString.cpp
+	$(CXX) $(CFLAGS) ../../../Common/IntToString.cpp
+Lang.o : ../../../Common/Lang.cpp
+	$(CXX) $(CFLAGS) ../../../Common/Lang.cpp
+ListFileUtils.o : ../../../Common/ListFileUtils.cpp
+	$(CXX) $(CFLAGS) ../../../Common/ListFileUtils.cpp
+MyString.o : ../../../Common/MyString.cpp
+	$(CXX) $(CFLAGS) ../../../Common/MyString.cpp
+MyVector.o : ../../../Common/MyVector.cpp
+	$(CXX) $(CFLAGS) ../../../Common/MyVector.cpp
+StringConvert.o : ../../../Common/StringConvert.cpp
+	$(CXX) $(CFLAGS) ../../../Common/StringConvert.cpp
+StringToInt.o : ../../../Common/StringToInt.cpp
+	$(CXX) $(CFLAGS) ../../../Common/StringToInt.cpp
+TextConfig.o : ../../../Common/TextConfig.cpp
+	$(CXX) $(CFLAGS) ../../../Common/TextConfig.cpp
+UTFConvert.o : ../../../Common/UTFConvert.cpp
+	$(CXX) $(CFLAGS) ../../../Common/UTFConvert.cpp
+Wildcard.o : ../../../Common/Wildcard.cpp
+	$(CXX) $(CFLAGS) ../../../Common/Wildcard.cpp
+DLL.o : ../../../Windows/DLL.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/DLL.cpp
+Error.o : ../../../Windows/Error.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/Error.cpp
+FileDir.o : ../../../Windows/FileDir.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileDir.cpp
+FileFind.o : ../../../Windows/FileFind.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileFind.cpp
+FileIO.o : ../../../Windows/FileIO.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileIO.cpp
+FileName.o : ../../../Windows/FileName.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/FileName.cpp
+PropVariant.o : ../../../Windows/PropVariant.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
+PropVariantConversions.o : ../../../Windows/PropVariantConversions.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/PropVariantConversions.cpp
+Registry.o : ../../../Windows/Registry.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/Registry.cpp
+Synchronization.o : ../../../Windows/Synchronization.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/Synchronization.cpp
+Time.o : ../../../Windows/Time.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/Time.cpp
+System.o : ../../../Windows/System.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/System.cpp
+Window.o : ../../../Windows/Window.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/Window.cpp
+Dialog.o : ../../../Windows/Control/Dialog.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/Control/Dialog.cpp
+Controls.o : ../../../Windows/Control/Controls.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/Control/Controls.cpp
+MyWindows.o : ../../../Common/MyWindows.cpp
+	$(CXX) $(CFLAGS) ../../../Common/MyWindows.cpp
+myGetTickCount.o : ../../../myWindows/myGetTickCount.cpp
+	$(CXX) $(CFLAGS) ../../../myWindows/myGetTickCount.cpp
+wine_date_and_time.o : ../../../myWindows/wine_date_and_time.cpp
+	$(CXX) $(CFLAGS) ../../../myWindows/wine_date_and_time.cpp
+wine_GetXXXDefaultLangID.o : ../../../myWindows/wine_GetXXXDefaultLangID.cpp
+	$(CXX) $(CFLAGS) ../../../myWindows/wine_GetXXXDefaultLangID.cpp
+Threads.o : ../../../../C/Threads.c
+	$(CC) $(CFLAGS) ../../../../C/Threads.c
+
+# CRC32, C version
+7zCrc.o : ../../../../C/7zCrc.c
+	$(CC) $(CFLAGS) ../../../../C/7zCrc.c
+# CRC32, ASM version
+7zCrcT8.o : ../../../../C/7zCrcT8.c
+	$(CC) $(CFLAGS) ../../../../C/7zCrcT8.c
+

@@ -46,6 +46,8 @@ bool DeleteFileAlways(LPCWSTR name);
 bool MyGetFullPathName(LPCTSTR fileName, CSysString &resultPath, 
     int &fileNamePartStartIndex);
 bool MyGetFullPathName(LPCTSTR fileName, CSysString &resultPath);
+bool GetOnlyName(LPCTSTR fileName, CSysString &resultName);
+bool GetOnlyDirPrefix(LPCTSTR fileName, CSysString &resultName);
 #ifndef _UNICODE
 bool MyGetFullPathName(LPCWSTR fileName, UString &resultPath, 
     int &fileNamePartStartIndex);
@@ -53,6 +55,9 @@ bool MyGetFullPathName(LPCWSTR fileName, UString &resultPath);
 #endif
 
 #endif
+
+bool MySetCurrentDirectory(LPCWSTR path);
+bool MyGetCurrentDirectory(CSysString &resultPath);
 
 bool MySearchPath(LPCWSTR path, LPCWSTR fileName, LPCWSTR extension, UString &resultPath);
 
@@ -68,9 +73,14 @@ class CTempFile
 public:
   CTempFile(): _mustBeDeleted(false) {}
   ~CTempFile() { Remove(); }
+  void DisableDeleting() { _mustBeDeleted = false; }
   UINT Create(LPCTSTR dirPath, LPCTSTR prefix, CSysString &resultPath);
   bool Remove();
 };
+
+#ifdef _UNICODE
+typedef CTempFile CTempFileW;
+#endif
 
 }}}
 

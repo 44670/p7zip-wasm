@@ -18,6 +18,7 @@
 #ifdef HAVE_GETPASS
 #include <pwd.h>
 #include <unistd.h>
+#include "Common/MyException.h"
 #endif
 #endif
 
@@ -29,7 +30,7 @@ static const char kAutoRename = 'U';
 static const char kQuit = 'Q';
 
 static const char *kFirstQuestionMessage = "?\n";
-static const char *kHelpQuestionMessage = 
+static const char *kHelpQuestionMessage =
   "(Y)es / (N)o / (A)lways / (S)kip all / A(u)to rename / (Q)uit? ";
 
 // return true if pressed Quite;
@@ -63,7 +64,7 @@ NUserAnswerMode::EEnum ScanUserYesNoAllQuit(CStdOutStream *outStream)
   }
 }
 
-UString GetPassword(CStdOutStream *outStream)
+UString GetPassword(CStdOutStream *outStream,bool verify)
 {
 #ifdef USE_FLTK 
   const char *r = fl_password("Enter password", 0);
@@ -74,11 +75,18 @@ UString GetPassword(CStdOutStream *outStream)
   (*outStream) << "\nEnter password (will not be echoed) :";
   outStream->Flush();
   AString oemPassword = getpass("");
+  if (verify)
+  {
+    (*outStream) << "Verify password (will not be echoed) :";
+    outStream->Flush();
+    AString oemPassword2 = getpass("");
+    if (oemPassword != oemPassword2) throw "password verification failed";
+  }
 #else
   (*outStream) << "\nEnter password:";
   outStream->Flush();
   AString oemPassword = g_StdIn.ScanStringUntilNewLine();
 #endif
 #endif /* USE_FLTK */
-  return MultiByteToUnicodeString(oemPassword, CP_OEMCP); 
+  return MultiByteToUnicodeString(oemPassword, CP_OEMCP);
 }

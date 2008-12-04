@@ -27,6 +27,7 @@ StdOutStream.o \
 MyString.o \
 StringConvert.o \
 StringToInt.o \
+UTFConvert.o \
 MyVector.o \
 Wildcard.o \
 ConsoleClose.o \
@@ -46,6 +47,7 @@ FileIO.o \
 FileName.o \
 PropVariant.o \
 PropVariantConversions.o \
+Time.o \
 System.o \
 ArchiveCommandLine.o \
 ArchiveExtractCallback.o \

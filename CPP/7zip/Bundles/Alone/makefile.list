@@ -33,6 +33,7 @@ SRCS=\
  ../../../Windows/PropVariant.cpp \
  ../../../Windows/PropVariantConversions.cpp \
  ../../../Windows/Synchronization.cpp \
+ ../../../Windows/Time.cpp \
  ../../../Windows/System.cpp \
  ../../Common/CreateCoder.cpp \
  ../../Archive/Common/CrossThreadProgress.cpp \
@@ -119,6 +120,7 @@ SRCS=\
  ../../Archive/Common/CoderMixer2.cpp \
  ../../Archive/Common/CoderMixer2MT.cpp \
  ../../Archive/Common/DummyOutStream.cpp \
+ ../../Archive/Common/FindSignature.cpp \
  ../../Archive/Common/InStreamWithCRC.cpp \
  ../../Archive/Common/HandlerOut.cpp \
  ../../Archive/Common/ItemNameUtils.cpp \
@@ -127,8 +129,7 @@ SRCS=\
  ../../Archive/Common/ParseProperties.cpp \
  ../../Archive/Split/SplitHandler.cpp \
  ../../Archive/Split/SplitRegister.cpp \
- ../../Archive/Z/ZHandler.cpp \
- ../../Archive/Z/ZRegister.cpp \
+ ../../Archive/ZHandler.cpp \
  ../../Archive/Cab/CabBlockInStream.cpp \
  ../../Archive/Cab/CabHandler.cpp \
  ../../Archive/Cab/CabHeader.cpp \
@@ -274,6 +275,8 @@ PropVariantConversions.o : ../../../Windows/PropVariantConversions.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/PropVariantConversions.cpp
 Synchronization.o : ../../../Windows/Synchronization.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/Synchronization.cpp
+Time.o : ../../../Windows/Time.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/Time.cpp
 System.o : ../../../Windows/System.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/System.cpp
 CreateCoder.o : ../../Common/CreateCoder.cpp
@@ -490,6 +493,8 @@ CoderMixer2MT.o : ../../Archive/Common/CoderMixer2MT.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/CoderMixer2MT.cpp
 DummyOutStream.o : ../../Archive/Common/DummyOutStream.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/DummyOutStream.cpp
+FindSignature.o : ../../Archive/Common/FindSignature.cpp
+	$(CXX) $(CFLAGS) ../../Archive/Common/FindSignature.cpp
 InStreamWithCRC.o : ../../Archive/Common/InStreamWithCRC.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Common/InStreamWithCRC.cpp
 HandlerOut.o : ../../Archive/Common/HandlerOut.cpp
@@ -506,8 +511,8 @@ SplitHandler.o : ../../Archive/Split/SplitHandler.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Split/SplitHandler.cpp
 SplitRegister.o : ../../Archive/Split/SplitRegister.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Split/SplitRegister.cpp
-ZHandler.o : ../../Archive/Z/ZHandler.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Z/ZHandler.cpp
+ZHandler.o : ../../Archive/ZHandler.cpp
+	$(CXX) $(CFLAGS) ../../Archive/ZHandler.cpp
 ZRegister.o : ../../Archive/Z/ZRegister.cpp
 	$(CXX) $(CFLAGS) ../../Archive/Z/ZRegister.cpp
 CabBlockInStream.o : ../../Archive/Cab/CabBlockInStream.cpp

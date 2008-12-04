@@ -5,7 +5,7 @@ SECTION .text
     movzx EDX, BYTE [ESI]
     inc ESI
     movzx EBX, AL
-    xor EDX, EBX 
+    xor EDX, EBX
     shr EAX, 8
     xor EAX, [EBP + EDX * 4]
     dec EDI

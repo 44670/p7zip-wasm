@@ -184,7 +184,8 @@ ArchiveCommandLine.o: ../Common/ArchiveCommandLine.cpp \
   ../Common/../Common/DirItem.h ../../../Common/Types.h \
   ../Common/../Common/UpdateAction.h ../Common/../Common/UpdateProduce.h \
   ../Common/../Common/UpdatePair.h ../Common/LoadCodecs.h \
-  ../Common/SortUtils.h ../Common/EnumDirItems.h ../Common/DirItem.h
+  ../Common/SortUtils.h ../Common/EnumDirItems.h ../Common/DirItem.h \
+  ../../../myWindows/myPrivate.h
 ArchiveExtractCallback.o: ../Common/ArchiveExtractCallback.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/MyGuidDef.h \
@@ -215,7 +216,7 @@ ArchiveExtractCallback.o: ../Common/ArchiveExtractCallback.cpp \
   ../../../Windows/FileDir.h ../../../Windows/../Common/MyString.h \
   ../../../Windows/Defs.h ../../../Windows/FileFind.h \
   ../../../Windows/FileName.h ../../../Windows/Time.h \
-  ../../../Common/Types.h ../../../Windows/Defs.h ../../../Windows/Defs.h \
+  ../../../Common/Types.h ../../../Windows/Defs.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
   ../../../Windows/PropVariantConversions.h \
@@ -271,7 +272,9 @@ EnumDirItems.o: ../Common/EnumDirItems.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
   ../../../Common/MyString.h ../../../Common/MyVector.h \
   ../../../Common/Defs.h ../../../Common/Wildcard.h \
-  ../../../Common/MyCom.h ../Common/EnumDirItems.h ../Common/DirItem.h \
+  ../../../Common/MyCom.h ../Common/EnumDirItems.h \
+  ../../../Windows/FileFind.h ../../../Windows/../Common/MyString.h \
+  ../../../Windows/FileName.h ../../../Windows/Defs.h ../Common/DirItem.h \
   ../../../Common/MyString.h ../../../Common/Types.h \
   ../Common/../../Archive/IArchive.h ../Common/../../Archive/../IStream.h \
   ../Common/../../Archive/../../Common/MyUnknown.h \
@@ -279,9 +282,7 @@ EnumDirItems.o: ../Common/EnumDirItems.cpp ../../../myWindows/StdAfx.h \
   ../Common/../../Archive/../../Common/Types.h \
   ../Common/../../Archive/../IDecl.h \
   ../Common/../../Archive/../IProgress.h \
-  ../Common/../../Archive/../PropID.h ../../../Windows/FileFind.h \
-  ../../../Windows/../Common/MyString.h ../../../Windows/FileName.h \
-  ../../../Windows/Defs.h
+  ../Common/../../Archive/../PropID.h
 Extract.o: ../Common/Extract.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
@@ -440,7 +441,9 @@ LoadCodecs.o: ../Common/LoadCodecs.cpp ../../../myWindows/StdAfx.h \
   ../Common/../../Common/RegisterArc.h \
   ../Common/../../Common/../Archive/IArchive.h \
   ../Common/../../../Windows/FileFind.h \
-  ../Common/../../../Windows/FileName.h ../Common/../../../Windows/Defs.h
+  ../Common/../../../Windows/FileName.h ../Common/../../../Windows/Defs.h \
+  ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
+  ../../../Common/MyString.h
 PropIDUtils.o: ../Common/PropIDUtils.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
@@ -566,12 +569,12 @@ Update.o: ../Common/Update.cpp ../../../myWindows/StdAfx.h \
   ../Common/../../../Windows/DLL.h \
   ../Common/../../../Windows/../Common/MyString.h \
   ../../../Common/IntToString.h ../../../Common/StringConvert.h \
-  ../../../Common/CommandLineParser.h ../../../Windows/Defs.h \
   ../../../Windows/FileDir.h ../../../Windows/FileName.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
   ../../../Windows/PropVariantConversions.h ../../../Common/Types.h \
-  ../../../Common/MyString.h ../Common/../../Common/FileStreams.h \
+  ../../../Common/MyString.h ../../../Windows/Time.h \
+  ../Common/../../Common/FileStreams.h \
   ../Common/../../Common/../../Windows/FileIO.h \
   ../../../Common/MyString.h ../Common/../../Common/../IStream.h \
   ../Common/../../Common/../../Common/MyCom.h \
@@ -581,8 +584,8 @@ Update.o: ../Common/Update.cpp ../../../myWindows/StdAfx.h \
   ../Common/../Common/DirItem.h ../Common/../Common/EnumDirItems.h \
   ../../../Common/Wildcard.h ../../../Windows/FileFind.h \
   ../Common/../Common/OpenArchive.h ../Common/../Common/LoadCodecs.h \
-  ../Common/../Common/ArchiveOpenCallback.h ../Common/TempFiles.h \
-  ../Common/EnumDirItems.h ../Common/SetProperties.h
+  ../Common/../Common/ArchiveOpenCallback.h ../Common/EnumDirItems.h \
+  ../Common/SetProperties.h ../Common/TempFiles.h
 UpdatePair.o: ../Common/UpdatePair.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
@@ -592,9 +595,9 @@ UpdatePair.o: ../Common/UpdatePair.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/Defs.h ../../../Common/Wildcard.h \
   ../../../Common/MyString.h ../../../Common/MyVector.h \
   ../../../Common/Defs.h ../../../Windows/Time.h ../../../Common/Types.h \
-  ../../../Windows/Defs.h ../Common/UpdatePair.h ../Common/DirItem.h \
-  ../../../Common/MyString.h ../../../Common/Types.h \
-  ../Common/../../Archive/IArchive.h ../Common/../../Archive/../IStream.h \
+  ../Common/UpdatePair.h ../Common/DirItem.h ../../../Common/MyString.h \
+  ../../../Common/Types.h ../Common/../../Archive/IArchive.h \
+  ../Common/../../Archive/../IStream.h \
   ../Common/../../Archive/../../Common/MyUnknown.h \
   ../Common/../../Archive/../../Common/MyWindows.h \
   ../Common/../../Archive/../../Common/Types.h \
@@ -754,7 +757,7 @@ ExtractCallbackConsole.o: ExtractCallbackConsole.cpp \
   ../../../Windows/FileDir.h ../../../Windows/../Common/MyString.h \
   ../../../Windows/Defs.h ../../../Windows/FileFind.h \
   ../../../Windows/FileName.h ../../../Windows/Time.h \
-  ../../../Common/Types.h ../../../Windows/Defs.h ../../../Windows/Defs.h \
+  ../../../Common/Types.h ../../../Windows/Defs.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../../Windows/Error.h \
   ../../../Windows/PropVariantConversions.h \
@@ -788,12 +791,13 @@ List.o: List.cpp ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Windows/PropVariantConversions.h ../../../Common/Types.h \
   ../../../Common/MyString.h ../../../Windows/FileDir.h \
   ../../../Windows/../Common/MyString.h ../../../Windows/Defs.h \
-  ../../Archive/IArchive.h ../Common/PropIDUtils.h \
-  ../../../Common/MyString.h ../Common/OpenArchive.h \
-  ../../../Windows/FileFind.h ../../../Windows/FileName.h \
-  ../Common/LoadCodecs.h ../Common/ArchiveOpenCallback.h \
-  ../../../Common/MyCom.h ../Common/../../IPassword.h \
-  OpenCallbackConsole.h ../Common/ArchiveOpenCallback.h
+  ../../../Windows/Error.h ../../Archive/IArchive.h \
+  ../Common/PropIDUtils.h ../../../Common/MyString.h \
+  ../Common/OpenArchive.h ../../../Windows/FileFind.h \
+  ../../../Windows/FileName.h ../Common/LoadCodecs.h \
+  ../Common/ArchiveOpenCallback.h ../../../Common/MyCom.h \
+  ../Common/../../IPassword.h OpenCallbackConsole.h \
+  ../Common/ArchiveOpenCallback.h
 MainAr.o: MainAr.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
@@ -981,7 +985,8 @@ UserInputUtils.o: UserInputUtils.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/StdInStream.h ../../../Common/MyString.h \
   ../../../Common/MyVector.h ../../../Common/Defs.h \
   ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
-  UserInputUtils.h ../../../Common/StdOutStream.h
+  UserInputUtils.h ../../../Common/StdOutStream.h \
+  ../../../Common/MyException.h
 DLL.o: ../../../Windows/DLL.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
@@ -990,10 +995,7 @@ DLL.o: ../../../Windows/DLL.cpp ../../../myWindows/StdAfx.h \
   ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
   ../../../Windows/DLL.h ../../../Windows/../Common/MyString.h \
   ../../../Windows/../Common/MyVector.h ../../../Windows/../Common/Defs.h \
-  ../../../Windows/Defs.h ../../../Windows/../Common/StringConvert.h \
-  ../../../Windows/../Common/MyWindows.h \
-  ../../../Windows/../Common/MyString.h \
-  ../../../Windows/../Common/Types.h ../../../myWindows/myPrivate.h
+  ../../../Windows/Defs.h ../../../myWindows/myPrivate.h
 Error.o: ../../../Windows/Error.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
@@ -1072,5 +1074,12 @@ PropVariant.o: ../../../Windows/PropVariant.cpp \
   ../../../include_windows/tchar.h ../../../Windows/PropVariant.h \
   ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../../Windows/../Common/Defs.h
+Time.o: ../../../Windows/Time.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../Common/../../C/Types.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../Common/MyWindows.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../../Windows/Time.h ../../../Common/Types.h ../../../Windows/Defs.h
 System.o: ../../../Windows/System.cpp ../../../Common/Types.h \
   ../../../Common/../../C/Types.h

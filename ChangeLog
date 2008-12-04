@@ -1,4 +1,36 @@
 
+Version 4.61
+============
+  - From Windows version of 7-zip 4.61 :
+    - 7-Zip now supports LZMA compression for .ZIP archives.
+    - Some bugs were fixed.
+
+  - #2199036 : Ask for password twice when creating encrypted archive
+
+  - 7zG added (read GUI/readme.txt)
+
+
+Version 4.60 (never published)
+============
+
+  - From Windows version of 7-zip 4.60 :
+    - Some bugs were fixed
+
+  - p7zip didn't use the BCJ /BCJ2 filters for executables (:
+  - makefile.linux_amd64_asm_icc added (tested with Intel Compiler 11 on Ubuntu 8.04 x64)
+
+
+Version 4.59 (never published)
+============
+
+  - From Windows version of 7-zip 4.59 :
+    - 7-Zip now can unpack UDF, XAR and DMG/HFS archives.
+    - It's allowed to use -t switch for "list" and "extract" commands.
+    - Some bugs were fixed.
+
+  - Bug : wrong timestamp for files extracted from .zip or .rar archives
+
+
 Version 4.58
 ============
   - From Windows version of 7-zip 4.58 :

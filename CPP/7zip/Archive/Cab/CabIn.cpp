@@ -2,43 +2,12 @@
 
 #include "StdAfx.h"
 
-#include "Common/StringConvert.h"
-#include "Common/MyCom.h"
 #include "CabIn.h"
-#include "Windows/Defs.h"
 
-#include "../../Common/StreamUtils.h"
+#include "../Common/FindSignature.h"
 
-namespace NArchive{
-namespace NCab{
-
-/*
-static HRESULT ReadBytes(IInStream *inStream, void *data, UInt32 size)
-{
-  UInt32 realProcessedSize;
-  RINOK(ReadStream(inStream, data, size, &realProcessedSize));
-  if(realProcessedSize != size)
-    return S_FALSE;
-  return S_OK;
-}
-
-static HRESULT SafeRead(IInStream *inStream, void *data, UInt32 size)
-{
-  UInt32 realProcessedSize;
-  RINOK(ReadStream(inStream, data, size, &realProcessedSize));
-  if(realProcessedSize != size)
-    throw CInArchiveException(CInArchiveException::kUnexpectedEndOfArchive);
-  return S_OK;
-}
-
-static void SafeInByteRead(::CInBuffer &inBuffer, void *data, UInt32 size)
-{
-  UInt32 realProcessedSize;
-  inBuffer.ReadBytes(data, size, realProcessedSize);
-  if(realProcessedSize != size)
-    throw CInArchiveException(CInArchiveException::kUnexpectedEndOfArchive);
-}
-*/
+namespace NArchive {
+namespace NCab {
 
 Byte CInArchive::ReadByte()
 {
@@ -94,75 +63,59 @@ void CInArchive::Skeep(size_t size)
     ReadByte();
 }
 
-HRESULT CInArchive::Open2(IInStream *inStream, 
+HRESULT CInArchive::Open2(IInStream *stream,
     const UInt64 *searchHeaderSizeLimit,
     CDatabase &database)
 {
   database.Clear();
-  RINOK(inStream->Seek(0, STREAM_SEEK_CUR, &database.StartPosition));
+  RINOK(stream->Seek(0, STREAM_SEEK_SET, &database.StartPosition));
 
-  {
-    if (!inBuffer.Create(1 << 17))
-      return E_OUTOFMEMORY;
-    inBuffer.SetStream(inStream);
-    inBuffer.Init();
-    UInt64 value = 0;
-    const int kSignatureSize = 8;
-    UInt64 kSignature64 = NHeader::NArchive::kSignature;
-    for (;;)
-    {
-      Byte b;
-      if (!inBuffer.ReadByte(b))
-        return S_FALSE;
-      value >>= 8;
-      value |= ((UInt64)b) << ((kSignatureSize - 1) * 8);
-      if (inBuffer.GetProcessedSize() >= kSignatureSize)
-      {
-        if (value == kSignature64)
-          break;
-        if (searchHeaderSizeLimit != NULL)
-          if (inBuffer.GetProcessedSize() > (*searchHeaderSizeLimit))
-            return S_FALSE;
-      }
-    }
-    database.StartPosition += inBuffer.GetProcessedSize() - kSignatureSize;
-  }
+  RINOK(FindSignatureInStream(stream, NHeader::kMarker, NHeader::kMarkerSize,
+      searchHeaderSizeLimit, database.StartPosition));
 
-  CInArchiveInfo &archiveInfo = database.ArchiveInfo;
+  RINOK(stream->Seek(database.StartPosition + NHeader::kMarkerSize, STREAM_SEEK_SET, NULL));
+  if (!inBuffer.Create(1 << 17))
+    return E_OUTOFMEMORY;
+  inBuffer.SetStream(stream);
+  inBuffer.Init();
 
-  archiveInfo.Size = ReadUInt32(); // size of this cabinet file in bytes
+  CInArchiveInfo &ai = database.ArchiveInfo;
+
+  ai.Size = ReadUInt32();
   if (ReadUInt32() != 0)
     return S_FALSE;
-  archiveInfo.FileHeadersOffset = ReadUInt32(); // offset of the first CFFILE entry
+  ai.FileHeadersOffset = ReadUInt32();
   if (ReadUInt32() != 0)
     return S_FALSE;
 
-  archiveInfo.VersionMinor = ReadByte(); // cabinet file format version, minor
-  archiveInfo.VersionMajor = ReadByte(); // cabinet file format version, major
-  archiveInfo.NumFolders = ReadUInt16(); // number of CFFOLDER entries in this cabinet
-  archiveInfo.NumFiles  = ReadUInt16(); // number of CFFILE entries in this cabinet
-  archiveInfo.Flags = ReadUInt16(); // number of CFFILE entries in this cabinet
-  archiveInfo.SetID = ReadUInt16(); // must be the same for all cabinets in a set
-  archiveInfo.CabinetNumber = ReadUInt16(); // number of this cabinet file in a set
+  ai.VersionMinor = ReadByte();
+  ai.VersionMajor = ReadByte();
+  ai.NumFolders = ReadUInt16();
+  ai.NumFiles = ReadUInt16();
+  ai.Flags = ReadUInt16();
+  if (ai.Flags > 7)
+    return S_FALSE;
+  ai.SetID = ReadUInt16();
+  ai.CabinetNumber = ReadUInt16();
 
-  if (archiveInfo.ReserveBlockPresent())
+  if (ai.ReserveBlockPresent())
   {
-    archiveInfo.PerCabinetAreaSize = ReadUInt16(); // (optional) size of per-cabinet reserved area
-    archiveInfo.PerFolderAreaSize = ReadByte(); // (optional) size of per-folder reserved area
-    archiveInfo.PerDataBlockAreaSize = ReadByte(); // (optional) size of per-datablock reserved area
+    ai.PerCabinetAreaSize = ReadUInt16();
+    ai.PerFolderAreaSize = ReadByte();
+    ai.PerDataBlockAreaSize = ReadByte();
 
-    Skeep(archiveInfo.PerCabinetAreaSize);
+    Skeep(ai.PerCabinetAreaSize);
   }
 
   {
-    if (archiveInfo.IsTherePrev())
-      ReadOtherArchive(archiveInfo.PreviousArchive);
-    if (archiveInfo.IsThereNext())
-      ReadOtherArchive(archiveInfo.NextArchive);
+    if (ai.IsTherePrev())
+      ReadOtherArchive(ai.PreviousArchive);
+    if (ai.IsThereNext())
+      ReadOtherArchive(ai.NextArchive);
   }
   
   int i;
-  for(i = 0; i < archiveInfo.NumFolders; i++)
+  for (i = 0; i < ai.NumFolders; i++)
   {
     CFolder folder;
 
@@ -171,15 +124,15 @@ HRESULT CInArchive::Open2(IInStream *inStream,
     folder.CompressionTypeMajor = ReadByte();
     folder.CompressionTypeMinor = ReadByte();
 
-    Skeep(archiveInfo.PerFolderAreaSize);
+    Skeep(ai.PerFolderAreaSize);
     database.Folders.Add(folder);
   }
   
-  RINOK(inStream->Seek(database.StartPosition + archiveInfo.FileHeadersOffset, STREAM_SEEK_SET, NULL));
+  RINOK(stream->Seek(database.StartPosition + ai.FileHeadersOffset, STREAM_SEEK_SET, NULL));
 
-  inBuffer.SetStream(inStream);
+  inBuffer.SetStream(stream);
   inBuffer.Init();
-  for(i = 0; i < archiveInfo.NumFiles; i++)
+  for (i = 0; i < ai.NumFiles; i++)
   {
     CItem item;
     item.Size = ReadUInt32();
@@ -221,8 +174,8 @@ static int CompareMvItems(const CMvItem *p1, const CMvItem *p2, void *param)
   const CDatabaseEx &db2 = mvDb.Volumes[p2->VolumeIndex];
   const CItem &item1 = db1.Items[p1->ItemIndex];
   const CItem &item2 = db2.Items[p2->ItemIndex];;
-  bool isDir1 = item1.IsDirectory();
-  bool isDir2 = item2.IsDirectory();
+  bool isDir1 = item1.IsDir();
+  bool isDir2 = item2.IsDir();
   if (isDir1 && !isDir2)
     return -1;
   if (isDir2 && !isDir1)
@@ -243,16 +196,10 @@ bool CMvDatabaseEx::AreItemsEqual(int i1, int i2)
   const CDatabaseEx &db2 = Volumes[p2->VolumeIndex];
   const CItem &item1 = db1.Items[p1->ItemIndex];
   const CItem &item2 = db2.Items[p2->ItemIndex];;
-  int f1 = GetFolderIndex(p1);
-  int f2 = GetFolderIndex(p2);
-  if (f1 != f2)
-    return false;
-  if (item1.Offset != item2.Offset)
-    return false;
-  if (item1.Size != item2.Size)
-    return false;
-
-  return true;
+  return GetFolderIndex(p1) == GetFolderIndex(p2) &&
+    item1.Offset == item2.Offset &&
+    item1.Size == item2.Size &&
+    item1.Name == item2.Name;
 }
 
 void CMvDatabaseEx::FillSortAndShrink()
@@ -315,14 +262,14 @@ bool CMvDatabaseEx::Check()
   }
   UInt64 maxPos = 0;
   int prevFolder = -2;
-  for(int i = 0; i < Items.Size(); i++)
+  for (int i = 0; i < Items.Size(); i++)
   {
     const CMvItem &mvItem = Items[i];
     int fIndex = GetFolderIndex(&mvItem);
     if (fIndex >= FolderStartFileIndex.Size())
       return false;
     const CItem &item = Volumes[mvItem.VolumeIndex].Items[mvItem.ItemIndex];
-    if (item.IsDirectory())
+    if (item.IsDir())
       continue;
     int folderIndex = GetFolderIndex(&mvItem);
     if (folderIndex != prevFolder)

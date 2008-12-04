@@ -57,6 +57,7 @@ SRCS=\
  ../../../Windows/FileName.cpp \
  ../../../Windows/PropVariantConversions.cpp \
  ../../../Windows/PropVariant.cpp \
+ ../../../Windows/Time.cpp \
  ../../../Windows/System.cpp
 
 SRCS_C=\
@@ -132,6 +133,8 @@ PropVariant.o : ../../../Windows/PropVariant.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
 PropVariantConversions.o : ../../../Windows/PropVariantConversions.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/PropVariantConversions.cpp
+Time.o : ../../../Windows/Time.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/Time.cpp
 System.o : ../../../Windows/System.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/System.cpp
 ArchiveCommandLine.o : ../Common/ArchiveCommandLine.cpp

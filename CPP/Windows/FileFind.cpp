@@ -3,17 +3,18 @@
 #include "StdAfx.h"
 
 #include "FileFind.h"
-#ifndef _UNICODE
 #include "../Common/StringConvert.h"
-#endif
 
 #include <sys/stat.h>
 #include <unistd.h>
 #include <errno.h>
 
 #ifdef HAVE_LSTAT
-extern int global_use_lstat;
+extern "C"
+{
+
 int global_use_lstat=1; // default behaviour : p7zip stores symlinks instead of dumping the files they point to
+}
 #endif
 
 #define NEED_NAME_WINDOWS_TO_UNIX
@@ -136,23 +137,21 @@ static const TCHAR kDot = TEXT('.');
 
 bool CFileInfo::IsDots() const
 { 
-  if (!IsDirectory() || Name.IsEmpty())
+  if (!IsDir() || Name.IsEmpty())
     return false;
   if (Name[0] != kDot)
     return false;
   return Name.Length() == 1 || (Name[1] == kDot && Name.Length() == 2);
 }
 
-#ifndef _UNICODE
 bool CFileInfoW::IsDots() const
 { 
-  if (!IsDirectory() || Name.IsEmpty())
+  if (!IsDir() || Name.IsEmpty())
     return false;
   if (Name[0] != kDot)
     return false;
   return Name.Length() == 1 || (Name[1] == kDot && Name.Length() == 2);
 }
-#endif
 
 static bool originalFilename(const UString & src, AString & res)
 {
@@ -192,19 +191,19 @@ static int fillin_CFileInfo(CFileInfo &fileInfo,const char *filename) {
 
   /* FIXME : FILE_ATTRIBUTE_HIDDEN ? */
   if (S_ISDIR(stat_info.st_mode)) {
-    fileInfo.Attributes = FILE_ATTRIBUTE_DIRECTORY;
+    fileInfo.Attrib = FILE_ATTRIBUTE_DIRECTORY;
   } else {
-    fileInfo.Attributes = FILE_ATTRIBUTE_ARCHIVE;
+    fileInfo.Attrib = FILE_ATTRIBUTE_ARCHIVE;
   }
 
   if (!(stat_info.st_mode & S_IWUSR))
-    fileInfo.Attributes |= FILE_ATTRIBUTE_READONLY;
+    fileInfo.Attrib |= FILE_ATTRIBUTE_READONLY;
 
-  fileInfo.Attributes |= FILE_ATTRIBUTE_UNIX_EXTENSION + ((stat_info.st_mode & 0xFFFF) << 16);
+  fileInfo.Attrib |= FILE_ATTRIBUTE_UNIX_EXTENSION + ((stat_info.st_mode & 0xFFFF) << 16);
 
-  RtlSecondsSince1970ToFileTime( stat_info.st_ctime, &fileInfo.CreationTime );
-  RtlSecondsSince1970ToFileTime( stat_info.st_mtime, &fileInfo.LastWriteTime );
-  RtlSecondsSince1970ToFileTime( stat_info.st_atime, &fileInfo.LastAccessTime );
+  RtlSecondsSince1970ToFileTime( stat_info.st_ctime, &fileInfo.CTime );
+  RtlSecondsSince1970ToFileTime( stat_info.st_mtime, &fileInfo.MTime );
+  RtlSecondsSince1970ToFileTime( stat_info.st_atime, &fileInfo.ATime );
 
   if (S_ISDIR(stat_info.st_mode)) {
     fileInfo.Size = 0;
@@ -264,7 +263,8 @@ bool CFindFile::Close()
   return false;
 }
            
-bool CFindFile::FindFirst(LPCTSTR wildcard, CFileInfo &fileInfo)
+// bool CFindFile::FindFirst(LPCTSTR wildcard, CFileInfo &fileInfo)
+bool CFindFile::FindFirst(LPCSTR wildcard, CFileInfo &fileInfo)
 {
   Close();
 
@@ -322,13 +322,13 @@ bool CFindFile::FindFirst(LPCWSTR wildcard, CFileInfoW &fileInfo)
   Close();
   CFileInfo fileInfo0;
   AString Awildcard = UnicodeStringToMultiByte(wildcard, CP_ACP);
-  bool bret = FindFirst((LPCTSTR)Awildcard, fileInfo0);
+  bool bret = FindFirst((LPCSTR)Awildcard, fileInfo0);
   if (bret)
   {
-     fileInfo.Attributes = fileInfo0.Attributes;
-     fileInfo.CreationTime = fileInfo0.CreationTime;
-     fileInfo.LastAccessTime = fileInfo0.LastAccessTime;
-     fileInfo.LastWriteTime = fileInfo0.LastWriteTime;
+     fileInfo.Attrib = fileInfo0.Attrib;
+     fileInfo.CTime = fileInfo0.CTime;
+     fileInfo.ATime = fileInfo0.ATime;
+     fileInfo.MTime = fileInfo0.MTime;
      fileInfo.Size = fileInfo0.Size;
      fileInfo.Name = GetUnicodeString(fileInfo0.Name, CP_ACP);
   }
@@ -368,17 +368,17 @@ bool CFindFile::FindNext(CFileInfoW &fileInfo)
   bool bret = FindNext(fileInfo0);
   if (bret)
   {
-     fileInfo.Attributes = fileInfo0.Attributes;
-     fileInfo.CreationTime = fileInfo0.CreationTime;
-     fileInfo.LastAccessTime = fileInfo0.LastAccessTime;
-     fileInfo.LastWriteTime = fileInfo0.LastWriteTime;
+     fileInfo.Attrib = fileInfo0.Attrib;
+     fileInfo.CTime = fileInfo0.CTime;
+     fileInfo.ATime = fileInfo0.ATime;
+     fileInfo.MTime = fileInfo0.MTime;
      fileInfo.Size = fileInfo0.Size;
      fileInfo.Name = GetUnicodeString(fileInfo0.Name, CP_ACP);
   }
   return bret;
 }
 
-bool FindFile(LPCTSTR wildcard, CFileInfo &fileInfo)
+bool FindFile(LPCSTR wildcard, CFileInfo &fileInfo)
 {
   // CFindFile finder;
   // return finder.FindFirst(wildcard, fileInfo);
@@ -390,7 +390,6 @@ bool FindFile(LPCTSTR wildcard, CFileInfo &fileInfo)
   return (ret == 0);
 }
 
-#ifndef _UNICODE
 bool FindFile(LPCWSTR wildcard, CFileInfoW &fileInfo)
 {
   // CFindFile finder;
@@ -413,18 +412,17 @@ bool FindFile(LPCWSTR wildcard, CFileInfoW &fileInfo)
   {
      UString dir,base;
      my_windows_split_path(wildcard, dir , base);
-     fileInfo.Attributes = fileInfo0.Attributes;
-     fileInfo.CreationTime = fileInfo0.CreationTime;
-     fileInfo.LastAccessTime = fileInfo0.LastAccessTime;
-     fileInfo.LastWriteTime = fileInfo0.LastWriteTime;
+     fileInfo.Attrib = fileInfo0.Attrib;
+     fileInfo.CTime = fileInfo0.CTime;
+     fileInfo.ATime = fileInfo0.ATime;
+     fileInfo.MTime = fileInfo0.MTime;
      fileInfo.Size = fileInfo0.Size;
      fileInfo.Name = base;
   }
   return (ret == 0);
 }
-#endif
 
-bool DoesFileExist(LPCTSTR name)
+bool DoesFileExist(LPCSTR name)
 {
   CFileInfo fileInfo;
   int ret = fillin_CFileInfo(fileInfo,nameWindowToUnix(name));
@@ -432,11 +430,10 @@ bool DoesFileExist(LPCTSTR name)
   return (ret == 0);
 }
 
-#ifndef _UNICODE
 bool DoesFileExist(LPCWSTR name)
 {
   AString Aname = UnicodeStringToMultiByte(name, CP_ACP); 
-  bool bret = DoesFileExist((LPCTSTR)Aname);
+  bool bret = DoesFileExist((LPCSTR)Aname);
   if (bret) return bret;
 
   // Try to recover the original filename
@@ -447,7 +444,6 @@ bool DoesFileExist(LPCWSTR name)
   }
   return bret;
 }
-#endif
 
 /////////////////////////////////////
 // CEnumerator
@@ -482,7 +478,6 @@ bool CEnumerator::Next(CFileInfo &fileInfo, bool &found)
   return (::GetLastError() == ERROR_NO_MORE_FILES);
 }
 
-#ifndef _UNICODE
 bool CEnumeratorW::NextAny(CFileInfoW &fileInfo)
 {
   if(_findFile.IsHandleAllocated())
@@ -513,6 +508,5 @@ bool CEnumeratorW::Next(CFileInfoW &fileInfo, bool &found)
   return (::GetLastError() == ERROR_NO_MORE_FILES);
 }
 
-#endif
 
 }}}

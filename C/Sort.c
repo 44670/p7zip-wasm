@@ -1,5 +1,5 @@
 /* Sort.c -- Sort functions
-2008-03-13
+2008-08-17
 Igor Pavlov
 Public domain */
 
@@ -27,7 +27,7 @@ void HeapSort(UInt32 *p, UInt32 size)
       UInt32 k = i;
       HeapSortDown(p, k, size, temp)
     }
-    while(--i != 0);
+    while (--i != 0);
   }
   /*
   do
@@ -44,7 +44,7 @@ void HeapSort(UInt32 *p, UInt32 size)
     UInt32 temp = p[size];
     UInt32 k = (p[3] > p[2]) ? 3 : 2;
     p[size--] = p[1];
-    p[1] = p[k]; 
+    p[1] = p[k];
     HeapSortDown(p, k, size, temp)
   }
   {
@@ -82,7 +82,7 @@ void HeapSortRef(UInt32 *p, UInt32 *vals, UInt32 size)
       UInt32 temp = p[i];
       HeapSortRefDown(p, vals, i, size, temp);
     }
-    while(--i != 0);
+    while (--i != 0);
   }
   do
   {

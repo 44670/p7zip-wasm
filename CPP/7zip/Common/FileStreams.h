@@ -16,7 +16,7 @@
 #include "../IStream.h"
 #include "../../Common/MyCom.h"
 
-class CInFileStream: 
+class CInFileStream:
   public IInStream,
   public IStreamGetSize,
   public CMyUnknownImp
@@ -38,6 +38,13 @@ public:
   #endif
   #endif
 
+  bool OpenShared(LPCTSTR fileName, bool shareForWrite);
+  #ifdef USE_WIN_FILE
+  #ifndef _UNICODE
+  bool OpenShared(LPCWSTR fileName, bool shareForWrite);
+  #endif
+  #endif
+
   MY_UNKNOWN_IMP2(IInStream, IStreamGetSize)
 
   STDMETHOD(Read)(void *data, UInt32 size, UInt32 *processedSize);
@@ -47,7 +54,7 @@ public:
 };
 
 #ifndef _WIN32_WCE
-class CStdInFileStream: 
+class CStdInFileStream:
   public ISequentialInStream,
   public CMyUnknownImp
 {
@@ -62,7 +69,7 @@ public:
 };
 #endif
 
-class COutFileStream: 
+class COutFileStream:
   public IOutStream,
   public CMyUnknownImp
 {
@@ -103,14 +110,11 @@ public:
   UInt64 ProcessedSize;
 
   #ifdef USE_WIN_FILE
-  bool SetTime(const FILETIME *creationTime, const FILETIME *lastAccessTime, const FILETIME *lastWriteTime)
+  bool SetTime(const FILETIME *cTime, const FILETIME *aTime, const FILETIME *mTime)
   {
-    return File.SetTime(creationTime, lastAccessTime, lastWriteTime);
+    return File.SetTime(cTime, aTime, mTime);
   }
-  bool SetLastWriteTime(const FILETIME *lastWriteTime)
-  {
-    return File.SetLastWriteTime(lastWriteTime);
-  }
+  bool SetMTime(const FILETIME *mTime) {  return File.SetMTime(mTime); }
   #endif
 
 
@@ -122,7 +126,7 @@ public:
 };
 
 #ifndef _WIN32_WCE
-class CStdOutFileStream: 
+class CStdOutFileStream:
   public ISequentialOutStream,
   public CMyUnknownImp
 {

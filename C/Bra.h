@@ -1,25 +1,23 @@
 /* Bra.h -- Branch converters for executables
-2008-03-19
-Copyright (c) 1999-2008 Igor Pavlov
-Read LzmaDec.h for license options */
+2008-10-04 : Igor Pavlov : Public domain */
 
 #ifndef __BRA_H
 #define __BRA_H
 
 #include "Types.h"
 
-/* 
-These functions convert relative addresses to absolute addresses 
+/*
+These functions convert relative addresses to absolute addresses
 in CALL instructions to increase the compression ratio.
   
-  In: 
+  In:
     data     - data buffer
     size     - size of data
     ip       - current virtual Instruction Pinter (IP) value
     state    - state variable for x86 converter
     encoding - 0 (for decoding), 1 (for encoding)
   
-  Out: 
+  Out:
     state    - state variable for x86 converter
 
   Returns:
@@ -41,9 +39,9 @@ in CALL instructions to increase the compression ratio.
   Example:
 
     UInt32 ip = 0;
-    for() 
+    for ()
     {
-      // size must be >= Alignment + LookAhead, if it's not last block 
+      ; size must be >= Alignment + LookAhead, if it's not last block
       SizeT processed = Convert(data, size, ip, 1);
       data += processed;
       size -= processed;

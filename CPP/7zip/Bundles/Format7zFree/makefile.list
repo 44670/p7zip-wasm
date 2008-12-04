@@ -3,6 +3,8 @@ SRCS=\
  ../../../Common/CRC.cpp \
  ../../../Common/IntToString.cpp \
  ../../../Common/MyWindows.cpp \
+ ../../../Common/MyXml.cpp \
+ ../../../Common/MyMap.cpp \
  ../../../Common/MyString.cpp \
  ../../../Common/StringConvert.cpp \
  ../../../Common/StringToInt.cpp \
@@ -16,12 +18,16 @@ SRCS=\
  ../../../Windows/FileFind.cpp \
  ../../../Windows/FileIO.cpp \
  ../../../Windows/PropVariant.cpp \
+ ../../../Windows/PropVariantUtils.cpp \
  ../../../Windows/Synchronization.cpp \
+ ../../../Windows/Time.cpp \
  ../../../Windows/System.cpp \
  ../../Compress/LZ/LZOutWindow.cpp \
  ../../Compress/PPMD/PPMDDecoder.cpp \
  ../../Compress/PPMD/PPMDEncoder.cpp \
  ../../Compress/PPMD/PPMDRegister.cpp \
+ ../../Compress/Arj/ArjDecoder1.cpp \
+ ../../Compress/Arj/ArjDecoder2.cpp \
  ../../Compress/Branch/BCJ2Register.cpp \
  ../../Compress/Branch/BCJRegister.cpp \
  ../../Compress/Branch/BranchCoder.cpp \
@@ -40,6 +46,7 @@ SRCS=\
  ../../Compress/Deflate/DeflateEncoder.cpp \
  ../../Compress/Deflate/DeflateNsisRegister.cpp \
  ../../Compress/Deflate/DeflateRegister.cpp \
+ ../../Compress/Deflate/ZlibDecoder.cpp \
  ../../Compress/BZip2/BZip2CRC.cpp \
  ../../Compress/BZip2/BZip2Decoder.cpp \
  ../../Compress/BZip2/BZip2Encoder.cpp \
@@ -53,9 +60,6 @@ SRCS=\
  ../../Compress/Implode/ImplodeHuffmanDecoder.cpp \
  ../../Compress/Lzx/Lzx86Converter.cpp \
  ../../Compress/Lzx/LzxDecoder.cpp \
- ../../Compress/Z/ZDecoder.cpp \
- ../../Compress/Arj/ArjDecoder1.cpp \
- ../../Compress/Arj/ArjDecoder2.cpp \
  ../../Compress/ByteSwap/ByteSwap.cpp \
  ../../Compress/ByteSwap/ByteSwapRegister.cpp \
  ../../Compress/Shrink/ShrinkDecoder.cpp \
@@ -115,9 +119,6 @@ SRCS=\
  ../../Archive/Rar/RarItem.cpp \
  ../../Archive/Rar/RarRegister.cpp \
  ../../Archive/Rar/RarVolumeInStream.cpp \
- ../../Archive/Arj/ArjHandler.cpp \
- ../../Archive/Arj/ArjIn.cpp \
- ../../Archive/Arj/ArjRegister.cpp \
  ../../Archive/BZip2/bz2Register.cpp \
  ../../Archive/BZip2/BZip2Handler.cpp \
  ../../Archive/BZip2/BZip2HandlerOut.cpp \
@@ -138,6 +139,7 @@ SRCS=\
  ../../Archive/Common/CoderMixer2MT.cpp \
  ../../Archive/Common/CrossThreadProgress.cpp \
  ../../Archive/Common/DummyOutStream.cpp \
+ ../../Archive/Common/FindSignature.cpp \
  ../../Archive/Common/HandlerOut.cpp \
  ../../Archive/Common/InStreamWithCRC.cpp \
  ../../Archive/Common/ItemNameUtils.cpp \
@@ -149,10 +151,6 @@ SRCS=\
  ../../Archive/Cpio/CpioHeader.cpp \
  ../../Archive/Cpio/CpioIn.cpp \
  ../../Archive/Cpio/CpioRegister.cpp \
- ../../Archive/Deb/DebHandler.cpp \
- ../../Archive/Deb/DebHeader.cpp \
- ../../Archive/Deb/DebIn.cpp \
- ../../Archive/Deb/DebRegister.cpp \
  ../../Archive/GZip/GZipHandler.cpp \
  ../../Archive/GZip/GZipHandlerOut.cpp \
  ../../Archive/GZip/GZipHeader.cpp \
@@ -160,6 +158,9 @@ SRCS=\
  ../../Archive/GZip/GZipOut.cpp \
  ../../Archive/GZip/GZipRegister.cpp \
  ../../Archive/GZip/GZipUpdate.cpp \
+ ../../Archive/Hfs/HfsHandler.cpp \
+ ../../Archive/Hfs/HfsIn.cpp \
+ ../../Archive/Hfs/HfsRegister.cpp  \
  ../../Archive/Lzma/LzmaArcRegister.cpp \
  ../../Archive/Lzma/LzmaFiltersDecode.cpp \
  ../../Archive/Lzma/LzmaHandler.cpp \
@@ -177,9 +178,6 @@ SRCS=\
  ../../Archive/Nsis/NsisHandler.cpp \
  ../../Archive/Nsis/NsisIn.cpp \
  ../../Archive/Nsis/NsisRegister.cpp \
- ../../Archive/RPM/RpmHandler.cpp \
- ../../Archive/RPM/RpmIn.cpp \
- ../../Archive/RPM/RpmRegister.cpp \
  ../../Archive/Split/SplitHandler.cpp \
  ../../Archive/Split/SplitHandlerOut.cpp \
  ../../Archive/Split/SplitRegister.cpp \
@@ -190,8 +188,19 @@ SRCS=\
  ../../Archive/Tar/TarOut.cpp \
  ../../Archive/Tar/TarRegister.cpp \
  ../../Archive/Tar/TarUpdate.cpp \
- ../../Archive/Z/ZHandler.cpp \
- ../../Archive/Z/ZRegister.cpp \
+ ../../Archive/Udf/UdfHandler.cpp \
+ ../../Archive/Udf/UdfIn.cpp \
+ ../../Archive/Udf/UdfRegister.cpp \
+ ../../Archive/ArjHandler.cpp \
+ ../../Archive/DebHandler.cpp \
+ ../../Archive/DmgHandler.cpp \
+ ../../Archive/ElfHandler.cpp \
+ ../../Archive/MachoHandler.cpp \
+ ../../Archive/MubHandler.cpp \
+ ../../Archive/PeHandler.cpp \
+ ../../Archive/RpmHandler.cpp \
+ ../../Archive/XarHandler.cpp \
+ ../../Archive/ZHandler.cpp \
  ../../Archive/Zip/ZipAddCommon.cpp \
  ../../Archive/Zip/ZipHandler.cpp \
  ../../Archive/Zip/ZipHandlerOut.cpp \
@@ -236,12 +245,16 @@ ListFileUtils.o : ../../../Common/ListFileUtils.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../../Common/ListFileUtils.cpp
 MyWindows.o : ../../../Common/MyWindows.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../../Common/MyWindows.cpp
+MyXml.o : ../../../Common/MyXml.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../../Common/MyXml.cpp
 Random.o : ../../../Common/Random.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../../Common/Random.cpp
 StdInStream.o : ../../../Common/StdInStream.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../../Common/StdInStream.cpp
 StdOutStream.o : ../../../Common/StdOutStream.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../../Common/StdOutStream.cpp
+MyMap.o : ../../../Common/MyMap.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../../Common/MyMap.cpp
 MyString.o : ../../../Common/MyString.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../../Common/MyString.cpp
 StringConvert.o : ../../../Common/StringConvert.cpp
@@ -268,8 +281,12 @@ FileIO.o : ../../../Windows/FileIO.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../../Windows/FileIO.cpp
 PropVariant.o : ../../../Windows/PropVariant.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../../Windows/PropVariant.cpp
+PropVariantUtils.o : ../../../Windows/PropVariantUtils.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../../Windows/PropVariantUtils.cpp
 Synchronization.o : ../../../Windows/Synchronization.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../../Windows/Synchronization.cpp
+Time.o : ../../../Windows/Time.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../../Windows/Time.cpp
 System.o : ../../../Windows/System.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../../Windows/System.cpp
 LZOutWindow.o : ../../Compress/LZ/LZOutWindow.cpp
@@ -280,6 +297,10 @@ PPMDEncoder.o : ../../Compress/PPMD/PPMDEncoder.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/PPMD/PPMDEncoder.cpp
 PPMDRegister.o : ../../Compress/PPMD/PPMDRegister.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/PPMD/PPMDRegister.cpp
+ArjDecoder1.o : ../../Compress/Arj/ArjDecoder1.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Arj/ArjDecoder1.cpp
+ArjDecoder2.o : ../../Compress/Arj/ArjDecoder2.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Arj/ArjDecoder2.cpp
 BCJ2Register.o : ../../Compress/Branch/BCJ2Register.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Branch/BCJ2Register.cpp
 BCJRegister.o : ../../Compress/Branch/BCJRegister.cpp
@@ -316,6 +337,8 @@ DeflateNsisRegister.o : ../../Compress/Deflate/DeflateNsisRegister.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Deflate/DeflateNsisRegister.cpp
 DeflateRegister.o : ../../Compress/Deflate/DeflateRegister.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Deflate/DeflateRegister.cpp
+ZlibDecoder.o : ../../Compress/Deflate/ZlibDecoder.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Deflate/ZlibDecoder.cpp
 BZip2CRC.o : ../../Compress/BZip2/BZip2CRC.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/BZip2/BZip2CRC.cpp
 BZip2Decoder.o : ../../Compress/BZip2/BZip2Decoder.cpp
@@ -344,10 +367,6 @@ LzxDecoder.o : ../../Compress/Lzx/LzxDecoder.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Lzx/LzxDecoder.cpp
 ZDecoder.o : ../../Compress/Z/ZDecoder.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Z/ZDecoder.cpp
-ArjDecoder1.o : ../../Compress/Arj/ArjDecoder1.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Arj/ArjDecoder1.cpp
-ArjDecoder2.o : ../../Compress/Arj/ArjDecoder2.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/Arj/ArjDecoder2.cpp
 ByteSwap.o : ../../Compress/ByteSwap/ByteSwap.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Compress/ByteSwap/ByteSwap.cpp
 ByteSwapRegister.o : ../../Compress/ByteSwap/ByteSwapRegister.cpp
@@ -466,12 +485,6 @@ RarRegister.o : ../../Archive/Rar/RarRegister.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Rar/RarRegister.cpp
 RarVolumeInStream.o : ../../Archive/Rar/RarVolumeInStream.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Rar/RarVolumeInStream.cpp
-ArjHandler.o : ../../Archive/Arj/ArjHandler.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Arj/ArjHandler.cpp
-ArjIn.o : ../../Archive/Arj/ArjIn.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Arj/ArjIn.cpp
-ArjRegister.o : ../../Archive/Arj/ArjRegister.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Arj/ArjRegister.cpp
 bz2Register.o : ../../Archive/BZip2/bz2Register.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/BZip2/bz2Register.cpp
 BZip2Handler.o : ../../Archive/BZip2/BZip2Handler.cpp
@@ -512,6 +525,8 @@ CrossThreadProgress.o : ../../Archive/Common/CrossThreadProgress.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Common/CrossThreadProgress.cpp
 DummyOutStream.o : ../../Archive/Common/DummyOutStream.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Common/DummyOutStream.cpp
+FindSignature.o : ../../Archive/Common/FindSignature.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Common/FindSignature.cpp
 HandlerOut.o : ../../Archive/Common/HandlerOut.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Common/HandlerOut.cpp
 InStreamWithCRC.o : ../../Archive/Common/InStreamWithCRC.cpp
@@ -534,14 +549,6 @@ CpioIn.o : ../../Archive/Cpio/CpioIn.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Cpio/CpioIn.cpp
 CpioRegister.o : ../../Archive/Cpio/CpioRegister.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Cpio/CpioRegister.cpp
-DebHandler.o : ../../Archive/Deb/DebHandler.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Deb/DebHandler.cpp
-DebHeader.o : ../../Archive/Deb/DebHeader.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Deb/DebHeader.cpp
-DebIn.o : ../../Archive/Deb/DebIn.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Deb/DebIn.cpp
-DebRegister.o : ../../Archive/Deb/DebRegister.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Deb/DebRegister.cpp
 GZipHandler.o : ../../Archive/GZip/GZipHandler.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/GZip/GZipHandler.cpp
 GZipHandlerOut.o : ../../Archive/GZip/GZipHandlerOut.cpp
@@ -556,6 +563,14 @@ GZipRegister.o : ../../Archive/GZip/GZipRegister.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/GZip/GZipRegister.cpp
 GZipUpdate.o : ../../Archive/GZip/GZipUpdate.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/GZip/GZipUpdate.cpp
+
+HfsHandler.o : ../../Archive/Hfs/HfsHandler.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Hfs/HfsHandler.cpp
+HfsIn.o : ../../Archive/Hfs/HfsIn.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Hfs/HfsIn.cpp
+HfsRegister.o : ../../Archive/Hfs/HfsRegister.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Hfs/HfsRegister.cpp
+
 LzmaArcRegister.o : ../../Archive/Lzma/LzmaArcRegister.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Lzma/LzmaArcRegister.cpp
 LzmaFiltersDecode.o : ../../Archive/Lzma/LzmaFiltersDecode.cpp
@@ -590,12 +605,6 @@ NsisIn.o : ../../Archive/Nsis/NsisIn.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Nsis/NsisIn.cpp
 NsisRegister.o : ../../Archive/Nsis/NsisRegister.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Nsis/NsisRegister.cpp
-RpmHandler.o : ../../Archive/RPM/RpmHandler.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/RPM/RpmHandler.cpp
-RpmIn.o : ../../Archive/RPM/RpmIn.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/RPM/RpmIn.cpp
-RpmRegister.o : ../../Archive/RPM/RpmRegister.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/RPM/RpmRegister.cpp
 SplitHandler.o : ../../Archive/Split/SplitHandler.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Split/SplitHandler.cpp
 SplitHandlerOut.o : ../../Archive/Split/SplitHandlerOut.cpp
@@ -616,8 +625,32 @@ TarRegister.o : ../../Archive/Tar/TarRegister.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Tar/TarRegister.cpp
 TarUpdate.o : ../../Archive/Tar/TarUpdate.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Tar/TarUpdate.cpp
-ZHandler.o : ../../Archive/Z/ZHandler.cpp
-	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Z/ZHandler.cpp
+UdfHandler.o : ../../Archive/Udf/UdfHandler.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Udf/UdfHandler.cpp
+UdfIn.o : ../../Archive/Udf/UdfIn.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Udf/UdfIn.cpp
+UdfRegister.o : ../../Archive/Udf/UdfRegister.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Udf/UdfRegister.cpp
+ArjHandler.o : ../../Archive/ArjHandler.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/ArjHandler.cpp
+DebHandler.o : ../../Archive/DebHandler.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/DebHandler.cpp
+DmgHandler.o : ../../Archive/DmgHandler.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/DmgHandler.cpp
+ElfHandler.o : ../../Archive/ElfHandler.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/ElfHandler.cpp
+MachoHandler.o : ../../Archive/MachoHandler.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/MachoHandler.cpp
+MubHandler.o : ../../Archive/MubHandler.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/MubHandler.cpp
+PeHandler.o : ../../Archive/PeHandler.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/PeHandler.cpp
+RpmHandler.o : ../../Archive/RpmHandler.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/RpmHandler.cpp
+XarHandler.o : ../../Archive/XarHandler.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/XarHandler.cpp
+ZHandler.o : ../../Archive/ZHandler.cpp
+	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/ZHandler.cpp
 ZRegister.o : ../../Archive/Z/ZRegister.cpp
 	$(CXX) $(CC_SHARED) $(CFLAGS) ../../Archive/Z/ZRegister.cpp
 ZipAddCommon.o : ../../Archive/Zip/ZipAddCommon.cpp

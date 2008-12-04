@@ -32,6 +32,7 @@ SRCS=\
  ../../../Windows/PropVariant.cpp \
  ../../../Windows/PropVariantConversions.cpp \
  ../../../Windows/Synchronization.cpp \
+ ../../../Windows/Time.cpp \
  ../../../Windows/System.cpp \
  ../../Common/CreateCoder.cpp \
  ../../Archive/Common/CrossThreadProgress.cpp \
@@ -191,6 +192,8 @@ PropVariantConversions.o : ../../../Windows/PropVariantConversions.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/PropVariantConversions.cpp
 Synchronization.o : ../../../Windows/Synchronization.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/Synchronization.cpp
+Time.o : ../../../Windows/Time.cpp
+	$(CXX) $(CFLAGS) ../../../Windows/Time.cpp
 System.o : ../../../Windows/System.cpp
 	$(CXX) $(CFLAGS) ../../../Windows/System.cpp
 CreateCoder.o : ../../Common/CreateCoder.cpp

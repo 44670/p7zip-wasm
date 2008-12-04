@@ -8,7 +8,8 @@
   #if !defined(ENV_MACOSX) && !defined(ENV_BEOS)
 
     /* <wchar.h> */
-    #define HAVE_WCHAR_H
+    /* HAVE_WCHAR__H and not HAVE_WCHAR_H to avoid warning with wxWidgets */
+    #define HAVE_WCHAR__H
 
     /* <wctype.h> */
     #define HAVE_WCTYPE_H

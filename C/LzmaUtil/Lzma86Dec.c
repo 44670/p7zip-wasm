@@ -9,8 +9,6 @@ Public domain */
 #include "../Bra.h"
 #include "../LzmaDec.h"
 
-#include <stdlib.h> /* malloc */
-
 #define LZMA86_SIZE_OFFSET (1 + LZMA_PROPS_SIZE)
 #define LZMA86_HEADER_SIZE (LZMA86_SIZE_OFFSET + 8)
 

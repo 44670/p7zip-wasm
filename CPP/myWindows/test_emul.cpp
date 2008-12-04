@@ -10,7 +10,7 @@
 #include <dirent.h>
 #include <unistd.h>
 
-#ifdef HAVE_WCHAR_H
+#ifdef HAVE_WCHAR__H
 #include <wchar.h>
 #endif
 #ifdef HAVE_LOCALE
@@ -34,9 +34,11 @@
 
 #include "Windows/Synchronization.cpp"
 #include "Windows/FileFind.cpp"
+#include "Windows/Time.cpp"
 
+using namespace NWindows;
 
-#if  defined(HAVE_WCHAR_H) && defined(HAVE_MBSTOWCS) && defined(HAVE_WCSTOMBS)
+#if  defined(HAVE_WCHAR__H) && defined(HAVE_MBSTOWCS) && defined(HAVE_WCSTOMBS)
 void test_mbs(void) {
   wchar_t wstr1[256] = {
                          L'e',
@@ -213,6 +215,40 @@ static void test_time()
 	display("  GetSystemTime : ", systimeGM);
 }
 
+static void test_time2()
+{
+	printf("Test Time :\n");
+	printf("===========\n");
+	/* DosTime To utcFileTime */
+	UInt32 dosTime = 0x30d0094C;
+	FILETIME utcFileTime;
+        FILETIME localFileTime;
+
+	if (NTime::DosTimeToFileTime(dosTime, localFileTime))
+	{
+		if (!LocalFileTimeToFileTime(&localFileTime, &utcFileTime))
+			utcFileTime.dwHighDateTime = utcFileTime.dwLowDateTime = 0;
+	}
+
+	printf("  - 0x%x => 0x%x 0x%x => 0x%x 0x%x\n",(unsigned)dosTime,
+		(unsigned)localFileTime.dwHighDateTime,(unsigned)localFileTime.dwLowDateTime,
+		(unsigned)utcFileTime.dwHighDateTime,(unsigned)utcFileTime.dwLowDateTime);
+
+
+	/* utcFileTime to DosTime */
+        FILETIME localFileTime2 = { 0, 0 };
+	UInt32 dosTime2 = 0;
+        FileTimeToLocalFileTime(&utcFileTime, &localFileTime2);
+        NTime::FileTimeToDosTime(localFileTime2, dosTime2);
+
+	printf("  - 0x%x <= 0x%x 0x%x <= 0x%x 0x%x\n",(unsigned)dosTime2,
+		(unsigned)localFileTime2.dwHighDateTime,(unsigned)localFileTime2.dwLowDateTime,
+		(unsigned)utcFileTime.dwHighDateTime,(unsigned)utcFileTime.dwLowDateTime);
+
+	assert(dosTime == dosTime2);
+	assert(localFileTime.dwHighDateTime == localFileTime2.dwHighDateTime);
+	assert(localFileTime.dwLowDateTime  == localFileTime2.dwLowDateTime);
+}
 
 static void test_semaphore()
 {
@@ -224,14 +260,17 @@ static void test_semaphore()
 	DWORD waitResult;
 	int i;
 
+	sync.Create();
 	sema.Create(&sync,2,10);
 
 	g_StdOut << "   - Release(1)\n";
 	for(i = 0 ;i < 8;i++)
 	{
+		// g_StdOut << "     - Release(1) : "<< i << "\n";
 		bres = sema.Release(1);
 		assert(bres == S_OK);
 	}
+	// g_StdOut << "     - Release(1) : done\n";
 	bres = sema.Release(1);
 	assert(bres == S_FALSE);
 
@@ -249,6 +288,10 @@ static void test_semaphore()
 
 
 int main() {
+#ifdef HAVE_LOCALE
+  setlocale(LC_ALL,"");
+#endif
+
 #if defined(BIG_ENDIAN)
   printf("BIG_ENDIAN : %d\n",(int)BIG_ENDIAN);
 #endif
@@ -281,12 +324,7 @@ int main() {
     printf("CPU : unknown endianess\n");
   }
 
-#if  defined(HAVE_WCHAR_H) && defined(HAVE_MBSTOWCS) && defined(HAVE_WCSTOMBS)
-#ifdef HAVE_LOCALE
-
-  setlocale(LC_ALL,"");
-#endif
-
+#if  defined(HAVE_WCHAR__H) && defined(HAVE_MBSTOWCS) && defined(HAVE_WCSTOMBS)
   test_mbs();
 #endif
 
@@ -295,7 +333,11 @@ int main() {
 
   test_time();
 
+  test_time2();
+
   test_semaphore();
+
+  printf("\n### All Done ###\n\n");
 
   return 0;
 }

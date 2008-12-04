@@ -15,18 +15,46 @@
 <H4>Examples</H4>
 
 <PRE class="example">
-7z a -tzip archive.zip subdir\
+7z a archive1.zip subdir\
 </PRE>
 
 <P>adds all files and subfolders from folder <SPAN class="filename">subdir</SPAN> to archive
-  <SPAN class="filename">archive.zip</SPAN>.</P>
+  <SPAN class="filename">archive1.zip</SPAN>. 
+  The filenames in archive will contain <SPAN class="filename">subdir\</SPAN> prefix.</P>
 
 <PRE class="example">
-7z a -t7z Files.7z *.txt -r
+7z a archive2.zip .\subdir\*
+</PRE>
+
+<P>adds all files and subfolders from folder <SPAN class="filename">subdir</SPAN> to archive
+  <SPAN class="filename">archive2.zip</SPAN>.
+  The filenames in archive will not contain <SPAN class="filename">subdir\</SPAN> prefix.</P>
+
+
+<PRE class="example">
+cd /D c:\dir1\
+7z a c:\archive3.zip dir2\dir3\ 
+</PRE>
+
+The filenames in archive <SPAN class="filename">c:\archive3.zip</SPAN> 
+will contain <SPAN class="filename">dir2\dir3\</SPAN> prefix, 
+but they will not contain <SPAN class="filename">c:\dir1\</SPAN> prefix.
+
+<PRE class="example">
+7z a Files.7z *.txt -r
 </PRE>
 
 <P>adds all *.txt files from current folder and its subfolders to archive
     <SPAN class="filename">Files.7z</SPAN>.</P>
+
+
+<H4>Notes</H4>
+
+<P>7-Zip doesn't uses the system wildcard parser. 7-Zip doesn't
+follow the archaic rule by which *.* means any file. 7-Zip treats
+*.* as matching the name of any file that has an extension. To process 
+all files, you must use a * wildcard.</P>
+
 
 <H4>Switches that can be used with this command</H4>
 

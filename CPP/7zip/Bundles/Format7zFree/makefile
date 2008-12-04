@@ -4,8 +4,7 @@ LOCAL_FLAGS=\
   -DEXTERNAL_CODECS \
   -DCOMPRESS_MT \
   -DCOMPRESS_BZIP2_MT \
-  -DCOMPRESS_MF_MT \
-  -D_7ZIP_LARGE_PAGES
+  -DCOMPRESS_MF_MT
 
 include ../../../../makefile.crc32
 include ../../../../makefile.machine
@@ -19,11 +18,13 @@ myGetTickCount.o \
 CRC.o \
 IntToString.o \
 MyString.o \
+MyMap.o \
 StringConvert.o \
 StringToInt.o \
 MyVector.o \
 UTFConvert.o \
 MyWindows.o \
+MyXml.o \
 Wildcard.o \
 ArchiveExports.o  \
 CodecExports.o  \
@@ -32,12 +33,16 @@ FileDir.o  \
 FileFind.o  \
 FileIO.o  \
 PropVariant.o  \
+PropVariantUtils.o  \
 Synchronization.o  \
+Time.o  \
 System.o  \
 LZOutWindow.o  \
 PPMDDecoder.o  \
 PPMDEncoder.o  \
 PPMDRegister.o  \
+ArjDecoder1.o  \
+ArjDecoder2.o  \
 BCJ2Register.o  \
 BCJRegister.o  \
 BranchCoder.o  \
@@ -56,6 +61,7 @@ DeflateDecoder.o  \
 DeflateEncoder.o  \
 DeflateNsisRegister.o  \
 DeflateRegister.o  \
+ZlibDecoder.o  \
 BZip2CRC.o  \
 BZip2Decoder.o  \
 BZip2Encoder.o  \
@@ -65,8 +71,6 @@ ImplodeHuffmanDecoder.o  \
 Lzx86Converter.o  \
 LzxDecoder.o  \
 ZDecoder.o  \
-ArjDecoder1.o  \
-ArjDecoder2.o  \
 ByteSwap.o  \
 ByteSwapRegister.o  \
 ShrinkDecoder.o  \
@@ -126,9 +130,6 @@ RarIn.o  \
 RarItem.o  \
 RarRegister.o  \
 RarVolumeInStream.o  \
-ArjHandler.o  \
-ArjIn.o  \
-ArjRegister.o  \
 bz2Register.o  \
 BZip2Handler.o  \
 BZip2HandlerOut.o  \
@@ -146,6 +147,7 @@ CoderMixer2.o  \
 CoderMixer2MT.o  \
 CrossThreadProgress.o  \
 DummyOutStream.o  \
+FindSignature.o  \
 InStreamWithCRC.o  \
 HandlerOut.o \
 ItemNameUtils.o  \
@@ -156,10 +158,6 @@ CpioHandler.o  \
 CpioHeader.o  \
 CpioIn.o  \
 CpioRegister.o  \
-DebHandler.o  \
-DebHeader.o  \
-DebIn.o  \
-DebRegister.o  \
 GZipHandler.o  \
 GZipHandlerOut.o  \
 GZipHeader.o  \
@@ -167,6 +165,9 @@ GZipIn.o  \
 GZipOut.o  \
 GZipRegister.o  \
 GZipUpdate.o  \
+HfsHandler.o \
+HfsIn.o \
+HfsRegister.o \
 LzmaArcRegister.o \
 LzmaFiltersDecode.o \
 LzmaHandler.o \
@@ -184,9 +185,6 @@ NsisDecode.o  \
 NsisHandler.o  \
 NsisIn.o  \
 NsisRegister.o  \
-RpmHandler.o  \
-RpmIn.o  \
-RpmRegister.o  \
 SplitHandler.o  \
 SplitHandlerOut.o  \
 SplitRegister.o  \
@@ -197,8 +195,19 @@ TarIn.o  \
 TarOut.o  \
 TarRegister.o  \
 TarUpdate.o  \
+UdfHandler.o \
+UdfIn.o \
+UdfRegister.o \
+ArjHandler.o \
+DebHandler.o \
+DmgHandler.o \
+ElfHandler.o \
+MachoHandler.o \
+MubHandler.o \
+PeHandler.o \
+RpmHandler.o \
+XarHandler.o \
 ZHandler.o  \
-ZRegister.o  \
 ZipAddCommon.o  \
 ZipHandler.o  \
 ZipHandlerOut.o  \

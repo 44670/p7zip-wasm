@@ -988,51 +988,55 @@ Main.o: Main.cpp ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../include_windows/tchar.h ../../../Common/MyInitGuid.h \
   ../../../Common/CommandLineParser.h ../../../Common/MyString.h \
   ../../../Common/MyVector.h ../../../Common/Defs.h \
-  ../../../Common/StdOutStream.h ../../../Common/Wildcard.h \
-  ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
-  ../../../Common/MyCom.h ../../../Common/MyException.h \
-  ../../../Windows/FileDir.h ../../../Windows/../Common/MyString.h \
+  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
+  ../../../Common/MyException.h ../../../Common/StdOutStream.h \
+  ../../../Common/StringConvert.h ../../../Common/Wildcard.h \
   ../../../Windows/Defs.h ../../../Windows/FileName.h \
-  ../../../Windows/Defs.h ../../../Windows/System.h \
+  ../../../Windows/../Common/MyString.h ../../../Windows/System.h \
   ../../../Windows/../Common/Types.h ../../IPassword.h \
   ../../../Common/MyUnknown.h ../../../Common/MyWindows.h \
   ../../../Common/Types.h ../../IDecl.h ../../ICoder.h ../../IStream.h \
-  ../../UI/Common/OpenArchive.h ../../../Common/MyString.h \
-  ../../../Windows/FileFind.h ../../../Windows/FileName.h \
+  ../../UI/Common/DefaultName.h ../../../Common/MyString.h \
+  ../../UI/Common/ExitCode.h ../../UI/Common/Extract.h \
+  ../../../Common/Wildcard.h ../../../Windows/FileFind.h \
+  ../../../Windows/FileName.h ../../../Windows/Defs.h \
   ../../UI/Common/../../Archive/IArchive.h \
   ../../UI/Common/../../Archive/../IStream.h \
   ../../UI/Common/../../Archive/../IProgress.h \
   ../../UI/Common/../../Archive/../../Common/MyUnknown.h \
   ../../UI/Common/../../Archive/../../Common/Types.h \
   ../../UI/Common/../../Archive/../IDecl.h \
-  ../../UI/Common/../../Archive/../PropID.h ../../UI/Common/LoadCodecs.h \
-  ../../UI/Common/../../../Common/Types.h \
-  ../../UI/Common/../../../Common/MyCom.h \
-  ../../UI/Common/../../../Common/MyString.h \
-  ../../UI/Common/../../../Common/Buffer.h \
-  ../../UI/Common/../../../Common/Defs.h ../../UI/Common/../../ICoder.h \
-  ../../UI/Common/ArchiveOpenCallback.h ../../../Common/MyCom.h \
-  ../../UI/Common/../../IPassword.h ../../UI/Common/DefaultName.h \
-  ../../UI/Common/ExitCode.h ../../UI/Common/Extract.h \
-  ../../../Common/Wildcard.h ../../UI/Common/ArchiveExtractCallback.h \
+  ../../UI/Common/../../Archive/../PropID.h \
+  ../../UI/Common/ArchiveExtractCallback.h \
   ../../UI/Common/IFileExtractCallback.h ../../UI/Common/../../IDecl.h \
-  ../../UI/Common/../../Common/FileStreams.h \
+  ../../../Common/MyCom.h ../../UI/Common/../../Common/FileStreams.h \
   ../../UI/Common/../../Common/../../Windows/FileIO.h \
   ../../../Common/MyString.h ../../UI/Common/../../Common/../IStream.h \
   ../../UI/Common/../../Common/../../Common/MyCom.h \
   ../../UI/Common/../../Common/ProgressUtils.h \
   ../../UI/Common/../../Common/../ICoder.h \
   ../../UI/Common/../../Common/../IProgress.h \
-  ../../UI/Common/ExtractMode.h ../../UI/Common/Property.h \
-  ../../UI/Common/../Common/LoadCodecs.h ../../UI/Console/List.h \
-  ../../../Common/Wildcard.h ../../UI/Console/../Common/LoadCodecs.h \
-  ../../UI/Console/OpenCallbackConsole.h ../../../Common/StdOutStream.h \
-  ../../UI/Console/../Common/ArchiveOpenCallback.h \
+  ../../UI/Common/../../IPassword.h ../../UI/Common/ExtractMode.h \
+  ../../UI/Common/ArchiveOpenCallback.h ../../UI/Common/Property.h \
+  ../../UI/Common/../Common/LoadCodecs.h \
+  ../../UI/Common/../Common/../../../Common/Types.h \
+  ../../UI/Common/../Common/../../../Common/MyCom.h \
+  ../../UI/Common/../Common/../../../Common/MyString.h \
+  ../../UI/Common/../Common/../../../Common/Buffer.h \
+  ../../UI/Common/../Common/../../../Common/Defs.h \
+  ../../UI/Common/../Common/../../ICoder.h \
+  ../../UI/Common/../Common/../../Archive/IArchive.h \
+  ../../UI/Common/OpenArchive.h ../../UI/Common/LoadCodecs.h \
   ../../UI/Console/ExtractCallbackConsole.h \
+  ../../../Common/StdOutStream.h \
   ../../UI/Console/../../Common/FileStreams.h \
   ../../UI/Console/../../IPassword.h \
   ../../UI/Console/../../Archive/IArchive.h \
-  ../../UI/Console/../Common/ArchiveExtractCallback.h ../../MyVersion.h \
+  ../../UI/Console/../Common/ArchiveExtractCallback.h \
+  ../../UI/Console/List.h ../../../Common/Wildcard.h \
+  ../../UI/Console/../Common/LoadCodecs.h \
+  ../../UI/Console/OpenCallbackConsole.h \
+  ../../UI/Console/../Common/ArchiveOpenCallback.h ../../MyVersion.h \
   ../../../myWindows/myPrivate.h
 ArchiveExtractCallback.o: ../../UI/Common/ArchiveExtractCallback.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
@@ -1070,8 +1074,7 @@ ArchiveExtractCallback.o: ../../UI/Common/ArchiveExtractCallback.cpp \
   ../../../Windows/../Common/MyString.h ../../../Windows/Defs.h \
   ../../../Windows/FileFind.h ../../../Windows/FileName.h \
   ../../../Windows/Time.h ../../../Common/Types.h ../../../Windows/Defs.h \
-  ../../../Windows/Defs.h ../../../Windows/PropVariant.h \
-  ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
   ../../../Windows/PropVariantConversions.h \
   ../../UI/Common/../../Common/FilePathAutoRename.h \
@@ -1310,7 +1313,7 @@ ExtractCallbackConsole.o: ../../UI/Console/ExtractCallbackConsole.cpp \
   ../../../Windows/FileDir.h ../../../Windows/../Common/MyString.h \
   ../../../Windows/Defs.h ../../../Windows/FileFind.h \
   ../../../Windows/FileName.h ../../../Windows/Time.h \
-  ../../../Common/Types.h ../../../Windows/Defs.h ../../../Windows/Defs.h \
+  ../../../Common/Types.h ../../../Windows/Defs.h \
   ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h ../../../Windows/Error.h \
   ../../../Windows/PropVariantConversions.h \
@@ -1351,7 +1354,7 @@ List.o: ../../UI/Console/List.cpp ../../../myWindows/StdAfx.h \
   ../../../Windows/PropVariantConversions.h ../../../Common/Types.h \
   ../../../Common/MyString.h ../../../Windows/FileDir.h \
   ../../../Windows/../Common/MyString.h ../../../Windows/Defs.h \
-  ../../UI/Console/../../Archive/IArchive.h \
+  ../../../Windows/Error.h ../../UI/Console/../../Archive/IArchive.h \
   ../../UI/Console/../Common/PropIDUtils.h ../../../Common/MyString.h \
   ../../UI/Console/../Common/OpenArchive.h ../../../Windows/FileFind.h \
   ../../../Windows/FileName.h ../../UI/Console/../Common/LoadCodecs.h \
@@ -1458,7 +1461,7 @@ UserInputUtils.o: ../../UI/Console/UserInputUtils.cpp \
   ../../../Common/MyString.h ../../../Common/MyVector.h \
   ../../../Common/Defs.h ../../../Common/StringConvert.h \
   ../../../Common/MyWindows.h ../../UI/Console/UserInputUtils.h \
-  ../../../Common/StdOutStream.h
+  ../../../Common/StdOutStream.h ../../../Common/MyException.h
 Error.o: ../../../Windows/Error.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \

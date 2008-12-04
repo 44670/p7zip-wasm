@@ -31,13 +31,13 @@ struct COtherArchive
 
 struct CArchiveInfo
 {
-  Byte  VersionMinor; /* cabinet file format version, minor */
-  Byte  VersionMajor; /* cabinet file format version, major */
-  UInt16  NumFolders; /* number of CFFOLDER entries in this cabinet */
-  UInt16  NumFiles;   /* number of CFFILE entries in this cabinet */
-  UInt16  Flags;      /* cabinet file option indicators */
-  UInt16  SetID;      /* must be the same for all cabinets in a set */
-  UInt16  CabinetNumber; /* number of this cabinet file in a set */
+  Byte VersionMinor; /* cabinet file format version, minor */
+  Byte VersionMajor; /* cabinet file format version, major */
+  UInt16 NumFolders; /* number of CFFOLDER entries in this cabinet */
+  UInt16 NumFiles;   /* number of CFFILE entries in this cabinet */
+  UInt16 Flags;      /* cabinet file option indicators */
+  UInt16 SetID;      /* must be the same for all cabinets in a set */
+  UInt16 CabinetNumber; /* number of this cabinet file in a set */
 
   bool ReserveBlockPresent() const { return (Flags & NHeader::NArchive::NFlags::kReservePresent) != 0; }
 
@@ -93,7 +93,7 @@ public:
         return true;
     return false;
   }
-  int GetNumberOfNewFolders() const 
+  int GetNumberOfNewFolders() const
   {
     int res = Folders.Size();
     if (IsTherePrevFolder())
@@ -124,10 +124,10 @@ public:
   CRecordVector<CMvItem> Items;
   CRecordVector<int> StartFolderOfVol;
   CRecordVector<int> FolderStartFileIndex;
-  int GetFolderIndex(const CMvItem *mvi) const 
+  int GetFolderIndex(const CMvItem *mvi) const
   {
     const CDatabaseEx &db = Volumes[mvi->VolumeIndex];
-    return StartFolderOfVol[mvi->VolumeIndex] + 
+    return StartFolderOfVol[mvi->VolumeIndex] +
         db.Items[mvi->ItemIndex].GetFolderIndex(db.Folders.Size());
   }
   void Clear()
@@ -152,7 +152,7 @@ class CInArchive
   void Skeep(size_t size);
   void ReadOtherArchive(COtherArchive &oa);
 
-  HRESULT Open2(IInStream *inStream, 
+  HRESULT Open2(IInStream *inStream,
       const UInt64 *searchHeaderSizeLimit,
       CDatabase &database);
 public:

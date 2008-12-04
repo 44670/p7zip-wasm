@@ -30,7 +30,7 @@ bool CStdOutStream::Open(const char *fileName)
 
 bool CStdOutStream::Close()
 {
-  if(!_streamIsOpen)
+  if (!_streamIsOpen)
     return true;
   if (fclose(_stream) != 0)
     return false;
@@ -51,7 +51,7 @@ CStdOutStream::~CStdOutStream ()
 
 CStdOutStream & CStdOutStream::operator<<(CStdOutStream & (*aFunction)(CStdOutStream  &))
 {
-  (*aFunction)(*this);    
+  (*aFunction)(*this);
   return *this;
 }
 

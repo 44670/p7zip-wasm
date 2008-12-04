@@ -3,9 +3,7 @@
 #include "StdAfx.h"
 
 #include "Windows/Error.h"
-#ifndef _UNICODE
 #include "Common/StringConvert.h"
-#endif
 
 namespace NWindows {
 namespace NError {
@@ -13,6 +11,7 @@ namespace NError {
 bool MyFormatMessage(DWORD messageID, CSysString &message)
 {
   const char * txt = 0;
+  AString msg;
 
   switch(messageID) {
     case ERROR_NO_MORE_FILES   : txt = "No more files"; break ;
@@ -27,15 +26,21 @@ bool MyFormatMessage(DWORD messageID, CSysString &message)
       txt = strerror(messageID);
   }
   if (txt) {
-    message = txt;
+    msg = txt;
   } else {
     char msgBuf[256];
     snprintf(msgBuf,sizeof(msgBuf),"error #%x",(unsigned)messageID);
     msgBuf[sizeof(msgBuf)-1] = 0;
-    message = msgBuf;
+    msg = msgBuf;
   }
   
-  message += "                ";
+  msg += "                ";
+
+#ifdef _UNICODE
+  message = MultiByteToUnicodeString(msg);
+#else
+  message = msg;
+#endif
   return true;
 }
 

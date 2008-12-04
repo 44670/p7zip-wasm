@@ -3,7 +3,6 @@ LOCAL_FLAGS= \
   -DCOMPRESS_MT \
   -DCOMPRESS_BZIP2_MT \
   -DCOMPRESS_MF_MT \
-  -D_7ZIP_LARGE_PAGES \
   -DBREAK_HANDLER \
   -DBENCH_MT
 
@@ -50,6 +49,7 @@ PropVariant.o \
 PropVariantConversions.o \
 Synchronization.o \
 System.o \
+Time.o \
 CreateCoder.o \
 CrossThreadProgress.o \
 FilePathAutoRename.o \
@@ -153,9 +153,11 @@ ZipItem.o \
 ZipOut.o \
 ZipRegister.o \
 ZipUpdate.o \
+ZHandler.o \
 CoderMixer2.o \
 CoderMixer2MT.o \
 DummyOutStream.o \
+FindSignature.o \
 InStreamWithCRC.o \
 HandlerOut.o \
 ItemNameUtils.o \
@@ -164,8 +166,6 @@ OutStreamWithCRC.o \
 ParseProperties.o \
 SplitHandler.o \
 SplitRegister.o \
-ZHandler.o \
-ZRegister.o \
 CabBlockInStream.o \
 CabHandler.o \
 CabHeader.o \
@@ -214,6 +214,8 @@ LzFind.o \
 LzFindMt.o \
 HuffEnc.o
 
+OUT=\
+ZRegister.o \
 
 include ../../../../makefile.glb
 

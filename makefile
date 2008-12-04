@@ -6,7 +6,7 @@ DEST_SHARE=$(DEST_HOME)/lib/p7zip
 DEST_SHARE_DOC=$(DEST_HOME)/share/doc/p7zip
 DEST_MAN=$(DEST_HOME)/man
 
-.PHONY: default all all2 7za sfx 7z 7zr Client7z common clean tar_bin depend test test_7z test_7zr test_Client7z all_test
+.PHONY: default all all2 7za 7zG sfx 7z 7zr Client7z common common7z clean tar_bin depend test test_7z test_7zr test_7zG test_Client7z all_test
 
 default:7za
 
@@ -40,6 +40,7 @@ depend:
 	cd CPP/7zip/Bundles/SFXCon    ; $(MAKE) depend
 	cd CPP/7zip/UI/Client7z       ; $(MAKE) depend
 	cd CPP/7zip/UI/Console        ; $(MAKE) depend
+	cd CPP/7zip/UI/GUI            ; $(MAKE) depend
 	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) depend
 	cd CPP/7zip/Compress/Rar      ; $(MAKE) depend
 
@@ -47,11 +48,18 @@ sfx: common
 	$(MKDIR) bin
 	cd CPP/7zip/Bundles/SFXCon ; $(MAKE) all
 
-7z: common
+common7z:common
 	$(MKDIR) bin/Codecs
-	cd CPP/7zip/UI/Console           ; $(MAKE) all
 	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) all
 	cd CPP/7zip/Compress/Rar         ; $(MAKE) all
+
+7z: common7z
+	cd CPP/7zip/UI/Console           ; $(MAKE) all
+
+7zG: common7z
+	cd bin ; rm -f Lang ; ln -s ../GUI/Lang .
+	cd bin ; rm -f help ; ln -s ../GUI/help .
+	cd CPP/7zip/UI/GUI               ; $(MAKE) all
 
 clean:
 	cd CPP/myWindows                 ; $(MAKE) clean
@@ -60,16 +68,18 @@ clean:
 	cd CPP/7zip/Bundles/SFXCon       ; $(MAKE) clean
 	cd CPP/7zip/UI/Client7z          ; $(MAKE) clean
 	cd CPP/7zip/UI/Console           ; $(MAKE) clean
+	cd CPP/7zip/UI/FileManager       ; $(MAKE) clean
+	cd CPP/7zip/UI/GUI               ; $(MAKE) clean
 	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) clean
 	cd CPP/7zip/Compress/Rar         ; $(MAKE) clean
 	cd CPP/7zip/Compress/LZMA_Alone  ; $(MAKE) clean
 	cd CPP/7zip/Compress/PPMD_Alone  ; $(MAKE) clean
 	cd CPP/7zip/Bundles/AloneGCOV    ; $(MAKE) clean
 	rm -fr bin
-	rm -f make.log
+	rm -f make.log 1 2
 	rm -f check/7z.so
 	find . -name "*~" -exec rm -f {} \;
-	find . -name "*.orig" -exec rm -f {} \;
+	find . -name "*.orig" -exec rm -fr {} \;
 	find . -name ".*.swp" -exec rm -f {} \;
 	find . -name "*.[ch]" -exec chmod -x {} \;
 	find . -name "*.cpp" -exec chmod -x {} \;
@@ -89,6 +99,9 @@ test_7z: all2
 
 test_7zr: 7zr
 	cd check ; ./check_7zr.sh ../bin/7zr
+
+test_7zG: 7zG
+	cd check ; ./check.sh ../bin/7zG
 
 test_Client7z: Client7z
 	cd check ; ./check_Client7z.sh ../bin/Client7z

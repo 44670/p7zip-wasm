@@ -13,7 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#ifdef HAVE_WCHAR_H
+#ifdef HAVE_WCHAR__H
 #include <wchar.h>
 #endif
 
@@ -102,7 +102,7 @@ wchar_t * MyStringUpper(wchar_t *s)
 }
 
 int MyStringCompare(const char *s1, const char *s2)
-{ 
+{
   while (true)
   {
     unsigned char c1 = (unsigned char)*s1++;
@@ -114,7 +114,7 @@ int MyStringCompare(const char *s1, const char *s2)
 }
 
 int MyStringCompare(const wchar_t *s1, const wchar_t *s2)
-{ 
+{
   while (true)
   {
     wchar_t c1 = *s1++;
@@ -126,7 +126,7 @@ int MyStringCompare(const wchar_t *s1, const wchar_t *s2)
 }
 
 int MyStringCompareNoCase(const wchar_t *s1, const wchar_t *s2)
-{ 
+{
   while (true)
   {
     wchar_t c1 = *s1++;
@@ -144,9 +144,6 @@ int MyStringCompareNoCase(const wchar_t *s1, const wchar_t *s2)
 
 int MyStringCompareNoCase(const char *s1, const char *s2)
 {
-  UString us1 = MultiByteToUnicodeString(s1, 0);
-  UString us2 = MultiByteToUnicodeString(s2, 0);
-
-  return MyStringCompareNoCase(us1,us2);
+  return MyStringCompareNoCase(MultiByteToUnicodeString(s1), MultiByteToUnicodeString(s2));
 }
 

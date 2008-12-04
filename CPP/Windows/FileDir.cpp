@@ -6,9 +6,7 @@
 #include "FileName.h"
 #include "FileFind.h"
 #include "Defs.h"
-#ifndef _UNICODE
 #include "../Common/StringConvert.h"
-#endif
 
 #define NEED_NAME_WINDOWS_TO_UNIX
 #include "myPrivate.h"
@@ -25,10 +23,6 @@
 // #define TRACEN(u) u;
 #define TRACEN(u)  /* */
 
-#ifdef HAVE_LSTAT
-extern int global_use_lstat;
-#endif
-
 class Umask
 {
   public:
@@ -43,7 +37,107 @@ class Umask
 
 static Umask gbl_umask;
 
+#ifdef _UNICODE
+AString nameWindowToUnix2(LPCWSTR name) // FIXME : optimization ?
+{
+   AString astr = UnicodeStringToMultiByte(name);
+   return AString(nameWindowToUnix((const char *)astr));
+}
+#endif
+
 extern BOOLEAN WINAPI RtlTimeToSecondsSince1970( const LARGE_INTEGER *Time, DWORD *Seconds );
+
+#ifdef _UNICODE
+DWORD WINAPI GetFullPathName( LPCTSTR name, DWORD len, LPTSTR buffer, LPTSTR *lastpart ) { // FIXME
+  if (name == 0) return 0;
+
+  DWORD name_len = lstrlen(name);
+
+  if (name[0] == '/') {
+    DWORD ret = name_len+2;
+    if (ret >= len) {
+      TRACEN((printf("GetFullPathNameA(%ls,%d,)=0000 (case 0)\n",name, (int)len)))
+      return 0;
+    }
+    lstrcpy(buffer,L"c:");
+    lstrcat(buffer,name);
+
+    *lastpart=buffer;
+    TCHAR *ptr=buffer;
+    while (*ptr) {
+      if (*ptr == '/')
+        *lastpart=ptr+1;
+      ptr++;
+    }
+    TRACEN((printf("GetFullPathNameA(%s,%d,%ls,%ls)=%d\n",name, (int)len,buffer, *lastpart,(int)ret)))
+    return ret;
+  }
+  if (isascii(name[0]) && (name[1] == ':')) { // FIXME isascii
+    DWORD ret = name_len;
+    if (ret >= len) {
+      TRACEN((printf("GetFullPathNameA(%ls,%d,)=0000 (case 1)\n",name, (int)len)))
+      return 0;
+    }
+    lstrcpy(buffer,name);
+
+    *lastpart=buffer;
+    TCHAR *ptr=buffer;
+    while (*ptr) {
+      if (*ptr == '/')
+        *lastpart=ptr+1;
+      ptr++;
+    }
+    TRACEN((printf("GetFullPathNameA(%sl,%d,%ls,%ls)=%d\n",name, (int)len,buffer, *lastpart,(int)ret)))
+    return ret;
+  }
+
+  // name is a relative pathname.
+  //
+  if (len < 2) {
+    TRACEN((printf("GetFullPathNameA(%s,%d,)=0000 (case 2)\n",name, (int)len)))
+    return 0;
+  }
+
+  DWORD ret = 0;
+  char begin[MAX_PATHNAME_LEN];
+  /* DWORD begin_len = GetCurrentDirectoryA(MAX_PATHNAME_LEN,begin); */
+  DWORD begin_len = 0;
+  begin[0]='c';
+  begin[1]=':';
+  char * cret = getcwd(begin+2, MAX_PATHNAME_LEN - 3);
+  if (cret) {
+    begin_len = strlen(begin);
+  }
+   
+  if (begin_len >= 1) {
+    //    strlen(begin) + strlen("/") + strlen(name)
+    ret = begin_len     +    1        + name_len;
+
+    if (ret >= len) {
+      TRACEN((printf("GetFullPathNameA(%s,%d,)=0000 (case 4)\n",name, (int)len)))
+      return 0;
+    }
+    UString wbegin = GetUnicodeString(begin);
+    lstrcpy(buffer,wbegin);
+    lstrcat(buffer,L"/");
+    lstrcat(buffer,name);
+
+    *lastpart=buffer + begin_len + 1;
+    TCHAR *ptr=buffer;
+    while (*ptr) {
+      if (*ptr == '/')
+        *lastpart=ptr+1;
+      ptr++;
+    }
+    TRACEN((printf("GetFullPathNameA(%s,%d,%s,%s)=%d\n",name, (int)len,buffer, *lastpart,(int)ret)))
+  } else {
+    ret = 0;
+    TRACEN((printf("GetFullPathNameA(%s,%d,)=0000 (case 5)\n",name, (int)len)))
+  }
+  return ret;
+}
+
+#endif
 
 DWORD WINAPI GetFullPathName( LPCSTR name, DWORD len, LPSTR buffer, LPSTR *lastpart ) {
   if (name == 0) return 0;
@@ -146,6 +240,21 @@ static BOOL WINAPI RemoveDirectory(LPCSTR path) {
   }
   return TRUE;
 }
+#ifdef _UNICODE
+static BOOL WINAPI RemoveDirectory(LPCWSTR path) {
+  if (!path || !*path) {
+    SetLastError(ERROR_PATH_NOT_FOUND);
+    return FALSE;
+  }
+  AString name = nameWindowToUnix2(path);
+  TRACEN((printf("RemoveDirectoryA(%s)\n",(const char *)name)))
+
+  if (rmdir( (const char *)name ) != 0) {
+    return FALSE;
+  }
+  return TRUE;
+}
+#endif
 
 static int copy_fd(int fin,int fout)
 {
@@ -200,9 +309,68 @@ static BOOL CopyFile(const char *src,const char *dst)
   return FALSE;
 }
 
+/*****************************************************************************************/
+
+
+namespace NWindows {
+namespace NFile {
+namespace NDirectory {
+
+
+bool MySetCurrentDirectory(LPCWSTR wpath)
+{
+   AString path = UnicodeStringToMultiByte(wpath);
+
+   return chdir((const char*)path) == 0;
+}
+
+#ifdef _UNICODE
+bool GetOnlyName(LPCTSTR fileName, CSysString &resultName)
+{
+  int index;
+  if (!MyGetFullPathName(fileName, resultName, index))
+    return false;
+  resultName = resultName.Mid(index);
+  return true;
+}
+
+bool GetOnlyDirPrefix(LPCTSTR fileName, CSysString &resultName)
+{
+  int index;
+  if (!MyGetFullPathName(fileName, resultName, index))
+    return false;
+  resultName = resultName.Left(index);
+  return true;
+}
+#endif
+
+
+bool MyGetCurrentDirectory(CSysString &resultPath)
+{
+  char begin[MAX_PATHNAME_LEN];
+  begin[0]='c';
+  begin[1]=':';
+  char * cret = getcwd(begin+2, MAX_PATHNAME_LEN - 3);
+  if (cret)
+  {
+#ifdef _UNICODE
+    resultPath = GetUnicodeString(begin);
+#else
+    resultPath = begin;
+#endif
+    return true;
+  }
+  return false;
+}
+
 bool MyMoveFile( LPCTSTR fn1, LPCTSTR fn2 ) {
+#ifdef _UNICODE
+  AString src = nameWindowToUnix2(fn1);
+  AString dst = nameWindowToUnix2(fn2);
+#else
   const char * src = nameWindowToUnix(fn1);
   const char * dst = nameWindowToUnix(fn2);
+#endif
 
   TRACEN((printf("MoveFileW(%s,%s)\n",src,dst)))
 
@@ -229,13 +397,6 @@ bool MyMoveFile( LPCTSTR fn1, LPCTSTR fn2 ) {
   }
   return true;
 }
-
-/*****************************************************************************************/
-
-
-namespace NWindows {
-namespace NFile {
-namespace NDirectory {
 
 bool MyRemoveDirectory(LPCTSTR pathName)
 {
@@ -300,7 +461,7 @@ bool MyRemoveDirectory(LPCWSTR pathName)
 bool MyMoveFile(LPCWSTR existFileName, LPCWSTR newFileName)
 {  
   UINT codePage = CP_ACP;
-  return ::MyMoveFile(UnicodeStringToMultiByte(existFileName, codePage), UnicodeStringToMultiByte(newFileName, codePage));
+  return MyMoveFile(UnicodeStringToMultiByte(existFileName, codePage), UnicodeStringToMultiByte(newFileName, codePage));
 }
 #endif
 
@@ -329,7 +490,11 @@ bool MySetFileAttributes(LPCTSTR fileName, DWORD fileAttributes)
     TRACEN((printf("MySetFileAttributes(NULL,%d) : false-1\n",fileAttributes)))
     return false;
   }
+#ifdef _UNICODE
+  AString name = nameWindowToUnix2(fileName);
+#else
   const char * name = nameWindowToUnix(fileName);
+#endif
   struct stat stat_info;
 #ifdef HAVE_LSTAT
   if (global_use_lstat) {
@@ -395,7 +560,11 @@ bool MyCreateDirectory(LPCTSTR pathName)
     return false;
   }
 
+#ifdef _UNICODE
+  AString name = nameWindowToUnix2(pathName);
+#else
   const char * name = nameWindowToUnix(pathName);
+#endif
   bool bret = false;
   if (mkdir( name, 0700 ) == 0) bret = true;
 
@@ -432,7 +601,7 @@ bool CreateComplexDirectory(LPCTSTR _aPathName)
       NFind::CFileInfo fileInfo;
       if (!NFind::FindFile(pathName, fileInfo)) // For network folders
         return true;
-      if (!fileInfo.IsDirectory())
+      if (!fileInfo.IsDir())
         return false;
 #endif
       break;
@@ -480,7 +649,7 @@ bool CreateComplexDirectory(LPCWSTR _aPathName)
       NFind::CFileInfoW fileInfo;
       if (!NFind::FindFile(pathName, fileInfo)) // For network folders
         return true;
-      if (!fileInfo.IsDirectory())
+      if (!fileInfo.IsDir())
         return false;
 #endif
       break;
@@ -512,7 +681,11 @@ bool DeleteFileAlways(LPCTSTR name)
     SetLastError(ERROR_PATH_NOT_FOUND);
     return false;
   }
+#ifdef _UNICODE
+   AString unixname = nameWindowToUnix2(name);
+#else
    const char * unixname = nameWindowToUnix(name);
+#endif
    bool bret = false;
    if (remove(unixname) == 0) bret = true;
    TRACEN((printf("DeleteFileAlways(%s)=%d\n",unixname,(int)bret)))
@@ -539,7 +712,7 @@ bool MyGetFullPathName(LPCTSTR fileName, CSysString &resultPath,
   if (needLength == 0 || needLength >= MAX_PATH)
     return false;
   if (fileNamePointer == 0)
-    fileNamePartStartIndex = strlen(fileName);
+    fileNamePartStartIndex = lstrlen(fileName);
   else
     fileNamePartStartIndex = fileNamePointer - buffer;
   return true;
@@ -616,11 +789,13 @@ bool MySearchPath(LPCWSTR path, LPCWSTR fileName, LPCWSTR extension, UString &re
   return false;
 }
 
+#ifndef _UNICODE
 bool MyGetTempPath(CSysString &path)
 {
   path = "c:/tmp/"; // final '/' is needed
   return true;
 }
+#endif
 
 bool MyGetTempPath(UString &path)
 {
@@ -633,8 +808,12 @@ UINT CTempFile::Create(LPCTSTR dirPath, LPCTSTR prefix, CSysString &resultPath)
   Remove();
 /* UINT number = ::GetTempFileName(dirPath, prefix, 0, path.GetBuffer(MAX_PATH)); */
   UINT number = (UINT)getpid();
-  char * buf = resultPath.GetBuffer(MAX_PATH);
+  TCHAR * buf = resultPath.GetBuffer(MAX_PATH);
+#ifdef _UNICODE
+  swprintf(buf,MAX_PATH,L"%s%s%d.tmp",dirPath,prefix,(int)number);
+#else
   snprintf(buf,MAX_PATH,"%s%s%d.tmp",dirPath,prefix,(int)number);
+#endif
   buf[MAX_PATH-1]=0;
   resultPath.ReleaseBuffer();
   if(number != 0)

@@ -4,9 +4,7 @@
 
 #include "FileIO.h"
 #include "Defs.h"
-#ifndef _UNICODE
 #include "../Common/StringConvert.h"
-#endif
 
 #include <time.h>
 #include <sys/types.h>
@@ -21,7 +19,6 @@
 #include <utime.h>
 
 #ifdef HAVE_LSTAT
-extern int global_use_lstat;
 #define FD_LINK (-2)
 #endif
 
@@ -40,7 +37,7 @@ CFileBase::~CFileBase()
   Close();
 }
 
-bool CFileBase::Create(LPCTSTR filename, DWORD dwDesiredAccess,
+bool CFileBase::Create(LPCSTR filename, DWORD dwDesiredAccess,
     DWORD dwShareMode, DWORD dwCreationDisposition, DWORD dwFlagsAndAttributes,bool ignoreSymbolicLink)
 {
   Close();
@@ -127,7 +124,6 @@ bool CFileBase::Create(LPCTSTR filename, DWORD dwDesiredAccess,
   return true;
 }
 
-#ifndef _UNICODE
 bool CFileBase::Create(LPCWSTR fileName, DWORD desiredAccess,
     DWORD shareMode, DWORD creationDisposition, DWORD flagsAndAttributes,bool ignoreSymbolicLink)
 {
@@ -135,7 +131,6 @@ bool CFileBase::Create(LPCWSTR fileName, DWORD desiredAccess,
     return Create(UnicodeStringToMultiByte(fileName, CP_ACP), 
       desiredAccess, shareMode, creationDisposition, flagsAndAttributes,ignoreSymbolicLink);
 }
-#endif
 
 bool CFileBase::Close()
 {
@@ -389,8 +384,7 @@ bool COutFile::Create(LPCWSTR fileName, bool createAlways)
 
 #endif
 
-bool COutFile::SetTime(const FILETIME *lpCreationTime,
-  const FILETIME *lpLastAccessTime, const FILETIME *lpLastWriteTime)
+bool COutFile::SetTime(const FILETIME *cTime, const FILETIME *aTime, const FILETIME *mTime)
 {
   LARGE_INTEGER  ltime;
   DWORD dw;
@@ -401,15 +395,15 @@ bool COutFile::SetTime(const FILETIME *lpCreationTime,
   }
 
   /* On some OS (cygwin, MacOSX ...), you must close the file before updating times */
-  if (lpLastAccessTime) {
-     ltime.QuadPart = lpLastAccessTime->dwHighDateTime;
-     ltime.QuadPart = (ltime.QuadPart << 32) | lpLastAccessTime->dwLowDateTime;
+  if (aTime) {
+     ltime.QuadPart = aTime->dwHighDateTime;
+     ltime.QuadPart = (ltime.QuadPart << 32) | aTime->dwLowDateTime;
      RtlTimeToSecondsSince1970( &ltime, &dw );
      _lastAccessTime = dw;
   }
-  if (lpLastWriteTime) {
-     ltime.QuadPart = lpLastWriteTime->dwHighDateTime;
-     ltime.QuadPart = (ltime.QuadPart << 32) | lpLastWriteTime->dwLowDateTime;
+  if (mTime) {
+     ltime.QuadPart = mTime->dwHighDateTime;
+     ltime.QuadPart = (ltime.QuadPart << 32) | mTime->dwLowDateTime;
      RtlTimeToSecondsSince1970( &ltime, &dw );
      _lastWriteTime = dw;
   }
@@ -417,9 +411,9 @@ bool COutFile::SetTime(const FILETIME *lpCreationTime,
   return true;
 }
 
-bool COutFile::SetLastWriteTime(const FILETIME *lastWriteTime)
+bool COutFile::SetMTime(const FILETIME *mTime)
 {
-  return SetTime(NULL, NULL, lastWriteTime);
+  return SetTime(NULL, NULL, mTime);
 }
 
 bool COutFile::WritePart(const void *data, UINT32 size, UINT32 &processedSize)

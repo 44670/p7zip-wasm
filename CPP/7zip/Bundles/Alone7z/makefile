@@ -48,6 +48,7 @@ FileName.o  \
 PropVariant.o  \
 PropVariantConversions.o  \
 Synchronization.o  \
+Time.o  \
 System.o  \
 CreateCoder.o  \
 CrossThreadProgress.o  \

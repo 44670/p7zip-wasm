@@ -38,12 +38,10 @@ protected:
   int     _offset;
 #endif
 
-  bool Create(LPCTSTR fileName, DWORD desiredAccess,
+  bool Create(LPCSTR fileName, DWORD desiredAccess,
       DWORD shareMode, DWORD creationDisposition,  DWORD flagsAndAttributes,bool ignoreSymbolicLink=false);
-  #ifndef _UNICODE
   bool Create(LPCWSTR fileName, DWORD desiredAccess,
       DWORD shareMode, DWORD creationDisposition,  DWORD flagsAndAttributes,bool ignoreSymbolicLink=false);
-  #endif
 
 public:
   CFileBase(): _fd(-1) {};
@@ -54,18 +52,22 @@ public:
   bool GetLength(UINT64 &length) const;
 
   bool Seek(INT64 distanceToMove, DWORD moveMethod, UINT64 &newPosition);
-  bool Seek(UINT64 position, UINT64 &newPosition); 
+  bool Seek(UINT64 position, UINT64 &newPosition);
 };
 
 class CInFile: public CFileBase
 {
 public:
-  bool Open(LPCTSTR fileName, DWORD shareMode, 
-      DWORD creationDisposition,  DWORD flagsAndAttributes);
+  bool Open(LPCTSTR fileName, DWORD shareMode, DWORD creationDisposition,  DWORD flagsAndAttributes);
+  bool OpenShared(LPCTSTR fileName, bool /* shareForWrite */ ,bool ignoreSymbolicLink=false) {
+    return Open(fileName,ignoreSymbolicLink);
+  }
   bool Open(LPCTSTR fileName,bool ignoreSymbolicLink=false);
   #ifndef _UNICODE
-  bool Open(LPCWSTR fileName, DWORD shareMode, 
-      DWORD creationDisposition,  DWORD flagsAndAttributes);
+  bool Open(LPCWSTR fileName, DWORD shareMode, DWORD creationDisposition,  DWORD flagsAndAttributes);
+  bool OpenShared(LPCWSTR fileName, bool /* shareForWrite */ ,bool ignoreSymbolicLink=false) {
+    return Open(fileName,ignoreSymbolicLink);
+  }
   bool Open(LPCWSTR fileName,bool ignoreSymbolicLink=false);
   #endif
   bool ReadPart(void *data, UINT32 size, UINT32 &processedSize);
@@ -75,21 +77,25 @@ public:
 class COutFile: public CFileBase
 {
 public:
-  bool Open(LPCTSTR fileName, DWORD shareMode, 
-      DWORD creationDisposition, DWORD flagsAndAttributes);
+  bool Open(LPCTSTR fileName, DWORD shareMode, DWORD creationDisposition, DWORD flagsAndAttributes);
   bool Open(LPCTSTR fileName, DWORD creationDisposition);
   bool Create(LPCTSTR fileName, bool createAlways);
 
   #ifndef _UNICODE
-  bool Open(LPCWSTR fileName, DWORD shareMode, 
-      DWORD creationDisposition, DWORD flagsAndAttributes);
+  bool Open(LPCWSTR fileName, DWORD shareMode, DWORD creationDisposition, DWORD flagsAndAttributes);
   bool Open(LPCWSTR fileName, DWORD creationDisposition);
   bool Create(LPCWSTR fileName, bool createAlways);
   #endif
 
-  bool SetTime(const FILETIME *creationTime,
-      const FILETIME *lastAccessTime, const FILETIME *lastWriteTime);
-  bool SetLastWriteTime(const FILETIME *lastWriteTime);
+  /*
+  void SetOpenCreationDisposition(DWORD creationDisposition)
+    { m_CreationDisposition = creationDisposition; }
+  void SetOpenCreationDispositionCreateAlways()
+    { m_CreationDisposition = CREATE_ALWAYS; }
+  */
+
+  bool SetTime(const FILETIME *cTime, const FILETIME *aTime, const FILETIME *mTime);
+  bool SetMTime(const FILETIME *mTime);
   bool WritePart(const void *data, UINT32 size, UINT32 &processedSize);
   bool Write(const void *data, UINT32 size, UINT32 &processedSize);
   bool SetEndOfFile();

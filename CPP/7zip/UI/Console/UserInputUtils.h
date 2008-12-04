@@ -19,6 +19,6 @@ enum EEnum
 }
 
 NUserAnswerMode::EEnum ScanUserYesNoAllQuit(CStdOutStream *outStream);
-UString GetPassword(CStdOutStream *outStream);
+UString GetPassword(CStdOutStream *outStream,bool verify = false);
 
 #endif

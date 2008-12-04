@@ -1,8 +1,6 @@
 /* Crypto/Sha256.c -- SHA-256 Hash function
-2008-03-24
-This code is based on public domain code from Wei Dai's Crypto++ library.
-Igor Pavlov 
-Public domain */
+2008-11-06 : Igor Pavlov : Public domain
+This code is based on public domain code from Wei Dai's Crypto++ library. */
 
 #include "Sha256.h"
 #include "RotateDefs.h"
@@ -151,7 +149,7 @@ static void Sha256_WriteByteBlock(CSha256 *p)
   UInt32 data32[16];
   unsigned i;
   for (i = 0; i < 16; i++)
-    data32[i] = 
+    data32[i] =
       ((UInt32)(p->buffer[i * 4    ]) << 24) +
       ((UInt32)(p->buffer[i * 4 + 1]) << 16) +
       ((UInt32)(p->buffer[i * 4 + 2]) <<  8) +

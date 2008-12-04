@@ -11,7 +11,7 @@ namespace NZip {
 struct CCompressionMethodMode
 {
   CRecordVector<Byte> MethodSequence;
-  // bool MaximizeRatio;
+  UString MatchFinder;
   UInt32 Algo;
   UInt32 NumPasses;
   UInt32 NumFastBytes;
@@ -26,12 +26,12 @@ struct CCompressionMethodMode
   bool IsAesMode;
   Byte AesKeyMode;
   
-  CCompressionMethodMode(): 
-      NumMatchFinderCyclesDefined(false), 
-      PasswordIsDefined(false), 
-      IsAesMode(false), 
-      AesKeyMode(3) 
-      {} 
+  CCompressionMethodMode():
+      NumMatchFinderCyclesDefined(false),
+      PasswordIsDefined(false),
+      IsAesMode(false),
+      AesKeyMode(3)
+      {}
 };
 
 }}

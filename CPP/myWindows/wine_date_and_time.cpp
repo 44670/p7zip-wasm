@@ -57,26 +57,22 @@ typedef LONG NTSTATUS;
 #define SECS_1601_TO_1980  ((379 * 365 + 91) * (ULONGLONG)SECSPERDAY)
 #define TICKS_1601_TO_1980 (SECS_1601_TO_1980 * TICKSPERSEC)
 typedef short CSHORT;
-static inline void NormalizeTimeFields(CSHORT *FieldToNormalize, CSHORT *CarryField,int Modulus) {
-  *FieldToNormalize = (CSHORT) (*FieldToNormalize - Modulus);
-  *CarryField = (CSHORT) (*CarryField + 1);
-}
 
-static int TIME_GetBias() {
+static LONG TIME_GetBias() {
   time_t utc = time(NULL);
   struct tm *ptm = localtime(&utc);
   int localdaylight = ptm->tm_isdst; /* daylight for local timezone */
   ptm = gmtime(&utc);
   ptm->tm_isdst = localdaylight; /* use local daylight, not that of Greenwich */
-  int bias = (int)(utc-mktime(ptm));
-  TRACEN((printf("TIME_GetBias %ld\n",bias)))
+  LONG bias = (int)(mktime(ptm)-utc);
+  TRACEN((printf("TIME_GetBias %ld\n",(long)bias)))
   return bias;
 }
 
 static inline void RtlSystemTimeToLocalTime( const LARGE_INTEGER *SystemTime,
                                       LARGE_INTEGER *LocalTime ) {
-  int bias = TIME_GetBias();
-  LocalTime->QuadPart = SystemTime->QuadPart + bias * (LONGLONG)10000000;
+  LONG bias = TIME_GetBias();
+  LocalTime->QuadPart = SystemTime->QuadPart - bias * (LONGLONG)TICKSPERSEC;
 }
 
 void WINAPI RtlSecondsSince1970ToFileTime( DWORD Seconds, FILETIME * ft ) {
@@ -86,24 +82,35 @@ void WINAPI RtlSecondsSince1970ToFileTime( DWORD Seconds, FILETIME * ft ) {
   TRACEN((printf("RtlSecondsSince1970ToFileTime %lx => %lx %lx\n",(long)Seconds,(long)ft->dwHighDateTime,(long)ft->dwLowDateTime)))
 }
 
+/*
+void WINAPI RtlSecondsSince1970ToTime( DWORD Seconds, LARGE_INTEGER *Time )
+{
+  ULONGLONG secs = Seconds * (ULONGLONG)TICKSPERSEC + TICKS_1601_TO_1970;
+  // Time->u.LowPart  = (DWORD)secs;  Time->u.HighPart = (DWORD)(secs >> 32);
+  Time->QuadPart = secs;
+}
+*/
+
+
 BOOL WINAPI DosDateTimeToFileTime( WORD fatdate, WORD fattime, FILETIME * ft) {
   struct tm newtm;
-  time_t time1;
 
   TRACEN((printf("DosDateTimeToFileTime\n")))
-  memset(&newtm,0,sizeof(newtm));
+  // memset(&newtm,0,sizeof(newtm));
   newtm.tm_sec  = (fattime & 0x1f) * 2;
   newtm.tm_min  = (fattime >> 5) & 0x3f;
   newtm.tm_hour = (fattime >> 11);
   newtm.tm_mday = (fatdate & 0x1f);
   newtm.tm_mon  = ((fatdate >> 5) & 0x0f) - 1;
   newtm.tm_year = (fatdate >> 9) + 80;
-  time1 = mktime(&newtm);
-  int bias = TIME_GetBias();
-  RtlSecondsSince1970ToFileTime( time1 + bias, ft );
+  newtm.tm_isdst = -1;
 
-  TRACEN((printf("DosDateTimeToFileTime(%d,%d) t1=%ld => %lx %lx\n",
-	(long)fatdate,(long)fattime,(long)time1,
+  time_t time1 = mktime(&newtm);
+  LONG   bias  = TIME_GetBias();
+  RtlSecondsSince1970ToFileTime( time1 - bias, ft );
+
+  TRACEN((printf("DosDateTimeToFileTime(%d,%d) t1=%ld bias=%ld => %lx %lx\n",
+	(long)fatdate,(long)fattime,(long)time1,(long)bias,
 	(long)ft->dwHighDateTime,(long)ft->dwLowDateTime)))
 
   return TRUE;
@@ -112,11 +119,10 @@ BOOL WINAPI DosDateTimeToFileTime( WORD fatdate, WORD fattime, FILETIME * ft) {
 BOOLEAN WINAPI RtlTimeToSecondsSince1970( const LARGE_INTEGER *Time, DWORD *Seconds ) {
   ULONGLONG tmp = Time->QuadPart;
   TRACEN((printf("RtlTimeToSecondsSince1970-1 %llx\n",tmp)))
-  tmp /= 10000000;
+  tmp /= TICKSPERSEC;
   tmp -= SECS_1601_TO_1970;
   TRACEN((printf("RtlTimeToSecondsSince1970-2 %llx\n",tmp)))
-  if (tmp > 0xffffffff)
-    return FALSE;
+  if (tmp > 0xffffffff) return FALSE;
   *Seconds = (DWORD)tmp;
   return TRUE;
 }
@@ -126,17 +132,25 @@ BOOL WINAPI FileTimeToDosDateTime( const FILETIME *ft, WORD *fatdate, WORD *fatt
   ULONG               t;
   time_t              unixtime;
   struct tm*          tm;
+  WORD fat_d,fat_t;
 
   TRACEN((printf("FileTimeToDosDateTime\n")))
   li.QuadPart = ft->dwHighDateTime;
   li.QuadPart = (li.QuadPart << 32) | ft->dwLowDateTime;
   RtlTimeToSecondsSince1970( &li, &t );
-  unixtime = t;
+  unixtime = t - TIME_GetBias();
   tm = gmtime( &unixtime );
+
+  fat_t = (tm->tm_hour << 11) + (tm->tm_min << 5) + (tm->tm_sec / 2);
+  fat_d = ((tm->tm_year - 80) << 9) + ((tm->tm_mon + 1) << 5) + tm->tm_mday;
   if (fattime)
-    *fattime = (tm->tm_hour << 11) + (tm->tm_min << 5) + (tm->tm_sec / 2);
+    *fattime = fat_t;
   if (fatdate)
-    *fatdate = ((tm->tm_year - 80) << 9) + ((tm->tm_mon + 1) << 5) + tm->tm_mday;
+    *fatdate = fat_d;
+
+  TRACEN((printf("FileTimeToDosDateTime : %lx %lx => %d %d\n",
+	(long)ft->dwHighDateTime,(long)ft->dwLowDateTime,(unsigned)fat_d,(unsigned)fat_t)))
+
   return TRUE;
 }
 
@@ -164,12 +178,11 @@ typedef struct _TIME_FIELDS {
   CSHORT Weekday;
 } TIME_FIELDS;
 
-static const int MonthLengths[2][MONSPERYEAR] = {
-      {
-        31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
-      },
-      { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }
-    };
+static const int MonthLengths[2][MONSPERYEAR] =
+{
+   { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 },
+   { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 }
+};
 
 static inline int IsLeapYear(int Year) {
   return Year % 4 == 0 && (Year % 100 != 0 || Year % 400 == 0) ? 1 : 0;
@@ -178,56 +191,52 @@ static inline int IsLeapYear(int Year) {
 static inline VOID WINAPI RtlTimeToTimeFields(
   const LARGE_INTEGER *liTime,
   TIME_FIELDS * TimeFields) {
-  const int *Months;
-  int SecondsInDay, DeltaYear;
-  int LeapYear, CurMonth;
-  long int Days;
-  LONGLONG Time = liTime->QuadPart;
+	int SecondsInDay;
+        long int cleaps, years, yearday, months;
+	long int Days;
+	LONGLONG Time;
 
-  /* Extract millisecond from time and convert time into seconds */
-  TimeFields->Milliseconds = (CSHORT) ((Time % TICKSPERSEC) / TICKSPERMSEC);
-  Time = Time / TICKSPERSEC;
+	/* Extract millisecond from time and convert time into seconds */
+	TimeFields->Milliseconds =
+            (CSHORT) (( liTime->QuadPart % TICKSPERSEC) / TICKSPERMSEC);
+	Time = liTime->QuadPart / TICKSPERSEC;
 
-  /* The native version of RtlTimeToTimeFields does not take leap seconds
-   * into account */
+	/* The native version of RtlTimeToTimeFields does not take leap seconds
+	 * into account */
 
-  /* Split the time into days and seconds within the day */
-  Days = Time / SECSPERDAY;
-  SecondsInDay = Time % SECSPERDAY;
+	/* Split the time into days and seconds within the day */
+	Days = Time / SECSPERDAY;
+	SecondsInDay = Time % SECSPERDAY;
 
-  /* compute time of day */
-  TimeFields->Hour = (CSHORT) (SecondsInDay / SECSPERHOUR);
-  SecondsInDay = SecondsInDay % SECSPERHOUR;
-  TimeFields->Minute = (CSHORT) (SecondsInDay / SECSPERMIN);
-  TimeFields->Second = (CSHORT) (SecondsInDay % SECSPERMIN);
+	/* compute time of day */
+	TimeFields->Hour = (CSHORT) (SecondsInDay / SECSPERHOUR);
+	SecondsInDay = SecondsInDay % SECSPERHOUR;
+	TimeFields->Minute = (CSHORT) (SecondsInDay / SECSPERMIN);
+	TimeFields->Second = (CSHORT) (SecondsInDay % SECSPERMIN);
 
-  /* compute day of week */
-  TimeFields->Weekday = (CSHORT) ((EPOCHWEEKDAY + Days) % DAYSPERWEEK);
+	/* compute day of week */
+	TimeFields->Weekday = (CSHORT) ((EPOCHWEEKDAY + Days) % DAYSPERWEEK);
 
-  /* compute year */
-  /* FIXME: handle calendar modifications */
-  TimeFields->Year = EPOCHYEAR;
-  DeltaYear = Days / DAYSPERQUADRICENTENNIUM;
-  TimeFields->Year += DeltaYear * 400;
-  Days -= DeltaYear * DAYSPERQUADRICENTENNIUM;
-  DeltaYear = Days / DAYSPERNORMALCENTURY;
-  TimeFields->Year += DeltaYear * 100;
-  Days -= DeltaYear * DAYSPERNORMALCENTURY;
-  DeltaYear = Days / DAYSPERNORMALQUADRENNIUM;
-  TimeFields->Year += DeltaYear * 4;
-  Days -= DeltaYear * DAYSPERNORMALQUADRENNIUM;
-  DeltaYear = Days / DAYSPERNORMALYEAR;
-  TimeFields->Year += DeltaYear;
-  Days -= DeltaYear * DAYSPERNORMALYEAR;
-
-  LeapYear = IsLeapYear(TimeFields->Year);
-
-  /* Compute month of year */
-  Months = MonthLengths[LeapYear];
-  for (CurMonth = 0; Days >= (long) Months[CurMonth]; CurMonth++)
-    Days = Days - (long) Months[CurMonth];
-  TimeFields->Month = (CSHORT) (CurMonth + 1);
-  TimeFields->Day = (CSHORT) (Days + 1);
+        /* compute year, month and day of month. */
+        cleaps=( 3 * ((4 * Days + 1227) / DAYSPERQUADRICENTENNIUM) + 3 ) / 4;
+        Days += 28188 + cleaps;
+        years = (20 * Days - 2442) / (5 * DAYSPERNORMALQUADRENNIUM);
+        yearday = Days - (years * DAYSPERNORMALQUADRENNIUM)/4;
+        months = (64 * yearday) / 1959;
+        /* the result is based on a year starting on March.
+         * To convert take 12 from Januari and Februari and
+         * increase the year by one. */
+        if( months < 14 ) {
+            TimeFields->Month = months - 1;
+            TimeFields->Year = years + 1524;
+        } else {
+            TimeFields->Month = months - 13;
+            TimeFields->Year = years + 1525;
+        }
+        /* calculation of day of month is based on the wonderful
+         * sequence of INT( n * 30.6): it reproduces the 
+         * 31-30-31-30-31-31 month lengths exactly for small n's */
+        TimeFields->Day = yearday - (1959 * months) / 64 ;
 }
 
 
@@ -252,12 +261,13 @@ BOOL WINAPI FileTimeToSystemTime( const FILETIME *ft, SYSTEMTIME * syst ) {
 }
 
 
-static inline void WINAPI RtlLocalTimeToSystemTime( const LARGE_INTEGER *LocalTime,
+static inline NTSTATUS WINAPI RtlLocalTimeToSystemTime( const LARGE_INTEGER *LocalTime,
     LARGE_INTEGER *SystemTime) {
 
   TRACEN((printf("RtlLocalTimeToSystemTime\n")))
-  int bias = TIME_GetBias();
-  SystemTime->QuadPart = LocalTime->QuadPart - bias * (LONGLONG)10000000;
+  LONG bias = TIME_GetBias();
+  SystemTime->QuadPart = LocalTime->QuadPart + bias * (LONGLONG)TICKSPERSEC;
+  return STATUS_SUCCESS;
 }
 
 BOOL WINAPI LocalFileTimeToFileTime( const FILETIME *localft, FILETIME * utcft ) {
@@ -313,56 +323,53 @@ VOID WINAPI GetSystemTime(SYSTEMTIME * systime) /* [O] Destination for current t
  */
 static BOOLEAN WINAPI RtlTimeFieldsToTime(
   TIME_FIELDS * tfTimeFields,
-  LARGE_INTEGER *Time) {
-  int CurYear, CurMonth, DeltaYear;
-  LONGLONG rcTime;
-  TIME_FIELDS TimeFields = *tfTimeFields;
+  LARGE_INTEGER *Time)
+{
+  int month, year, cleaps, day;
 
   TRACEN((printf("RtlTimeFieldsToTime\n")))
 
-  rcTime = 0;
+	/* FIXME: normalize the TIME_FIELDS structure here */
+        /* No, native just returns 0 (error) if the fields are not */
+        if( tfTimeFields->Milliseconds< 0 || tfTimeFields->Milliseconds > 999 ||
+                tfTimeFields->Second < 0 || tfTimeFields->Second > 59 ||
+                tfTimeFields->Minute < 0 || tfTimeFields->Minute > 59 ||
+                tfTimeFields->Hour < 0 || tfTimeFields->Hour > 23 ||
+                tfTimeFields->Month < 1 || tfTimeFields->Month > 12 ||
+                tfTimeFields->Day < 1 ||
+                tfTimeFields->Day > MonthLengths
+                    [ tfTimeFields->Month ==2 || IsLeapYear(tfTimeFields->Year)]
+                    [ tfTimeFields->Month - 1] ||
+                tfTimeFields->Year < 1601 )
+            return FALSE;
 
-  /* FIXME: normalize the TIME_FIELDS structure here */
-  while (TimeFields.Second >= SECSPERMIN) {
-    NormalizeTimeFields(&TimeFields.Second, &TimeFields.Minute, SECSPERMIN);
-  }
-  while (TimeFields.Minute >= MINSPERHOUR) {
-    NormalizeTimeFields(&TimeFields.Minute, &TimeFields.Hour, MINSPERHOUR);
-  }
-  while (TimeFields.Hour >= HOURSPERDAY) {
-    NormalizeTimeFields(&TimeFields.Hour, &TimeFields.Day, HOURSPERDAY);
-  }
-  while (TimeFields.Day > MonthLengths[IsLeapYear(TimeFields.Year)][TimeFields.Month - 1]) {
-    NormalizeTimeFields(&TimeFields.Day, &TimeFields.Month, SECSPERMIN);
-  }
-  while (TimeFields.Month > MONSPERYEAR) {
-    NormalizeTimeFields(&TimeFields.Month, &TimeFields.Year, MONSPERYEAR);
-  }
+        /* now calculate a day count from the date
+         * First start counting years from March. This way the leap days
+         * are added at the end of the year, not somewhere in the middle.
+         * Formula's become so much less complicate that way.
+         * To convert: add 12 to the month numbers of Jan and Feb, and 
+         * take 1 from the year */
+        if(tfTimeFields->Month < 3) {
+            month = tfTimeFields->Month + 13;
+            year = tfTimeFields->Year - 1;
+        } else {
+            month = tfTimeFields->Month + 1;
+            year = tfTimeFields->Year;
+        }
+        cleaps = (3 * (year / 100) + 3) / 4;   /* nr of "century leap years"*/
+        day =  (36525 * year) / 100 - cleaps + /* year * dayperyr, corrected */
+                 (1959 * month) / 64 +         /* months * daypermonth */
+                 tfTimeFields->Day -          /* day of the month */
+                 584817 ;                      /* zero that on 1601-01-01 */
+        /* done */
+        
+        Time->QuadPart = (((((LONGLONG) day * HOURSPERDAY +
+            tfTimeFields->Hour) * MINSPERHOUR +
+            tfTimeFields->Minute) * SECSPERMIN +
+            tfTimeFields->Second ) * 1000 +
+            tfTimeFields->Milliseconds ) * TICKSPERMSEC;
 
-  /* FIXME: handle calendar corrections here */
-  CurYear = TimeFields.Year - EPOCHYEAR;
-  DeltaYear = CurYear / 400;
-  CurYear -= DeltaYear * 400;
-  rcTime += DeltaYear * DAYSPERQUADRICENTENNIUM;
-  DeltaYear = CurYear / 100;
-  CurYear -= DeltaYear * 100;
-  rcTime += DeltaYear * DAYSPERNORMALCENTURY;
-  DeltaYear = CurYear / 4;
-  CurYear -= DeltaYear * 4;
-  rcTime += DeltaYear * DAYSPERNORMALQUADRENNIUM;
-  rcTime += CurYear * DAYSPERNORMALYEAR;
-
-  for (CurMonth = 1; CurMonth < TimeFields.Month; CurMonth++) {
-    rcTime += MonthLengths[IsLeapYear(CurYear)][CurMonth - 1];
-  }
-  rcTime += TimeFields.Day - 1;
-  rcTime *= SECSPERDAY;
-  rcTime += TimeFields.Hour * SECSPERHOUR + TimeFields.Minute * SECSPERMIN + TimeFields.Second;
-  rcTime *= TICKSPERSEC;
-  rcTime += TimeFields.Milliseconds * TICKSPERMSEC;
-  Time->QuadPart = rcTime;
-
-  return TRUE;
+        return TRUE;
 }
 
 /*********************************************************************

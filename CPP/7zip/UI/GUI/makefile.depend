@@ -820,12 +820,22 @@ UpdateCallbackGUI.o: UpdateCallbackGUI.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/../../C/Types.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../Common/MyWindows.h \
   ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  UpdateCallbackGUI.h ../Common/Update.h ../../../Common/Wildcard.h \
+  ../../../Common/Defs.h ../../../Common/IntToString.h \
+  ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
   ../../../Common/MyString.h ../../../Common/MyVector.h \
-  ../../../Common/Defs.h ../../../Windows/FileFind.h \
-  ../../../Windows/../Common/MyString.h ../../../Windows/FileName.h \
-  ../../../Windows/Defs.h ../Common/../../Archive/IArchive.h \
-  ../Common/../../Archive/../IStream.h \
+  ../../../Common/Defs.h ../../../Windows/Error.h \
+  ../../../Common/MyString.h ../../../Windows/PropVariant.h \
+  ../../../Windows/../Common/MyWindows.h \
+  ../../../Windows/../Common/Types.h ../FileManager/MessagesDialog.h \
+  ../FileManager/MessagesDialogRes.h ../../../Windows/Control/Dialog.h \
+  ../../../Windows/Window.h ../../../Windows/Defs.h \
+  ../../../Windows/Control/ListView.h ../../../Windows/Defs.h \
+  ../FileManager/PasswordDialog.h ../../../Windows/Control/Edit.h \
+  ../FileManager/PasswordDialogRes.h UpdateCallbackGUI.h \
+  ../Common/Update.h ../../../Common/Wildcard.h \
+  ../../../Windows/FileFind.h ../../../Windows/../Common/MyString.h \
+  ../../../Windows/FileName.h ../../../Windows/Defs.h \
+  ../Common/../../Archive/IArchive.h ../Common/../../Archive/../IStream.h \
   ../Common/../../Archive/../../Common/MyUnknown.h \
   ../Common/../../Archive/../../Common/MyWindows.h \
   ../Common/../../Archive/../../Common/Types.h \
@@ -833,13 +843,13 @@ UpdateCallbackGUI.o: UpdateCallbackGUI.cpp ../../../myWindows/StdAfx.h \
   ../Common/../../Archive/../IProgress.h \
   ../Common/../../Archive/../PropID.h ../Common/UpdateAction.h \
   ../Common/ArchiveOpenCallback.h ../../../Common/MyString.h \
-  ../../../Common/MyCom.h ../../../Common/MyWindows.h \
-  ../Common/../../IPassword.h ../Common/../../../Common/MyUnknown.h \
-  ../Common/../../../Common/Types.h ../Common/../../IDecl.h \
-  ../Common/UpdateCallback.h ../Common/../../ICoder.h \
-  ../Common/../../IStream.h ../Common/../Common/UpdatePair.h \
-  ../Common/../Common/DirItem.h ../../../Common/MyString.h \
-  ../../../Common/Types.h ../Common/../Common/../../Archive/IArchive.h \
+  ../../../Common/MyCom.h ../Common/../../IPassword.h \
+  ../Common/../../../Common/MyUnknown.h ../Common/../../../Common/Types.h \
+  ../Common/../../IDecl.h ../Common/UpdateCallback.h \
+  ../Common/../../ICoder.h ../Common/../../IStream.h \
+  ../Common/../Common/UpdatePair.h ../Common/../Common/DirItem.h \
+  ../../../Common/MyString.h ../../../Common/Types.h \
+  ../Common/../Common/../../Archive/IArchive.h \
   ../Common/../Common/UpdateAction.h ../Common/../Common/UpdateProduce.h \
   ../Common/../Common/UpdatePair.h ../Common/Property.h \
   ../Common/LoadCodecs.h ../Common/../../../Common/Types.h \
@@ -849,18 +859,9 @@ UpdateCallbackGUI.o: UpdateCallbackGUI.cpp ../../../myWindows/StdAfx.h \
   ../Common/../../../Windows/../Common/MyString.h \
   ../Common/ArchiveOpenCallback.h ../FileManager/ProgressDialog2.h \
   ../FileManager/ProgressDialog2Res.h ../../../Common/Types.h \
-  ../../../Windows/Control/Dialog.h ../../../Windows/Window.h \
-  ../../../Windows/Defs.h ../../../Common/MyString.h \
-  ../../../Windows/Control/ProgressBar.h ../../../Windows/Defs.h \
+  ../../../Windows/Control/ProgressBar.h \
   ../../../Windows/Synchronization.h ../../../Windows/../../C/Threads.h \
-  ../../../Windows/../../C/Types.h ../../../Windows/Synchronization2.h \
-  ../../../Common/StringConvert.h ../../../Common/IntToString.h \
-  ../../../Common/Defs.h ../../../Windows/PropVariant.h \
-  ../../../Windows/../Common/MyWindows.h \
-  ../../../Windows/../Common/Types.h ../../../Windows/Error.h \
-  ../FileManager/MessagesDialog.h ../FileManager/MessagesDialogRes.h \
-  ../../../Windows/Control/ListView.h ../FileManager/PasswordDialog.h \
-  ../../../Windows/Control/Edit.h ../FileManager/PasswordDialogRes.h
+  ../../../Windows/../../C/Types.h ../../../Windows/Synchronization2.h
 UpdateGUI.o: UpdateGUI.cpp ../../../myWindows/StdAfx.h \
   ../../../myWindows/config.h ../../../Common/MyWindows.h \
   ../../../Common/MyGuidDef.h ../../../Common/Types.h \
@@ -1293,12 +1294,12 @@ Update.o: ../Common/Update.cpp ../../../myWindows/StdAfx.h \
   ../Common/../../Common/../../Windows/FileIO.h \
   ../../../Common/MyString.h ../Common/../../Common/../IStream.h \
   ../Common/../../Common/../../Common/MyCom.h \
-  ../Common/../../Compress/Copy/CopyCoder.h \
-  ../Common/../../Compress/Copy/../../ICoder.h \
-  ../Common/../../Compress/Copy/../../../Common/MyCom.h \
-  ../Common/../Common/DirItem.h ../Common/../Common/EnumDirItems.h \
-  ../../../Common/Wildcard.h ../../../Windows/FileFind.h \
-  ../Common/../Common/OpenArchive.h ../Common/../Common/LoadCodecs.h \
+  ../Common/../../Compress/CopyCoder.h \
+  ../Common/../../Compress/../../Common/MyCom.h \
+  ../Common/../../Compress/../ICoder.h ../Common/../Common/DirItem.h \
+  ../Common/../Common/EnumDirItems.h ../../../Common/Wildcard.h \
+  ../../../Windows/FileFind.h ../Common/../Common/OpenArchive.h \
+  ../Common/../Common/LoadCodecs.h \
   ../Common/../Common/ArchiveOpenCallback.h ../Common/EnumDirItems.h \
   ../Common/SetProperties.h ../Common/TempFiles.h
 UpdateAction.o: ../Common/UpdateAction.cpp ../../../myWindows/StdAfx.h \
@@ -2148,23 +2149,22 @@ StreamUtils.o: ../../Common/StreamUtils.cpp ../../../myWindows/StdAfx.h \
   ../../Common/../../Common/MyUnknown.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
   ../../Common/../IDecl.h
-CopyCoder.o: ../../Compress/Copy/CopyCoder.cpp \
-  ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
-  ../../../Common/MyWindows.h ../../../Common/MyGuidDef.h \
-  ../../../Common/Types.h ../../../Common/../../C/Types.h \
-  ../../../Common/Types.h ../../../include_windows/windows.h \
-  ../../../Common/MyWindows.h ../../../include_windows/basetyps.h \
-  ../../../include_windows/tchar.h \
-  ../../Compress/Copy/../../../../C/Alloc.h \
-  ../../Compress/Copy/CopyCoder.h ../../Compress/Copy/../../ICoder.h \
-  ../../Compress/Copy/../../IStream.h \
-  ../../Compress/Copy/../../../Common/MyUnknown.h \
-  ../../Compress/Copy/../../../Common/MyWindows.h \
-  ../../Compress/Copy/../../../Common/Types.h \
-  ../../Compress/Copy/../../IDecl.h \
-  ../../Compress/Copy/../../../Common/MyCom.h \
-  ../../Compress/Copy/../../Common/StreamUtils.h \
-  ../../Compress/Copy/../../Common/../IStream.h
+CopyCoder.o: ../../Compress/CopyCoder.cpp ../../../myWindows/StdAfx.h \
+  ../../../myWindows/config.h ../../../Common/MyWindows.h \
+  ../../../Common/MyGuidDef.h ../../../Common/Types.h \
+  ../../../Common/../../C/Types.h ../../../Common/Types.h \
+  ../../../include_windows/windows.h ../../../Common/MyWindows.h \
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  ../../Compress/../../../C/Alloc.h \
+  ../../Compress/../Common/StreamUtils.h \
+  ../../Compress/../Common/../IStream.h \
+  ../../Compress/../Common/../../Common/MyUnknown.h \
+  ../../Compress/../Common/../../Common/MyWindows.h \
+  ../../Compress/../Common/../../Common/Types.h \
+  ../../Compress/../Common/../IDecl.h ../../Compress/CopyCoder.h \
+  ../../Compress/../../Common/MyCom.h \
+  ../../Compress/../../Common/MyWindows.h ../../Compress/../ICoder.h \
+  ../../Compress/../IStream.h
 LzmaBench.o: ../../Compress/LZMA_Alone/LzmaBench.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/MyGuidDef.h \
@@ -2195,20 +2195,20 @@ LzmaBench.o: ../../Compress/LZMA_Alone/LzmaBench.cpp \
   ../../Compress/LZMA_Alone/../../UI/Common/../../Archive/../../Common/Types.h \
   ../../Compress/LZMA_Alone/../../UI/Common/../../Archive/../IDecl.h \
   ../../Compress/LZMA_Alone/../../UI/Common/../../Archive/../PropID.h \
-  ../../Compress/LZMA_Alone/../../../../C/Alloc.h \
   ../../Compress/LZMA_Alone/../../../../C/7zCrc.h \
   ../../Compress/LZMA_Alone/../../../../C/Types.h \
+  ../../Compress/LZMA_Alone/../../../../C/Alloc.h \
   ../../Compress/LZMA_Alone/../../../Common/MyCom.h \
-  ../../Compress/LZMA_Alone/../../ICoder.h \
-  ../../Compress/LZMA_Alone/../../../Windows/Thread.h \
+  ../../Compress/LZMA_Alone/../../../Windows/Synchronization.h \
   ../../Compress/LZMA_Alone/../../../Windows/Defs.h \
   ../../Compress/LZMA_Alone/../../../Windows/../../C/Threads.h \
   ../../Compress/LZMA_Alone/../../../Windows/../../C/Types.h \
-  ../../Compress/LZMA_Alone/../../../Windows/Synchronization.h \
   ../../Compress/LZMA_Alone/../../../Windows/Synchronization2.h \
+  ../../Compress/LZMA_Alone/../../../Windows/Thread.h \
   ../../Compress/LZMA_Alone/../../../Windows/PropVariant.h \
   ../../Compress/LZMA_Alone/../../../Windows/../Common/MyWindows.h \
-  ../../Compress/LZMA_Alone/../../../Windows/../Common/Types.h
+  ../../Compress/LZMA_Alone/../../../Windows/../Common/Types.h \
+  ../../Compress/LZMA_Alone/../../ICoder.h
 CommandLineParser.o: ../../../Common/CommandLineParser.cpp \
   ../../../myWindows/StdAfx.h ../../../myWindows/config.h \
   ../../../Common/MyWindows.h ../../../Common/MyGuidDef.h \

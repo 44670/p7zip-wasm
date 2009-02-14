@@ -40,9 +40,9 @@ depend:
 	$(MAKE) -C CPP/7zip/Bundles/SFXCon        depend
 	$(MAKE) -C CPP/7zip/UI/Client7z           depend
 	$(MAKE) -C CPP/7zip/UI/Console            depend
-	$(MAKE) -C CPP/7zip/UI/GUI                depend
 	$(MAKE) -C CPP/7zip/Bundles/Format7zFree  depend
 	$(MAKE) -C CPP/7zip/Compress/Rar          depend
+	$(MAKE) -C CPP/7zip/UI/GUI                depend
 
 sfx: common
 	$(MKDIR) bin
@@ -76,6 +76,7 @@ clean:
 	$(MAKE) -C CPP/7zip/Compress/PPMD_Alone  clean
 	$(MAKE) -C CPP/7zip/Bundles/AloneGCOV    clean
 	rm -fr bin
+	rm -fr CPP/7zip/CMAKE/Alone
 	rm -f make.log 1 2
 	rm -f check/7z.so
 	find . -name "*~" -exec rm -f {} \;
@@ -91,10 +92,10 @@ clean:
 	chmod +x install.sh check/check.sh check/clean_all.sh check/check_7zr.sh 
 	cd check                  ; ./clean_all.sh
 
-test: all
+test: 7za
 	cd check ; ./check.sh ../bin/7za
 
-test_7z: all2
+test_7z: 7z
 	cd check ; ./check.sh ../bin/7z
 
 test_7zr: 7zr

@@ -1,7 +1,7 @@
-Index: p7zip-4.55~dfsg.1/makefile.linux_x86_ppc_alpha_gcc_4.X
+Index: p7zip-4.65~dfsg.1/makefile.linux_x86_ppc_alpha_gcc_4.X
 ===================================================================
---- p7zip-4.55~dfsg.1.orig/makefile.linux_x86_ppc_alpha_gcc_4.X	2007-08-08 11:15:20.000000000 +0200
-+++ p7zip-4.55~dfsg.1/makefile.linux_x86_ppc_alpha_gcc_4.X	2007-09-14 23:01:03.000000000 +0200
+--- p7zip-4.65~dfsg.1.orig/makefile.linux_x86_ppc_alpha_gcc_4.X	2007-08-08 11:15:20.000000000 +0200
++++ p7zip-4.65~dfsg.1/makefile.linux_x86_ppc_alpha_gcc_4.X	2009-02-14 20:13:31.000000000 +0100
 @@ -4,7 +4,7 @@
  
  OPTFLAGS=-O

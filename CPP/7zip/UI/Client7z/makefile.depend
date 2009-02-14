@@ -146,20 +146,19 @@ Client7z.o: Client7z.cpp ../../../myWindows/StdAfx.h \
   ../../../Common/../../C/Types.h ../../../Common/Types.h \
   ../../../include_windows/windows.h ../../../Common/MyWindows.h \
   ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
-  ../../../Common/MyInitGuid.h ../../../Common/StringConvert.h \
-  ../../../Common/MyWindows.h ../../../Common/MyString.h \
-  ../../../Common/MyVector.h ../../../Common/Defs.h \
-  ../../../Common/IntToString.h ../../../Windows/PropVariant.h \
-  ../../../Windows/../Common/MyWindows.h \
+  ../../../Common/IntToString.h ../../../Common/MyInitGuid.h \
+  ../../../Common/StringConvert.h ../../../Common/MyWindows.h \
+  ../../../Common/MyString.h ../../../Common/MyVector.h \
+  ../../../Common/Defs.h ../../../Windows/DLL.h \
+  ../../../Windows/../Common/MyString.h ../../../Windows/FileDir.h \
+  ../../../Windows/Defs.h ../../../Windows/FileFind.h \
+  ../../../Windows/FileName.h ../../../Windows/FileName.h \
+  ../../../Windows/PropVariant.h ../../../Windows/../Common/MyWindows.h \
   ../../../Windows/../Common/Types.h \
   ../../../Windows/PropVariantConversions.h ../../../Common/Types.h \
-  ../../../Common/MyString.h ../../../Windows/DLL.h \
-  ../../../Windows/../Common/MyString.h ../../../Windows/FileDir.h \
-  ../../../Windows/Defs.h ../../../Windows/FileName.h \
-  ../../../Windows/FileFind.h ../../../Windows/FileName.h \
-  ../../Common/FileStreams.h ../../Common/../../Windows/FileIO.h \
-  ../../../Common/MyString.h ../../Common/../IStream.h \
-  ../../Common/../../Common/MyUnknown.h \
+  ../../../Common/MyString.h ../../Common/FileStreams.h \
+  ../../Common/../../Windows/FileIO.h ../../../Common/MyString.h \
+  ../../Common/../IStream.h ../../Common/../../Common/MyUnknown.h \
   ../../Common/../../Common/MyWindows.h ../../Common/../../Common/Types.h \
   ../../Common/../IDecl.h ../../Common/../../Common/MyCom.h \
   ../../Archive/IArchive.h ../../Archive/../IStream.h \

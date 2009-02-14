@@ -1,3 +1,12 @@
+p7zip (4.65~dfsg.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Remove wx2.8 Build-Depends added by mistakes (7zG is not yet
+    intended to be built).
+  * Use dh_clean without -k.
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sat, 14 Feb 2009 20:12:27 +0100
+
 p7zip (4.61~dfsg.1-1) experimental; urgency=low
 
   * New upstream release:

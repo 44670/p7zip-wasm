@@ -1,28 +1,47 @@
-Index: p7zip-4.58~dfsg.1/makefile
+Index: p7zip-4.65~dfsg.1/makefile
 ===================================================================
---- p7zip-4.58~dfsg.1.orig/makefile	2008-06-21 15:28:28.000000000 +0200
-+++ p7zip-4.58~dfsg.1/makefile	2008-06-21 15:30:42.000000000 +0200
+--- p7zip-4.65~dfsg.1.orig/makefile	2009-02-14 20:17:42.000000000 +0100
++++ p7zip-4.65~dfsg.1/makefile	2009-02-14 20:26:33.000000000 +0100
 @@ -41,7 +41,6 @@
  	cd CPP/7zip/UI/Client7z       ; $(MAKE) depend
  	cd CPP/7zip/UI/Console        ; $(MAKE) depend
  	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) depend
 -	cd CPP/7zip/Compress/Rar      ; $(MAKE) depend
+ 	cd CPP/7zip/UI/GUI            ; $(MAKE) depend
  
  sfx: common
- 	$(MKDIR) bin
 @@ -51,7 +50,6 @@
+ common7z:common
  	$(MKDIR) bin/Codecs
- 	cd CPP/7zip/UI/Console           ; $(MAKE) all
  	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) all
 -	cd CPP/7zip/Compress/Rar         ; $(MAKE) all
  
- clean:
- 	cd CPP/myWindows                 ; $(MAKE) clean
-@@ -61,7 +59,6 @@
- 	cd CPP/7zip/UI/Client7z          ; $(MAKE) clean
- 	cd CPP/7zip/UI/Console           ; $(MAKE) clean
+ 7z: common7z
+ 	cd CPP/7zip/UI/Console           ; $(MAKE) all
+@@ -71,7 +69,6 @@
+ 	cd CPP/7zip/UI/FileManager       ; $(MAKE) clean
+ 	cd CPP/7zip/UI/GUI               ; $(MAKE) clean
  	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) clean
 -	cd CPP/7zip/Compress/Rar         ; $(MAKE) clean
  	cd CPP/7zip/Compress/LZMA_Alone  ; $(MAKE) clean
  	cd CPP/7zip/Compress/PPMD_Alone  ; $(MAKE) clean
  	cd CPP/7zip/Bundles/AloneGCOV    ; $(MAKE) clean
+Index: p7zip-4.65~dfsg.1/makefile.machine
+===================================================================
+--- p7zip-4.65~dfsg.1.orig/makefile.machine	2009-02-14 20:25:54.000000000 +0100
++++ p7zip-4.65~dfsg.1/makefile.machine	2009-02-14 20:27:21.000000000 +0100
+@@ -4,12 +4,12 @@
+ 
+ OPTFLAGS=-O
+ 
+-ALLFLAGS=${OPTFLAGS} -s \
++ALLFLAGS=${OPTFLAGS} \
+     	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
+ 	-DNDEBUG -D_REENTRANT -DENV_UNIX \
+ 	$(LOCAL_FLAGS)
+ 
+-CXX=g++ $(ALLFLAGS)
++CXX=g++ $(ALLFLAGS) -DHAVE_GCCVISIBILITYPATCH -fvisibility=hidden -fvisibility-inlines-hidden
+ CC=gcc $(ALLFLAGS)
+ CC_SHARED=-fPIC
+ LINK_SHARED=-fPIC -shared

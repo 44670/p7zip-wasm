@@ -2,6 +2,7 @@ SRCS=\
  ../../../myWindows/wine_date_and_time.cpp \
  ../../../myWindows/myAddExeFlag.cpp \
  ../../../myWindows/mySplitCommandLine.cpp \
+ \
  ../../UI/Console/ConsoleClose.cpp \
  ../../UI/Console/ExtractCallbackConsole.cpp \
  ../../UI/Console/List.cpp \
@@ -11,19 +12,21 @@ SRCS=\
  ../../UI/Console/PercentPrinter.cpp \
  ../../UI/Console/UpdateCallbackConsole.cpp \
  ../../UI/Console/UserInputUtils.cpp \
+ \
  ../../../Common/CommandLineParser.cpp \
  ../../../Common/CRC.cpp \
  ../../../Common/IntToString.cpp \
  ../../../Common/ListFileUtils.cpp \
- ../../../Common/MyWindows.cpp \
  ../../../Common/StdInStream.cpp \
  ../../../Common/StdOutStream.cpp \
  ../../../Common/MyString.cpp \
+ ../../../Common/MyWindows.cpp \
  ../../../Common/StringConvert.cpp \
  ../../../Common/StringToInt.cpp \
  ../../../Common/UTFConvert.cpp \
  ../../../Common/MyVector.cpp \
  ../../../Common/Wildcard.cpp \
+ \
  ../../../Windows/Error.cpp \
  ../../../Windows/FileDir.cpp \
  ../../../Windows/FileFind.cpp \
@@ -32,10 +35,10 @@ SRCS=\
  ../../../Windows/PropVariant.cpp \
  ../../../Windows/PropVariantConversions.cpp \
  ../../../Windows/Synchronization.cpp \
- ../../../Windows/Time.cpp \
  ../../../Windows/System.cpp \
+ ../../../Windows/Time.cpp \
+ \
  ../../Common/CreateCoder.cpp \
- ../../Archive/Common/CrossThreadProgress.cpp \
  ../../Common/FilePathAutoRename.cpp \
  ../../Common/FileStreams.cpp \
  ../../Common/FilterCoder.cpp \
@@ -43,64 +46,17 @@ SRCS=\
  ../../Common/InOutTempBuffer.cpp \
  ../../Common/LimitedStreams.cpp \
  ../../Common/LockedStream.cpp \
- ../../Common/LSBFDecoder.cpp \
- ../../Common/LSBFEncoder.cpp \
- ../../Common/VirtThread.cpp \
  ../../Common/MethodId.cpp \
  ../../Common/MethodProps.cpp \
  ../../Common/OffsetStream.cpp \
  ../../Common/OutBuffer.cpp \
- ../../Common/ProgressMt.cpp \
+ ../../Common/OutMemStream.cpp \
  ../../Common/ProgressUtils.cpp \
  ../../Common/StreamBinder.cpp \
  ../../Common/StreamObjects.cpp \
  ../../Common/StreamUtils.cpp \
- ../../Compress/Branch/BranchCoder.cpp \
- ../../Compress/Branch/BranchMisc.cpp \
- ../../Compress/Branch/BranchRegister.cpp \
- ../../Compress/Branch/BCJ2Register.cpp \
- ../../Compress/Branch/BCJRegister.cpp \
- ../../Compress/Branch/x86.cpp \
- ../../Compress/Branch/x86_2.cpp \
- ../../Compress/Copy/CopyCoder.cpp \
- ../../Compress/Copy/CopyRegister.cpp \
- ../../Compress/LZ/LZOutWindow.cpp \
- ../../Compress/LZMA/LZMADecoder.cpp \
- ../../Compress/LZMA/LZMAEncoder.cpp \
- ../../Compress/LZMA/LZMARegister.cpp \
- ../../Compress/RangeCoder/RangeCoderBit.cpp \
- ../../Compress/LZMA_Alone/LzmaBench.cpp \
- ../../Compress/LZMA_Alone/LzmaBenchCon.cpp \
- ../../Archive/7z/7zCompressionMode.cpp \
- ../../Archive/7z/7zDecode.cpp \
- ../../Archive/7z/7zEncode.cpp \
- ../../Archive/7z/7zExtract.cpp \
- ../../Archive/7z/7zFolderInStream.cpp \
- ../../Archive/7z/7zFolderOutStream.cpp \
- ../../Archive/7z/7zHandler.cpp \
- ../../Archive/7z/7zHandlerOut.cpp \
- ../../Archive/7z/7zHeader.cpp \
- ../../Archive/7z/7zIn.cpp \
- ../../Archive/7z/7zOut.cpp \
- ../../Archive/7z/7zProperties.cpp \
- ../../Archive/7z/7zRegister.cpp \
- ../../Archive/7z/7zSpecStream.cpp \
- ../../Archive/7z/7zUpdate.cpp \
- ../../Archive/Lzma/LzmaArcRegister.cpp \
- ../../Archive/Lzma/LzmaFiltersDecode.cpp \
- ../../Archive/Lzma/LzmaHandler.cpp \
- ../../Archive/Lzma/LzmaIn.cpp \
- ../../Archive/Split/SplitHandler.cpp \
- ../../Archive/Split/SplitRegister.cpp \
- ../../Archive/Common/CoderMixer2.cpp \
- ../../Archive/Common/CoderMixer2MT.cpp \
- ../../Archive/Common/DummyOutStream.cpp \
- ../../Archive/Common/InStreamWithCRC.cpp \
- ../../Archive/Common/HandlerOut.cpp \
- ../../Archive/Common/ItemNameUtils.cpp \
- ../../Archive/Common/MultiStream.cpp \
- ../../Archive/Common/OutStreamWithCRC.cpp \
- ../../Archive/Common/ParseProperties.cpp \
+ ../../Common/VirtThread.cpp \
+ \
  ../../UI/Common/ArchiveCommandLine.cpp \
  ../../UI/Common/ArchiveExtractCallback.cpp \
  ../../UI/Common/ArchiveOpenCallback.cpp \
@@ -118,286 +74,76 @@ SRCS=\
  ../../UI/Common/UpdateAction.cpp \
  ../../UI/Common/UpdateCallback.cpp \
  ../../UI/Common/UpdatePair.cpp \
- ../../UI/Common/UpdateProduce.cpp
+ ../../UI/Common/UpdateProduce.cpp \
+ \
+ ../../Archive/ZHandler.cpp \
+ \
+ ../../Archive/Common/CoderMixer2.cpp \
+ ../../Archive/Common/CoderMixer2MT.cpp \
+ ../../Archive/Common/CrossThreadProgress.cpp \
+ ../../Archive/Common/DummyOutStream.cpp \
+ ../../Archive/Common/HandlerOut.cpp \
+ ../../Archive/Common/InStreamWithCRC.cpp \
+ ../../Archive/Common/ItemNameUtils.cpp \
+ ../../Archive/Common/MultiStream.cpp \
+ ../../Archive/Common/OutStreamWithCRC.cpp \
+ ../../Archive/Common/ParseProperties.cpp \
+ \
+ ../../Archive/7z/7zCompressionMode.cpp \
+ ../../Archive/7z/7zDecode.cpp \
+ ../../Archive/7z/7zEncode.cpp \
+ ../../Archive/7z/7zExtract.cpp \
+ ../../Archive/7z/7zFolderInStream.cpp \
+ ../../Archive/7z/7zFolderOutStream.cpp \
+ ../../Archive/7z/7zHandler.cpp \
+ ../../Archive/7z/7zHandlerOut.cpp \
+ ../../Archive/7z/7zHeader.cpp \
+ ../../Archive/7z/7zIn.cpp \
+ ../../Archive/7z/7zOut.cpp \
+ ../../Archive/7z/7zProperties.cpp \
+ ../../Archive/7z/7zSpecStream.cpp \
+ ../../Archive/7z/7zUpdate.cpp \
+ ../../Archive/7z/7zRegister.cpp \
+ \
+ ../../Archive/Lzma/LzmaArcRegister.cpp \
+ ../../Archive/Lzma/LzmaFiltersDecode.cpp \
+ ../../Archive/Lzma/LzmaHandler.cpp \
+ ../../Archive/Lzma/LzmaIn.cpp \
+ \
+ ../../Archive/Split/SplitHandler.cpp \
+ ../../Archive/Split/SplitRegister.cpp \
+ \
+ ../../Compress/Bcj2Coder.cpp \
+ ../../Compress/Bcj2Register.cpp \
+ ../../Compress/BcjCoder.cpp \
+ ../../Compress/BcjRegister.cpp \
+ ../../Compress/BranchCoder.cpp \
+ ../../Compress/BranchMisc.cpp \
+ ../../Compress/BranchRegister.cpp \
+ ../../Compress/ByteSwap.cpp \
+ ../../Compress/ByteSwapRegister.cpp \
+ ../../Compress/CopyCoder.cpp \
+ ../../Compress/CopyRegister.cpp \
+ ../../Compress/LzmaDecoder.cpp \
+ ../../Compress/LzmaEncoder.cpp \
+ ../../Compress/LzmaRegister.cpp \
+ \
+ ../../Compress/LZMA_Alone/LzmaBench.cpp \
+ ../../Compress/LZMA_Alone/LzmaBenchCon.cpp \
 
- SRCS_C= \
- ../../../../C/7zCrc.c \
- ../../../../C/Threads.c
 
-wine_date_and_time.o : ../../../myWindows/wine_date_and_time.cpp
-	$(CXX) $(CFLAGS) ../../../myWindows/wine_date_and_time.cpp
-myAddExeFlag.o : ../../../myWindows/myAddExeFlag.cpp
-	$(CXX) $(CFLAGS) ../../../myWindows/myAddExeFlag.cpp 
-mySplitCommandLine.o : ../../../myWindows/mySplitCommandLine.cpp
-	$(CXX) $(CFLAGS) ../../../myWindows/mySplitCommandLine.cpp
-ConsoleClose.o : ../../UI/Console/ConsoleClose.cpp
-	$(CXX) $(CFLAGS) ../../UI/Console/ConsoleClose.cpp
-ExtractCallbackConsole.o : ../../UI/Console/ExtractCallbackConsole.cpp
-	$(CXX) $(CFLAGS) ../../UI/Console/ExtractCallbackConsole.cpp
-List.o : ../../UI/Console/List.cpp
-	$(CXX) $(CFLAGS) ../../UI/Console/List.cpp
+SRCS_C=\
+ ../../../../C/Bra.c \
+ ../../../../C/Bra86.c \
+ ../../../../C/BraIA64.c \
+ ../../../../C/LzmaDec.c \
+ ../../../../C/LzmaEnc.c \
+ ../../../../C/LzFind.c \
+ ../../../../C/LzFindMt.c \
+ ../../../../C/Threads.c \
+
+include ../../../../makefile.rules
+
 Main.o : ../../UI/Console/Main.cpp
-	$(CXX) $(CFLAGS) ../../UI/Console/Main.cpp
-MainAr.o : ../../UI/Console/MainAr.cpp
-	$(CXX) $(CFLAGS) ../../UI/Console/MainAr.cpp
-OpenCallbackConsole.o : ../../UI/Console/OpenCallbackConsole.cpp
-	$(CXX) $(CFLAGS) ../../UI/Console/OpenCallbackConsole.cpp
-PercentPrinter.o : ../../UI/Console/PercentPrinter.cpp
-	$(CXX) $(CFLAGS) ../../UI/Console/PercentPrinter.cpp
-UpdateCallbackConsole.o : ../../UI/Console/UpdateCallbackConsole.cpp
-	$(CXX) $(CFLAGS) ../../UI/Console/UpdateCallbackConsole.cpp
-CommandLineParser.o : ../../../Common/CommandLineParser.cpp
-	$(CXX) $(CFLAGS) ../../../Common/CommandLineParser.cpp
-CRC.o : ../../../Common/CRC.cpp
-	$(CXX) $(CFLAGS) ../../../Common/CRC.cpp
-IntToString.o : ../../../Common/IntToString.cpp
-	$(CXX) $(CFLAGS) ../../../Common/IntToString.cpp
-ListFileUtils.o : ../../../Common/ListFileUtils.cpp
-	$(CXX) $(CFLAGS) ../../../Common/ListFileUtils.cpp
-MyWindows.o : ../../../Common/MyWindows.cpp
-	$(CXX) $(CFLAGS) ../../../Common/MyWindows.cpp
-Random.o : ../../../Common/Random.cpp
-	$(CXX) $(CFLAGS) ../../../Common/Random.cpp
-StdInStream.o : ../../../Common/StdInStream.cpp
-	$(CXX) $(CFLAGS) ../../../Common/StdInStream.cpp
-StdOutStream.o : ../../../Common/StdOutStream.cpp
-	$(CXX) $(CFLAGS) ../../../Common/StdOutStream.cpp
-MyString.o : ../../../Common/MyString.cpp
-	$(CXX) $(CFLAGS) ../../../Common/MyString.cpp
-StringConvert.o : ../../../Common/StringConvert.cpp
-	$(CXX) $(CFLAGS) ../../../Common/StringConvert.cpp
-StringToInt.o : ../../../Common/StringToInt.cpp
-	$(CXX) $(CFLAGS) ../../../Common/StringToInt.cpp
-UTFConvert.o : ../../../Common/UTFConvert.cpp
-	$(CXX) $(CFLAGS) ../../../Common/UTFConvert.cpp
-MyVector.o : ../../../Common/MyVector.cpp
-	$(CXX) $(CFLAGS) ../../../Common/MyVector.cpp
-Wildcard.o : ../../../Common/Wildcard.cpp
-	$(CXX) $(CFLAGS) ../../../Common/Wildcard.cpp
-UserInputUtils.o : ../../UI/Console/UserInputUtils.cpp
-	$(CXX) $(CFLAGS) ../../UI/Console/UserInputUtils.cpp
-Error.o : ../../../Windows/Error.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/Error.cpp
-FileDir.o : ../../../Windows/FileDir.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/FileDir.cpp
-FileFind.o : ../../../Windows/FileFind.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/FileFind.cpp
-FileIO.o : ../../../Windows/FileIO.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/FileIO.cpp
-FileName.o : ../../../Windows/FileName.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/FileName.cpp
-PropVariant.o : ../../../Windows/PropVariant.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
-PropVariantConversions.o : ../../../Windows/PropVariantConversions.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/PropVariantConversions.cpp
-Synchronization.o : ../../../Windows/Synchronization.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/Synchronization.cpp
-Time.o : ../../../Windows/Time.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/Time.cpp
-System.o : ../../../Windows/System.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/System.cpp
-CreateCoder.o : ../../Common/CreateCoder.cpp
-	$(CXX) $(CFLAGS) ../../Common/CreateCoder.cpp
-CrossThreadProgress.o : ../../Archive/Common/CrossThreadProgress.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Common/CrossThreadProgress.cpp
-FilePathAutoRename.o : ../../Common/FilePathAutoRename.cpp
-	$(CXX) $(CFLAGS) ../../Common/FilePathAutoRename.cpp
-FileStreams.o : ../../Common/FileStreams.cpp
-	$(CXX) $(CFLAGS) ../../Common/FileStreams.cpp
-FilterCoder.o : ../../Common/FilterCoder.cpp
-	$(CXX) $(CFLAGS) ../../Common/FilterCoder.cpp
-InBuffer.o : ../../Common/InBuffer.cpp
-	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
-InOutTempBuffer.o : ../../Common/InOutTempBuffer.cpp
-	$(CXX) $(CFLAGS) ../../Common/InOutTempBuffer.cpp
-LimitedStreams.o : ../../Common/LimitedStreams.cpp
-	$(CXX) $(CFLAGS) ../../Common/LimitedStreams.cpp
-LockedStream.o : ../../Common/LockedStream.cpp
-	$(CXX) $(CFLAGS) ../../Common/LockedStream.cpp
-LSBFDecoder.o : ../../Common/LSBFDecoder.cpp
-	$(CXX) $(CFLAGS) ../../Common/LSBFDecoder.cpp
-LSBFEncoder.o : ../../Common/LSBFEncoder.cpp
-	$(CXX) $(CFLAGS) ../../Common/LSBFEncoder.cpp
-MethodId.o : ../../Common/MethodId.cpp
-	$(CXX) $(CFLAGS) ../../Common/MethodId.cpp
-MethodProps.o : ../../Common/MethodProps.cpp
-	$(CXX) $(CFLAGS) ../../Common/MethodProps.cpp
-VirtThread.o : ../../Common/VirtThread.cpp
-	$(CXX) $(CFLAGS) ../../Common/VirtThread.cpp
-OffsetStream.o : ../../Common/OffsetStream.cpp
-	$(CXX) $(CFLAGS) ../../Common/OffsetStream.cpp
-OutBuffer.o : ../../Common/OutBuffer.cpp
-	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp
-ProgressMt.o : ../../Common/ProgressMt.cpp
-	$(CXX) $(CFLAGS) ../../Common/ProgressMt.cpp
-ProgressUtils.o : ../../Common/ProgressUtils.cpp
-	$(CXX) $(CFLAGS) ../../Common/ProgressUtils.cpp
-StreamBinder.o : ../../Common/StreamBinder.cpp
-	$(CXX) $(CFLAGS) ../../Common/StreamBinder.cpp
-StreamObjects.o : ../../Common/StreamObjects.cpp
-	$(CXX) $(CFLAGS) ../../Common/StreamObjects.cpp
-StreamUtils.o : ../../Common/StreamUtils.cpp
-	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
-BCJ2Register.o : ../../Compress/Branch/BCJ2Register.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Branch/BCJ2Register.cpp
-BCJRegister.o : ../../Compress/Branch/BCJRegister.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Branch/BCJRegister.cpp
-BranchCoder.o : ../../Compress/Branch/BranchCoder.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Branch/BranchCoder.cpp
-BranchMisc.o : ../../Compress/Branch/BranchMisc.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Branch/BranchMisc.cpp
-BranchRegister.o : ../../Compress/Branch/BranchRegister.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Branch/BranchRegister.cpp
-x86.o : ../../Compress/Branch/x86.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Branch/x86.cpp
-x86_2.o : ../../Compress/Branch/x86_2.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Branch/x86_2.cpp
-CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp
-CopyRegister.o : ../../Compress/Copy/CopyRegister.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyRegister.cpp
-LZOutWindow.o : ../../Compress/LZ/LZOutWindow.cpp
-	$(CXX) $(CFLAGS) ../../Compress/LZ/LZOutWindow.cpp
-LZMADecoder.o : ../../Compress/LZMA/LZMADecoder.cpp
-	$(CXX) $(CFLAGS) ../../Compress/LZMA/LZMADecoder.cpp
-LZMAEncoder.o : ../../Compress/LZMA/LZMAEncoder.cpp
-	$(CXX) $(CFLAGS) ../../Compress/LZMA/LZMAEncoder.cpp
-LZMARegister.o : ../../Compress/LZMA/LZMARegister.cpp
-	$(CXX) $(CFLAGS) ../../Compress/LZMA/LZMARegister.cpp
-RangeCoderBit.o : ../../Compress/RangeCoder/RangeCoderBit.cpp
-	$(CXX) $(CFLAGS) ../../Compress/RangeCoder/RangeCoderBit.cpp
-LzmaBench.o : ../../Compress/LZMA_Alone/LzmaBench.cpp
-	$(CXX) $(CFLAGS) ../../Compress/LZMA_Alone/LzmaBench.cpp
-LzmaBenchCon.o : ../../Compress/LZMA_Alone/LzmaBenchCon.cpp
-	$(CXX) $(CFLAGS) ../../Compress/LZMA_Alone/LzmaBenchCon.cpp
-7zCompressionMode.o : ../../Archive/7z/7zCompressionMode.cpp
-	$(CXX) $(CFLAGS) ../../Archive/7z/7zCompressionMode.cpp
-7zDecode.o : ../../Archive/7z/7zDecode.cpp
-	$(CXX) $(CFLAGS) ../../Archive/7z/7zDecode.cpp
-7zEncode.o : ../../Archive/7z/7zEncode.cpp
-	$(CXX) $(CFLAGS) ../../Archive/7z/7zEncode.cpp
-7zExtract.o : ../../Archive/7z/7zExtract.cpp
-	$(CXX) $(CFLAGS) ../../Archive/7z/7zExtract.cpp
-7zFolderInStream.o : ../../Archive/7z/7zFolderInStream.cpp
-	$(CXX) $(CFLAGS) ../../Archive/7z/7zFolderInStream.cpp
-7zFolderOutStream.o : ../../Archive/7z/7zFolderOutStream.cpp
-	$(CXX) $(CFLAGS) ../../Archive/7z/7zFolderOutStream.cpp
-7zHandler.o : ../../Archive/7z/7zHandler.cpp
-	$(CXX) $(CFLAGS) ../../Archive/7z/7zHandler.cpp
-7zHandlerOut.o : ../../Archive/7z/7zHandlerOut.cpp
-	$(CXX) $(CFLAGS) ../../Archive/7z/7zHandlerOut.cpp
-7zHeader.o : ../../Archive/7z/7zHeader.cpp
-	$(CXX) $(CFLAGS) ../../Archive/7z/7zHeader.cpp
-7zIn.o : ../../Archive/7z/7zIn.cpp
-	$(CXX) $(CFLAGS) ../../Archive/7z/7zIn.cpp
-7zOut.o : ../../Archive/7z/7zOut.cpp
-	$(CXX) $(CFLAGS) ../../Archive/7z/7zOut.cpp
-7zProperties.o : ../../Archive/7z/7zProperties.cpp
-	$(CXX) $(CFLAGS) ../../Archive/7z/7zProperties.cpp
-7zRegister.o : ../../Archive/7z/7zRegister.cpp
-	$(CXX) $(CFLAGS) ../../Archive/7z/7zRegister.cpp
-7zSpecStream.o : ../../Archive/7z/7zSpecStream.cpp
-	$(CXX) $(CFLAGS) ../../Archive/7z/7zSpecStream.cpp
-7zUpdate.o : ../../Archive/7z/7zUpdate.cpp
-	$(CXX) $(CFLAGS) ../../Archive/7z/7zUpdate.cpp
-CoderMixer2.o : ../../Archive/Common/CoderMixer2.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Common/CoderMixer2.cpp
-CoderMixer2MT.o : ../../Archive/Common/CoderMixer2MT.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Common/CoderMixer2MT.cpp
-DummyOutStream.o : ../../Archive/Common/DummyOutStream.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Common/DummyOutStream.cpp
-InStreamWithCRC.o : ../../Archive/Common/InStreamWithCRC.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Common/InStreamWithCRC.cpp
-HandlerOut.o : ../../Archive/Common/HandlerOut.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Common/HandlerOut.cpp
-ItemNameUtils.o : ../../Archive/Common/ItemNameUtils.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Common/ItemNameUtils.cpp
-MultiStream.o : ../../Archive/Common/MultiStream.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Common/MultiStream.cpp
-OutStreamWithCRC.o : ../../Archive/Common/OutStreamWithCRC.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Common/OutStreamWithCRC.cpp
-ParseProperties.o : ../../Archive/Common/ParseProperties.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Common/ParseProperties.cpp
-SplitHandler.o : ../../Archive/Split/SplitHandler.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Split/SplitHandler.cpp
-ArchiveCommandLine.o : ../../UI/Common/ArchiveCommandLine.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/ArchiveCommandLine.cpp
-ArchiveExtractCallback.o : ../../UI/Common/ArchiveExtractCallback.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/ArchiveExtractCallback.cpp
-ArchiveOpenCallback.o : ../../UI/Common/ArchiveOpenCallback.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/ArchiveOpenCallback.cpp
-DefaultName.o : ../../UI/Common/DefaultName.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/DefaultName.cpp
-EnumDirItems.o : ../../UI/Common/EnumDirItems.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/EnumDirItems.cpp
-Extract.o : ../../UI/Common/Extract.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/Extract.cpp
-ExtractingFilePath.o : ../../UI/Common/ExtractingFilePath.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/ExtractingFilePath.cpp
-LoadCodecs.o : ../../UI/Common/LoadCodecs.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/LoadCodecs.cpp
-OpenArchive.o : ../../UI/Common/OpenArchive.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/OpenArchive.cpp
-PropIDUtils.o : ../../UI/Common/PropIDUtils.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/PropIDUtils.cpp
-SetProperties.o : ../../UI/Common/SetProperties.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/SetProperties.cpp
-SortUtils.o : ../../UI/Common/SortUtils.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/SortUtils.cpp
-TempFiles.o : ../../UI/Common/TempFiles.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/TempFiles.cpp
-Update.o : ../../UI/Common/Update.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/Update.cpp
-UpdateAction.o : ../../UI/Common/UpdateAction.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/UpdateAction.cpp
-UpdateCallback.o : ../../UI/Common/UpdateCallback.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/UpdateCallback.cpp
-UpdatePair.o : ../../UI/Common/UpdatePair.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/UpdatePair.cpp
-UpdateProduce.o : ../../UI/Common/UpdateProduce.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/UpdateProduce.cpp
-WorkDir.o : ../../UI/Common/WorkDir.cpp
-	$(CXX) $(CFLAGS) ../../UI/Common/WorkDir.cpp
-Threads.o : ../../../../C/Threads.c
-	$(CC) $(CFLAGS) ../../../../C/Threads.c
+	$(CXX) $(CXXFLAGS) ../../UI/Console/Main.cpp
 
-LzmaArcRegister.o : ../../Archive/Lzma/LzmaArcRegister.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Lzma/LzmaArcRegister.cpp
-LzmaFiltersDecode.o : ../../Archive/Lzma/LzmaFiltersDecode.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Lzma/LzmaFiltersDecode.cpp
-LzmaHandler.o : ../../Archive/Lzma/LzmaHandler.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Lzma/LzmaHandler.cpp
-LzmaIn.o : ../../Archive/Lzma/LzmaIn.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Lzma/LzmaIn.cpp
-
-SplitRegister.o : ../../Archive/Split/SplitRegister.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Split/SplitRegister.cpp
-SplitHandlerOut.o : ../../Archive/Split/SplitHandlerOut.cpp
-	$(CXX) $(CFLAGS) ../../Archive/Split/SplitHandlerOut.cpp
-
-LzmaEnc.o : ../../../../C/LzmaEnc.c
-	$(CC) $(CFLAGS) ../../../../C/LzmaEnc.c
-LzmaDec.o : ../../../../C/LzmaDec.c
-	$(CC) $(CFLAGS) ../../../../C/LzmaDec.c
-BraIA64.o : ../../../../C/BraIA64.c
-	$(CC) $(CFLAGS) ../../../../C/BraIA64.c
-Bra.o : ../../../../C/Bra.c
-	$(CC) $(CFLAGS) ../../../../C/Bra.c
-Bra86.o : ../../../../C/Bra86.c
-	$(CC) $(CFLAGS) ../../../../C/Bra86.c
-Aes.o : ../../../../C/Aes.c
-	$(CC) $(CFLAGS) ../../../../C/Aes.c
-LzFind.o : ../../../../C/LzFind.c
-	$(CC) $(CFLAGS) ../../../../C/LzFind.c
-LzFindMt.o : ../../../../C/LzFindMt.c
-	$(CC) $(CFLAGS) ../../../../C/LzFindMt.c
-
-
-
-
-# CRC32, C version
-7zCrc.o : ../../../../C/7zCrc.c
-	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/7zCrc.c
-# CRC32, ASM version
-7zCrcT8.o : ../../../../C/7zCrcT8.c
-	$(CC) $(CC_SHARED) $(CFLAGS) ../../../../C/7zCrcT8.c

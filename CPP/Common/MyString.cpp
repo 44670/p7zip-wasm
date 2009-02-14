@@ -64,6 +64,19 @@ wchar_t MyCharLower(wchar_t c)
 #endif
 }
 
+char * MyStringLower(char *s)
+{
+  if (s == 0)
+    return 0;
+  char *ret = s;
+  while (*s)
+  {
+   *s = MyCharLower(*s);
+    s++;
+  }
+  return ret;
+}
+
 wchar_t * MyStringLower(wchar_t *s)
 {
   if (s == 0)

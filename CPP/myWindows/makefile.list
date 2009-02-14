@@ -8,18 +8,18 @@ SRCS=myGetTickCount.cpp \
  ../Common/MyWindows.cpp
 
 mySplitCommandLine.o : mySplitCommandLine.cpp
-	$(CXX) $(CFLAGS) mySplitCommandLine.cpp
+	$(CXX) $(CXXFLAGS) mySplitCommandLine.cpp
 myAddExeFlag.o : myAddExeFlag.cpp
-	$(CXX) $(CFLAGS) myAddExeFlag.cpp
+	$(CXX) $(CXXFLAGS) myAddExeFlag.cpp
 myGetTickCount.o : myGetTickCount.cpp
-	$(CXX) $(CFLAGS) myGetTickCount.cpp
+	$(CXX) $(CXXFLAGS) myGetTickCount.cpp
 test_emul.o : test_emul.cpp
-	$(CXX) $(CFLAGS) test_emul.cpp
+	$(CXX) $(CXXFLAGS) test_emul.cpp
 wine_date_and_time.o : wine_date_and_time.cpp
-	$(CXX) $(CFLAGS) wine_date_and_time.cpp
+	$(CXX) $(CXXFLAGS) wine_date_and_time.cpp
 MyVector.o : ../Common/MyVector.cpp
-	$(CXX) $(CFLAGS) ../Common/MyVector.cpp
+	$(CXX) $(CXXFLAGS) ../Common/MyVector.cpp
 MyString.o : ../Common/MyString.cpp
-	$(CXX) $(CFLAGS) ../Common/MyString.cpp
+	$(CXX) $(CXXFLAGS) ../Common/MyString.cpp
 MyWindows.o : ../Common/MyWindows.cpp
-	$(CXX) $(CFLAGS) ../Common/MyWindows.cpp
+	$(CXX) $(CXXFLAGS) ../Common/MyWindows.cpp

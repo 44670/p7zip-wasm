@@ -16,7 +16,7 @@
 #include "../Common/RegisterArc.h"
 #include "../Common/StreamUtils.h"
 
-#include "../Compress/Copy/CopyCoder.h"
+#include "../Compress/CopyCoder.h"
 
 #include "Common/ItemNameUtils.h"
 
@@ -198,7 +198,7 @@ HRESULT CInArchive::GetNextItem(bool &filled, CItemEx &item)
     RINOK(GetNextItemReal(filled, item));
     if (!filled)
       return S_OK;
-    if (item.Name.CompareNoCase("debian-binary") != 0)
+    if (item.Name.Compare("debian-binary") != 0)
       return S_OK;
     if (item.Size != 4)
       return S_OK;

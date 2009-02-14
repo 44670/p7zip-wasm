@@ -1,4 +1,24 @@
 
+Version 4.65
+============
+  - From Windows version of 7-zip 4.62 to 4.65
+    - The bug in 7-Zip 4.63 was fixed: 7-Zip could not decrypt .ZIP archives encrypted with WinZip-AES method.
+    - 7-Zip now can unpack ZIP archives encrypted with PKWARE-AES.
+    - Some bugs were fixed.
+
+  - Fixed : the RAM size was reported incorrectly on MacOSX 64bits
+
+  - Fixed : makefile.linux_amd64_asm_icc
+
+  - DJGPP :
+     makefile.djgpp becomes makefile.djgpp_old
+     makefile.djgpp_watt added (thank to Rugxulo)
+
+
+  - you can now compile 7za with a cmake project (see README)
+    the cmake project can build a codeblock project ;)
+    Remark : the kdevelop3 or Eclipse/CDT4 project don't work :(
+
 Version 4.61
 ============
   - From Windows version of 7-zip 4.61 :

@@ -1,4 +1,4 @@
-	p7zip 4.61
+	p7zip 4.65
 	==========
 
 Homepage : http://p7zip.sourceforge.net/
@@ -124,6 +124,23 @@ BUILD :
 	HP-UX 11.11 with aCC (HP ANSI C++ B3910B A.03.73)
 	HP-UX 11.11 with gcc 3.4.2 (7za and 7zr : OK, 7z : Ko because of a buggy gcc for HP-UX,
                                     plugins don't work because C++ constructors are not called !)
+
+
+BUILD with cmake
+----------------
+  You can only build 7za.
+ 
+  cd CPP/7zip/CMAKE
+
+  edit generate.sh to choose your target
+
+  ./generate.sh
+
+  the cmake project for the target is in "CPP/7zip/CMAKE/Alone".
+
+  For the target "Unix Makefiles", use "make" to compile
+
+  For others target, use the IDE (CodeBlocks, KDevelop3, Eclipse CDT4)
 
 INSTALL :
 ---------

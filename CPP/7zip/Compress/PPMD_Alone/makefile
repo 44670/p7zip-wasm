@@ -5,11 +5,12 @@ PROG = ppmd.exe
 LIB = $(LOCAL_LIBS)
 RM = rm -f
 CFLAGS = -c -I. -I../../../  -I../../../myWindows  -I../../../include_windows -UENV_UNIX
+CXXFLAGS=$(CFLAGS)
 
 OBJS = \
-  PPMDAlone.o \
-  PPMDDecoder.o \
-  PPMDEncoder.o \
+  PpmdAlone.o \
+  PpmdDecoder.o \
+  PpmdEncoder.o \
   CommandLineParser.o \
   MyString.o \
   StringConvert.o \
@@ -26,47 +27,47 @@ all: $(PROG)
 $(PROG): $(OBJS)
 	$(CXX) -o $(PROG) $(LDFLAGS) $(OBJS) $(LIB)
 
-PPMDAlone.o: PPMDAlone.cpp
-	$(CXX) $(CFLAGS) PPMDAlone.cpp
+PpmdAlone.o: PpmdAlone.cpp
+	$(CXX) $(CXXFLAGS) PpmdAlone.cpp
 
-PPMDDecoder.o: ../PPMD/PPMDDecoder.cpp
-	$(CXX) $(CFLAGS) ../PPMD/PPMDDecoder.cpp
+PpmdDecoder.o: ../PpmdDecoder.cpp
+	$(CXX) $(CXXFLAGS) ../PpmdDecoder.cpp
 
-PPMDEncoder.o: ../PPMD/PPMDEncoder.cpp
-	$(CXX) $(CFLAGS) ../PPMD/PPMDEncoder.cpp
+PpmdEncoder.o: ../PpmdEncoder.cpp
+	$(CXX) $(CXXFLAGS) ../PpmdEncoder.cpp
 
 InBuffer.o: ../../Common/InBuffer.cpp
-	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
+	$(CXX) $(CXXFLAGS) ../../Common/InBuffer.cpp
 
 OutBuffer.o: ../../Common/OutBuffer.cpp
-	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp
+	$(CXX) $(CXXFLAGS) ../../Common/OutBuffer.cpp
 
 FileStreams.o: ../../Common/FileStreams.cpp
-	$(CXX) $(CFLAGS) ../../Common/FileStreams.cpp
+	$(CXX) $(CXXFLAGS) ../../Common/FileStreams.cpp
 
 StreamUtils.o: ../../Common/StreamUtils.cpp
-	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
+	$(CXX) $(CXXFLAGS) ../../Common/StreamUtils.cpp
 
 C_FileIO.o: ../../../Common/C_FileIO.cpp
-	$(CXX) $(CFLAGS) ../../../Common/C_FileIO.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/C_FileIO.cpp
 
 CommandLineParser.o: ../../../Common/CommandLineParser.cpp
-	$(CXX) $(CFLAGS) ../../../Common/CommandLineParser.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/CommandLineParser.cpp
 
 MyWindows.o: ../../../Common/MyWindows.cpp
-	$(CXX) $(CFLAGS) ../../../Common/MyWindows.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/MyWindows.cpp
 
 MyString.o: ../../../Common/MyString.cpp
-	$(CXX) $(CFLAGS) ../../../Common/MyString.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/MyString.cpp
 
 StringConvert.o: ../../../Common/StringConvert.cpp
-	$(CXX) $(CFLAGS) ../../../Common/StringConvert.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/StringConvert.cpp
 
 StringToInt.o: ../../../Common/StringToInt.cpp
-	$(CXX) $(CFLAGS) ../../../Common/StringToInt.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/StringToInt.cpp
 
 MyVector.o: ../../../Common/MyVector.cpp
-	$(CXX) $(CFLAGS) ../../../Common/MyVector.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/MyVector.cpp
 
 clean:
 	-$(RM) $(PROG) $(OBJS) testfile* *.exe ir.out
@@ -74,7 +75,7 @@ clean:
 
 
 test: $(PROG)
-	cp PPMDAlone.cpp testfile
+	cp PpmdAlone.cpp testfile
 	./$(PROG) e testfile testfile.ppmd
 	./$(PROG) d testfile.ppmd testfile.ppmd.d 
 	diff -s testfile testfile.ppmd.d

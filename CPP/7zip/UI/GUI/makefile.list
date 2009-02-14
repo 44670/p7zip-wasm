@@ -49,7 +49,7 @@ SRCS=\
 	../../Common/FileStreams.cpp \
 	../../Common/ProgressUtils.cpp \
 	../../Common/StreamUtils.cpp \
-	../../Compress/Copy/CopyCoder.cpp \
+	../../Compress/CopyCoder.cpp \
 	../../Compress/LZMA_Alone/LzmaBench.cpp \
 	../../../Common/CommandLineParser.cpp \
 	../../../Common/CRC.cpp \
@@ -99,171 +99,171 @@ SRCS_C=\
 	../../../../C/Threads.c
 
 CompressDialog.o : CompressDialog.cpp
-	$(CXX) $(CFLAGS) CompressDialog.cpp
+	$(CXX) $(CXXFLAGS) CompressDialog.cpp
 CompressDialog_rc.o : CompressDialog_rc.cpp
-	$(CXX) $(CFLAGS) CompressDialog_rc.cpp
+	$(CXX) $(CXXFLAGS) CompressDialog_rc.cpp
 ExtractDialog.o : ExtractDialog.cpp
-	$(CXX) $(CFLAGS) ExtractDialog.cpp
+	$(CXX) $(CXXFLAGS) ExtractDialog.cpp
 ExtractDialog_rc.o : ExtractDialog_rc.cpp
-	$(CXX) $(CFLAGS) ExtractDialog_rc.cpp
+	$(CXX) $(CXXFLAGS) ExtractDialog_rc.cpp
 BenchmarkDialog.o : BenchmarkDialog.cpp
-	$(CXX) $(CFLAGS) BenchmarkDialog.cpp
+	$(CXX) $(CXXFLAGS) BenchmarkDialog.cpp
 BenchmarkDialog_rc.o : BenchmarkDialog_rc.cpp
-	$(CXX) $(CFLAGS) BenchmarkDialog_rc.cpp
+	$(CXX) $(CXXFLAGS) BenchmarkDialog_rc.cpp
 ExtractGUI.o : ExtractGUI.cpp
-	$(CXX) $(CFLAGS) ExtractGUI.cpp
+	$(CXX) $(CXXFLAGS) ExtractGUI.cpp
 GUI.o : GUI.cpp
-	$(CXX) $(CFLAGS) GUI.cpp
+	$(CXX) $(CXXFLAGS) GUI.cpp
 wxGUI.o : wxGUI.cpp
-	$(CXX) $(CFLAGS) wxGUI.cpp
+	$(CXX) $(CXXFLAGS) wxGUI.cpp
 UpdateCallbackGUI.o : UpdateCallbackGUI.cpp
-	$(CXX) $(CFLAGS) UpdateCallbackGUI.cpp
+	$(CXX) $(CXXFLAGS) UpdateCallbackGUI.cpp
 UpdateGUI.o : UpdateGUI.cpp
-	$(CXX) $(CFLAGS) UpdateGUI.cpp
+	$(CXX) $(CXXFLAGS) UpdateGUI.cpp
 ArchiveCommandLine.o : ../Common/ArchiveCommandLine.cpp
-	$(CXX) $(CFLAGS) ../Common/ArchiveCommandLine.cpp
+	$(CXX) $(CXXFLAGS) ../Common/ArchiveCommandLine.cpp
 ArchiveExtractCallback.o : ../Common/ArchiveExtractCallback.cpp
-	$(CXX) $(CFLAGS) ../Common/ArchiveExtractCallback.cpp
+	$(CXX) $(CXXFLAGS) ../Common/ArchiveExtractCallback.cpp
 ArchiveOpenCallback.o : ../Common/ArchiveOpenCallback.cpp
-	$(CXX) $(CFLAGS) ../Common/ArchiveOpenCallback.cpp
+	$(CXX) $(CXXFLAGS) ../Common/ArchiveOpenCallback.cpp
 DefaultName.o : ../Common/DefaultName.cpp
-	$(CXX) $(CFLAGS) ../Common/DefaultName.cpp
+	$(CXX) $(CXXFLAGS) ../Common/DefaultName.cpp
 EnumDirItems.o : ../Common/EnumDirItems.cpp
-	$(CXX) $(CFLAGS) ../Common/EnumDirItems.cpp
+	$(CXX) $(CXXFLAGS) ../Common/EnumDirItems.cpp
 Extract.o : ../Common/Extract.cpp
-	$(CXX) $(CFLAGS) ../Common/Extract.cpp
+	$(CXX) $(CXXFLAGS) ../Common/Extract.cpp
 ExtractingFilePath.o : ../Common/ExtractingFilePath.cpp
-	$(CXX) $(CFLAGS) ../Common/ExtractingFilePath.cpp
+	$(CXX) $(CXXFLAGS) ../Common/ExtractingFilePath.cpp
 LoadCodecs.o : ../Common/LoadCodecs.cpp
-	$(CXX) $(CFLAGS) ../Common/LoadCodecs.cpp
+	$(CXX) $(CXXFLAGS) ../Common/LoadCodecs.cpp
 OpenArchive.o : ../Common/OpenArchive.cpp
-	$(CXX) $(CFLAGS) ../Common/OpenArchive.cpp
+	$(CXX) $(CXXFLAGS) ../Common/OpenArchive.cpp
 PropIDUtils.o : ../Common/PropIDUtils.cpp
-	$(CXX) $(CFLAGS) ../Common/PropIDUtils.cpp
+	$(CXX) $(CXXFLAGS) ../Common/PropIDUtils.cpp
 SetProperties.o : ../Common/SetProperties.cpp
-	$(CXX) $(CFLAGS) ../Common/SetProperties.cpp
+	$(CXX) $(CXXFLAGS) ../Common/SetProperties.cpp
 SortUtils.o : ../Common/SortUtils.cpp
-	$(CXX) $(CFLAGS) ../Common/SortUtils.cpp
+	$(CXX) $(CXXFLAGS) ../Common/SortUtils.cpp
 TempFiles.o : ../Common/TempFiles.cpp
-	$(CXX) $(CFLAGS) ../Common/TempFiles.cpp
+	$(CXX) $(CXXFLAGS) ../Common/TempFiles.cpp
 Update.o : ../Common/Update.cpp
-	$(CXX) $(CFLAGS) ../Common/Update.cpp
+	$(CXX) $(CXXFLAGS) ../Common/Update.cpp
 UpdateAction.o : ../Common/UpdateAction.cpp
-	$(CXX) $(CFLAGS) ../Common/UpdateAction.cpp
+	$(CXX) $(CXXFLAGS) ../Common/UpdateAction.cpp
 UpdateCallback.o : ../Common/UpdateCallback.cpp
-	$(CXX) $(CFLAGS) ../Common/UpdateCallback.cpp
+	$(CXX) $(CXXFLAGS) ../Common/UpdateCallback.cpp
 UpdatePair.o : ../Common/UpdatePair.cpp
-	$(CXX) $(CFLAGS) ../Common/UpdatePair.cpp
+	$(CXX) $(CXXFLAGS) ../Common/UpdatePair.cpp
 UpdateProduce.o : ../Common/UpdateProduce.cpp
-	$(CXX) $(CFLAGS) ../Common/UpdateProduce.cpp
+	$(CXX) $(CXXFLAGS) ../Common/UpdateProduce.cpp
 WorkDir.o : ../Common/WorkDir.cpp
-	$(CXX) $(CFLAGS) ../Common/WorkDir.cpp
+	$(CXX) $(CXXFLAGS) ../Common/WorkDir.cpp
 ZipRegistry.o : ../Common/ZipRegistry.cpp
-	$(CXX) $(CFLAGS) ../Common/ZipRegistry.cpp
+	$(CXX) $(CXXFLAGS) ../Common/ZipRegistry.cpp
 MyMessages.o : ../Explorer/MyMessages.cpp
-	$(CXX) $(CFLAGS) ../Explorer/MyMessages.cpp
+	$(CXX) $(CXXFLAGS) ../Explorer/MyMessages.cpp
 FormatUtils.o : ../FileManager/FormatUtils.cpp
-	$(CXX) $(CFLAGS) ../FileManager/FormatUtils.cpp
+	$(CXX) $(CXXFLAGS) ../FileManager/FormatUtils.cpp
 ProgramLocation.o : ../FileManager/ProgramLocation.cpp
-	$(CXX) $(CFLAGS) ../FileManager/ProgramLocation.cpp
+	$(CXX) $(CXXFLAGS) ../FileManager/ProgramLocation.cpp
 ProgressDialog2.o : ../FileManager/ProgressDialog2.cpp
-	$(CXX) $(CFLAGS) ../FileManager/ProgressDialog2.cpp
+	$(CXX) $(CXXFLAGS) ../FileManager/ProgressDialog2.cpp
 ProgressDialog2_rc.o : ../FileManager/ProgressDialog2_rc.cpp
-	$(CXX) $(CFLAGS) ../FileManager/ProgressDialog2_rc.cpp
+	$(CXX) $(CXXFLAGS) ../FileManager/ProgressDialog2_rc.cpp
 MessagesDialog.o : ../FileManager/MessagesDialog.cpp
-	$(CXX) $(CFLAGS) ../FileManager/MessagesDialog.cpp
+	$(CXX) $(CXXFLAGS) ../FileManager/MessagesDialog.cpp
 MessagesDialog_rc.o : ../FileManager/MessagesDialog_rc.cpp
-	$(CXX) $(CFLAGS) ../FileManager/MessagesDialog_rc.cpp
+	$(CXX) $(CXXFLAGS) ../FileManager/MessagesDialog_rc.cpp
 OverwriteDialog.o : ../FileManager/OverwriteDialog.cpp
-	$(CXX) $(CFLAGS) ../FileManager/OverwriteDialog.cpp
+	$(CXX) $(CXXFLAGS) ../FileManager/OverwriteDialog.cpp
 OverwriteDialog_rc.o : ../FileManager/OverwriteDialog_rc.cpp
-	$(CXX) $(CFLAGS) ../FileManager/OverwriteDialog_rc.cpp
+	$(CXX) $(CXXFLAGS) ../FileManager/OverwriteDialog_rc.cpp
 PasswordDialog.o : ../FileManager/PasswordDialog.cpp
-	$(CXX) $(CFLAGS) ../FileManager/PasswordDialog.cpp
+	$(CXX) $(CXXFLAGS) ../FileManager/PasswordDialog.cpp
 PasswordDialog_rc.o : ../FileManager/PasswordDialog_rc.cpp
-	$(CXX) $(CFLAGS) ../FileManager/PasswordDialog_rc.cpp
+	$(CXX) $(CXXFLAGS) ../FileManager/PasswordDialog_rc.cpp
 ExtractCallback.o : ../FileManager/ExtractCallback.cpp
-	$(CXX) $(CFLAGS) ../FileManager/ExtractCallback.cpp
+	$(CXX) $(CXXFLAGS) ../FileManager/ExtractCallback.cpp
 SplitUtils.o : ../FileManager/SplitUtils.cpp
-	$(CXX) $(CFLAGS) ../FileManager/SplitUtils.cpp
+	$(CXX) $(CXXFLAGS) ../FileManager/SplitUtils.cpp
 StringUtils.o : ../FileManager/StringUtils.cpp
-	$(CXX) $(CFLAGS) ../FileManager/StringUtils.cpp
+	$(CXX) $(CXXFLAGS) ../FileManager/StringUtils.cpp
 LangUtils.o : ../FileManager/LangUtils.cpp
-	$(CXX) $(CFLAGS) ../FileManager/LangUtils.cpp
+	$(CXX) $(CXXFLAGS) ../FileManager/LangUtils.cpp
 FilePathAutoRename.o : ../../Common/FilePathAutoRename.cpp
-	$(CXX) $(CFLAGS) ../../Common/FilePathAutoRename.cpp
+	$(CXX) $(CXXFLAGS) ../../Common/FilePathAutoRename.cpp
 FileStreams.o : ../../Common/FileStreams.cpp
-	$(CXX) $(CFLAGS) ../../Common/FileStreams.cpp
+	$(CXX) $(CXXFLAGS) ../../Common/FileStreams.cpp
 ProgressUtils.o : ../../Common/ProgressUtils.cpp
-	$(CXX) $(CFLAGS) ../../Common/ProgressUtils.cpp
+	$(CXX) $(CXXFLAGS) ../../Common/ProgressUtils.cpp
 StreamUtils.o : ../../Common/StreamUtils.cpp
-	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
-CopyCoder.o : ../../Compress/Copy/CopyCoder.cpp
-	$(CXX) $(CFLAGS) ../../Compress/Copy/CopyCoder.cpp
+	$(CXX) $(CXXFLAGS) ../../Common/StreamUtils.cpp
+CopyCoder.o : ../../Compress/CopyCoder.cpp
+	$(CXX) $(CXXFLAGS) ../../Compress/CopyCoder.cpp
 LzmaBench.o : ../../Compress/LZMA_Alone/LzmaBench.cpp
-	$(CXX) $(CFLAGS) ../../Compress/LZMA_Alone/LzmaBench.cpp
+	$(CXX) $(CXXFLAGS) ../../Compress/LZMA_Alone/LzmaBench.cpp
 CommandLineParser.o : ../../../Common/CommandLineParser.cpp
-	$(CXX) $(CFLAGS) ../../../Common/CommandLineParser.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/CommandLineParser.cpp
 CRC.o : ../../../Common/CRC.cpp
-	$(CXX) $(CFLAGS) ../../../Common/CRC.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/CRC.cpp
 IntToString.o : ../../../Common/IntToString.cpp
-	$(CXX) $(CFLAGS) ../../../Common/IntToString.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/IntToString.cpp
 Lang.o : ../../../Common/Lang.cpp
-	$(CXX) $(CFLAGS) ../../../Common/Lang.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/Lang.cpp
 ListFileUtils.o : ../../../Common/ListFileUtils.cpp
-	$(CXX) $(CFLAGS) ../../../Common/ListFileUtils.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/ListFileUtils.cpp
 MyString.o : ../../../Common/MyString.cpp
-	$(CXX) $(CFLAGS) ../../../Common/MyString.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/MyString.cpp
 MyVector.o : ../../../Common/MyVector.cpp
-	$(CXX) $(CFLAGS) ../../../Common/MyVector.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/MyVector.cpp
 StringConvert.o : ../../../Common/StringConvert.cpp
-	$(CXX) $(CFLAGS) ../../../Common/StringConvert.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/StringConvert.cpp
 StringToInt.o : ../../../Common/StringToInt.cpp
-	$(CXX) $(CFLAGS) ../../../Common/StringToInt.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/StringToInt.cpp
 TextConfig.o : ../../../Common/TextConfig.cpp
-	$(CXX) $(CFLAGS) ../../../Common/TextConfig.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/TextConfig.cpp
 UTFConvert.o : ../../../Common/UTFConvert.cpp
-	$(CXX) $(CFLAGS) ../../../Common/UTFConvert.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/UTFConvert.cpp
 Wildcard.o : ../../../Common/Wildcard.cpp
-	$(CXX) $(CFLAGS) ../../../Common/Wildcard.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/Wildcard.cpp
 DLL.o : ../../../Windows/DLL.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/DLL.cpp
+	$(CXX) $(CXXFLAGS) ../../../Windows/DLL.cpp
 Error.o : ../../../Windows/Error.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/Error.cpp
+	$(CXX) $(CXXFLAGS) ../../../Windows/Error.cpp
 FileDir.o : ../../../Windows/FileDir.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/FileDir.cpp
+	$(CXX) $(CXXFLAGS) ../../../Windows/FileDir.cpp
 FileFind.o : ../../../Windows/FileFind.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/FileFind.cpp
+	$(CXX) $(CXXFLAGS) ../../../Windows/FileFind.cpp
 FileIO.o : ../../../Windows/FileIO.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/FileIO.cpp
+	$(CXX) $(CXXFLAGS) ../../../Windows/FileIO.cpp
 FileName.o : ../../../Windows/FileName.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/FileName.cpp
+	$(CXX) $(CXXFLAGS) ../../../Windows/FileName.cpp
 PropVariant.o : ../../../Windows/PropVariant.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/PropVariant.cpp
+	$(CXX) $(CXXFLAGS) ../../../Windows/PropVariant.cpp
 PropVariantConversions.o : ../../../Windows/PropVariantConversions.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/PropVariantConversions.cpp
+	$(CXX) $(CXXFLAGS) ../../../Windows/PropVariantConversions.cpp
 Registry.o : ../../../Windows/Registry.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/Registry.cpp
+	$(CXX) $(CXXFLAGS) ../../../Windows/Registry.cpp
 Synchronization.o : ../../../Windows/Synchronization.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/Synchronization.cpp
+	$(CXX) $(CXXFLAGS) ../../../Windows/Synchronization.cpp
 Time.o : ../../../Windows/Time.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/Time.cpp
+	$(CXX) $(CXXFLAGS) ../../../Windows/Time.cpp
 System.o : ../../../Windows/System.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/System.cpp
+	$(CXX) $(CXXFLAGS) ../../../Windows/System.cpp
 Window.o : ../../../Windows/Window.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/Window.cpp
+	$(CXX) $(CXXFLAGS) ../../../Windows/Window.cpp
 Dialog.o : ../../../Windows/Control/Dialog.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/Control/Dialog.cpp
+	$(CXX) $(CXXFLAGS) ../../../Windows/Control/Dialog.cpp
 Controls.o : ../../../Windows/Control/Controls.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/Control/Controls.cpp
+	$(CXX) $(CXXFLAGS) ../../../Windows/Control/Controls.cpp
 MyWindows.o : ../../../Common/MyWindows.cpp
-	$(CXX) $(CFLAGS) ../../../Common/MyWindows.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/MyWindows.cpp
 myGetTickCount.o : ../../../myWindows/myGetTickCount.cpp
-	$(CXX) $(CFLAGS) ../../../myWindows/myGetTickCount.cpp
+	$(CXX) $(CXXFLAGS) ../../../myWindows/myGetTickCount.cpp
 wine_date_and_time.o : ../../../myWindows/wine_date_and_time.cpp
-	$(CXX) $(CFLAGS) ../../../myWindows/wine_date_and_time.cpp
+	$(CXX) $(CXXFLAGS) ../../../myWindows/wine_date_and_time.cpp
 wine_GetXXXDefaultLangID.o : ../../../myWindows/wine_GetXXXDefaultLangID.cpp
-	$(CXX) $(CFLAGS) ../../../myWindows/wine_GetXXXDefaultLangID.cpp
+	$(CXX) $(CXXFLAGS) ../../../myWindows/wine_GetXXXDefaultLangID.cpp
 Threads.o : ../../../../C/Threads.c
 	$(CC) $(CFLAGS) ../../../../C/Threads.c
 

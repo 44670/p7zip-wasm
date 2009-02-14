@@ -6,12 +6,14 @@ RM = rm -f
 CFLAGS = -c -I. -I../../../  -I../../../myWindows  -I../../../include_windows \
          -UENV_UNIX -DCOMPRESS_MF_MT -DBENCH_MT
 
+CXXFLAGS=$(CFLAGS)
+
 OBJS = \
   LzmaAlone.o \
   LzmaBench.o \
   LzmaBenchCon.o \
-  LZMADecoder.o \
-  LZMAEncoder.o \
+  LzmaDecoder.o \
+  LzmaEncoder.o \
   InBuffer.o \
   OutBuffer.o \
   FileStreams.o \
@@ -25,15 +27,15 @@ OBJS = \
   StringToInt.o \
   MyVector.o \
   7zCrc.o \
-  System.o \
-  Threads.o \
   Bra86.o \
   LzFind.o \
   LzFindMt.o \
   LzmaDec.o \
   LzmaEnc.o \
   Lzma86Dec.o \
-  Lzma86Enc.o
+  Lzma86Enc.o \
+  System.o \
+  Threads.o
 
 all: $(PROG)
 
@@ -41,67 +43,64 @@ $(PROG): $(OBJS)
 	$(CXX) -o $(PROG) $(LDFLAGS) $(OBJS) $(LIB)
 
 LzmaAlone.o: LzmaAlone.cpp
-	$(CXX) $(CFLAGS) LzmaAlone.cpp
+	$(CXX) $(CXXFLAGS) LzmaAlone.cpp
 
 LzmaBench.o: LzmaBench.cpp
-	$(CXX) $(CFLAGS) LzmaBench.cpp
+	$(CXX) $(CXXFLAGS) LzmaBench.cpp
 
 LzmaBenchCon.o: LzmaBenchCon.cpp
-	$(CXX) $(CFLAGS) LzmaBenchCon.cpp
+	$(CXX) $(CXXFLAGS) LzmaBenchCon.cpp
 
 LzmaRam.o: LzmaRam.cpp
-	$(CXX) $(CFLAGS) LzmaRam.cpp
+	$(CXX) $(CXXFLAGS) LzmaRam.cpp
 
-LZMADecoder.o: ../LZMA/LZMADecoder.cpp
-	$(CXX) $(CFLAGS) ../LZMA/LZMADecoder.cpp
+LzmaDecoder.o: ../LzmaDecoder.cpp
+	$(CXX) $(CXXFLAGS) ../LzmaDecoder.cpp
 
-LZMAEncoder.o: ../LZMA/LZMAEncoder.cpp
-	$(CXX) $(CFLAGS) ../LZMA/LZMAEncoder.cpp
+LzmaEncoder.o: ../LzmaEncoder.cpp
+	$(CXX) $(CXXFLAGS) ../LzmaEncoder.cpp
 
-LZOutWindow.o: ../LZ/LZOutWindow.cpp
-	$(CXX) $(CFLAGS) ../LZ/LZOutWindow.cpp
-
-RangeCoderBit.o: ../RangeCoder/RangeCoderBit.cpp
-	$(CXX) $(CFLAGS) ../RangeCoder/RangeCoderBit.cpp
+RangeCoderBit.o: ../RangeCoderBit.cpp
+	$(CXX) $(CXXFLAGS) ../RangeCoderBit.cpp
 
 InBuffer.o: ../../Common/InBuffer.cpp
-	$(CXX) $(CFLAGS) ../../Common/InBuffer.cpp
+	$(CXX) $(CXXFLAGS) ../../Common/InBuffer.cpp
 
 OutBuffer.o: ../../Common/OutBuffer.cpp
-	$(CXX) $(CFLAGS) ../../Common/OutBuffer.cpp
+	$(CXX) $(CXXFLAGS) ../../Common/OutBuffer.cpp
 
 FileStreams.o: ../../Common/FileStreams.cpp
-	$(CXX) $(CFLAGS) ../../Common/FileStreams.cpp
+	$(CXX) $(CXXFLAGS) ../../Common/FileStreams.cpp
 
 StreamUtils.o: ../../Common/StreamUtils.cpp
-	$(CXX) $(CFLAGS) ../../Common/StreamUtils.cpp
+	$(CXX) $(CXXFLAGS) ../../Common/StreamUtils.cpp
 
 C_FileIO.o: ../../../Common/C_FileIO.cpp
-	$(CXX) $(CFLAGS) ../../../Common/C_FileIO.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/C_FileIO.cpp
 
 CommandLineParser.o: ../../../Common/CommandLineParser.cpp
-	$(CXX) $(CFLAGS) ../../../Common/CommandLineParser.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/CommandLineParser.cpp
 
 CRC.o: ../../../Common/CRC.cpp
-	$(CXX) $(CFLAGS) ../../../Common/CRC.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/CRC.cpp
 
 MyWindows.o: ../../../Common/MyWindows.cpp
-	$(CXX) $(CFLAGS) ../../../Common/MyWindows.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/MyWindows.cpp
 
 IntToString.o: ../../../Common/IntToString.cpp
-	$(CXX) $(CFLAGS) ../../../Common/IntToString.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/IntToString.cpp
 
 MyString.o: ../../../Common/MyString.cpp
-	$(CXX) $(CFLAGS) ../../../Common/MyString.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/MyString.cpp
 
 StringConvert.o: ../../../Common/StringConvert.cpp
-	$(CXX) $(CFLAGS) ../../../Common/StringConvert.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/StringConvert.cpp
 
 StringToInt.o: ../../../Common/StringToInt.cpp
-	$(CXX) $(CFLAGS) ../../../Common/StringToInt.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/StringToInt.cpp
 
 MyVector.o: ../../../Common/MyVector.cpp
-	$(CXX) $(CFLAGS) ../../../Common/MyVector.cpp
+	$(CXX) $(CXXFLAGS) ../../../Common/MyVector.cpp
 
 7zCrc.o: ../../../../C/7zCrc.c
 	$(CC) $(CFLAGS) ../../../../C/7zCrc.c
@@ -110,7 +109,7 @@ LzmaRamDecode.o: LzmaRamDecode.c
 	$(CC) $(CFLAGS) LzmaRamDecode.c
 
 System.o : ../../../Windows/System.cpp
-	$(CXX) $(CFLAGS) ../../../Windows/System.cpp
+	$(CXX) $(CXXFLAGS) ../../../Windows/System.cpp
 
 Threads.o : ../../../../C/Threads.c
 	$(CC) $(CFLAGS) ../../../../C/Threads.c

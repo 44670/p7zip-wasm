@@ -23,7 +23,7 @@ template <class T>
 inline T * MyStringCopy(T *dest, const T *src)
 {
   T *destStart = dest;
-  while((*dest++ = *src++) != 0);
+  while ((*dest++ = *src++) != 0);
   return destStart;
 }
 
@@ -68,7 +68,7 @@ int MyStringCollateNoCase(const wchar_t *s1, const wchar_t *s2);
 int MyStringCompare(const char *s1, const char  *s2);
 int MyStringCompare(const wchar_t *s1, const wchar_t *s2);
 
-int MyStringCompareNoCase(const char *s1, const char  *s2);
+// int MyStringCompareNoCase(const char *s1, const char  *s2);
 int MyStringCompareNoCase(const wchar_t *s1, const wchar_t *s2);
 
 template <class T>
@@ -96,7 +96,7 @@ class CStringBase
         pLast = NULL;
       p = GetNextCharPointer(p);
     }
-    if(pLast != NULL)
+    if (pLast != NULL)
     {
       int i = (int)(pLast - _chars);
       Delete(i, _length - i);
@@ -137,7 +137,7 @@ protected:
     /*
     const int kMaxStringSize = 0x20000000;
     #ifndef _WIN32_WCE
-    if(newCapacity > kMaxStringSize || newCapacity < _length)
+    if (newCapacity > kMaxStringSize || newCapacity < _length)
       throw 1052337;
     #endif
     */
@@ -215,7 +215,7 @@ public:
   {
     /*
     #ifndef _WIN32_WCE
-    if(newLength >= _capacity)
+    if (newLength >= _capacity)
       throw 282217;
     #endif
     */
@@ -243,7 +243,7 @@ public:
   }
   CStringBase& operator=(const CStringBase& s)
   {
-    if(&s == this)
+    if (&s == this)
       return *this;
     Empty();
     SetCapacity(s._length);
@@ -318,8 +318,15 @@ public:
   int Compare(const CStringBase& s) const
     { return MyStringCompare(_chars, s._chars); }
 
+  int Compare(const T *s) const
+    { return MyStringCompare(_chars, s); }
+
   int CompareNoCase(const CStringBase& s) const
     { return MyStringCompareNoCase(_chars, s._chars); }
+
+  int CompareNoCase(const T *s) const
+    { return MyStringCompareNoCase(_chars, s); }
+
   /*
   int Collate(const CStringBase& s) const
     { return MyStringCollate(_chars, s._chars); }
@@ -372,7 +379,7 @@ public:
   }
   int FindOneOf(const CStringBase &s) const
   {
-    for(int i = 0; i < _length; i++)
+    for (int i = 0; i < _length; i++)
       if (s.Find(_chars[i]) >= 0)
         return i;
       return -1;
@@ -419,7 +426,7 @@ public:
         pLast = NULL;
       p = GetNextCharPointer(p);
     }
-    if(pLast != NULL)
+    if (pLast != NULL)
     {
       int i = pLast - _chars;
       Delete(i, _length - i);
@@ -445,7 +452,7 @@ public:
       return _length;
     int numInsertChars = s.Length();
     InsertSpace(index, numInsertChars);
-    for(int i = 0; i < numInsertChars; i++)
+    for (int i = 0; i < numInsertChars; i++)
       _chars[index + i] = s[i];
     _length += numInsertChars;
     return _length;

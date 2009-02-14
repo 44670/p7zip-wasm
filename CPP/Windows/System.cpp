@@ -122,7 +122,7 @@ namespace NWindows
 		  		fclose( f );
 			}
 #elif defined(__FreeBSD__) || defined(__FreeBSD_kernel__) || defined(__NetBSD__) || defined(__APPLE__)
-			unsigned long val;
+			unsigned int val;
 			int mib[2];
 
 			mib[0] = CTL_HW;

@@ -1,3 +1,10 @@
+p7zip (9.04~dfsg.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Bump Standards-Version to 3.8.2.
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sat, 27 Jun 2009 16:20:41 +0200
+
 p7zip (4.65~dfsg.1-1) unstable; urgency=low
 
   * New upstream release.

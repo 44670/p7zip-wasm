@@ -3,7 +3,7 @@ Section: utils
 Priority: optional
 Maintainer: Mohammed Adnène Trojette <adn+deb@diwi.org>
 Build-Depends: debhelper (>= 7), quilt
-Standards-Version: 3.8.0
+Standards-Version: 3.8.2
 Homepage: http://p7zip.sourceforge.net/
 
 Package: p7zip

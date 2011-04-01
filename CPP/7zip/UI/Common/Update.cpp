@@ -40,7 +40,9 @@ using namespace NCOM;
 using namespace NFile;
 using namespace NName;
 
+#ifdef _WIN32
 static const wchar_t *kTempFolderPrefix = L"7zE";
+#endif
 
 using namespace NUpdateArchive;
 
@@ -82,7 +84,7 @@ public:
 
   STDMETHOD(Write)(const void *data, UInt32 size, UInt32 *processedSize);
   STDMETHOD(Seek)(Int64 offset, UInt32 seekOrigin, UInt64 *newPosition);
-  STDMETHOD(SetSize)(Int64 newSize);
+  STDMETHOD(SetSize)(UInt64 newSize);
 };
 
 // static NSynchronization::CCriticalSection g_TempPathsCS;
@@ -204,7 +206,7 @@ STDMETHODIMP COutMultiVolStream::Seek(Int64 offset, UInt32 seekOrigin, UInt64 *n
   return S_OK;
 }
 
-STDMETHODIMP COutMultiVolStream::SetSize(Int64 newSize)
+STDMETHODIMP COutMultiVolStream::SetSize(UInt64 newSize)
 {
   if (newSize < 0)
     return E_INVALIDARG;
@@ -387,12 +389,11 @@ static HRESULT Compress(
 
   CMyComPtr<ISequentialOutStream> outStream;
 
-  const UString &archiveName = archivePath.GetFinalPath();
   if (!stdOutMode)
   {
     UString resultPath;
     int pos;
-    if (!NFile::NDirectory::MyGetFullPathName(archiveName, resultPath, pos))
+    if (!NFile::NDirectory::MyGetFullPathName(archivePath.GetFinalPath(), resultPath, pos))
       throw 1417161;
     NFile::NDirectory::CreateComplexDirectory(resultPath.Left(pos));
   }
@@ -439,7 +440,7 @@ static HRESULT Compress(
       {
         errorInfo.SystemError = ::GetLastError();
         errorInfo.FileName = realPath;
-        errorInfo.Message = L"Can not open file";
+        errorInfo.Message = L"7-Zip cannot open file";
         return E_FAIL;
       }
     }
@@ -472,7 +473,7 @@ static HRESULT Compress(
     if (!sfxStreamSpec->Open(sfxModule))
     {
       errorInfo.SystemError = ::GetLastError();
-      errorInfo.Message = L"Can't open sfx module";
+      errorInfo.Message = L"7-Zip cannot open SFX module";
       errorInfo.FileName = sfxModule;
       return E_FAIL;
     }
@@ -490,7 +491,7 @@ static HRESULT Compress(
       {
         errorInfo.SystemError = ::GetLastError();
         errorInfo.FileName = realPath;
-        errorInfo.Message = L"Can not open file";
+        errorInfo.Message = L"7-Zip cannot open file";
         return E_FAIL;
       }
     }
@@ -606,17 +607,14 @@ static HRESULT UpdateWithItemLists(
   return S_OK;
 }
 
-#ifdef _WIN32
+#if defined(_WIN32) && !defined(UNDER_CE)
 class CCurrentDirRestorer
 {
-  UString m_CurrentDirectory;
+  UString _path;
 public:
-  CCurrentDirRestorer()
-    { NFile::NDirectory::MyGetCurrentDirectory(m_CurrentDirectory); }
-  ~CCurrentDirRestorer()
-    { RestoreDirectory();}
-  bool RestoreDirectory()
-    { return BOOLToBool(NFile::NDirectory::MySetCurrentDirectory(m_CurrentDirectory)); }
+  CCurrentDirRestorer() { NFile::NDirectory::MyGetCurrentDirectory(_path); }
+  ~CCurrentDirRestorer() { RestoreDirectory();}
+  bool RestoreDirectory() { return BOOLToBool(NFile::NDirectory::MySetCurrentDirectory(_path)); }
 };
 #endif
 
@@ -662,46 +660,55 @@ HRESULT UpdateArchive(
     options.MethodMode.Properties.Add(property);
     if (options.SfxModule.IsEmpty())
     {
-      errorInfo.Message = L"sfx file is not specified";
+      errorInfo.Message = L"SFX file is not specified";
       return E_FAIL;
     }
     UString name = options.SfxModule;
+    #ifdef UNDER_CE
+    if (!NFind::DoesFileExist(name))
+    #else
     if (!NDirectory::MySearchPath(NULL, name, NULL, options.SfxModule))
+    #endif
     {
-      errorInfo.Message = L"can't find specified sfx module";
+      errorInfo.SystemError = ::GetLastError();
+      errorInfo.Message = L"7-Zip cannot find specified SFX module";
+      errorInfo.FileName = name;
       return E_FAIL;
     }
   }
 
-  const UString archiveName = options.ArchivePath.GetFinalPath();
 
-  CArchiveLink archiveLink;
-  NFind::CFileInfoW archiveFileInfo;
+  CArchiveLink arcLink;
+  const UString arcPath = options.ArchivePath.GetFinalPath();
 
-  if (archiveFileInfo.Find(archiveName))
+  if (!options.ArchivePath.OriginalPath.IsEmpty())
   {
-    if (archiveFileInfo.IsDir())
-      throw "there is no such archive";
-    if (options.VolumesSizes.Size() > 0)
-      return E_NOTIMPL;
-    CIntVector formatIndices;
-    if (options.MethodMode.FormatIndex >= 0)
-      formatIndices.Add(options.MethodMode.FormatIndex);
-    HRESULT result = archiveLink.Open2(codecs, formatIndices, false, NULL, archiveName, openCallback);
-    if (result == E_ABORT)
-      return result;
-    RINOK(callback->OpenResult(archiveName, result));
-    RINOK(result);
-    if (archiveLink.VolumePaths.Size() > 1)
+    NFind::CFileInfoW fi;
+    if (fi.Find(arcPath))
     {
-      errorInfo.SystemError = (DWORD)E_NOTIMPL;
-      errorInfo.Message = L"Updating for multivolume archives is not implemented";
-      return E_NOTIMPL;
+      if (fi.IsDir())
+        throw "there is no such archive";
+      if (options.VolumesSizes.Size() > 0)
+        return E_NOTIMPL;
+      CIntVector formatIndices;
+      if (options.MethodMode.FormatIndex >= 0)
+        formatIndices.Add(options.MethodMode.FormatIndex);
+      HRESULT result = arcLink.Open2(codecs, formatIndices, false, NULL, arcPath, openCallback);
+      if (result == E_ABORT)
+        return result;
+      RINOK(callback->OpenResult(arcPath, result));
+      RINOK(result);
+      if (arcLink.VolumePaths.Size() > 1)
+      {
+        errorInfo.SystemError = (DWORD)E_NOTIMPL;
+        errorInfo.Message = L"Updating for multivolume archives is not implemented";
+        return E_NOTIMPL;
+      }
+      
+      CArc &arc = arcLink.Arcs.Back();
+      arc.MTimeDefined = !fi.IsDevice;
+      arc.MTime = fi.MTime;
     }
-
-    CArc &arc = archiveLink.Arcs.Back();
-    arc.MTimeDefined = !archiveFileInfo.IsDevice;
-    arc.MTime = archiveFileInfo.MTime;
   }
   else
   {
@@ -744,7 +751,6 @@ HRESULT UpdateArchive(
       {
         if (res != E_ABORT)
           errorInfo.Message = L"Scanning error";
-        // errorInfo.FileName = errorPath;
         return res;
       }
       RINOK(callback->FinishScanning());
@@ -769,7 +775,7 @@ HRESULT UpdateArchive(
 
   bool createTempFile = false;
 
-  bool thereIsInArchive = archiveLink.IsOpen;
+  bool thereIsInArchive = arcLink.IsOpen;
 
   if (!options.StdOutMode && options.UpdateArchiveItself)
   {
@@ -798,13 +804,14 @@ HRESULT UpdateArchive(
       // ap.Temp = true;
       // ap.TempPrefix = tempDirPrefix;
     }
-    if (i > 0 || !createTempFile)
+    if (!options.StdOutMode &&
+        (i > 0 || !createTempFile))
     {
       const UString &path = ap.GetFinalPath();
       if (NFind::DoesFileOrDirExist(path))
       {
         errorInfo.SystemError = 0;
-        errorInfo.Message = L"File already exists";
+        errorInfo.Message = L"The file already exists";
         errorInfo.FileName = path;
         return E_FAIL;
       }
@@ -814,18 +821,18 @@ HRESULT UpdateArchive(
   CObjectVector<CArcItem> arcItems;
   if (thereIsInArchive)
   {
-    RINOK(EnumerateInArchiveItems(censor, archiveLink.Arcs.Back(), arcItems));
+    RINOK(EnumerateInArchiveItems(censor, arcLink.Arcs.Back(), arcItems));
   }
 
   RINOK(UpdateWithItemLists(codecs, options,
-      thereIsInArchive ? archiveLink.GetArchive() : 0,
+      thereIsInArchive ? arcLink.GetArchive() : 0,
       arcItems, dirItems,
       tempFiles, errorInfo, callback));
 
   if (thereIsInArchive)
   {
-    RINOK(archiveLink.Close());
-    archiveLink.Release();
+    RINOK(arcLink.Close());
+    arcLink.Release();
   }
 
   tempFiles.Paths.Clear();
@@ -836,19 +843,19 @@ HRESULT UpdateArchive(
       CArchivePath &ap = options.Commands[0].ArchivePath;
       const UString &tempPath = ap.GetTempPath();
       if (thereIsInArchive)
-        if (!NDirectory::DeleteFileAlways(archiveName))
+        if (!NDirectory::DeleteFileAlways(arcPath))
         {
           errorInfo.SystemError = ::GetLastError();
-          errorInfo.Message = L"delete file error";
-          errorInfo.FileName = archiveName;
+          errorInfo.Message = L"7-Zip cannot delete the file";
+          errorInfo.FileName = arcPath;
           return E_FAIL;
         }
-      if (!NDirectory::MyMoveFile(tempPath, archiveName))
+      if (!NDirectory::MyMoveFile(tempPath, arcPath))
       {
         errorInfo.SystemError = ::GetLastError();
-        errorInfo.Message = L"move file error";
+        errorInfo.Message = L"7-Zip cannot move the file";
         errorInfo.FileName = tempPath;
-        errorInfo.FileName2 = archiveName;
+        errorInfo.FileName2 = arcPath;
         return E_FAIL;
       }
     }
@@ -858,22 +865,21 @@ HRESULT UpdateArchive(
     }
   }
 
-  #ifdef _WIN32
+  #if defined(_WIN32) && !defined(UNDER_CE)
   if (options.EMailMode)
   {
     NDLL::CLibrary mapiLib;
     if (!mapiLib.Load(TEXT("Mapi32.dll")))
     {
       errorInfo.SystemError = ::GetLastError();
-      errorInfo.Message = L"can not load Mapi32.dll";
+      errorInfo.Message = L"7-Zip cannot load Mapi32.dll";
       return E_FAIL;
     }
-    MY_LPMAPISENDDOCUMENTS fnSend = (MY_LPMAPISENDDOCUMENTS)
-        mapiLib.GetProcAddress("MAPISendDocuments");
+    MY_LPMAPISENDDOCUMENTS fnSend = (MY_LPMAPISENDDOCUMENTS)mapiLib.GetProc("MAPISendDocuments");
     if (fnSend == 0)
     {
       errorInfo.SystemError = ::GetLastError();
-      errorInfo.Message = L"can not find MAPISendDocuments function";
+      errorInfo.Message = L"7-Zip cannot find MAPISendDocuments function";
       return E_FAIL;
     }
     UStringVector fullPaths;
@@ -885,6 +891,7 @@ HRESULT UpdateArchive(
       if (!NFile::NDirectory::MyGetFullPathName(ap.GetFinalPath(), arcPath))
       {
         errorInfo.SystemError = ::GetLastError();
+        errorInfo.Message = L"GetFullPathName error";
         return E_FAIL;
       }
       fullPaths.Add(arcPath);
@@ -903,4 +910,3 @@ HRESULT UpdateArchive(
   #endif
   return S_OK;
 }
-

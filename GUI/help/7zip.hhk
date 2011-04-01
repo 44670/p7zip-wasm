@@ -18,10 +18,6 @@
     <param name="Local" value="general/license.htm">
     </OBJECT>
   <LI> <OBJECT type="text/sitemap">
-    <param name="Name" value="Register">
-    <param name="Local" value="general/register.htm">
-    </OBJECT>
-  <LI> <OBJECT type="text/sitemap">
     <param name="Name" value="Formats">
     <param name="Local" value="general/formats.htm">
     </OBJECT>
@@ -73,10 +69,6 @@
   <LI> <OBJECT type="text/sitemap">
     <param name="Name" value="Add to Archive Dialog Box">
     <param name="Local" value="fm/plugins/7-zip/add.htm">
-    </OBJECT>
-  <LI> <OBJECT type="text/sitemap">
-    <param name="Name" value="7-Zip Plugin Options Dialog Box">
-    <param name="Local" value="fm/plugins/7-zip/options.htm">
     </OBJECT>
   <LI> <OBJECT type="text/sitemap">
     <param name="Name" value="Command Line Version">

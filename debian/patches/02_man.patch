@@ -1,7 +1,16 @@
-Index: p7zip-4.58~dfsg.1/man1/7z.1
+Index: p7zip-9.20.1~dfsg.1/man1/7z.1
 ===================================================================
---- p7zip-4.58~dfsg.1.orig/man1/7z.1	2008-06-21 15:28:28.000000000 +0200
-+++ p7zip-4.58~dfsg.1/man1/7z.1	2008-06-21 15:30:48.000000000 +0200
+--- p7zip-9.20.1~dfsg.1.orig/man1/7z.1	2011-04-03 22:33:40.000000000 +0200
++++ p7zip-9.20.1~dfsg.1/man1/7z.1	2011-04-03 23:07:57.000000000 +0200
+@@ -10,7 +10,7 @@
+ .BR <ARGUMENTS>...
+ .PP
+ .SH DESCRIPTION
+-7-Zip is a file archiver with the highest compression ratio. The program supports 7z (that implements LZMA compression algorithm), ZIP, CAB, ARJ, GZIP, BZIP2, TAR, CPIO, RPM and DEB formats. Compression ratio in the new 7z format is 30-50% better than ratio in ZIP format.
++7-Zip is a file archiver with the highest compression ratio. The program supports 7z (that implements LZMA compression algorithm), LZMA2, XZ, ZIP, Zip64, CAB, RAR (if the non-free p7zip-rar package is installed), ARJ, GZIP, BZIP2, TAR, CPIO, RPM, ISO, most filesystem images and DEB formats. Compression ratio in the new 7z format is 30-50% better than ratio in ZIP format.
+ .TP
+ 7z uses plugins to handle archives.
+ .PP
 @@ -55,7 +55,7 @@
  don't store symlinks; store the files/directories they point to (CAUTION : the scanning stage can never end because of recursive symlinks like 'ln \-s .. ldir')
  .TP
@@ -20,10 +29,19 @@ Index: p7zip-4.58~dfsg.1/man1/7z.1
  .SH AUTHOR
  .TP
  Written for Debian by Mohammed Adnene Trojette.
-Index: p7zip-4.58~dfsg.1/man1/7za.1
+Index: p7zip-9.20.1~dfsg.1/man1/7za.1
 ===================================================================
---- p7zip-4.58~dfsg.1.orig/man1/7za.1	2008-06-21 15:28:28.000000000 +0200
-+++ p7zip-4.58~dfsg.1/man1/7za.1	2008-06-21 15:30:48.000000000 +0200
+--- p7zip-9.20.1~dfsg.1.orig/man1/7za.1	2011-04-03 22:33:40.000000000 +0200
++++ p7zip-9.20.1~dfsg.1/man1/7za.1	2011-04-03 23:08:11.000000000 +0200
+@@ -10,7 +10,7 @@
+ .BR <ARGUMENTS>...
+ .PP
+ .SH DESCRIPTION
+-7-Zip is a file archiver with the highest compression ratio. The program supports 7z (that implements LZMA compression algorithm), ZIP, CAB, ARJ, GZIP, BZIP2, TAR, CPIO, RPM and DEB formats. Compression ratio in the new 7z format is 30-50% better than ratio in ZIP format.
++7-Zip is a file archiver with the highest compression ratio. The program supports 7z (that implements LZMA compression algorithm), LZMA2, XZ, ZIP, Zip64, CAB, RAR (if the non-free p7zip-rar package is installed), ARJ, GZIP, BZIP2, TAR, CPIO, RPM, ISO, most filesystem images and DEB formats. Compression ratio in the new 7z format is 30-50% better than ratio in ZIP format.
+ .TP
+ 7za is a stand-alone executable. 7za handles less archive formats than 7z, but does not need any others.
+ .PP
 @@ -55,7 +55,7 @@
  don't store symlinks; store the files/directories they point to (CAUTION : the scanning stage can never end because of recursive symlinks like 'ln \-s .. ldir')
  .TP
@@ -42,10 +60,19 @@ Index: p7zip-4.58~dfsg.1/man1/7za.1
  .SH AUTHOR
  .TP
  Written for Debian by Mohammed Adnene Trojette.
-Index: p7zip-4.58~dfsg.1/man1/7zr.1
+Index: p7zip-9.20.1~dfsg.1/man1/7zr.1
 ===================================================================
---- p7zip-4.58~dfsg.1.orig/man1/7zr.1	2008-06-21 15:28:28.000000000 +0200
-+++ p7zip-4.58~dfsg.1/man1/7zr.1	2008-06-21 15:31:24.000000000 +0200
+--- p7zip-9.20.1~dfsg.1.orig/man1/7zr.1	2011-04-03 22:33:40.000000000 +0200
++++ p7zip-9.20.1~dfsg.1/man1/7zr.1	2011-04-03 23:08:16.000000000 +0200
+@@ -10,7 +10,7 @@
+ .BR <ARGUMENTS>...
+ .PP
+ .SH DESCRIPTION
+-7-Zip is a file archiver with the highest compression ratio. The program supports 7z (that implements LZMA compression algorithm), ZIP, CAB, ARJ, GZIP, BZIP2, TAR, CPIO, RPM and DEB formats. Compression ratio in the new 7z format is 30-50% better than ratio in ZIP format.
++7-Zip is a file archiver with the highest compression ratio. The program supports 7z (that implements LZMA compression algorithm), LZMA2, XZ, ZIP, Zip64, CAB, RAR (if the non-free p7zip-rar package is installed), ARJ, GZIP, BZIP2, TAR, CPIO, RPM, ISO, most filesystem images and DEB formats. Compression ratio in the new 7z format is 30-50% better than ratio in ZIP format.
+ .TP
+ 7zr is a stand-alone executable. 7zr handles less archive formats than 7z, but does not need any others. 7zr is a "light-version" of 7za that only handles 7z archives.
+ .PP
 @@ -55,7 +55,7 @@
  don't store symlinks; store the files/directories they point to (CAUTION : the scanning stage can never end because of recursive symlinks like 'ln \-s .. ldir')
  .TP

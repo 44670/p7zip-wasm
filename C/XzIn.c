@@ -1,10 +1,11 @@
 /* XzIn.c - Xz input
-2009-04-15 : Igor Pavlov : Public domain */
+2009-06-19 : Igor Pavlov : Public domain */
 
-#include "Xz.h"
+#include <string.h>
 
 #include "7zCrc.h"
 #include "CpuArch.h"
+#include "Xz.h"
 
 SRes Xz_ReadHeader(CXzStreamFlags *p, ISeqInStream *inStream)
 {
@@ -166,7 +167,7 @@ static SRes Xz_ReadBackward(CXzStream *p, ILookInStream *stream, Int64 *startOff
       *startOffset = -(Int64)processedSize;
       RINOK(SeekFromCur(stream, startOffset));
       RINOK(LookInStream_Read2(stream, tempBuf, processedSize, SZ_ERROR_NO_ARCHIVE));
-      for (j = (int)processedSize; j >= 0; j--)
+      for (j = (int)processedSize; j >= 1; j--) // FIXED j >= 0 => j >= 1
         if (tempBuf[j -1] != 0)
           break;
       if (j != 0)

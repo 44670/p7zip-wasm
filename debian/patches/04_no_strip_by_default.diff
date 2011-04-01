@@ -1,13 +1,13 @@
-Index: p7zip-4.65~dfsg.1/makefile.linux_x86_ppc_alpha_gcc_4.X
+Index: p7zip-9.20.1~dfsg.1/makefile.linux_any_cpu_gcc_4.X
 ===================================================================
---- p7zip-4.65~dfsg.1.orig/makefile.linux_x86_ppc_alpha_gcc_4.X	2007-08-08 11:15:20.000000000 +0200
-+++ p7zip-4.65~dfsg.1/makefile.linux_x86_ppc_alpha_gcc_4.X	2009-02-14 20:13:31.000000000 +0100
+--- p7zip-9.20.1~dfsg.1.orig/makefile.linux_any_cpu_gcc_4.X	2011-04-01 21:34:28.000000000 +0200
++++ p7zip-9.20.1~dfsg.1/makefile.linux_any_cpu_gcc_4.X	2011-04-01 21:35:11.000000000 +0200
 @@ -4,7 +4,7 @@
  
  OPTFLAGS=-O
  
--ALLFLAGS=${OPTFLAGS} -s \
-+ALLFLAGS=${OPTFLAGS} \
+-ALLFLAGS=${OPTFLAGS} -pipe -s \
++ALLFLAGS=${OPTFLAGS} -pipe \
      	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
  	-DNDEBUG -D_REENTRANT -DENV_UNIX \
- 	$(LOCAL_FLAGS)
+ 	-D_7ZIP_LARGE_PAGES \

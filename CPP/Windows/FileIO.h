@@ -7,6 +7,9 @@
 
 #ifndef _WIN32
 
+#define FILE_SHARE_READ	1
+#define FILE_SHARE_WRITE 2
+
 #define FILE_BEGIN	SEEK_SET
 #define FILE_CURRENT	SEEK_CUR
 #define FILE_END	SEEK_END
@@ -32,7 +35,7 @@ protected:
   AString _unix_filename;
   time_t   _lastAccessTime;
   time_t   _lastWriteTime;
-#ifdef HAVE_LSTAT
+#ifdef ENV_HAVE_LSTAT
   int     _size;
   char    _buffer[MAX_PATHNAME_LEN+1];
   int     _offset;

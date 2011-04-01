@@ -2,6 +2,8 @@
 
 #include "StdAfx.h"
 
+#include "../../../../C/Alloc.h"
+
 #include "Common/AutoPtr.h"
 #include "Common/Defs.h"
 #include "Common/StringConvert.h"
@@ -13,9 +15,10 @@
 #include "../../Common/LimitedStreams.h"
 #include "../../Common/OutMemStream.h"
 #include "../../Common/ProgressUtils.h"
-#ifdef COMPRESS_MT
+#ifndef _7ZIP_ST
 #include "../../Common/ProgressMt.h"
 #endif
+#include "../../Common/StreamUtils.h"
 
 #include "../../Compress/CopyCoder.h"
 
@@ -40,7 +43,6 @@ static const Byte kMadeByHostOS = kHostOS;
 static const Byte kExtractHostOS = kHostOS;
 
 static const Byte kMethodForDirectory = NFileHeader::NCompressionMethod::kStored;
-static const Byte kExtractVersionForDirectory = NFileHeader::NCompressionMethod::kStoreExtractVersion;
 
 static HRESULT CopyBlockToArchive(ISequentialInStream *inStream,
     COutArchive &outArchive, ICompressProgressInfo *progress)
@@ -101,7 +103,7 @@ static void SetFileHeader(
   item.SetEncrypted(!isDir && options.PasswordIsDefined);
   if (isDir)
   {
-    item.ExtractVersion.Version = kExtractVersionForDirectory;
+    item.ExtractVersion.Version = NFileHeader::NCompressionMethod::kExtractVersion_Dir;
     item.CompressionMethod = kMethodForDirectory;
     item.PackSize = 0;
     item.FileCRC = 0; // test it
@@ -134,7 +136,7 @@ static void SetItemInfoFromCompressingResult(const CCompressingResult &compressi
   }
 }
 
-#ifdef COMPRESS_MT
+#ifndef _7ZIP_ST
 
 static THREAD_FUNC_DECL CoderThread(void *threadCoderInfo);
 
@@ -399,7 +401,7 @@ static HRESULT Update2St(
     const CObjectVector<CItemEx> &inputItems,
     const CObjectVector<CUpdateItem> &updateItems,
     const CCompressionMethodMode *options,
-    const CByteBuffer &comment,
+    const CByteBuffer *comment,
     IArchiveUpdateCallback *updateCallback)
 {
   CLocalProgress *lps = new CLocalProgress;
@@ -483,7 +485,7 @@ static HRESULT Update2(
     const CObjectVector<CItemEx> &inputItems,
     const CObjectVector<CUpdateItem> &updateItems,
     const CCompressionMethodMode *options,
-    const CByteBuffer &comment,
+    const CByteBuffer *comment,
     IArchiveUpdateCallback *updateCallback)
 {
   UInt64 complexity = 0;
@@ -516,8 +518,8 @@ static HRESULT Update2(
     complexity += NFileHeader::kCentralBlockSize;
   }
 
-  if (comment != 0)
-    complexity += comment.GetCapacity();
+  if (comment)
+    complexity += comment->GetCapacity();
   complexity++; // end of central
   updateCallback->SetTotal(complexity);
 
@@ -525,7 +527,7 @@ static HRESULT Update2(
   
   complexity = 0;
   
-  #ifdef COMPRESS_MT
+  #ifndef _7ZIP_ST
 
   const size_t kNumMaxThreads = (1 << 10);
   UInt32 numThreads = options->NumThreads;
@@ -584,7 +586,7 @@ static HRESULT Update2(
         inputItems, updateItems, options, comment, updateCallback);
 
 
-  #ifdef COMPRESS_MT
+  #ifndef _7ZIP_ST
 
   // Warning : before memManager, threads and compressingCompletedEvents
   // in order to have a "good" order for the destructor
@@ -807,6 +809,216 @@ static HRESULT Update2(
   #endif
 }
 
+static const size_t kCacheBlockSize = (1 << 20);
+static const size_t kCacheSize = (kCacheBlockSize << 2);
+static const size_t kCacheMask = (kCacheSize - 1);
+
+class CCacheOutStream:
+  public IOutStream,
+  public CMyUnknownImp
+{
+  CMyComPtr<IOutStream> _stream;
+  Byte *_cache;
+  UInt64 _virtPos;
+  UInt64 _virtSize;
+  UInt64 _phyPos;
+  UInt64 _phySize; // <= _virtSize
+  UInt64 _cachedPos; // (_cachedPos + _cachedSize) <= _virtSize
+  size_t _cachedSize;
+
+  HRESULT MyWrite(size_t size);
+  HRESULT MyWriteBlock()
+  {
+    return MyWrite(kCacheBlockSize - ((size_t)_cachedPos & (kCacheBlockSize - 1)));
+  }
+  HRESULT FlushCache();
+public:
+  CCacheOutStream(): _cache(0) {}
+  ~CCacheOutStream();
+  bool Allocate();
+  HRESULT Init(IOutStream *stream);
+  
+  MY_UNKNOWN_IMP
+
+  STDMETHOD(Write)(const void *data, UInt32 size, UInt32 *processedSize);
+  STDMETHOD(Seek)(Int64 offset, UInt32 seekOrigin, UInt64 *newPosition);
+  STDMETHOD(SetSize)(UInt64 newSize);
+};
+
+bool CCacheOutStream::Allocate()
+{
+  if (!_cache)
+    _cache = (Byte *)::MidAlloc(kCacheSize);
+  return (_cache != NULL);
+}
+
+HRESULT CCacheOutStream::Init(IOutStream *stream)
+{
+  _virtPos = _phyPos = 0;
+  _stream = stream;
+  RINOK(_stream->Seek(0, STREAM_SEEK_CUR, &_virtPos));
+  RINOK(_stream->Seek(0, STREAM_SEEK_END, &_virtSize));
+  RINOK(_stream->Seek(_virtPos, STREAM_SEEK_SET, &_virtPos));
+  _phyPos = _virtPos;
+  _phySize = _virtSize;
+  _cachedPos = 0;
+  _cachedSize = 0;
+  return S_OK;
+}
+
+HRESULT CCacheOutStream::MyWrite(size_t size)
+{
+  while (size != 0 && _cachedSize != 0)
+  {
+    if (_phyPos != _cachedPos)
+    {
+      RINOK(_stream->Seek(_cachedPos, STREAM_SEEK_SET, &_phyPos));
+    }
+    size_t pos = (size_t)_cachedPos & kCacheMask;
+    size_t curSize = MyMin(kCacheSize - pos, _cachedSize);
+    curSize = MyMin(curSize, size);
+    RINOK(WriteStream(_stream, _cache + pos, curSize));
+    _phyPos += curSize;
+    if (_phySize < _phyPos)
+      _phySize = _phyPos;
+    _cachedPos += curSize;
+    _cachedSize -= curSize;
+    size -= curSize;
+  }
+  return S_OK;
+}
+
+HRESULT CCacheOutStream::FlushCache()
+{
+  return MyWrite(_cachedSize);
+}
+
+CCacheOutStream::~CCacheOutStream()
+{
+  FlushCache();
+  if (_virtSize != _phySize)
+    _stream->SetSize(_virtSize);
+  if (_virtPos != _phyPos)
+    _stream->Seek(_virtPos, STREAM_SEEK_SET, NULL);
+  ::MidFree(_cache);
+}
+
+STDMETHODIMP CCacheOutStream::Write(const void *data, UInt32 size, UInt32 *processedSize)
+{
+  if (processedSize)
+    *processedSize = 0;
+  if (size == 0)
+    return S_OK;
+
+  UInt64 zerosStart = _virtPos;
+  if (_cachedSize != 0)
+  {
+    if (_virtPos < _cachedPos)
+    {
+      RINOK(FlushCache());
+    }
+    else
+    {
+      UInt64 cachedEnd = _cachedPos + _cachedSize;
+      if (cachedEnd < _virtPos)
+      {
+        if (cachedEnd < _phySize)
+        {
+          RINOK(FlushCache());
+        }
+        else
+          zerosStart = cachedEnd;
+      }
+    }
+  }
+
+  if (_cachedSize == 0 && _phySize < _virtPos)
+    _cachedPos = zerosStart = _phySize;
+
+  if (zerosStart != _virtPos)
+  {
+    // write zeros to [cachedEnd ... _virtPos)
+    
+    for (;;)
+    {
+      UInt64 cachedEnd = _cachedPos + _cachedSize;
+      size_t endPos = (size_t)cachedEnd & kCacheMask;
+      size_t curSize = kCacheSize - endPos;
+      if (curSize > _virtPos - cachedEnd)
+        curSize = (size_t)(_virtPos - cachedEnd);
+      if (curSize == 0)
+        break;
+      while (curSize > (kCacheSize - _cachedSize))
+      {
+        RINOK(MyWriteBlock());
+      }
+      memset(_cache + endPos, 0, curSize);
+      _cachedSize += curSize;
+    }
+  }
+
+  if (_cachedSize == 0)
+    _cachedPos = _virtPos;
+
+  size_t pos = (size_t)_virtPos & kCacheMask;
+  size = (UInt32)MyMin((size_t)size, kCacheSize - pos);
+  UInt64 cachedEnd = _cachedPos + _cachedSize;
+  if (_virtPos != cachedEnd) // _virtPos < cachedEnd
+    size = (UInt32)MyMin((size_t)size, (size_t)(cachedEnd - _virtPos));
+  else
+  {
+    // _virtPos == cachedEnd
+    if (_cachedSize == kCacheSize)
+    {
+      RINOK(MyWriteBlock());
+    }
+    size_t startPos = (size_t)_cachedPos & kCacheMask;
+    if (startPos > pos)
+      size = (UInt32)MyMin((size_t)size, (size_t)(startPos - pos));
+    _cachedSize += size;
+  }
+  memcpy(_cache + pos, data, size);
+  if (processedSize)
+    *processedSize = size;
+  _virtPos += size;
+  if (_virtSize < _virtPos)
+    _virtSize = _virtPos;
+  return S_OK;
+}
+
+STDMETHODIMP CCacheOutStream::Seek(Int64 offset, UInt32 seekOrigin, UInt64 *newPosition)
+{
+  switch(seekOrigin)
+  {
+    case STREAM_SEEK_SET: _virtPos = offset; break;
+    case STREAM_SEEK_CUR: _virtPos += offset; break;
+    case STREAM_SEEK_END: _virtPos = _virtSize + offset; break;
+    default: return STG_E_INVALIDFUNCTION;
+  }
+  if (newPosition)
+    *newPosition = _virtPos;
+  return S_OK;
+}
+
+STDMETHODIMP CCacheOutStream::SetSize(UInt64 newSize)
+{
+  _virtSize = newSize;
+  if (newSize < _phySize)
+  {
+    RINOK(_stream->SetSize(newSize));
+    _phySize = newSize;
+  }
+  if (newSize <= _cachedPos)
+  {
+    _cachedSize = 0;
+    _cachedPos = newSize;
+  }
+  if (newSize < _cachedPos + _cachedSize)
+    _cachedSize = (size_t)(newSize - _cachedPos);
+  return S_OK;
+}
+
+
 HRESULT Update(
     DECL_EXTERNAL_CODECS_LOC_VARS
     const CObjectVector<CItemEx> &inputItems,
@@ -817,31 +1029,39 @@ HRESULT Update(
     IArchiveUpdateCallback *updateCallback)
 {
   CMyComPtr<IOutStream> outStream;
-  RINOK(seqOutStream->QueryInterface(IID_IOutStream, (void **)&outStream));
-  if (!outStream)
-    return E_NOTIMPL;
-
-  CInArchiveInfo archiveInfo;
-  if(inArchive != 0)
   {
-    inArchive->GetArchiveInfo(archiveInfo);
-    if (archiveInfo.Base != 0)
+    CMyComPtr<IOutStream> outStreamReal;
+    seqOutStream->QueryInterface(IID_IOutStream, (void **)&outStreamReal);
+    if (!outStreamReal)
+      return E_NOTIMPL;
+    CCacheOutStream *cacheStream = new CCacheOutStream();
+    outStream = cacheStream;
+    if (!cacheStream->Allocate())
+      return E_OUTOFMEMORY;
+    RINOK(cacheStream->Init(outStreamReal));
+  }
+
+  if (inArchive)
+  {
+    if (inArchive->ArcInfo.Base != 0 ||
+        inArchive->ArcInfo.StartPosition != 0 ||
+        !inArchive->IsOkHeaders)
       return E_NOTIMPL;
   }
-  else
-    archiveInfo.StartPosition = 0;
   
   COutArchive outArchive;
   outArchive.Create(outStream);
-  if (archiveInfo.StartPosition > 0)
+  /*
+  if (inArchive && inArchive->ArcInfo.StartPosition > 0)
   {
     CMyComPtr<ISequentialInStream> inStream;
-    inStream.Attach(inArchive->CreateLimitedStream(0, archiveInfo.StartPosition));
+    inStream.Attach(inArchive->CreateLimitedStream(0, inArchive->ArcInfo.StartPosition));
     RINOK(CopyBlockToArchive(inStream, outArchive, NULL));
-    outArchive.MoveBasePosition(archiveInfo.StartPosition);
+    outArchive.MoveBasePosition(inArchive->ArcInfo.StartPosition);
   }
+  */
   CMyComPtr<IInStream> inStream;
-  if(inArchive != 0)
+  if (inArchive)
     inStream.Attach(inArchive->CreateStream());
 
   return Update2(
@@ -849,7 +1069,8 @@ HRESULT Update(
       outArchive, inArchive, inStream,
       inputItems, updateItems,
       compressionMethodMode,
-      archiveInfo.Comment, updateCallback);
+      inArchive ? &inArchive->ArcInfo.Comment : NULL,
+      updateCallback);
 }
 
 }}

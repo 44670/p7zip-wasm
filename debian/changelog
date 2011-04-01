@@ -1,3 +1,14 @@
+p7zip (9.20.1~dfsg.1-1) experimental; urgency=low
+
+  * New upstream release (Closes: #620619)
+  * debian/control
+     + bump Standards-Version to 3.9.1.
+     + update and improve description. (Closes: #545871, #612770)
+  * manpages
+     + add supported formats. (Closes: #570427)
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Fri, 01 Apr 2011 21:20:22 +0200
+
 p7zip (9.04~dfsg.1-1) unstable; urgency=low
 
   * New upstream release.

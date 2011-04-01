@@ -6,7 +6,7 @@ DEST_SHARE=$(DEST_HOME)/lib/p7zip
 DEST_SHARE_DOC=$(DEST_HOME)/share/doc/p7zip
 DEST_MAN=$(DEST_HOME)/man
 
-.PHONY: default all all2 7za 7zG sfx 7z 7zr Client7z common common7z clean tar_bin depend test test_7z test_7zr test_7zG test_Client7z all_test
+.PHONY: default all all2 7za 7zG 7zFM sfx 7z 7zr Client7z common common7z clean tar_bin depend test test_7z test_7zr test_7zG test_Client7z all_test app
 
 default:7za
 
@@ -16,76 +16,109 @@ all2: 7za sfx 7z
 
 all3: 7za sfx 7z 7zr
 
+all4: 7za sfx 7z 7zr Client7z 7zG 7zFM
+
 all_test : test test_7z test_7zr test_Client7z
-	cd CPP/7zip/Compress/PPMD_Alone  ; $(MAKE) test
-	cd CPP/7zip/Compress/LZMA_Alone  ; $(MAKE) test
+	$(MAKE) -C CPP/7zip/Compress/LZMA_Alone  test
 
 common:
 	$(MKDIR) bin
 
 7za: common
-	cd CPP/7zip/Bundles/Alone ; $(MAKE) all
+	$(MAKE) -C CPP/7zip/Bundles/Alone all
+	$(MAKE) -C check/my_86_filter  all
 
 7zr: common
-	cd CPP/7zip/Bundles/Alone7z ; $(MAKE) all
+	$(MAKE) -C CPP/7zip/Bundles/Alone7z  all
 
 Client7z: common
 	$(MKDIR) bin/Codecs
-	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) all
-	cd CPP/7zip/UI/Client7z      ; $(MAKE) all
+	$(MAKE) -C CPP/7zip/Bundles/Format7zFree all
+	$(MAKE) -C CPP/7zip/UI/Client7z          all
+
+app: common 7zFM 7zG 7z sfx
+	rm -fr               p7zip.app
+	$(MKDIR)             p7zip.app
+	cp -rp GUI/Contents  p7zip.app/
+	$(MKDIR)          p7zip.app/Contents/MacOS
+	cp bin/7zFM       p7zip.app/Contents/MacOS/
+	cp bin/7zG        p7zip.app/Contents/MacOS/
+	cp bin/7z.so      p7zip.app/Contents/MacOS/
+	cp bin/7zCon.sfx  p7zip.app/Contents/MacOS/
+	cp -rp bin/Codecs p7zip.app/Contents/MacOS/
+	cp -rp GUI/Lang   p7zip.app/Contents/MacOS/
+	cp -rp GUI/help   p7zip.app/Contents/MacOS/
 
 depend:
-	cd CPP/7zip/Bundles/Alone     ; $(MAKE) depend
-	cd CPP/7zip/Bundles/Alone7z   ; $(MAKE) depend
-	cd CPP/7zip/Bundles/SFXCon    ; $(MAKE) depend
-	cd CPP/7zip/UI/Client7z       ; $(MAKE) depend
-	cd CPP/7zip/UI/Console        ; $(MAKE) depend
-	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) depend
-	cd CPP/7zip/Compress/Rar      ; $(MAKE) depend
-	cd CPP/7zip/UI/GUI            ; $(MAKE) depend
+	$(MAKE) -C CPP/7zip/Bundles/Alone         depend
+	$(MAKE) -C CPP/7zip/Bundles/Alone7z       depend
+	$(MAKE) -C CPP/7zip/Bundles/SFXCon        depend
+	$(MAKE) -C CPP/7zip/UI/Client7z           depend
+	$(MAKE) -C CPP/7zip/UI/Console            depend
+	$(MAKE) -C CPP/7zip/Bundles/Format7zFree  depend
+	$(MAKE) -C CPP/7zip/Compress/Rar          depend
+	$(MAKE) -C CPP/7zip/UI/GUI                depend
+	$(MAKE) -C CPP/7zip/UI/FileManager        depend
+	$(MAKE) -C check/my_86_filter             depend
 
 sfx: common
 	$(MKDIR) bin
-	cd CPP/7zip/Bundles/SFXCon ; $(MAKE) all
+	$(MAKE) -C CPP/7zip/Bundles/SFXCon  all
 
 common7z:common
 	$(MKDIR) bin/Codecs
-	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) all
-	cd CPP/7zip/Compress/Rar         ; $(MAKE) all
+	$(MAKE) -C CPP/7zip/Bundles/Format7zFree all
+	$(MAKE) -C CPP/7zip/Compress/Rar         all
 
 7z: common7z
-	cd CPP/7zip/UI/Console           ; $(MAKE) all
+	$(MAKE) -C CPP/7zip/UI/Console           all
 
 7zG: common7z
 	cd bin ; rm -f Lang ; ln -s ../GUI/Lang .
 	cd bin ; rm -f help ; ln -s ../GUI/help .
-	cd CPP/7zip/UI/GUI               ; $(MAKE) all
+	$(MAKE) -C CPP/7zip/UI/GUI               all
+
+7zFM: common7z
+	cd bin ; rm -f Lang ; ln -s ../GUI/Lang .
+	cd bin ; rm -f help ; ln -s ../GUI/help .
+	$(MAKE) -C CPP/7zip/UI/FileManager       all
 
 clean:
-	cd CPP/myWindows                 ; $(MAKE) clean
-	cd CPP/7zip/Bundles/Alone        ; $(MAKE) clean
-	cd CPP/7zip/Bundles/Alone7z      ; $(MAKE) clean
-	cd CPP/7zip/Bundles/SFXCon       ; $(MAKE) clean
-	cd CPP/7zip/UI/Client7z          ; $(MAKE) clean
-	cd CPP/7zip/UI/Console           ; $(MAKE) clean
-	cd CPP/7zip/UI/FileManager       ; $(MAKE) clean
-	cd CPP/7zip/UI/GUI               ; $(MAKE) clean
-	cd CPP/7zip/Bundles/Format7zFree ; $(MAKE) clean
-	cd CPP/7zip/Compress/Rar         ; $(MAKE) clean
-	cd CPP/7zip/Compress/LZMA_Alone  ; $(MAKE) clean
-	cd CPP/7zip/Compress/PPMD_Alone  ; $(MAKE) clean
-	cd CPP/7zip/Bundles/AloneGCOV    ; $(MAKE) clean
+	$(MAKE) -C CPP/myWindows                 clean
+	$(MAKE) -C CPP/7zip/Bundles/Alone        clean
+	$(MAKE) -C CPP/7zip/Bundles/Alone7z      clean
+	$(MAKE) -C CPP/7zip/Bundles/SFXCon       clean
+	$(MAKE) -C CPP/7zip/UI/Client7z          clean
+	$(MAKE) -C CPP/7zip/UI/Console           clean
+	$(MAKE) -C CPP/7zip/UI/FileManager       clean
+	$(MAKE) -C CPP/7zip/UI/GUI               clean
+	$(MAKE) -C CPP/7zip/Bundles/Format7zFree clean
+	$(MAKE) -C CPP/7zip/Compress/Rar         clean
+	$(MAKE) -C CPP/7zip/Compress/LZMA_Alone  clean
+	$(MAKE) -C CPP/7zip/Bundles/AloneGCOV    clean
+	$(MAKE) -C CPP/7zip/TEST/TestUI          clean
+	$(MAKE) -C check/my_86_filter            clean
 	rm -fr bin
-	rm -fr CPP/7zip/CMAKE/Alone
+	rm -fr p7zip.app
+	rm -fr CPP/7zip/P7ZIP.*
+	rm -fr CPP/7zip/CMAKE/P7ZIP.*
+	rm -fr CPP/7zip/PREMAKE/P7ZIP.*
+	rm -f  CPP/7zip/QMAKE/*/*.o
+	rm -f  CPP/7zip/QMAKE/*/Makefile
+	rm -f  CPP/7zip/QMAKE/*/*.pro.user
+	rm -f  CPP/7zip/QMAKE/*/*.x
 	rm -f make.log 1 2
 	rm -f check/7z.so
-	find . -name "*~" -exec rm -f {} \;
-	find . -name "*.orig" -exec rm -fr {} \;
-	find . -name ".*.swp" -exec rm -f {} \;
-	find . -name "*.[ch]" -exec chmod -x {} \;
-	find . -name "*.cpp" -exec chmod -x {} \;
-	find . -name "*.asm" -exec chmod -x {} \;
+	rm -fr p7zip.app/Contents/MacOS
+	find . -name "*~"        -exec rm -f {} \;
+	find . -name "*.orig"    -exec rm -fr {} \;
+	find . -name ".*.swp"    -exec rm -f {} \;
+	find . -name "*.[ch]"    -exec chmod -x {} \;
+	find . -name "*.cpp"     -exec chmod -x {} \;
+	find . -name "*.asm"     -exec chmod -x {} \;
 	find . -name "makefile*" -exec chmod -x {} \;
+	find . -name ".DS_Store" -exec rm -f {} \;
+	find . -name "._*"       -exec rm -f {} \;
 	chmod -x ChangeLog README TODO man1/* DOCS/*.txt
 	chmod +x contrib/VirtualFileSystemForMidnightCommander/u7z
 	chmod +x contrib/gzip-like_CLI_wrapper_for_7z/p7zip
@@ -117,12 +150,12 @@ ARCHIVE=$(shell basename $(REP))
 
 tar_all : clean
 	rm -f  ../$(ARCHIVE)_src_all.tar.bz2
-	cp makefile.linux_x86_ppc_alpha makefile.machine
+	cp makefile.linux_any_cpu makefile.machine
 	cd .. ; (tar cf - $(ARCHIVE) | bzip2 -9 > $(ARCHIVE)_src_all.tar.bz2)
 
 tar_all2 : clean
 	rm -f  ../$(ARCHIVE)_src_all.tar.bz2
-	cp makefile.linux_x86_ppc_alpha makefile.machine
+	cp makefile.linux_any_cpu makefile.machine
 	cd .. ; (tar cf - $(ARCHIVE) | 7za a -mx=9 -tbzip2 -si $(ARCHIVE)_src_all.tar.bz2 )
 
 src_7z : clean

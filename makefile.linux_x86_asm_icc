@@ -8,9 +8,10 @@ OPTFLAGS=-O2 -msse2 -s -Wcheck -fstack-security-check
 ALLFLAGS=${OPTFLAGS} \
     	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
 	-DNDEBUG -D_REENTRANT -DENV_UNIX \
+	-D_7ZIP_LARGE_PAGES \
 	$(LOCAL_FLAGS)
 
-CXX=icpc -i-static $(ALLFLAGS) # -DHAVE_GCCVISIBILITYPATCH -fvisibility=hidden -fvisibility-inlines-hidden
+CXX=icpc -i-static $(ALLFLAGS)
 CC=icc $(ALLFLAGS)
 CC_SHARED=-fPIC
 LINK_SHARED=-fPIC -shared

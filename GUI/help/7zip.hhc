@@ -39,10 +39,6 @@
       <param name="Local" value="general/license.htm">
       </OBJECT>
     <LI> <OBJECT type="text/sitemap">
-      <param name="Name" value="Register 7-Zip">
-      <param name="Local" value="general/register.htm">
-      </OBJECT>
-    <LI> <OBJECT type="text/sitemap">
       <param name="Name" value="Thanks">
       <param name="Local" value="general/thanks.htm">
       </OBJECT>
@@ -88,10 +84,6 @@
         <LI> <OBJECT type="text/sitemap">
           <param name="Name" value="Extract Dialog Box">
           <param name="Local" value="fm/plugins/7-zip/extract.htm">
-          </OBJECT>
-        <LI> <OBJECT type="text/sitemap">
-          <param name="Name" value="7-Zip Plugin Options">
-          <param name="Local" value="fm/plugins/7-zip/options.htm">
           </OBJECT>
       </UL>
     </UL>

@@ -124,7 +124,11 @@ bool CHeader::Parse(const Byte *p)
   // DriveNumber = p[0x24];
   if (p[0x25] != 0) // CurrentHead
     return false;
-  if (p[0x26] != 0x80) // ExtendedBootSig
+  /*
+  NTFS-HDD:   p[0x26] = 0x80
+  NTFS-FLASH: p[0x26] = 0
+  */
+  if (p[0x26] != 0x80 && p[0x26] != 0) // ExtendedBootSig
     return false;
   if (p[0x27] != 0) // reserved
     return false;
@@ -152,7 +156,7 @@ struct CMftRef
 #define ATNAME(n) ATTR_TYPE_ ## n
 #define DEF_ATTR_TYPE(v, n) ATNAME(n) = v
 
-typedef enum
+enum
 {
   DEF_ATTR_TYPE(0x00, UNUSED),
   DEF_ATTR_TYPE(0x10, STANDARD_INFO),
@@ -869,7 +873,7 @@ STDMETHODIMP CByteBufStream::Seek(Int64 offset, UInt32 seekOrigin, UInt64 *newPo
   return S_OK;
 }
 
-HRESULT DataParseExtents(int clusterSizeLog, const CObjectVector<CAttr> attrs,
+static HRESULT DataParseExtents(int clusterSizeLog, const CObjectVector<CAttr> &attrs,
     int attrIndex, int attrIndexLim, UInt64 numPhysClusters, CRecordVector<CExtent> &Extents)
 {
   CExtent e;
@@ -916,6 +920,9 @@ struct CDataRef
   int Num;
 };
 
+static const UInt32 kMagic_FILE = 0x454c4946;
+static const UInt32 kMagic_BAAD = 0x44414142;
+
 struct CMftRec
 {
   UInt32 Magic;
@@ -933,7 +940,6 @@ struct CMftRec
   CRecordVector<CDataRef> DataRefs;
 
   CSiAttr SiAttr;
-
 
   void MoveAttrsFrom(CMftRec &src)
   {
@@ -954,6 +960,8 @@ struct CMftRec
   bool Parse(Byte *p, int sectorSizeLog, UInt32 numSectors, UInt32 recNumber, CObjectVector<CAttr> *attrs);
 
   bool IsEmpty() const { return (Magic <= 2); }
+  bool IsFILE() const { return (Magic == kMagic_FILE); }
+  bool IsBAAD() const { return (Magic == kMagic_BAAD); }
 
   bool InUse() const { return (Flags & 1) != 0; }
   bool IsDir() const { return (Flags & 2) != 0; }
@@ -961,6 +969,7 @@ struct CMftRec
   void ParseDataNames();
   HRESULT GetStream(IInStream *mainStream, int dataIndex,
       int clusterSizeLog, UInt64 numPhysClusters, IInStream **stream) const;
+  int GetNumExtents(int dataIndex, int clusterSizeLog, UInt64 numPhysClusters) const;
 
   UInt64 GetSize(int dataIndex) const { return DataAttrs[DataRefs[dataIndex].Start].GetSize(); }
 
@@ -1028,14 +1037,41 @@ HRESULT CMftRec::GetStream(IInStream *mainStream, int dataIndex,
   return S_OK;
 }
 
+int CMftRec::GetNumExtents(int dataIndex, int clusterSizeLog, UInt64 numPhysClusters) const
+{
+  if (dataIndex < 0)
+    return 0;
+  {
+    const CDataRef &ref = DataRefs[dataIndex];
+    int numNonResident = 0;
+    int i;
+    for (i = ref.Start; i < ref.Start + ref.Num; i++)
+      if (DataAttrs[i].NonResident)
+        numNonResident++;
+
+    const CAttr &attr0 = DataAttrs[ref.Start];
+      
+    if (numNonResident != 0 || ref.Num != 1)
+    {
+      if (numNonResident != ref.Num || !attr0.IsCompressionUnitSupported())
+        return 0; // error;
+      CRecordVector<CExtent> extents;
+      if (DataParseExtents(clusterSizeLog, DataAttrs, ref.Start, ref.Start + ref.Num, numPhysClusters, extents) != S_OK)
+        return 0; // error;
+      return extents.Size() - 1;
+    }
+    // if (attr0.Data.GetCapacity() != 0)
+    //   return 1;
+    return 0;
+  }
+}
+
 bool CMftRec::Parse(Byte *p, int sectorSizeLog, UInt32 numSectors, UInt32 recNumber,
     CObjectVector<CAttr> *attrs)
 {
   G32(p, Magic);
-  if (IsEmpty())
-    return true;
-  if (Magic != 0x454c4946)
-    return false;
+  if (!IsFILE())
+    return IsEmpty() || IsBAAD();
 
   UInt32 usaOffset;
   UInt32 numUsaItems;
@@ -1246,7 +1282,7 @@ HRESULT CDatabase::Open()
     numSectorsInRec = 1 << (recSizeLog - Header.SectorSizeLog);
     if (!mftRec.Parse(ByteBuf, Header.SectorSizeLog, numSectorsInRec, NULL, 0))
       return S_FALSE;
-    if (mftRec.IsEmpty())
+    if (!mftRec.IsFILE())
       return S_FALSE;
     mftRec.ParseDataNames();
     if (mftRec.DataRefs.IsEmpty())
@@ -1277,9 +1313,11 @@ HRESULT CDatabase::Open()
   {
     if (OpenCallback)
     {
-      // Sleep(0);
       UInt64 numFiles = Recs.Size();
-      RINOK(OpenCallback->SetCompleted(&numFiles, &pos64));
+      if ((numFiles & 0x3FF) == 0)
+      {
+        RINOK(OpenCallback->SetCompleted(&numFiles, &pos64));
+      }
     }
     UInt32 readSize = kBufSize;
     UInt64 rem = mftSize - pos64;
@@ -1331,7 +1369,7 @@ HRESULT CDatabase::Open()
   for (i = 0; i < Recs.Size(); i++)
   {
     CMftRec &rec = Recs[i];
-    if (rec.IsEmpty() || !rec.BaseMftRef.IsBaseItself())
+    if (!rec.IsFILE() || !rec.BaseMftRef.IsBaseItself())
       continue;
     int numNames = 0;
     // printf("\n%4d: ", i);
@@ -1417,7 +1455,7 @@ STDMETHODIMP CHandler::GetStream(UInt32 index, ISequentialInStream **stream)
   COM_TRY_END
 }
 
-STATPROPSTG kProps[] =
+static const STATPROPSTG kProps[] =
 {
   { NULL, kpidPath, VT_BSTR},
   { NULL, kpidIsDir, VT_BOOL},
@@ -1427,10 +1465,11 @@ STATPROPSTG kProps[] =
   { NULL, kpidCTime, VT_FILETIME},
   { NULL, kpidATime, VT_FILETIME},
   { NULL, kpidAttrib, VT_UI4},
-  { NULL, kpidLinks, VT_UI4}
+  { NULL, kpidLinks, VT_UI4},
+  { NULL, kpidNumBlocks, VT_UI4}
 };
 
-STATPROPSTG kArcProps[] =
+static const STATPROPSTG kArcProps[] =
 {
   { NULL, kpidVolumeName, VT_BSTR},
   { NULL, kpidFileSystem, VT_BSTR},
@@ -1574,6 +1613,7 @@ STDMETHODIMP CHandler::GetProperty(UInt32 index, PROPID propID, PROPVARIANT *val
     case kpidLinks: prop = rec.MyNumNameLinks; break;
     case kpidSize: if (data) prop = data->GetSize(); break;
     case kpidPackSize: if (data) prop = data->GetPackSize(); break;
+    case kpidNumBlocks: if (data) prop = (UInt32)rec.GetNumExtents(item.DataIndex, Header.ClusterSizeLog, Header.NumClusters); break;
   }
   prop.Detach(value);
   return S_OK;
@@ -1610,12 +1650,11 @@ STDMETHODIMP CHandler::Close()
   return S_OK;
 }
 
-STDMETHODIMP CHandler::Extract(const UInt32* indices, UInt32 numItems,
-    Int32 _aTestMode, IArchiveExtractCallback *extractCallback)
+STDMETHODIMP CHandler::Extract(const UInt32 *indices, UInt32 numItems,
+    Int32 testMode, IArchiveExtractCallback *extractCallback)
 {
   COM_TRY_BEGIN
-  bool testMode = (_aTestMode != 0);
-  bool allFilesMode = (numItems == UInt32(-1));
+  bool allFilesMode = (numItems == (UInt32)-1);
   if (allFilesMode)
     numItems = Items.Size();
   if (numItems == 0)
@@ -1655,8 +1694,8 @@ STDMETHODIMP CHandler::Extract(const UInt32* indices, UInt32 numItems,
     RINOK(lps->SetCur());
     CMyComPtr<ISequentialOutStream> realOutStream;
     Int32 askMode = testMode ?
-        NArchive::NExtract::NAskMode::kTest :
-        NArchive::NExtract::NAskMode::kExtract;
+        NExtract::NAskMode::kTest :
+        NExtract::NAskMode::kExtract;
     Int32 index = allFilesMode ? i : indices[i];
     RINOK(extractCallback->GetStream(index, &realOutStream, askMode));
 
@@ -1664,11 +1703,11 @@ STDMETHODIMP CHandler::Extract(const UInt32* indices, UInt32 numItems,
     if (item.IsDir())
     {
       RINOK(extractCallback->PrepareOperation(askMode));
-      RINOK(extractCallback->SetOperationResult(NArchive::NExtract::NOperationResult::kOK));
+      RINOK(extractCallback->SetOperationResult(NExtract::NOperationResult::kOK));
       continue;
     }
 
-    if (!testMode && (!realOutStream))
+    if (!testMode && !realOutStream)
       continue;
     RINOK(extractCallback->PrepareOperation(askMode));
 
@@ -1679,12 +1718,12 @@ STDMETHODIMP CHandler::Extract(const UInt32* indices, UInt32 numItems,
     const CMftRec &rec = Recs[item.RecIndex];
     const CAttr &data = rec.DataAttrs[rec.DataRefs[item.DataIndex].Start];
 
-    int res = NArchive::NExtract::NOperationResult::kDataError;
+    int res = NExtract::NOperationResult::kDataError;
     {
       CMyComPtr<IInStream> inStream;
       HRESULT hres = rec.GetStream(InStream, item.DataIndex, Header.ClusterSizeLog, Header.NumClusters, &inStream);
       if (hres == S_FALSE)
-        res = NArchive::NExtract::NOperationResult::kUnSupportedMethod;
+        res = NExtract::NOperationResult::kUnSupportedMethod;
       else
       {
         RINOK(hres);
@@ -1696,7 +1735,7 @@ STDMETHODIMP CHandler::Extract(const UInt32* indices, UInt32 numItems,
             RINOK(hres);
           }
           if (/* copyCoderSpec->TotalSize == item.GetSize() && */ hres == S_OK)
-            res = NArchive::NExtract::NOperationResult::kOK;
+            res = NExtract::NOperationResult::kOK;
         }
       }
     }
@@ -1715,7 +1754,7 @@ STDMETHODIMP CHandler::GetNumberOfItems(UInt32 *numItems)
   return S_OK;
 }
 
-static IInArchive *CreateArc() { return new CHandler;  }
+static IInArchive *CreateArc() { return new CHandler; }
 
 static CArcInfo g_ArcInfo =
   { L"NTFS", L"ntfs img", 0, 0xD9, { 'N', 'T', 'F', 'S', ' ', ' ', ' ', ' ', 0 }, 9, false, CreateArc, 0 };

@@ -1,4 +1,4 @@
-	p7zip 9.04
+	p7zip 9.20
 	==========
 
 Homepage : http://p7zip.sourceforge.net/
@@ -42,7 +42,7 @@ BUILD :
   If you have downloaded the "bin" package,
 	use directly the program bin/7za.
 	(tested on Redhat 9.0, Fedora 2, Mandrake 10.0, Debian 3.0)
-	As the program is statically linked, its should run on many x86 linux.
+	As the program is statically linked, its should run on many x86 or amd64 linux.
 
   If you have downloaded the "source" package,
 
@@ -50,8 +50,16 @@ BUILD :
 	makefile.freebsd, makefile.cygwin, ...
         over makefile.machine
 
-	If you want to make a parallel build : make -j4 -f makefile.parallel_jobs TARGET
+  Example : building 7za, 7z (with its plugins), 7zr and Client7z and passing the internal tests
+	cp makefile.linux_x86_asm_gcc_4 makefile.linux
+	make all_test
 
+
+	If you want to make a parallel build on a 4 cpu machine : make -j 4 TARGET
+
+	If you have trouble, try : make -f makefile.oldmake TARGET
+
+	make depend   : to rebuild the makefile.depend
 	make clean    : to clean all directories
 	make          : to build bin/7za
 	make sfx      : to build bin/7zCon.sfx (7za can now create SFX archive)
@@ -74,12 +82,27 @@ BUILD :
 
   this procedure has been tested on :
    - x86 CPU :
+	Linux - Debian 3.0 Stable
+	Linux - Ubuntu 10.10
+	MacOS 10.6.6 
+
+   - AMD64 CPU :
+	Linux - Ubuntu 10.10
+	MacOS 10.6.6 
+
+   - sparc CPU :
+	Solaris 8 (sparc) with gcc 2.95.2
+
+   - powerpc CPU :
+	MacOS X 10.4 (ppc)
+
+  Some older versions of p7zip were tested :
+   - x86 CPU :
 	DOS   - (built with DJGPP, see http://blairdude.googlepages.com/p7zip )
 	Linux - Redhat 9.0 Standart
 	Linux - Fedora 2 (Redhat) (gcc 3.3.3 and gcc-3.4.1 with 
                 stack-smashing protector from www.trl.ibm.com/projects/security/ssp/)
 	Linux - Mandrake 10.0 Official
-	Linux - Debian 3.0 Stable
 	Linux - Ubuntu 8.04
 	FreeBSD 5.2.1 (gcc 3.3.3)
 	MacOS 10.4.8 
@@ -104,7 +127,6 @@ BUILD :
 	( only the 32bits built works, the 64bits built does not pass the tests )
 
    - sparc CPU :
-	Solaris 8 (sparc) with gcc 2.95.2
 	Solaris 9 (sparc) with gcc 3.3.2
 
    - powerpc CPU :
@@ -214,6 +236,79 @@ BENCHMARKS :
 ------------
   7za b : bench LZMA codec
   7z b -mm=crc : make internal crc check.
+
+
+hugetlbfs (large pages)
+------------
+
+  Using huges pages in Linux requires some preparations.
+  First, make sure your running kernel has support for hugetlbfs compiled in:
+
+  ~$ grep hugetlbfs /proc/filesystems
+  nodev       hugetlbfs
+
+  You can view your current huge page configuration like this:
+
+  ~$ grep Huge /proc/meminfo
+  HugePages_Total:       0
+  HugePages_Free:        0
+  HugePages_Rsvd:        0
+  HugePages_Surp:        0
+  Hugepagesize:       2048 kB
+
+  In this case the size of a huge page is 2 MiB.
+  So, if you have 2 GiB of RAM and want to reserve 512 MiB for huge pages,
+  you would need 256 pages.
+
+  Do the following as root:
+
+  ~# echo 296 >/proc/sys/vm/nr_hugepages
+  ~# grep Huge /proc/meminfo
+  HugePages_Total:     296
+  HugePages_Free:      296
+  HugePages_Rsvd:        0
+  HugePages_Surp:        0
+  Hugepagesize:       2048 kB
+
+  Finally, make access from user space possible:
+
+  ~# mkdir /hugepages
+  ~# mount -t hugetlbfs -o rw,nosuid,nodev,noexec,noatime none /hugepages
+  ~# chmod 1777 /hugepages
+
+  Option 1 : Now huge pages are configured. 
+           In your shell, set the environment variable HUGETLB_PATH to the mount point:
+           ~$ export HUGETLB_PATH=/hugepages
+  or
+  
+  Option 2 : Let p7zip find out the first directory with the type "hugetlbfs"
+
+
+  To enable huge page use in p7zip, pass the '-slp' switch to it.
+  Ex: 7za -slp a t.7z dir
+
+
+  
+  If you want this to be a permanent setup :
+  - mkdir /hugepages
+
+  - add an entry to your /etc/fstab so that when you reboot your computer,
+    your hugetlbfs will mount automatically :
+    hugetlbfs       /hugepages  hugetlbfs     rw,nosuid,nodev,noexec,noatime   0 0
+
+  - add this in your /etc/rc.local :
+    chmod 1777 /hugepages
+    echo 296 >  /proc/sys/vm/nr_hugepages
+
+  optional : export HUGETLB_PATH=/hugepages
+
+  To enable huge page use in p7zip, pass the '-slp' switch to it : 7za -slp b
+
+
+  Remark : with current CPU : "7za -slp b" is not faster than "7za b".
+           If you want to see some speedup, compress at least 300MB
+           Ex : 7za -slp -mx=9 -a big_file.tar.7z  big_file.tar
+
 
 LICENSE :
 ---------

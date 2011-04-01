@@ -13,8 +13,8 @@
 #include "../../Common/C_FileIO.h"
 #endif
 
-#include "../IStream.h"
 #include "../../Common/MyCom.h"
+#include "../IStream.h"
 
 class CInFileStream:
   public IInStream,
@@ -53,21 +53,16 @@ public:
   STDMETHOD(GetSize)(UInt64 *size);
 };
 
-#ifndef _WIN32_WCE
 class CStdInFileStream:
   public ISequentialInStream,
   public CMyUnknownImp
 {
 public:
-  // HANDLE File;
-  // CStdInFileStream() File(INVALID_HANDLE_VALUE): {}
-  // void Open() { File = GetStdHandle(STD_INPUT_HANDLE); };
   MY_UNKNOWN_IMP
 
   virtual ~CStdInFileStream() {}
   STDMETHOD(Read)(void *data, UInt32 size, UInt32 *processedSize);
 };
-#endif
 
 class COutFileStream:
   public IOutStream,
@@ -122,10 +117,9 @@ public:
 
   STDMETHOD(Write)(const void *data, UInt32 size, UInt32 *processedSize);
   STDMETHOD(Seek)(Int64 offset, UInt32 seekOrigin, UInt64 *newPosition);
-  STDMETHOD(SetSize)(Int64 newSize);
+  STDMETHOD(SetSize)(UInt64 newSize);
 };
 
-#ifndef _WIN32_WCE
 class CStdOutFileStream:
   public ISequentialOutStream,
   public CMyUnknownImp
@@ -136,6 +130,5 @@ public:
   virtual ~CStdOutFileStream() {}
   STDMETHOD(Write)(const void *data, UInt32 size, UInt32 *processedSize);
 };
-#endif
 
 #endif

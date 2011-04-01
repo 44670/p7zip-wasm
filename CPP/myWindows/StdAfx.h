@@ -9,7 +9,7 @@
 
 #define NO_INLINE /* FIXME */
 
-#ifdef HAVE_PTHREAD
+#ifdef ENV_HAVE_PTHREAD
 #include <pthread.h>
 #endif
 
@@ -20,6 +20,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <tchar.h>
 #include <wchar.h>
 #include <stddef.h>
@@ -33,6 +34,21 @@
 #endif
 
 #undef CS /* fix for Solaris 10 x86 */
+
+
+/***************************/
+
+#ifndef ENV_HAVE_WCHAR__H
+
+EXTERN_C_BEGIN
+
+size_t	wcslen(const wchar_t *);
+wchar_t *wcscpy(wchar_t * , const wchar_t * );
+wchar_t *wcscat(wchar_t * , const wchar_t * );
+
+EXTERN_C_END
+
+#endif
 
 /***************************/
 
@@ -64,9 +80,9 @@ typedef wxWindow *HWND;
 #define MB_TASKMODAL  (0) // FIXME
 #define MB_SYSTEMMODAL (0) // FIXME
 
-#define MB_OK (0) // FIXME !
-#define MB_ICONSTOP (0) // FIXME !
-#define MB_OKCANCEL (0) // FIXME !
+#define MB_OK (0x00000004) // wxOK
+#define MB_ICONSTOP (0x00000200) // wxICON_STOP
+#define MB_OKCANCEL (0x00000004 | 0x00000010) // wxOK | wxCANCEL
 
 #define MessageBox MessageBoxW
 int MessageBoxW(wxWindow * parent, const TCHAR * mes, const TCHAR * title,int flag);
@@ -95,6 +111,12 @@ LANGID GetSystemDefaultLangID(void);
 
 #define PRIMARYLANGID(l)        ((WORD)(l) & 0x3ff)
 #define SUBLANGID(l)            ((WORD)(l) >> 10)
+
+#if defined( __x86_64__ )
+
+#define _WIN64 1
+
+#endif
 
 #endif
 

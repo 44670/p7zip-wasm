@@ -2,6 +2,8 @@
 
 #include "StdAfx.h"
 
+#include "../../../../C/Types.h"
+
 #include "ItemNameUtils.h"
 
 namespace NArchive {
@@ -39,7 +41,7 @@ bool HasTailSlash(const AString &name, UINT codePage)
   if (name.IsEmpty())
     return false;
   LPCSTR prev =
-  #ifdef _WIN32
+  #if defined(_WIN32) && !defined(UNDER_CE)
     CharPrevExA((WORD)codePage, name, &name[name.Length()], 0);
   #else
     (LPCSTR)(name) + (name.Length() - 1);

@@ -18,11 +18,10 @@
 #include <sys/types.h>
 #include <utime.h>
 
-#ifdef HAVE_LSTAT
+#ifdef ENV_HAVE_LSTAT
 #define FD_LINK (-2)
 #endif
 
-#define FILE_SHARE_READ	1
 #define GENERIC_READ	0x80000000
 #define GENERIC_WRITE	0x40000000
 
@@ -42,12 +41,11 @@ bool CFileBase::Create(LPCSTR filename, DWORD dwDesiredAccess,
 {
   Close();
   
+  int   flags = 0;
   const char * name = nameWindowToUnix(filename);
 
 #ifdef O_BINARY
-  int   flags = O_BINARY;
-#else
-  int   flags = 0;
+  flags |= O_BINARY;
 #endif
 
 #ifdef O_LARGEFILE
@@ -74,7 +72,7 @@ bool CFileBase::Create(LPCSTR filename, DWORD dwDesiredAccess,
   // printf("##DBG open(%s,0x%x,%o)##\n",name,flags,(unsigned)mode);
 
   _fd = -1;
-#ifdef HAVE_LSTAT
+#ifdef ENV_HAVE_LSTAT
    if ((global_use_lstat) && (ignoreSymbolicLink == false))
    {
      _size = readlink(name, _buffer, sizeof(_buffer)-1);
@@ -115,7 +113,7 @@ bool CFileBase::Create(LPCSTR filename, DWORD dwDesiredAccess,
   }
 
   if (_fd == -1) {
-    /* !HAVE_LSTAT : an invalid symbolic link => errno == ENOENT */
+    /* !ENV_HAVE_LSTAT : an invalid symbolic link => errno == ENOENT */
     return false;
   } else {
     _unix_filename = name;
@@ -144,7 +142,7 @@ bool CFileBase::Close()
   if(_fd == -1)
     return true;
 
-#ifdef HAVE_LSTAT
+#ifdef ENV_HAVE_LSTAT
   if(_fd == FD_LINK) {
     _fd = -1;
     return true;
@@ -182,7 +180,7 @@ bool CFileBase::GetLength(UINT64 &length) const
      return false;
   }
 
-#ifdef HAVE_LSTAT  
+#ifdef ENV_HAVE_LSTAT  
   if (_fd == FD_LINK) {
     length = _size;
     return true;
@@ -214,7 +212,7 @@ bool CFileBase::Seek(INT64 distanceToMove, DWORD moveMethod, UINT64 &newPosition
      return false;
   }
 
-#ifdef HAVE_LSTAT
+#ifdef ENV_HAVE_LSTAT
   if (_fd == FD_LINK) {
     INT64 offset;
     switch (moveMethod) {
@@ -310,7 +308,7 @@ bool CInFile::Read(void *buffer, UINT32 bytesToRead, UINT32 &bytesRead)
     return TRUE;
   }
 
-#ifdef HAVE_LSTAT
+#ifdef ENV_HAVE_LSTAT
   if (_fd == FD_LINK) {
     if (_offset >= _size) {
       bytesRead = 0;

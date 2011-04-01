@@ -54,6 +54,12 @@
     <TD>tar</TD>
   </TR>
   <TR>
+    <TD align="center">WIM</TD>
+    <TD align="center">X</TD>
+    <TD align="center">X</TD>
+    <TD>wim swm</TD>
+  </TR>
+  <TR>
     <TD align="center">LZMA</TD>
     <TD align="center"></TD>
     <TD align="center">X</TD>
@@ -138,12 +144,6 @@
     <TD>msi doc xls ppt</TD>
   </TR>
   <TR>
-    <TD align="center">WIM</TD>
-    <TD align="center"></TD>
-    <TD align="center">X</TD>
-    <TD>wim swm</TD>
-  </TR>
-  <TR>
     <TD align="center">DMG</TD>
     <TD align="center"></TD>
     <TD align="center">X</TD>
@@ -191,30 +191,33 @@
     <TD align="center">X</TD>
     <TD>mbr</TD>
   </TR>
+  <TR>
+    <TD align="center">SquashFS</TD>
+    <TD align="center"></TD>
+    <TD align="center">X</TD>
+    <TD>squashfs</TD>
+  </TR>
+  <TR>
+    <TD align="center">CramFS</TD>
+    <TD align="center"></TD>
+    <TD align="center">X</TD>
+    <TD>cramfs</TD>
+  </TR>
 </TABLE>
 
 <H2><a name="zip"></a>ZIP</H2>
 
-<P>7-Zip creates fully ZIP compatible archives. Anyone can
-decompress these files by any ZIP compatible decompression
-utility. During compression 7-Zip can use one of the following ZIP
-compression methods:</P>
+<P>7-Zip creates ZIP compatible archives. 
+7-Zip supports the following ZIP compression methods:</P>
 <UL>
   <LI>0 - Store</LI>
   <LI>8 - Deflate</LI>
   <LI>9 - Deflate64</LI>
   <LI>12 - BZip2</LI>
-</UL>
-
-<P>The current version of the 7-Zip can extract any files from ZIP archive that
-were compressed with one of the following methods:</P>
-<UL>
-  <LI>0 - Store</LI>
-  <LI>1 - Shrink</LI>
-  <LI>6 - Implode</LI>
-  <LI>8 - Deflate</LI>
-  <LI>9 - Deflate64</LI>
-  <LI>12 - BZip2</LI>
+  <LI>14 - LZMA</LI>
+  <LI>98 - PPMd</LI>
+  <LI>1 - Shrink (decompression only)</LI>
+  <LI>6 - Implode (decompression only)</LI>
 </UL>
 
 <P>Files compressed with other ZIP compression methods

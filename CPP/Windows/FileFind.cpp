@@ -9,7 +9,7 @@
 #include <unistd.h>
 #include <errno.h>
 
-#ifdef HAVE_LSTAT
+#ifdef ENV_HAVE_LSTAT
 extern "C"
 {
 
@@ -157,7 +157,6 @@ static bool originalFilename(const UString & src, AString & res)
 {
   // Try to recover the original filename
   res = "";
-  int is_good = 1;
   int i=0;
   while (src[i])
   {
@@ -178,7 +177,7 @@ static int fillin_CFileInfo(CFileInfo &fileInfo,const char *filename) {
   struct stat stat_info;
 
   int ret;
-#ifdef HAVE_LSTAT
+#ifdef ENV_HAVE_LSTAT
   if (global_use_lstat) {
     ret = lstat(filename,&stat_info);
   } else
@@ -216,12 +215,10 @@ static int fillin_CFileInfo(CFileInfo &fileInfo,const char *filename) {
 }
 
 static int fillin_CFileInfo(CFileInfo &fileInfo,const char *dir,const char *name) {
-  struct stat stat_info;
   char filename[MAX_PATHNAME_LEN];
-
   size_t dir_len = strlen(dir);
   size_t name_len = strlen(name);
-  size_t total = dir_len + 1 + name_len; // 1 = strlen("/");
+  size_t total = dir_len + 1 + name_len + 1; // 1 = strlen("/"); + le zero character
   if (total >= MAX_PATHNAME_LEN) throw "fillin_CFileInfo - internal error - MAX_PATHNAME_LEN";
   memcpy(filename,dir,dir_len);
   if (dir_len >= 1)
@@ -479,6 +476,14 @@ bool DoesFileExist(LPCSTR name) // FIXME
   return (ret == 0) && !fi.IsDir();;
 }
 
+bool DoesDirExist(LPCSTR name) // FIXME
+{
+  CFileInfo fi;
+  int ret = fillin_CFileInfo(fi,nameWindowToUnix(name));
+  TRACEN((printf("DoesDirExist(%s) ret=%d\n",name,ret)))
+  return (ret == 0) && fi.IsDir();;
+}
+
 bool DoesFileOrDirExist(LPCSTR name)
 {
   CFileInfo fileInfo;
@@ -498,6 +503,21 @@ bool DoesFileExist(LPCWSTR name)
   bool is_good = originalFilename(name, resultString);
   if (is_good) {
      bret = DoesFileExist((const char *)resultString);
+  }
+  return bret;
+}
+
+bool DoesDirExist(LPCWSTR name)
+{
+  AString Aname = UnicodeStringToMultiByte(name, CP_ACP); 
+  bool bret = DoesDirExist((LPCSTR)Aname);
+  if (bret) return bret;
+
+  // Try to recover the original filename
+  AString resultString;
+  bool is_good = originalFilename(name, resultString);
+  if (is_good) {
+     bret = DoesDirExist((const char *)resultString);
   }
   return bret;
 }

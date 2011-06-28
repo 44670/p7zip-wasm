@@ -1,3 +1,9 @@
+p7zip (9.20.1~dfsg.1-2) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Tue, 28 Jun 2011 17:05:01 +0200
+
 p7zip (9.20.1~dfsg.1-1) experimental; urgency=low
 
   * New upstream release (Closes: #620619)

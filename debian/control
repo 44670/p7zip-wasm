@@ -21,8 +21,8 @@ Description: 7zr file archiver with high compression ratio
   - /usr/bin/p7zip
     a gzip like wrapper around 7zr.
  .
- p7zip can be used with popular compression interfaces (file-roller)
- and nautilus.
+ p7zip can be used with popular compression interfaces (e.g. file-roller
+ and nautilus).
  .
  p7zip-full provides 7z and 7za which support more compression formats.
 
@@ -41,7 +41,7 @@ Description: 7z and 7za file archivers with high compression ratio
  .
  Installing p7zip allows File Roller to use the very efficient 7z
  compression format for packing and unpacking files and directories.
- Additionally, it provides you with the 7z and 7za commands.
+ Additionally, it provides the 7z and 7za commands.
  .
  List of supported formats:
    - Packing / unpacking: 7z, ZIP, GZIP, BZIP2, XZ and TAR

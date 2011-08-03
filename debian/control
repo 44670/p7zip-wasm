@@ -10,19 +10,19 @@ Package: p7zip
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Suggests: p7zip-full
-Description: 7zr file archiver with high compression ratio
+Description: 7z file archiver with high compression ratio
  p7zip is the Unix command-line port of 7-Zip, a file archiver that
- archives with very high compression ratios.
+ archives with high compression ratios.
  .
  p7zip provides:
   - /usr/bin/7zr
     a standalone minimal version of the 7-zip tool that only handles
     7z archives. 7z compression is 30-50% better than ZIP compression.
   - /usr/bin/p7zip
-    a gzip like wrapper around 7zr.
+    a gzip-like wrapper around 7zr.
  .
- p7zip can be used with popular compression interfaces (e.g. file-roller
- and nautilus).
+ p7zip can be used with popular compression interfaces (such as File
+ Roller or Nautilus).
  .
  p7zip-full provides 7z and 7za which support more compression formats.
 
@@ -34,12 +34,12 @@ Replaces: p7zip (<< 4.39-1)
 Suggests: p7zip-rar
 Description: 7z and 7za file archivers with high compression ratio
  p7zip is the Unix command-line port of 7-Zip, a file archiver that
- archives with very high compression ratios.
+ archives with high compression ratios.
  .
  p7zip-full provides utilities to pack and unpack 7z archives within
- a shell or using a gui (such as File Roller or nautilus).
+ a shell or using a GUI (such as Ark, File Roller or Nautilus).
  .
- Installing p7zip allows File Roller to use the very efficient 7z
+ Installing p7zip-full allows File Roller to use the very efficient 7z
  compression format for packing and unpacking files and directories.
  Additionally, it provides the 7z and 7za commands.
  .
@@ -50,5 +50,5 @@ Description: 7z and 7za file archivers with high compression ratio
      if non-free p7zip-rar package is installed), RPM, SquashFS, UDF,
      VHD, WIM, XAR and Z.
  .
- p7zip provides 7zr, a light version of 7za, and p7zip a gzip-like
+ p7zip provides 7zr, a light version of 7za, and p7zip, a gzip-like
  wrapper around 7zr.

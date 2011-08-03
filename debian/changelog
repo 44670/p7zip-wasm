@@ -1,3 +1,16 @@
+p7zip (9.20.1~dfsg.1-3) unstable; urgency=low
+
+  * debian/patches:
+     + fix 7zr.1 and 7za.1 ambiguous sentence. (Closes: #636174)
+  * debian/control:
+     + fix p7zip-full's description
+        - wrong reference to p7zip. (Closes: #636186)
+        - capitalise Nautilus, uppercase GUI. (Closes: #636172)
+        - missing comma. (Closes: #636178)
+     + fix p7zip's description accordingly.
+
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Wed, 03 Aug 2011 12:43:08 +0200
+
 p7zip (9.20.1~dfsg.1-2) unstable; urgency=low
 
   * Upload to unstable.

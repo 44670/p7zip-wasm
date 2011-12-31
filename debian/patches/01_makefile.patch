@@ -1,7 +1,7 @@
 Index: p7zip-9.20.1~dfsg.1/makefile
 ===================================================================
---- p7zip-9.20.1~dfsg.1.orig/makefile	2011-04-01 21:14:01.000000000 +0200
-+++ p7zip-9.20.1~dfsg.1/makefile	2011-04-01 21:42:45.000000000 +0200
+--- p7zip-9.20.1~dfsg.1.orig/makefile	2011-12-17 06:19:16.000000000 +0000
++++ p7zip-9.20.1~dfsg.1/makefile	2011-12-17 06:19:16.000000000 +0000
 @@ -68,7 +68,6 @@
  common7z:common
  	$(MKDIR) bin/Codecs
@@ -20,9 +20,9 @@ Index: p7zip-9.20.1~dfsg.1/makefile
  	$(MAKE) -C CPP/7zip/TEST/TestUI          clean
 Index: p7zip-9.20.1~dfsg.1/makefile.machine
 ===================================================================
---- p7zip-9.20.1~dfsg.1.orig/makefile.machine	2011-04-01 21:14:01.000000000 +0200
-+++ p7zip-9.20.1~dfsg.1/makefile.machine	2011-04-01 21:36:34.000000000 +0200
-@@ -4,7 +4,7 @@
+--- p7zip-9.20.1~dfsg.1.orig/makefile.machine	2011-12-17 06:19:16.000000000 +0000
++++ p7zip-9.20.1~dfsg.1/makefile.machine	2011-12-17 06:19:16.000000000 +0000
+@@ -4,17 +4,19 @@
  
  OPTFLAGS=-O
  
@@ -31,3 +31,294 @@ Index: p7zip-9.20.1~dfsg.1/makefile.machine
      	-D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE \
  	-DNDEBUG -D_REENTRANT -DENV_UNIX \
  	-D_7ZIP_LARGE_PAGES \
+ 	$(LOCAL_FLAGS)
+ 
+-CXX=g++ $(ALLFLAGS)
++CXX=g++ $(ALLFLAGS) -DENV_HAVE_GCCVISIBILITYPATCH -fvisibility=hidden -fvisibility-inlines-hidden
+ CC=gcc $(ALLFLAGS)
+ CC_SHARED=-fPIC
+ LINK_SHARED=-fPIC -shared
+ 
++PRE_COMPILED_HEADER=StdAfx.h.gch
++
+ LOCAL_LIBS=-lpthread
+ LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
+ 
+Index: p7zip-9.20.1~dfsg.1/CPP/7zip/UI/FileManager/makefile.depend
+===================================================================
+--- p7zip-9.20.1~dfsg.1/CPP/7zip/UI/FileManager/makefile.depend	2011-04-01 20:14:01.000000000 +0100
++++ p7zip-9.20.1~dfsg.1.new/CPP/7zip/UI/FileManager/makefile.depend	2011-12-17 09:59:13.000000000 +0000
+@@ -445,7 +445,7 @@
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  /usr/include/wx-2.8/wx/wxprec.h /usr/include/wx-2.8/wx/defs.h \
+  /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -589,7 +589,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -751,7 +751,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -1090,7 +1090,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -1644,7 +1644,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -1848,7 +1848,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -1969,7 +1969,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -2096,7 +2096,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -2244,7 +2244,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -2365,7 +2365,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -2488,7 +2488,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -2613,7 +2613,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -2734,7 +2734,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -3367,7 +3367,7 @@
+  ../../../Common/MyString.h ../../../Common/MyVector.h \
+  /usr/include/wx-2.8/wx/config.h /usr/include/wx-2.8/wx/confbase.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -3408,7 +3408,7 @@
+  ../../../Common/Defs.h ../../../Windows/Defs.h \
+  ../../../Windows/../Common/MyWindows.h /usr/include/wx-2.8/wx/clipbrd.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -3439,7 +3439,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -3547,7 +3547,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -3660,7 +3660,7 @@
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  /usr/include/wx-2.8/wx/wxprec.h /usr/include/wx-2.8/wx/defs.h \
+  /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+Index: p7zip-9.20.1~dfsg.1/CPP/7zip/UI/GUI/makefile.depend
+===================================================================
+--- p7zip-9.20.1~dfsg.1/CPP/7zip/UI/GUI/makefile.depend	2011-04-01 20:14:01.000000000 +0100
++++ p7zip-9.20.1~dfsg.1.new/CPP/7zip/UI/GUI/makefile.depend	2011-12-17 09:33:25.000000000 +0000
+@@ -42,7 +42,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include//gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -173,7 +173,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -312,7 +312,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -581,7 +581,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -1396,7 +1396,7 @@
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  /usr/include/wx-2.8/wx/wxprec.h /usr/include/wx-2.8/wx/defs.h \
+  /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -1522,7 +1522,7 @@
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  /usr/include/wx-2.8/wx/wxprec.h /usr/include/wx-2.8/wx/defs.h \
+  /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -1652,7 +1652,7 @@
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  /usr/include/wx-2.8/wx/wxprec.h /usr/include/wx-2.8/wx/defs.h \
+  /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -1776,7 +1776,7 @@
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  /usr/include/wx-2.8/wx/wxprec.h /usr/include/wx-2.8/wx/defs.h \
+  /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -2293,7 +2293,7 @@
+  ../../../Common/MyString.h ../../../Common/MyVector.h \
+  /usr/include/wx-2.8/wx/config.h /usr/include/wx-2.8/wx/confbase.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -2333,7 +2333,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -2441,7 +2441,7 @@
+  ../../../include_windows/windows.h ../../../include_windows/basetyps.h \
+  ../../../include_windows/tchar.h /usr/include/wx-2.8/wx/wxprec.h \
+  /usr/include/wx-2.8/wx/defs.h /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \
+@@ -2554,7 +2554,7 @@
+  ../../../include_windows/basetyps.h ../../../include_windows/tchar.h \
+  /usr/include/wx-2.8/wx/wxprec.h /usr/include/wx-2.8/wx/defs.h \
+  /usr/include/wx-2.8/wx/platform.h \
+- /usr/lib/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
++ /usr/lib/$(shell dpkg-architecture -qDEB_HOST_MULTIARCH)/wx/include/gtk2-unicode-release-2.8/wx/setup.h \
+  /usr/include/wx-2.8/wx/chkconf.h /usr/include/wx-2.8/wx/features.h \
+  /usr/include/wx-2.8/wx/version.h /usr/include/wx-2.8/wx/cpp.h \
+  /usr/include/wx-2.8/wx/dlimpexp.h /usr/include/wx-2.8/wx/debug.h \

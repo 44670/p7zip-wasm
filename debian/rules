@@ -17,7 +17,7 @@ build-stamp:
 	QUILT_PATCHES=debian/patches quilt push -a || test $$? = 2
 	cp makefile.machine makefile.machine.bak
 	cp makefile.linux_any_cpu_gcc_4.X makefile.machine
-	$(MAKE) all4
+	$(MAKE) all3
 	cp makefile.machine.bak makefile.machine
 
 	touch build-stamp

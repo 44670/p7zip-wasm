@@ -8,6 +8,8 @@ p7zip (9.20.1~dfsg.1-5~) UNRELEASED; urgency=medium
   * Add 03-include-linux-makefile.patch to have makefile.machine include
     makefile.linux_any_cpu_gcc_4.X  instead of playing with the makefiles
     in debian/rules.
+  * Add 05-hardening-flags.patch to support $(CPPFLAGS) and not to override
+    $(CXXFLAGS) and $(CFLAGS). This enables hardening builds (closes: #682167).
 
  -- Robert Luberda <robert@debian.org>  Fri, 22 Jan 2016 10:59:45 +0100
 

@@ -2,4 +2,5 @@
 02-man.patch
 03-include-linux-makefile.patch
 04-no-strip-by-default.patch
+05-hardening-flags.patch
 CVE-2015-1038.patch

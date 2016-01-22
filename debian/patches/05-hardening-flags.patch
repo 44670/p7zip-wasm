@@ -1,0 +1,31 @@
+From: Robert Luberda <robert@debian.org>
+Date: Fri, 22 Jan 2016 00:53:09 +0100
+Subject: 05 hardening flags
+
+Add support for $(CPPFLAGS) and do not override $(CXXFLAGS)
+and $(CFLAGS)
+
+Bug-Debian: https://bugs.debian.org/#682167
+---
+ makefile.glb | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/makefile.glb b/makefile.glb
+index 30bd8a1..563748c 100644
+--- a/makefile.glb
++++ b/makefile.glb
+@@ -1,12 +1,12 @@
+ 
+ RM=rm -f
+-CFLAGS=-c -I. \
++CFLAGS+=$(CPPFLAGS) -c -I. \
+ -I../../../../C \
+ -I../../../myWindows \
+ -I../../../include_windows \
+ -I../../..
+ 
+-CXXFLAGS=-c -I. \
++CXXFLAGS+=$(CPPFLAGS) -c -I. \
+ -I../../../myWindows \
+ -I../../../ \
+ -I../../../include_windows

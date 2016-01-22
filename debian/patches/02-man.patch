@@ -1,7 +1,18 @@
-Index: p7zip-9.20.1~dfsg.1/man1/7z.1
-===================================================================
---- p7zip-9.20.1~dfsg.1.orig/man1/7z.1	2011-08-03 12:39:44.000000000 +0200
-+++ p7zip-9.20.1~dfsg.1/man1/7z.1	2011-08-03 12:39:51.000000000 +0200
+From: =?utf-8?q?Mohammed_Adn=C3=A8_Trojette?= <adn+deb@diwi.org>
+Date: Sun, 4 Jun 2006 10:43:06 +0200
+Subject: 02 man
+
+Man pages fixes.
+---
+ man1/7z.1  |  6 +++---
+ man1/7za.1 |  8 ++++----
+ man1/7zr.1 | 12 ++++++------
+ 3 files changed, 13 insertions(+), 13 deletions(-)
+
+diff --git a/man1/7z.1 b/man1/7z.1
+index cdb3c7c..1abc8d2 100644
+--- a/man1/7z.1
++++ b/man1/7z.1
 @@ -10,7 +10,7 @@
  .BR <ARGUMENTS>...
  .PP
@@ -11,7 +22,7 @@ Index: p7zip-9.20.1~dfsg.1/man1/7z.1
  .TP
  7z uses plugins to handle archives.
  .PP
-@@ -55,7 +55,7 @@
+@@ -55,7 +55,7 @@ Include filenames
  don't store symlinks; store the files/directories they point to (CAUTION : the scanning stage can never end because of recursive symlinks like 'ln \-s .. ldir')
  .TP
  .B \-m{Parameters}
@@ -20,7 +31,7 @@ Index: p7zip-9.20.1~dfsg.1/man1/7z.1
  .TP
  .B \-mhe=on|off
  7z format only : enables or disables archive header encryption (Default : off)
-@@ -168,7 +168,7 @@
+@@ -168,7 +168,7 @@ add all files from directory "a_directory" to the archive "archive.7z" (with dat
  7za(1), 7zr(1), bzip2(1), gzip(1), zip(1)
  .PP
  .SH "HTML Documentation"
@@ -29,10 +40,10 @@ Index: p7zip-9.20.1~dfsg.1/man1/7z.1
  .SH AUTHOR
  .TP
  Written for Debian by Mohammed Adnene Trojette.
-Index: p7zip-9.20.1~dfsg.1/man1/7za.1
-===================================================================
---- p7zip-9.20.1~dfsg.1.orig/man1/7za.1	2011-08-03 12:39:45.000000000 +0200
-+++ p7zip-9.20.1~dfsg.1/man1/7za.1	2011-08-03 12:40:25.000000000 +0200
+diff --git a/man1/7za.1 b/man1/7za.1
+index 15f0fe4..4edf9ca 100644
+--- a/man1/7za.1
++++ b/man1/7za.1
 @@ -10,9 +10,9 @@
  .BR <ARGUMENTS>...
  .PP
@@ -45,7 +56,7 @@ Index: p7zip-9.20.1~dfsg.1/man1/7za.1
  .PP
  .SH FUNCTION LETTERS
  .TP
-@@ -55,7 +55,7 @@
+@@ -55,7 +55,7 @@ Include filenames
  don't store symlinks; store the files/directories they point to (CAUTION : the scanning stage can never end because of recursive symlinks like 'ln \-s .. ldir')
  .TP
  .B \-m{Parameters}
@@ -54,7 +65,7 @@ Index: p7zip-9.20.1~dfsg.1/man1/7za.1
  .TP
  .B \-mhe=on|off
  7z format only : enables or disables archive header encryption (Default : off)
-@@ -168,7 +168,7 @@
+@@ -168,7 +168,7 @@ add all files from directory "a_directory" to the archive "archive.7z" (with dat
  7z(1), 7zr(1), bzip2(1), gzip(1), zip(1)
  .PP
  .SH "HTML Documentation"
@@ -63,10 +74,10 @@ Index: p7zip-9.20.1~dfsg.1/man1/7za.1
  .SH AUTHOR
  .TP
  Written for Debian by Mohammed Adnene Trojette.
-Index: p7zip-9.20.1~dfsg.1/man1/7zr.1
-===================================================================
---- p7zip-9.20.1~dfsg.1.orig/man1/7zr.1	2011-08-03 12:39:44.000000000 +0200
-+++ p7zip-9.20.1~dfsg.1/man1/7zr.1	2011-08-03 12:40:39.000000000 +0200
+diff --git a/man1/7zr.1 b/man1/7zr.1
+index f81d61c..0e55743 100644
+--- a/man1/7zr.1
++++ b/man1/7zr.1
 @@ -10,9 +10,9 @@
  .BR <ARGUMENTS>...
  .PP
@@ -79,7 +90,7 @@ Index: p7zip-9.20.1~dfsg.1/man1/7zr.1
  .PP
  .SH FUNCTION LETTERS
  .TP
-@@ -55,7 +55,7 @@
+@@ -55,7 +55,7 @@ Include filenames
  don't store symlinks; store the files/directories they point to (CAUTION : the scanning stage can never end because of recursive symlinks like 'ln \-s .. ldir')
  .TP
  .B \-m{Parameters}
@@ -88,7 +99,7 @@ Index: p7zip-9.20.1~dfsg.1/man1/7zr.1
  .TP
  .B \-mhe=on|off
  7z format only : enables or disables archive header encryption (Default : off)
-@@ -117,8 +117,8 @@
+@@ -117,8 +117,8 @@ DO NOT USE the 7-zip format for backup purpose on Linux/Unix because :
  
  .LP
  On Linux/Unix, in order to backup directories you must use tar :
@@ -99,7 +110,7 @@ Index: p7zip-9.20.1~dfsg.1/man1/7zr.1
  
  If you want to send files and directories (not the owner of file)
  to others Unix/MacOS/Windows users, you can use the 7-zip format.
-@@ -165,7 +165,7 @@
+@@ -165,7 +165,7 @@ add all files from directory "a_directory" to the archive "archive.7z" (with dat
  7z(1), 7za(1), bzip2(1), gzip(1), zip(1)
  .PP
  .SH "HTML Documentation"

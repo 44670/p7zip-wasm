@@ -3,8 +3,10 @@ p7zip (9.20.1~dfsg.1-5~) UNRELEASED; urgency=medium
   * Adopting package (closes:  #812125).
   * Switch to the `3.0 (quilt)' source format.
   * Bump debhelper compatibility level to v9 and use minimised debian/rules.
+  * Refresh patches with gbp pq import/export. Removed 03_respect-umask.diff
+    as it was never applied.
 
- -- Robert Luberda <robert@debian.org>  Fri, 22 Jan 2016 09:54:07 +0100
+ -- Robert Luberda <robert@debian.org>  Fri, 22 Jan 2016 10:59:45 +0100
 
 p7zip (9.20.1~dfsg.1-4.2) unstable; urgency=medium
 

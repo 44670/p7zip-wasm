@@ -1,4 +1,4 @@
-04_no_strip_by_default.diff
-01_makefile.patch
-02_man.patch
+01-makefile.patch
+02-man.patch
+04-no-strip-by-default.patch
 CVE-2015-1038.patch

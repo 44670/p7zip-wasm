@@ -2,6 +2,7 @@ p7zip (9.20.1~dfsg.1-5~) UNRELEASED; urgency=medium
 
   * Adopting package (closes:  #812125).
   * Switch to the `3.0 (quilt)' source format.
+  * Bump debhelper compatibility level to v9 and use minimised debian/rules.
 
  -- Robert Luberda <robert@debian.org>  Fri, 22 Jan 2016 09:54:07 +0100
 

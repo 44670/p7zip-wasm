@@ -1,72 +1,42 @@
 #!/usr/bin/make -f
-# -*- makefile -*-
-# Sample debian/rules that uses debhelper.
-# GNU copyright 1997 to 1999 by Joey Hess.
 
-# Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
+DH_AUTO_OPTIONS := -v -Smakefile --parallel
+stampfile       := debian/build-stamp
 
-build: build-arch build-indep
-build-arch: build-stamp
-build-indep: build-stamp
+include /usr/share/dpkg/architecture.mk
 
-build-stamp:
-	dh_testdir
+ifneq ($(DEB_HOST_GNU_TYPE),$(DEB_BUILD_GNU_TYPE))
+  CC  := $(DEB_HOST_GNU_TYPE)-gcc
+  CXX := $(DEB_HOST_GNU_TYPE)-g++
+else
+  CC  := gcc
+  CXX := g++
+endif
 
-	# Add here commands to compile the package.
-	cp makefile.machine makefile.machine.bak
-	cp makefile.linux_any_cpu_gcc_4.X makefile.machine
-	$(MAKE) all3
-	cp makefile.machine.bak makefile.machine
+%:
+	dh ${@}
 
-	touch build-stamp
+override_dh_auto_clean:
+	dh_auto_clean $(DH_AUTO_OPTIONS)
+	rm -rf bin/ $(stampfile)
 
-clean:
-	dh_testdir
-	dh_testroot
-	rm -f build-stamp
+override_dh_auto_build: $(stampfile)
 
-	# Add here commands to clean up after the build process.
-	[ ! -f makefile ] || $(MAKE) clean
+$(stampfile):
+	mv makefile.machine makefile.machine.bak
+	ln makefile.linux_any_cpu_gcc_4.X makefile.machine
+	dh_auto_build $(DH_AUTO_OPTIONS) -- all3
+	mv makefile.machine.bak makefile.machine
+	touch "$@"
 
-	rm -rf bin/
-	dh_clean 
+override_dh_auto_install:
 
-install: build
-	dh_testdir
-	dh_testroot
-	dh_clean
-	dh_installdirs
+override_dh_installdocs:
+	dh_installdocs -Xcopying.txt -XLicense.txt
 
-# Build architecture-independent files here.
-binary-indep: build install
-# We have nothing to do by default.
+override_dh_installchangelogs:
+	dh_installchangelogs -k ChangeLog
 
-# Build architecture-dependent files here.
-binary-arch: build install
-	dh_testdir
-	dh_testroot
-	dh_installchangelogs
-	dh_installdocs
-	rm -f debian/p7zip-full/usr/share/doc/p7zip-full/DOCS/copying.txt
-	rm -f debian/p7zip/usr/share/doc/p7zip/DOCS/copying.txt
-	rm -f debian/p7zip-full/usr/share/doc/p7zip-full/DOCS/License.txt
-	rm -f debian/p7zip/usr/share/doc/p7zip/DOCS/License.txt
-	dh_install
+override_dh_installman:
 	dh_installman -pp7zip-full man1/7z.1 man1/7za.1
 	dh_installman -pp7zip man1/7zr.1 debian/p7zip.1
-	dh_strip
-	dh_compress
-	dh_link -pp7zip-full usr/share/doc/p7zip-full/ChangeLog.gz \
-                             usr/share/doc/p7zip-full/changelog.gz
-	dh_link -pp7zip usr/share/doc/p7zip/ChangeLog.gz \
-                        usr/share/doc/p7zip/changelog.gz
-	dh_fixperms
-	dh_installdeb
-	dh_shlibdeps
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
-
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install

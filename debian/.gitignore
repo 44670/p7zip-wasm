@@ -1,0 +1,6 @@
+*.log
+*.substvars
+*-stamp
+files
+p7zip
+p7zip-full

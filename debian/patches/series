@@ -1,4 +1,5 @@
 01-makefile.patch
 02-man.patch
+03-include-linux-makefile.patch
 04-no-strip-by-default.patch
 CVE-2015-1038.patch

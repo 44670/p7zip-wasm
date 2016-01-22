@@ -5,6 +5,9 @@ p7zip (9.20.1~dfsg.1-5~) UNRELEASED; urgency=medium
   * Bump debhelper compatibility level to v9 and use minimised debian/rules.
   * Refresh patches with gbp pq import/export. Removed 03_respect-umask.diff
     as it was never applied.
+  * Add 03-include-linux-makefile.patch to have makefile.machine include
+    makefile.linux_any_cpu_gcc_4.X  instead of playing with the makefiles
+    in debian/rules.
 
  -- Robert Luberda <robert@debian.org>  Fri, 22 Jan 2016 10:59:45 +0100
 

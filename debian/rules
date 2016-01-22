@@ -23,10 +23,7 @@ override_dh_auto_clean:
 override_dh_auto_build: $(stampfile)
 
 $(stampfile):
-	mv makefile.machine makefile.machine.bak
-	ln makefile.linux_any_cpu_gcc_4.X makefile.machine
 	dh_auto_build $(DH_AUTO_OPTIONS) -- all3
-	mv makefile.machine.bak makefile.machine
 	touch "$@"
 
 override_dh_auto_install:

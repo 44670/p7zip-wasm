@@ -1,0 +1,31 @@
+From: Robert Luberda <robert@debian.org>
+Date: Fri, 22 Jan 2016 11:16:14 +0100
+Subject: 03 include linux makefile
+
+Include makefile.linux_any_cpu_gcc_4.X from makefile.machine
+---
+ makefile.machine | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/makefile.machine b/makefile.machine
+index 93e0af9..08fcea3 100644
+--- a/makefile.machine
++++ b/makefile.machine
+@@ -1,6 +1,12 @@
+ #
+ # makefile for Linux (x86, PPC, alpha ...)
+ #
++ifeq (0,0)
++
++  # For debian always include makefile.linux_any_cpu_gcc_4.X
++  include $(dir $(lastword $(MAKEFILE_LIST)))/makefile.linux_any_cpu_gcc_4.X
++
++else
+ 
+ OPTFLAGS=-O
+ 
+@@ -22,3 +28,4 @@ LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
+ 
+ OBJ_CRC32=$(OBJ_CRC32_C)
+ 
++endif

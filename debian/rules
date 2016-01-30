@@ -19,6 +19,9 @@ endif
 	dh ${@}
 
 override_dh_auto_clean:
+	# Make sure patches are applied otherwise `make clean' fails
+	# on trying to clean the removed Rar directory (see #769520).
+	dpkg-source --before-build $(CURDIR)
 	dh_auto_clean $(DH_AUTO_OPTIONS)
 	rm -rf bin/ $(stampfile)
 

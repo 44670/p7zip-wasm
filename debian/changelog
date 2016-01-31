@@ -1,4 +1,4 @@
-p7zip (9.20.1~dfsg.1-5~) UNRELEASED; urgency=medium
+p7zip (9.20.1~dfsg.1-5) unstable; urgency=medium
 
   * Adopting package (closes:  #812125).
   * Switch to the `3.0 (quilt)' source format.
@@ -10,8 +10,12 @@ p7zip (9.20.1~dfsg.1-5~) UNRELEASED; urgency=medium
     in debian/rules.
   * Add 05-hardening-flags.patch to support $(CPPFLAGS) and not to override
     $(CXXFLAGS) and $(CFLAGS). This enables hardening builds (closes: #682167).
+  * debian/control:
+    + remove conflicts & replaces added in 4.39.dfsg.1-1 (10 years ago);
+    + add Vcs-Git and Vcs-Browser fields;
+    + bump Standards-Version to 3.9.6.
 
- -- Robert Luberda <robert@debian.org>  Fri, 22 Jan 2016 10:59:45 +0100
+ -- Robert Luberda <robert@debian.org>  Sun, 31 Jan 2016 12:20:37 +0100
 
 p7zip (9.20.1~dfsg.1-4.2) unstable; urgency=medium
 

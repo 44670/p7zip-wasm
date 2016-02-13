@@ -2,7 +2,7 @@ Source: p7zip
 Section: utils
 Priority: optional
 Maintainer: Robert Luberda <robert@debian.org>
-Build-Depends: debhelper (>= 9)
+Build-Depends: debhelper (>= 9), yasm [amd64], yasm [i386]
 Standards-Version: 3.9.6
 Homepage: http://p7zip.sourceforge.net/
 Vcs-Git: git://anonscm.debian.org/users/robert/p7zip.git

@@ -11,6 +11,10 @@ p7zip (15.09+dfsg-1~) UNRELEASED; urgency=medium
     + replace CVE-2015-1038.patch with Fedora's version taken from their
       p7zip-15.09-10.fc24.src.rpm package;
     + add 06-s390.patch from Fedora to fix build on s390.
+  * Update 03-include-linux-makefile.patch to include arch-specific makefile
+    on amd64 (closes: #713964) and i386 archs. Both makefiles have compilation
+    of assembler sources enabled, so add build dependency on yasm on those
+    architectures.
 
  -- Robert Luberda <robert@debian.org>  Sat, 13 Feb 2016 19:22:33 +0100
 

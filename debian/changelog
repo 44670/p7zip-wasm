@@ -1,3 +1,9 @@
+p7zip (15.09+dfsg-1~) UNRELEASED; urgency=medium
+
+  * New upstream version (closes: #778289, LP: #1414569).
+
+ -- Robert Luberda <robert@debian.org>  Sat, 13 Feb 2016 19:22:33 +0100
+
 p7zip (9.20.1~dfsg.1-5) unstable; urgency=medium
 
   * Adopting package (closes:  #812125).

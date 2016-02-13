@@ -1,6 +1,16 @@
 p7zip (15.09+dfsg-1~) UNRELEASED; urgency=medium
 
   * New upstream version (closes: #778289, LP: #1414569).
+  * Update patches for the new version:
+    + remove most of 01-makefile.patch, especially remove the parts related
+      to multiarch libwgtk2.8-dev, which is no longer used by this package;
+    + fix grammar error (closes: #706005) and update location of html
+      documentation in 02-man.patch; do the same for debian/p7zip*.docs
+    + drop 04-no-strip-by-default.patch; patch empty OPTFLAGS in debian/rules
+      instead;
+    + replace CVE-2015-1038.patch with Fedora's version taken from their
+      p7zip-15.09-10.fc24.src.rpm package;
+    + add 06-s390.patch from Fedora to fix build on s390.
 
  -- Robert Luberda <robert@debian.org>  Sat, 13 Feb 2016 19:22:33 +0100
 
@@ -346,7 +356,7 @@ p7zip (4.29.dfsg-1) unstable; urgency=low
 p7zip (4.27.dfsg-1) unstable; urgency=low
 
   * New upstream release (Closes: #330828)
-     - "echo foo | 7z a dummy -si -so" no more segfaults 
+     - "echo foo | 7z a dummy -si -so" no more segfaults
        but causes an error (Closes: #324449)
   * In -w[path], path is optionnal.
      - corrected manual pages (Closes: #325736)
@@ -360,8 +370,8 @@ p7zip (4.20-2) unstable; urgency=low
 
   * Bump Standards-Version to 3.6.2
   * Recompile against new gcc and g++ versions
-  * Included patch for GNU/kFreeBSD provided by 
-      Robert Millan <rmh@aybabtu.com> [applied by asac@debian.org] 
+  * Included patch for GNU/kFreeBSD provided by
+      Robert Millan <rmh@aybabtu.com> [applied by asac@debian.org]
       (Closes: 322195)
 
  -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Thu, 11 Aug 2005 01:45:00 +0200

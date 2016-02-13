@@ -11,21 +11,23 @@ Bug-Debian: https://bugs.debian.org/#682167
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/makefile.glb b/makefile.glb
-index 30bd8a1..563748c 100644
+index 25daec8..b133b78 100644
 --- a/makefile.glb
 +++ b/makefile.glb
-@@ -1,12 +1,12 @@
+@@ -1,14 +1,14 @@
  
  RM=rm -f
+ 
 -CFLAGS=-c -I. \
 +CFLAGS+=$(CPPFLAGS) -c -I. \
  -I../../../../C \
  -I../../../myWindows \
  -I../../../include_windows \
- -I../../..
+ -I../../.. \
+ $(ALLFLAGS) $(ALLFLAGS_C)
  
 -CXXFLAGS=-c -I. \
 +CXXFLAGS+=$(CPPFLAGS) -c -I. \
+ -I../../../../C \
  -I../../../myWindows \
  -I../../../ \
- -I../../../include_windows

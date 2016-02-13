@@ -28,7 +28,7 @@ override_dh_auto_clean:
 override_dh_auto_build: $(stampfile)
 
 $(stampfile):
-	dh_auto_build $(DH_AUTO_OPTIONS) -- all3
+	dh_auto_build $(DH_AUTO_OPTIONS) -- CC=$(CC) CXX=$(CXX) OPTFLAGS= all3
 	touch "$@"
 
 override_dh_auto_install:

@@ -8,7 +8,7 @@ Include makefile.linux_any_cpu_gcc_4.X from makefile.machine
  1 file changed, 7 insertions(+)
 
 diff --git a/makefile.machine b/makefile.machine
-index 93e0af9..08fcea3 100644
+index 9e34c34..88af27d 100644
 --- a/makefile.machine
 +++ b/makefile.machine
 @@ -1,6 +1,12 @@
@@ -22,10 +22,10 @@ index 93e0af9..08fcea3 100644
 +
 +else
  
- OPTFLAGS=-O
+ OPTFLAGS=-O -s
  
-@@ -22,3 +28,4 @@ LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
- 
+@@ -21,3 +27,4 @@ LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
  OBJ_CRC32=$(OBJ_CRC32_C)
+ OBJ_AES=
  
 +endif

@@ -10,7 +10,7 @@ Man pages fixes.
  3 files changed, 13 insertions(+), 13 deletions(-)
 
 diff --git a/man1/7z.1 b/man1/7z.1
-index cdb3c7c..1abc8d2 100644
+index cdb3c7c..5a148d5 100644
 --- a/man1/7z.1
 +++ b/man1/7z.1
 @@ -10,7 +10,7 @@
@@ -27,7 +27,7 @@ index cdb3c7c..1abc8d2 100644
  .TP
  .B \-m{Parameters}
 -Set Compression Method (see {DEST_SHARE_DOC}/MANUAL/switches/method.htm for a list of methods)
-+Set Compression Method (see /usr/share/doc/p7zip-full/DOCS/MANUAL/switches/method.htm for a list of methods)
++Set Compression Method (see /usr/share/doc/p7zip-full/DOC/MANUAL/switches/method.htm for a list of methods)
  .TP
  .B \-mhe=on|off
  7z format only : enables or disables archive header encryption (Default : off)
@@ -36,12 +36,12 @@ index cdb3c7c..1abc8d2 100644
  .PP
  .SH "HTML Documentation"
 -{DEST_SHARE_DOC}/MANUAL/index.htm
-+/usr/share/doc/p7zip-full/DOCS/MANUAL/index.htm
++/usr/share/doc/p7zip-full/DOC/MANUAL/index.htm
  .SH AUTHOR
  .TP
  Written for Debian by Mohammed Adnene Trojette.
 diff --git a/man1/7za.1 b/man1/7za.1
-index 15f0fe4..4edf9ca 100644
+index 15f0fe4..570efd0 100644
 --- a/man1/7za.1
 +++ b/man1/7za.1
 @@ -10,9 +10,9 @@
@@ -52,7 +52,7 @@ index 15f0fe4..4edf9ca 100644
 +7-Zip is a file archiver with the highest compression ratio. The program supports 7z (that implements LZMA compression algorithm), LZMA2, XZ, ZIP, Zip64, CAB, RAR (if the non-free p7zip-rar package is installed), ARJ, GZIP, BZIP2, TAR, CPIO, RPM, ISO, most filesystem images and DEB formats. Compression ratio in the new 7z format is 30-50% better than ratio in ZIP format.
  .TP
 -7za is a stand-alone executable. 7za handles less archive formats than 7z, but does not need any others.
-+7za is a stand-alone executable. 7za handles less archive formats than 7z.
++7za is a stand-alone executable. 7za handles fewer archive formats than 7z.
  .PP
  .SH FUNCTION LETTERS
  .TP
@@ -61,7 +61,7 @@ index 15f0fe4..4edf9ca 100644
  .TP
  .B \-m{Parameters}
 -Set Compression Method (see {DEST_SHARE_DOC}/MANUAL/switches/method.htm for a list of methods)
-+Set Compression Method (see /usr/share/doc/p7zip-full/DOCS/MANUAL/switches/method.htm for a list of methods)
++Set Compression Method (see /usr/share/doc/p7zip-full/DOC/MANUAL/switches/method.htm for a list of methods)
  .TP
  .B \-mhe=on|off
  7z format only : enables or disables archive header encryption (Default : off)
@@ -70,12 +70,12 @@ index 15f0fe4..4edf9ca 100644
  .PP
  .SH "HTML Documentation"
 -{DEST_SHARE_DOC}/MANUAL/index.htm
-+/usr/share/doc/p7zip-full/DOCS/MANUAL/index.htm
++/usr/share/doc/p7zip-full/DOC/MANUAL/index.htm
  .SH AUTHOR
  .TP
  Written for Debian by Mohammed Adnene Trojette.
 diff --git a/man1/7zr.1 b/man1/7zr.1
-index f81d61c..0e55743 100644
+index f81d61c..19488e1 100644
 --- a/man1/7zr.1
 +++ b/man1/7zr.1
 @@ -10,9 +10,9 @@
@@ -86,7 +86,7 @@ index f81d61c..0e55743 100644
 +7-Zip is a file archiver with the highest compression ratio. The program supports 7z (that implements LZMA compression algorithm), LZMA2, XZ, ZIP, Zip64, CAB, RAR (if the non-free p7zip-rar package is installed), ARJ, GZIP, BZIP2, TAR, CPIO, RPM, ISO, most filesystem images and DEB formats. Compression ratio in the new 7z format is 30-50% better than ratio in ZIP format.
  .TP
 -7zr is a stand-alone executable. 7zr handles less archive formats than 7z, but does not need any others. 7zr is a "light-version" of 7za that only handles 7z archives.
-+7zr is a stand-alone executable. 7zr handles less archive formats than 7z. 7zr is a "light-version" of 7za that only handles 7z archives.
++7zr is a stand-alone executable. 7zr handles fewer archive formats than 7z. 7zr is a "light-version" of 7za that only handles 7z archives.
  .PP
  .SH FUNCTION LETTERS
  .TP
@@ -95,7 +95,7 @@ index f81d61c..0e55743 100644
  .TP
  .B \-m{Parameters}
 -Set Compression Method (see {DEST_SHARE_DOC}/MANUAL/switches/method.htm for a list of methods)
-+Set Compression Method (see /usr/share/doc/p7zip/DOCS/MANUAL/switches/method.htm for a list of methods)
++Set Compression Method (see /usr/share/doc/p7zip/DOC/MANUAL/switches/method.htm for a list of methods)
  .TP
  .B \-mhe=on|off
  7z format only : enables or disables archive header encryption (Default : off)
@@ -115,7 +115,7 @@ index f81d61c..0e55743 100644
  .PP
  .SH "HTML Documentation"
 -{DEST_SHARE_DOC}/MANUAL/index.htm
-+/usr/share/doc/p7zip/DOCS/MANUAL/index.htm
++/usr/share/doc/p7zip/DOC/MANUAL/index.htm
  .SH AUTHOR
  .TP
  Written for Debian by Mohammed Adnene Trojette.

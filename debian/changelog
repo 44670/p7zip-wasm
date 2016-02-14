@@ -1,4 +1,4 @@
-p7zip (15.09+dfsg-1~) UNRELEASED; urgency=medium
+p7zip (15.09+dfsg-1) experimental; urgency=medium
 
   * New upstream version (closes: #778289, LP: #1414569).
   * Update patches for the new version:
@@ -15,8 +15,12 @@ p7zip (15.09+dfsg-1~) UNRELEASED; urgency=medium
     on amd64 (closes: #713964) and i386 archs. Both makefiles have compilation
     of assembler sources enabled, so add build dependency on yasm on those
     architectures.
+  * Use DEP-5 format for debian/copyright, and add Files-Excluded header
+    into it.
+  * Update debian/watch to allow uscan to repack upstream tarballs.
+  * Provide README.source with reasons of repacking (closes: #705595).
 
- -- Robert Luberda <robert@debian.org>  Sat, 13 Feb 2016 19:22:33 +0100
+ -- Robert Luberda <robert@debian.org>  Sun, 14 Feb 2016 01:11:20 +0100
 
 p7zip (9.20.1~dfsg.1-5) unstable; urgency=medium
 

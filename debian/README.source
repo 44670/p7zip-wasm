@@ -1,0 +1,10 @@
+The upstream tarball is repacked in order to remove non-free rar
+code (and a few pre-compiled binary files lintian complains about).
+
+List of removed files can be found in the `Files-Excluded' header
+of debian/copyright.
+
+The uscan(1) command can be used to download and repack new versions
+of upstream tarballs.
+
+ -- Robert Luberda <robert@debian.org>  Sun, 14 Feb 2016 00:35:16 +0100

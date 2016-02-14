@@ -1,65 +1,38 @@
-This package was debianized by Mohammed Adnène Trojette
-<adn+deb@diwi.org> on Sun, 12 Dec 2004 14:28:27 +0200.
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: Igor Pavlov
+Source: https://sourceforge.net/projects/p7zip/
+Files-Excluded: CPP/7zip/Compress/Rar*
+                DOC/unRarLicense.txt
+                C/*.o
+                Utils/CPUTest/PipeLen/MemLat
 
-The current Debian maintainer is Robert Luberda <robert@debian.org>.
+Files: *
+Copyright: 1999-2015, Igor Pavlov
+License: LGPL-2.1+
 
-It was downloaded from <http://p7zip.sourceforge.net/>.
+Files: contrib/*
+Copyright: 2004, Sergiy Niskorodov (sgh at mail dot zp dot ua)
+License: GPL-2+
 
-Files in CPP/7zip/Crypto/AES files are released the termes of the GNU
-LGPL and AES code license (a BSD-like license, see below).
+Files: debian/*
+Copyright: 2016, Robert Luberda <robert@debian.org>
+           2004-2012, Mohammed Adnè Trojette <adn+deb@diwi.org>
+License: GPL-2+
 
-7zip is Copyright (C) 1999-2006 Igor Pavlov.
-p7zip is ported from 7zip by my space <myspace@users.sourceforge.net>
+License: GPL-2+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; version 2 dated June, 1991, or (at
+ your option) any later version.
+ .
+ On Debian systems, the complete text of version 2 of the GNU General
+ Public License can be found in '/usr/share/common-licenses/GPL-2'.
 
-LGPL
-----
-
- This program is free software; you can redistribute it and/or
- modify it under the terms of the GNU Lesser General Public
- License as published by the Free Software Foundation; either
- version 2.1 of the License, or (at your option) any later version.
-
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
- Lesser General Public License for more details.
-
- You should have received a copy of the GNU Lesser General Public
- License along with this program; if not, write to the Free Software
- Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-
-On Debian systems, the complete text of the GNU Lesser General Public
-License, can be found in /usr/share/common-licenses/LGPL.
-
-AES License
------------
-
- Copyright (c) 2001, Dr Brian Gladman
-
- LICENSE TERMS
-
- The free distribution and use of this software in both source and binary 
- form is allowed (with or without changes) provided that:
-
-   1. distributions of this source code include the above copyright 
-      notice, this list of conditions and the following disclaimer;
-
-   2. distributions in binary form include the above copyright
-      notice, this list of conditions and the following disclaimer
-      in the documentation and/or other associated materials;
-
-   3. the copyright holder's name is not used to endorse products 
-      built using this software without specific written permission. 
-
- DISCLAIMER
-
- This software is provided 'as is' with no explicit or implied warranties
- in respect of its properties, including, but not limited to, correctness 
- and fitness for purpose.
-
-Packaging
----------
-
-The current Debian packaging is (C) 2004-2006, Mohammed Adnène
-Trojette <adn+deb@diwi.org> and is licensed under the GPL, see
-/usr/share/common-licenses/GPL.
+License: LGPL-2.1+
+ This program is free software; you can redistribute it and/or modify it
+ under the terms of the GNU Lesser General Public License as published by the
+ Free Software Foundation; version 2.1 of the License, or (at
+ your option) any later version.
+ .
+ On Debian systems, the complete text of version 2.1 of the GNU Lesser
+ General Public License can be found in `/usr/share/common-licenses/LGPL-2.1'.

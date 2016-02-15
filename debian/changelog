@@ -1,4 +1,14 @@
-p7zip (15.09+dfsg-1) experimental; urgency=medium
+p7zip (15.09+dfsg-2) experimental; urgency=low
+
+  * Hopefully fix FTBFS on various architectures:
+    + add 07-endian-detection.patch to detect byte ordering via macros
+      defined in <endian.h>.
+    + add 08-mips.patch to rename a variable called `mips', as it clashed
+      with a name of preprocessor macro defined on mips and mipsel.
+
+ -- Robert Luberda <robert@debian.org>  Mon, 15 Feb 2016 22:53:55 +0100
+
+p7zip (15.09+dfsg-1) experimental; urgency=low
 
   * New upstream version (closes: #778289, LP: #1414569).
   * Update patches for the new version:

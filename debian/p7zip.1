@@ -5,11 +5,13 @@ p7zip \- Wrapper on 7zr, a 7-zip file archiver with high compression ratio
 .B p7zip
 .BR [-d]
 .BR [-h|--help]
-.BR [file]
+.BR [--]
+.BR [file ... ]
     \-h print this help
     \-d decompress file
+    \-- treats  all  subsequent  arguments  as  file names, even if they start with a dash
 .SH DESCRIPTION
-7-Zip is a file archiver with the highest compression ratio. The program supports 7z (that implements LZMA compression algorithm), LZMA2, XZ, ZIP, Zip64, CAB, RAR (if the non-free p7zip-rar package is installed), ARJ, GZIP, BZIP2, TAR, CPIO, RPM, ISO, most filesystem images and DEB formats. Compression ratio in the new 7z format is 30-50% better than ratio in ZIP format.
+7-Zip is a file archiver with the highest compression ratio. The program supports 7z (that implements LZMA compression algorithm), ZIP, CAB, ARJ, GZIP, BZIP2, TAR, CPIO, RPM and DEB formats. Compression ratio in the new 7z format is 30-50% better than ratio in ZIP format.
 .TP
 p7zip is a gzip-like CLI wrapper script for 7zip
 .PP
@@ -20,6 +22,9 @@ Decompress file
 .TP
 .B \-h, \--help
 Print usage
+.TP
+.B \--
+Treats  all  subsequent  arguments  as  file names, even if they start with a dash
 .SH "SEE ALSO"
 7z(1), 7za(1), 7zr(1), bzip2(1), gzip(1), zip(1)
 .PP

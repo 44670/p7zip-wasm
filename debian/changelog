@@ -1,3 +1,17 @@
+p7zip (15.09+dfsg-3~) UNRELEASED; urgency=low
+
+  * Refactor and enhance the p7zip wrapper script:
+    + update the p7zip script to the version from the contrib directory;
+    + make it call either 7za or 7zr command, whichever one is available;
+    + remove `if [ "$?" != 0 ]' statements, as they won't work with `set -e';
+    + use the standard error for reporting;
+    + implement the --stdout, --force, --keep options (closes: #656340,
+      LP: #220646, #259239)
+    + update p7zip(1) man page to shortly describe new options and give more
+      details about the script's behavior.
+
+ -- Robert Luberda <robert@debian.org>  Sat, 05 Mar 2016 23:55:02 +0100
+
 p7zip (15.09+dfsg-2) experimental; urgency=low
 
   * Hopefully fix FTBFS on various architectures:

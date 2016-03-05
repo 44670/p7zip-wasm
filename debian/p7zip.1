@@ -1,33 +1,77 @@
-.TH p7zip 1 "October 31 2004" "Mohammed Adnene Trojette"
+.TH p7zip 1 "March 5th, 2016" "7-Zip"
 .SH NAME
-p7zip \- Wrapper on 7zr, a 7-zip file archiver with high compression ratio
+p7zip \- Wrapper on 7-Zip file archiver with high compression ratio
 .SH SYNOPSIS
 .B p7zip
-.BR [-d]
-.BR [-h|--help]
-.BR [--]
-.BR [file ... ]
-    \-h print this help
-    \-d decompress file
-    \-- treats  all  subsequent  arguments  as  file names, even if they start with a dash
+.RB [ \-c | \-\-stdout | \-\-to\-stdout ]
+.RB [ \-d | \-\-decompress | \-\-uncompress ]
+.RB [ \-f | \-\-force ]
+.RB [ \-h | \-\-help ]
+.RB [ \-k | \-\-keep ]
+.RB [ \-\- ]
+.RI [ "file ..." ]
 .SH DESCRIPTION
-7-Zip is a file archiver with the highest compression ratio. The program supports 7z (that implements LZMA compression algorithm), ZIP, CAB, ARJ, GZIP, BZIP2, TAR, CPIO, RPM and DEB formats. Compression ratio in the new 7z format is 30-50% better than ratio in ZIP format.
-.TP
-p7zip is a gzip-like CLI wrapper script for 7zip
+7-Zip is a file archiver with the highest compression ratio. The program supports 7z (that
+implements LZMA compression algorithm), ZIP, CAB, ARJ, GZIP, BZIP2, TAR, CPIO, RPM and DEB
+formats. Compression ratio in the new 7z format is 30-50% better than ratio in ZIP format.
 .PP
-.SH FUNCTION LETTERS
-.TP
+.B p7zip
+is a gzip-like CLI wrapper script for 7-Zip, and handles only the 7z format (the native
+format of 7-Zip), internally executing either
+.BR 7za (1)
+or
+.BR 7zr (1)
+command.
+.PP
+With no switches passed in the command line, each given
+.I file
+argument is compressed into
+.IR file.7z ,
+and then removed.
+.PP
+With the
 .B \-d
-Decompress file
-.TP
-.B \-h, \--help
-Print usage
-.TP
-.B \--
-Treats  all  subsequent  arguments  as  file names, even if they start with a dash
-.SH "SEE ALSO"
-7z(1), 7za(1), 7zr(1), bzip2(1), gzip(1), zip(1)
+switch each passed
+.I file
+needs to end with the
+.I .7z
+extension and is decompressed. After the
+decompression the original
+.I file
+is removed unless it contained more than one archived file.
 .PP
-.SH AUTHOR
+When used without any
+.I file
+argument,
+.BR p7zip
+reads data from the standard input and compresses (or decompresses in case of
+.BR \-d )
+it into the standard output.
+.SH SWITCHES
 .TP
-Written for Debian by Mohammed Adnene Trojette.
+.BR \-c ", " \-\-stdout ", " \-\-to\-stdout
+Write output on standard output.
+.TP
+.BR \-d ", " \-\-decompress ", " \-\-uncompress
+Decompress file.
+.TP
+.BR \-f ", " \-\-force
+Skip some checks and force compression or decompression.
+.TP
+.BR \-h ", " \--help
+Print usage.
+.TP
+.BR \-k ", " \-\-keep
+Do not delete input file.
+.TP
+.B \-\-
+Treat all subsequent arguments as file names, even if they start with a dash.
+.SH "SEE ALSO"
+.BR 7z (1),
+.BR 7za (1),
+.BR 7zr (1),
+.BR bzip2 (1),
+.BR gzip (1),
+.BR zip (1)
+.SH AUTHOR
+Written for Debian by Mohammed Adnene Trojette. Updated by Robert Luberda.

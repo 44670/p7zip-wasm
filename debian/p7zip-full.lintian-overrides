@@ -1,0 +1,3 @@
+# Synopsys is vendor name, used in
+#  Archive/ElfHandler.cpp:  { 195, "Synopsys ARCompact V2" },
+p7zip-full: spelling-error-in-binary usr/lib/p7zip/7z.so Synopsys Synopsis

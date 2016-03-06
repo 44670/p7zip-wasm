@@ -40,6 +40,7 @@ p7zip (15.09+dfsg-3~) UNRELEASED; urgency=low
   * Acknowledge the 9.20.1~dfsg.1-4.1 NMU (closes: #788734).
   * Close Ubuntu's 'newer version available' report (LP: #1414569).
   * Bump Standards-Version to 3.9.7.
+  * Add lintian override for a spelling typo in a word used as a proper name.
 
  -- Robert Luberda <robert@debian.org>  Sat, 05 Mar 2016 23:55:02 +0100
 

@@ -34,6 +34,7 @@ p7zip (15.09+dfsg-3~) UNRELEASED; urgency=low
     the .exe extension from 7z commands (LP: #181402).
   * No longer install ChangeLog.gz to changelog.gz symlink.
   * Replace duplicated style.css files with symlinks.
+  * Register html documentation in the doc-base system.
 
  -- Robert Luberda <robert@debian.org>  Sat, 05 Mar 2016 23:55:02 +0100
 

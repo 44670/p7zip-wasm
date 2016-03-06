@@ -1,0 +1,17 @@
+Document: p7zip-full
+Title: 7-Zip Manual
+Author: Igor Pavlov
+Abstract: 7-Zip is a file archiver with a high compression ratio format
+ .
+ The program supports 7z (that implements LZMA compression algorithm),
+ LZMA2, XZ, ZIP, Zip64, CAB, RAR (if the non-free  p7zip-rar package
+ is installed), ARJ, GZIP, BZIP2, TAR, CPIO, RPM, ISO, most filesystem
+ images and DEB formats.
+ .
+ Compression ratio in the new 7z format is  30-50% better than ratio
+ in ZIP format.
+Section: File Management
+
+Format: HTML
+Index: /usr/share/doc/p7zip/DOC/MANUAL/start.htm
+Files: /usr/share/doc/p7zip/DOC/MANUAL/*

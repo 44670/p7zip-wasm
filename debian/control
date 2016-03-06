@@ -10,8 +10,9 @@ Vcs-Browser: https://anonscm.debian.org/gitweb/?p=users/robert/p7zip.git
 
 Package: p7zip
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
 Suggests: p7zip-full
+Pre-Depends: ${misc:Pre-Depends}
 Description: 7z file archiver with high compression ratio
  p7zip is the Unix command-line port of 7-Zip, a file archiver that
  archives with high compression ratios.
@@ -30,8 +31,11 @@ Description: 7z file archiver with high compression ratio
 
 Package: p7zip-full
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
+Depends: p7zip (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
 Suggests: p7zip-rar
+Breaks: p7zip (<< 15.09+dfsg-3~)
+Replaces: p7zip (<< 15.09+dfsg-3~)
+Pre-Depends: ${misc:Pre-Depends}
 Description: 7z and 7za file archivers with high compression ratio
  p7zip is the Unix command-line port of 7-Zip, a file archiver that
  archives with high compression ratios.

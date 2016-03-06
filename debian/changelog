@@ -10,6 +10,13 @@ p7zip (15.09+dfsg-3~) UNRELEASED; urgency=low
     + update p7zip(1) man page to shortly describe new options and give more
       details about the script's behavior.
 
+  * Make p7zip-full package depend on p7zip package to have the p7zip command
+    available for the users of p7zip-full (LP: #1156460):
+    + add necessary Depends, Breaks and Replaces;
+    + convert /u/s/d/p7zip-full into a symlink to /u/s/d/p7zip;
+    + install the html documentation into p7zip-full only and update
+      02-man.patch to mention that.
+
  -- Robert Luberda <robert@debian.org>  Sat, 05 Mar 2016 23:55:02 +0100
 
 p7zip (15.09+dfsg-2) experimental; urgency=low

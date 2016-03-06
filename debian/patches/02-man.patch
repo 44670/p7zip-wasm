@@ -10,7 +10,7 @@ Man pages fixes.
  3 files changed, 13 insertions(+), 13 deletions(-)
 
 diff --git a/man1/7z.1 b/man1/7z.1
-index cdb3c7c..5a148d5 100644
+index cdb3c7c..d2b7378 100644
 --- a/man1/7z.1
 +++ b/man1/7z.1
 @@ -10,7 +10,7 @@
@@ -27,7 +27,7 @@ index cdb3c7c..5a148d5 100644
  .TP
  .B \-m{Parameters}
 -Set Compression Method (see {DEST_SHARE_DOC}/MANUAL/switches/method.htm for a list of methods)
-+Set Compression Method (see /usr/share/doc/p7zip-full/DOC/MANUAL/switches/method.htm for a list of methods)
++Set Compression Method (see /usr/share/doc/p7zip-full/DOC/MANUAL/cmdline/switches/method.htm for a list of methods)
  .TP
  .B \-mhe=on|off
  7z format only : enables or disables archive header encryption (Default : off)
@@ -36,12 +36,12 @@ index cdb3c7c..5a148d5 100644
  .PP
  .SH "HTML Documentation"
 -{DEST_SHARE_DOC}/MANUAL/index.htm
-+/usr/share/doc/p7zip-full/DOC/MANUAL/index.htm
++/usr/share/doc/p7zip-full/DOC/MANUAL/start.htm
  .SH AUTHOR
  .TP
  Written for Debian by Mohammed Adnene Trojette.
 diff --git a/man1/7za.1 b/man1/7za.1
-index 15f0fe4..570efd0 100644
+index 15f0fe4..ae5730b 100644
 --- a/man1/7za.1
 +++ b/man1/7za.1
 @@ -10,9 +10,9 @@
@@ -61,7 +61,7 @@ index 15f0fe4..570efd0 100644
  .TP
  .B \-m{Parameters}
 -Set Compression Method (see {DEST_SHARE_DOC}/MANUAL/switches/method.htm for a list of methods)
-+Set Compression Method (see /usr/share/doc/p7zip-full/DOC/MANUAL/switches/method.htm for a list of methods)
++Set Compression Method (see /usr/share/doc/p7zip-full/DOC/MANUAL/cmdline/switches/method.htm for a list of methods)
  .TP
  .B \-mhe=on|off
  7z format only : enables or disables archive header encryption (Default : off)
@@ -70,12 +70,12 @@ index 15f0fe4..570efd0 100644
  .PP
  .SH "HTML Documentation"
 -{DEST_SHARE_DOC}/MANUAL/index.htm
-+/usr/share/doc/p7zip-full/DOC/MANUAL/index.htm
++/usr/share/doc/p7zip-full/DOC/MANUAL/start.htm
  .SH AUTHOR
  .TP
  Written for Debian by Mohammed Adnene Trojette.
 diff --git a/man1/7zr.1 b/man1/7zr.1
-index f81d61c..19488e1 100644
+index f81d61c..fb2dcfd 100644
 --- a/man1/7zr.1
 +++ b/man1/7zr.1
 @@ -10,9 +10,9 @@
@@ -95,7 +95,7 @@ index f81d61c..19488e1 100644
  .TP
  .B \-m{Parameters}
 -Set Compression Method (see {DEST_SHARE_DOC}/MANUAL/switches/method.htm for a list of methods)
-+Set Compression Method (see /usr/share/doc/p7zip/DOC/MANUAL/switches/method.htm for a list of methods)
++Set Compression Method (see /usr/share/doc/p7zip/DOC/MANUAL/cmdline/switches/method.htm from the p7zip-full package for a list of methods)
  .TP
  .B \-mhe=on|off
  7z format only : enables or disables archive header encryption (Default : off)
@@ -115,7 +115,7 @@ index f81d61c..19488e1 100644
  .PP
  .SH "HTML Documentation"
 -{DEST_SHARE_DOC}/MANUAL/index.htm
-+/usr/share/doc/p7zip/DOC/MANUAL/index.htm
++/usr/share/doc/p7zip/DOC/MANUAL/start.htm (avabilable when the p7zip-full package is installed)
  .SH AUTHOR
  .TP
  Written for Debian by Mohammed Adnene Trojette.

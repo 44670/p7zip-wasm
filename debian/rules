@@ -34,11 +34,4 @@ $(stampfile):
 override_dh_auto_install:
 
 override_dh_installdocs:
-	dh_installdocs --link-doc=p7zip -Xcopying.txt -XLicense.txt
-
-override_dh_installchangelogs:
-	dh_installchangelogs -k ChangeLog
-
-override_dh_installman:
-	dh_installman -pp7zip-full man1/7z.1 man1/7za.1
-	dh_installman -pp7zip man1/7zr.1 debian/p7zip.1
+	dh_installdocs --link-doc=p7zip -Xcopying.txt -XLicense.txt -Xlicense.htm -Xfm

@@ -35,6 +35,8 @@ p7zip (15.09+dfsg-3~) UNRELEASED; urgency=low
   * No longer install ChangeLog.gz to changelog.gz symlink.
   * Replace duplicated style.css files with symlinks.
   * Register html documentation in the doc-base system.
+  * Add 11-README-no-instructions.patch to remove build instructions from the
+    README file.
 
  -- Robert Luberda <robert@debian.org>  Sat, 05 Mar 2016 23:55:02 +0100
 

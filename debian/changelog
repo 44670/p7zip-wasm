@@ -37,6 +37,8 @@ p7zip (15.09+dfsg-3~) UNRELEASED; urgency=low
   * Register html documentation in the doc-base system.
   * Add 11-README-no-instructions.patch to remove build instructions from the
     README file.
+  * Acknowledge the 9.20.1~dfsg.1-4.1 NMU (closes: #788734).
+  * Close Ubuntu's 'newer version available' report (LP: #1414569).
 
  -- Robert Luberda <robert@debian.org>  Sat, 05 Mar 2016 23:55:02 +0100
 

@@ -6,3 +6,4 @@ CVE-2015-1038.patch
 06-s390.patch
 07-endian-detection.patch
 08-mips.patch
+09-man-update.patch

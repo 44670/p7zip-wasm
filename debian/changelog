@@ -17,6 +17,15 @@ p7zip (15.09+dfsg-3~) UNRELEASED; urgency=low
     + install the html documentation into p7zip-full only and update
       02-man.patch to mention that.
 
+  * Add 09-man-update.patch in order to:
+    + update man pages based on the current usage output of the commands;
+    + remove references to the -p{Password} option from the 7zr(1), as the
+      command does not support it (LP: #558609);
+    + mention in 7z(1) that 7z might be slower than 7za (closes: #636667);
+    + reword "the highest compression ratio" phrase to make it referring
+      to the 7z format instead of the 7z programs (closes: #636179).
+  * Reword the packages' descriptions and p7zip(1) man page similarly.
+
  -- Robert Luberda <robert@debian.org>  Sat, 05 Mar 2016 23:55:02 +0100
 
 p7zip (15.09+dfsg-2) experimental; urgency=low

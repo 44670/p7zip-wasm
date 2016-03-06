@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# The script generates list of style.css locations pairs for dh_link program, to have
+# duplicated files converted into symlinks to make lintian happy.
+# Example output:
+#   usr/share/doc/p7zip-full/DOC/MANUAL/style.css usr/share/doc/p7zip-full/DOC/MANUAL/cmdline/style.css
+
+set -e
+readonly pkg=p7zip-full
+readonly file=style.css
+readonly maindir="usr/share/doc/$pkg/DOC/MANUAL"
+
+unset CDPATH
+cd debian/$pkg >/dev/null
+[ -e "$maindir/$file" ]   || { echo "$maindir/$file does not exist" >&2; exit 1; }
+
+for dir in $(find "$maindir" -mindepth 1 -type d -print); do
+  set -- "$maindir/$file" "$dir/$file"
+
+  # Sanity check: fail if the file is not a duplicate
+  [ ! -e "$2" ] || cmp -s "$@" || { echo "$@ are different" >&2; exit 1;}
+
+  echo "$@"
+done

@@ -1,4 +1,4 @@
-p7zip (15.09+dfsg-3~) UNRELEASED; urgency=low
+p7zip (15.09+dfsg-3) experimental; urgency=low
 
   * Refactor and enhance the p7zip wrapper script:
     + update the p7zip script to the version from the contrib directory;
@@ -41,8 +41,9 @@ p7zip (15.09+dfsg-3~) UNRELEASED; urgency=low
   * Close Ubuntu's 'newer version available' report (LP: #1414569).
   * Bump Standards-Version to 3.9.7.
   * Add lintian override for a spelling typo in a word used as a proper name.
+  * Update README.Debian and add a NEWS entry for the dependency changes.
 
- -- Robert Luberda <robert@debian.org>  Sat, 05 Mar 2016 23:55:02 +0100
+ -- Robert Luberda <robert@debian.org>  Sun, 06 Mar 2016 16:58:28 +0100
 
 p7zip (15.09+dfsg-2) experimental; urgency=low
 

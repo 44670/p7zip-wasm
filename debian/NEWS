@@ -1,3 +1,15 @@
+p7zip (15.09+dfsg-3) experimental; urgency=low
+
+  The p7zip-full package now depends on p7zip package in order
+  to have the p7zip wrapper script available for all users of
+  the packages.
+
+  The p7zip wrapper script was enhanced to support more options.
+
+  HTML documentation is now installed by the p7zip-full package only.
+
+ -- Robert Luberda <robert@debian.org>  Sun, 06 Mar 2016 16:58:28 +0100
+
 p7zip (4.37.dfsg-1) unstable; urgency=low
 
   * New upstream release

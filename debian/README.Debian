@@ -1,16 +1,35 @@
-Notes for anyone wanting to build Debian packages of p7zip.
------------------------------------------------------------
+Notes about Debian 7-Zip packages.
+----------------------------------
 
- - 7z is the full featured command line version of 7-Zip. 7z uses other
-   modules from 7-Zip package. 7za is a standalone command line version
-   of 7-Zip. 7za supports only 7z, zip, gzip, bzip2 and tar formats. 7za
-   doesn't use other modules. Modules are in /usr/lib/p7zip.
+The Debian 7-Zip suite consists of the three following packages:
 
- - These packages of p7zip (source and binary) do not contain the RAR
-   decoder which is released under the terms of the UnRAR license (which
-   is non-free). A non-free so file is provided in the non-free package
-   p7zip-rar available at http://adn.diwi.org/debian/p7zip-rar (should be
-   up-to-date).
+1. p7zip package, which is the smallest one and includes:
+
+    - 7zr command, which provides support for compressing and
+      decompressing archives in 7-Zip, LZMA and XZ formats only.
+
+      *Note*: the 7zr command cannot be used on archives protected
+      by passwords, those are supported by 7za and 7z commands
+      from the p7zip-full package.
+
+    - p7zip script which is a gzip-like wrapper on 7zr or 7za
+      commands.
+
+2. p7zip-full package that depends on the above p7zip package
+   and consists of:
+
+    - 7za command which is standalone command line version of 7-Zip.
+      It supports more archive formats than 7zr.
+
+    - 7z command which is the full featured command line version of
+      7-Zip. 7z uses other modules from 7-Zip package, so it handles
+      more archive formats, but might be a bit slower than 7za.
+      Modules are installed in /usr/lib/p7zip.
+
+    - Small additional documentation in the HTML format.
+
+3. Non-free p7zip-rar package that contains non-free (due to the terms
+   of the UnRAR license) Rar.so module for the 7z command.
 
 Note concerning directory exclusion.
 ------------------------------------

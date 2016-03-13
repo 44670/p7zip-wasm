@@ -5,15 +5,15 @@ Maintainer: Robert Luberda <robert@debian.org>
 Build-Depends: debhelper (>= 9), yasm [amd64], yasm [i386]
 Standards-Version: 3.9.7
 Homepage: http://p7zip.sourceforge.net/
-Vcs-Git: git://anonscm.debian.org/users/robert/p7zip.git
-Vcs-Browser: https://anonscm.debian.org/gitweb/?p=users/robert/p7zip.git
+Vcs-Git: https://anonscm.debian.org/git/users/robert/p7zip.git
+Vcs-Browser: https://anonscm.debian.org/cgit/users/robert/p7zip.git
 
 Package: p7zip
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
 Suggests: p7zip-full
 Pre-Depends: ${misc:Pre-Depends}
-Description: 7z file archiver with high compression ratio
+Description: 7zr file archiver with high compression ratio
  p7zip is the Unix command-line port of 7-Zip, a file archiver that
  handles the 7z format which features very high compression ratios.
  .

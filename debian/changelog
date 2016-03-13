@@ -1,3 +1,14 @@
+p7zip (15.09+dfsg-4) unstable; urgency=low
+
+  * Upload to unstable.
+  * Mention in README.Debian that p7zip-full is needed for 7z archives
+    compressed with PPMD method (closes: #693509).
+  * Replace `7z' with `7zr' in the short description of p7zip to make
+    in consistent with the description of p7zip-full (closes: #636664).
+  * Switch Vcs-Git to https, and Vcs-Browser to cgit.
+
+ -- Robert Luberda <robert@debian.org>  Sun, 13 Mar 2016 09:54:38 +0100
+
 p7zip (15.09+dfsg-3) experimental; urgency=low
 
   * Refactor and enhance the p7zip wrapper script:

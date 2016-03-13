@@ -8,9 +8,10 @@ The Debian 7-Zip suite consists of the three following packages:
     - 7zr command, which provides support for compressing and
       decompressing archives in 7-Zip, LZMA and XZ formats only.
 
-      *Note*: the 7zr command cannot be used on archives protected
-      by passwords, those are supported by 7za and 7z commands
-      from the p7zip-full package.
+      *Note*: the 7zr command cannot be used neither on archives
+      protected by passwords, nor on archives that use the PPMD
+      compression method. However both are supported by 7za and 7z
+      commands from the p7zip-full package.
 
     - p7zip script which is a gzip-like wrapper on 7zr or 7za
       commands.

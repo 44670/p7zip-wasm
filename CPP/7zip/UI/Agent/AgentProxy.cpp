@@ -248,7 +248,8 @@ HRESULT CProxyArc::Load(const CArc &arc, IProgress *progress)
     unsigned len = 0;
     bool isPtrName = false;
 
-    #if 0 // #ifdef MY_CPU_LE  // does not work if sizeof(wchar_t) != 2
+    #if defined(MY_CPU_LE) && defined(_WIN32)
+    // it works only if (sizeof(wchar_t) == 2)
     if (arc.GetRawProps)
     {
       const void *p;

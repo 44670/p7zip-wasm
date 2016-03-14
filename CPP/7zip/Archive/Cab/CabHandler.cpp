@@ -572,6 +572,7 @@ public:
   HRESULT FlushCorrupted(unsigned folderIndex);
   HRESULT Unsupported();
 
+  bool NeedMoreWrite() const { return (m_FolderSize > m_PosInFolder); }
   UInt64 GetRemain() const { return m_FolderSize - m_PosInFolder; }
   UInt64 GetPosInFolder() const { return m_PosInFolder; }
 };
@@ -781,6 +782,7 @@ HRESULT CFolderOutStream::Write2(const void *data, UInt32 size, UInt32 *processe
         realProcessed += size;
         if (processedSize)
           *processedSize = realProcessed;
+        m_PosInFolder += size;
         return S_OK;
         // return E_FAIL;
       }
@@ -830,9 +832,7 @@ STDMETHODIMP CFolderOutStream::Write(const void *data, UInt32 size, UInt32 *proc
 
 HRESULT CFolderOutStream::FlushCorrupted(unsigned folderIndex)
 {
-  UInt64 remain = GetRemain();
-  
-  if (remain == 0)
+  if (!NeedMoreWrite())
   {
     CMyComPtr<IArchiveExtractCallbackMessage> callbackMessage;
     m_ExtractCallback.QueryInterface(IID_IArchiveExtractCallbackMessage, &callbackMessage);
@@ -843,16 +843,16 @@ HRESULT CFolderOutStream::FlushCorrupted(unsigned folderIndex)
     return S_OK;
   }
 
-  const unsigned kBufSize = (1 << 10);
+  const unsigned kBufSize = (1 << 12);
   Byte buf[kBufSize];
   for (unsigned i = 0; i < kBufSize; i++)
     buf[i] = 0;
   
   for (;;)
   {
-    UInt64 remain = GetRemain();
-    if (remain == 0)
+    if (!NeedMoreWrite())
       return S_OK;
+    UInt64 remain = GetRemain();
     UInt32 size = (remain < kBufSize ? (UInt32)remain : (UInt32)kBufSize);
     UInt32 processedSizeLocal = 0;
     RINOK(Write2(buf, size, &processedSizeLocal, false));
@@ -937,8 +937,15 @@ STDMETHODIMP CHandler::Extract(const UInt32 *indices, UInt32 numItems,
 
   CRecordVector<bool> extractStatuses;
   
-  for (i = 0; i < numItems;)
+  for (i = 0;;)
   {
+    lps->OutSize = totalUnPacked;
+    lps->InSize = totalPacked;
+    RINOK(lps->SetCur());
+
+    if (i >= numItems)
+      break;
+
     unsigned index = allFilesMode ? i : indices[i];
 
     const CMvItem &mvItem = m_Database.Items[index];
@@ -1002,10 +1009,6 @@ STDMETHODIMP CHandler::Extract(const UInt32 *indices, UInt32 numItems,
       startIndex++;
       curUnpack = item.GetEndOffset();
     }
-
-    lps->OutSize = totalUnPacked;
-    lps->InSize = totalPacked;
-    RINOK(lps->SetCur());
 
     CFolderOutStream *cabFolderOutStream = new CFolderOutStream;
     CMyComPtr<ISequentialOutStream> outStream(cabFolderOutStream);
@@ -1071,7 +1074,7 @@ STDMETHODIMP CHandler::Extract(const UInt32 *indices, UInt32 numItems,
       bool keepInputBuffer = false;
       bool thereWasNotAlignedChunk = false;
       
-      for (UInt32 bl = 0; cabFolderOutStream->GetRemain() != 0;)
+      for (UInt32 bl = 0; cabFolderOutStream->NeedMoreWrite();)
       {
         if (volIndex >= m_Database.Volumes.Size())
         {
@@ -1213,7 +1216,7 @@ STDMETHODIMP CHandler::Extract(const UInt32 *indices, UInt32 numItems,
       }
     }
 
-    if (res != S_OK || cabFolderOutStream->GetRemain() != 0)
+    if (res != S_OK || cabFolderOutStream->NeedMoreWrite())
     {
       RINOK(cabFolderOutStream->FlushCorrupted(folderIndex2));
     }

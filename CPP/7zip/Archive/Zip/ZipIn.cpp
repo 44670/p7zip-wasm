@@ -188,9 +188,9 @@ API_FUNC_IsArc IsArc_Zip(const Byte *p, size_t size)
   // Crc = Get32(p + 10);
   // PackSize = Get32(p + 14);
   // Size = Get32(p + 18);
-  unsigned nameSize = Get16(p + 22);
+  const unsigned nameSize = Get16(p + 22);
   unsigned extraSize = Get16(p + 24);
-  UInt32 extraOffset = kLocalHeaderSize + (UInt32)nameSize;
+  const UInt32 extraOffset = kLocalHeaderSize + (UInt32)nameSize;
   if (extraOffset + extraSize > (1 << 16))
     return k_IsArc_Res_NO;
 
@@ -203,7 +203,8 @@ API_FUNC_IsArc IsArc_Zip(const Byte *p, size_t size)
     const Byte *p2 = p + kLocalHeaderSize;
     for (size_t i = 0; i < rem; i++)
       if (p2[i] == 0)
-        return k_IsArc_Res_NO;
+        if (i != nameSize - 1)
+          return k_IsArc_Res_NO;
   }
 
   if (size < extraOffset)
@@ -562,13 +563,21 @@ bool CInArchive::ReadLocalItem(CItemEx &item)
       // return false;
     }
   }
+  
   if (!CheckDosTime(item.Time))
   {
     HeadersWarning = true;
     // return false;
   }
+  
   if (item.Name.Len() != nameSize)
-    return false;
+  {
+    // we support "bad" archives with null-terminated name.
+    if (item.Name.Len() + 1 != nameSize)
+      return false;
+    HeadersWarning = true;
+  }
+  
   return item.LocalFullHeaderSize <= ((UInt32)1 << 16);
 }
 
@@ -782,9 +791,9 @@ HRESULT CInArchive::ReadCdItem(CItemEx &item)
   item.Crc = Get32(p + 12);
   item.PackSize = Get32(p + 16);
   item.Size = Get32(p + 20);
-  unsigned nameSize = Get16(p + 24);
-  UInt16 extraSize = Get16(p + 26);
-  UInt16 commentSize = Get16(p + 28);
+  const unsigned nameSize = Get16(p + 24);
+  const unsigned extraSize = Get16(p + 26);
+  const unsigned commentSize = Get16(p + 28);
   UInt32 diskNumberStart = Get16(p + 30);
   item.InternalAttrib = Get16(p + 32);
   item.ExternalAttrib = Get32(p + 34);
@@ -961,7 +970,7 @@ HRESULT CInArchive::TryReadCd(CObjectVector<CItemEx> &items, UInt64 cdOffset, UI
     CItemEx cdItem;
     RINOK(ReadCdItem(cdItem));
     items.Add(cdItem);
-    if (progress && items.Size() % 1 == 0)
+    if (progress && (items.Size() & 0xFFF) == 0)
       RINOK(progress->SetCompletedCD(items.Size()));
   }
   return (m_Position - cdOffset == cdSize) ? S_OK : S_FALSE;
@@ -1009,6 +1018,7 @@ bool IsStrangeItem(const CItem &item)
   return item.Name.Len() > (1 << 14) || item.Method > (1 << 8);
 }
 
+
 HRESULT CInArchive::ReadLocals(
     CObjectVector<CItemEx> &items, CProgressVirt *progress)
 {
@@ -1037,7 +1047,8 @@ HRESULT CInArchive::ReadLocals(
         return S_FALSE;
       throw;
     }
-    if (progress && items.Size() % 1 == 0)
+
+    if (progress && (items.Size() & 0xFF) == 0)
       RINOK(progress->SetCompletedLocal(items.Size(), item.LocalHeaderPos));
   }
 
@@ -1154,15 +1165,17 @@ HRESULT CInArchive::ReadHeaders2(CObjectVector<CItemEx> &items, CProgressVirt *p
       HeadersError = true;
       return S_OK;
     }
+    
     _inBufMode = true;
     _inBuffer.Init();
     cdAbsOffset = m_Position - 4;
+
     for (;;)
     {
       CItemEx cdItem;
       RINOK(ReadCdItem(cdItem));
       cdItems.Add(cdItem);
-      if (progress && cdItems.Size() % 1 == 0)
+      if (progress && (cdItems.Size() & 0xFFF) == 0)
         RINOK(progress->SetCompletedCD(items.Size()));
       m_Signature = ReadUInt32();
       if (m_Signature != NSignature::kCentralFileHeader)
@@ -1183,6 +1196,7 @@ HRESULT CInArchive::ReadHeaders2(CObjectVector<CItemEx> &items, CProgressVirt *p
   CEcd64 ecd64;
   bool isZip64 = false;
   UInt64 ecd64AbsOffset = m_Position - 4;
+  
   if (m_Signature == NSignature::kEcd64)
   {
     IsZip64 = isZip64 = true;
@@ -1213,6 +1227,7 @@ HRESULT CInArchive::ReadHeaders2(CObjectVector<CItemEx> &items, CProgressVirt *p
         (!items.IsEmpty())))
       return S_FALSE;
   }
+  
   if (m_Signature == NSignature::kEcd64Locator)
   {
     if (!isZip64)
@@ -1224,6 +1239,7 @@ HRESULT CInArchive::ReadHeaders2(CObjectVector<CItemEx> &items, CProgressVirt *p
       return S_FALSE;
     m_Signature = ReadUInt32();
   }
+  
   if (m_Signature != NSignature::kEcd)
     return S_FALSE;
 
@@ -1322,6 +1338,7 @@ HRESULT CInArchive::ReadHeaders2(CObjectVector<CItemEx> &items, CProgressVirt *p
   // printf("\nOpen OK");
   return S_OK;
 }
+
 
 HRESULT CInArchive::ReadHeaders(CObjectVector<CItemEx> &items, CProgressVirt *progress)
 {

@@ -24,6 +24,20 @@
 
   #endif /* !ENV_MACOSX && !ENV_BEOS */
 
+  #ifdef ENV_HAIKU  /* AFTER !defined(ENV_BEOS) because ENV_HAIKU and ENV_BEOS are defined */
+    /* <wchar.h> */
+    /* ENV_HAVE_WCHAR__H and not ENV_HAVE_WCHAR_H to avoid warning with wxWidgets */
+    #define ENV_HAVE_WCHAR__H
+
+    /* <wctype.h> */
+    #define ENV_HAVE_WCTYPE_H
+
+    /* towupper */
+    #define ENV_HAVE_TOWUPPER
+  #endif
+		
+  
+  
   #if !defined(ENV_BEOS) && !defined(ANDROID_NDK)
 
     #define ENV_HAVE_GETPASS

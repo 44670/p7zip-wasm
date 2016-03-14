@@ -640,6 +640,7 @@ HRESULT CInArchive::GetNextItem(CItem &item, ICryptoGetTextPassword *getTextPass
       {
         ArcInfo.EndFlags = m_BlockHeader.Flags;
         UInt32 offset = 7;
+        
         if (m_BlockHeader.Flags & NHeader::NArchive::kEndOfArc_Flags_DataCRC)
         {
           if (processed < offset + 4)
@@ -648,6 +649,7 @@ HRESULT CInArchive::GetNextItem(CItem &item, ICryptoGetTextPassword *getTextPass
             ArcInfo.DataCRC = Get32(m_FileHeaderData + offset);
           offset += 4;
         }
+        
         if (m_BlockHeader.Flags & NHeader::NArchive::kEndOfArc_Flags_VolNumber)
         {
           if (processed < offset + 2)
@@ -657,6 +659,7 @@ HRESULT CInArchive::GetNextItem(CItem &item, ICryptoGetTextPassword *getTextPass
 
         ArcInfo.EndOfArchive_was_Read = true;
       }
+
       m_Position += processed;
       FinishCryptoBlock();
       ArcInfo.EndPos = m_Position;
@@ -699,11 +702,13 @@ HRESULT CInArchive::GetNextItem(CItem &item, ICryptoGetTextPassword *getTextPass
         continue;
       */
     }
+    
     if (m_CryptoMode && m_BlockHeader.HeadSize > (1 << 10))
     {
       error = k_ErrorType_DecryptionError;
       return S_OK;
     }
+    
     if ((m_BlockHeader.Flags & NHeader::NBlock::kLongBlock) != 0)
     {
       if (m_FileHeaderData.Size() < 7 + 4)
@@ -855,8 +860,21 @@ STDMETHODIMP CHandler::GetArchiveProperty(PROPID propID, PROPVARIANT *value)
       break;
     }
     
-    // case kpidError: if (!_errorMessage.IsEmpty()) prop = _errorMessage; break;
     
+    case kpidError:
+    {
+      // if (!_errorMessage.IsEmpty()) prop = _errorMessage; break;
+
+      if (/* &_missingVol || */ !_missingVolName.IsEmpty())
+      {
+        UString s;
+        s.SetFromAscii("Missing volume : ");
+        s += _missingVolName;
+        prop = s;
+      }
+      break;
+    }
+
     case kpidErrorFlags:
     {
       UInt32 v = _errorFlags;
@@ -1019,7 +1037,10 @@ HRESULT CHandler::Open2(IInStream *stream,
       openCallback->QueryInterface(IID_ICryptoGetTextPassword, (void **)&getTextPassword);
     }
 
+    bool nextVol_is_Required = false;
+
     CInArchive archive;
+
     for (;;)
     {
       CMyComPtr<IInStream> inStream;
@@ -1050,14 +1071,19 @@ HRESULT CHandler::Open2(IInStream *stream,
           */
         }
 
-        UString fullName = seqName.GetNextName();
-        HRESULT result = openVolumeCallback->GetStream(fullName, &inStream);
-        if (result == S_FALSE)
-          break;
-        if (result != S_OK)
+        const UString volName = seqName.GetNextName();
+        
+        HRESULT result = openVolumeCallback->GetStream(volName, &inStream);
+
+        if (result != S_OK && result != S_FALSE)
           return result;
-        if (!inStream)
+
+        if (!inStream || result != S_OK)
+        {
+          if (nextVol_is_Required)
+            _missingVolName = volName;
           break;
+        }
       }
       else
         inStream = stream;
@@ -1174,6 +1200,18 @@ HRESULT CHandler::Open2(IInStream *stream,
         arc.PhySize = archive.ArcInfo.GetPhySize();
         arc.Stream = inStream;
       }
+
+      nextVol_is_Required = false;
+
+      if (!archive.ArcInfo.IsVolume())
+        break;
+
+      if (archive.ArcInfo.EndOfArchive_was_Read)
+      {
+        if (!archive.ArcInfo.AreMoreVolumes())
+          break;
+        nextVol_is_Required = true;
+      }
     }
   }
 
@@ -1216,6 +1254,7 @@ STDMETHODIMP CHandler::Close()
 {
   COM_TRY_BEGIN
   // _errorMessage.Empty();
+  _missingVolName.Empty();
   _errorFlags = 0;
   _warningFlags = 0;
   _isArc = false;

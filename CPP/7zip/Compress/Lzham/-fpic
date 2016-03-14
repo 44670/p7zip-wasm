@@ -1,0 +1,213 @@
+LzhamRegister.o: ../../../../CPP/7zip/Compress/Lzham/LzhamRegister.cpp \
+ lzhamdecomp/lzham_core.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/stdlib.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/cdefs.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/cdefs_elf.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/android/api-level.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/string.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/malloc.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/alloca.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/strings.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/types.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/stdint.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/_types.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/machine/_types.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/posix_types.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/stddef.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/compiler.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm/posix_types.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm/types.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/types.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/machine/kernel.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/sysmacros.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/memory.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/stdio.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/math.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/limits.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/limits.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/limits.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/machine/internal_types.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/machine/limits.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/syslimits.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/sources/cxx-stl/gnu-libstdc++/4.6/include/algorithm \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/errno.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/errno.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm/errno.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm-generic/errno.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm-generic/errno-base.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/inttypes.h \
+ include/lzham.h lzhamdecomp/lzham_config.h lzhamdecomp/lzham_types.h \
+ lzhamdecomp/lzham_assert.h lzhamdecomp/lzham_platform.h \
+ lzhamdecomp/lzham_helpers.h lzhamdecomp/lzham_traits.h \
+ lzhamdecomp/lzham_mem.h lzhamdecomp/lzham_math.h \
+ lzhamdecomp/lzham_utils.h lzhamdecomp/lzham_vector.h \
+ ../../../../C/Alloc.h ../../../../C/7zTypes.h \
+ ../../../../CPP/Common/Common.h \
+ ../../../../CPP/Common/../../C/Compiler.h \
+ ../../../../CPP/Common/MyWindows.h ../../../../CPP/Common/MyGuidDef.h \
+ ../../../../CPP/Common/MyTypes.h \
+ ../../../../CPP/Common/../../C/7zTypes.h \
+ ../../../../CPP/Common/NewHandler.h ../../../../CPP/Common/MyCom.h \
+ ../../../../CPP/7zip/ICoder.h ../../../../CPP/7zip/IStream.h \
+ ../../../../CPP/7zip/../Common/MyTypes.h \
+ ../../../../CPP/7zip/../Common/MyWindows.h ../../../../CPP/7zip/IDecl.h \
+ ../../../../CPP/7zip/../Common/MyUnknown.h \
+ ../../../../CPP/7zip/../Common/MyWindows.h \
+ ../../../../CPP/7zip/Common/StreamUtils.h \
+ ../../../../CPP/7zip/Common/../IStream.h \
+ ../../../../CPP/7zip/Common/RegisterCodec.h \
+ ../../../../CPP/7zip/Common/../Common/MethodId.h \
+ ../../../../CPP/7zip/Common/../Common/../../Common/MyTypes.h \
+ ../../../../CPP/7zip/Common/../ICoder.h ../../../../CPP/Windows/System.h \
+ ../../../../CPP/Windows/../Common/MyTypes.h include/lzham_static_lib.h \
+ include/lzham.h
+
+lzhamdecomp/lzham_core.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/stdlib.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/cdefs.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/cdefs_elf.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/android/api-level.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/string.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/malloc.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/alloca.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/strings.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/types.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/stdint.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/_types.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/machine/_types.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/posix_types.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/stddef.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/compiler.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm/posix_types.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm/types.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/types.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/machine/kernel.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/sysmacros.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/memory.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/stdio.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/math.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/limits.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/limits.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/limits.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/machine/internal_types.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/machine/limits.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/syslimits.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/sources/cxx-stl/gnu-libstdc++/4.6/include/algorithm:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/errno.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/errno.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm/errno.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm-generic/errno.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm-generic/errno-base.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/inttypes.h:
+
+include/lzham.h:
+
+lzhamdecomp/lzham_config.h:
+
+lzhamdecomp/lzham_types.h:
+
+lzhamdecomp/lzham_assert.h:
+
+lzhamdecomp/lzham_platform.h:
+
+lzhamdecomp/lzham_helpers.h:
+
+lzhamdecomp/lzham_traits.h:
+
+lzhamdecomp/lzham_mem.h:
+
+lzhamdecomp/lzham_math.h:
+
+lzhamdecomp/lzham_utils.h:
+
+lzhamdecomp/lzham_vector.h:
+
+../../../../C/Alloc.h:
+
+../../../../C/7zTypes.h:
+
+../../../../CPP/Common/Common.h:
+
+../../../../CPP/Common/../../C/Compiler.h:
+
+../../../../CPP/Common/MyWindows.h:
+
+../../../../CPP/Common/MyGuidDef.h:
+
+../../../../CPP/Common/MyTypes.h:
+
+../../../../CPP/Common/../../C/7zTypes.h:
+
+../../../../CPP/Common/NewHandler.h:
+
+../../../../CPP/Common/MyCom.h:
+
+../../../../CPP/7zip/ICoder.h:
+
+../../../../CPP/7zip/IStream.h:
+
+../../../../CPP/7zip/../Common/MyTypes.h:
+
+../../../../CPP/7zip/../Common/MyWindows.h:
+
+../../../../CPP/7zip/IDecl.h:
+
+../../../../CPP/7zip/../Common/MyUnknown.h:
+
+../../../../CPP/7zip/../Common/MyWindows.h:
+
+../../../../CPP/7zip/Common/StreamUtils.h:
+
+../../../../CPP/7zip/Common/../IStream.h:
+
+../../../../CPP/7zip/Common/RegisterCodec.h:
+
+../../../../CPP/7zip/Common/../Common/MethodId.h:
+
+../../../../CPP/7zip/Common/../Common/../../Common/MyTypes.h:
+
+../../../../CPP/7zip/Common/../ICoder.h:
+
+../../../../CPP/Windows/System.h:
+
+../../../../CPP/Windows/../Common/MyTypes.h:
+
+include/lzham_static_lib.h:
+
+include/lzham.h:

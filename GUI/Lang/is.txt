@@ -1,5 +1,5 @@
 ;!@Lang2@!UTF-8!
-; 15.07 : 2015-09-24 : Stefán Örvar Sigmundsson
+; 15.11 : 2015-11-16 : Stefán Örvar Sigmundsson
 ;
 ;
 ;
@@ -148,7 +148,7 @@ Höfðastærð
 Samtala
 Einkenni
 Sýndarvistfang
-Kenni
+Auðkenni
 Stutt nafn
 Skaparaforrit
 Geirastærð

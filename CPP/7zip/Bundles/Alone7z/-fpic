@@ -1,0 +1,159 @@
+wine_date_and_time.o: ../../../../CPP/myWindows/wine_date_and_time.cpp \
+ ../../../../CPP/myWindows/config.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/stdio.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/cdefs.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/cdefs_elf.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/android/api-level.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/_types.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/machine/_types.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/types.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/stdint.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/posix_types.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/stddef.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/compiler.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm/posix_types.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm/types.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/types.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/machine/kernel.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/sysmacros.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/stdlib.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/string.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/malloc.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/alloca.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/strings.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/memory.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/stat.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/time.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/time.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/stat.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/endian.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/endian.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/dirent.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/unistd.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/select.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/signal.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/limits.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/limits.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/limits.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/machine/internal_types.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/machine/limits.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/syslimits.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm/signal.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm-generic/signal.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm/siginfo.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm-generic/siginfo.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/sysconf.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/capability.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/pathconf.h \
+ /home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/time.h \
+ ../../../../CPP/include_windows/windows.h \
+ ../../../../CPP/Common/MyWindows.h ../../../../CPP/Common/MyGuidDef.h \
+ ../../../../CPP/Common/MyTypes.h \
+ ../../../../CPP/Common/../../C/7zTypes.h \
+ ../../../../CPP/include_windows/basetyps.h
+
+../../../../CPP/myWindows/config.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/stdio.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/cdefs.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/cdefs_elf.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/android/api-level.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/_types.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/machine/_types.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/types.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/stdint.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/posix_types.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/stddef.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/compiler.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm/posix_types.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm/types.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/types.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/machine/kernel.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/sysmacros.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/stdlib.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/string.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/malloc.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/alloca.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/strings.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/memory.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/stat.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/time.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/time.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/stat.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/endian.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/endian.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/dirent.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/unistd.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/select.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/signal.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/limits.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/limits.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/limits.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/machine/internal_types.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/machine/limits.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/syslimits.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm/signal.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm-generic/signal.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm/siginfo.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/asm-generic/siginfo.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/sys/sysconf.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/linux/capability.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/pathconf.h:
+
+/home/me/ANDROID/android-ndk-r8c-linux-x86/platforms/android-3/arch-arm/usr/include/time.h:
+
+../../../../CPP/include_windows/windows.h:
+
+../../../../CPP/Common/MyWindows.h:
+
+../../../../CPP/Common/MyGuidDef.h:
+
+../../../../CPP/Common/MyTypes.h:
+
+../../../../CPP/Common/../../C/7zTypes.h:
+
+../../../../CPP/include_windows/basetyps.h:

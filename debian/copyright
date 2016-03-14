@@ -3,6 +3,7 @@ Upstream-Name: Igor Pavlov
 Source: https://sourceforge.net/projects/p7zip/
 Files-Excluded: CPP/7zip/Compress/Rar*
                 DOC/unRarLicense.txt
+                CPP/ANDROID/Lzham/obj/*
                 C/*.o
                 Utils/CPUTest/PipeLen/MemLat
 

@@ -1,3 +1,11 @@
+p7zip (15.14+dfsg-1~) UNRELEASED; urgency=low
+
+  * New upstream version.
+  * Add CPP/ANDROID/Lzham/obj/* that contains some pre-compiled object
+    files to Files-Excluded in debian/copyright.
+
+ -- Robert Luberda <robert@debian.org>  Mon, 14 Mar 2016 22:54:11 +0100
+
 p7zip (15.09+dfsg-4) unstable; urgency=low
 
   * Upload to unstable.

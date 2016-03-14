@@ -3,23 +3,22 @@ Date: Sun, 6 Mar 2016 14:29:38 +0100
 Subject: Remove build instructions from README file
 
 ---
- README | 155 +----------------------------------------------------------------
- 1 file changed, 1 insertion(+), 154 deletions(-)
+ README | 163 +----------------------------------------------------------------
+ 1 file changed, 1 insertion(+), 162 deletions(-)
 
 diff --git a/README b/README
-index de09f1c..3462dcc 100644
+index e75ff82..433e53b 100644
 --- a/README
 +++ b/README
-@@ -37,159 +37,6 @@ CAUTION :
+@@ -35,167 +35,6 @@ CAUTION :
+   do not use "directory/*" because of ".*" files
     (example : "directory/*" does not match "directory/.profile")
- 
  
 -BUILD :
 --------
 -
 -  If you have downloaded the "bin" package,
--    use directly the program bin/7za.
--    (tested on Redhat 9.0, Fedora 2, Mandrake 10.0, Debian 3.0)
+-    use directly the program bin/7za.   (tested on Debian 3, Ubuntu 14.10)
 -    As the program is statically linked, its should run on many x86 or amd64 linux.
 -
 -  If you have downloaded the "source" package,
@@ -62,10 +61,12 @@ index de09f1c..3462dcc 100644
 -   - x86 CPU :
 -    Linux - Debian 3.0 Stable
 -    Linux - Ubuntu 14.10
+-    Linux - Ubuntu 15.10    
 -    MacOS 10.6.6
 -
 -   - AMD64 CPU :
 -    Linux - Ubuntu 14.10
+-    Linux - Ubuntu 15.10     
 -    MacOS 10.6.6
 -
 -   - powerpc CPU :
@@ -136,13 +137,20 @@ index de09f1c..3462dcc 100644
 -
 -  cd CPP/7zip/CMAKE
 -
--  edit generate.sh to choose your target
--
--  ./generate.sh
--
--  the cmake project for the target is in "CPP/7zip/CMAKE/Alone".
--
--  For the target "Unix Makefiles", use "make" to compile
+-  ./generate.sh  (or ./generate_xcode.sh for MacOSX)
+-  
+-  In CPP/7zip, you now have directories like :
+-   - P7ZIP.codeblocks/
+-   - P7ZIP.EclipseCDT4/
+-   - P7ZIP.Unix/
+-   (or P7ZIP.Xcode/  for MacOSX)
+-   
+-   
+-  For the target "Unix Makefiles" :
+-	- cd CPP/7zip/P7ZIP.Unix
+-	- make
+-	
+-  Remark : these targets use only C/C++ code. To build targets with ASM code you must read the previous paragraph.	
 -
 -  For others target, use the IDE (CodeBlocks, KDevelop3, Eclipse CDT4)
 -
@@ -170,7 +178,7 @@ index de09f1c..3462dcc 100644
  USAGE:
  ------
    Remark : you can replace 7za with 7z.
-@@ -319,7 +166,7 @@ hugetlbfs (large pages)
+@@ -324,7 +163,7 @@ hugetlbfs (large pages) :
  
  LICENSE :
  ---------

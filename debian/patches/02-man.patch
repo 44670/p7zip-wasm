@@ -1,8 +1,7 @@
 From: =?utf-8?q?Mohammed_Adn=C3=A8_Trojette?= <adn+deb@diwi.org>
 Date: Sun, 4 Jun 2006 10:43:06 +0200
-Subject: 02 man
+Subject: Man pages fixes
 
-Man pages fixes.
 ---
  man1/7z.1  |  6 +++---
  man1/7za.1 |  8 ++++----

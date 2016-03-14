@@ -1,8 +1,8 @@
 From: Robert Luberda <robert@debian.org>
 Date: Fri, 22 Jan 2016 11:16:14 +0100
-Subject: 03 include linux makefile
+Subject: Include linux makefile
 
-Include appropriate make  from makefile.machine
+Include appropriate makefile from makefile.machine
  - makefile.linux_x86_asm_gcc_4.X on i386;
  - makefile.linux_amd64_asm on amd64;
  - makefile.linux_any_cpu_gcc_4.X otherwise.

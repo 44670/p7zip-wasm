@@ -1,6 +1,6 @@
 From: Robert Luberda <robert@debian.org>
 Date: Fri, 22 Jan 2016 00:53:09 +0100
-Subject: 05 hardening flags
+Subject: Hardening flags
 
 Add support for $(CPPFLAGS) and do not override $(CXXFLAGS)
 and $(CFLAGS)
@@ -11,7 +11,7 @@ Bug-Debian: https://bugs.debian.org/#682167
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/makefile.glb b/makefile.glb
-index 25daec8..b133b78 100644
+index fb001d5..e10ae03 100644
 --- a/makefile.glb
 +++ b/makefile.glb
 @@ -1,14 +1,14 @@
@@ -21,13 +21,13 @@ index 25daec8..b133b78 100644
 -CFLAGS=-c -I. \
 +CFLAGS+=$(CPPFLAGS) -c -I. \
  -I../../../../C \
- -I../../../myWindows \
- -I../../../include_windows \
- -I../../.. \
+ -I../../../../CPP/myWindows \
+ -I../../../../CPP/include_windows \
+ -I../../../../CPP \
  $(ALLFLAGS) $(ALLFLAGS_C)
  
 -CXXFLAGS=-c -I. \
 +CXXFLAGS+=$(CPPFLAGS) -c -I. \
  -I../../../../C \
- -I../../../myWindows \
- -I../../../ \
+ -I../../../../CPP/myWindows \
+ -I../../../../CPP/include_windows \

@@ -1,7 +1,15 @@
 
+Version 15.14.1
+===============
+
+  - patch #32 Compiling in OS X fails with p7zip_15.14 
+
 
 Version 15.14
 =============
+
+  - bug #147 Directory traversal through symlinks
+    ( https://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2015-1038 )
 
   - patch #26 : Patch to correctly set permissions for docs that permits non-sudo deletion of docs 
 

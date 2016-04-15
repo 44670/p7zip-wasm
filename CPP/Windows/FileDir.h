@@ -8,6 +8,10 @@
 
 #include "FileIO.h"
 
+#ifdef ENV_UNIX
+#include <sys/stat.h> // ino_t
+#endif
+
 namespace NWindows {
 namespace NFile {
 namespace NDir {

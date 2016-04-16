@@ -7,7 +7,7 @@ Subject: Remove build instructions from README file
  1 file changed, 1 insertion(+), 162 deletions(-)
 
 diff --git a/README b/README
-index e75ff82..433e53b 100644
+index 576d3f7..83870f5 100644
 --- a/README
 +++ b/README
 @@ -35,167 +35,6 @@ CAUTION :

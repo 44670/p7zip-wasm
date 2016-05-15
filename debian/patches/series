@@ -5,3 +5,5 @@
 09-man-update.patch
 10-drop-fm-doc.patch
 11-README-no-instructions.patch
+CVE-2016-2334.patch
+CVE-2016-2335.patch

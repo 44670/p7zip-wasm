@@ -1,3 +1,12 @@
+p7zip (15.14.1+dfsg-2) unstable; urgency=high
+
+  * Fix the heap buffer overflow in HFS handler (CVE-2016-2334) and
+    out of bounds read in UDF handler (CVS-2016-2335) using patches from
+    https://sourceforge.net/p/p7zip/discussion/383043/thread/9d0fb86b/
+    (closes: #824160).
+
+ -- Robert Luberda <robert@debian.org>  Sun, 15 May 2016 11:35:38 +0200
+
 p7zip (15.14.1+dfsg-1) unstable; urgency=low
 
   * New upstream version.

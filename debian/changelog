@@ -1,3 +1,11 @@
+p7zip (9.20.1~dfsg.1-4.1+deb8u2) jessie-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * CVE-2016-2335: UDF CInArchive::ReadFileItem code execution vulnerability
+    (Closes: #824160)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 08 Jun 2016 16:50:10 +0200
+
 p7zip (9.20.1~dfsg.1-4.1+deb8u1) jessie-security; urgency=medium
 
   * Non-maintainer upload.

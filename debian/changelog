@@ -1,3 +1,9 @@
+p7zip (16.02+dfsg-1~) UNRELEASED; urgency=medium
+
+  * New upstream version.
+
+ -- Robert Luberda <robert@debian.org>  Sun, 17 Jul 2016 10:30:32 +0200
+
 p7zip (15.14.1+dfsg-2) unstable; urgency=high
 
   * Fix the heap buffer overflow in HFS handler (CVE-2016-2334) and

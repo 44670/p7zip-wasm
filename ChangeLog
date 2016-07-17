@@ -1,4 +1,39 @@
 
+Version 16.02
+=============
+
+
+  - From Windows version of 7-Zip 16.02:
+    - The BUG in 16.00 - 16.01 was fixed: 7-Zip mistakenly reported the warning 
+      "There are some data after the end of the payload data" for split archives.
+
+Version 16.01 (never published)
+=============
+
+  - From Windows version of 7-Zip 16.01:
+    - The bugs in SWM (WIM), EXE (PE) and CHM code were fixed.
+    - there are some internal changes in source code for better compatibility with VS2015 C++ compiler.
+
+Version 16.00 (never published)
+=============
+
+  - better support for OpenBsd (CPP/Windows/System.cpp), thanks Josh (https://sourceforge.net/p/p7zip/discussion/383043/thread/ee32dcd8/?limit=25#c322)
+
+  - From Windows version of 7-Zip 16.00:
+    - 7-Zip now can extract multivolume ZIP archives (z01, z02, ... , zip).
+    - Some fixed bugs:
+      - bzip2 decoder -mmt2 reported E_FAIL (for k_My_HRESULT_WritingWasCut case), if we extract partial file.
+      - 7z solid update (hang in break)
+      - sha1 worked incorrectly for call after call with ((size & 3) != 0)
+      - 7z update bcj bugs were fixed.
+      - split (aaa.001) fixed
+      - iso loop fix
+      - rar4 multivol -stdin kpidSize
+      - drag and drop 1<2.txt
+      - memory access violation fix
+
+
+
 Version 15.14.1
 ===============
 
@@ -95,9 +130,9 @@ Version 15.07 beta
 
   - "bin/Codecs/Rar29.so" renamed to "bin/Codecs/Rar.so"
   
-  - support of cygwin 64 bits
+  - support for cygwin 64 bits
   
-  - support of cygwin 64 bits with asm
+  - support for cygwin 64 bits with asm
   
   - cygwin : fix in GetRamSize()
   

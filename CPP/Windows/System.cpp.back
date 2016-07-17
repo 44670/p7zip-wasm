@@ -122,13 +122,10 @@ namespace NWindows
 		  		}
 		  		fclose( f );
 			}
-#elif defined(__FreeBSD__) || defined(__FreeBSD_kernel__) || defined(__NetBSD__) || defined(__APPLE__) || defined(__OpenBSD__)
+#elif defined(__FreeBSD__) || defined(__FreeBSD_kernel__) || defined(__NetBSD__) || defined(__APPLE__)
 #ifdef HW_MEMSIZE
 			uint64_t val = 0; // support 2Gb+ RAM
 			int mib[2] = { CTL_HW, HW_MEMSIZE };
-#elif defined(HW_PHYSMEM64)
-			uint64_t val = 0; // support 2Gb+ RAM
-			int mib[2] = { CTL_HW, HW_PHYSMEM64 };
 #else // HW_MEMSIZE
 			unsigned int val = 0; // For old system
 			int mib[2] = { CTL_HW, HW_PHYSMEM };

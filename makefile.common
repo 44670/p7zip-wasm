@@ -43,17 +43,17 @@ app: common 7zFM 7zG 7z sfx
 	cp -rp GUI/Contents  p7zip.app/
 	$(MKDIR)             p7zip.app/Contents
 	$(MKDIR)             p7zip.app/Contents/MacOS
-	cp bin/7zFM          p7zip.app/Contents/MacOS/
+	cp bin/7zFM_do_not_use  p7zip.app/Contents/MacOS/
 	cp bin/7zG           p7zip.app/Contents/MacOS/
 	cp bin/7z.so         p7zip.app/Contents/MacOS/
 	cp bin/7zCon.sfx     p7zip.app/Contents/MacOS/
 	cp -rp bin/Codecs    p7zip.app/Contents/MacOS/
 	cp -rp GUI/Lang      p7zip.app/Contents/MacOS/
-	cp -rp GUI/help      p7zip.app/Contents/MacOS/
+	cp -rp DOC/MANUAL    p7zip.app/Contents/MacOS/help
 
 LangAndHelp:
-	cd bin ; rm -f Lang ; ln -s ../GUI/Lang .
-	cd bin ; rm -f help ; ln -s ../GUI/help .
+	cd bin ; rm -f Lang ; ln -s ../GUI/Lang   .
+	cd bin ; rm -f help ; ln -s ../DOC/MANUAL help
 
 clean: clean_C
 	rm -fr bin

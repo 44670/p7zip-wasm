@@ -220,9 +220,7 @@ STDMETHODIMP CArchiveUpdateCallback::GetRawProp(UInt32 index, PROPID propID, con
       return Arc->GetRawProps->GetRawProp(
           ArcItems ? (*ArcItems)[up.ArcIndex].IndexInServer : up.ArcIndex,
           propID, data, dataSize, propType);
-
     {
-      const CUpdatePair2 &up = (*UpdatePairs)[index];
       /*
       if (!up.NewData)
         return E_FAIL;
@@ -762,4 +760,3 @@ void CArchiveUpdateCallback::InFileStream_On_Destroy(UINT_PTR val)
   }
   throw 20141125;
 }
-

@@ -1,5 +1,5 @@
 ﻿;!@Lang2@!UTF-8!
-; 15.12 : 16/12/2015 : Frans Liando
+; 15.14 : 02/01/2016 : Frans Liando
 ;
 ;
 ;
@@ -490,6 +490,6 @@ Tautan ke:
 7710
 Tipe Tautan
 Tautan Keras
-Tautan Berkas Simbolik
-Direktori Direktori Simbolik
+Berkas Tautan Simbolik
+Direktori Tautan Simbolik
 Cabang Direktori

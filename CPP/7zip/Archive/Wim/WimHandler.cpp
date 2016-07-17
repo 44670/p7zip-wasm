@@ -130,9 +130,9 @@ STDMETHODIMP CHandler::GetArchiveProperty(PROPID propID, PROPVARIANT *value)
         int index = -1;
         FOR_VECTOR (i, xml.Images)
         {
-          const CImageInfo &image = xml.Images[i];
-          if (image.CTimeDefined)
-            if (index < 0 || ::CompareFileTime(&image.CTime, &xml.Images[index].CTime) < 0)
+          const CImageInfo &image2 = xml.Images[i];
+          if (image2.CTimeDefined)
+            if (index < 0 || ::CompareFileTime(&image2.CTime, &xml.Images[index].CTime) < 0)
               index = i;
         }
         if (index >= 0)
@@ -147,9 +147,9 @@ STDMETHODIMP CHandler::GetArchiveProperty(PROPID propID, PROPVARIANT *value)
         int index = -1;
         FOR_VECTOR (i, xml.Images)
         {
-          const CImageInfo &image = xml.Images[i];
-          if (image.MTimeDefined)
-            if (index < 0 || ::CompareFileTime(&image.MTime, &xml.Images[index].MTime) > 0)
+          const CImageInfo &image2 = xml.Images[i];
+          if (image2.MTimeDefined)
+            if (index < 0 || ::CompareFileTime(&image2.MTime, &xml.Images[index].MTime) > 0)
               index = i;
         }
         if (index >= 0)
@@ -158,7 +158,7 @@ STDMETHODIMP CHandler::GetArchiveProperty(PROPID propID, PROPVARIANT *value)
       break;
 
     case kpidComment:
-      if (image != NULL)
+      if (image)
       {
         if (_xmlInComments)
         {
@@ -388,7 +388,7 @@ static void MethodToProp(int method, int chunksSizeBits, NCOM::CPropVariant &pro
     char temp[32];
     
     if ((unsigned)method < ARRAY_SIZE(k_Methods))
-      strcpy(temp, k_Methods[method]);
+      strcpy(temp, k_Methods[(unsigned)method]);
     else
       ConvertUInt32ToString((unsigned)method, temp);
     
@@ -475,14 +475,10 @@ STDMETHODIMP CHandler::GetProperty(UInt32 index, PROPID propID, PROPVARIANT *val
 
       case kpidPackSize:
       {
-        UInt64 size = 0;
         if (si)
         {
           if (!si->Resource.IsSolidSmall())
-          {
-            size = si->Resource.PackSize;
-            prop = size;
-          }
+            prop = si->Resource.PackSize;
           else
           {
             if (si->Resource.SolidIndex >= 0)
@@ -493,12 +489,14 @@ STDMETHODIMP CHandler::GetProperty(UInt32 index, PROPID propID, PROPVARIANT *val
             }
           }
         }
+        else if (!item.IsDir)
+          prop = (UInt64)0;
+
         break;
       }
 
       case kpidSize:
       {
-        UInt64 size = 0;
         if (si)
         {
           if (si->Resource.IsSolid())
@@ -507,22 +505,19 @@ STDMETHODIMP CHandler::GetProperty(UInt32 index, PROPID propID, PROPVARIANT *val
             {
               if (si->Resource.SolidIndex >= 0)
               {
-                CSolid &ss = _db.Solids[(unsigned)si->Resource.SolidIndex];
+                const CSolid &ss = _db.Solids[(unsigned)si->Resource.SolidIndex];
                 prop = ss.UnpackSize;
               }
             }
             else
-            {
-              size = si->Resource.PackSize;
-              prop = size;
-            }
+              prop = si->Resource.PackSize;
           }
           else
-          {
-            size = si->Resource.UnpackSize;
-            prop = size;
-          }
+            prop = si->Resource.UnpackSize;
         }
+        else if (!item.IsDir)
+          prop = (UInt64)0;
+
         break;
       }
       

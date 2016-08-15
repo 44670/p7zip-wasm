@@ -1,8 +1,9 @@
-p7zip (16.02+dfsg-1~) UNRELEASED; urgency=medium
+p7zip (16.02+dfsg-1) unstable; urgency=low
 
   * New upstream version.
+  * Remove no longer needed patches introduced in the previous upload.
 
- -- Robert Luberda <robert@debian.org>  Sun, 17 Jul 2016 10:30:32 +0200
+ -- Robert Luberda <robert@debian.org>  Mon, 15 Aug 2016 12:52:33 +0200
 
 p7zip (15.14.1+dfsg-2) unstable; urgency=high
 

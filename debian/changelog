@@ -1,3 +1,10 @@
+p7zip (16.02+dfsg-2) unstable; urgency=medium
+
+  * Apply upstream patch to fix nullptr dereference (CVE-2016-9296)
+    (closes: #844344).
+
+ -- Robert Luberda <robert@debian.org>  Sat, 19 Nov 2016 08:52:29 +0100
+
 p7zip (16.02+dfsg-1) unstable; urgency=low
 
   * New upstream version.

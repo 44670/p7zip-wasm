@@ -1,3 +1,9 @@
+p7zip (16.02+dfsg-3) unstable; urgency=medium
+
+  * Remove `-pie' from hardening options (closes: #859442).
+
+ -- Robert Luberda <robert@debian.org>  Mon, 10 Apr 2017 23:29:04 +0200
+
 p7zip (16.02+dfsg-2) unstable; urgency=medium
 
   * Apply upstream patch to fix nullptr dereference (CVE-2016-9296)

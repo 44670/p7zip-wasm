@@ -3,7 +3,7 @@
 DH_AUTO_OPTIONS := -v -Smakefile --parallel
 stampfile       := debian/build-stamp
 
-export DEB_BUILD_MAINT_OPTIONS=hardening=+all,-pie # pie does not work with shared libs
+export DEB_BUILD_MAINT_OPTIONS=hardening=+all
 
 include /usr/share/dpkg/architecture.mk
 

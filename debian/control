@@ -3,7 +3,7 @@ Section: utils
 Priority: optional
 Maintainer: Robert Luberda <robert@debian.org>
 Build-Depends: debhelper (>= 10), yasm [amd64], yasm [i386]
-Standards-Version: 3.9.8
+Standards-Version: 4.0.0
 Homepage: http://p7zip.sourceforge.net/
 Vcs-Git: https://anonscm.debian.org/git/users/robert/p7zip.git
 Vcs-Browser: https://anonscm.debian.org/cgit/users/robert/p7zip.git

@@ -1,3 +1,10 @@
+p7zip (16.02+dfsg-4~) UNRELEASED; urgency=medium
+
+  * Fix a typo in p7zip script that prevented the `--keep' option from working
+    completely (closes: #868238).
+
+ -- Robert Luberda <robert@debian.org>  Sat, 15 Jul 2017 07:31:07 +0200
+
 p7zip (16.02+dfsg-3) unstable; urgency=medium
 
   * Remove `-pie' from hardening options (closes: #859442).

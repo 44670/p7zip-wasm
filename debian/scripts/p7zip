@@ -185,7 +185,7 @@ while [ "$#" != "0" ] ; do
       usage
       ;;
     -k|--keep)
-      keep=true
+      f_keep=true
       ;;
     --)
       shift

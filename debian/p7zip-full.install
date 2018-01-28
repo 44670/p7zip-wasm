@@ -1,7 +1,6 @@
 bin/7z usr/lib/p7zip
+bin/7z.so usr/lib/p7zip
 bin/7zCon.sfx usr/lib/p7zip
 bin/7za usr/lib/p7zip
-bin/7z.so usr/lib/p7zip
-
 debian/scripts/7z usr/bin
 debian/scripts/7za usr/bin

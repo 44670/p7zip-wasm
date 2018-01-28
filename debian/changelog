@@ -6,6 +6,7 @@ p7zip (16.02+dfsg-5~) UNRELEASED; urgency=medium
   * Fix `deprecated use of operator++ on bool variable' g++ warning.
   * Fix a typo in man page introduced in 09-man-update.patch
     (closes: #873943).
+  * Bump debhelper's compat level to 11.
 
  -- Robert Luberda <robert@debian.org>  Sun, 28 Jan 2018 21:24:38 +0100
 

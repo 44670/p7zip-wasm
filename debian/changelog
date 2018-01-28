@@ -1,4 +1,4 @@
-p7zip (16.02+dfsg-5~) UNRELEASED; urgency=medium
+p7zip (16.02+dfsg-5) unstable; urgency=medium
 
   * Hopefully fix ZIP Shrink: Heap Buffer Overflow (CVE-2017-17969). Thanks
     to Antoine Beaupré for the initial patch, based on upstream changes in
@@ -8,8 +8,9 @@ p7zip (16.02+dfsg-5~) UNRELEASED; urgency=medium
     (closes: #873943).
   * Bump debhelper's compat level to 11.
   * Use 'https' URL in debian/watch (lintian).
+  * Standards-Version: 4.1.3.
 
- -- Robert Luberda <robert@debian.org>  Sun, 28 Jan 2018 21:24:38 +0100
+ -- Robert Luberda <robert@debian.org>  Sun, 28 Jan 2018 23:32:37 +0100
 
 p7zip (16.02+dfsg-4) unstable; urgency=medium
 

@@ -3,6 +3,7 @@ p7zip (16.02+dfsg-5~) UNRELEASED; urgency=medium
   * Hopefully fix ZIP Shrink: Heap Buffer Overflow (CVE-2017-17969). Thanks
     to Antoine Beaupré for the initial patch, based on upstream changes in
     7Zip 18.00.beta (closes: #888297).
+  * Fix `deprecated use of operator++ on bool variable' g++ warning.
 
  -- Robert Luberda <robert@debian.org>  Sun, 28 Jan 2018 21:24:38 +0100
 

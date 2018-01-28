@@ -154,7 +154,7 @@ index d2b7378..72e262b 100644
  .TP
  .B \-p{Password}
 -Set Password
-+Set Password (NOTE: this flag does not work with 7z,
++Set Password (NOTE: this flag does not work with 7zr)
  .TP
  .B \-r[\-|0]
  Recurse subdirectories (CAUTION: this flag does not do what you think, avoid using it)
@@ -431,7 +431,7 @@ index ae5730b..218e245 100644
  .TP
  .B \-p{Password}
 -Set Password
-+Set Password (NOTE: this flag does not work with 7za,
++Set Password (NOTE: this flag does not work with 7zr)
  .TP
 -.B \-r[-|0]
 +.B \-r[\-|0]

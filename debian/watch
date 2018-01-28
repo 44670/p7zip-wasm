@@ -1,4 +1,4 @@
 version=4
 
 opts="compression=xz,dversionmangle=s/\+dfsg\d*$//,repack,repacksuffix=+dfsg" \
- http://qa.debian.org/watch/sf.php/p7zip/p7zip_(.*)_src_all.tar.bz2 debian uupdate
+ https://qa.debian.org/watch/sf.php/p7zip/p7zip_(.*)_src_all.tar.bz2 debian uupdate

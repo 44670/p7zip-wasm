@@ -1,3 +1,12 @@
+p7zip (9.20.1~dfsg.1-4.1+deb8u3) jessie-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Heap-based buffer overflow in 7zip/Compress/ShrinkDecoder.cpp
+    (CVE-2017-17969)
+    Thanks to Antoine Beaupré (Closes: #888297)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 02 Feb 2018 10:53:50 +0100
+
 p7zip (9.20.1~dfsg.1-4.1+deb8u2) jessie-security; urgency=high
 
   * Non-maintainer upload by the Security Team.

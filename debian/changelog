@@ -1,3 +1,12 @@
+p7zip (16.02+dfsg-3+deb9u1) stretch-security; urgency=high
+
+  * Non-maintainer upload by the Security Team.
+  * Heap-based buffer overflow in 7zip/Compress/ShrinkDecoder.cpp
+    (CVE-2017-17969)
+    Thanks to Antoine Beaupré (Closes: #888297)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 02 Feb 2018 11:11:41 +0100
+
 p7zip (16.02+dfsg-3) unstable; urgency=medium
 
   * Remove `-pie' from hardening options (closes: #859442).

@@ -24,7 +24,7 @@ Bug-Debian: https://bugs.debian.org/636667
  3 files changed, 426 insertions(+), 139 deletions(-)
 
 diff --git a/man1/7z.1 b/man1/7z.1
-index d2b7378..72e262b 100644
+index d2b7378..fd39157 100644
 --- a/man1/7z.1
 +++ b/man1/7z.1
 @@ -1,97 +1,187 @@
@@ -301,7 +301,7 @@ index d2b7378..72e262b 100644
 -Written for Debian by Mohammed Adnene Trojette.
 +Written for Debian by Mohammed Adnene Trojette. Updated by Robert Luberda.
 diff --git a/man1/7za.1 b/man1/7za.1
-index ae5730b..218e245 100644
+index ae5730b..b553f84 100644
 --- a/man1/7za.1
 +++ b/man1/7za.1
 @@ -1,99 +1,190 @@

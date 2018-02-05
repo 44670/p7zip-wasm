@@ -1,3 +1,10 @@
+p7zip (16.02+dfsg-6) unstable; urgency=medium
+
+  * Replace 13-CVE-2017-17969.patch with a version used by recent security
+    update for stretch, which add a range check for another counter variable.
+
+ -- Robert Luberda <robert@debian.org>  Mon, 05 Feb 2018 20:27:45 +0100
+
 p7zip (16.02+dfsg-5) unstable; urgency=medium
 
   * Hopefully fix ZIP Shrink: Heap Buffer Overflow (CVE-2017-17969). Thanks

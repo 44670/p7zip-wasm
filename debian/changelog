@@ -5,6 +5,9 @@ p7zip (16.02+dfsg-7~) UNRELEASED; urgency=medium
 
   [ Robert Luberda ]
   * Bump debhelper's compat level to 12.
+  * debian/control:
+    + set Rules-Requires-Root to 'no';
+    + Standards-Version: 4.4.0.
 
  -- Robert Luberda <robert@debian.org>  Thu, 08 Aug 2019 20:07:34 +0200
 
@@ -620,4 +623,3 @@ p7zip (0.90-1) unstable; urgency=low
   * Initial Release.
 
  -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sun, 15 Aug 2004 20:49:27 +0200
-

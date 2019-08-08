@@ -1,13 +1,17 @@
-p7zip (16.02+dfsg-7) UNRELEASED; urgency=medium
+p7zip (16.02+dfsg-7~) UNRELEASED; urgency=medium
 
+  [ Ondřej Nový ]
   * d/control: Set Vcs-* to salsa.debian.org
 
- -- Ondřej Nový <onovy@debian.org>  Mon, 01 Oct 2018 09:44:00 +0200
+  [ Robert Luberda ]
+  * Bump debhelper's compat level to 12.
+
+ -- Robert Luberda <robert@debian.org>  Thu, 08 Aug 2019 20:07:34 +0200
 
 p7zip (16.02+dfsg-6) unstable; urgency=medium
 
   * Replace 13-CVE-2017-17969.patch with a version used by recent security
-    update for stretch, which add a range check for another counter variable.
+    update for stretch, which adds a range check for another counter variable.
 
  -- Robert Luberda <robert@debian.org>  Mon, 05 Feb 2018 20:27:45 +0100
 

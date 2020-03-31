@@ -1,3 +1,9 @@
+p7zip (16.02+dfsg-8) UNRELEASED; urgency=medium
+
+  * Wrap long lines in changelog entries: 4.39.dfsg.1-1.
+
+ -- Debian Janitor <janitor@jelmer.uk>  Tue, 31 Mar 2020 12:32:32 +0000
+
 p7zip (16.02+dfsg-7) unstable; urgency=medium
 
   [ Ondřej Nový ]
@@ -463,7 +469,8 @@ p7zip (4.39.dfsg.1-1) unstable; urgency=low
     - p7zip recommends p7zip-full, much more similar to the old p7zip
     - p7zip-full conflicts and replaces old p7zip versions
   * debian/patches:
-    - 01_makefile.dpatch: removed from diff.gz; remove non-free targets like Rar2.9
+    - 01_makefile.dpatch: removed from diff.gz; remove non-free targets like
+      Rar2.9
     - 02_man.dpatch: removed from diff.gz; adds 7zr.1 and other corrections
   * debian/copyright: correct copyright according to d-d-a suggestions
   * debian/rules:

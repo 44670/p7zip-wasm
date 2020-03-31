@@ -3,7 +3,7 @@ Section: utils
 Priority: optional
 Maintainer: Robert Luberda <robert@debian.org>
 Build-Depends: debhelper-compat (= 12), yasm [amd64], yasm [i386]
-Standards-Version: 4.4.0
+Standards-Version: 4.4.1
 Rules-Requires-Root: no
 Homepage: http://p7zip.sourceforge.net/
 Vcs-Git: https://salsa.debian.org/debian/p7zip.git

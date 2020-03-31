@@ -2,6 +2,7 @@ p7zip (16.02+dfsg-8) UNRELEASED; urgency=medium
 
   * Wrap long lines in changelog entries: 4.39.dfsg.1-1.
   * Set debhelper-compat version in Build-Depends.
+  * Fix day-of-week for changelog entries 4.18-1, 4.14-1, 4.12-2.
 
  -- Debian Janitor <janitor@jelmer.uk>  Tue, 31 Mar 2020 12:32:32 +0000
 
@@ -570,7 +571,7 @@ p7zip (4.18-1) unstable; urgency=low
   * debian/rules: Call 7z with exec
   * debian/README.Debian: update due to upstream changes
 
- -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Fri, 12 May 2005 23:46:00 +0200
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Thu, 12 May 2005 23:46:00 +0200
 
 p7zip (4.14.01-1) experimental; urgency=low
 
@@ -589,7 +590,7 @@ p7zip (4.14-1) experimental; urgency=low
 
   * New upstream release
 
- -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Fri,  1 Jan 2005 21:23:35 +0200
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sat, 01 Jan 2005 21:23:35 +0200
 
 
 p7zip (4.13-2) experimental; urgency=low
@@ -611,7 +612,7 @@ p7zip (4.12-2) experimental; urgency=low
   * Added some docs (Manual in html)
   * Added a mention to LZMA compression algorithm. Closes: #284703
 
- -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Thu, 12 Dec 2004 14:22:54 +0200
+ -- Mohammed Adnène Trojette <adn+deb@diwi.org>  Sun, 12 Dec 2004 14:22:54 +0200
 
 p7zip (4.12-1) experimental; urgency=low
 

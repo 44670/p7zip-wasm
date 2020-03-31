@@ -2,7 +2,7 @@ Source: p7zip
 Section: utils
 Priority: optional
 Maintainer: Robert Luberda <robert@debian.org>
-Build-Depends: debhelper (>= 12), yasm [amd64], yasm [i386]
+Build-Depends: debhelper-compat (= 12), yasm [amd64], yasm [i386]
 Standards-Version: 4.4.0
 Rules-Requires-Root: no
 Homepage: http://p7zip.sourceforge.net/

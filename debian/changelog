@@ -1,6 +1,7 @@
 p7zip (16.02+dfsg-8) UNRELEASED; urgency=medium
 
   * Wrap long lines in changelog entries: 4.39.dfsg.1-1.
+  * Set debhelper-compat version in Build-Depends.
 
  -- Debian Janitor <janitor@jelmer.uk>  Tue, 31 Mar 2020 12:32:32 +0000
 

@@ -12,6 +12,7 @@ Vcs-Browser: https://salsa.debian.org/debian/p7zip
 Package: p7zip
 Architecture: any
 Depends: ${misc:Depends}, ${shlibs:Depends}
+Multi-Arch: foreign
 Suggests: p7zip-full
 Pre-Depends: ${misc:Pre-Depends}
 Description: 7zr file archiver with high compression ratio
@@ -35,6 +36,7 @@ Description: 7zr file archiver with high compression ratio
 Package: p7zip-full
 Architecture: any
 Depends: p7zip (= ${binary:Version}), ${misc:Depends}, ${shlibs:Depends}
+Multi-Arch: foreign
 Suggests: p7zip-rar
 Breaks: p7zip (<< 15.09+dfsg-3~)
 Replaces: p7zip (<< 15.09+dfsg-3~)

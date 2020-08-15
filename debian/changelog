@@ -1,10 +1,13 @@
-p7zip (16.02+dfsg-8) UNRELEASED; urgency=medium
+p7zip (16.02+dfsg-8~) UNRELEASED; urgency=medium
 
+  [ Debian Janitor ]
   * Wrap long lines in changelog entries: 4.39.dfsg.1-1.
   * Set debhelper-compat version in Build-Depends.
   * Fix day-of-week for changelog entries 4.18-1, 4.14-1, 4.12-2.
-  * Update standards version to 4.4.1, no changes needed.
   * Update standards version to 4.5.0, no changes needed.
+
+  [ Robert Luberda ]
+  * Add 15-Fix-FTBFS-gcc10.patch to fix FTBFS with gcc-10 (closes: #957658).
 
  -- Debian Janitor <janitor@jelmer.uk>  Tue, 31 Mar 2020 12:32:32 +0000
 

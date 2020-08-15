@@ -1,0 +1,24 @@
+From: Robert Luberda <robert@debian.org>
+Date: Sat, 15 Aug 2020 10:04:17 +0200
+Subject: Fix FTBFS with gcc-10
+
+Fix compilation error caused by narrowing conversion.
+
+Bugs-Debian: https://bugs.debian.org/957658
+---
+ CPP/Windows/ErrorMsg.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CPP/Windows/ErrorMsg.cpp b/CPP/Windows/ErrorMsg.cpp
+index 99684ae..f2d4a6a 100644
+--- a/CPP/Windows/ErrorMsg.cpp
++++ b/CPP/Windows/ErrorMsg.cpp
+@@ -13,7 +13,7 @@ UString MyFormatMessage(DWORD errorCode)
+   const char * txt = 0;
+   AString msg;
+ 
+-  switch(errorCode) {
++  switch(static_cast<HRESULT>(errorCode)) {
+     case ERROR_NO_MORE_FILES   : txt = "No more files"; break ;
+     case E_NOTIMPL             : txt = "E_NOTIMPL"; break ;
+     case E_NOINTERFACE         : txt = "E_NOINTERFACE"; break ;

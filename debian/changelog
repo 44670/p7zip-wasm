@@ -8,6 +8,7 @@ p7zip (16.02+dfsg-8~) UNRELEASED; urgency=medium
 
   [ Robert Luberda ]
   * Add 15-Fix-FTBFS-gcc10.patch to fix FTBFS with gcc-10 (closes: #957658).
+  * Build with debhelper v13.
 
  -- Debian Janitor <janitor@jelmer.uk>  Tue, 31 Mar 2020 12:32:32 +0000
 

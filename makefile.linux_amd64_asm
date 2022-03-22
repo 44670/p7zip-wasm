@@ -11,6 +11,9 @@ ALLFLAGS=-m64 ${OPTFLAGS} -pipe \
 	-D_7ZIP_ASM \
 	$(LOCAL_FLAGS)
 
+ALLFLAGS_CPP=-DENV_HAVE_GCCVISIBILITYPATCH -fvisibility=hidden -fvisibility-inlines-hidden
+
+
 CXX=g++
 CC=gcc
 CC_SHARED=-fPIC

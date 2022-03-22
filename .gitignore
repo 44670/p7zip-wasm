@@ -3,3 +3,5 @@
 /.pc
 /bin
 /check/my_86_filter/my_86_filter
+CMakeLists.txt
+build

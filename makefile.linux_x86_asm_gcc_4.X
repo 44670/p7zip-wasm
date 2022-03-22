@@ -18,7 +18,7 @@ CXX=g++
 CC=gcc
 CC_SHARED=-fPIC
 LINK_SHARED=-fPIC -shared
-ASM=nasm -f elf
+ASM=yasm -f elf
 
 PRE_COMPILED_HEADER=StdAfx.h.gch
 

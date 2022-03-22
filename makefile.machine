@@ -1,6 +1,25 @@
 #
 # makefile for Linux (x86, PPC, alpha ...)
 #
+ifeq (1,1) # In debian always include the approrpiate makefile
+
+  ifndef DEBIAN_P7ZIP_MAKEFILE
+
+    ifeq (i386,$(DEB_HOST_ARCH))
+        export DEBIAN_P7ZIP_MAKEFILE := makefile.linux_x86_asm_gcc_4.X
+    else
+      ifeq (amd64.64,$(DEB_HOST_ARCH).$(DEB_HOST_ARCH_BITS))
+        export DEBIAN_P7ZIP_MAKEFILE := makefile.linux_amd64_asm
+      else
+        export DEBIAN_P7ZIP_MAKEFILE := makefile.linux_any_cpu_gcc_4.X # default
+      endif
+    endif
+
+  endif
+
+  include $(dir $(lastword $(MAKEFILE_LIST)))/$(DEBIAN_P7ZIP_MAKEFILE)
+
+else
 
 OPTFLAGS=-O -s
 
@@ -21,3 +40,4 @@ LOCAL_LIBS_DLL=$(LOCAL_LIBS) -ldl
 OBJ_CRC32=$(OBJ_CRC32_C)
 OBJ_AES=
 
+endif

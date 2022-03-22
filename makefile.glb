@@ -1,14 +1,14 @@
 
 RM=rm -f
 
-CFLAGS=-c -I. \
+CFLAGS+=$(CPPFLAGS) -c -I. \
 -I../../../../C \
 -I../../../../CPP/myWindows \
 -I../../../../CPP/include_windows \
 -I../../../../CPP \
 $(ALLFLAGS) $(ALLFLAGS_C)
 
-CXXFLAGS=-c -I. \
+CXXFLAGS+=$(CPPFLAGS) -c -I. \
 -I../../../../C \
 -I../../../../CPP/myWindows \
 -I../../../../CPP/include_windows \

@@ -1,0 +1,104 @@
+<html>
+
+<head>
+    <!-- This is an Home Screen App for iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="p7zip-wasm">
+    <link rel="apple-touch-icon" href="icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+
+<body>
+    <h1>p7zip-wasm</h1>
+    <div id="app">
+        <div id="file-list">
+
+        </div>
+    </div>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        var divFileList = $id('file-list');
+        var currentState = {
+            mode : 'empty',
+            fileList: []
+        }
+        var wasmListBuf;
+        function wasmReady() {
+            var ptrListBuf = Module._getSymbol(0);
+            wasmListBuf = Module.HEAPU32.subarray(ptrListBuf / 4, 1*1024*1024);
+        }
+        function fileListToDirectory(lst) {
+            var ret = {}
+            for (var i = 0; i < lst.length; i++) {
+                var arr = lst[i].split('/')
+                var dir = ret
+                for (var j = 0; j < arr.length - 1; j++) {
+                    if (!dir[arr[j]]) {
+                        dir[arr[j]] = {}
+                    }
+                    dir = dir[arr[j]]
+                }
+                dir[arr[arr.length - 1]] = true
+            }
+        }
+        function loadArchive(blob) {
+            // Add the blob to Emscripten FS
+            blob.arrayBuffer().then(function(buffer) {
+                FS.writeFile("archive", new Uint8Array(buffer), {
+                    encoding: "binary"
+                })
+                // Load the archive
+                var ret = Module._apiOpenArchive();
+                if (ret != 0) {
+                    alert("Error opening archive: " + ret);
+                    return;
+                }
+                var bufLen = Module._apiListFiles();
+                var fileList = []
+                var str = ''
+                for (var i = 0; i < bufLen; i++) {
+                    var p = wasmListBuf[i];
+                    if (p == 0xCAFEBABE) {
+                        fileList.push(str);
+                    } else {
+                        str += String.fromCharCode(p);
+                    }
+                }
+                currentState = {
+                    mode:'open',
+                    fileList: fileList
+                }
+                uiPopulateFileList();
+            });
+        }
+        function uiPopulateFileList() {
+            divFileList.innerHTML = '';
+            for (var i = 0; i < currentState.fileList.length; i++) {
+                var fileName = currentState.fileList[i];
+                var divFile = document.createElement('div');
+                divFile.className = 'file';
+                divFile.innerText = fileName;
+                divFileList.appendChild(divFile);
+            }
+        }
+
+        // Allow drag and drop of files
+        window.ondragover = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        };
+        window.ondrop = function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            loadArchive(e.dataTransfer.files[0]);
+            return false;
+        };
+    </script>
+    <script src="build/7za.js"></script>
+</body>
+
+</html>

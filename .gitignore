@@ -6,3 +6,6 @@
 CMakeLists.txt
 build
 .vscode
+
+7za.js
+7za.wasm

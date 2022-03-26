@@ -10,95 +10,262 @@
 </head>
 
 <body>
-    <h1>p7zip-wasm</h1>
-    <div id="app">
-        <div id="file-list">
-
+    <div id="welcome">
+        <h1>p7zip-wasm(WIP)</h1>
+        <div id="loading">
+            Loading...
+        </div>
+        <div id="loaded" hidden>
+            <input type="file" id="file-load-archive" hidden>
+            <button id="btn-select-file" onclick="$id('file-load-archive').click()">Open or drag/drop a file</button>
         </div>
     </div>
+
+    <div id="app" hidden>
+        <div id="toolbar">
+            <button onclick="uiExtractOneFile(state.selectedFileObj)">Extract</button>
+            <button>Extract All</button>
+            <button>Info</button><br>
+            <div id="current-dir">/</div>
+        </div>
+        <div id="container">
+            <div id="file-list">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Size</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="file-list-tbody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="menu" hidden>
+        <div class="menu-item">Extract</div>
+        <div class="menu-item">Delete</div>
+        <div class="menu-item">Rename</div>
+    </div>
+    <style>
+        /* dark mode */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Helvetica, sans-serif;
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: #444 solid 1px;
+            width: 100%;
+        }
+
+        thead {
+            background-color: #222;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #444;
+        }
+
+        .file-list-selected {
+            background-color: rgb(30, 0, 222) !important;
+        }
+
+        #toolbar {
+            /* blur background */
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            width: 100vw;
+            height: 50px;
+        }
+
+        #container {
+            padding-top: 50px;
+        }
+
+        button {
+            border: #fff solid 2px;
+            border-radius: 5px;
+            background-color: rgb(0, 25, 69);
+            color: #fff;
+            padding: 10px;
+            outline: none;
+            font-size: inherit;
+        }
+
+        button:active {
+            background-color: rgb(1, 37, 99);
+        }
+    </style>
     <script>
         function $id(id) {
             return document.getElementById(id);
         }
         var divFileList = $id('file-list');
-        var currentState = {
-            mode : 'empty',
-            fileList: []
+        var state = {
+            mode: 'empty',
+            currentDir: [],
+            root: {},
+            selectedFileObj: null,
         }
-        var wasmListBuf;
+        var wasmOutFileMap = [];
+        var outDir;
+
         function wasmReady() {
-            var ptrListBuf = Module._getSymbol(0);
-            wasmListBuf = Module.HEAPU32.subarray(ptrListBuf / 4, 1*1024*1024);
+            console.log('wasm ready');
+            $id('loading').hidden = true;
+            $id('loaded').hidden = false;
         }
-        function fileListToDirectory(lst) {
-            var ret = {}
-            for (var i = 0; i < lst.length; i++) {
-                var arr = lst[i].split('/')
-                var dir = ret
-                for (var j = 0; j < arr.length - 1; j++) {
-                    if (!dir[arr[j]]) {
-                        dir[arr[j]] = {}
-                    }
-                    dir = dir[arr[j]]
-                }
-                dir[arr[arr.length - 1]] = true
+        // create worker for wasm
+        var worker = new Worker('worker.js');
+        // Handle messages from wasm
+        worker.onmessage = function (e) {
+            var data = e.data;
+            console.log(data)
+            var type = data.t;
+            if (type == 'ready') {
+                wasmReady();
+            } else if (type == 'error') {
+                alert(data.msg + ' ret:' + data.ret);
+            } else if (type == 'opened') {
+                state = data.state;
+                uiPopulateFileList();
+                $id('welcome').hidden = true;
+                $id('app').hidden = false;
+            } else if (type == 'extracted') {
+                var a = document.createElement('a');
+                a.href = URL.createObjectURL(data.blob);
+                a.download = data.name;
+                a.click();
             }
         }
-        function loadArchive(blob) {
-            // Add the blob to Emscripten FS
-            blob.arrayBuffer().then(function(buffer) {
-                FS.writeFile("archive", new Uint8Array(buffer), {
-                    encoding: "binary"
-                })
-                // Load the archive
-                var ret = Module._apiOpenArchive();
-                if (ret != 0) {
-                    alert("Error opening archive: " + ret);
-                    return;
-                }
-                var bufLen = Module._apiListFiles();
-                var fileList = []
-                var str = ''
-                for (var i = 0; i < bufLen; i++) {
-                    var p = wasmListBuf[i];
-                    if (p == 0xCAFEBABE) {
-                        fileList.push(str);
-                    } else {
-                        str += String.fromCharCode(p);
-                    }
-                }
-                currentState = {
-                    mode:'open',
-                    fileList: fileList
-                }
-                uiPopulateFileList();
+
+        function uiExtractOneFile(fobj) {
+            if (!fobj) {
+                alert('Please select a file first.');
+                return;
+            }
+            var arr = fobj.name.split('/');
+            var fileName = arr[arr.length - 1];
+            worker.postMessage({
+                t: 'extract',
+                idx: fobj.idx,
+                name: fileName,
+            })
+        }
+        function uiExtractAll() {
+            // Use chrome api to open directory picker
+            window.showDirectoryPicker().then((d) => {
+                outDir = d;
             });
         }
+
         function uiPopulateFileList() {
-            divFileList.innerHTML = '';
-            for (var i = 0; i < currentState.fileList.length; i++) {
-                var fileName = currentState.fileList[i];
-                var divFile = document.createElement('div');
-                divFile.className = 'file';
-                divFile.innerText = fileName;
-                divFileList.appendChild(divFile);
+            $id('current-dir').innerText = '/' + state.currentDir.join('/')
+            var tbody = $id('file-list-tbody');
+            tbody.innerHTML = '';
+            var dir = state.root.files
+            for (var i = 0; i < state.currentDir.length; i++) {
+                dir = dir[state.currentDir[i]].files
+            }
+            if (state.currentDir.length > 0) {
+                var tr = document.createElement('tr')
+                var td = document.createElement('td')
+                td.innerText = '[..]'
+                tr.appendChild(td)
+                td = document.createElement('td')
+                tr.appendChild(td)
+                td = document.createElement('td')
+                tr.appendChild(td)
+                tbody.appendChild(tr)
+                tr.fkey = '..'
+                tr.onclick = onFileListItemClick
+            }
+            for (var key in dir) {
+                var fobj = dir[key]
+                var isDir = fobj.type & 1
+                var tr = document.createElement('tr');
+                var td = document.createElement('td');
+                td.innerText = isDir ? ('[' + key + ']') : key;
+                tr.appendChild(td);
+                td = document.createElement('td');
+                td.innerText = (fobj.size / 1024).toFixed(2) + ' KiB';
+                tr.appendChild(td);
+                td = document.createElement('td');
+                td.innerText = '-';
+                tr.appendChild(td);
+                tr.fobj = fobj;
+                tr.fkey = key;
+                tr.onclick = onFileListItemClick;
+                tbody.appendChild(tr);
+            }
+            // scroll the page to the top
+            window.scrollTo(0, 0);
+        }
+
+        function onFileListItemClick(e) {
+            var tr = e.target.parentElement;
+            var fobj = tr.fobj;
+            var fkey = tr.fkey;
+            if (fkey == '..') {
+                state.currentDir.pop();
+                uiPopulateFileList();
+                return;
+            }
+            if (fobj.type & 1) {
+                state.currentDir.push(tr.fkey);
+                uiPopulateFileList();
+            } else {
+                state.selectedFileObj = fobj;
+                // remove other selected items class
+                var selectedItems = document.querySelectorAll('.file-list-selected');
+                for (var i = 0; i < selectedItems.length; i++) {
+                    selectedItems[i].classList.remove('file-list-selected');
+                }
+                tr.classList.add('file-list-selected');
             }
         }
 
         // Allow drag and drop of files
-        window.ondragover = function(e) {
+        window.ondragover = function (e) {
             e.preventDefault();
             e.stopPropagation();
             return false;
         };
-        window.ondrop = function(e) {
+        window.ondrop = function (e) {
             e.preventDefault();
             e.stopPropagation();
-            loadArchive(e.dataTransfer.files[0]);
+            uiOpenArchive(e.dataTransfer.files[0]);
             return false;
         };
+
+        function uiOpenArchive(blob) {
+            if (!blob) {
+                return;
+            }
+            worker.postMessage({
+                t: 'open',
+                blob: blob
+            });
+        }
+        $id('file-load-archive').onchange = function (e) {
+            uiOpenArchive(e.target.files[0]);
+        }
     </script>
-    <script src="build/7za.js"></script>
 </body>
 
 </html>

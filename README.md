@@ -1,5 +1,8 @@
 # p7zip-wasm
-A simple unarchiver in browser. Works on a modern browser.
+Porting p7zip to WebAssembly.
+
+Should be workable on modern browsers.
+
 Still working-in-progress.
 
 # Try it on your browser

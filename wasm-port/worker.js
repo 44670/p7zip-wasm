@@ -1,5 +1,5 @@
 // Worker for processing archive files
-var state = {}
+
 var wasmOutFileMap = {}
 
 function wasmReady() {
@@ -105,42 +105,15 @@ function openArchvie(data) {
     }
 
     console.log(fileList)
-    state = {
-        mode: 'open',
-        fileList: fileList,
-        currentDir: [],
-        root: fileListToDirectory(fileList)
-    }
+
     self.postMessage({
         t: 'opened',
-        state: state
+        fileList: fileList
     });
 }
 
 
 
-function fileListToDirectory(lst) {
-    var ret = {}
-    for (var i = 0; i < lst.length; i++) {
-        var fobj = lst[i]
-        var arr = fobj.name.split('/')
-        var isDir = fobj.type & 1
-        var dir = ret
-        for (var j = 0; j < arr.length - 1; j++) {
-            var dirName = arr[j]
-            if (!dir[dirName]) {
-                dir[dirName] = { type: 1, files: {} }
-            }
-            dir = dir[dirName].files
-        }
-        if (isDir) {
-            dir[arr[arr.length - 1]] = { type: 1, files: {} }
-        } else {
-            dir[arr[arr.length - 1]] = fobj
-        }
-    }
-    return { type: 1, files: ret }
-}
 
 
 

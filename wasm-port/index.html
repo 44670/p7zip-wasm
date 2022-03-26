@@ -142,7 +142,13 @@
             } else if (type == 'error') {
                 alert(data.msg + ' ret:' + data.ret);
             } else if (type == 'opened') {
-                state = data.state;
+                var fileList = data.fileList
+                state = {
+                    mode: 'open',
+                    fileList: fileList,
+                    currentDir: [],
+                    root: fileListToDirectory(fileList)
+                }
                 uiPopulateFileList();
                 $id('welcome').hidden = true;
                 $id('app').hidden = false;
@@ -174,40 +180,44 @@
             });
         }
 
+        function uiMakeRow(arr) {
+            var tr = document.createElement('tr');
+            for (var i = 0; i < arr.length; i++) {
+                var td = document.createElement('td');
+                td.innerText = arr[i];
+                tr.appendChild(td);
+            }
+            return tr;
+        }
+
         function uiPopulateFileList() {
             $id('current-dir').innerText = '/' + state.currentDir.join('/')
             var tbody = $id('file-list-tbody');
             tbody.innerHTML = '';
-            var dir = state.root.files
+            var dir = state.root
             for (var i = 0; i < state.currentDir.length; i++) {
-                dir = dir[state.currentDir[i]].files
+                var name = state.currentDir[i];
+                dir = dir.dirs[name];
             }
             if (state.currentDir.length > 0) {
-                var tr = document.createElement('tr')
-                var td = document.createElement('td')
-                td.innerText = '[..]'
-                tr.appendChild(td)
-                td = document.createElement('td')
-                tr.appendChild(td)
-                td = document.createElement('td')
-                tr.appendChild(td)
-                tbody.appendChild(tr)
+                var tr = uiMakeRow(['<..>', '', '']);
                 tr.fkey = '..'
                 tr.onclick = onFileListItemClick
+                tbody.appendChild(tr);
             }
-            for (var key in dir) {
-                var fobj = dir[key]
-                var isDir = fobj.type & 1
-                var tr = document.createElement('tr');
-                var td = document.createElement('td');
-                td.innerText = isDir ? ('[' + key + ']') : key;
-                tr.appendChild(td);
-                td = document.createElement('td');
-                td.innerText = (fobj.size / 1024).toFixed(2) + ' KiB';
-                tr.appendChild(td);
-                td = document.createElement('td');
-                td.innerText = '-';
-                tr.appendChild(td);
+        
+            for (var key in dir.dirs) {
+                var fobj = dir.dirs[key];
+                var tr = uiMakeRow(['<' + key + '>', '', '']);
+                tr.fobj = fobj;
+                tr.fkey = key;
+                tr.onclick = onFileListItemClick;
+                tbody.appendChild(tr);
+            }
+
+            for (var key in dir.files) {
+                var fobj = dir.files[key];
+                var tr = uiMakeRow([key, fobj.size, fobj.date]);
                 tr.fobj = fobj;
                 tr.fkey = key;
                 tr.onclick = onFileListItemClick;
@@ -230,13 +240,20 @@
                 state.currentDir.push(tr.fkey);
                 uiPopulateFileList();
             } else {
-                state.selectedFileObj = fobj;
+                if (state.selectedFileObj == fobj) {
+                    // deselect
+                    state.selectedFileObj = null;
+                } else {
+                    state.selectedFileObj = fobj;
+                }
                 // remove other selected items class
                 var selectedItems = document.querySelectorAll('.file-list-selected');
                 for (var i = 0; i < selectedItems.length; i++) {
                     selectedItems[i].classList.remove('file-list-selected');
                 }
-                tr.classList.add('file-list-selected');
+                if (state.selectedFileObj) {
+                    tr.classList.add('file-list-selected');
+                }
             }
         }
 
@@ -265,6 +282,28 @@
         $id('file-load-archive').onchange = function (e) {
             uiOpenArchive(e.target.files[0]);
         }
+
+        function fileListToDirectory(lst) {
+            var ret = {type: 1, files: {}, dirs: {}};
+            for (var i = 0; i < lst.length; i++) {
+                var fobj = lst[i];
+                var arr = fobj.name.split('/');
+                var dir = ret;
+                var isDir = fobj.type & 1;
+                for (var j = 0; j < (isDir ? (arr.length) : (arr.length - 1)); j++) {
+                    var key = arr[j];
+                    if (!dir.dirs[key]) {
+                        dir.dirs[key] = {type: 1, files: {}, dirs: {}};
+                    }
+                    dir = dir.dirs[key];
+                }
+                if (!isDir) {
+                    dir.files[arr[arr.length - 1]] = fobj;
+                }
+            }
+            return ret;
+        }
+
     </script>
 </body>
 

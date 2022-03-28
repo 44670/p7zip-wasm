@@ -167,6 +167,7 @@ void CDecoder::Hmac_Convert_32Bytes(Byte *data) const
   static NWindows::NSynchronization::CCriticalSection g_GlobalKeyCacheCriticalSection;
   #define MT_LOCK NWindows::NSynchronization::CCriticalSectionLock lock(g_GlobalKeyCacheCriticalSection);
 #else
+static CKey g_Key;
   #define MT_LOCK
 #endif
 

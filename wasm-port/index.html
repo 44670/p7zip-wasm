@@ -19,12 +19,15 @@
             <input type="file" id="file-load-archive" hidden>
             <button id="btn-select-file" onclick="$id('file-load-archive').click()">Open or drag/drop a file</button>
         </div>
+        <p>
+            <a href="https://github.com/44670/p7zip-wasm" target="_blank">https://github.com/44670/p7zip-wasm</a>
+        </p>
     </div>
 
     <div id="app" hidden>
         <div id="toolbar">
             <button onclick="uiExtractOneFile(state.selectedFileObj)">Extract</button>
-            <button>Extract All</button>
+            <button onclick="uiExtractAll()">Extract All</button>
             <button>Info</button><br>
             <div id="current-dir">/</div>
         </div>
@@ -50,6 +53,12 @@
         <div class="menu-item">Rename</div>
     </div>
     <style>
+        a {
+            color: #fff;
+        }
+        a:visited {
+            color: #fff;
+        }
         /* dark mode */
         body {
             background-color: #000;
@@ -90,11 +99,11 @@
             left: 0;
             z-index: 2;
             width: 100vw;
-            height: 50px;
+            height: 80px;
         }
 
         #container {
-            padding-top: 50px;
+            padding-top: 80px;
         }
 
         button {
@@ -141,14 +150,10 @@
                 wasmReady();
             } else if (type == 'error') {
                 alert(data.msg + ' ret:' + data.ret);
+            } else if (type == 'done') {
+                alert(data.msg);
             } else if (type == 'opened') {
-                var fileList = data.fileList
-                state = {
-                    mode: 'open',
-                    fileList: fileList,
-                    currentDir: [],
-                    root: fileListToDirectory(fileList)
-                }
+                state = data.state;
                 uiPopulateFileList();
                 $id('welcome').hidden = true;
                 $id('app').hidden = false;
@@ -174,9 +179,21 @@
             })
         }
         function uiExtractAll() {
+            if (!window.showDirectoryPicker) {
+                alert('Please use Chrome to extract all files.');
+                return;
+            }
             // Use chrome api to open directory picker
             window.showDirectoryPicker().then((d) => {
-                outDir = d;
+                d.requestPermission({
+                    mode:'readwrite'
+                }).then(() => {
+                    worker.postMessage({
+                        t: 'extractAll',
+                        dir: d
+                    })
+                })
+                
             });
         }
 
@@ -283,26 +300,6 @@
             uiOpenArchive(e.target.files[0]);
         }
 
-        function fileListToDirectory(lst) {
-            var ret = {type: 1, files: {}, dirs: {}};
-            for (var i = 0; i < lst.length; i++) {
-                var fobj = lst[i];
-                var arr = fobj.name.split('/');
-                var dir = ret;
-                var isDir = fobj.type & 1;
-                for (var j = 0; j < (isDir ? (arr.length) : (arr.length - 1)); j++) {
-                    var key = arr[j];
-                    if (!dir.dirs[key]) {
-                        dir.dirs[key] = {type: 1, files: {}, dirs: {}};
-                    }
-                    dir = dir.dirs[key];
-                }
-                if (!isDir) {
-                    dir.files[arr[arr.length - 1]] = fobj;
-                }
-            }
-            return ret;
-        }
 
     </script>
 </body>
